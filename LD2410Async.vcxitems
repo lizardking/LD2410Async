@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{76db4135-db0f-4430-958c-2109370dcd97}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="$(MSBuildThisFileDirectory)keyword.txt" />
+    <Text Include="$(MSBuildThisFileDirectory)library.properties" />
+    <Text Include="$(MSBuildThisFileDirectory)src\LD2410Async.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- <ClInclude Include="$(MSBuildThisFileDirectory)LD2410Async.h" /> -->
+    <None Include="$(MSBuildThisFileDirectory)examples\changeConfig\changeConfig.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\changeDistanceResolution\changeDistanceResolution.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\receiveData\receiveData.ino" />
+    <None Include="$(MSBuildThisFileDirectory)LICENSE" />
+    <None Include="$(MSBuildThisFileDirectory)README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\LD2410Async.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\LD2410CommandBuilder.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\LD2410Defs.h" />
+  </ItemGroup>
+</Project>

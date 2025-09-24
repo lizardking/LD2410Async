@@ -1,0 +1,68 @@
+#######################################
+# Syntax Coloring Map For LD2410Async
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+LD2410Async    KEYWORD1
+DetectionData  KEYWORD1
+ConfigData     KEYWORD1
+TargetState    KEYWORD1
+DistanceResolution KEYWORD1
+LightControl   KEYWORD1
+OutputControl  KEYWORD1
+AutoConfigStatus KEYWORD1
+AsyncCommandResult KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+begin                         KEYWORD2
+end                           KEYWORD2
+asyncIsBusy                   KEYWORD2
+asyncCancel                   KEYWORD2
+
+getDetectionData              KEYWORD2
+getConfigData                 KEYWORD2
+
+registerDetectionDataReceivedCallback KEYWORD2
+registerConfigUpdateReceivedCallback  KEYWORD2
+registerConfigChangedCallback         KEYWORD2
+
+requestAllConfigData          KEYWORD2
+requestAllStaticData          KEYWORD2
+requestGateParametersAsync    KEYWORD2
+requestFirmwareAsync          KEYWORD2
+requestBluetoothMacAddressAsync KEYWORD2
+requestAuxControlSettingsAsync KEYWORD2
+requestDistanceResolutioncmAsync KEYWORD2
+requestAutoConfigStatusAsync  KEYWORD2
+
+setMaxGateAndNoOneTimeoutAsync KEYWORD2
+setDistanceGateSensitivityAsync KEYWORD2
+setConfigDataAsync             KEYWORD2
+setBaudRateAsync               KEYWORD2
+setBluetoothpasswordAsync      KEYWORD2
+setAuxControlSettingsAsync     KEYWORD2
+setDistanceResolutionAsync     KEYWORD2
+setDistanceResolution75cmAsync KEYWORD2
+setDistanceResolution20cmAsync KEYWORD2
+enableEngineeringModeAsync     KEYWORD2
+disableEngineeringModeAsync    KEYWORD2
+enableBluetoothAsync           KEYWORD2
+disableBluetoothAsync          KEYWORD2
+enableConfigModeAsync          KEYWORD2
+disableConfigModeAsync         KEYWORD2
+beginAutoConfigAsync           KEYWORD2
+restoreFactorySettingsAsync    KEYWORD2
+rebootAsync                    KEYWORD2
+
+setInactivityHandling          KEYWORD2
+
+#######################################
+# Constants and Literals (LITERAL1)
+#######################################
+ENABLE_DEBUG        LITERAL1
+ENABLE_DEBUG_DATA   LITERAL1
+ENABLE_DEBUG_CONFIG LITERAL1

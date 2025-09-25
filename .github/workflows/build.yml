@@ -43,7 +43,7 @@ jobs:
           platforms: ${{ matrix.platforms }}
           fqbn: ${{ matrix.board.fqbn }}
           libraries: ${{ env.LIBRARIES }}
-          enable-deltas-report: true
+          enable-deltas-report: false
           sketch-paths: |
             - examples
           enable-warnings-report: 'true'

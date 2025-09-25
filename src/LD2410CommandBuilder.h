@@ -17,7 +17,7 @@ namespace LD2410CommandBuilder {
         out[6] = maxMotionGate;
         out[12] = maxStationaryGate;
 
-        memcpy(&out[18], &noOneTimeout, 4);
+        memcpy(&out[18], &noOneTimeout, 2);
     }
 
     inline void buildGateSensitivityCommand(byte* out, byte gate, byte movingThreshold, byte stationaryThreshold) {

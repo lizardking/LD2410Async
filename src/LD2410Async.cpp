@@ -973,13 +973,13 @@ bool LD2410Async::requestAuxControlSettingsAsync(AsyncCommandCallback callback, 
 }
 
 
-bool LD2410Async::beginAutoConfigAsync(AsyncCommandCallback callback, byte userData = 0) {
+bool LD2410Async::beginAutoConfigAsync(AsyncCommandCallback callback, byte userData ) {
 	DEBUG_PRINT_MILLIS;
 	DEBUG_PRINTLN("Begin auto config");
 	return sendConfigCommandAsync(LD2410Defs::beginAutoConfigCommandData, callback, userData);
 };
 
-bool LD2410Async::requestAutoConfigStatusAsync(AsyncCommandCallback callback, byte userData = 0) {
+bool LD2410Async::requestAutoConfigStatusAsync(AsyncCommandCallback callback, byte userData ) {
 	DEBUG_PRINT_MILLIS;
 	DEBUG_PRINTLN("Reqtest auto config status");
 	return sendConfigCommandAsync(LD2410Defs::requestAutoConfigStatusCommandData, callback, userData);

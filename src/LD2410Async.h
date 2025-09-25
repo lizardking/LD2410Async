@@ -675,7 +675,7 @@ private:
 
 
 	DetectionDataCallback detectionDataCallback = nullptr;
-	byte detectionDataCallback = 0;
+	byte detectionDataCallbackUserData = 0;
 
 	void sendCommand(const byte* command);
 

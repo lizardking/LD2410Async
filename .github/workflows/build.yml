@@ -1,0 +1,48 @@
+name: LD2410Async Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        board:
+          - esp32:esp32:esp32        # ESP32 Dev Module
+          - esp32:esp32:esp32s3      # ESP32-S3 Dev Module
+          - esp32:esp32:esp32c3      # ESP32-C3 Dev Module
+
+    steps:
+      # Checkout repo
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Install Arduino CLI
+      - name: Set up Arduino CLI
+        uses: arduino/setup-arduino-cli@v1
+        with:
+          version: latest
+
+      # Install ESP32 core
+      - name: Install ESP32 core
+        run: |
+          arduino-cli core update-index
+          arduino-cli core install esp32:esp32
+
+      # Install library dependencies (if you later add any)
+      - name: Install library dependencies
+        run: |
+          arduino-cli lib install "ArduinoJson" || true
+
+      # Build all example sketches
+      - name: Compile examples
+        run: |
+          for sketch in $(find ./examples -name '*.ino'); do
+            echo "Compiling $sketch for ${{ matrix.board }}"
+            arduino-cli compile --fqbn ${{ matrix.board }} $sketch
+          done

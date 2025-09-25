@@ -1,5 +1,8 @@
 # LD2410Async – Asynchronous ESP32 Arduino Library for the LD2410 mmWave Radar Sensor
 
+![Build Status](https://github.com/yourusername/LD2410Async/actions/workflows/build.yml/badge.svg)
+
+
 ## Introduction
 
 The **LD2410Async** library provides a asynchronous interface for the **Hi-Link LD2410** human presence radar sensor on Arduino/ESP32 platforms.  

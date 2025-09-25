@@ -888,7 +888,7 @@ public:
 	  *        void methodName(LD2410Async* sender, bool presenceDetected, byte userData).
 	  * @param userData Optional value that will be passed to the callback.
 	  */
-	void registerDetectionDataReceivedCallback(DetectionDataCallback callback, byte userData);
+	void registerDetectionDataReceivedCallback(DetectionDataCallback callback, byte userData=0);
 
 	/**
 	 * @brief Registers a callback for configuration changes.

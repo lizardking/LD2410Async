@@ -29,7 +29,7 @@ HardwareSerial RadarSerial(1);
 LD2410Async radar(RadarSerial);
 
 // Callback function called whenever new detection data arrives
-void onDetectionDataReceived(LD2410Async* sender, byte userData) {
+void onDetectionDataReceived(LD2410Async* sender, bool presenceDetected, byte userData) {
     // Access detection data efficiently without making a copy
     const LD2410Async::DetectionData& data = sender->getDetectionDataRef();
 

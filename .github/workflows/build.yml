@@ -14,31 +14,37 @@ jobs:
     strategy:
       matrix:
         board:
-          - esp32:esp32:esp32        # ESP32 Dev Module
-          - esp32:esp32:esp32s3      # ESP32-S3 Dev Module
-          - esp32:esp32:esp32c3      # ESP32-C3 Dev Module
+          - fqbn: "esp32:esp32:esp32"
+            platform-name: esp32:esp32
+
+  # Make board type-specific customizations to the matrix jobs
+        include:
+          - board:
+              platform-name: esp32:esp32
+            platforms: |
+              # Install ESP32 platform via Boards Manager
+              - name: esp32:esp32
+                source-url: https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+
 
     steps:
       # Checkout repo
       - name: Checkout
         uses: actions/checkout@v3
 
-      # Install Arduino CLI (pinned version for stability)
-      - name: Set up Arduino CLI
-        uses: arduino/setup-arduino-cli@v1
-        with:
-          version: 0.35.3
 
-      # Install ESP32 core
-      - name: Install ESP32 core
-        run: |
-          arduino-cli core update-index
-          arduino-cli core install esp32:esp32
+      - name: Install ESP32 platform dependencies
+        if: matrix.board.platform-name == 'esp32:esp32'
+        run: pip3 install pyserial
 
-      # Build all example sketches
       - name: Compile examples
-        run: |
-          for sketch in $(find ./examples -name '*.ino'); do
-            echo "Compiling $sketch for ${{ matrix.board }}"
-            arduino-cli compile --fqbn ${{ matrix.board }} $sketch
-          done
+        uses: arduino/compile-sketches@v1
+        with:
+          platforms: ${{ matrix.platforms }}
+          fqbn: ${{ matrix.board.fqbn }}
+          libraries: ${{ env.LIBRARIES }}
+          enable-deltas-report: true
+          sketch-paths: |
+            - examples
+          enable-warnings-report: 'true'
+

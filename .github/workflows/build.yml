@@ -32,6 +32,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Arduino Lint
+        uses: arduino/arduino-lint-action@v1
+        with:
+          compliance: strict
+
+      - name: Cache Arduino platform
+        uses: actions/cache@v3
+        with:
+          path: ~/.arduino15
+          key: arduino-${{ matrix.board.platform-name }}
 
       - name: Install ESP32 platform dependencies
         if: matrix.board.platform-name == 'esp32:esp32'

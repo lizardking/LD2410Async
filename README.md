@@ -1,6 +1,6 @@
 # LD2410Async – Asynchronous ESP32 Arduino Library for the LD2410 mmWave Radar Sensor
 
-![Build Status](https://github.com/yourusername/LD2410Async/actions/workflows/build.yml/badge.svg)
+![Build Status](https://github.com/lizardking/LD2410Async/actions/workflows/build.yml/badge.svg)
 
 
 ## Introduction

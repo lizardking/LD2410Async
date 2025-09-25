@@ -28,6 +28,8 @@
     <None Include="$(MSBuildThisFileDirectory)examples\changeConfig\changeConfig.ino" />
     <None Include="$(MSBuildThisFileDirectory)examples\changeDistanceResolution\changeDistanceResolution.ino" />
     <None Include="$(MSBuildThisFileDirectory)examples\receiveData\receiveData.ino" />
+    <None Include="$(MSBuildThisFileDirectory).gitattributes" />
+    <None Include="$(MSBuildThisFileDirectory).gitignore" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)src\LD2410CommandBuilder.h">

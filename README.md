@@ -9,11 +9,11 @@ LD2410Async runs in the background using FreeRTOS tasks. This allows your main l
 The library offers:  
 
 - **Non-blocking operation** – sensor data is parsed in the background, no polling loops required.  
-- **Async command API** – send commands (e.g., request firmware, change settings) without freezing your application.  
-- **Configurable callbacks** – get notified when detection data or configuration updates are received.  
-- **Presence detection made simple** – the dedicated detection callback provides a quick `presenceDetected` flag without needing to parse the full data set.  
-- **Full access to sensor data** – motion, stationary detection, distances, gate signals, engineering data, and more.  
-
+- **Async command API** – send commands (e.g., request firmware, change settings) without blocking the main loop().
+- **Callbacks** – are executed when detection data has arrived or when commands complete. If you only care about presence detection and dont need additional data, you only have to check the `presenceDetected` flag that is sent with the DetectionDataReceivedCallback. 
+- **Full access to sensor data** – if you need more than just the basic `presenceDetected` information. All data that is sent by the sensor is available.  
+- **All LD2410 commands** are available in the library.
+- 
 This makes it ideal for applications such as smart lighting, security, automation, and energy-saving systems, where fast and reliable presence detection is essential.  
 
 ---
@@ -124,8 +124,9 @@ When working with the LD2410Async library, keep the following points in mind:
 
 - **Config Mode Handling**  
   - The sensor must be in *config mode* to change settings.  
-  - Most async config methods in this library automatically enable and disable config mode for you.  
-  - Avoid leaving the sensor in config mode longer than necessary, as this may affect normal operation.
+  - All methods/commands that talk to the sensor enable and disable config mode for you if necessary. This means that they will enable and disable the config mode if the config mode has not been active when the command is called. If the config mode is alredy active when calling the command, it will remain active after the command has completed resp. fires its callback. 
+  - Activating the config mode is a time consuming operation (often more than 1.5 secs). Therefore sending a lot of commands can take quite a while. If a sequence with several commands has to be sent, it is a good idea to enable config mode first and deactivate it after the last command (make sure this also happends if commands fail/return false or dont report success in their callback).
+  - Avoid leaving the sensor in config mode longer than necessary, since the sensor will not deliver any detection data while in config mode.
 
 - **Engineering Mode**  
   - Engineering mode provides detailed gate signal data for development and debugging.  
@@ -134,30 +135,32 @@ When working with the LD2410Async library, keep the following points in mind:
 
   **Keep Callbacks Short**  
   - Callbacks are executed inside the radar’s processing task.  
-  - Keep them **short and non-blocking** (e.g., update a variable or post to a queue).  
-  - Avoid long delays, heavy computations, or blocking I/O inside callbacks — otherwise, sensor data processing may be delayed.
+  - Keep them **short and non-blocking** (e.g., update a variable or post to a queue).
+  - Avoid long delay code, heavy computations, or blocking I/O inside callbacks — otherwise, sensor data processing may be delayed or datection data can get lost.
 
 - **Presence Detection**  
-  - Use the dedicated detection callback with the `presenceDetected` flag if you only care about *whether* something is present.  
+  - Use the dedicated detection callback with the `presenceDetected` flag of the DetectionDataReceivedCallback (use registerDetectionDataReceivedCallback() to register for that callback) if you only care about *whether* something is present.  
   - For advanced scenarios (distances, signals, engineering mode), you can access the full `DetectionData` via `getDetectionData()`.
 
 - **Task Management**  
   - The library runs a FreeRTOS background task for receiving and processing data.  
-  - Use `begin()` to start it and `end()` to stop it gracefully.  
+  - You must use `begin()` to start it. If you ever need to stop it again, use `end()` to stop it gracefully.  
   - Do not block the main loop for long periods; the radar’s task will continue to run, but your application logic may lag.
 
 - **Inactivity Handling**  
-  - The library can automatically reboot the sensor if no activity is detected for a configured period.  
+  - The library can automatically handle situation where the sensor doesnt send any data for a configurable period. Sice such situations are typically a result of the config mode being active accidentally, the lib will first try to disable the config mode and if that does not help it will try to reboot the sensor.  
   - You can enable or disable this behavior with `setInactivityHandling(bool enable)` depending on your use case.
-  - 
+
 - **Async Command Busy State**  
   - The library ensures only one async command or sequence runs at a time.  
-  - Check `asyncIsBusy()` before sending a new command if you are chaining multiple operations.
+  - Check `asyncIsBusy()` before sending a new command.
+  - Alway check the return value of the async commands. If false is returned the command has not been sent (either due to busy state or due to invalid paras). True means that the command has been sent and that the callback of the method will execute after completition of the command or after the timeout period.
+  - If chaining commands, trigger the next command from the callback of the previous command. If the next command should only be executed, if the previous command was successfull, check the success para of the callback.
 
-- **Config Memory Wear**  
+- - **Config Memory Wear**  
   - The LD2410 stores configuration in internal non-volatile memory.  
   - Repeatedly writing unnecessary config updates can wear out the memory over time.  
-  - Only send config changes when values actually need to be updated.
+  - Only send config changes when values really need to be updated.
 
 Following these practices will help you get stable, reliable operation from the LD2410 sensor while extending its lifetime.
 
@@ -169,6 +172,7 @@ If you run into issues when using the library, check the following common proble
   - Make sure the radar is connected to the correct serial port and pins.  
   - Verify the baud rate: the LD2410 uses `256000` by default.  
   - Ensure `radar.begin()` was called after initializing the serial port.  
+  - Make sure the config mode is not acctive accidentally — in config mode, no detection data is sent.
 
 - **Callbacks not firing**  
   - Confirm that you registered the callback before expecting data.  
@@ -177,20 +181,15 @@ If you run into issues when using the library, check the following common proble
 
 - **Async commands not working**  
   - Only one async command can be active at a time. Use `asyncIsBusy()` to check before sending a new one and/or check the return value of the async command (true indicates that the command has been sent, false indicates that another async command is pending or that a para is invalid).  
-  - Some commands require the sensor to be in config mode. Most methods handle this automatically, but if you manually enable config mode, remember to disable it afterward.  
-
-- **Configuration not saved**  
-  - Make sure the sensor has finished applying the configuration.  
-  - Don’t power off or reset immediately after sending a config command.  
-  - Avoid sending repeated unnecessary config updates to prevent memory wear.  
+  - All commands require the sensor to be in config mode. The methods handle this automatically, but if you manually enable config mode, remember to disable it afterward.  
 
 - **Unexpected reboots of Sensor**  
   - Check if inactivity handling is enabled (`setInactivityHandling(true)`).  
-  - If enabled, the library may reboot the sensor automatically after a long period without activity.  
+  - If enabled, the library may reboot the sensor automatically after a long period of inactivity (no data sent).  
 
-- **Main loop blocked or slow**  
-  - Review your callback functions. Keep them short and avoid heavy work.  
-  - If you need to do more complex processing, copy the data in the callback and handle it later in your main loop or another task.  
+- **Data loss**  
+  - Review your callback functions. Keep them short and avoid heavy work. Long callback functions can block the sensors thread, which can result in data loss. If you need to do more complex processing, copy the data in the callback and handle it later in your main loop or another task.
+  - You can  try to increase the size of the receive buffer of the serial that is receiving the sensor data. Under normal circumstances this should never be necessary, since the amount of data sent by the sensor is rather small.
 
 - **Strange or invalid data values**  
   - This can happen if the sensor is still in config mode. Ensure it is in normal detection mode.  
@@ -218,7 +217,7 @@ This is controlled by preprocessor defines that you can enable **before includin
 
 ### Notes
 
-- Debug output is only for troubleshooting. It should **normally be disabled** in production builds for best performance.
+- Debug output is only for troubleshooting. It should **be disabled** in production builds. If active it will add many Serial.print() calls to the build, resulting in a larger size and solwer execution of the build
 
 - The debug macros are internal to the library. They are not meant to be used in your own code.
 

@@ -9,7 +9,8 @@
  *   5. Apply the new config.
  *   6. Reboot the sensor to ensure changes take effect.
  *
- * You can change the RX/TX pins at the top of the file to match your wiring.
+ * Important:
+ * Make sure to adjust RADAR_RX_PIN and ADAR_TX_PIN to match you actual wiring.
  */
 
 #include <Arduino.h>

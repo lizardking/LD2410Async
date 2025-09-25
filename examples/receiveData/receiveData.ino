@@ -4,7 +4,8 @@
  * This sketch initializes the LD2410 radar sensor on Serial1 and
  * prints detection data to the Serial Monitor as soon as it arrives.
  *
- * You can change the RX/TX pins at the top of the file to match your wiring.
+ * Important:
+ * Make sure to adjust RADAR_RX_PIN and ADAR_TX_PIN to match you actual wiring.
  */
 
 #include <Arduino.h>

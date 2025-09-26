@@ -1,6 +1,8 @@
 # LD2410Async – Asynchronous ESP32 Arduino Library for the LD2410 mmWave Radar Sensor
 
-[![Arduino Library](https://www.ardu-badge.com/badge/LD2410Async.svg)](https://www.ardu-badge.com/LD2410Async)[![LD2410Async Build](https://github.com/lizardking/LD2410Async/actions/workflows/build.yml/badge.svg)](https://github.com/lizardking/LD2410Async/actions/workflows/build.yml)![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+[![Arduino Library](https://www.ardu-badge.com/badge/LD2410Async.svg)](https://www.ardu-badge.com/LD2410Async) [![LD2410Async Build](https://github.com/lizardking/LD2410Async/actions/workflows/build.yml/badge.svg)](https://github.com/lizardking/LD2410Async/actions/workflows/build.yml)! [License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+
+# This lib is still in development. Therefore breaking changes are likely. Use at at your own risk.
 
 
 ## Introduction
@@ -9,16 +11,14 @@ The **LD2410Async** library provides a asynchronous interface for the **Hi-Link 
 
 LD2410Async runs in the background using FreeRTOS tasks. This allows your main loop to remain responsive while the library continuously processes radar data, handles configuration, and manages timeouts.  
 
-The library offers:  
+The library has the following functionality:  
 
 - **Non-blocking operation** – sensor data is parsed in the background, no polling loops required.  
 - **Async command API** – send commands (e.g., request firmware, change settings) without blocking the main loop().
 - **Callbacks** – are executed when detection data has arrived or when commands complete. If you only care about presence detection and dont need additional data, you only have to check the `presenceDetected` flag that is sent with the DetectionDataReceivedCallback. 
 - **Full access to sensor data** – if you need more than just the basic `presenceDetected` information. All data that is sent by the sensor is available.  
 - **All LD2410 commands** are available in the library.
-- 
-This makes it ideal for applications such as smart lighting, security, automation, and energy-saving systems, where fast and reliable presence detection is essential.  
-
+ 
 ---
 
 ## Installation
@@ -160,12 +160,10 @@ When working with the LD2410Async library, keep the following points in mind:
   - Alway check the return value of the async commands. If false is returned the command has not been sent (either due to busy state or due to invalid paras). True means that the command has been sent and that the callback of the method will execute after completition of the command or after the timeout period.
   - If chaining commands, trigger the next command from the callback of the previous command. If the next command should only be executed, if the previous command was successfull, check the success para of the callback.
 
-- - **Config Memory Wear**  
+- **Config Memory Wear**  
   - The LD2410 stores configuration in internal non-volatile memory.  
   - Repeatedly writing unnecessary config updates can wear out the memory over time.  
   - Only send config changes when values really need to be updated.
-
-Following these practices will help you get stable, reliable operation from the LD2410 sensor while extending its lifetime.
 
 ## Troubleshooting
 

@@ -15,9 +15,7 @@ bool bufferEndsWith(const byte* buffer, int iMax, const byte* pattern)
 {
 	for (int j = 3; j >= 0; j--)
 	{
-		//if (--iMax < 0) {
-		//	iMax = 3;	//This is not clean. The assigned value should be the length of the buffer 
-		//}
+		--iMax;
 		if (buffer[iMax] != pattern[j]) {
 			return false;
 		}
@@ -54,12 +52,20 @@ bool LD2410Async::readFramePayloadSize(byte b, ReadFrameState nextReadFrameState
 		payloadSize = receiveBuffer[0] | (receiveBuffer[1] << 8);
 		if (payloadSize <= 0 || payloadSize > sizeof(receiveBuffer) - 4) {
 			//Serial.print("Invalid payload size read: ");
-			//printBuf(receiveBuffer, sizeof(receiveBuffer));
+			//Serial.print(payloadSize);
+			//Serial.print(" ");
+			//printBuf(receiveBuffer, 2);
 
 			//Invalid payload size, wait for header.
 			readFrameState = ReadFrameState::WAITING_FOR_HEADER;
 		}
 		else {
+
+			//Serial.print("Payloadsize read: ");
+			//Serial.print(payloadSize);
+			//Serial.print(" ");
+			//printBuf(receiveBuffer, 2);
+
 
 			receiveBufferIndex = 0;
 			readFrameState = nextReadFrameState;
@@ -78,7 +84,15 @@ LD2410Async::FrameReadResponse LD2410Async::readFramePayload(byte b, const byte*
 		readFrameState = ReadFrameState::WAITING_FOR_HEADER;
 
 		if (bufferEndsWith(receiveBuffer, receiveBufferIndex, tailPattern)) {
+			//Serial.println("Payload read: ");
+			//printBuf(receiveBuffer, receiveBufferIndex);
+
 			return succesResponseType;
+		}
+		else {
+			//Serial.print(" Invalid frame end: ");
+			//printBuf(receiveBuffer, receiveBufferIndex);
+
 		}
 
 	}
@@ -95,56 +109,69 @@ LD2410Async::FrameReadResponse LD2410Async::readFrame()
 			if (b == LD2410Defs::headData[0]) {
 				readFrameHeaderIndex = 1;
 				readFrameState = DATA_HEADER;
+
 			}
 			else if (b == LD2410Defs::headConfig[0]) {
 				readFrameHeaderIndex = 1;
 				readFrameState = ACK_HEADER;
+
 			}
 			break;
 
 		case DATA_HEADER:
 			if (b == LD2410Defs::headData[readFrameHeaderIndex]) {
 				readFrameHeaderIndex++;
+
 				if (readFrameHeaderIndex == sizeof(LD2410Defs::headData)) {
+					receiveBufferIndex = 0;
 					readFrameState = READ_DATA_SIZE;
 				}
 			}
 			else if (b == LD2410Defs::headData[0]) {
 				// fallback: this byte might be the start of a new header
 				readFrameHeaderIndex = 1;
+
 				// stay in DATA_HEADER
 			}
 			else if (b == LD2410Defs::headConfig[0]) {
 				// possible start of config header
 				readFrameHeaderIndex = 1;
 				readFrameState = ACK_HEADER;
+
 			}
 			else {
 				// not a header at all
 				readFrameState = WAITING_FOR_HEADER;
 				readFrameHeaderIndex = 0;
+
 			}
 			break;
 
 		case ACK_HEADER:
 			if (b == LD2410Defs::headConfig[readFrameHeaderIndex]) {
 				readFrameHeaderIndex++;
+
 				if (readFrameHeaderIndex == sizeof(LD2410Defs::headConfig)) {
+					receiveBufferIndex = 0;
 					readFrameState = READ_ACK_SIZE;
 				}
 			}
 			else if (b == LD2410Defs::headConfig[0]) {
 				readFrameHeaderIndex = 1;
 				// stay in ACK_HEADER
+
 			}
 			else if (b == LD2410Defs::headData[0]) {
 				// maybe start of data header
 				readFrameHeaderIndex = 1;
 				readFrameState = DATA_HEADER;
+
 			}
 			else {
 				readFrameState = WAITING_FOR_HEADER;
 				readFrameHeaderIndex = 0;
+
+
 			}
 			break;
 
@@ -973,13 +1000,13 @@ bool LD2410Async::requestAuxControlSettingsAsync(AsyncCommandCallback callback, 
 }
 
 
-bool LD2410Async::beginAutoConfigAsync(AsyncCommandCallback callback, byte userData ) {
+bool LD2410Async::beginAutoConfigAsync(AsyncCommandCallback callback, byte userData) {
 	DEBUG_PRINT_MILLIS;
 	DEBUG_PRINTLN("Begin auto config");
 	return sendConfigCommandAsync(LD2410Defs::beginAutoConfigCommandData, callback, userData);
 };
 
-bool LD2410Async::requestAutoConfigStatusAsync(AsyncCommandCallback callback, byte userData ) {
+bool LD2410Async::requestAutoConfigStatusAsync(AsyncCommandCallback callback, byte userData) {
 	DEBUG_PRINT_MILLIS;
 	DEBUG_PRINTLN("Reqtest auto config status");
 	return sendConfigCommandAsync(LD2410Defs::requestAutoConfigStatusCommandData, callback, userData);
@@ -1017,20 +1044,9 @@ bool LD2410Async::setConfigDataAsync(const ConfigData& config, AsyncCommandCallb
 {
 	if (asyncIsBusy()) return false;
 
-	// === Check enums first ===
-	if (config.distanceResolution == DistanceResolution::NOT_SET) {
+	if(!config.validate()) {
 		DEBUG_PRINT_MILLIS;
-		DEBUG_PRINTLN("ConfigData invalid: distanceResolution is NOT_SET");
-		return false;
-	}
-	if (config.lightControl == LightControl::NOT_SET) {
-		DEBUG_PRINT_MILLIS;
-		DEBUG_PRINTLN("ConfigData invalid: lightControl is NOT_SET");
-		return false;
-	}
-	if (config.outputControl == OutputControl::NOT_SET) {
-		DEBUG_PRINT_MILLIS;
-		DEBUG_PRINTLN("ConfigData invalid: outputControl is NOT_SET");
+		DEBUG_PRINTLN("ConfigData invalid");
 		return false;
 	}
 
@@ -1184,15 +1200,15 @@ void LD2410Async::handleInactivityDisableConfigmodeCallback(LD2410Async* sender,
 
 void LD2410Async::handleInactivity() {
 
-	if (inactivityHandlingEnabled) {
+	if (inactivityHandlingEnabled && inactivityHandlingTimeoutMs>0) {
 		unsigned long currentTime = millis();
 		unsigned long inactiveDurationMs = currentTime - lastActivityMs;
-		if (lastActivityMs != 0 && inactiveDurationMs > activityTimeoutMs) {
+		if (lastActivityMs != 0 && inactiveDurationMs > inactivityHandlingTimeoutMs) {
 			if (!handleInactivityExitConfigModeDone) {
 				handleInactivityExitConfigModeDone = true;
 				disableConfigModeAsync(handleInactivityDisableConfigmodeCallback, 0);
 			}
-			else if (inactiveDurationMs > activityTimeoutMs + 5000) {
+			else if (inactiveDurationMs > inactivityHandlingTimeoutMs + 5000) {
 				rebootAsync(handleInactivityRebootCallback, 0);
 				lastActivityMs = currentTime;
 			}

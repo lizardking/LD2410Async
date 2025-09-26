@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 
-#define ENABLE_DEBUG
+//#define ENABLE_DEBUG
 
 //#define ENABLE_DEBUG_DATA
 
@@ -40,6 +40,7 @@
 #define DEBUG_PRINT(...)
 #define DEBUG_PRINTLN(...)
 #define DEBUG_PRINTBUF(...)
+#define DEBUG_PRINT_MILLIS 
 #endif
 
 #ifdef ENABLE_DEBUG_DATA
@@ -485,8 +486,9 @@ public:
 	 */
 	struct ConfigData {
 		// === Radar capabilities ===
-		byte numberOfGates = 0; ///< Number of distance gates (2–8). This member is readonly resp. changing its value will not influence the radar sentting when setConfigDataAsync() is called.
+		byte numberOfGates = 0; ///< Number of distance gates (2–8). This member is readonly resp. changing its value will not influence the radar setting when setConfigDataAsync() is called. It is not 100% clear what this value stands for, but it seems to indicate the number of gates on the sensor.
 
+		// === Max distance gate settings ===
 		byte maxMotionDistanceGate = 0; ///< Furthest gate used for motion detection.
 		byte maxStationaryDistanceGate = 0; ///< Furthest gate used for stationary detection.
 
@@ -494,14 +496,46 @@ public:
 		byte distanceGateMotionSensitivity[9] = { 0 }; ///< Motion sensitivity values per gate (0–100). 
 		byte distanceGateStationarySensitivity[9] = { 0 }; ///< Stationary sensitivity values per gate (0–100).
 
-		// === General detection parameters ===
+		// === Timeout parameters ===
 		unsigned short noOneTimeout = 0; ///< Timeout (seconds) until "no presence" is declared.
 
-		// === Resolution and auxiliary controls ===
+		// === Distance resolution ===
 		DistanceResolution distanceResolution = DistanceResolution::NOT_SET; ///< Current distance resolution. A reboot is required to activate changed setting after calling setConfigDataAsync() is called.
+
+		// === Auxiliary controls ===
 		byte lightThreshold = 0; ///< Threshold for auxiliary light control (0–255).
 		LightControl lightControl = LightControl::NOT_SET; ///< Light-dependent auxiliary control mode.
 		OutputControl outputControl = OutputControl::NOT_SET; ///< Logic configuration of the OUT pin.
+
+		/**
+		 * @brief Validates the configuration data for correctness.
+		 *
+		 * Ensures that enum values are set and within valid ranges.
+		 * This method is called internally before applying a config
+		 * via setConfigDataAsync().
+		 *
+		 * @returns True if the configuration is valid, false otherwise.
+		 */ 
+		bool validate() const {
+			// Validate enum settings
+			if (distanceResolution == DistanceResolution::NOT_SET) return false;
+			if (lightControl == LightControl::NOT_SET) return false;
+			if (outputControl == OutputControl::NOT_SET) return false;
+		
+			// Validate max distance gates
+			if (maxMotionDistanceGate < 2 || maxMotionDistanceGate > numberOfGates) return false;
+			if (maxStationaryDistanceGate < 1 || maxStationaryDistanceGate > numberOfGates) return false;
+
+			// Validate sensitivities
+			for (int i = 0; i < numberOfGates; i++) {
+				if (distanceGateMotionSensitivity[i] > 100) return false;
+				if (distanceGateStationarySensitivity[i] > 100) return false;
+			}
+		
+			return true;
+		}
+
+
 
 		/**
 		 * @brief Debug helper: print configuration contents to Serial.
@@ -643,12 +677,12 @@ private:
 	void heartbeat();
 
 	bool inactivityHandlingEnabled = true;
+	unsigned long inactivityHandlingTimeoutMs = 60000;
 	unsigned long lastActivityMs = 0;
 	bool handleInactivityExitConfigModeDone = false;
 	void handleInactivity();
 	static void handleInactivityRebootCallback(LD2410Async* sender, AsyncCommandResult result, byte userData);
 	static void handleInactivityDisableConfigmodeCallback(LD2410Async* sender, AsyncCommandResult result, byte userData);
-	const unsigned long activityTimeoutMs = 60000;
 
 
 	//Reboot
@@ -873,9 +907,35 @@ public:
 	 */
 	void disableInactivityHandling() { setInactivityHandling(false); };
 
+	/**
+	 * @brief Returns whether inactivity handling is currently enabled.
+	 *
+	 * @returns true if inactivity handling is enabled, false otherwise.
+	 */
+	bool isInactivityHandlingEnabled() const { return inactivityHandlingEnabled; };
+
+	/**
+	 * @brief Sets the timeout period for inactivity handling.
+	 *
+	 * If no data or command ACK is received within this period,
+	 * the library will attempt to recover the sensor as described
+	 * in setInactivityHandling().
+	 *
+	 * Default is 60000 ms (1 minute).
+	 *
+	 * @param timeoutMs Timeout in milliseconds (minimum 10000 ms recommended). 0 will diable inactivity checking and handling.
+	 */ 
+	void setInactivityTimeoutMs(unsigned long timeoutMs) { inactivityHandlingTimeoutMs = timeoutMs; };
+
+	/**
+	 * @brief Returns the current inactivity timeout period.
+	 * 
+	 * @returns Timeout in milliseconds.
+	 */
+	unsigned long getInactivityTimeoutMs() const { return inactivityHandlingTimeoutMs; };
 
 	/**********************************************************************************
-	* Data received methods
+	* Callback registration methods
 	***********************************************************************************/
 
 	/**
@@ -915,7 +975,7 @@ public:
 	void registerConfigUpdateReceivedCallback(GenericCallback callback, byte userData = 0);
 
 	/**********************************************************************************
-	* Special async commands
+	* Detection and config data access commands
 	***********************************************************************************/
 	/**
 	 * @brief Returns a clone of the latest detection data from the radar.
@@ -950,6 +1010,38 @@ public:
 	 */
 	DetectionData getDetectionData() const;
 
+
+	/**
+	 * @brief Access the current detection data without making a copy.
+	 *
+	 * This returns a const reference to the internal struct. It is efficient,
+	 * but the data must not be modified directly. Use this if you only want
+	 * to read values.
+	 *
+	 * @note Since this returns a reference to the internal data, the values
+	 *       may change as new frames arrive. Do not store the reference for
+	 *       long-term use.
+	 * @note This function will not query the sensor for data. It just returns
+	 *       the data that has already been received from the sensor.
+	 *
+	 * ## Example: Efficient read access without cloning
+	 * @code
+	 *   const DetectionData& data = radar.getDetectionDataRef();  // no copy
+	 *   Serial.print("Stationary signal: ");
+	 *   Serial.println(data.stationaryTargetSignal);
+	 * @endcode
+	 *
+	 * ## Do:
+	 * - Use when you only need to read values quickly and efficiently.
+	 * - Use when printing or inspecting live data without keeping it.
+	 *
+	 * ## Don’t:
+	 * - Try to modify the returned struct (it’s const).
+	 * - Store the reference long-term (it may be updated at any time).
+	 *
+	 * @returns Const reference to the current DetectionData.
+	 */
+	const DetectionData& getDetectionDataRef() const { return detectionData; }
 
 
 	/**
@@ -994,41 +1086,6 @@ public:
 	 * @returns A copy of the current ConfigData.
 	 */
 	ConfigData getConfigData() const;
-
-
-
-	/**
-	 * @brief Access the current detection data without making a copy.
-	 *
-	 * This returns a const reference to the internal struct. It is efficient,
-	 * but the data must not be modified directly. Use this if you only want
-	 * to read values.
-	 *
-	 * @note Since this returns a reference to the internal data, the values
-	 *       may change as new frames arrive. Do not store the reference for
-	 *       long-term use.
-	 * @note This function will not query the sensor for data. It just returns
-	 *       the data that has already been received from the sensor.
-	 *
-	 * ## Example: Efficient read access without cloning
-	 * @code
-	 *   const DetectionData& data = radar.getDetectionDataRef();  // no copy
-	 *   Serial.print("Stationary signal: ");
-	 *   Serial.println(data.stationaryTargetSignal);
-	 * @endcode
-	 *
-	 * ## Do:
-	 * - Use when you only need to read values quickly and efficiently.
-	 * - Use when printing or inspecting live data without keeping it.
-	 *
-	 * ## Don’t:
-	 * - Try to modify the returned struct (it’s const).
-	 * - Store the reference long-term (it may be updated at any time).
-	 *
-	 * @returns Const reference to the current DetectionData.
-	 */
-	const DetectionData& getDetectionDataRef() const { return detectionData; }
-
 
 
 	/**
@@ -1086,9 +1143,12 @@ public:
 	void asyncCancel();
 
 	/**********************************************************************************
-	* Config commands
+	* Commands
 	***********************************************************************************/
 
+	/*---------------------------------------------------------------------------------
+	- Config mode commands
+	---------------------------------------------------------------------------------*/
 	/**
 	 * @brief Enables config mode on the radar.
 	 *
@@ -1124,45 +1184,20 @@ public:
 	  */
 	bool disableConfigModeAsync(AsyncCommandCallback callback, byte userData = 0);
 
-
 	/**
-	 * @brief Sets the maximum detection gates and "no-one" timeout.
-	 *
-	 * This command updates:
-	 *   - Maximum motion detection distance gate (2–8).
-	 *   - Maximum stationary detection distance gate (2–8).
-	 *   - Timeout duration (0–65535 seconds) until "no presence" is declared.
-	 *
-	 * @note Requires config mode to be enabled. The method will internally
-	 *       enable/disable config mode if necessary.
-	 * @note Values outside the allowed ranges are clamped to valid limits.
-	 *
-	 * @param maxMovingGate Furthest gate used for motion detection (2–8).
-	 * @param maxStationaryGate Furthest gate used for stationary detection (2–8).
-	 * @param noOneTimeout Timeout in seconds until "no one" is reported (0–65535).
-	 * @param callback Callback fired when ACK is received or on failure/timeout.
-	 * @param userData Optional value passed to the callback.
-	 *
-	 * @returns true if the command was sent, false otherwise (busy state).
-	 */
-	bool setMaxGateAndNoOneTimeoutAsync(byte maxMovingGate, byte maxStationaryGate, unsigned short noOneTimeout, AsyncCommandCallback callback, byte userData = 0);
+	* @brief Detects if config mode is enabled
+	* 
+	* @returns true if config mode is anabled, false if config mode is disabled
+	*/
 
-	/**
-	 * @brief Requests the current gate parameters from the sensor.
-	 *
-	 * Retrieves sensitivities, max gates, and timeout settings,
-	 * which will be written into configData.
-	 *
-	 * @note Requires config mode. The method will manage mode switching if needed.
-	 * @note If an async command is already pending, the request is rejected.
-	 *
-	 * @param callback Callback fired when data is received or on failure.
-	 * @param userData Optional value passed to the callback.
-	 *
-	 * @returns true if the command was sent, false otherwise.
-	 */
-	bool requestGateParametersAsync(AsyncCommandCallback callback, byte userData = 0);
+	bool isConfigModeEnabled() const {
+		return configModeEnabled;
+	};
 
+
+	/*---------------------------------------------------------------------------------
+	- Engineering mode commands
+	---------------------------------------------------------------------------------*/
 	/**
 	 * @brief Enables engineering mode.
 	 *
@@ -1192,6 +1227,58 @@ public:
 	 * @returns true if the command was sent, false otherwise.
 	 */
 	bool disableEngineeringModeAsync(AsyncCommandCallback callback, byte userData = 0);
+
+	/**
+	* @brief Detects if engineering mode is enabled
+	* 
+	* @returns true if engineering mode is anabled, false if engineering mode is disabled
+	*/
+	bool isEngineeringModeEnabled() const {
+		return engineeringModeEnabled;
+	};
+
+	/*---------------------------------------------------------------------------------
+	- Sensor config comands
+	---------------------------------------------------------------------------------*/
+	/**
+	 * @brief Requests the current gate parameters from the sensor.
+	 *
+	 * Retrieves sensitivities, max gates, and timeout settings,
+	 * which will be written into configData.
+	 *
+	 * @note Requires config mode. The method will manage mode switching if needed.
+	 * @note If an async command is already pending, the request is rejected.
+	 *
+	 * @param callback Callback fired when data is received or on failure.
+	 * @param userData Optional value passed to the callback.
+	 *
+	 * @returns true if the command was sent, false otherwise.
+	 */
+	bool requestGateParametersAsync(AsyncCommandCallback callback, byte userData = 0);
+
+
+
+	/**
+	 * @brief Sets the maximum detection gates and "no-one" timeout.
+	 *
+	 * This command updates:
+	 *   - Maximum motion detection distance gate (2–8).
+	 *   - Maximum stationary detection distance gate (2–8).
+	 *   - Timeout duration (0–65535 seconds) until "no presence" is declared.
+	 *
+	 * @note Requires config mode to be enabled. The method will internally
+	 *       enable/disable config mode if necessary.
+	 * @note Values outside the allowed ranges are clamped to valid limits.
+	 *
+	 * @param maxMovingGate Furthest gate used for motion detection (2–8).
+	 * @param maxStationaryGate Furthest gate used for stationary detection (2–8).
+	 * @param noOneTimeout Timeout in seconds until "no one" is reported (0–65535).
+	 * @param callback Callback fired when ACK is received or on failure/timeout.
+	 * @param userData Optional value passed to the callback.
+	 *
+	 * @returns true if the command was sent, false otherwise (busy state).
+	 */
+	bool setMaxGateAndNoOneTimeoutAsync(byte maxMovingGate, byte maxStationaryGate, unsigned short noOneTimeout, AsyncCommandCallback callback, byte userData = 0);
 
 
 	/**

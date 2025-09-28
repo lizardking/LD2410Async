@@ -481,7 +481,7 @@ public:
 	 * (e.g. sensitivities, timeouts, resolution).
 	 *
 	 * The values are typically filled by request commands
-	 * such as requestAllConfigData() or requestGateParametersAsync() or
+	 * such as requestAllConfigDataAsync() or requestGateParametersAsync() or
 	 * requestAuxControlSettingsAsync() or requestDistanceResolutioncmAsync().
 	 */
 	struct ConfigData {
@@ -510,32 +510,53 @@ public:
 		/**
 		 * @brief Validates the configuration data for correctness.
 		 *
-		 * Ensures that enum values are set and within valid ranges.
+		 * Ensures that enum values are set and values are within valid ranges.
 		 * This method is called internally before applying a config
 		 * via setConfigDataAsync().
 		 *
 		 * @returns True if the configuration is valid, false otherwise.
-		 */ 
-		bool validate() const {
+		 */
+		bool isValid() const {
 			// Validate enum settings
 			if (distanceResolution == DistanceResolution::NOT_SET) return false;
 			if (lightControl == LightControl::NOT_SET) return false;
 			if (outputControl == OutputControl::NOT_SET) return false;
-		
+
 			// Validate max distance gates
 			if (maxMotionDistanceGate < 2 || maxMotionDistanceGate > numberOfGates) return false;
 			if (maxStationaryDistanceGate < 1 || maxStationaryDistanceGate > numberOfGates) return false;
 
 			// Validate sensitivities
-			for (int i = 0; i < numberOfGates; i++) {
+			for (int i = 0; i < 9; i++) {
 				if (distanceGateMotionSensitivity[i] > 100) return false;
 				if (distanceGateStationarySensitivity[i] > 100) return false;
 			}
-		
+
 			return true;
 		}
 
+		/**
+		* @brief Compares this ConfigData with another for equality.
+		*
+		* @param other The other ConfigData instance to compare against.
+		* @returns True if all fields are equal, false otherwise.
+		*/
+		bool equals(const ConfigData& other) const {
+			if (numberOfGates != other.numberOfGates) return false;
+			if (maxMotionDistanceGate != other.maxMotionDistanceGate) return false;
+			if (maxStationaryDistanceGate != other.maxStationaryDistanceGate) return false;
+			if (noOneTimeout != other.noOneTimeout) return false;
+			if (distanceResolution != other.distanceResolution) return false;
+			if (lightThreshold != other.lightThreshold) return false;
+			if (lightControl != other.lightControl) return false;
+			if (outputControl != other.outputControl) return false;
 
+			for (int i = 0; i < 9; i++) {
+				if (distanceGateMotionSensitivity[i] != other.distanceGateMotionSensitivity[i]) return false;
+				if (distanceGateStationarySensitivity[i] != other.distanceGateStationarySensitivity[i]) return false;
+			}
+			return true;
+		}
 
 		/**
 		 * @brief Debug helper: print configuration contents to Serial.
@@ -753,7 +774,7 @@ public:
 	 * @brief Current configuration parameters of the radar.
 	 *
 	 * Filled when configuration query commands are issued
-	 * (e.g. requestAllConfigData() or requestGateParametersAsync() ect). Can be modified and
+	 * (e.g. requestAllConfigDataAsync() or requestGateParametersAsync() ect). Can be modified and
 	 * sent back using setConfigDataAsync().
 	 *
 	 * Structure will contain only uninitilaized data if config data is not queried explicitly.
@@ -924,12 +945,12 @@ public:
 	 * Default is 60000 ms (1 minute).
 	 *
 	 * @param timeoutMs Timeout in milliseconds (minimum 10000 ms recommended). 0 will diable inactivity checking and handling.
-	 */ 
+	 */
 	void setInactivityTimeoutMs(unsigned long timeoutMs) { inactivityHandlingTimeoutMs = timeoutMs; };
 
 	/**
 	 * @brief Returns the current inactivity timeout period.
-	 * 
+	 *
 	 * @returns Timeout in milliseconds.
 	 */
 	unsigned long getInactivityTimeoutMs() const { return inactivityHandlingTimeoutMs; };
@@ -948,7 +969,7 @@ public:
 	  *        void methodName(LD2410Async* sender, bool presenceDetected, byte userData).
 	  * @param userData Optional value that will be passed to the callback.
 	  */
-	void registerDetectionDataReceivedCallback(DetectionDataCallback callback, byte userData=0);
+	void registerDetectionDataReceivedCallback(DetectionDataCallback callback, byte userData = 0);
 
 	/**
 	 * @brief Registers a callback for configuration changes.
@@ -1186,7 +1207,7 @@ public:
 
 	/**
 	* @brief Detects if config mode is enabled
-	* 
+	*
 	* @returns true if config mode is anabled, false if config mode is disabled
 	*/
 
@@ -1230,7 +1251,7 @@ public:
 
 	/**
 	* @brief Detects if engineering mode is enabled
-	* 
+	*
 	* @returns true if engineering mode is anabled, false if engineering mode is disabled
 	*/
 	bool isEngineeringModeEnabled() const {
@@ -1581,7 +1602,7 @@ public:
 	 *
 	 * ## Example: Refresh config data
 	 * @code
-	 *   radar.requestAllConfigData([](LD2410Async* sender,
+	 *   radar.requestAllConfigDataAsync([](LD2410Async* sender,
 	 *                                 AsyncCommandResult result,
 	 *                                 byte) {
 	 *     if (result == AsyncCommandResult::SUCCESS) {
@@ -1605,7 +1626,7 @@ public:
 	 *
 	 * @returns true if the command was sent, false otherwise.
 	 */
-	bool requestAllConfigData(AsyncCommandCallback callback, byte userData = 0);
+	bool requestAllConfigDataAsync(AsyncCommandCallback callback, byte userData = 0);
 
 
 	/**

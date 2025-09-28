@@ -371,7 +371,7 @@ bool LD2410Async::processAck()
 		configData.numberOfGates = receiveBuffer[5];
 		configData.maxMotionDistanceGate = receiveBuffer[6];
 		configData.maxStationaryDistanceGate = receiveBuffer[7];
-		for (byte i = 0; i <= configData.numberOfGates; i++)
+		for (byte i = 0; i <= configData.numberOfGates; i++)			//Need to check if we should really do this or whther it just using a fixed number would be better
 			configData.distanceGateMotionSensitivity[i] = receiveBuffer[8 + i];
 		for (byte i = 0; i <= configData.numberOfGates; i++)
 			configData.distanceGateStationarySensitivity[i] = receiveBuffer[17 + i];
@@ -1026,7 +1026,7 @@ bool LD2410Async::requestAllStaticData(AsyncCommandCallback callback, byte userD
 	return sendCommandSequenceAsync(callback, userData);
 }
 
-bool LD2410Async::requestAllConfigData(AsyncCommandCallback callback, byte userData) {
+bool LD2410Async::requestAllConfigDataAsync(AsyncCommandCallback callback, byte userData) {
 	if (asyncIsBusy()) return false;
 	DEBUG_PRINT_MILLIS;
 	DEBUG_PRINTLN("Request all config data");
@@ -1044,7 +1044,7 @@ bool LD2410Async::setConfigDataAsync(const ConfigData& config, AsyncCommandCallb
 {
 	if (asyncIsBusy()) return false;
 
-	if(!config.validate()) {
+	if(!config.isValid()) {
 		DEBUG_PRINT_MILLIS;
 		DEBUG_PRINTLN("ConfigData invalid");
 		return false;

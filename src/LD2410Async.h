@@ -543,8 +543,8 @@ public:
 	 * @brief Sets the timeout for async command callbacks.
 	 *
 	 * #note Make sure the timeout is long enough to allow for the execution of long running commands. In partuclar enabling config mode can take up to 6 secs.
-	 * 
-	 * 
+	 *
+	 *
 	 * @param timeoutMs Timeout in milliseconds (default 6000 ms).
 	 */
 	void setAsyncCommandTimeoutMs(unsigned long timeoutMs) { asyncCommandTimeoutMs = timeoutMs; }
@@ -1292,7 +1292,7 @@ private:
 	byte sendAsyncSequenceUserData = 0;
 
 	/// True if an async sequence is currently pending.
-	bool sendAsyncSequenceActive = false; 
+	bool sendAsyncSequenceActive = false;
 
 	/// Index of currently active command in the sequence buffer
 	int sendAsyncSequenceIndex = 0;
@@ -1301,15 +1301,18 @@ private:
 	bool sendAsyncSequenceInitialConfigModeState = false;
 
 	/// Finalize an async sequence and invoke its callback
-	void executeAsyncSequenceCallback(LD2410Async::AsyncCommandResult result);
+	void executeCommandSequenceAsyncExecuteCallback(LD2410Async::AsyncCommandResult result);
+
+	/// Final step of an async sequence: restore config mode if needed and call callback
+	void executeCommandSequenceAsyncFinalize(LD2410Async::AsyncCommandResult resultToReport);
 
 	/// Internal callbacks for sequence steps
-	static void sendCommandSequenceAsyncDisableConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData = 0);
-	static void sendCommandSequenceAsyncCommandCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData = 0);
-	static void sendCommandSequenceAsyncEnableConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData = 0);
+	static void executeCommandSequenceAsyncDisableConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData = 0);
+	static void executeCommandSequenceAsyncCommandCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData = 0);
+	static void executeCommandSequenceAsyncEnableConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData = 0);
 
 	/// Start executing an async sequence
-	bool sendCommandSequenceAsync(AsyncCommandCallback callback, byte userData = 0);
+	bool executeCommandSequenceAsync(AsyncCommandCallback callback, byte userData = 0);
 
 	/// Add one command to the sequence buffer
 	bool addCommandToSequence(const byte* command);
@@ -1400,7 +1403,7 @@ private:
 	// ============================================================================
 
 	///< Timeout for async commands in ms (default 6000).
-	unsigned long asyncCommandTimeoutMs = 6000; 
+	unsigned long asyncCommandTimeoutMs = 6000;
 
 	/// Send a generic async command
 	bool sendCommandAsync(const byte* command, AsyncCommandCallback callback, byte userData = 0);
@@ -1409,7 +1412,7 @@ private:
 	void executeAsyncCommandCallback(byte commandCode, LD2410Async::AsyncCommandResult result);
 
 	/// Callback for async command sequence that includes data requests
-	static void sendCommandSequenceAsyncDataCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData = 0);
+	static void executeCommandSequenceAsyncDataCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData = 0);
 
 	/// Handle async command timeout
 	void handleAsyncCommandCallbackTimeout();
@@ -1423,6 +1426,7 @@ private:
 	byte asyncCommandCommandCode = 0;                    ///< Last command code issued
 	bool asyncCommandActive = false;					 ///< True if an async command is currently pending.
 
+
 	// ============================================================================
 	// Data processing
 	// ============================================================================
@@ -1430,6 +1434,30 @@ private:
 	/// Main dispatcher: process incoming bytes into frames, update state, trigger callbacks
 	void processReceivedData();
 
+	// ============================================================================
+	// Config mode 
+	// ============================================================================
+	bool enableConfigModeInternalAsync(AsyncCommandCallback callback, byte userData);
+	bool disableConfigModeInternalAsync(AsyncCommandCallback callback, byte userData);
 
+	// ============================================================================
+	// Config writing 
+	// ============================================================================
+	LD2410Types::ConfigData setConfigDataAsyncConfigDataToWrite;
+	bool setConfigDataAsyncWriteFullConfig = false;
+	AsyncCommandCallback setConfigDataAsyncConfigCallback = nullptr;
+	byte setConfigDataAsyncConfigUserData = 0;
+	bool setConfigDataAsyncConfigActive = false;
+	bool setConfigDataAsyncConfigInitialConfigMode = false;
+	AsyncCommandResult setConfigDataAsyncResultToReport = LD2410Async::AsyncCommandResult::SUCCESS;
 
+	void LD2410Async::setConfigDataAsyncExecuteCallback(LD2410Asnyc::AsncCommandResult result);
+	static	void setConfigDataAsyncConfigModeDisabledCallback(LD2410Async* sender, LD2410Asnyc::AsncCommandResult result, byte userData);
+	void setConfigDataAsyncFinalize(LD2410Asnyc::AsncCommandResult resultToReport);
+	static void setConfigDataAsyncWriteConfigCallback(LD2410Async* sender, LD2410Asnyc::AsncCommandResult result, byte userData);
+	bool setConfigDataAsyncSaveChanges();
+	static void setConfigDataAsyncAllConfigDataRequestCallback(LD2410Async* sender, LD2410Asnyc::AsncCommandResult result, byte userData);
+	void setConfigDataAsyncRequestAllConfigData();
+	static void setConfigDataAsyncConfigModeEnabled(LD2410Async* sender, LD2410Asnyc::AsncCommandResult result, byte userData);
+	bool setConfigDataAsync(const LD2410Types::ConfigData& configToWrite, bool writeAllConfigData, AsyncCommandCallback callback, byte userData);
 };

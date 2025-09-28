@@ -1161,7 +1161,7 @@ void LD2410Async::handleInactivityRebootCallback(LD2410Async* sender, LD2410Asyn
 	sender->configModeEnabled = false;
 	sender->engineeringModeEnabled = false;
 
-#ifdef ENABLE_DEBUG
+#if (LD2410ASYNC_DEBUG_LEVEL > 0)
 	if (result == AsyncCommandResult::SUCCESS) {
 		DEBUG_PRINT_MILLIS;
 		DEBUG_PRINTLN("LD2410 reboot due to inactivity initiated");
@@ -1179,7 +1179,7 @@ void LD2410Async::handleInactivityRebootCallback(LD2410Async* sender, LD2410Asyn
 void LD2410Async::handleInactivityDisableConfigmodeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData) {
 
 
-#ifdef ENABLE_DEBUG
+#if (LD2410ASYNC_DEBUG_LEVEL > 0)
 	if (result == AsyncCommandResult::SUCCESS) {
 		DEBUG_PRINT_MILLIS;
 		DEBUG_PRINTLN("Config mode disabled due to inactivity");

@@ -42,5 +42,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)src\LD2410Types.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\LD2410Debug.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

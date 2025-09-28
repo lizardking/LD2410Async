@@ -34,6 +34,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)src\LD2410CommandBuilder.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\LD2410Debug.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\LD2410Defs.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\LD2410Types.h" />
   </ItemGroup>

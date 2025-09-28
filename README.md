@@ -198,33 +198,42 @@ If you run into issues when using the library, check the following common proble
 
 ## Debugging Tips
 
-The library includes optional debug output to help you see what is happening inside.  
+The library includes a flexible debug system that can help you troubleshoot communication with the LD2410 radar sensor.
+Debugging is controlled by two preprocessor defines:
+
 This is controlled by preprocessor defines that you can enable **before including** the library header in your sketch.
 
-### Enabling Debug Output
+- **LD2410ASYNC_DEBUG_LEVEL**
+    - 0 → no debug output (default).
+    - 1 → print simple debug messages with Serial.print().
+    - 2 → also print raw buffer dumps in hexadecimal format.
 
-- Add one or more of the following `#define` statements at the very top of your main `.ino` file (before any `#include`):  
+- **LD2410ASYNC_DEBUG_DATA_LEVEL**
+    - Same as above, but applies to detection data debug output.
+
+### Usage
+
+These values must be defined before including the library header.
+
 
 ```cpp
-#define ENABLE_DEBUG          // General debug output (mostly on config data and commands)
-#define ENABLE_DEBUG_DATA     // Extra output for received data frames
+#define LD2410ASYNC_DEBUG_LEVEL 1
+#define LD2410ASYNC_DEBUG_DATA_LEVEL 2
 
 #include <LD2410Async.h>
 ```
-
-- When enabled, the library will print debug messages to the default Serial port at runtime.
-
-- You can use this to verify that commands are sent, acknowledgements are received, and data frames are being processed correctly.
+With the configuration above:
+- General library operations (entering config mode, sending commands, etc.) will print debug messages.
+- Incoming detection data frames will be printed, including full hex buffer dumps.
 
 ### Notes
-
-- Debug output is only for troubleshooting. It should **be disabled** in production builds. If active it will add many Serial.print() calls to the build, resulting in a larger size and solwer execution of the build
-
-- The debug macros are internal to the library. They are not meant to be used in your own code.
-
-- If you need diagnostic output in your own project, use standard Serial.print() calls instead.
-
-By selectively enabling these flags, you can get detailed insight into the communication with the LD2410 sensor whenever you need to troubleshoot.
+- **Do not enable debug for production code.**
+  Debugging produces a lot of Serial.print() calls which:
+    - Increase binary size.
+    - Reduce runtime performance.
+    - Can overwhelm the serial output if the radar produces data frequently.
+- Use debug output only during development or troubleshooting.
+- Always remember to set both values back to 0 (or simply not define them) for production builds.
 
 
 ## License

@@ -1,74 +1,10 @@
 ﻿#pragma once
 
+
 #include "Arduino.h"
+#include "LD2410Debug.h"
 #include "LD2410Types.h"
 #include "LD2410Defs.h"
-
-//#define ENABLE_DEBUG
-
-//#define ENABLE_DEBUG_DATA
-
-#ifndef ARDUINO_ARCH_ESP32
-#error "The LD2410Async library is only supported on ESP32 platforms."
-#endif
-
-
-#ifdef ENABLE_DEBUG
-
-#define DEBUG_PRINT_MILLIS              \
-    {                                   \
-        Serial.print(millis());         \
-		Serial.print(" ");    \
-	}
-
-
-#define DEBUG_PRINT(...)               \
-    {                                       \
-        Serial.print(__VA_ARGS__);         \
-    }
-
-
-#define DEBUG_PRINTLN(...)             \
-    {                                       \
-        Serial.println(__VA_ARGS__);         \
-    }
-
-#define DEBUG_PRINTBUF(...)             \
-    {                                       \
-        printBuf(__VA_ARGS__);         \
-    }
-
-#else
-
-#define DEBUG_PRINT(...)
-#define DEBUG_PRINTLN(...)
-#define DEBUG_PRINTBUF(...)
-#define DEBUG_PRINT_MILLIS 
-#endif
-
-#ifdef ENABLE_DEBUG_DATA
-
-#define DEBUG_PRINT_DATA(...)               \
-    {                                       \
-        Serial.print(__VA_ARGS__);         \
-    }
-
-
-#define DEBUG_PRINTLN_DATA(...)             \
-    {                                       \
-        Serial.println(__VA_ARGS__);         \
-    }
-
-#define DEBUG_PRINTBUF_DATA(...)             \
-    {                                       \
-        printBuf(__VA_ARGS__);         \
-    }
-#else
-#define DEBUG_PRINT_DATA(...)
-#define DEBUG_PRINTLN_DATA(...)
-#define DEBUG_PRINTBUF_DATA(...)
-#endif
-
 
 
 

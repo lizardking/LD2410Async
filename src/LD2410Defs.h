@@ -8,6 +8,8 @@
 
 namespace LD2410Defs
 {
+	constexpr size_t LD2410_Buffer_Size = 0x40;
+
 	constexpr byte headData[4]{ 0xF4, 0xF3, 0xF2, 0xF1 };
 	constexpr byte tailData[4]{ 0xF8, 0xF7, 0xF6, 0xF5 };
 	constexpr byte headConfig[4]{ 0xFD, 0xFC, 0xFB, 0xFA };

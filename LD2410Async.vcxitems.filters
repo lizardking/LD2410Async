@@ -33,6 +33,8 @@
     <None Include="$(MSBuildThisFileDirectory).github\workflows\build.yml" />
     <None Include="$(MSBuildThisFileDirectory).github\workflows\arduinoLint.yml" />
     <None Include="$(MSBuildThisFileDirectory)examples\basicPresenceDetection\basicPresenceDetection.ino" />
+    <None Include="$(MSBuildThisFileDirectory).github\workflows\generateDoxygenDocu.yml" />
+    <None Include="$(MSBuildThisFileDirectory)Doxyfile" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)src\LD2410CommandBuilder.h">

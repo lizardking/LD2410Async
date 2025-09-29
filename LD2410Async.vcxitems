@@ -23,11 +23,13 @@
     <None Include="$(MSBuildThisFileDirectory).gitattributes" />
     <None Include="$(MSBuildThisFileDirectory).github\workflows\build.yml" />
     <None Include="$(MSBuildThisFileDirectory).github\workflows\arduinoLint.yml" />
+    <None Include="$(MSBuildThisFileDirectory).github\workflows\generateDoxygenDocu.yml" />
     <None Include="$(MSBuildThisFileDirectory).gitignore" />
     <None Include="$(MSBuildThisFileDirectory)examples\basicPresenceDetection\basicPresenceDetection.ino" />
     <None Include="$(MSBuildThisFileDirectory)examples\changeConfig\changeConfig.ino" />
     <None Include="$(MSBuildThisFileDirectory)examples\changeDistanceResolution\changeDistanceResolution.ino" />
     <None Include="$(MSBuildThisFileDirectory)examples\receiveData\receiveData.ino" />
+    <None Include="$(MSBuildThisFileDirectory)Doxyfile" />
     <None Include="$(MSBuildThisFileDirectory)LICENSE" />
     <None Include="$(MSBuildThisFileDirectory)README.md" />
   </ItemGroup>

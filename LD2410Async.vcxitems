@@ -25,7 +25,7 @@
     <None Include="$(MSBuildThisFileDirectory).github\workflows\arduinoLint.yml" />
     <None Include="$(MSBuildThisFileDirectory).github\workflows\generateDoxygenDocu.yml" />
     <None Include="$(MSBuildThisFileDirectory).gitignore" />
-    <None Include="$(MSBuildThisFileDirectory)dox\groups.dox" />
+    <None Include="$(MSBuildThisFileDirectory)dox\topicIndex.dox" />
     <None Include="$(MSBuildThisFileDirectory)examples\basicPresenceDetection\basicPresenceDetection.ino" />
     <None Include="$(MSBuildThisFileDirectory)examples\changeConfig\changeConfig.ino" />
     <None Include="$(MSBuildThisFileDirectory)examples\changeDistanceResolution\changeDistanceResolution.ino" />

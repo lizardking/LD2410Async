@@ -23,7 +23,6 @@
     <None Include="$(MSBuildThisFileDirectory).gitattributes" />
     <None Include="$(MSBuildThisFileDirectory).github\workflows\build.yml" />
     <None Include="$(MSBuildThisFileDirectory).github\workflows\arduinoLint.yml" />
-    <None Include="$(MSBuildThisFileDirectory).github\workflows\doxygen.yml" />
     <None Include="$(MSBuildThisFileDirectory).gitignore" />
     <None Include="$(MSBuildThisFileDirectory)examples\changeConfig\changeConfig.ino" />
     <None Include="$(MSBuildThisFileDirectory)examples\changeDistanceResolution\changeDistanceResolution.ino" />

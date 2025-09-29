@@ -1247,7 +1247,7 @@ public:
 	 *
 	 * @returns true if the command sequence has been started, false otherwise.
 	 */
-	bool configureAllConfigSettingsAsync(const LD2410Types::ConfigData& configToWrite, bool writeAllConfigData, AsyncCommandCallback callback, byte userData);
+	bool configureAllConfigSettingsAsync(const LD2410Types::ConfigData& configToWrite, bool writeAllConfigData, AsyncCommandCallback callback, byte userData=0);
 
 	
 

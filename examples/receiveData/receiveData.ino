@@ -11,9 +11,21 @@
 #include <Arduino.h>
 #include "LD2410Async.h"
 
- // ========================= USER CONFIGURATION =========================
+ /**
+  * Example sketch for LD2410Async library
+  *
+  * This sketch demonstrates how to:
+  *   1. Initialize the radar on Serial1.
+  *   2. register a callback to receive detection data.
+  *   3. Get a pointer to the detection data struct.
+  *
+  * Important:
+  * Make sure to adjust RADAR_RX_PIN and ADAR_TX_PIN to match you actual wiring.
+  */
 
- // UART pins for the LD2410 sensor
+  // ========================= USER CONFIGURATION =========================
+
+  // UART pins for the LD2410 sensor
 #define RADAR_RX_PIN 16   // ESP32 pin that receives data from the radar (radar TX)
 #define RADAR_TX_PIN 17   // ESP32 pin that transmits data to the radar (radar RX)
 
@@ -31,12 +43,12 @@ LD2410Async radar(RadarSerial);
 // Callback function called whenever new detection data arrives
 void onDetectionDataReceived(LD2410Async* sender, bool presenceDetected, byte userData) {
     // Access detection data efficiently without making a copy
-    const LD2410Async::DetectionData& data = sender->getDetectionDataRef();
+    const LD2410Types::DetectionData& data = sender->getDetectionDataRef();
 
     Serial.println("=== Detection Data ===");
 
     Serial.print("Target State: ");
-    Serial.println(LD2410Async::targetStateToString(data.targetState));
+    Serial.println(LD2410Types::targetStateToString(data.targetState));
 
     Serial.print("Presence detected: ");
     Serial.println(data.presenceDetected ? "Yes" : "No");
@@ -73,13 +85,14 @@ void setup() {
     // Start the radar background task (parses incoming data frames)
     if (radar.begin()) {
         Serial.println("Radar task started successfully.");
+        // Register callback for detection updates
+        radar.registerDetectionDataReceivedCallback(onDetectionDataReceived, 0);
     }
     else {
-        Serial.println("Radar task already running.");
+        Serial.println("ERROR! Could not start radar task.");
     }
 
-    // Register callback for detection updates
-    radar.registerDetectionDataReceivedCallback(onDetectionDataReceived);
+
 }
 
 void loop() {

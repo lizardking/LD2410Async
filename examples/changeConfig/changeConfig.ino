@@ -33,65 +33,80 @@ HardwareSerial RadarSerial(1);
 LD2410Async radar(RadarSerial);
 
 // Callback after attempting to apply a modified config
-void onConfigApplied(LD2410Async* sender,
-    LD2410Async::AsyncCommandResult result,
-    byte userData) {
-    if (result == LD2410Async::AsyncCommandResult::SUCCESS) {
-        Serial.println("Config updated successfully!");
-    }
-    else {
-        Serial.println("Failed to apply config.");
-    }
+void onConfigApplied(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData) {
+	if (result == LD2410Async::AsyncCommandResult::SUCCESS) {
+		Serial.println("Config updated successfully!");
+	}
+	else {
+		Serial.println("Failed to apply config.");
+	}
 }
 
 // Callback after requesting config data
-void onConfigReceived(LD2410Async* sender,
-    LD2410Async::AsyncCommandResult result,
-    byte userData) {
-    if (result != LD2410Async::AsyncCommandResult::SUCCESS) {
-        Serial.println("Failed to request config data.");
-        return;
-    }
+void onConfigReceived(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData) {
+	if (result != LD2410Async::AsyncCommandResult::SUCCESS) {
+		Serial.println("Failed to request config data.");
+		return;
+	}
 
-    Serial.println("Config data received. Cloning and modifying...");
+	Serial.println("Config data received. Cloning and modifying...");
 
-    // Clone the current config
-    LD2410Async::ConfigData cfg = sender->getConfigData();
+	// Clone the current config
+	LD2410Types::ConfigData cfg = sender->getConfigData();
+	//alternatively you could also call the LD2410Async instance directly instead of using the pointer in sender:
+	//LD2410Types::ConfigData cfg = radar.getConfigData();
+	//However, working with the reference in sender is a good practice since it will always point to the LD2410Async instance that triggered the callback (important if you have several instances resp. more than one LD2410 connected to your board)..
 
-    // Example modifications:
-    cfg.noOneTimeout = 120;                         // Set "no-one" timeout to 120 seconds
-    cfg.distanceGateMotionSensitivity[2] = 75;      // Increase motion sensitivity on gate 2
-    cfg.distanceGateStationarySensitivity[4] = 60;  // Adjust stationary sensitivity on gate 4
 
-    // Apply updated config to the radar
-    sender->setConfigDataAsync(cfg, onConfigApplied);
+	// Example modifications:
+	cfg.noOneTimeout = 120;                         // Set "no-one" timeout to 120 seconds
+	cfg.distanceGateMotionSensitivity[2] = 75;      // Increase motion sensitivity on gate 2
+	cfg.distanceGateStationarySensitivity[4] = 60;  // Adjust stationary sensitivity on gate 4
+
+	// Apply updated config to the radar
+	if (!sender->configureAllConfigSettingsAsync(cfg, false, onConfigApplied)) {
+		//It is good practive to check the return value of commands for true/false.
+		//False indicates that the command could not be sent (e.g. because another async command is still pending)
+		Serial.println("Error! Could not update config on the sensor");
+	};
+
+	//alternatively you could also call the LD2410Async instance directly instead of using the pointer in sender:
+	//radar.configureAllConfigSettingsAsync(cfg, false, onConfigApplied);
+	//However, working with the reference in sender is a good practice since it will always point to the LD2410Async instance that triggered the callback (important if you have several instances resp. more than one LD2410 connected to your board)..
+
 }
 
 void setup() {
-    // Initialize USB serial for debug output
-    Serial.begin(115200);
-    while (!Serial) {
-        ; // wait for Serial Monitor
-    }
-    Serial.println("LD2410Async example: change radar config");
+	// Initialize USB serial for debug output
+	Serial.begin(115200);
+	while (!Serial) {
+		; // wait for Serial Monitor
+	}
+	Serial.println("LD2410Async example: change radar config");
 
-    // Initialize Serial1 with user-defined pins and baudrate
-    RadarSerial.begin(RADAR_BAUDRATE, SERIAL_8N1, RADAR_RX_PIN, RADAR_TX_PIN);
+	// Initialize Serial1 with user-defined pins and baudrate
+	RadarSerial.begin(RADAR_BAUDRATE, SERIAL_8N1, RADAR_RX_PIN, RADAR_TX_PIN);
 
-    // Start the radar background task (parses incoming data frames)
-    if (radar.begin()) {
-        Serial.println("Radar task started successfully.");
-    }
-    else {
-        Serial.println("Radar task already running.");
-    }
+	// Start the radar background task (parses incoming data frames)
+	if (radar.begin()) {
+		Serial.println("Radar task started successfully.");
 
-    // Request all config data, then modify in callback
-    radar.requestAllConfigData(onConfigReceived);
+		// Request all config data, then modify in callback
+		if (!radar.requestAllConfigSettingsAsync(onConfigReceived)) {
+			//It is good practive to check the return value of commands for true/false.
+			//False indicates that the command could not be sent (e.g. because another async command is still pending)
+			Serial.println("Error! Could not start config data request");
+		}
+
+	}
+	else {
+		Serial.println("Error! Could not start radar task");
+	}
+
 }
 
 void loop() {
-    // Nothing to do here.
-    // The library handles communication and invokes callbacks automatically.
-    delay(1000);
+	// Nothing to do here.
+	// The library handles communication and invokes callbacks automatically.
+	delay(1000);
 }

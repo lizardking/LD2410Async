@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>LD2410Async: Types And Callbacks</title>
+<title>LD2410Async: Types, Enums &amp; Structs</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -98,23 +98,20 @@ $(function(){initNavTree('group__LD2410Async__Types.html',''); initResizable(tru
 
 <div class="header">
   <div class="summary">
-<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#enum-members">Enumerations</a>  </div>
-  <div class="headertitle"><div class="title">Types And Callbacks</div></div>
+  <div class="headertitle"><div class="title">Types, Enums &amp; Structs</div></div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:gadc0bdb769283d0d49aaaebc9c10dc603" id="r_gadc0bdb769283d0d49aaaebc9c10dc603"><td class="memItemLeft" align="right" valign="top">typedef void(*)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gadc0bdb769283d0d49aaaebc9c10dc603">LD2410Async::AsyncCommandCallback</a>(<a class="el" href="classLD2410Async.html">LD2410Async</a> *sender, <a class="el" href="#ga136b50e19cfddad787637fb65421d9ab">AsyncCommandResult</a> result, byte userData)</td></tr>
-<tr class="memdesc:gadc0bdb769283d0d49aaaebc9c10dc603"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback signature for asynchronous command completion.  <br /></td></tr>
-<tr class="separator:gadc0bdb769283d0d49aaaebc9c10dc603"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7a4e264e51ed33f8f32d65510289c383" id="r_ga7a4e264e51ed33f8f32d65510289c383"><td class="memItemLeft" align="right" valign="top">typedef void(*)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga7a4e264e51ed33f8f32d65510289c383">LD2410Async::GenericCallback</a>(<a class="el" href="classLD2410Async.html">LD2410Async</a> *sender, byte userData)</td></tr>
-<tr class="memdesc:ga7a4e264e51ed33f8f32d65510289c383"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic callback signature used for simple notifications.  <br /></td></tr>
-<tr class="separator:ga7a4e264e51ed33f8f32d65510289c383"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga19278199112e9358e96a192056e58e81" id="r_ga19278199112e9358e96a192056e58e81"><td class="memItemLeft" align="right" valign="top">typedef void(*)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga19278199112e9358e96a192056e58e81">LD2410Async::DetectionDataCallback</a>(<a class="el" href="classLD2410Async.html">LD2410Async</a> *sender, bool presenceDetected, byte userData)</td></tr>
-<tr class="memdesc:ga19278199112e9358e96a192056e58e81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback type for receiving detection data events.  <br /></td></tr>
-<tr class="separator:ga19278199112e9358e96a192056e58e81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLD2410Types_1_1DetectionData.html">LD2410Types::DetectionData</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds the most recent detection data reported by the radar.  <a href="structLD2410Types_1_1DetectionData.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLD2410Types_1_1ConfigData.html">LD2410Types::ConfigData</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores the sensor’s configuration parameters.  <a href="structLD2410Types_1_1ConfigData.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -125,88 +122,62 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:ga136b50e19cfddad787637fb65421d9ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Result of an asynchronous command execution.  <a href="#ga136b50e19cfddad787637fb65421d9ab">More...</a><br /></td></tr>
 <tr class="separator:ga136b50e19cfddad787637fb65421d9ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf838f34651382f6262c0d19397ac0be9" id="r_gaf838f34651382f6262c0d19397ac0be9"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaf838f34651382f6262c0d19397ac0be9">LD2410Types::TargetState</a> { <br />
+&#160;&#160;<a class="el" href="#ggaf838f34651382f6262c0d19397ac0be9a25c048a9893a60bddb82dde516ea8d84">LD2410Types::TargetState::NO_TARGET</a> = 0
+, <a class="el" href="#ggaf838f34651382f6262c0d19397ac0be9ab7ef6f911883522e35247e1c13482929">LD2410Types::TargetState::MOVING_TARGET</a> = 1
+, <a class="el" href="#ggaf838f34651382f6262c0d19397ac0be9a6aa821dbd79ebda38affe6beabf940c4">LD2410Types::TargetState::STATIONARY_TARGET</a> = 2
+, <a class="el" href="#ggaf838f34651382f6262c0d19397ac0be9a02ddfbfc6b13ec42ae66161cff02aac5">LD2410Types::TargetState::MOVING_AND_STATIONARY_TARGET</a> = 3
+, <br />
+&#160;&#160;<a class="el" href="#ggaf838f34651382f6262c0d19397ac0be9a32aba1429a9e8d50b894a98297baffe8">LD2410Types::TargetState::AUTOCONFIG_IN_PROGRESS</a> = 4
+, <a class="el" href="#ggaf838f34651382f6262c0d19397ac0be9ad60df368616de4c39543e44d31e438ae">LD2410Types::TargetState::AUTOCONFIG_SUCCESS</a> = 5
+, <a class="el" href="#ggaf838f34651382f6262c0d19397ac0be9a34457daa96d2fefedcab7abbaea5d4c9">LD2410Types::TargetState::AUTOCONFIG_FAILED</a> = 6
+<br />
+ }</td></tr>
+<tr class="memdesc:gaf838f34651382f6262c0d19397ac0be9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the current target detection state reported by the radar.  <a href="#gaf838f34651382f6262c0d19397ac0be9">More...</a><br /></td></tr>
+<tr class="separator:gaf838f34651382f6262c0d19397ac0be9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafbd22de9579db591b3f122c51c730844" id="r_gafbd22de9579db591b3f122c51c730844"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gafbd22de9579db591b3f122c51c730844">LD2410Types::LightControl</a> { <a class="el" href="#ggafbd22de9579db591b3f122c51c730844a1c250a21210b7b88a14db9a0cbe71162">LD2410Types::LightControl::NOT_SET</a> = -1
+, <a class="el" href="#ggafbd22de9579db591b3f122c51c730844abca5ec936e7f8c6d691a40ccf9db9e21">LD2410Types::LightControl::NO_LIGHT_CONTROL</a> = 0
+, <a class="el" href="#ggafbd22de9579db591b3f122c51c730844a6a9d30a8d1d6df98b89d66c50e47cd6c">LD2410Types::LightControl::LIGHT_BELOW_THRESHOLD</a> = 1
+, <a class="el" href="#ggafbd22de9579db591b3f122c51c730844aa04a7bc4c5ceb6927e051bfb3e1cfd2e">LD2410Types::LightControl::LIGHT_ABOVE_THRESHOLD</a> = 2
+ }</td></tr>
+<tr class="memdesc:gafbd22de9579db591b3f122c51c730844"><td class="mdescLeft">&#160;</td><td class="mdescRight">Light-dependent control status of the auxiliary output.  <a href="#gafbd22de9579db591b3f122c51c730844">More...</a><br /></td></tr>
+<tr class="separator:gafbd22de9579db591b3f122c51c730844"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga420c188999635485028764fe98cb0bff" id="r_ga420c188999635485028764fe98cb0bff"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga420c188999635485028764fe98cb0bff">LD2410Types::OutputControl</a> { <a class="el" href="#gga420c188999635485028764fe98cb0bffa1c250a21210b7b88a14db9a0cbe71162">LD2410Types::OutputControl::NOT_SET</a> = -1
+, <a class="el" href="#gga420c188999635485028764fe98cb0bffa7ca3794aa469cedd319ed4d526898946">LD2410Types::OutputControl::DEFAULT_LOW_DETECTED_HIGH</a> = 0
+, <a class="el" href="#gga420c188999635485028764fe98cb0bffa3ca36255fd777b6662239dd4d8aa2761">LD2410Types::OutputControl::DEFAULT_HIGH_DETECTED_LOW</a> = 1
+ }</td></tr>
+<tr class="memdesc:ga420c188999635485028764fe98cb0bff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logic level behavior of the auxiliary output pin.  <a href="#ga420c188999635485028764fe98cb0bff">More...</a><br /></td></tr>
+<tr class="separator:ga420c188999635485028764fe98cb0bff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga035762090f81b93ab2008c3a8d37e995" id="r_ga035762090f81b93ab2008c3a8d37e995"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga035762090f81b93ab2008c3a8d37e995">LD2410Types::AutoConfigStatus</a> { <a class="el" href="#gga035762090f81b93ab2008c3a8d37e995a1c250a21210b7b88a14db9a0cbe71162">LD2410Types::AutoConfigStatus::NOT_SET</a> = -1
+, <a class="el" href="#gga035762090f81b93ab2008c3a8d37e995ae5c386bd6bfc609aa2b2274edf873665">LD2410Types::AutoConfigStatus::NOT_IN_PROGRESS</a>
+, <a class="el" href="#gga035762090f81b93ab2008c3a8d37e995aca69f96c768067fbff6c911ca87bccc9">LD2410Types::AutoConfigStatus::IN_PROGRESS</a>
+, <a class="el" href="#gga035762090f81b93ab2008c3a8d37e995a8f7afecbc8fbc4cd0f50a57d1172482e">LD2410Types::AutoConfigStatus::COMPLETED</a>
+ }</td></tr>
+<tr class="memdesc:ga035762090f81b93ab2008c3a8d37e995"><td class="mdescLeft">&#160;</td><td class="mdescRight">State of the automatic threshold configuration routine.  <a href="#ga035762090f81b93ab2008c3a8d37e995">More...</a><br /></td></tr>
+<tr class="separator:ga035762090f81b93ab2008c3a8d37e995"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5e710aa1a69067aab369a0a463189fdf" id="r_ga5e710aa1a69067aab369a0a463189fdf"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga5e710aa1a69067aab369a0a463189fdf">LD2410Types::Baudrate</a> { <br />
+&#160;&#160;<a class="el" href="#gga5e710aa1a69067aab369a0a463189fdfabd5d6d1acbb9749aa6abce438ef0f3a1">LD2410Types::Baudrate::BAUDRATE_9600</a> = 1
+, <a class="el" href="#gga5e710aa1a69067aab369a0a463189fdfabb642209526f1aea2a33487afcb94159">LD2410Types::Baudrate::BAUDRATE_19200</a> = 2
+, <a class="el" href="#gga5e710aa1a69067aab369a0a463189fdfa5d3b5ade58788e42c3eaab47a4d42b2e">LD2410Types::Baudrate::BAUDRATE_38400</a> = 3
+, <a class="el" href="#gga5e710aa1a69067aab369a0a463189fdfa5b3ed77938aa570e12dc447a6a2aa391">LD2410Types::Baudrate::BAUDRATE_57600</a> = 4
+, <br />
+&#160;&#160;<a class="el" href="#gga5e710aa1a69067aab369a0a463189fdfa78e2af9dfa03cb0b145cddd2ee481c05">LD2410Types::Baudrate::BAUDRATE_115200</a> = 5
+, <a class="el" href="#gga5e710aa1a69067aab369a0a463189fdfa5e97d4703f775948b24e907306d78f16">LD2410Types::Baudrate::BAUDRATE_230500</a> = 6
+, <a class="el" href="#gga5e710aa1a69067aab369a0a463189fdfabb06cf6149d2fce5ce3afb72a532695c">LD2410Types::Baudrate::BAUDRATE_256000</a> = 7
+, <a class="el" href="#gga5e710aa1a69067aab369a0a463189fdfad3d221638ca1f0320781dcb98d0c78d0">LD2410Types::Baudrate::BAUDRATE_460800</a> = 8
+<br />
+ }</td></tr>
+<tr class="memdesc:ga5e710aa1a69067aab369a0a463189fdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supported baud rates for the sensor’s UART interface.  <a href="#ga5e710aa1a69067aab369a0a463189fdf">More...</a><br /></td></tr>
+<tr class="separator:ga5e710aa1a69067aab369a0a463189fdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga89e3189ddef9f36629c460fbeb398c79" id="r_ga89e3189ddef9f36629c460fbeb398c79"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga89e3189ddef9f36629c460fbeb398c79">LD2410Types::DistanceResolution</a> { <a class="el" href="#gga89e3189ddef9f36629c460fbeb398c79a1c250a21210b7b88a14db9a0cbe71162">LD2410Types::DistanceResolution::NOT_SET</a> = -1
+, <a class="el" href="#gga89e3189ddef9f36629c460fbeb398c79a868c4df7b718ac01b3bf93354a43c8f8">LD2410Types::DistanceResolution::RESOLUTION_75CM</a> = 0
+, <a class="el" href="#gga89e3189ddef9f36629c460fbeb398c79a7d931e972250eb3e9b9557c87fc7c23e">LD2410Types::DistanceResolution::RESOLUTION_20CM</a> = 1
+ }</td></tr>
+<tr class="memdesc:ga89e3189ddef9f36629c460fbeb398c79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Distance resolution per gate for detection.  <a href="#ga89e3189ddef9f36629c460fbeb398c79">More...</a><br /></td></tr>
+<tr class="separator:ga89e3189ddef9f36629c460fbeb398c79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>Public types , enums and callback definitions </p>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a id="gadc0bdb769283d0d49aaaebc9c10dc603" name="gadc0bdb769283d0d49aaaebc9c10dc603"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gadc0bdb769283d0d49aaaebc9c10dc603">&#9670;&#160;</a></span>AsyncCommandCallback</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void(*) LD2410Async::AsyncCommandCallback(<a class="el" href="classLD2410Async.html">LD2410Async</a> *sender, <a class="el" href="#ga136b50e19cfddad787637fb65421d9ab">AsyncCommandResult</a> result, byte userData)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Callback signature for asynchronous command completion. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">sender</td><td>Pointer to the <a class="el" href="classLD2410Async.html">LD2410Async</a> instance that triggered the callback. </td></tr>
-    <tr><td class="paramname">result</td><td>Outcome of the async operation (SUCCESS, FAILED, TIMEOUT, CANCELED). </td></tr>
-    <tr><td class="paramname">userData</td><td>User-specified value passed when registering the callback. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00117">117</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
-
-</div>
-</div>
-<a id="ga19278199112e9358e96a192056e58e81" name="ga19278199112e9358e96a192056e58e81"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga19278199112e9358e96a192056e58e81">&#9670;&#160;</a></span>DetectionDataCallback</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void(*) LD2410Async::DetectionDataCallback(<a class="el" href="classLD2410Async.html">LD2410Async</a> *sender, bool presenceDetected, byte userData)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Callback type for receiving detection data events. </p>
-<p>This callback is invoked whenever new detection data is processed. It provides direct access to the <a class="el" href="classLD2410Async.html">LD2410Async</a> instance, along with a quick flag for presence detection so that applications which only care about presence can avoid parsing the full DetectionData struct.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">sender</td><td>Pointer to the <a class="el" href="classLD2410Async.html">LD2410Async</a> instance that triggered the callback. </td></tr>
-    <tr><td class="paramname">presenceDetected</td><td>True if the radar currently detects presence (moving or stationary), false otherwise. </td></tr>
-    <tr><td class="paramname">userData</td><td>User-defined value passed when registering the callback. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00139">139</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
-
-</div>
-</div>
-<a id="ga7a4e264e51ed33f8f32d65510289c383" name="ga7a4e264e51ed33f8f32d65510289c383"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga7a4e264e51ed33f8f32d65510289c383">&#9670;&#160;</a></span>GenericCallback</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void(*) LD2410Async::GenericCallback(<a class="el" href="classLD2410Async.html">LD2410Async</a> *sender, byte userData)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Generic callback signature used for simple notifications. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">sender</td><td>Pointer to the <a class="el" href="classLD2410Async.html">LD2410Async</a> instance that triggered the callback. </td></tr>
-    <tr><td class="paramname">userData</td><td>User-specified value passed when registering the callback. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00125">125</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
-
-</div>
-</div>
+<p>Type, enum and struct definitions that are used by the <a class="el" href="classLD2410Async.html">LD2410Async</a> lib. </p>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="ga136b50e19cfddad787637fb65421d9ab" name="ga136b50e19cfddad787637fb65421d9ab"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga136b50e19cfddad787637fb65421d9ab">&#9670;&#160;</a></span>AsyncCommandResult</h2>
@@ -241,17 +212,323 @@ Enumerations</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00100">100</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  100</span>                                  : <span class="keywordtype">byte</span> {</div>
-<div class="line"><span class="lineno">  101</span>        <a class="code hl_enumvalue" href="#gga136b50e19cfddad787637fb65421d9abad0749aaba8b833466dfcbb0428e4f89c">SUCCESS</a>,    <span class="comment">///&lt; Command completed successfully and ACK was received.</span></div>
-<div class="line"><span class="lineno">  102</span>        <a class="code hl_enumvalue" href="#gga136b50e19cfddad787637fb65421d9abab9e14d9b2886bcff408b85aefa780419">FAILED</a>,     <span class="comment">///&lt; Command failed (sensor responded with negative ACK).</span></div>
-<div class="line"><span class="lineno">  103</span>        <a class="code hl_enumvalue" href="#gga136b50e19cfddad787637fb65421d9aba070a0fb40f6c308ab544b227660aadff">TIMEOUT</a>,    <span class="comment">///&lt; No ACK received within the expected time window.</span></div>
-<div class="line"><span class="lineno">  104</span>        <a class="code hl_enumvalue" href="#gga136b50e19cfddad787637fb65421d9abad4539bffb6062bdcbd7e7cc1b1228926">CANCELED</a>    <span class="comment">///&lt; Command was canceled by the user before completion.</span></div>
-<div class="line"><span class="lineno">  105</span>    };</div>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00098">98</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   98</span>                                  : <span class="keywordtype">byte</span> {</div>
+<div class="line"><span class="lineno">   99</span>        <a class="code hl_enumvalue" href="#gga136b50e19cfddad787637fb65421d9abad0749aaba8b833466dfcbb0428e4f89c">SUCCESS</a>,    <span class="comment">///&lt; Command completed successfully and ACK was received.</span></div>
+<div class="line"><span class="lineno">  100</span>        <a class="code hl_enumvalue" href="#gga136b50e19cfddad787637fb65421d9abab9e14d9b2886bcff408b85aefa780419">FAILED</a>,     <span class="comment">///&lt; Command failed (sensor responded with negative ACK).</span></div>
+<div class="line"><span class="lineno">  101</span>        <a class="code hl_enumvalue" href="#gga136b50e19cfddad787637fb65421d9aba070a0fb40f6c308ab544b227660aadff">TIMEOUT</a>,    <span class="comment">///&lt; No ACK received within the expected time window.</span></div>
+<div class="line"><span class="lineno">  102</span>        <a class="code hl_enumvalue" href="#gga136b50e19cfddad787637fb65421d9abad4539bffb6062bdcbd7e7cc1b1228926">CANCELED</a>    <span class="comment">///&lt; Command was canceled by the user before completion.</span></div>
+<div class="line"><span class="lineno">  103</span>    };</div>
 <div class="ttc" id="agroup__LD2410Async__Types_html_gga136b50e19cfddad787637fb65421d9aba070a0fb40f6c308ab544b227660aadff"><div class="ttname"><a href="#gga136b50e19cfddad787637fb65421d9aba070a0fb40f6c308ab544b227660aadff">LD2410Async::AsyncCommandResult::TIMEOUT</a></div><div class="ttdeci">@ TIMEOUT</div><div class="ttdoc">No ACK received within the expected time window.</div></div>
 <div class="ttc" id="agroup__LD2410Async__Types_html_gga136b50e19cfddad787637fb65421d9abab9e14d9b2886bcff408b85aefa780419"><div class="ttname"><a href="#gga136b50e19cfddad787637fb65421d9abab9e14d9b2886bcff408b85aefa780419">LD2410Async::AsyncCommandResult::FAILED</a></div><div class="ttdeci">@ FAILED</div><div class="ttdoc">Command failed (sensor responded with negative ACK).</div></div>
 <div class="ttc" id="agroup__LD2410Async__Types_html_gga136b50e19cfddad787637fb65421d9abad0749aaba8b833466dfcbb0428e4f89c"><div class="ttname"><a href="#gga136b50e19cfddad787637fb65421d9abad0749aaba8b833466dfcbb0428e4f89c">LD2410Async::AsyncCommandResult::SUCCESS</a></div><div class="ttdeci">@ SUCCESS</div><div class="ttdoc">Command completed successfully and ACK was received.</div></div>
 <div class="ttc" id="agroup__LD2410Async__Types_html_gga136b50e19cfddad787637fb65421d9abad4539bffb6062bdcbd7e7cc1b1228926"><div class="ttname"><a href="#gga136b50e19cfddad787637fb65421d9abad4539bffb6062bdcbd7e7cc1b1228926">LD2410Async::AsyncCommandResult::CANCELED</a></div><div class="ttdeci">@ CANCELED</div><div class="ttdoc">Command was canceled by the user before completion.</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ga035762090f81b93ab2008c3a8d37e995" name="ga035762090f81b93ab2008c3a8d37e995"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga035762090f81b93ab2008c3a8d37e995">&#9670;&#160;</a></span>AutoConfigStatus</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#ga035762090f81b93ab2008c3a8d37e995">LD2410Types::AutoConfigStatus</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>State of the automatic threshold configuration routine. </p>
+<p>Auto-config adjusts the sensitivity thresholds for optimal detection in the current environment. This process may take several seconds.</p>
+<p>Use NOT_SET only as a placeholder; it is not a valid configuration value. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga035762090f81b93ab2008c3a8d37e995a1c250a21210b7b88a14db9a0cbe71162" name="gga035762090f81b93ab2008c3a8d37e995a1c250a21210b7b88a14db9a0cbe71162"></a>NOT_SET&#160;</td><td class="fielddoc"><p>Status not yet retrieved. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga035762090f81b93ab2008c3a8d37e995ae5c386bd6bfc609aa2b2274edf873665" name="gga035762090f81b93ab2008c3a8d37e995ae5c386bd6bfc609aa2b2274edf873665"></a>NOT_IN_PROGRESS&#160;</td><td class="fielddoc"><p>Auto-configuration not running. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga035762090f81b93ab2008c3a8d37e995aca69f96c768067fbff6c911ca87bccc9" name="gga035762090f81b93ab2008c3a8d37e995aca69f96c768067fbff6c911ca87bccc9"></a>IN_PROGRESS&#160;</td><td class="fielddoc"><p>Auto-configuration is currently running. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga035762090f81b93ab2008c3a8d37e995a8f7afecbc8fbc4cd0f50a57d1172482e" name="gga035762090f81b93ab2008c3a8d37e995a8f7afecbc8fbc4cd0f50a57d1172482e"></a>COMPLETED&#160;</td><td class="fielddoc"><p>Auto-configuration finished (success or failure). </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00168">168</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  168</span>                                {</div>
+<div class="line"><span class="lineno">  169</span>        <a class="code hl_enumvalue" href="#ggafbd22de9579db591b3f122c51c730844a1c250a21210b7b88a14db9a0cbe71162">NOT_SET</a> = -1,    <span class="comment">///&lt; Status not yet retrieved.</span></div>
+<div class="line"><span class="lineno">  170</span>        <a class="code hl_enumvalue" href="#gga035762090f81b93ab2008c3a8d37e995ae5c386bd6bfc609aa2b2274edf873665">NOT_IN_PROGRESS</a>, <span class="comment">///&lt; Auto-configuration not running.</span></div>
+<div class="line"><span class="lineno">  171</span>        <a class="code hl_enumvalue" href="#gga035762090f81b93ab2008c3a8d37e995aca69f96c768067fbff6c911ca87bccc9">IN_PROGRESS</a>,     <span class="comment">///&lt; Auto-configuration is currently running.</span></div>
+<div class="line"><span class="lineno">  172</span>        <a class="code hl_enumvalue" href="#gga035762090f81b93ab2008c3a8d37e995a8f7afecbc8fbc4cd0f50a57d1172482e">COMPLETED</a>        <span class="comment">///&lt; Auto-configuration finished (success or failure).</span></div>
+<div class="line"><span class="lineno">  173</span>    };</div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_gga035762090f81b93ab2008c3a8d37e995a8f7afecbc8fbc4cd0f50a57d1172482e"><div class="ttname"><a href="#gga035762090f81b93ab2008c3a8d37e995a8f7afecbc8fbc4cd0f50a57d1172482e">LD2410Types::AutoConfigStatus::COMPLETED</a></div><div class="ttdeci">@ COMPLETED</div><div class="ttdoc">Auto-configuration finished (success or failure).</div></div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_gga035762090f81b93ab2008c3a8d37e995aca69f96c768067fbff6c911ca87bccc9"><div class="ttname"><a href="#gga035762090f81b93ab2008c3a8d37e995aca69f96c768067fbff6c911ca87bccc9">LD2410Types::AutoConfigStatus::IN_PROGRESS</a></div><div class="ttdeci">@ IN_PROGRESS</div><div class="ttdoc">Auto-configuration is currently running.</div></div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_gga035762090f81b93ab2008c3a8d37e995ae5c386bd6bfc609aa2b2274edf873665"><div class="ttname"><a href="#gga035762090f81b93ab2008c3a8d37e995ae5c386bd6bfc609aa2b2274edf873665">LD2410Types::AutoConfigStatus::NOT_IN_PROGRESS</a></div><div class="ttdeci">@ NOT_IN_PROGRESS</div><div class="ttdoc">Auto-configuration not running.</div></div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_ggafbd22de9579db591b3f122c51c730844a1c250a21210b7b88a14db9a0cbe71162"><div class="ttname"><a href="#ggafbd22de9579db591b3f122c51c730844a1c250a21210b7b88a14db9a0cbe71162">LD2410Types::LightControl::NOT_SET</a></div><div class="ttdeci">@ NOT_SET</div><div class="ttdoc">Placeholder resp. inital value. Do not use as a config value (will result in abortion of the config c...</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ga5e710aa1a69067aab369a0a463189fdf" name="ga5e710aa1a69067aab369a0a463189fdf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5e710aa1a69067aab369a0a463189fdf">&#9670;&#160;</a></span>Baudrate</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#ga5e710aa1a69067aab369a0a463189fdf">LD2410Types::Baudrate</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Supported baud rates for the sensor’s UART interface. </p>
+<p>These values correspond to the configuration commands accepted by the LD2410. After changing the baud rate, a sensor reboot is required, and the ESP32’s UART must be reconfigured to match. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga5e710aa1a69067aab369a0a463189fdfabd5d6d1acbb9749aa6abce438ef0f3a1" name="gga5e710aa1a69067aab369a0a463189fdfabd5d6d1acbb9749aa6abce438ef0f3a1"></a>BAUDRATE_9600&#160;</td><td class="fielddoc"><p>9600 baud. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga5e710aa1a69067aab369a0a463189fdfabb642209526f1aea2a33487afcb94159" name="gga5e710aa1a69067aab369a0a463189fdfabb642209526f1aea2a33487afcb94159"></a>BAUDRATE_19200&#160;</td><td class="fielddoc"><p>19200 baud. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga5e710aa1a69067aab369a0a463189fdfa5d3b5ade58788e42c3eaab47a4d42b2e" name="gga5e710aa1a69067aab369a0a463189fdfa5d3b5ade58788e42c3eaab47a4d42b2e"></a>BAUDRATE_38400&#160;</td><td class="fielddoc"><p>38400 baud. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga5e710aa1a69067aab369a0a463189fdfa5b3ed77938aa570e12dc447a6a2aa391" name="gga5e710aa1a69067aab369a0a463189fdfa5b3ed77938aa570e12dc447a6a2aa391"></a>BAUDRATE_57600&#160;</td><td class="fielddoc"><p>57600 baud. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga5e710aa1a69067aab369a0a463189fdfa78e2af9dfa03cb0b145cddd2ee481c05" name="gga5e710aa1a69067aab369a0a463189fdfa78e2af9dfa03cb0b145cddd2ee481c05"></a>BAUDRATE_115200&#160;</td><td class="fielddoc"><p>115200 baud. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga5e710aa1a69067aab369a0a463189fdfa5e97d4703f775948b24e907306d78f16" name="gga5e710aa1a69067aab369a0a463189fdfa5e97d4703f775948b24e907306d78f16"></a>BAUDRATE_230500&#160;</td><td class="fielddoc"><p>230400 baud. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga5e710aa1a69067aab369a0a463189fdfabb06cf6149d2fce5ce3afb72a532695c" name="gga5e710aa1a69067aab369a0a463189fdfabb06cf6149d2fce5ce3afb72a532695c"></a>BAUDRATE_256000&#160;</td><td class="fielddoc"><p>256000 baud (factory default). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga5e710aa1a69067aab369a0a463189fdfad3d221638ca1f0320781dcb98d0c78d0" name="gga5e710aa1a69067aab369a0a463189fdfad3d221638ca1f0320781dcb98d0c78d0"></a>BAUDRATE_460800&#160;</td><td class="fielddoc"><p>460800 baud (high-speed). </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00205">205</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  205</span>                        {</div>
+<div class="line"><span class="lineno">  206</span>        <a class="code hl_enumvalue" href="#gga5e710aa1a69067aab369a0a463189fdfabd5d6d1acbb9749aa6abce438ef0f3a1">BAUDRATE_9600</a> = 1,  <span class="comment">///&lt; 9600 baud.</span></div>
+<div class="line"><span class="lineno">  207</span>        <a class="code hl_enumvalue" href="#gga5e710aa1a69067aab369a0a463189fdfabb642209526f1aea2a33487afcb94159">BAUDRATE_19200</a> = 2,  <span class="comment">///&lt; 19200 baud.</span></div>
+<div class="line"><span class="lineno">  208</span>        <a class="code hl_enumvalue" href="#gga5e710aa1a69067aab369a0a463189fdfa5d3b5ade58788e42c3eaab47a4d42b2e">BAUDRATE_38400</a> = 3,  <span class="comment">///&lt; 38400 baud.</span></div>
+<div class="line"><span class="lineno">  209</span>        <a class="code hl_enumvalue" href="#gga5e710aa1a69067aab369a0a463189fdfa5b3ed77938aa570e12dc447a6a2aa391">BAUDRATE_57600</a> = 4,  <span class="comment">///&lt; 57600 baud.</span></div>
+<div class="line"><span class="lineno">  210</span>        <a class="code hl_enumvalue" href="#gga5e710aa1a69067aab369a0a463189fdfa78e2af9dfa03cb0b145cddd2ee481c05">BAUDRATE_115200</a> = 5,  <span class="comment">///&lt; 115200 baud.</span></div>
+<div class="line"><span class="lineno">  211</span>        <a class="code hl_enumvalue" href="#gga5e710aa1a69067aab369a0a463189fdfa5e97d4703f775948b24e907306d78f16">BAUDRATE_230500</a> = 6,  <span class="comment">///&lt; 230400 baud.</span></div>
+<div class="line"><span class="lineno">  212</span>        <a class="code hl_enumvalue" href="#gga5e710aa1a69067aab369a0a463189fdfabb06cf6149d2fce5ce3afb72a532695c">BAUDRATE_256000</a> = 7,  <span class="comment">///&lt; 256000 baud (factory default).</span></div>
+<div class="line"><span class="lineno">  213</span>        <a class="code hl_enumvalue" href="#gga5e710aa1a69067aab369a0a463189fdfad3d221638ca1f0320781dcb98d0c78d0">BAUDRATE_460800</a> = 8   <span class="comment">///&lt; 460800 baud (high-speed).</span></div>
+<div class="line"><span class="lineno">  214</span>    };</div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_gga5e710aa1a69067aab369a0a463189fdfa5b3ed77938aa570e12dc447a6a2aa391"><div class="ttname"><a href="#gga5e710aa1a69067aab369a0a463189fdfa5b3ed77938aa570e12dc447a6a2aa391">LD2410Types::Baudrate::BAUDRATE_57600</a></div><div class="ttdeci">@ BAUDRATE_57600</div><div class="ttdoc">57600 baud.</div></div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_gga5e710aa1a69067aab369a0a463189fdfa5d3b5ade58788e42c3eaab47a4d42b2e"><div class="ttname"><a href="#gga5e710aa1a69067aab369a0a463189fdfa5d3b5ade58788e42c3eaab47a4d42b2e">LD2410Types::Baudrate::BAUDRATE_38400</a></div><div class="ttdeci">@ BAUDRATE_38400</div><div class="ttdoc">38400 baud.</div></div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_gga5e710aa1a69067aab369a0a463189fdfa5e97d4703f775948b24e907306d78f16"><div class="ttname"><a href="#gga5e710aa1a69067aab369a0a463189fdfa5e97d4703f775948b24e907306d78f16">LD2410Types::Baudrate::BAUDRATE_230500</a></div><div class="ttdeci">@ BAUDRATE_230500</div><div class="ttdoc">230400 baud.</div></div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_gga5e710aa1a69067aab369a0a463189fdfa78e2af9dfa03cb0b145cddd2ee481c05"><div class="ttname"><a href="#gga5e710aa1a69067aab369a0a463189fdfa78e2af9dfa03cb0b145cddd2ee481c05">LD2410Types::Baudrate::BAUDRATE_115200</a></div><div class="ttdeci">@ BAUDRATE_115200</div><div class="ttdoc">115200 baud.</div></div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_gga5e710aa1a69067aab369a0a463189fdfabb06cf6149d2fce5ce3afb72a532695c"><div class="ttname"><a href="#gga5e710aa1a69067aab369a0a463189fdfabb06cf6149d2fce5ce3afb72a532695c">LD2410Types::Baudrate::BAUDRATE_256000</a></div><div class="ttdeci">@ BAUDRATE_256000</div><div class="ttdoc">256000 baud (factory default).</div></div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_gga5e710aa1a69067aab369a0a463189fdfabb642209526f1aea2a33487afcb94159"><div class="ttname"><a href="#gga5e710aa1a69067aab369a0a463189fdfabb642209526f1aea2a33487afcb94159">LD2410Types::Baudrate::BAUDRATE_19200</a></div><div class="ttdeci">@ BAUDRATE_19200</div><div class="ttdoc">19200 baud.</div></div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_gga5e710aa1a69067aab369a0a463189fdfabd5d6d1acbb9749aa6abce438ef0f3a1"><div class="ttname"><a href="#gga5e710aa1a69067aab369a0a463189fdfabd5d6d1acbb9749aa6abce438ef0f3a1">LD2410Types::Baudrate::BAUDRATE_9600</a></div><div class="ttdeci">@ BAUDRATE_9600</div><div class="ttdoc">9600 baud.</div></div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_gga5e710aa1a69067aab369a0a463189fdfad3d221638ca1f0320781dcb98d0c78d0"><div class="ttname"><a href="#gga5e710aa1a69067aab369a0a463189fdfad3d221638ca1f0320781dcb98d0c78d0">LD2410Types::Baudrate::BAUDRATE_460800</a></div><div class="ttdeci">@ BAUDRATE_460800</div><div class="ttdoc">460800 baud (high-speed).</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ga89e3189ddef9f36629c460fbeb398c79" name="ga89e3189ddef9f36629c460fbeb398c79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga89e3189ddef9f36629c460fbeb398c79">&#9670;&#160;</a></span>DistanceResolution</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#ga89e3189ddef9f36629c460fbeb398c79">LD2410Types::DistanceResolution</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Distance resolution per gate for detection. </p>
+<p>The resolution defines how fine-grained the distance measurement is:</p><ul>
+<li>RESOLUTION_75CM: Coarser, maximum range up to ~6 m, each gate ≈ 0.75 m wide.</li>
+<li>RESOLUTION_20CM: Finer, maximum range up to ~1.8 m, each gate ≈ 0.20 m wide.</li>
+</ul>
+<p>Use NOT_SET only as a placeholder; it is not a valid configuration value. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga89e3189ddef9f36629c460fbeb398c79a1c250a21210b7b88a14db9a0cbe71162" name="gga89e3189ddef9f36629c460fbeb398c79a1c250a21210b7b88a14db9a0cbe71162"></a>NOT_SET&#160;</td><td class="fielddoc"><p>Placeholder resp. inital value. Do not use as a config value (will result in abortion of the config command). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga89e3189ddef9f36629c460fbeb398c79a868c4df7b718ac01b3bf93354a43c8f8" name="gga89e3189ddef9f36629c460fbeb398c79a868c4df7b718ac01b3bf93354a43c8f8"></a>RESOLUTION_75CM&#160;</td><td class="fielddoc"><p>Each gate ~0.75 m, max range ~6 m. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga89e3189ddef9f36629c460fbeb398c79a7d931e972250eb3e9b9557c87fc7c23e" name="gga89e3189ddef9f36629c460fbeb398c79a7d931e972250eb3e9b9557c87fc7c23e"></a>RESOLUTION_20CM&#160;</td><td class="fielddoc"><p>Each gate ~0.20 m, max range ~1.8 m. </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00227">227</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  227</span>                                  {</div>
+<div class="line"><span class="lineno">  228</span>        <a class="code hl_enumvalue" href="#ggafbd22de9579db591b3f122c51c730844a1c250a21210b7b88a14db9a0cbe71162">NOT_SET</a> = -1,          <span class="comment">///&lt; Placeholder resp. inital value. Do not use as a config value (will result in abortion of the config command).</span></div>
+<div class="line"><span class="lineno">  229</span>        <a class="code hl_enumvalue" href="#gga89e3189ddef9f36629c460fbeb398c79a868c4df7b718ac01b3bf93354a43c8f8">RESOLUTION_75CM</a> = 0,   <span class="comment">///&lt; Each gate ~0.75 m, max range ~6 m.</span></div>
+<div class="line"><span class="lineno">  230</span>        <a class="code hl_enumvalue" href="#gga89e3189ddef9f36629c460fbeb398c79a7d931e972250eb3e9b9557c87fc7c23e">RESOLUTION_20CM</a> = 1    <span class="comment">///&lt; Each gate ~0.20 m, max range ~1.8 m.</span></div>
+<div class="line"><span class="lineno">  231</span>    };</div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_gga89e3189ddef9f36629c460fbeb398c79a7d931e972250eb3e9b9557c87fc7c23e"><div class="ttname"><a href="#gga89e3189ddef9f36629c460fbeb398c79a7d931e972250eb3e9b9557c87fc7c23e">LD2410Types::DistanceResolution::RESOLUTION_20CM</a></div><div class="ttdeci">@ RESOLUTION_20CM</div><div class="ttdoc">Each gate ~0.20 m, max range ~1.8 m.</div></div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_gga89e3189ddef9f36629c460fbeb398c79a868c4df7b718ac01b3bf93354a43c8f8"><div class="ttname"><a href="#gga89e3189ddef9f36629c460fbeb398c79a868c4df7b718ac01b3bf93354a43c8f8">LD2410Types::DistanceResolution::RESOLUTION_75CM</a></div><div class="ttdeci">@ RESOLUTION_75CM</div><div class="ttdoc">Each gate ~0.75 m, max range ~6 m.</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="gafbd22de9579db591b3f122c51c730844" name="gafbd22de9579db591b3f122c51c730844"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafbd22de9579db591b3f122c51c730844">&#9670;&#160;</a></span>LightControl</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#gafbd22de9579db591b3f122c51c730844">LD2410Types::LightControl</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Light-dependent control status of the auxiliary output. </p>
+<p>The radar sensor can control an external output based on ambient light level in combination with presence detection.</p>
+<p>Use NOT_SET only as a placeholder; it is not a valid configuration value. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggafbd22de9579db591b3f122c51c730844a1c250a21210b7b88a14db9a0cbe71162" name="ggafbd22de9579db591b3f122c51c730844a1c250a21210b7b88a14db9a0cbe71162"></a>NOT_SET&#160;</td><td class="fielddoc"><p>Placeholder resp. inital value. Do not use as a config value (will result in abortion of the config command). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggafbd22de9579db591b3f122c51c730844abca5ec936e7f8c6d691a40ccf9db9e21" name="ggafbd22de9579db591b3f122c51c730844abca5ec936e7f8c6d691a40ccf9db9e21"></a>NO_LIGHT_CONTROL&#160;</td><td class="fielddoc"><p>Output is not influenced by light levels. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggafbd22de9579db591b3f122c51c730844a6a9d30a8d1d6df98b89d66c50e47cd6c" name="ggafbd22de9579db591b3f122c51c730844a6a9d30a8d1d6df98b89d66c50e47cd6c"></a>LIGHT_BELOW_THRESHOLD&#160;</td><td class="fielddoc"><p>Condition: light &lt; threshold. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggafbd22de9579db591b3f122c51c730844aa04a7bc4c5ceb6927e051bfb3e1cfd2e" name="ggafbd22de9579db591b3f122c51c730844aa04a7bc4c5ceb6927e051bfb3e1cfd2e"></a>LIGHT_ABOVE_THRESHOLD&#160;</td><td class="fielddoc"><p>Condition: light ≥ threshold. </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00097">97</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   97</span>                            {</div>
+<div class="line"><span class="lineno">   98</span>        <a class="code hl_enumvalue" href="#ggafbd22de9579db591b3f122c51c730844a1c250a21210b7b88a14db9a0cbe71162">NOT_SET</a> = -1,          <span class="comment">///&lt; Placeholder resp. inital value. Do not use as a config value (will result in abortion of the config command).</span></div>
+<div class="line"><span class="lineno">   99</span>        <a class="code hl_enumvalue" href="#ggafbd22de9579db591b3f122c51c730844abca5ec936e7f8c6d691a40ccf9db9e21">NO_LIGHT_CONTROL</a> = 0,  <span class="comment">///&lt; Output is not influenced by light levels.</span></div>
+<div class="line"><span class="lineno">  100</span>        <a class="code hl_enumvalue" href="#ggafbd22de9579db591b3f122c51c730844a6a9d30a8d1d6df98b89d66c50e47cd6c">LIGHT_BELOW_THRESHOLD</a> = 1, <span class="comment">///&lt; Condition: light &lt; threshold.</span></div>
+<div class="line"><span class="lineno">  101</span>        <a class="code hl_enumvalue" href="#ggafbd22de9579db591b3f122c51c730844aa04a7bc4c5ceb6927e051bfb3e1cfd2e">LIGHT_ABOVE_THRESHOLD</a> = 2  <span class="comment">///&lt; Condition: light ≥ threshold.</span></div>
+<div class="line"><span class="lineno">  102</span>    };</div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_ggafbd22de9579db591b3f122c51c730844a6a9d30a8d1d6df98b89d66c50e47cd6c"><div class="ttname"><a href="#ggafbd22de9579db591b3f122c51c730844a6a9d30a8d1d6df98b89d66c50e47cd6c">LD2410Types::LightControl::LIGHT_BELOW_THRESHOLD</a></div><div class="ttdeci">@ LIGHT_BELOW_THRESHOLD</div><div class="ttdoc">Condition: light &lt; threshold.</div></div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_ggafbd22de9579db591b3f122c51c730844aa04a7bc4c5ceb6927e051bfb3e1cfd2e"><div class="ttname"><a href="#ggafbd22de9579db591b3f122c51c730844aa04a7bc4c5ceb6927e051bfb3e1cfd2e">LD2410Types::LightControl::LIGHT_ABOVE_THRESHOLD</a></div><div class="ttdeci">@ LIGHT_ABOVE_THRESHOLD</div><div class="ttdoc">Condition: light ≥ threshold.</div></div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_ggafbd22de9579db591b3f122c51c730844abca5ec936e7f8c6d691a40ccf9db9e21"><div class="ttname"><a href="#ggafbd22de9579db591b3f122c51c730844abca5ec936e7f8c6d691a40ccf9db9e21">LD2410Types::LightControl::NO_LIGHT_CONTROL</a></div><div class="ttdeci">@ NO_LIGHT_CONTROL</div><div class="ttdoc">Output is not influenced by light levels.</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ga420c188999635485028764fe98cb0bff" name="ga420c188999635485028764fe98cb0bff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga420c188999635485028764fe98cb0bff">&#9670;&#160;</a></span>OutputControl</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#ga420c188999635485028764fe98cb0bff">LD2410Types::OutputControl</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Logic level behavior of the auxiliary output pin. </p>
+<p>Determines whether the output pin is active-high or active-low in relation to presence detection.</p>
+<p>Use NOT_SET only as a placeholder; it is not a valid configuration value. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga420c188999635485028764fe98cb0bffa1c250a21210b7b88a14db9a0cbe71162" name="gga420c188999635485028764fe98cb0bffa1c250a21210b7b88a14db9a0cbe71162"></a>NOT_SET&#160;</td><td class="fielddoc"><p>Placeholder resp. inital value. Do not use as a config value (will result in abortion of the config command). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga420c188999635485028764fe98cb0bffa7ca3794aa469cedd319ed4d526898946" name="gga420c188999635485028764fe98cb0bffa7ca3794aa469cedd319ed4d526898946"></a>DEFAULT_LOW_DETECTED_HIGH&#160;</td><td class="fielddoc"><p>Default low, goes HIGH when detection occurs. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga420c188999635485028764fe98cb0bffa3ca36255fd777b6662239dd4d8aa2761" name="gga420c188999635485028764fe98cb0bffa3ca36255fd777b6662239dd4d8aa2761"></a>DEFAULT_HIGH_DETECTED_LOW&#160;</td><td class="fielddoc"><p>Default high, goes LOW when detection occurs. </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00134">134</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  134</span>                             {</div>
+<div class="line"><span class="lineno">  135</span>        <a class="code hl_enumvalue" href="#ggafbd22de9579db591b3f122c51c730844a1c250a21210b7b88a14db9a0cbe71162">NOT_SET</a> = -1,                <span class="comment">///&lt; Placeholder resp. inital value. Do not use as a config value (will result in abortion of the config command).</span></div>
+<div class="line"><span class="lineno">  136</span>        <a class="code hl_enumvalue" href="#gga420c188999635485028764fe98cb0bffa7ca3794aa469cedd319ed4d526898946">DEFAULT_LOW_DETECTED_HIGH</a> = 0, <span class="comment">///&lt; Default low, goes HIGH when detection occurs.</span></div>
+<div class="line"><span class="lineno">  137</span>        <a class="code hl_enumvalue" href="#gga420c188999635485028764fe98cb0bffa3ca36255fd777b6662239dd4d8aa2761">DEFAULT_HIGH_DETECTED_LOW</a> = 1  <span class="comment">///&lt; Default high, goes LOW when detection occurs.</span></div>
+<div class="line"><span class="lineno">  138</span>    };</div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_gga420c188999635485028764fe98cb0bffa3ca36255fd777b6662239dd4d8aa2761"><div class="ttname"><a href="#gga420c188999635485028764fe98cb0bffa3ca36255fd777b6662239dd4d8aa2761">LD2410Types::OutputControl::DEFAULT_HIGH_DETECTED_LOW</a></div><div class="ttdeci">@ DEFAULT_HIGH_DETECTED_LOW</div><div class="ttdoc">Default high, goes LOW when detection occurs.</div></div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_gga420c188999635485028764fe98cb0bffa7ca3794aa469cedd319ed4d526898946"><div class="ttname"><a href="#gga420c188999635485028764fe98cb0bffa7ca3794aa469cedd319ed4d526898946">LD2410Types::OutputControl::DEFAULT_LOW_DETECTED_HIGH</a></div><div class="ttdeci">@ DEFAULT_LOW_DETECTED_HIGH</div><div class="ttdoc">Default low, goes HIGH when detection occurs.</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="gaf838f34651382f6262c0d19397ac0be9" name="gaf838f34651382f6262c0d19397ac0be9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf838f34651382f6262c0d19397ac0be9">&#9670;&#160;</a></span>TargetState</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#gaf838f34651382f6262c0d19397ac0be9">LD2410Types::TargetState</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Represents the current target detection state reported by the radar. </p>
+<p>Values can be combined internally by the sensor depending on its signal evaluation logic. The AUTO-CONFIG states are special values that are only reported while the sensor is running its self-calibration routine. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggaf838f34651382f6262c0d19397ac0be9a25c048a9893a60bddb82dde516ea8d84" name="ggaf838f34651382f6262c0d19397ac0be9a25c048a9893a60bddb82dde516ea8d84"></a>NO_TARGET&#160;</td><td class="fielddoc"><p>No moving or stationary target detected. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggaf838f34651382f6262c0d19397ac0be9ab7ef6f911883522e35247e1c13482929" name="ggaf838f34651382f6262c0d19397ac0be9ab7ef6f911883522e35247e1c13482929"></a>MOVING_TARGET&#160;</td><td class="fielddoc"><p>A moving target has been detected. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggaf838f34651382f6262c0d19397ac0be9a6aa821dbd79ebda38affe6beabf940c4" name="ggaf838f34651382f6262c0d19397ac0be9a6aa821dbd79ebda38affe6beabf940c4"></a>STATIONARY_TARGET&#160;</td><td class="fielddoc"><p>A stationary target has been detected. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggaf838f34651382f6262c0d19397ac0be9a02ddfbfc6b13ec42ae66161cff02aac5" name="ggaf838f34651382f6262c0d19397ac0be9a02ddfbfc6b13ec42ae66161cff02aac5"></a>MOVING_AND_STATIONARY_TARGET&#160;</td><td class="fielddoc"><p>Both moving and stationary targets detected. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggaf838f34651382f6262c0d19397ac0be9a32aba1429a9e8d50b894a98297baffe8" name="ggaf838f34651382f6262c0d19397ac0be9a32aba1429a9e8d50b894a98297baffe8"></a>AUTOCONFIG_IN_PROGRESS&#160;</td><td class="fielddoc"><p>Auto-configuration routine is running. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggaf838f34651382f6262c0d19397ac0be9ad60df368616de4c39543e44d31e438ae" name="ggaf838f34651382f6262c0d19397ac0be9ad60df368616de4c39543e44d31e438ae"></a>AUTOCONFIG_SUCCESS&#160;</td><td class="fielddoc"><p>Auto-configuration completed successfully. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggaf838f34651382f6262c0d19397ac0be9a34457daa96d2fefedcab7abbaea5d4c9" name="ggaf838f34651382f6262c0d19397ac0be9a34457daa96d2fefedcab7abbaea5d4c9"></a>AUTOCONFIG_FAILED&#160;</td><td class="fielddoc"><p>Auto-configuration failed. </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00021">21</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   21</span>                           {</div>
+<div class="line"><span class="lineno">   22</span>        <a class="code hl_enumvalue" href="#ggaf838f34651382f6262c0d19397ac0be9a25c048a9893a60bddb82dde516ea8d84">NO_TARGET</a> = 0,                  <span class="comment">///&lt; No moving or stationary target detected.</span></div>
+<div class="line"><span class="lineno">   23</span>        <a class="code hl_enumvalue" href="#ggaf838f34651382f6262c0d19397ac0be9ab7ef6f911883522e35247e1c13482929">MOVING_TARGET</a> = 1,              <span class="comment">///&lt; A moving target has been detected.</span></div>
+<div class="line"><span class="lineno">   24</span>        <a class="code hl_enumvalue" href="#ggaf838f34651382f6262c0d19397ac0be9a6aa821dbd79ebda38affe6beabf940c4">STATIONARY_TARGET</a> = 2,          <span class="comment">///&lt; A stationary target has been detected.</span></div>
+<div class="line"><span class="lineno">   25</span>        <a class="code hl_enumvalue" href="#ggaf838f34651382f6262c0d19397ac0be9a02ddfbfc6b13ec42ae66161cff02aac5">MOVING_AND_STATIONARY_TARGET</a> = 3, <span class="comment">///&lt; Both moving and stationary targets detected.</span></div>
+<div class="line"><span class="lineno">   26</span>        <a class="code hl_enumvalue" href="#ggaf838f34651382f6262c0d19397ac0be9a32aba1429a9e8d50b894a98297baffe8">AUTOCONFIG_IN_PROGRESS</a> = 4,     <span class="comment">///&lt; Auto-configuration routine is running.</span></div>
+<div class="line"><span class="lineno">   27</span>        <a class="code hl_enumvalue" href="#ggaf838f34651382f6262c0d19397ac0be9ad60df368616de4c39543e44d31e438ae">AUTOCONFIG_SUCCESS</a> = 5,         <span class="comment">///&lt; Auto-configuration completed successfully.</span></div>
+<div class="line"><span class="lineno">   28</span>        <a class="code hl_enumvalue" href="#ggaf838f34651382f6262c0d19397ac0be9a34457daa96d2fefedcab7abbaea5d4c9">AUTOCONFIG_FAILED</a> = 6           <span class="comment">///&lt; Auto-configuration failed.</span></div>
+<div class="line"><span class="lineno">   29</span>    };</div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_ggaf838f34651382f6262c0d19397ac0be9a02ddfbfc6b13ec42ae66161cff02aac5"><div class="ttname"><a href="#ggaf838f34651382f6262c0d19397ac0be9a02ddfbfc6b13ec42ae66161cff02aac5">LD2410Types::TargetState::MOVING_AND_STATIONARY_TARGET</a></div><div class="ttdeci">@ MOVING_AND_STATIONARY_TARGET</div><div class="ttdoc">Both moving and stationary targets detected.</div></div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_ggaf838f34651382f6262c0d19397ac0be9a25c048a9893a60bddb82dde516ea8d84"><div class="ttname"><a href="#ggaf838f34651382f6262c0d19397ac0be9a25c048a9893a60bddb82dde516ea8d84">LD2410Types::TargetState::NO_TARGET</a></div><div class="ttdeci">@ NO_TARGET</div><div class="ttdoc">No moving or stationary target detected.</div></div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_ggaf838f34651382f6262c0d19397ac0be9a32aba1429a9e8d50b894a98297baffe8"><div class="ttname"><a href="#ggaf838f34651382f6262c0d19397ac0be9a32aba1429a9e8d50b894a98297baffe8">LD2410Types::TargetState::AUTOCONFIG_IN_PROGRESS</a></div><div class="ttdeci">@ AUTOCONFIG_IN_PROGRESS</div><div class="ttdoc">Auto-configuration routine is running.</div></div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_ggaf838f34651382f6262c0d19397ac0be9a34457daa96d2fefedcab7abbaea5d4c9"><div class="ttname"><a href="#ggaf838f34651382f6262c0d19397ac0be9a34457daa96d2fefedcab7abbaea5d4c9">LD2410Types::TargetState::AUTOCONFIG_FAILED</a></div><div class="ttdeci">@ AUTOCONFIG_FAILED</div><div class="ttdoc">Auto-configuration failed.</div></div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_ggaf838f34651382f6262c0d19397ac0be9a6aa821dbd79ebda38affe6beabf940c4"><div class="ttname"><a href="#ggaf838f34651382f6262c0d19397ac0be9a6aa821dbd79ebda38affe6beabf940c4">LD2410Types::TargetState::STATIONARY_TARGET</a></div><div class="ttdeci">@ STATIONARY_TARGET</div><div class="ttdoc">A stationary target has been detected.</div></div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_ggaf838f34651382f6262c0d19397ac0be9ab7ef6f911883522e35247e1c13482929"><div class="ttname"><a href="#ggaf838f34651382f6262c0d19397ac0be9ab7ef6f911883522e35247e1c13482929">LD2410Types::TargetState::MOVING_TARGET</a></div><div class="ttdeci">@ MOVING_TARGET</div><div class="ttdoc">A moving target has been detected.</div></div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_ggaf838f34651382f6262c0d19397ac0be9ad60df368616de4c39543e44d31e438ae"><div class="ttname"><a href="#ggaf838f34651382f6262c0d19397ac0be9ad60df368616de4c39543e44d31e438ae">LD2410Types::TargetState::AUTOCONFIG_SUCCESS</a></div><div class="ttdeci">@ AUTOCONFIG_SUCCESS</div><div class="ttdoc">Auto-configuration completed successfully.</div></div>
 </div><!-- fragment -->
 </div>
 </div>

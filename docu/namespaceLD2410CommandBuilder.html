@@ -109,9 +109,9 @@ Functions</h2></td></tr>
 <tr class="separator:a1891c87b48a0ec24a7a6066fe48bd63e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9879fbf4d013640f1a9bffdbc21122f6" id="r_a9879fbf4d013640f1a9bffdbc21122f6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9879fbf4d013640f1a9bffdbc21122f6">buildGateSensitivityCommand</a> (byte *out, byte gate, byte movingThreshold, byte stationaryThreshold)</td></tr>
 <tr class="separator:a9879fbf4d013640f1a9bffdbc21122f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a87725992c2b7bd53fc2b24f5ac4a0f" id="r_a2a87725992c2b7bd53fc2b24f5ac4a0f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a87725992c2b7bd53fc2b24f5ac4a0f">buildDistanceResolutionCommand</a> (byte *out, <a class="el" href="namespaceLD2410Types.html#a89e3189ddef9f36629c460fbeb398c79">LD2410Types::DistanceResolution</a> resolution)</td></tr>
+<tr class="memitem:a2a87725992c2b7bd53fc2b24f5ac4a0f" id="r_a2a87725992c2b7bd53fc2b24f5ac4a0f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a87725992c2b7bd53fc2b24f5ac4a0f">buildDistanceResolutionCommand</a> (byte *out, <a class="el" href="group__LD2410Async__Types.html#ga89e3189ddef9f36629c460fbeb398c79">LD2410Types::DistanceResolution</a> resolution)</td></tr>
 <tr class="separator:a2a87725992c2b7bd53fc2b24f5ac4a0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b54a13a534e713b1fc2b29818bbe255" id="r_a8b54a13a534e713b1fc2b29818bbe255"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b54a13a534e713b1fc2b29818bbe255">buildAuxControlCommand</a> (byte *out, <a class="el" href="namespaceLD2410Types.html#afbd22de9579db591b3f122c51c730844">LD2410Types::LightControl</a> lightControl, byte lightThreshold, <a class="el" href="namespaceLD2410Types.html#a420c188999635485028764fe98cb0bff">LD2410Types::OutputControl</a> outputControl)</td></tr>
+<tr class="memitem:a8b54a13a534e713b1fc2b29818bbe255" id="r_a8b54a13a534e713b1fc2b29818bbe255"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b54a13a534e713b1fc2b29818bbe255">buildAuxControlCommand</a> (byte *out, <a class="el" href="group__LD2410Async__Types.html#gafbd22de9579db591b3f122c51c730844">LD2410Types::LightControl</a> lightControl, byte lightThreshold, <a class="el" href="group__LD2410Async__Types.html#ga420c188999635485028764fe98cb0bff">LD2410Types::OutputControl</a> outputControl)</td></tr>
 <tr class="separator:a8b54a13a534e713b1fc2b29818bbe255"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8eb163ccaa819b1504b79459ed48729" id="r_af8eb163ccaa819b1504b79459ed48729"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8eb163ccaa819b1504b79459ed48729">buildBaudRateCommand</a> (byte *out, byte baudRateSetting)</td></tr>
 <tr class="separator:af8eb163ccaa819b1504b79459ed48729"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -136,7 +136,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceLD2410Types.html#afbd22de9579db591b3f122c51c730844">LD2410Types::LightControl</a></td>          <td class="paramname"><span class="paramname"><em>lightControl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="group__LD2410Async__Types.html#gafbd22de9579db591b3f122c51c730844">LD2410Types::LightControl</a></td>          <td class="paramname"><span class="paramname"><em>lightControl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -146,7 +146,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceLD2410Types.html#a420c188999635485028764fe98cb0bff">LD2410Types::OutputControl</a></td>          <td class="paramname"><span class="paramname"><em>outputControl</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="group__LD2410Async__Types.html#ga420c188999635485028764fe98cb0bff">LD2410Types::OutputControl</a></td>          <td class="paramname"><span class="paramname"><em>outputControl</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -161,17 +161,17 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   65</span>        memcpy(out, <a class="code hl_variable" href="namespaceLD2410Defs.html#a17f67486a419c2e53c2a114c70e3475e">LD2410Defs::setAuxControlSettingCommandData</a>,</div>
 <div class="line"><span class="lineno">   66</span>            <span class="keyword">sizeof</span>(<a class="code hl_variable" href="namespaceLD2410Defs.html#a17f67486a419c2e53c2a114c70e3475e">LD2410Defs::setAuxControlSettingCommandData</a>));</div>
 <div class="line"><span class="lineno">   67</span> </div>
-<div class="line"><span class="lineno">   68</span>        <span class="keywordflow">if</span> (lightControl == <a class="code hl_enumvalue" href="namespaceLD2410Types.html#afbd22de9579db591b3f122c51c730844a1c250a21210b7b88a14db9a0cbe71162">LD2410Types::LightControl::NOT_SET</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   69</span>        <span class="keywordflow">if</span> (outputControl == <a class="code hl_enumvalue" href="namespaceLD2410Types.html#a420c188999635485028764fe98cb0bffa1c250a21210b7b88a14db9a0cbe71162">LD2410Types::OutputControl::NOT_SET</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   68</span>        <span class="keywordflow">if</span> (lightControl == <a class="code hl_enumvalue" href="group__LD2410Async__Types.html#ggafbd22de9579db591b3f122c51c730844a1c250a21210b7b88a14db9a0cbe71162">LD2410Types::LightControl::NOT_SET</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   69</span>        <span class="keywordflow">if</span> (outputControl == <a class="code hl_enumvalue" href="group__LD2410Async__Types.html#gga420c188999635485028764fe98cb0bffa1c250a21210b7b88a14db9a0cbe71162">LD2410Types::OutputControl::NOT_SET</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">   70</span> </div>
 <div class="line"><span class="lineno">   71</span>        out[4] = byte(lightControl);</div>
 <div class="line"><span class="lineno">   72</span>        out[5] = lightThreshold;</div>
 <div class="line"><span class="lineno">   73</span>        out[6] = byte(outputControl);</div>
 <div class="line"><span class="lineno">   74</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">   75</span>    }</div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_gga420c188999635485028764fe98cb0bffa1c250a21210b7b88a14db9a0cbe71162"><div class="ttname"><a href="group__LD2410Async__Types.html#gga420c188999635485028764fe98cb0bffa1c250a21210b7b88a14db9a0cbe71162">LD2410Types::OutputControl::NOT_SET</a></div><div class="ttdeci">@ NOT_SET</div><div class="ttdoc">Placeholder resp. inital value. Do not use as a config value (will result in abortion of the config c...</div></div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_ggafbd22de9579db591b3f122c51c730844a1c250a21210b7b88a14db9a0cbe71162"><div class="ttname"><a href="group__LD2410Async__Types.html#ggafbd22de9579db591b3f122c51c730844a1c250a21210b7b88a14db9a0cbe71162">LD2410Types::LightControl::NOT_SET</a></div><div class="ttdeci">@ NOT_SET</div><div class="ttdoc">Placeholder resp. inital value. Do not use as a config value (will result in abortion of the config c...</div></div>
 <div class="ttc" id="anamespaceLD2410Defs_html_a17f67486a419c2e53c2a114c70e3475e"><div class="ttname"><a href="namespaceLD2410Defs.html#a17f67486a419c2e53c2a114c70e3475e">LD2410Defs::setAuxControlSettingCommandData</a></div><div class="ttdeci">constexpr byte setAuxControlSettingCommandData[8]</div><div class="ttdef"><b>Definition</b> <a href="LD2410Defs_8h_source.html#l00068">LD2410Defs.h:68</a></div></div>
-<div class="ttc" id="anamespaceLD2410Types_html_a420c188999635485028764fe98cb0bffa1c250a21210b7b88a14db9a0cbe71162"><div class="ttname"><a href="namespaceLD2410Types.html#a420c188999635485028764fe98cb0bffa1c250a21210b7b88a14db9a0cbe71162">LD2410Types::OutputControl::NOT_SET</a></div><div class="ttdeci">@ NOT_SET</div><div class="ttdoc">Placeholder resp. inital value. Do not use as a config value (will result in abortion of the config c...</div></div>
-<div class="ttc" id="anamespaceLD2410Types_html_afbd22de9579db591b3f122c51c730844a1c250a21210b7b88a14db9a0cbe71162"><div class="ttname"><a href="namespaceLD2410Types.html#afbd22de9579db591b3f122c51c730844a1c250a21210b7b88a14db9a0cbe71162">LD2410Types::LightControl::NOT_SET</a></div><div class="ttdeci">@ NOT_SET</div><div class="ttdoc">Placeholder resp. inital value. Do not use as a config value (will result in abortion of the config c...</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -278,7 +278,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceLD2410Types.html#a89e3189ddef9f36629c460fbeb398c79">LD2410Types::DistanceResolution</a></td>          <td class="paramname"><span class="paramname"><em>resolution</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="group__LD2410Async__Types.html#ga89e3189ddef9f36629c460fbeb398c79">LD2410Types::DistanceResolution</a></td>          <td class="paramname"><span class="paramname"><em>resolution</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -290,11 +290,11 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="LD2410CommandBuilder_8h_source.html#l00049">49</a> of file <a class="el" href="LD2410CommandBuilder_8h_source.html">LD2410CommandBuilder.h</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   49</span>                                                                                                    {</div>
-<div class="line"><span class="lineno">   50</span>        <span class="keywordflow">if</span> (resolution == <a class="code hl_enumvalue" href="namespaceLD2410Types.html#a89e3189ddef9f36629c460fbeb398c79a868c4df7b718ac01b3bf93354a43c8f8">LD2410Types::DistanceResolution::RESOLUTION_75CM</a>) {</div>
+<div class="line"><span class="lineno">   50</span>        <span class="keywordflow">if</span> (resolution == <a class="code hl_enumvalue" href="group__LD2410Async__Types.html#gga89e3189ddef9f36629c460fbeb398c79a868c4df7b718ac01b3bf93354a43c8f8">LD2410Types::DistanceResolution::RESOLUTION_75CM</a>) {</div>
 <div class="line"><span class="lineno">   51</span>            memcpy(out, <a class="code hl_variable" href="namespaceLD2410Defs.html#a9dd438a7c03fa3263c0536d1cfbc7dfb">LD2410Defs::setDistanceResolution75cmCommandData</a>,</div>
 <div class="line"><span class="lineno">   52</span>                <span class="keyword">sizeof</span>(<a class="code hl_variable" href="namespaceLD2410Defs.html#a9dd438a7c03fa3263c0536d1cfbc7dfb">LD2410Defs::setDistanceResolution75cmCommandData</a>));</div>
 <div class="line"><span class="lineno">   53</span>        }</div>
-<div class="line"><span class="lineno">   54</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (resolution == <a class="code hl_enumvalue" href="namespaceLD2410Types.html#a89e3189ddef9f36629c460fbeb398c79a7d931e972250eb3e9b9557c87fc7c23e">LD2410Types::DistanceResolution::RESOLUTION_20CM</a>) {</div>
+<div class="line"><span class="lineno">   54</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (resolution == <a class="code hl_enumvalue" href="group__LD2410Async__Types.html#gga89e3189ddef9f36629c460fbeb398c79a7d931e972250eb3e9b9557c87fc7c23e">LD2410Types::DistanceResolution::RESOLUTION_20CM</a>) {</div>
 <div class="line"><span class="lineno">   55</span>            memcpy(out, <a class="code hl_variable" href="namespaceLD2410Defs.html#a41dce04a3403987c72459f430e494151">LD2410Defs::setDistanceResolution20cmCommandData</a>,</div>
 <div class="line"><span class="lineno">   56</span>                <span class="keyword">sizeof</span>(<a class="code hl_variable" href="namespaceLD2410Defs.html#a41dce04a3403987c72459f430e494151">LD2410Defs::setDistanceResolution20cmCommandData</a>));</div>
 <div class="line"><span class="lineno">   57</span>        }</div>
@@ -303,10 +303,10 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   60</span>        }</div>
 <div class="line"><span class="lineno">   61</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">   62</span>    }</div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_gga89e3189ddef9f36629c460fbeb398c79a7d931e972250eb3e9b9557c87fc7c23e"><div class="ttname"><a href="group__LD2410Async__Types.html#gga89e3189ddef9f36629c460fbeb398c79a7d931e972250eb3e9b9557c87fc7c23e">LD2410Types::DistanceResolution::RESOLUTION_20CM</a></div><div class="ttdeci">@ RESOLUTION_20CM</div><div class="ttdoc">Each gate ~0.20 m, max range ~1.8 m.</div></div>
+<div class="ttc" id="agroup__LD2410Async__Types_html_gga89e3189ddef9f36629c460fbeb398c79a868c4df7b718ac01b3bf93354a43c8f8"><div class="ttname"><a href="group__LD2410Async__Types.html#gga89e3189ddef9f36629c460fbeb398c79a868c4df7b718ac01b3bf93354a43c8f8">LD2410Types::DistanceResolution::RESOLUTION_75CM</a></div><div class="ttdeci">@ RESOLUTION_75CM</div><div class="ttdoc">Each gate ~0.75 m, max range ~6 m.</div></div>
 <div class="ttc" id="anamespaceLD2410Defs_html_a41dce04a3403987c72459f430e494151"><div class="ttname"><a href="namespaceLD2410Defs.html#a41dce04a3403987c72459f430e494151">LD2410Defs::setDistanceResolution20cmCommandData</a></div><div class="ttdeci">constexpr byte setDistanceResolution20cmCommandData[6]</div><div class="ttdef"><b>Definition</b> <a href="LD2410Defs_8h_source.html#l00035">LD2410Defs.h:35</a></div></div>
 <div class="ttc" id="anamespaceLD2410Defs_html_a9dd438a7c03fa3263c0536d1cfbc7dfb"><div class="ttname"><a href="namespaceLD2410Defs.html#a9dd438a7c03fa3263c0536d1cfbc7dfb">LD2410Defs::setDistanceResolution75cmCommandData</a></div><div class="ttdeci">constexpr byte setDistanceResolution75cmCommandData[6]</div><div class="ttdef"><b>Definition</b> <a href="LD2410Defs_8h_source.html#l00034">LD2410Defs.h:34</a></div></div>
-<div class="ttc" id="anamespaceLD2410Types_html_a89e3189ddef9f36629c460fbeb398c79a7d931e972250eb3e9b9557c87fc7c23e"><div class="ttname"><a href="namespaceLD2410Types.html#a89e3189ddef9f36629c460fbeb398c79a7d931e972250eb3e9b9557c87fc7c23e">LD2410Types::DistanceResolution::RESOLUTION_20CM</a></div><div class="ttdeci">@ RESOLUTION_20CM</div><div class="ttdoc">Each gate ~0.20 m, max range ~1.8 m.</div></div>
-<div class="ttc" id="anamespaceLD2410Types_html_a89e3189ddef9f36629c460fbeb398c79a868c4df7b718ac01b3bf93354a43c8f8"><div class="ttname"><a href="namespaceLD2410Types.html#a89e3189ddef9f36629c460fbeb398c79a868c4df7b718ac01b3bf93354a43c8f8">LD2410Types::DistanceResolution::RESOLUTION_75CM</a></div><div class="ttdeci">@ RESOLUTION_75CM</div><div class="ttdoc">Each gate ~0.75 m, max range ~6 m.</div></div>
 </div><!-- fragment -->
 </div>
 </div>

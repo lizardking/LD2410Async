@@ -1,0 +1,5 @@
+<map id="LD2410Async::requestAllStaticDataAsync" name="LD2410Async::requestAllStaticDataAsync">
+<area shape="rect" id="Node000001" title="Requests all static information from the sensor." alt="" coords="5,5,206,46"/>
+<area shape="rect" id="Node000002" href="$classLD2410Async.html#a72e853afaba8373fb90524c3c4e8a153" title="Checks if an asynchronous command is currently pending." alt="" coords="254,13,436,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="206,23,238,23,238,28,206,28"/>
+</map>

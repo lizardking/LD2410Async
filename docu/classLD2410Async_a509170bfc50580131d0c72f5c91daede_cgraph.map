@@ -1,0 +1,9 @@
+<map id="LD2410Async::configureAllConfigSettingsAsync" name="LD2410Async::configureAllConfigSettingsAsync">
+<area shape="rect" id="Node000001" title="Applies a full ConfigData struct to the LD2410." alt="" coords="5,55,181,96"/>
+<area shape="rect" id="Node000002" href="$classLD2410Async.html#a72e853afaba8373fb90524c3c4e8a153" title="Checks if an asynchronous command is currently pending." alt="" coords="231,5,413,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="176,52,252,33,253,38,177,57"/>
+<area shape="rect" id="Node000003" href="$classLD2410Async.html#a250de0cee1571020fa8b8f97ba9baa48" title="Detects if config mode is enabled." alt="" coords="229,55,415,96"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="181,73,213,73,213,78,181,78"/>
+<area shape="rect" id="Node000004" href="$structLD2410Types_1_1ConfigData.html#a78c2665adcc382224455dfde7f05b885" title="Validates the configuration data for correctness." alt="" coords="237,120,407,161"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="167,94,234,113,233,118,166,99"/>
+</map>

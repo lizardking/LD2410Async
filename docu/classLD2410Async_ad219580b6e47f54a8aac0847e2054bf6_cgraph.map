@@ -1,0 +1,5 @@
+<map id="LD2410Async::requestAutoConfigStatusAsync" name="LD2410Async::requestAutoConfigStatusAsync">
+<area shape="rect" id="Node000001" title="Requests the current status of the auto&#45;config routine." alt="" coords="5,5,184,46"/>
+<area shape="rect" id="Node000002" href="$classLD2410Async.html#a72e853afaba8373fb90524c3c4e8a153" title="Checks if an asynchronous command is currently pending." alt="" coords="232,13,414,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="184,23,216,23,216,28,184,28"/>
+</map>

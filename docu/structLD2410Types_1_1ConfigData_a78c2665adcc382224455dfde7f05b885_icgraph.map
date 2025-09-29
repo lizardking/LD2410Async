@@ -1,0 +1,5 @@
+<map id="LD2410Types::ConfigData::isValid" name="LD2410Types::ConfigData::isValid">
+<area shape="rect" id="Node000001" title="Validates the configuration data for correctness." alt="" coords="229,5,399,46"/>
+<area shape="rect" id="Node000002" href="$classLD2410Async.html#a509170bfc50580131d0c72f5c91daede" title="Applies a full ConfigData struct to the LD2410." alt="" coords="5,5,181,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="213,28,181,28,181,23,213,23"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="LD2410Async::configureBaudRateAsync" name="LD2410Async::configureBaudRateAsync">
+<area shape="rect" id="Node000001" title="Configures the UART baud rate of the sensor." alt="" coords="5,27,196,68"/>
+<area shape="rect" id="Node000002" href="$classLD2410Async.html#a72e853afaba8373fb90524c3c4e8a153" title="Checks if an asynchronous command is currently pending." alt="" coords="244,5,426,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="196,33,228,29,228,34,196,38"/>
+<area shape="rect" id="Node000003" href="$namespaceLD2410CommandBuilder.html#af8eb163ccaa819b1504b79459ed48729" title=" " alt="" coords="250,55,420,96"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="196,56,234,61,234,66,196,62"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="LD2410Async::configureMaxGateAndNoOneTimeoutAsync" name="LD2410Async::configureMaxGateAndNoOneTimeoutAsync">
+<area shape="rect" id="Node000001" title="Configures the maximum detection gates and &quot;no&#45;one&quot; timeout on the sensor." alt="" coords="5,27,202,68"/>
+<area shape="rect" id="Node000002" href="$classLD2410Async.html#a72e853afaba8373fb90524c3c4e8a153" title="Checks if an asynchronous command is currently pending." alt="" coords="250,5,432,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="202,33,234,29,235,34,203,38"/>
+<area shape="rect" id="Node000003" href="$namespaceLD2410CommandBuilder.html#a1891c87b48a0ec24a7a6066fe48bd63e" title=" " alt="" coords="258,55,424,96"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="203,56,243,61,242,67,202,62"/>
+</map>

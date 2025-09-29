@@ -1,0 +1,5 @@
+<map id="LD2410Async::requestAuxControlSettingsAsync" name="LD2410Async::requestAuxControlSettingsAsync">
+<area shape="rect" id="Node000001" title="Requests the current auxiliary control settings." alt="" coords="5,5,220,46"/>
+<area shape="rect" id="Node000002" href="$classLD2410Async.html#a72e853afaba8373fb90524c3c4e8a153" title="Checks if an asynchronous command is currently pending." alt="" coords="268,13,450,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="220,23,252,23,252,28,220,28"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="LD2410CommandBuilder::buildBaudRateCommand" name="LD2410CommandBuilder::buildBaudRateCommand">
+<area shape="rect" id="Node000001" title=" " alt="" coords="482,5,652,46"/>
+<area shape="rect" id="Node000002" href="$classLD2410Async.html#a39aa1e94b76c2a08d96ab80fe2c9ed9c" title="Configures the UART baud rate of the sensor." alt="" coords="244,5,434,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="467,28,435,28,435,23,467,23"/>
+<area shape="rect" id="Node000003" href="$classLD2410Async.html#adcd209213cc2e418aefd20573a868e0a" title="Configures the baudrate of the serial port of the sensor." alt="" coords="5,5,196,46"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="228,28,196,28,196,23,228,23"/>
+</map>

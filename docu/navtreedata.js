@@ -25,6 +25,15 @@
 var NAVTREE =
 [
   [ "LD2410Async", "index.html", [
+    [ "Introduction", "index.html#intro_sec", [
+      [ "Features", "index.html#autotoc_md0", null ],
+      [ "Accessing data", "index.html#autotoc_md1", [
+        [ "Example: Access detection data without cloning", "index.html#autotoc_md2", null ],
+        [ "Example: Clone config data, modify, and write back", "index.html#autotoc_md3", null ]
+      ] ],
+      [ "Usage", "index.html#autotoc_md4", null ]
+    ] ],
+    [ "Topics", "topics.html", "topics" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -59,7 +68,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "LD2410Async_8cpp.html",
-"namespaceLD2410Defs.html#ab608eaab7657a8a9b017963743382816"
+"namespaceLD2410Defs.html#a84d36b455dbae471e689a52fc92aeb75"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

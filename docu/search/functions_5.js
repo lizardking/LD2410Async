@@ -5,5 +5,5 @@ var searchData=
   ['getconfigdataref_2',['getConfigDataRef',['../classLD2410Async.html#af9f1d59211106a3b582a1417063b3a13',1,'LD2410Async']]],
   ['getdetectiondata_3',['getDetectionData',['../classLD2410Async.html#a5bf997474cd5eb58ac2a142a8d134a50',1,'LD2410Async']]],
   ['getdetectiondataref_4',['getDetectionDataRef',['../classLD2410Async.html#ade2ef7c106c38e11fd450e75a6494090',1,'LD2410Async']]],
-  ['getinactivitytimeoutms_5',['getInactivityTimeoutMs',['../classLD2410Async.html#a74138af198ac827349a25e122277803f',1,'LD2410Async']]]
+  ['getinactivitytimeoutms_5',['getInactivityTimeoutMs',['../group__LD2410Async__Inactivity.html#ga74138af198ac827349a25e122277803f',1,'LD2410Async']]]
 ];

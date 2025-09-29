@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['begin_0',['begin',['../classLD2410Async.html#a1358f6f0b8d55a676b5b8147906c9024',1,'LD2410Async']]],
+  ['begin_0',['begin',['../group__LD2410Async__Lifecycle.html#ga1358f6f0b8d55a676b5b8147906c9024',1,'LD2410Async']]],
   ['beginautoconfigasync_1',['beginAutoConfigAsync',['../classLD2410Async.html#aed89a0870ddacee96bc2f0fb9c1c96fc',1,'LD2410Async']]],
   ['bufferendswith_2',['bufferEndsWith',['../LD2410Async_8cpp.html#a3c7c41f9027f8d9ab4917e6a50ed045e',1,'LD2410Async.cpp']]],
   ['buildauxcontrolcommand_3',['buildAuxControlCommand',['../namespaceLD2410CommandBuilder.html#a8b54a13a534e713b1fc2b29818bbe255',1,'LD2410CommandBuilder']]],

@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="Asynchronous driver for the LD2410 human presence radar sensor.">
+<g id="a_Node000001"><a xlink:title=" ">
 <polygon fill="#999999" stroke="#666666" points="185.38,-19.25 108.62,-19.25 108.62,0 185.38,0 185.38,-19.25"/>
 <text text-anchor="middle" x="147" y="-5.75" font-family="Helvetica,sans-Serif" font-size="10.00">LD2410Async</text>
 </a>

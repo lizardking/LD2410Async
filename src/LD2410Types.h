@@ -15,7 +15,6 @@ namespace LD2410Types {
 	 * that are only reported while the sensor is running its
 	 * self-calibration routine.
 	 * 
-	 * @ingroup LD2410Async_Types
 	 */
 
 	enum class TargetState {
@@ -41,7 +40,6 @@ namespace LD2410Types {
 	 *              - 6 → AUTOCONFIG_FAILED
 	 * @returns The matching TargetState value, or NO_TARGET if invalid.
 	 * 
-	 * @ingroup LD2410Async_Types
 	 */
 	static TargetState toTargetState(int value) {
 		switch (value) {
@@ -64,7 +62,6 @@ namespace LD2410Types {
 	 * @param state TargetState enum value.
 	 * @returns Human-readable string such as "No target", "Moving target", etc.
 	 *
-	 * @ingroup LD2410Async_Types
 	 */
 	static String targetStateToString(TargetState state) {
 		switch (state) {
@@ -92,7 +89,6 @@ namespace LD2410Types {
 	 *
 	 * Use NOT_SET only as a placeholder; it is not a valid configuration value.
 	 *
-	 * @ingroup LD2410Async_Types
 	 */
 	enum class LightControl {
 		NOT_SET = -1,          ///< Placeholder resp. inital value. Do not use as a config value (will result in abortion of the config command).
@@ -109,7 +105,6 @@ namespace LD2410Types {
 	 *              - 2 → LIGHT_ABOVE_THRESHOLD
 	 * @returns The matching LightControl value, or NOT_SET if invalid.
 	 *
-	 * @ingroup LD2410Async_Types
 	 */
 	static LightControl toLightControl(int value) {
 		switch (value) {
@@ -129,7 +124,6 @@ namespace LD2410Types {
 	 *
 	 * Use NOT_SET only as a placeholder; it is not a valid configuration value.
 	 *
-	 * @ingroup LD2410Async_Types
 	 */
 	enum class OutputControl {
 		NOT_SET = -1,                ///< Placeholder resp. inital value. Do not use as a config value (will result in abortion of the config command).
@@ -145,7 +139,6 @@ namespace LD2410Types {
 	 *              - 1 → DEFAULT_HIGH_DETECTED_LOW
 	 * @returns The matching OutputControl value, or NOT_SET if invalid.
 	 *
-	 * @ingroup LD2410Async_Types
 	 */
 	static OutputControl toOutputControl(int value) {
 		switch (value) {
@@ -163,7 +156,6 @@ namespace LD2410Types {
 	 *
 	 * Use NOT_SET only as a placeholder; it is not a valid configuration value.
 	 *
-	 * @ingroup LD2410Async_Types
 	 */
 	enum class AutoConfigStatus {
 		NOT_SET = -1,    ///< Status not yet retrieved.
@@ -181,7 +173,6 @@ namespace LD2410Types {
 	 *              - 2 → COMPLETED
 	 * @returns The matching AutoConfigStatus value, or NOT_SET if invalid.
 	 *
-	 * @ingroup LD2410Async_Types
 	 */
 	static AutoConfigStatus toAutoConfigStatus(int value) {
 		switch (value) {
@@ -200,7 +191,6 @@ namespace LD2410Types {
 	 * by the LD2410. After changing the baud rate, a sensor reboot
 	 * is required, and the ESP32’s UART must be reconfigured to match.
 	 *
-	 * @ingroup LD2410Async_Types
 	 */
 	enum class Baudrate {
 		BAUDRATE_9600 = 1,  ///< 9600 baud.
@@ -222,7 +212,6 @@ namespace LD2410Types {
 	 *
 	 * Use NOT_SET only as a placeholder; it is not a valid configuration value.
 	 *
-	 * @ingroup LD2410Async_Types
 	 */
 	enum class DistanceResolution {
 		NOT_SET = -1,          ///< Placeholder resp. inital value. Do not use as a config value (will result in abortion of the config command).
@@ -238,7 +227,6 @@ namespace LD2410Types {
 	 *                - 1 → RESOLUTION_20CM
 	 * @returns The matching DistanceResolution value, or NOT_SET if invalid.
 	 *
-	 * @ingroup LD2410Async_Types
 	 */
 	static DistanceResolution toDistanceResolution(int value) {
 		switch (value) {
@@ -255,8 +243,6 @@ namespace LD2410Types {
 	  * Values reflect either the basic presence information or, if
 	  * engineering mode is enabled, per-gate signal details.
 	 *
-	 * @ingroup LD2410Async_Types
-	 * @ingroup LD2410Async_PresenceDetection
 	  */
 	struct DetectionData
 	{
@@ -365,8 +351,6 @@ namespace LD2410Types {
 	 * such as requestAllConfigSettingsAsync() or requestGateParametersAsync() or
 	 * requestAuxControlSettingsAsync() or requestDistanceResolutioncmAsync().
 	 *
-	 * @ingroup LD2410Async_Types
-	 * @ingroup LD2410Async_Configuration
 	 */
 	struct ConfigData {
 		// === Radar capabilities ===

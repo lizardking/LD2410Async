@@ -93,7 +93,6 @@ public:
 	 *
 	 * Every async command reports back its outcome via the callback.
 	 *
-	 * @ingroup LD2410Async_Types
 	 */
 	enum class AsyncCommandResult : byte {
 		SUCCESS,    ///< Command completed successfully and ACK was received.
@@ -112,8 +111,6 @@ public:
 	 * @param result   Outcome of the async operation (SUCCESS, FAILED, TIMEOUT, CANCELED).
 	 * @param userData User-specified value passed when registering the callback.
 	 *
-	 * @ingroup LD2410Async_Configuration
-	 * @ingroup LD2410Async_Callbacks
 	 */
 	typedef void (*AsyncCommandCallback)(LD2410Async* sender, AsyncCommandResult result, byte userData);
 
@@ -124,8 +121,6 @@ public:
 	 * @param userData User-specified value passed when registering the callback.
 	 *
 	 *
-	 * @ingroup LD2410Async_Configuration
-	 * @ingroup LD2410Async_Callbacks
 	 */
 	typedef void (*GenericCallback)(LD2410Async* sender, byte userData);
 
@@ -141,8 +136,6 @@ public:
 	 * @param presenceDetected  True if the radar currently detects presence (moving or stationary), false otherwise.
 	 * @param userData          User-defined value passed when registering the callback.
 	 *
-	 * @ingroup LD2410Async_Callbacks
-	 * @ingroup LD2410Async_PresenceDetection
 	 */
 	typedef void(*DetectionDataCallback)(LD2410Async* sender, bool presenceDetected, byte userData);
 
@@ -162,8 +155,6 @@ public:
 	* whenever this struct changes.
 	* Use getDetectionData() or getDetectionDataRef() to access the current values, rather than accessing the struct directly.
 	*
-	* @ingroup LD2410Async_PublicData
-	* @ingroup LD2410Async_PresenceDetection
 	*
 	*/
 	LD2410Types::DetectionData detectionData;
@@ -178,8 +169,6 @@ public:
 	*
 	* Structure will contain only uninitilaized data if config data is not queried explicitly.
 	*
-	* @ingroup LD2410Async_PublicData
-	* @ingroup LD2410Async_Configuration
 	*/
 	LD2410Types::ConfigData configData;
 
@@ -189,8 +178,6 @@ public:
 	* This value is set when entering config mode. It can be useful
 	* for compatibility checks between firmware and library.
 	*
-	* @ingroup LD2410Async_PublicData
-	* @ingroup LD2410Async_StaticData
 	*/
 	unsigned long protocolVersion = 0;
 
@@ -200,8 +187,6 @@ public:
 	* Set when entering config mode. Typically not required by users
 	* unless debugging low-level protocol behavior.
 	*
-	* @ingroup LD2410Async_PublicData
-	* @ingroup LD2410Async_StaticData
 	*/
 	unsigned long bufferSize = 0;
 
@@ -212,7 +197,6 @@ public:
 	* After sending config commands, always disable the config mode using disableConfigModeAsync(),
 	* otherwiese the radar will not send any detection data.
 	*
-	* @ingroup LD2410Async_PublicData
 	*/
 	bool configModeEnabled = false;
 
@@ -225,7 +209,6 @@ public:
 	*
 	* Use enableEngineeringModeAsync() and disableEngineeringModeAsync() to control the engineering mode.
 	*
-	* @ingroup LD2410Async_PublicData
 	*/
 	bool engineeringModeEnabled = false;
 
@@ -235,8 +218,6 @@ public:
 	* Populated by requestFirmwareAsync(). Format is usually
 	* "major.minor.build".
 	*
-	* @ingroup LD2410Async_PublicData
-	* @ingroup LD2410Async_StaticData
 	*/
 	String firmware = "";
 
@@ -245,8 +226,6 @@ public:
 	*
 	* Populated by requestBluetoothMacAddressAsync().
 	*
-	* @ingroup LD2410Async_PublicData
-	* @ingroup LD2410Async_StaticData
 	*/
 	byte mac[6];
 	
@@ -255,8 +234,6 @@ public:
 	*
 	* Populated by requestBluetoothMacAddressAsync().
 	*
-	* @ingroup LD2410Async_PublicData
-	* @ingroup LD2410Async_StaticData
 	*/
 	String macString = "";
 
@@ -266,8 +243,6 @@ public:
 	*
 	* Updated by requestAutoConfigStatusAsync().
 	*
-	* @ingroup LD2410Async_Configuration
-	* @ingroup LD2410Async_PublicData
 	*/
 	LD2410Types::AutoConfigStatus	autoConfigStatus = LD2410Types::AutoConfigStatus::NOT_SET;
 
@@ -293,7 +268,6 @@ public:
 	*
 	* @param serial Reference to a Stream object used to exchange data with the sensor.
 	* 
-	* @ingroup LD2410Async_MainMethods
 	*/
 	LD2410Async(Stream& serial);
 
@@ -309,7 +283,6 @@ public:
 	*
 	* @returns true if the task was successfully started, false if already running.
 	* 
-	* @ingroup LD2410Async_MainMethods
 	*/
 	bool begin();
 
@@ -321,7 +294,6 @@ public:
 	*
 	* @returns true if the task was stopped, false if it was not active.
 	* 
-	* @ingroup LD2410Async_MainMethods
 	*/
 	bool end();
 
@@ -349,7 +321,6 @@ public:
 	*
 	* @param enable Pass true to enable inactivity handling, false to disable it.
 	* 
-	* @ingroup LD2410Async_InactivityHandling
 	*/
 	void setInactivityHandling(bool enable);
 
@@ -358,7 +329,6 @@ public:
 	*
 	* Equivalent to calling setInactivityHandling(true).
 	* 
-	* @ingroup LD2410Async_InactivityHandling
 	*/
 	void enableInactivityHandling() { setInactivityHandling(true); };
 
@@ -367,7 +337,6 @@ public:
 	*
 	* Equivalent to calling setInactivityHandling(false).
 	* 
-	* @ingroup LD2410Async_InactivityHandling
 	*/
 	void disableInactivityHandling() { setInactivityHandling(false); };
 
@@ -376,7 +345,6 @@ public:
 	*
 	* @returns true if inactivity handling is enabled, false otherwise.
 	* 
-	* @ingroup LD2410Async_InactivityHandling
 	*/
 	bool isInactivityHandlingEnabled() const { return inactivityHandlingEnabled; };
 
@@ -391,7 +359,6 @@ public:
 	*
 	* @param timeoutMs Timeout in milliseconds (minimum 10000 ms recommended). 0 will diable inactivity checking and handling.
 	* 
-	* @ingroup LD2410Async_InactivityHandling
 	*/
 	void setInactivityTimeoutMs(unsigned long timeoutMs) { inactivityHandlingTimeoutMs = timeoutMs; };
 
@@ -400,7 +367,6 @@ public:
 	*
 	* @returns Timeout in milliseconds.
 	* 
-	* @ingroup LD2410Async_InactivityHandling
 	*/
 	unsigned long getInactivityTimeoutMs() const { return inactivityHandlingTimeoutMs; };
 
@@ -421,8 +387,6 @@ public:
 	*        void methodName(LD2410Async* sender, bool presenceDetected, byte userData).
 	* @param userData Optional value that will be passed to the callback.
 	* 
-	* @ingroup LD2410Async_Callbacks
-	* @ingroup LD2410Async_PresenceDetection
 	*/
 	void registerDetectionDataReceivedCallback(DetectionDataCallback callback, byte userData = 0);
 
@@ -436,8 +400,6 @@ public:
 	*        void methodName(LD2410Async* sender, byte userData).
 	* @param userData Optional value that will be passed to the callback.
 	* 
-	* @ingroup LD2410Async_Callbacks
-	* @ingroup LD2410Async_Configuration
 	*/
 	void registerConfigChangedCallback(GenericCallback callback, byte userData = 0);
 
@@ -451,8 +413,6 @@ public:
 	*        void methodName(LD2410Async* sender, byte userData).
 	* @param userData Optional value that will be passed to the callback.
 	* 
-	* @ingroup LD2410Async_Callbacks
-	* @ingroup LD2410Async_Configuration
 	*/
 	void registerConfigUpdateReceivedCallback(GenericCallback callback, byte userData = 0);
 
@@ -494,8 +454,6 @@ public:
 	*
 	* @returns A copy of the current DetectionData.
 	* 
-	* @ingroup LD2410Async_PresenceDetection
-	* @ingroup LD2410Async_PublicData
 	*/
 	LD2410Types::DetectionData getDetectionData() const;
 
@@ -530,8 +488,6 @@ public:
 	*
 	* @returns Const reference to the current DetectionData.
 	* 
-	* @ingroup LD2410Async_PresenceDetection
-	* @ingroup LD2410Async_PublicData
 	*/
 	const LD2410Types::DetectionData& getDetectionDataRef() const { return detectionData; }
 
@@ -577,8 +533,6 @@ public:
 	*
 	* @returns A copy of the current ConfigData.
 	* 
-	* @ingroup LD2410Async_Configuration
-	* @ingroup LD2410Async_PublicData
 	*/
 	LD2410Types::ConfigData getConfigData() const;
 
@@ -613,8 +567,6 @@ public:
 	*
 	* @returns Const reference to the current ConfigData.
 	* 
-	* @ingroup LD2410Async_Configuration
-	* @ingroup LD2410Async_PublicData
 	*/
 	const LD2410Types::ConfigData& getConfigDataRef() const { return configData; }
 
@@ -628,7 +580,6 @@ public:
 	* @returns true if there is an active command awaiting an ACK,
 	*          false if the library is idle.
 	* 
-	* @ingroup LD2410Async_AsyncCommands
 	*/
 	bool asyncIsBusy();
 
@@ -640,7 +591,6 @@ public:
 	* remain in config mode — consider disabling config mode or
 	* rebooting to return to detection operation.
 	* 
-	* @ingroup LD2410Async_AsyncCommands
 	*/
 	void asyncCancel();
 
@@ -652,7 +602,6 @@ public:
 	*
 	* @param timeoutMs Timeout in milliseconds (default 6000 ms).
 	* 
-	* @ingroup LD2410Async_AsyncCommands
 	*/
 	void setAsyncCommandTimeoutMs(unsigned long timeoutMs) { asyncCommandTimeoutMs = timeoutMs; }
 
@@ -661,7 +610,6 @@ public:
 	*
 	* @return Timeout in milliseconds.
 	* 
-	* @ingroup LD2410Async_AsyncCommands
 	*/
 	unsigned long getAsyncCommandTimeoutMs() const { return asyncCommandTimeoutMs; }
 
@@ -689,8 +637,6 @@ public:
 	*
 	* @returns true if the command was sent, false if blocked.
 	* 
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_Configuration
 	*/
 	bool enableConfigModeAsync(AsyncCommandCallback callback, byte userData = 0);
 
@@ -709,8 +655,6 @@ public:
 	*
 	* @returns true if the command was sent, false otherwise.
 	*
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_Configuration
 	*/
 	bool disableConfigModeAsync(AsyncCommandCallback callback, byte userData = 0);
 
@@ -719,7 +663,6 @@ public:
 	*
 	* @returns true if config mode is anabled, false if config mode is disabled
 	*
-	* @ingroup LD2410Async_Configuration
 	*/
 	bool isConfigModeEnabled() const {
 	return configModeEnabled;
@@ -743,9 +686,6 @@ public:
 	*
 	* @returns true if the command was sent, false otherwise.
 	*
-	* @ingroup LD2410Async_NativeCommands
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_PresenceDetection
 	*/
 	bool enableEngineeringModeAsync(AsyncCommandCallback callback, byte userData = 0);
 
@@ -761,8 +701,6 @@ public:
 	*
 	* @returns true if the command was sent, false otherwise.
 	*
-	* @ingroup LD2410Async_PresenceDetection
-	* @ingroup LD2410Async_AsyncCommands
 	*/
 	bool disableEngineeringModeAsync(AsyncCommandCallback callback, byte userData = 0);
 
@@ -771,7 +709,6 @@ public:
 	*
 	* @returns true if engineering mode is anabled, false if engineering mode is disabled
 	* 
-	* @ingroup LD2410Async_PresenceDetection
 	*/
 	bool isEngineeringModeEnabled() const {
 	return engineeringModeEnabled;
@@ -794,9 +731,6 @@ public:
 	*
 	* @returns true if the command was sent, false otherwise.
 	*
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_Configuration
-	* @ingroup LD2410Async_NativeCommands
 	*/
 	bool requestGateParametersAsync(AsyncCommandCallback callback, byte userData = 0);
 
@@ -822,9 +756,6 @@ public:
 	*
 	* @returns true if the command was sent, false otherwise (busy state or invalid values).
 	*
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_Configuration
-	* @ingroup LD2410Async_NativeCommands
 	*/
 	bool configureMaxGateAndNoOneTimeoutAsync(byte maxMovingGate, byte maxStationaryGate, unsigned short noOneTimeout, AsyncCommandCallback callback, byte userData = 0);
 
@@ -845,9 +776,6 @@ public:
 	*
 	* @returns true if the sequence was started, false otherwise.
 	*
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_Configuration
-	* @ingroup LD2410Async_NativeCommands
 	*/
 
 	bool configureDistanceGateSensitivityAsync(const byte movingThresholds[9], const byte stationaryThresholds[9], AsyncCommandCallback callback, byte userData = 0);
@@ -871,9 +799,6 @@ public:
 	* @returns true if the command was sent, false otherwise.
 	* 
 	*
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_Configuration
-	* @ingroup LD2410Async_NativeCommands
 	*/
 	bool configureDistanceGateSensitivityAsync(byte gate, byte movingThreshold, byte stationaryThreshold, AsyncCommandCallback callback, byte userData = 0);
 
@@ -889,9 +814,6 @@ public:
 	*
 	* @returns true if the command was sent, false otherwise.
 	*
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_StaticData
-	* @ingroup LD2410Async_NativeCommands
 	*/
 	bool requestFirmwareAsync(AsyncCommandCallback callback, byte userData = 0);
 
@@ -913,9 +835,6 @@ public:
 	*
 	* @returns true if the command was sent, false otherwise.
 	*
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_Configuration
-	* @ingroup LD2410Async_NativeCommands
 	*/
 	bool configureBaudRateAsync(byte baudRateSetting, AsyncCommandCallback callback, byte userData = 0);
 
@@ -935,9 +854,6 @@ public:
 	*
 	* @returns true if the command has been sent, false if the command cant be sent (typically because another async command is pending).
 	*
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_Configuration
-	* @ingroup LD2410Async_NativeCommands
 	*/
 	bool configureBaudRateAsync(LD2410Types::Baudrate baudRate, AsyncCommandCallback callback, byte userData = 0);
 
@@ -955,9 +871,6 @@ public:
 	*
 	* @returns true if the command was sent, false otherwise.
 	*
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_Configuration
-	* @ingroup LD2410Async_NativeCommands
 	*/
 	bool restoreFactorySettingsAsync(AsyncCommandCallback callback, byte userData = 0);
 
@@ -974,9 +887,7 @@ public:
 	*
 	* @returns true if the command was sent, false otherwise.
 	*
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_NativeCommands
-	*/
+		*/
 	bool rebootAsync(AsyncCommandCallback callback, byte userData = 0);
 
 	/**
@@ -987,11 +898,7 @@ public:
 	*
 	* @returns true if the command has been sent, false if the command cant be sent (typically because another async command is pending).
 	*
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_Configuration
-	* @ingroup LD2410Async_Bluetooth
-	* @ingroup LD2410Async_NativeCommands
-	*/
+		*/
 	bool enableBluetoothAsync(AsyncCommandCallback callback, byte userData = 0);
 
 	/**
@@ -1002,10 +909,6 @@ public:
 	*
 	* @returns true if the command has been sent, false if the command cant be sent (typically because another async command is pending).
 	*
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_Configuration
-	* @ingroup LD2410Async_Bluetooth
-	* @ingroup LD2410Async_NativeCommands
 	*/
 	bool disableBluetoothAsync(AsyncCommandCallback callback, byte userData = 0);
 
@@ -1019,7 +922,6 @@ public:
 	*
 	* @returns true if the command has been sent, false if the command cant be sent (typically because another async command is pending).
 	*
-	* @ingroup LD2410Async_AsyncCommands LD2410Async_Bluetooth LD2410Async_StaticData LD2410Async_NativeCommands
 	*/
 	bool requestBluetoothMacAddressAsync(AsyncCommandCallback callback, byte userData = 0);
 
@@ -1032,10 +934,6 @@ public:
 	*
 	* @returns true if the command has been sent, false if the command cant be sent (typically because another async command is pending).
 	*
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_Configuration
-	* @ingroup LD2410Async_Bluetooth
-	* @ingroup LD2410Async_NativeCommands
 	*/
 	bool configureBluetoothPasswordAsync(const char* password, AsyncCommandCallback callback, byte userData = 0);
 
@@ -1048,10 +946,6 @@ public:
 	*
 	* @returns true if the command has been sent, false if the command cant be sent (typically because another async command is pending).
 	*
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_Configuration
-	* @ingroup LD2410Async_Bluetooth
-	* @ingroup LD2410Async_NativeCommands
 	*/
 	bool configureBluetoothPasswordAsync(const String& password, AsyncCommandCallback callback, byte userData = 0);
 
@@ -1062,10 +956,6 @@ public:
 	*
 	* @returns true if the command has been sent, false if the command cant be sent (typically because another async command is pending).
 	*
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_Configuration
-	* @ingroup LD2410Async_Bluetooth
-	* @ingroup LD2410Async_NativeCommands
 	*/
 	bool configureDefaultBluetoothPasswordAsync(AsyncCommandCallback callback, byte userData = 0);
 
@@ -1091,9 +981,6 @@ public:
 	* @returns true if the command was sent, false if invalid parameters
 	*          or the library is busy.
 	*
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_Configuration
-	* @ingroup LD2410Async_NativeCommands
 	*/
 	bool configureDistanceResolutionAsync(LD2410Types::DistanceResolution distanceResolution, AsyncCommandCallback callback, byte userData = 0);
 
@@ -1112,9 +999,6 @@ public:
 	*
 	* @returns true if the command was sent, false otherwise.
 	*
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_Configuration
-	* @ingroup LD2410Async_NativeCommands
 	*/
 	bool configureDistanceResolution75cmAsync(AsyncCommandCallback callback, byte userData = 0);
 
@@ -1133,9 +1017,6 @@ public:
 	*
 	* @returns true if the command was sent, false otherwise.
 	*
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_Configuration
-	* @ingroup LD2410Async_NativeCommands
 	*/
 	bool configuresDistanceResolution20cmAsync(AsyncCommandCallback callback, byte userData = 0);
 
@@ -1152,9 +1033,6 @@ public:
 	*
 	* @returns true if the command was sent, false otherwise.
 	*
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_Configuration
-	* @ingroup LD2410Async_NativeCommands
 	*/
 	bool requestDistanceResolutioncmAsync(AsyncCommandCallback callback, byte userData = 0);
 
@@ -1179,9 +1057,6 @@ public:
 	*
 	* @returns true if the command was sent, false otherwise.
 	*
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_Configuration
-	* @ingroup LD2410Async_NativeCommands
 	*/
 	bool configureAuxControlSettingsAsync(LD2410Types::LightControl light_control, byte light_threshold, LD2410Types::OutputControl output_control, AsyncCommandCallback callback, byte userData = 0);
 
@@ -1200,9 +1075,6 @@ public:
 	*
 	* @returns true if the command was sent, false otherwise.
 	*
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_Configuration
-	* @ingroup LD2410Async_NativeCommands
 	*/
 	bool requestAuxControlSettingsAsync(AsyncCommandCallback callback, byte userData = 0);
 
@@ -1247,9 +1119,6 @@ public:
 	*
 	* @returns true if the command was sent, false otherwise.
 	*
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_Configuration
-	* @ingroup LD2410Async_NativeCommands
 	*/
 	bool beginAutoConfigAsync(AsyncCommandCallback callback, byte userData = 0);
 
@@ -1304,9 +1173,6 @@ public:
 	*
 	* @returns true if the command was sent, false otherwise.
 	*
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_Configuration
-	* @ingroup LD2410Async_NativeCommands
 	*/
 	bool requestAutoConfigStatusAsync(AsyncCommandCallback callback, byte userData = 0);
 
@@ -1362,9 +1228,6 @@ public:
 	*
 	* @returns true if the command was sent, false otherwise.
 	*
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_Configuration
-	* @ingroup LD2410Async_HighLevelCommands
 	*/
 	bool requestAllConfigSettingsAsync(AsyncCommandCallback callback, byte userData = 0);
 
@@ -1412,9 +1275,6 @@ public:
 	*
 	* @returns true if the command was sent, false otherwise.
 	* 
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_StaticData
-	* @ingroup LD2410Async_HighLevelCommands
 	*/
 	bool requestAllStaticDataAsync(AsyncCommandCallback callback, byte userData = 0);
 
@@ -1471,9 +1331,6 @@ public:
 	*
 	* @returns true if the command sequence has been started, false otherwise.
 	* 
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_StaticData
-	* @ingroup LD2410Async_HighLevelCommands
 	*/
 	bool configureAllConfigSettingsAsync(const LD2410Types::ConfigData& configToWrite, bool writeAllConfigData, AsyncCommandCallback callback, byte userData = 0);
 

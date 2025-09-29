@@ -592,7 +592,7 @@ bool LD2410Async::sendCommandAsync(const byte* command, AsyncCommandCallback cal
 ***********************************************************************************/
 
 bool LD2410Async::asyncIsBusy() {
-	return asyncCommandActive || sendAsyncSequenceActive || configureAllConfigSettingsAsyncConfigActive;
+	return asyncCommandActive || executeCommandSequenceActive || configureAllConfigSettingsAsyncConfigActive;
 }
 
 /**********************************************************************************
@@ -602,7 +602,7 @@ bool LD2410Async::asyncIsBusy() {
 
 bool LD2410Async::sendConfigCommandAsync(const byte* command, AsyncCommandCallback callback, byte userData) {
 	//Dont check with asyncIsBusy() since this would also check if a sequence or setConfigDataASync is active
-	if (asyncCommandActive || sendAsyncSequenceActive) return false;
+	if (asyncCommandActive || executeCommandSequenceActive) return false;
 
 	// Reset sequence buffer
 	if (!resetCommandSequence()) return false;;
@@ -618,18 +618,18 @@ bool LD2410Async::sendConfigCommandAsync(const byte* command, AsyncCommandCallba
 * Async command sequence methods
 ***********************************************************************************/
 void LD2410Async::executeCommandSequenceAsyncExecuteCallback(LD2410Async::AsyncCommandResult result) {
-	if (sendAsyncSequenceActive) {
+	if (executeCommandSequenceActive) {
 
 		DEBUG_PRINT_MILLIS;
 		DEBUG_PRINT("Command sequence duration ms: ");
-		DEBUG_PRINTLN(millis() - sendAsyncSequenceStartMs);
+		DEBUG_PRINTLN(millis() - executeCommandSequenceStartMs);
 
 		vTaskSuspendAll();
-		AsyncCommandCallback cb = sendAsyncSequenceCallback;
-		byte userData = sendAsyncSequenceUserData;
-		sendAsyncSequenceCallback = nullptr;
-		sendAsyncSequenceUserData = 0;
-		sendAsyncSequenceActive = false;
+		AsyncCommandCallback cb = executeCommandSequenceCallback;
+		byte userData = executeCommandSequenceUserData;
+		executeCommandSequenceCallback = nullptr;
+		executeCommandSequenceUserData = 0;
+		executeCommandSequenceActive = false;
 		xTaskResumeAll();
 
 		if (cb != nullptr) {
@@ -654,7 +654,7 @@ void LD2410Async::executeCommandSequenceAsyncDisableConfigModeCallback(LD2410Asy
 }
 
 void LD2410Async::executeCommandSequenceAsyncFinalize(LD2410Async::AsyncCommandResult result) {
-	if (!sendAsyncSequenceInitialConfigModeState) {
+	if (!executeCommandSequenceInitialConfigModeState) {
 		disableConfigModeAsync(executeCommandSequenceAsyncDisableConfigModeCallback, static_cast<byte>(result));
 	}
 	else {
@@ -675,12 +675,12 @@ void LD2410Async::executeCommandSequenceAsyncCommandCallback(LD2410Async* sender
 	};
 
 	// Move to next command
-	sender->sendAsyncSequenceIndex++;
+	sender->executeCommandSequenceIndex++;
 
-	if (sender->sendAsyncSequenceIndex < sender->commandSequenceBufferCount) {
+	if (sender->executeCommandSequenceIndex < sender->commandSequenceBufferCount) {
 		// Send next command
 		sender->sendCommandAsync(
-			sender->commandSequenceBuffer[sender->sendAsyncSequenceIndex],
+			sender->commandSequenceBuffer[sender->executeCommandSequenceIndex],
 			executeCommandSequenceAsyncCommandCallback,
 			0
 		);
@@ -695,22 +695,22 @@ void LD2410Async::executeCommandSequenceAsyncCommandCallback(LD2410Async* sender
 
 
 bool LD2410Async::executeCommandSequenceAsync(AsyncCommandCallback callback, byte userData) {
-	if (asyncCommandActive || sendAsyncSequenceActive) return false;
+	if (asyncCommandActive || executeCommandSequenceActive) return false;
 	if (commandSequenceBufferCount == 0) return true; // nothing to send
 
 	DEBUG_PRINT_MILLIS;
 	DEBUG_PRINT("Starting command sequence execution. Number of commands: ");
 	DEBUG_PRINTLN(commandSequenceBufferCount);
 
-	sendAsyncSequenceActive = true;
-	sendAsyncSequenceCallback = callback;
-	sendAsyncSequenceUserData = userData;
-	sendAsyncSequenceInitialConfigModeState = configModeEnabled;
-	sendAsyncSequenceStartMs = millis();
+	executeCommandSequenceActive = true;
+	executeCommandSequenceCallback = callback;
+	executeCommandSequenceUserData = userData;
+	executeCommandSequenceInitialConfigModeState = configModeEnabled;
+	executeCommandSequenceStartMs = millis();
 
 	if (commandSequenceBufferCount == 0) {
 		//Wait 1 ms to ensure that the callback is not executed before the caller of this method has finished its work
-		sendAsyncSequenceOnceTicker.once_ms(1, [this]() {
+		executeCommandSequenceOnceTicker.once_ms(1, [this]() {
 			this->executeCommandSequenceAsyncExecuteCallback(LD2410Async::AsyncCommandResult::SUCCESS);
 			});
 		return true;
@@ -720,29 +720,35 @@ bool LD2410Async::executeCommandSequenceAsync(AsyncCommandCallback callback, byt
 	if (!configModeEnabled) {
 		// Need to enable config mode first
 		// So set the sequence index to -1 to ensure the first command in the sequence (at index 0) is executed when the callback fires.
-		sendAsyncSequenceIndex = -1;
+		executeCommandSequenceIndex = -1;
 		return sendCommandAsync(LD2410Defs::configEnableCommandData, executeCommandSequenceAsyncCommandCallback, 0);
 	}
 	else {
 		// Already in config mode, start directly. 
 		// We start the first command in the sequence directly and set the sequence index 0, so the second command (if any) is executed when the callback fires. 
-		sendAsyncSequenceIndex = 0;
-		return sendCommandAsync(commandSequenceBuffer[sendAsyncSequenceIndex], executeCommandSequenceAsyncCommandCallback, 0);
+		executeCommandSequenceIndex = 0;
+		return sendCommandAsync(commandSequenceBuffer[executeCommandSequenceIndex], executeCommandSequenceAsyncCommandCallback, 0);
 	}
 
 }
 
 bool LD2410Async::addCommandToSequence(const byte* command) {
-	if (asyncCommandActive || sendAsyncSequenceActive) return false;
+	if (asyncCommandActive || executeCommandSequenceActive) return false;
 
-	if (commandSequenceBufferCount >= MAX_COMMAND_SEQUENCE) return false; // buffer full
-
+	if (commandSequenceBufferCount >= MAX_COMMAND_SEQUENCE_LENGTH) {
+		DEBUG_PRINT_MILLIS;
+		DEBUG_PRINTLN("Error: Command sequence buffer full.");
+		return false;
+	};
 	// First byte of the command is the payload length
 	uint8_t len = command[0];
 	uint8_t totalLen = len + 2; // payload + 2 length bytes
 
-	if (totalLen > LD2410Defs::LD2410_Buffer_Size) return false; // safety
-
+	if (totalLen > LD2410Defs::LD2410_Buffer_Size) {
+		DEBUG_PRINT_MILLIS;
+		DEBUG_PRINTLN("Error: Command too long for command sequence buffer.");
+		return false; // safety
+	}
 	memcpy(commandSequenceBuffer[commandSequenceBufferCount],
 		command,
 		totalLen);
@@ -757,11 +763,12 @@ bool LD2410Async::addCommandToSequence(const byte* command) {
 
 
 bool LD2410Async::resetCommandSequence() {
-	if (asyncCommandActive || sendAsyncSequenceActive) return false;
+	if (asyncCommandActive || executeCommandSequenceActive) return false;
+
+	commandSequenceBufferCount = 0;
 	DEBUG_PRINT_MILLIS;
 	DEBUG_PRINTLN("Command sequence reset done.");
 
-	commandSequenceBufferCount = 0;
 	return true;
 }
 

@@ -1312,35 +1312,35 @@ private:
 	// ============================================================================
 
 	/// Maximum number of commands in one async sequence
-	static constexpr size_t MAX_COMMAND_SEQUENCE = 15;
+	static constexpr size_t MAX_COMMAND_SEQUENCE_LENGTH = 15;
 
 	/// Buffer holding queued commands for sequence execution
-	byte commandSequenceBuffer[MAX_COMMAND_SEQUENCE][LD2410Defs::LD2410_Buffer_Size];
+	byte commandSequenceBuffer[MAX_COMMAND_SEQUENCE_LENGTH][LD2410Defs::LD2410_Buffer_Size];
 
 	/// Number of commands currently queued in the sequence buffer
 	byte commandSequenceBufferCount = 0;
 
 	/// Timestamp when the current async sequence started
-	unsigned long sendAsyncSequenceStartMs = 0;
+	unsigned long executeCommandSequenceStartMs = 0;
 
 	/// Callback for current async sequence
-	AsyncCommandCallback sendAsyncSequenceCallback = nullptr;
+	AsyncCommandCallback executeCommandSequenceCallback = nullptr;
 
 	/// User-provided data passed to async sequence callback
-	byte sendAsyncSequenceUserData = 0;
+	byte executeCommandSequenceUserData = 0;
 
 	/// True if an async sequence is currently pending.
-	bool sendAsyncSequenceActive = false;
+	bool executeCommandSequenceActive = false;
 
 	/// Ticker used for small delay before firing the commandsequence callback when the command sequence is empty.
 	/// This ensures that the callback is always called asynchronously and never directly from the calling context.
-	Ticker sendAsyncSequenceOnceTicker;
+	Ticker executeCommandSequenceOnceTicker;
 
 	/// Index of currently active command in the sequence buffer
-	int sendAsyncSequenceIndex = 0;
+	int executeCommandSequenceIndex = 0;
 
 	/// Stores config mode state before sequence started (to restore later)
-	bool sendAsyncSequenceInitialConfigModeState = false;
+	bool executeCommandSequenceInitialConfigModeState = false;
 
 	/// Finalize an async sequence and invoke its callback
 	void executeCommandSequenceAsyncExecuteCallback(LD2410Async::AsyncCommandResult result);
@@ -1351,7 +1351,6 @@ private:
 	/// Internal callbacks for sequence steps
 	static void executeCommandSequenceAsyncDisableConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData = 0);
 	static void executeCommandSequenceAsyncCommandCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData = 0);
-	static void executeCommandSequenceAsyncEnableConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData = 0);
 
 	/// Start executing an async sequence
 	bool executeCommandSequenceAsync(AsyncCommandCallback callback, byte userData = 0);
@@ -1453,8 +1452,7 @@ private:
 	/// Invoke async command callback with result
 	void executeAsyncCommandCallback(byte commandCode, LD2410Async::AsyncCommandResult result);
 
-	/// Callback for async command sequence that includes data requests
-	static void executeCommandSequenceAsyncDataCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData = 0);
+
 
 	/// Handle async command timeout
 	void handleAsyncCommandCallbackTimeout();

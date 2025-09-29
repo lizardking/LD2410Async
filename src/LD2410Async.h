@@ -1019,10 +1019,7 @@ public:
 	*
 	* @returns true if the command has been sent, false if the command cant be sent (typically because another async command is pending).
 	*
-	* @ingroup LD2410Async_AsyncCommands
-	* @ingroup LD2410Async_Bluetooth
-	* @ingroup LD2410Async_StaticData
-	* @ingroup LD2410Async_NativeCommands
+	* @ingroup LD2410Async_AsyncCommands LD2410Async_Bluetooth LD2410Async_StaticData LD2410Async_NativeCommands
 	*/
 	bool requestBluetoothMacAddressAsync(AsyncCommandCallback callback, byte userData = 0);
 

@@ -153,14 +153,14 @@ Usage</h2>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Register callback for detection updates</span></div>
 <div class="line">  radar.registerDetectionDataReceivedCallback([](<a class="code hl_class" href="classLD2410Async.html">LD2410Async</a>* sender, <span class="keywordtype">bool</span> presenceDetetced, <span class="keywordtype">byte</span> userData) {</div>
-<div class="line">    sender-&gt;<a class="code hl_function" href="group__LD2410Async__PublicData.html#gade2ef7c106c38e11fd450e75a6494090">getDetectionDataRef</a>().<a class="code hl_function" href="structLD2410Types_1_1DetectionData.html#a05545713d5314398cf8c87ac50bbf4ca">print</a>();  <span class="comment">// direct access, no copy</span></div>
+<div class="line">    sender-&gt;<a class="code hl_function" href="classLD2410Async.html#ade2ef7c106c38e11fd450e75a6494090">getDetectionDataRef</a>().<a class="code hl_function" href="structLD2410Types_1_1DetectionData.html#a05545713d5314398cf8c87ac50bbf4ca">print</a>();  <span class="comment">// direct access, no copy</span></div>
 <div class="line">  });</div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> loop() {</div>
 <div class="line">  <span class="comment">// Other application logic</span></div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__LD2410Async__PublicData_html_gade2ef7c106c38e11fd450e75a6494090"><div class="ttname"><a href="group__LD2410Async__PublicData.html#gade2ef7c106c38e11fd450e75a6494090">LD2410Async::getDetectionDataRef</a></div><div class="ttdeci">const LD2410Types::DetectionData &amp; getDetectionDataRef() const</div><div class="ttdoc">Access the current detection data without making a copy.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8h_source.html#l00536">LD2410Async.h:536</a></div></div>
+<div class="ttc" id="aclassLD2410Async_html_ade2ef7c106c38e11fd450e75a6494090"><div class="ttname"><a href="classLD2410Async.html#ade2ef7c106c38e11fd450e75a6494090">LD2410Async::getDetectionDataRef</a></div><div class="ttdeci">const LD2410Types::DetectionData &amp; getDetectionDataRef() const</div><div class="ttdoc">Access the current detection data without making a copy.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8h_source.html#l00536">LD2410Async.h:536</a></div></div>
 <div class="ttc" id="astructLD2410Types_1_1DetectionData_html_a05545713d5314398cf8c87ac50bbf4ca"><div class="ttname"><a href="structLD2410Types_1_1DetectionData.html#a05545713d5314398cf8c87ac50bbf4ca">LD2410Types::DetectionData::print</a></div><div class="ttdeci">void print() const</div><div class="ttdoc">Debug helper: print detection data contents to Serial.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00294">LD2410Types.h:294</a></div></div>
 </div><!-- fragment --> </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>

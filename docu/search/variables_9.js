@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['mac_0',['mac',['../group__LD2410Async__Data.html#ga80ed3831922280cb6c912b4928e4754e',1,'LD2410Async']]],
-  ['macstring_1',['macString',['../group__LD2410Async__Data.html#ga86241ae8f71137b12661a5d72f3ac9b1',1,'LD2410Async']]],
+  ['mac_0',['mac',['../classLD2410Async.html#a80ed3831922280cb6c912b4928e4754e',1,'LD2410Async']]],
+  ['macstring_1',['macString',['../classLD2410Async.html#a86241ae8f71137b12661a5d72f3ac9b1',1,'LD2410Async']]],
   ['maxgatecommand_2',['maxGateCommand',['../namespaceLD2410Defs.html#ab608eaab7657a8a9b017963743382816',1,'LD2410Defs']]],
   ['maxgatecommanddata_3',['maxGateCommandData',['../namespaceLD2410Defs.html#a4ad071572bfd4cd28163b87cd3774e97',1,'LD2410Defs']]],
   ['maxmotiondistancegate_4',['maxMotionDistanceGate',['../structLD2410Types_1_1ConfigData.html#a18a9dc2b43a849c46892158fcfa9b382',1,'LD2410Types::ConfigData']]],

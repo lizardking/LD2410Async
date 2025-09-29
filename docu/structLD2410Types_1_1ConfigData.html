@@ -160,7 +160,7 @@ Public Attributes</h2></td></tr>
 <p>This structure represents both static capabilities (e.g. number of gates) and configurable settings (e.g. sensitivities, timeouts, resolution).</p>
 <p>The values are typically filled by request commands such as requestAllConfigSettingsAsync() or requestGateParametersAsync() or requestAuxControlSettingsAsync() or requestDistanceResolutioncmAsync(). </p>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00341">341</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00371">371</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a3b184d70dc6af3ac292325b7ffbd5028" name="a3b184d70dc6af3ac292325b7ffbd5028"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3b184d70dc6af3ac292325b7ffbd5028">&#9670;&#160;</a></span>equals()</h2>
@@ -194,33 +194,33 @@ Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if all fields are equal, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00401">401</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  401</span>                                                   {</div>
-<div class="line"><span class="lineno">  402</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#acabeb381bc21ae97893101726ab1d589">numberOfGates</a> != other.numberOfGates) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  403</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a18a9dc2b43a849c46892158fcfa9b382">maxMotionDistanceGate</a> != other.maxMotionDistanceGate) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  404</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a95ae8ec4ba27e50135f0cc38fd4621a6">maxStationaryDistanceGate</a> != other.maxStationaryDistanceGate) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  405</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#aed0b489a9e500b199397a9db7103e3bf">noOneTimeout</a> != other.noOneTimeout) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  406</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#ad4b3263e4da6bcc2ef64d1e727eb6f06">distanceResolution</a> != other.distanceResolution) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  407</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a409cf828c80e4c75b9200ef3f1c4de88">lightThreshold</a> != other.lightThreshold) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  408</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a90a9b0911fdf7ee1b05a90b70b76d2d7">lightControl</a> != other.lightControl) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  409</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a39e4ebc6e1f47066af450b7660cabb87">outputControl</a> != other.outputControl) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  410</span> </div>
-<div class="line"><span class="lineno">  411</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 9; i++) {</div>
-<div class="line"><span class="lineno">  412</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a16240bb5af9b2e367e78a5fc2c4e107c">distanceGateMotionSensitivity</a>[i] != other.distanceGateMotionSensitivity[i]) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  413</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a126164bd0a2f25ec1cb24ca87f2d6eb8">distanceGateStationarySensitivity</a>[i] != other.distanceGateStationarySensitivity[i]) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  414</span>            }</div>
-<div class="line"><span class="lineno">  415</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  416</span>        }</div>
-<div class="ttc" id="astructLD2410Types_1_1ConfigData_html_a126164bd0a2f25ec1cb24ca87f2d6eb8"><div class="ttname"><a href="#a126164bd0a2f25ec1cb24ca87f2d6eb8">LD2410Types::ConfigData::distanceGateStationarySensitivity</a></div><div class="ttdeci">byte distanceGateStationarySensitivity[9]</div><div class="ttdoc">Stationary sensitivity values per gate (0–100).</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00351">LD2410Types.h:351</a></div></div>
-<div class="ttc" id="astructLD2410Types_1_1ConfigData_html_a16240bb5af9b2e367e78a5fc2c4e107c"><div class="ttname"><a href="#a16240bb5af9b2e367e78a5fc2c4e107c">LD2410Types::ConfigData::distanceGateMotionSensitivity</a></div><div class="ttdeci">byte distanceGateMotionSensitivity[9]</div><div class="ttdoc">Motion sensitivity values per gate (0–100).</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00350">LD2410Types.h:350</a></div></div>
-<div class="ttc" id="astructLD2410Types_1_1ConfigData_html_a18a9dc2b43a849c46892158fcfa9b382"><div class="ttname"><a href="#a18a9dc2b43a849c46892158fcfa9b382">LD2410Types::ConfigData::maxMotionDistanceGate</a></div><div class="ttdeci">byte maxMotionDistanceGate</div><div class="ttdoc">Furthest gate used for motion detection.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00346">LD2410Types.h:346</a></div></div>
-<div class="ttc" id="astructLD2410Types_1_1ConfigData_html_a39e4ebc6e1f47066af450b7660cabb87"><div class="ttname"><a href="#a39e4ebc6e1f47066af450b7660cabb87">LD2410Types::ConfigData::outputControl</a></div><div class="ttdeci">OutputControl outputControl</div><div class="ttdoc">Logic configuration of the OUT pin.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00362">LD2410Types.h:362</a></div></div>
-<div class="ttc" id="astructLD2410Types_1_1ConfigData_html_a409cf828c80e4c75b9200ef3f1c4de88"><div class="ttname"><a href="#a409cf828c80e4c75b9200ef3f1c4de88">LD2410Types::ConfigData::lightThreshold</a></div><div class="ttdeci">byte lightThreshold</div><div class="ttdoc">Threshold for auxiliary light control (0–255).</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00360">LD2410Types.h:360</a></div></div>
-<div class="ttc" id="astructLD2410Types_1_1ConfigData_html_a90a9b0911fdf7ee1b05a90b70b76d2d7"><div class="ttname"><a href="#a90a9b0911fdf7ee1b05a90b70b76d2d7">LD2410Types::ConfigData::lightControl</a></div><div class="ttdeci">LightControl lightControl</div><div class="ttdoc">Light-dependent auxiliary control mode.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00361">LD2410Types.h:361</a></div></div>
-<div class="ttc" id="astructLD2410Types_1_1ConfigData_html_a95ae8ec4ba27e50135f0cc38fd4621a6"><div class="ttname"><a href="#a95ae8ec4ba27e50135f0cc38fd4621a6">LD2410Types::ConfigData::maxStationaryDistanceGate</a></div><div class="ttdeci">byte maxStationaryDistanceGate</div><div class="ttdoc">Furthest gate used for stationary detection.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00347">LD2410Types.h:347</a></div></div>
-<div class="ttc" id="astructLD2410Types_1_1ConfigData_html_acabeb381bc21ae97893101726ab1d589"><div class="ttname"><a href="#acabeb381bc21ae97893101726ab1d589">LD2410Types::ConfigData::numberOfGates</a></div><div class="ttdeci">byte numberOfGates</div><div class="ttdoc">Number of distance gates (2–8). This member is readonly resp. changing its value will not influence t...</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00343">LD2410Types.h:343</a></div></div>
-<div class="ttc" id="astructLD2410Types_1_1ConfigData_html_ad4b3263e4da6bcc2ef64d1e727eb6f06"><div class="ttname"><a href="#ad4b3263e4da6bcc2ef64d1e727eb6f06">LD2410Types::ConfigData::distanceResolution</a></div><div class="ttdeci">DistanceResolution distanceResolution</div><div class="ttdoc">Current distance resolution. A reboot is required to activate changed setting after calling configure...</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00357">LD2410Types.h:357</a></div></div>
-<div class="ttc" id="astructLD2410Types_1_1ConfigData_html_aed0b489a9e500b199397a9db7103e3bf"><div class="ttname"><a href="#aed0b489a9e500b199397a9db7103e3bf">LD2410Types::ConfigData::noOneTimeout</a></div><div class="ttdeci">unsigned short noOneTimeout</div><div class="ttdoc">Timeout (seconds) until &quot;no presence&quot; is declared.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00354">LD2410Types.h:354</a></div></div>
+<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00431">431</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  431</span>                                                   {</div>
+<div class="line"><span class="lineno">  432</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#acabeb381bc21ae97893101726ab1d589">numberOfGates</a> != other.numberOfGates) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  433</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a18a9dc2b43a849c46892158fcfa9b382">maxMotionDistanceGate</a> != other.maxMotionDistanceGate) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  434</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a95ae8ec4ba27e50135f0cc38fd4621a6">maxStationaryDistanceGate</a> != other.maxStationaryDistanceGate) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  435</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#aed0b489a9e500b199397a9db7103e3bf">noOneTimeout</a> != other.noOneTimeout) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  436</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#ad4b3263e4da6bcc2ef64d1e727eb6f06">distanceResolution</a> != other.distanceResolution) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  437</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a409cf828c80e4c75b9200ef3f1c4de88">lightThreshold</a> != other.lightThreshold) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  438</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a90a9b0911fdf7ee1b05a90b70b76d2d7">lightControl</a> != other.lightControl) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  439</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a39e4ebc6e1f47066af450b7660cabb87">outputControl</a> != other.outputControl) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  440</span> </div>
+<div class="line"><span class="lineno">  441</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 9; i++) {</div>
+<div class="line"><span class="lineno">  442</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a16240bb5af9b2e367e78a5fc2c4e107c">distanceGateMotionSensitivity</a>[i] != other.distanceGateMotionSensitivity[i]) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  443</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a126164bd0a2f25ec1cb24ca87f2d6eb8">distanceGateStationarySensitivity</a>[i] != other.distanceGateStationarySensitivity[i]) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  444</span>            }</div>
+<div class="line"><span class="lineno">  445</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  446</span>        }</div>
+<div class="ttc" id="astructLD2410Types_1_1ConfigData_html_a126164bd0a2f25ec1cb24ca87f2d6eb8"><div class="ttname"><a href="#a126164bd0a2f25ec1cb24ca87f2d6eb8">LD2410Types::ConfigData::distanceGateStationarySensitivity</a></div><div class="ttdeci">byte distanceGateStationarySensitivity[9]</div><div class="ttdoc">Stationary sensitivity values per gate (0–100).</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00381">LD2410Types.h:381</a></div></div>
+<div class="ttc" id="astructLD2410Types_1_1ConfigData_html_a16240bb5af9b2e367e78a5fc2c4e107c"><div class="ttname"><a href="#a16240bb5af9b2e367e78a5fc2c4e107c">LD2410Types::ConfigData::distanceGateMotionSensitivity</a></div><div class="ttdeci">byte distanceGateMotionSensitivity[9]</div><div class="ttdoc">Motion sensitivity values per gate (0–100).</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00380">LD2410Types.h:380</a></div></div>
+<div class="ttc" id="astructLD2410Types_1_1ConfigData_html_a18a9dc2b43a849c46892158fcfa9b382"><div class="ttname"><a href="#a18a9dc2b43a849c46892158fcfa9b382">LD2410Types::ConfigData::maxMotionDistanceGate</a></div><div class="ttdeci">byte maxMotionDistanceGate</div><div class="ttdoc">Furthest gate used for motion detection.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00376">LD2410Types.h:376</a></div></div>
+<div class="ttc" id="astructLD2410Types_1_1ConfigData_html_a39e4ebc6e1f47066af450b7660cabb87"><div class="ttname"><a href="#a39e4ebc6e1f47066af450b7660cabb87">LD2410Types::ConfigData::outputControl</a></div><div class="ttdeci">OutputControl outputControl</div><div class="ttdoc">Logic configuration of the OUT pin.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00392">LD2410Types.h:392</a></div></div>
+<div class="ttc" id="astructLD2410Types_1_1ConfigData_html_a409cf828c80e4c75b9200ef3f1c4de88"><div class="ttname"><a href="#a409cf828c80e4c75b9200ef3f1c4de88">LD2410Types::ConfigData::lightThreshold</a></div><div class="ttdeci">byte lightThreshold</div><div class="ttdoc">Threshold for auxiliary light control (0–255).</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00390">LD2410Types.h:390</a></div></div>
+<div class="ttc" id="astructLD2410Types_1_1ConfigData_html_a90a9b0911fdf7ee1b05a90b70b76d2d7"><div class="ttname"><a href="#a90a9b0911fdf7ee1b05a90b70b76d2d7">LD2410Types::ConfigData::lightControl</a></div><div class="ttdeci">LightControl lightControl</div><div class="ttdoc">Light-dependent auxiliary control mode.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00391">LD2410Types.h:391</a></div></div>
+<div class="ttc" id="astructLD2410Types_1_1ConfigData_html_a95ae8ec4ba27e50135f0cc38fd4621a6"><div class="ttname"><a href="#a95ae8ec4ba27e50135f0cc38fd4621a6">LD2410Types::ConfigData::maxStationaryDistanceGate</a></div><div class="ttdeci">byte maxStationaryDistanceGate</div><div class="ttdoc">Furthest gate used for stationary detection.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00377">LD2410Types.h:377</a></div></div>
+<div class="ttc" id="astructLD2410Types_1_1ConfigData_html_acabeb381bc21ae97893101726ab1d589"><div class="ttname"><a href="#acabeb381bc21ae97893101726ab1d589">LD2410Types::ConfigData::numberOfGates</a></div><div class="ttdeci">byte numberOfGates</div><div class="ttdoc">Number of distance gates (2–8). This member is readonly resp. changing its value will not influence t...</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00373">LD2410Types.h:373</a></div></div>
+<div class="ttc" id="astructLD2410Types_1_1ConfigData_html_ad4b3263e4da6bcc2ef64d1e727eb6f06"><div class="ttname"><a href="#ad4b3263e4da6bcc2ef64d1e727eb6f06">LD2410Types::ConfigData::distanceResolution</a></div><div class="ttdeci">DistanceResolution distanceResolution</div><div class="ttdoc">Current distance resolution. A reboot is required to activate changed setting after calling configure...</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00387">LD2410Types.h:387</a></div></div>
+<div class="ttc" id="astructLD2410Types_1_1ConfigData_html_aed0b489a9e500b199397a9db7103e3bf"><div class="ttname"><a href="#aed0b489a9e500b199397a9db7103e3bf">LD2410Types::ConfigData::noOneTimeout</a></div><div class="ttdeci">unsigned short noOneTimeout</div><div class="ttdoc">Timeout (seconds) until &quot;no presence&quot; is declared.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00384">LD2410Types.h:384</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -251,34 +251,29 @@ Public Attributes</h2></td></tr>
 <p>Ensures that enum values are set and values are within valid ranges. This method is called internally before applying a config via configureAllConfigSettingsAsync().</p>
 <dl class="section return"><dt>Returns</dt><dd>True if the configuration is valid, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00376">376</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  376</span>                             {</div>
-<div class="line"><span class="lineno">  377</span>            <span class="comment">// Validate enum settings</span></div>
-<div class="line"><span class="lineno">  378</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#ad4b3263e4da6bcc2ef64d1e727eb6f06">distanceResolution</a> == <a class="code hl_enumvalue" href="namespaceLD2410Types.html#a89e3189ddef9f36629c460fbeb398c79a1c250a21210b7b88a14db9a0cbe71162">DistanceResolution::NOT_SET</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  379</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a90a9b0911fdf7ee1b05a90b70b76d2d7">lightControl</a> == <a class="code hl_enumvalue" href="namespaceLD2410Types.html#afbd22de9579db591b3f122c51c730844a1c250a21210b7b88a14db9a0cbe71162">LightControl::NOT_SET</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  380</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a39e4ebc6e1f47066af450b7660cabb87">outputControl</a> == <a class="code hl_enumvalue" href="namespaceLD2410Types.html#a420c188999635485028764fe98cb0bffa1c250a21210b7b88a14db9a0cbe71162">OutputControl::NOT_SET</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  381</span> </div>
-<div class="line"><span class="lineno">  382</span>            <span class="comment">// Validate max distance gates</span></div>
-<div class="line"><span class="lineno">  383</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a18a9dc2b43a849c46892158fcfa9b382">maxMotionDistanceGate &lt; 2 || maxMotionDistanceGate &gt;</a> <a class="code hl_variable" href="#acabeb381bc21ae97893101726ab1d589">numberOfGates</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  384</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a95ae8ec4ba27e50135f0cc38fd4621a6">maxStationaryDistanceGate &lt; 1 || maxStationaryDistanceGate &gt;</a> <a class="code hl_variable" href="#acabeb381bc21ae97893101726ab1d589">numberOfGates</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  385</span> </div>
-<div class="line"><span class="lineno">  386</span>            <span class="comment">// Validate sensitivities</span></div>
-<div class="line"><span class="lineno">  387</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 9; i++) {</div>
-<div class="line"><span class="lineno">  388</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a16240bb5af9b2e367e78a5fc2c4e107c">distanceGateMotionSensitivity</a>[i] &gt; 100) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  389</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a126164bd0a2f25ec1cb24ca87f2d6eb8">distanceGateStationarySensitivity</a>[i] &gt; 100) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  390</span>            }</div>
-<div class="line"><span class="lineno">  391</span> </div>
-<div class="line"><span class="lineno">  392</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  393</span>        }</div>
+<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00406">406</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  406</span>                             {</div>
+<div class="line"><span class="lineno">  407</span>            <span class="comment">// Validate enum settings</span></div>
+<div class="line"><span class="lineno">  408</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#ad4b3263e4da6bcc2ef64d1e727eb6f06">distanceResolution</a> == <a class="code hl_enumvalue" href="namespaceLD2410Types.html#a89e3189ddef9f36629c460fbeb398c79a1c250a21210b7b88a14db9a0cbe71162">DistanceResolution::NOT_SET</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  409</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a90a9b0911fdf7ee1b05a90b70b76d2d7">lightControl</a> == <a class="code hl_enumvalue" href="namespaceLD2410Types.html#afbd22de9579db591b3f122c51c730844a1c250a21210b7b88a14db9a0cbe71162">LightControl::NOT_SET</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  410</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a39e4ebc6e1f47066af450b7660cabb87">outputControl</a> == <a class="code hl_enumvalue" href="namespaceLD2410Types.html#a420c188999635485028764fe98cb0bffa1c250a21210b7b88a14db9a0cbe71162">OutputControl::NOT_SET</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  411</span> </div>
+<div class="line"><span class="lineno">  412</span>            <span class="comment">// Validate max distance gates</span></div>
+<div class="line"><span class="lineno">  413</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a18a9dc2b43a849c46892158fcfa9b382">maxMotionDistanceGate &lt; 2 || maxMotionDistanceGate &gt;</a> <a class="code hl_variable" href="#acabeb381bc21ae97893101726ab1d589">numberOfGates</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  414</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a95ae8ec4ba27e50135f0cc38fd4621a6">maxStationaryDistanceGate &lt; 1 || maxStationaryDistanceGate &gt;</a> <a class="code hl_variable" href="#acabeb381bc21ae97893101726ab1d589">numberOfGates</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  415</span> </div>
+<div class="line"><span class="lineno">  416</span>            <span class="comment">// Validate sensitivities</span></div>
+<div class="line"><span class="lineno">  417</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 9; i++) {</div>
+<div class="line"><span class="lineno">  418</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a16240bb5af9b2e367e78a5fc2c4e107c">distanceGateMotionSensitivity</a>[i] &gt; 100) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  419</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a126164bd0a2f25ec1cb24ca87f2d6eb8">distanceGateStationarySensitivity</a>[i] &gt; 100) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  420</span>            }</div>
+<div class="line"><span class="lineno">  421</span> </div>
+<div class="line"><span class="lineno">  422</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  423</span>        }</div>
 <div class="ttc" id="anamespaceLD2410Types_html_a420c188999635485028764fe98cb0bffa1c250a21210b7b88a14db9a0cbe71162"><div class="ttname"><a href="namespaceLD2410Types.html#a420c188999635485028764fe98cb0bffa1c250a21210b7b88a14db9a0cbe71162">LD2410Types::OutputControl::NOT_SET</a></div><div class="ttdeci">@ NOT_SET</div><div class="ttdoc">Placeholder resp. inital value. Do not use as a config value (will result in abortion of the config c...</div></div>
 <div class="ttc" id="anamespaceLD2410Types_html_a89e3189ddef9f36629c460fbeb398c79a1c250a21210b7b88a14db9a0cbe71162"><div class="ttname"><a href="namespaceLD2410Types.html#a89e3189ddef9f36629c460fbeb398c79a1c250a21210b7b88a14db9a0cbe71162">LD2410Types::DistanceResolution::NOT_SET</a></div><div class="ttdeci">@ NOT_SET</div><div class="ttdoc">Placeholder resp. inital value. Do not use as a config value (will result in abortion of the config c...</div></div>
 <div class="ttc" id="anamespaceLD2410Types_html_afbd22de9579db591b3f122c51c730844a1c250a21210b7b88a14db9a0cbe71162"><div class="ttname"><a href="namespaceLD2410Types.html#afbd22de9579db591b3f122c51c730844a1c250a21210b7b88a14db9a0cbe71162">LD2410Types::LightControl::NOT_SET</a></div><div class="ttdeci">@ NOT_SET</div><div class="ttdoc">Placeholder resp. inital value. Do not use as a config value (will result in abortion of the config c...</div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structLD2410Types_1_1ConfigData_a78c2665adcc382224455dfde7f05b885_icgraph.svg" width="404" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a14f6b9d23c5eac3fbf70b397398ae624" name="a14f6b9d23c5eac3fbf70b397398ae624"></a>
@@ -306,50 +301,50 @@ Here is the caller graph for this function:</div>
 
 <p>Debug helper: print configuration contents to Serial. </p>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00421">421</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  421</span>                           {</div>
-<div class="line"><span class="lineno">  422</span>            Serial.println(<span class="stringliteral">&quot;=== ConfigData ===&quot;</span>);</div>
-<div class="line"><span class="lineno">  423</span> </div>
-<div class="line"><span class="lineno">  424</span>            Serial.print(<span class="stringliteral">&quot;  Number of Gates: &quot;</span>);</div>
-<div class="line"><span class="lineno">  425</span>            Serial.println(<a class="code hl_variable" href="#acabeb381bc21ae97893101726ab1d589">numberOfGates</a>);</div>
-<div class="line"><span class="lineno">  426</span> </div>
-<div class="line"><span class="lineno">  427</span>            Serial.print(<span class="stringliteral">&quot;  Max Motion Distance Gate: &quot;</span>);</div>
-<div class="line"><span class="lineno">  428</span>            Serial.println(<a class="code hl_variable" href="#a18a9dc2b43a849c46892158fcfa9b382">maxMotionDistanceGate</a>);</div>
-<div class="line"><span class="lineno">  429</span> </div>
-<div class="line"><span class="lineno">  430</span>            Serial.print(<span class="stringliteral">&quot;  Max Stationary Distance Gate: &quot;</span>);</div>
-<div class="line"><span class="lineno">  431</span>            Serial.println(<a class="code hl_variable" href="#a95ae8ec4ba27e50135f0cc38fd4621a6">maxStationaryDistanceGate</a>);</div>
-<div class="line"><span class="lineno">  432</span> </div>
-<div class="line"><span class="lineno">  433</span>            Serial.print(<span class="stringliteral">&quot;  Motion Sensitivity: &quot;</span>);</div>
-<div class="line"><span class="lineno">  434</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 9; i++) {</div>
-<div class="line"><span class="lineno">  435</span>                Serial.print(<a class="code hl_variable" href="#a16240bb5af9b2e367e78a5fc2c4e107c">distanceGateMotionSensitivity</a>[i]);</div>
-<div class="line"><span class="lineno">  436</span>                <span class="keywordflow">if</span> (i &lt; 8) Serial.print(<span class="stringliteral">&quot;,&quot;</span>);</div>
-<div class="line"><span class="lineno">  437</span>            }</div>
-<div class="line"><span class="lineno">  438</span>            Serial.println();</div>
-<div class="line"><span class="lineno">  439</span> </div>
-<div class="line"><span class="lineno">  440</span>            Serial.print(<span class="stringliteral">&quot;  Stationary Sensitivity: &quot;</span>);</div>
-<div class="line"><span class="lineno">  441</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 9; i++) {</div>
-<div class="line"><span class="lineno">  442</span>                Serial.print(<a class="code hl_variable" href="#a126164bd0a2f25ec1cb24ca87f2d6eb8">distanceGateStationarySensitivity</a>[i]);</div>
-<div class="line"><span class="lineno">  443</span>                <span class="keywordflow">if</span> (i &lt; 8) Serial.print(<span class="stringliteral">&quot;,&quot;</span>);</div>
-<div class="line"><span class="lineno">  444</span>            }</div>
-<div class="line"><span class="lineno">  445</span>            Serial.println();</div>
-<div class="line"><span class="lineno">  446</span> </div>
-<div class="line"><span class="lineno">  447</span>            Serial.print(<span class="stringliteral">&quot;  No One Timeout: &quot;</span>);</div>
-<div class="line"><span class="lineno">  448</span>            Serial.println(<a class="code hl_variable" href="#aed0b489a9e500b199397a9db7103e3bf">noOneTimeout</a>);</div>
-<div class="line"><span class="lineno">  449</span> </div>
-<div class="line"><span class="lineno">  450</span>            Serial.print(<span class="stringliteral">&quot;  Distance Resolution: &quot;</span>);</div>
-<div class="line"><span class="lineno">  451</span>            Serial.println(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="#ad4b3263e4da6bcc2ef64d1e727eb6f06">distanceResolution</a>));</div>
-<div class="line"><span class="lineno">  452</span> </div>
-<div class="line"><span class="lineno">  453</span>            Serial.print(<span class="stringliteral">&quot;  Light Threshold: &quot;</span>);</div>
-<div class="line"><span class="lineno">  454</span>            Serial.println(<a class="code hl_variable" href="#a409cf828c80e4c75b9200ef3f1c4de88">lightThreshold</a>);</div>
-<div class="line"><span class="lineno">  455</span> </div>
-<div class="line"><span class="lineno">  456</span>            Serial.print(<span class="stringliteral">&quot;  Light Control: &quot;</span>);</div>
-<div class="line"><span class="lineno">  457</span>            Serial.println(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="#a90a9b0911fdf7ee1b05a90b70b76d2d7">lightControl</a>));</div>
-<div class="line"><span class="lineno">  458</span> </div>
-<div class="line"><span class="lineno">  459</span>            Serial.print(<span class="stringliteral">&quot;  Output Control: &quot;</span>);</div>
-<div class="line"><span class="lineno">  460</span>            Serial.println(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="#a39e4ebc6e1f47066af450b7660cabb87">outputControl</a>));</div>
-<div class="line"><span class="lineno">  461</span> </div>
-<div class="line"><span class="lineno">  462</span>            Serial.println(<span class="stringliteral">&quot;===================&quot;</span>);</div>
-<div class="line"><span class="lineno">  463</span>        }</div>
+<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00451">451</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  451</span>                           {</div>
+<div class="line"><span class="lineno">  452</span>            Serial.println(<span class="stringliteral">&quot;=== ConfigData ===&quot;</span>);</div>
+<div class="line"><span class="lineno">  453</span> </div>
+<div class="line"><span class="lineno">  454</span>            Serial.print(<span class="stringliteral">&quot;  Number of Gates: &quot;</span>);</div>
+<div class="line"><span class="lineno">  455</span>            Serial.println(<a class="code hl_variable" href="#acabeb381bc21ae97893101726ab1d589">numberOfGates</a>);</div>
+<div class="line"><span class="lineno">  456</span> </div>
+<div class="line"><span class="lineno">  457</span>            Serial.print(<span class="stringliteral">&quot;  Max Motion Distance Gate: &quot;</span>);</div>
+<div class="line"><span class="lineno">  458</span>            Serial.println(<a class="code hl_variable" href="#a18a9dc2b43a849c46892158fcfa9b382">maxMotionDistanceGate</a>);</div>
+<div class="line"><span class="lineno">  459</span> </div>
+<div class="line"><span class="lineno">  460</span>            Serial.print(<span class="stringliteral">&quot;  Max Stationary Distance Gate: &quot;</span>);</div>
+<div class="line"><span class="lineno">  461</span>            Serial.println(<a class="code hl_variable" href="#a95ae8ec4ba27e50135f0cc38fd4621a6">maxStationaryDistanceGate</a>);</div>
+<div class="line"><span class="lineno">  462</span> </div>
+<div class="line"><span class="lineno">  463</span>            Serial.print(<span class="stringliteral">&quot;  Motion Sensitivity: &quot;</span>);</div>
+<div class="line"><span class="lineno">  464</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 9; i++) {</div>
+<div class="line"><span class="lineno">  465</span>                Serial.print(<a class="code hl_variable" href="#a16240bb5af9b2e367e78a5fc2c4e107c">distanceGateMotionSensitivity</a>[i]);</div>
+<div class="line"><span class="lineno">  466</span>                <span class="keywordflow">if</span> (i &lt; 8) Serial.print(<span class="stringliteral">&quot;,&quot;</span>);</div>
+<div class="line"><span class="lineno">  467</span>            }</div>
+<div class="line"><span class="lineno">  468</span>            Serial.println();</div>
+<div class="line"><span class="lineno">  469</span> </div>
+<div class="line"><span class="lineno">  470</span>            Serial.print(<span class="stringliteral">&quot;  Stationary Sensitivity: &quot;</span>);</div>
+<div class="line"><span class="lineno">  471</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 9; i++) {</div>
+<div class="line"><span class="lineno">  472</span>                Serial.print(<a class="code hl_variable" href="#a126164bd0a2f25ec1cb24ca87f2d6eb8">distanceGateStationarySensitivity</a>[i]);</div>
+<div class="line"><span class="lineno">  473</span>                <span class="keywordflow">if</span> (i &lt; 8) Serial.print(<span class="stringliteral">&quot;,&quot;</span>);</div>
+<div class="line"><span class="lineno">  474</span>            }</div>
+<div class="line"><span class="lineno">  475</span>            Serial.println();</div>
+<div class="line"><span class="lineno">  476</span> </div>
+<div class="line"><span class="lineno">  477</span>            Serial.print(<span class="stringliteral">&quot;  No One Timeout: &quot;</span>);</div>
+<div class="line"><span class="lineno">  478</span>            Serial.println(<a class="code hl_variable" href="#aed0b489a9e500b199397a9db7103e3bf">noOneTimeout</a>);</div>
+<div class="line"><span class="lineno">  479</span> </div>
+<div class="line"><span class="lineno">  480</span>            Serial.print(<span class="stringliteral">&quot;  Distance Resolution: &quot;</span>);</div>
+<div class="line"><span class="lineno">  481</span>            Serial.println(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="#ad4b3263e4da6bcc2ef64d1e727eb6f06">distanceResolution</a>));</div>
+<div class="line"><span class="lineno">  482</span> </div>
+<div class="line"><span class="lineno">  483</span>            Serial.print(<span class="stringliteral">&quot;  Light Threshold: &quot;</span>);</div>
+<div class="line"><span class="lineno">  484</span>            Serial.println(<a class="code hl_variable" href="#a409cf828c80e4c75b9200ef3f1c4de88">lightThreshold</a>);</div>
+<div class="line"><span class="lineno">  485</span> </div>
+<div class="line"><span class="lineno">  486</span>            Serial.print(<span class="stringliteral">&quot;  Light Control: &quot;</span>);</div>
+<div class="line"><span class="lineno">  487</span>            Serial.println(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="#a90a9b0911fdf7ee1b05a90b70b76d2d7">lightControl</a>));</div>
+<div class="line"><span class="lineno">  488</span> </div>
+<div class="line"><span class="lineno">  489</span>            Serial.print(<span class="stringliteral">&quot;  Output Control: &quot;</span>);</div>
+<div class="line"><span class="lineno">  490</span>            Serial.println(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="#a39e4ebc6e1f47066af450b7660cabb87">outputControl</a>));</div>
+<div class="line"><span class="lineno">  491</span> </div>
+<div class="line"><span class="lineno">  492</span>            Serial.println(<span class="stringliteral">&quot;===================&quot;</span>);</div>
+<div class="line"><span class="lineno">  493</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -368,8 +363,8 @@ Here is the caller graph for this function:</div>
 
 <p>Motion sensitivity values per gate (0–100). </p>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00350">350</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  350</span>{ 0 }; <span class="comment">///&lt; Motion sensitivity values per gate (0–100). </span></div>
+<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00380">380</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  380</span>{ 0 }; <span class="comment">///&lt; Motion sensitivity values per gate (0–100). </span></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -387,8 +382,8 @@ Here is the caller graph for this function:</div>
 
 <p>Stationary sensitivity values per gate (0–100). </p>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00351">351</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  351</span>{ 0 }; <span class="comment">///&lt; Stationary sensitivity values per gate (0–100).</span></div>
+<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00381">381</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  381</span>{ 0 }; <span class="comment">///&lt; Stationary sensitivity values per gate (0–100).</span></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -406,7 +401,7 @@ Here is the caller graph for this function:</div>
 
 <p>Current distance resolution. A reboot is required to activate changed setting after calling configureAllConfigSettingsAsync() is called. </p>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00357">357</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00387">387</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
 
 </div>
 </div>
@@ -424,7 +419,7 @@ Here is the caller graph for this function:</div>
 
 <p>Light-dependent auxiliary control mode. </p>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00361">361</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00391">391</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
 
 </div>
 </div>
@@ -442,7 +437,7 @@ Here is the caller graph for this function:</div>
 
 <p>Threshold for auxiliary light control (0–255). </p>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00360">360</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00390">390</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
 
 </div>
 </div>
@@ -460,7 +455,7 @@ Here is the caller graph for this function:</div>
 
 <p>Furthest gate used for motion detection. </p>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00346">346</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00376">376</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
 
 </div>
 </div>
@@ -478,7 +473,7 @@ Here is the caller graph for this function:</div>
 
 <p>Furthest gate used for stationary detection. </p>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00347">347</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00377">377</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
 
 </div>
 </div>
@@ -496,7 +491,7 @@ Here is the caller graph for this function:</div>
 
 <p>Timeout (seconds) until "no presence" is declared. </p>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00354">354</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00384">384</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
 
 </div>
 </div>
@@ -514,7 +509,7 @@ Here is the caller graph for this function:</div>
 
 <p>Number of distance gates (2–8). This member is readonly resp. changing its value will not influence the radar setting when configureAllConfigSettingsAsync() is called. It is not 100% clear what this value stands for, but it seems to indicate the number of gates on the sensor. </p>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00343">343</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00373">373</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
 
 </div>
 </div>
@@ -532,7 +527,7 @@ Here is the caller graph for this function:</div>
 
 <p>Logic configuration of the OUT pin. </p>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00362">362</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00392">392</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
 
 </div>
 </div>

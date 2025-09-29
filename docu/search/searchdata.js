@@ -10,8 +10,7 @@ var indexSectionsWithContent =
   7: "abdlot",
   8: "abcdfilmnrst",
   9: "dl",
-  10: "abcdhimprt",
-  11: "l"
+  10: "l"
 };
 
 var indexSectionNames =
@@ -26,8 +25,7 @@ var indexSectionNames =
   7: "enums",
   8: "enumvalues",
   9: "defines",
-  10: "groups",
-  11: "pages"
+  10: "pages"
 };
 
 var indexSectionLabels =
@@ -42,7 +40,6 @@ var indexSectionLabels =
   7: "Enumerations",
   8: "Enumerator",
   9: "Macros",
-  10: "Modules",
-  11: "Pages"
+  10: "Pages"
 };
 

@@ -6,6 +6,7 @@
 # Datatypes (KEYWORD1)
 #######################################
 LD2410Async    KEYWORD1
+LD2410Types    KEYWORD1
 DetectionData  KEYWORD1
 ConfigData     KEYWORD1
 TargetState    KEYWORD1
@@ -14,6 +15,7 @@ LightControl   KEYWORD1
 OutputControl  KEYWORD1
 AutoConfigStatus KEYWORD1
 AsyncCommandResult KEYWORD1
+Baudrate       KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
@@ -24,41 +26,49 @@ asyncIsBusy                   KEYWORD2
 asyncCancel                   KEYWORD2
 
 getDetectionData              KEYWORD2
+getDetectionDataRef           KEYWORD2
 getConfigData                 KEYWORD2
+getConfigDataRef              KEYWORD2
+setInactivityHandling         KEYWORD2
+enableInactivityHandling      KEYWORD2
+disableInactivityHandling     KEYWORD2
+isInactivityHandlingEnabled   KEYWORD2
+setInactivityTimeoutMs        KEYWORD2
+getInactivityTimeoutMs        KEYWORD2
 
 registerDetectionDataReceivedCallback KEYWORD2
-registerConfigUpdateReceivedCallback  KEYWORD2
 registerConfigChangedCallback         KEYWORD2
+registerConfigUpdateReceivedCallback  KEYWORD2
 
-requestAllConfigData          KEYWORD2
-requestAllStaticData          KEYWORD2
-requestGateParametersAsync    KEYWORD2
-requestFirmwareAsync          KEYWORD2
-requestBluetoothMacAddressAsync KEYWORD2
-requestAuxControlSettingsAsync KEYWORD2
-requestDistanceResolutioncmAsync KEYWORD2
-requestAutoConfigStatusAsync  KEYWORD2
+requestAllConfigSettingsAsync         KEYWORD2
+requestAllStaticDataAsync             KEYWORD2
+requestGateParametersAsync            KEYWORD2
+requestFirmwareAsync                  KEYWORD2
+requestBluetoothMacAddressAsync       KEYWORD2
+requestAuxControlSettingsAsync        KEYWORD2
+requestDistanceResolutioncmAsync      KEYWORD2
+requestAutoConfigStatusAsync          KEYWORD2
 
-setMaxGateAndNoOneTimeoutAsync KEYWORD2
-setDistanceGateSensitivityAsync KEYWORD2
-setConfigDataAsync             KEYWORD2
-setBaudRateAsync               KEYWORD2
-setBluetoothpasswordAsync      KEYWORD2
-setAuxControlSettingsAsync     KEYWORD2
-setDistanceResolutionAsync     KEYWORD2
-setDistanceResolution75cmAsync KEYWORD2
-setDistanceResolution20cmAsync KEYWORD2
-enableEngineeringModeAsync     KEYWORD2
-disableEngineeringModeAsync    KEYWORD2
-enableBluetoothAsync           KEYWORD2
-disableBluetoothAsync          KEYWORD2
-enableConfigModeAsync          KEYWORD2
-disableConfigModeAsync         KEYWORD2
-beginAutoConfigAsync           KEYWORD2
-restoreFactorySettingsAsync    KEYWORD2
-rebootAsync                    KEYWORD2
-
-setInactivityHandling          KEYWORD2
+configureMaxGateAndNoOneTimeoutAsync  KEYWORD2
+configureDistanceGateSensitivityAsync KEYWORD2
+configureBaudRateAsync                KEYWORD2
+configureBluetoothPasswordAsync       KEYWORD2
+configureDefaultBluetoothPasswordAsync KEYWORD2
+configureAuxControlSettingsAsync      KEYWORD2
+configureDistanceResolutionAsync      KEYWORD2
+configureDistanceResolution75cmAsync  KEYWORD2
+configuresDistanceResolution20cmAsync KEYWORD2
+restoreFactorySettingsAsync           KEYWORD2
+rebootAsync                           KEYWORD2
+enableEngineeringModeAsync            KEYWORD2
+disableEngineeringModeAsync           KEYWORD2
+enableBluetoothAsync                  KEYWORD2
+disableBluetoothAsync                 KEYWORD2
+enableConfigModeAsync                 KEYWORD2
+disableConfigModeAsync                KEYWORD2
+beginAutoConfigAsync                  KEYWORD2
+requestAutoConfigStatusAsync          KEYWORD2
+configureAllConfigSettingsAsync       KEYWORD2
 
 #######################################
 # Constants and Literals (LITERAL1)
@@ -66,3 +76,10 @@ setInactivityHandling          KEYWORD2
 ENABLE_DEBUG        LITERAL1
 ENABLE_DEBUG_DATA   LITERAL1
 ENABLE_DEBUG_CONFIG LITERAL1
+DEBUG_PRINT_MILLIS  LITERAL1
+DEBUG_PRINT         LITERAL1
+DEBUG_PRINTLN       LITERAL1
+DEBUG_PRINTBUF      LITERAL1
+DEBUG_PRINT_DATA    LITERAL1
+DEBUG_PRINTLN_DATA  LITERAL1
+DEBUG_PRINTBUF_DATA LITERAL1

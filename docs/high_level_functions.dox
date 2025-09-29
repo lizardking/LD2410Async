@@ -1,0 +1,133 @@
+/**
+ * @file high_level_functions.dox
+ * @brief Rationale and usage guide for LD2410Async high-level APIs.
+ */
+
+/*! \page high_level_functions Why prefer the high-level LD2410Async APIs?
+
+\section intro Overview
+The LD2410Async class offers two layers of interaction with the LD2410 sensor:
+- **High-level asynchronous helpers** such as \ref LD2410Async::requestAllConfigData,
+  \ref LD2410Async::setConfigDataAsync, and \ref LD2410Async::beginAutoConfigAsync,
+  which wrap the raw command protocol in safe, non-blocking workflows.
+- **Native command primitives** (\ref LD2410Async::sendCommand,
+  \ref LD2410Async::sendCommandAsync, and \ref LD2410Async::sendConfigCommandAsync)
+  that expect you to craft and manage the byte-level protocol manually.
+
+While the native helpers remain available for edge cases, most applications should rely
+on the high-level entry points. The sections below summarize why.
+
+\section reasons Reasons to favor the high-level APIs
+\subsection reason_async Asynchronous safety without busy-waiting
+High-level methods automatically integrate with the library's FreeRTOS task,
+so your sketch never blocks while waiting for acknowledgements. Each command stores
+its start time, enforces \ref LD2410Async::asyncCommandTimeoutMs, and routes the
+outcome through an \ref LD2410Async::AsyncCommandCallback. Using the low-level
+primitives would require you to duplicate this timeout and callback handling in user
+code, increasing complexity and the risk of blocking the task loop.
+
+\subsection reason_configmode Automatic config-mode lifecycle handling
+Configuration commands only succeed while the radar is in config mode, but leaving the
+sensor there suppresses detection frames. Helpers such as \ref LD2410Async::setConfigDataAsync
+and the command sequence utilities call \ref LD2410Async::enableConfigModeAsync and
+\ref LD2410Async::disableConfigModeAsync for you, remembering the previous state and
+restoring it when the sequence completes. With the native primitives you must bracket
+commands manually and remember to recover from failures—otherwise the sensor may stay
+silent.
+
+\subsection reason_validation Parameter validation and busy-state checks
+High-level wrappers validate arguments (for example, \ref LD2410Async::setDistanceGateSensitivityAsync
+ensures per-gate values are in range) and refuse to run while another async request is
+active by checking \ref LD2410Async::asyncIsBusy. When using \ref LD2410Async::sendCommandAsync,
+you would need to implement the same guard logic, including cancellation via
+\ref LD2410Async::asyncCancel, to avoid overlapping transactions.
+
+\subsection reason_state Structured state caching
+Commands such as \ref LD2410Async::requestAllConfigData populate the strongly typed
+\ref LD2410Async::ConfigData structure, and detection callbacks expose
+\ref LD2410Async::DetectionData via references to avoid needless copies. Working
+through the native primitives gives you only the raw frame bytes, so you must parse
+and cache the fields yourself before the next frame arrives.
+
+\subsection reason_integration Built-in recovery & sequencing helpers
+Many high-level APIs take part in broader maintenance features, e.g.
+\ref LD2410Async::setInactivityHandling and the reboot helpers, and they reuse the
+library's internal command sequencing so that related operations run in order with
+shared callbacks and automatic cleanup. Reimplementing this behavior on top of the
+native byte senders is error-prone and duplicates library functionality.
+
+\section examples Usage examples
+\subsection example_config Updating configuration safely
+@code{.cpp}
+  // Clone current configuration, tweak thresholds, and write them back.
+  LD2410Async::ConfigData cfg = radar.getConfigData();
+  cfg.noOneTimeout = 45;          // seconds before absence is reported
+  cfg.distanceGateMotionSensitivity[0] = 80;
+
+  radar.setConfigDataAsync(cfg,
+      [](LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte) {
+        if (result == LD2410Async::AsyncCommandResult::SUCCESS) {
+          Serial.println("Config applied via high-level API.");
+        } else {
+          Serial.println("Config update failed; check busy state or wiring.");
+        }
+      });
+@endcode
+This pattern avoids manual config-mode management, enforces value ranges, and reports
+completion through the callback without blocking the loop.
+
+\subsection example_static Fetching static sensor data
+@code{.cpp}
+  radar.requestAllStaticData(
+      [](LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte) {
+        if (result != LD2410Async::AsyncCommandResult::SUCCESS) {
+          Serial.println("Could not read static data.");
+          return;
+        }
+        Serial.print("Firmware: ");
+        Serial.println(sender->firmware);
+        Serial.print("MAC: ");
+        Serial.println(sender->macString);
+      });
+@endcode
+The helper issues the necessary command sequence and updates cached members such as
+\ref LD2410Async::firmware and \ref LD2410Async::macString automatically.
+
+\subsection example_refresh Refreshing cached configuration in one call
+@code{.cpp}
+  radar.requestAllConfigData(
+      [](LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte) {
+        if (result != LD2410Async::AsyncCommandResult::SUCCESS) {
+          Serial.println("Failed to refresh configuration.");
+          return;
+        }
+
+        const auto& cfg = sender->getConfigDataRef();
+        Serial.print("Max motion gate: ");
+        Serial.println(cfg.maxMotionDistanceGate);
+        Serial.print("No-one timeout: ");
+        Serial.println(cfg.noOneTimeout);
+      });
+@endcode
+The helper orchestrates every sub-command required to populate \ref LD2410Async::ConfigData,
+including gate parameters, resolution, and auxiliary settings. Using the native primitives
+would mean manually building each request frame, sending them in the correct order, waiting
+for acknowledgements, and parsing the replies before the next one can be issued.
+
+\subsection example_presence Consuming detection data without manual parsing
+@code{.cpp}
+  radar.registerDetectionDataReceivedCallback(
+      [](LD2410Async* sender, bool presenceDetected, byte) {
+        const auto& detection = sender->getDetectionDataRef();
+        Serial.print("Presence: ");
+        Serial.println(presenceDetected ? "yes" : "no");
+        Serial.print("Target state: ");
+        Serial.println(static_cast<int>(detection.targetState));
+        Serial.print("Distance (cm): ");
+        Serial.println(detection.movingDistanceCm);
+      });
+@endcode
+Using the callback and accessor avoids pulling raw UART frames via \ref LD2410Async::sendCommand
+and decoding them manually, while still giving you immediate access to the structured data.
+
+*/

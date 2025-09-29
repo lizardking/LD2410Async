@@ -6,7 +6,8 @@
 # -----------------------------------------------------------------------------
 
 # === General text handling ===
-* text=auto eol=lf        # Normalize all text files to LF in the repo
+# Normalize all text files to LF in the repo
+* text=auto eol=lf
 
 # === Source code (force LF for consistency across platforms) ===
 *.ino   text eol=lf

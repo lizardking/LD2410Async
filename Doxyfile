@@ -16,7 +16,7 @@ SORT_MEMBER_DOCS = YES
 SORT_GROUP_NAMES = YES
 
 # Input
-INPUT                  = src examples
+INPUT                  = src examples dox
 FILE_PATTERNS          = *.h *.cpp *.ino
 RECURSIVE              = YES
 

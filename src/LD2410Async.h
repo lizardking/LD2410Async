@@ -2,6 +2,7 @@
 
 
 #include "Arduino.h"
+#include "Ticker.h"
 #include "LD2410Debug.h"
 #include "LD2410Types.h"
 #include "LD2410Defs.h"
@@ -1294,6 +1295,10 @@ private:
 	/// True if an async sequence is currently pending.
 	bool sendAsyncSequenceActive = false;
 
+	/// Ticker used for small delay before firing the commandsequence callback when the command sequence is empty.
+	/// This ensures that the callback is always called asynchronously and never directly from the calling context.
+	Ticker sendAsyncSequenceOnceTicker;
+
 	/// Index of currently active command in the sequence buffer
 	int sendAsyncSequenceIndex = 0;
 
@@ -1451,13 +1456,15 @@ private:
 	bool setConfigDataAsyncConfigInitialConfigMode = false;
 	AsyncCommandResult setConfigDataAsyncResultToReport = LD2410Async::AsyncCommandResult::SUCCESS;
 
-	void LD2410Async::setConfigDataAsyncExecuteCallback(LD2410Asnyc::AsncCommandResult result);
-	static	void setConfigDataAsyncConfigModeDisabledCallback(LD2410Async* sender, LD2410Asnyc::AsncCommandResult result, byte userData);
-	void setConfigDataAsyncFinalize(LD2410Asnyc::AsncCommandResult resultToReport);
-	static void setConfigDataAsyncWriteConfigCallback(LD2410Async* sender, LD2410Asnyc::AsncCommandResult result, byte userData);
-	bool setConfigDataAsyncSaveChanges();
-	static void setConfigDataAsyncAllConfigDataRequestCallback(LD2410Async* sender, LD2410Asnyc::AsncCommandResult result, byte userData);
-	void setConfigDataAsyncRequestAllConfigData();
-	static void setConfigDataAsyncConfigModeEnabled(LD2410Async* sender, LD2410Asnyc::AsncCommandResult result, byte userData);
+	void setConfigDataAsyncExecuteCallback(LD2410Async::AsyncCommandResult result);
+	static	void setConfigDataAsyncConfigModeDisabledCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData);
+	void setConfigDataAsyncFinalize(LD2410Async::AsyncCommandResult resultToReport);
+	static void setConfigDataAsyncWriteConfigCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData);
+	bool setConfigDataAsyncWriteConfig();
+	static void setConfigDataAsyncRequestAllConfigDataCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData);
+	bool setConfigDataAsyncRequestAllConfigData();
+	static void setConfigDataAsyncConfigModeEnabledCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData);
 	bool setConfigDataAsync(const LD2410Types::ConfigData& configToWrite, bool writeAllConfigData, AsyncCommandCallback callback, byte userData);
+	bool setConfigDataAsyncBuildSaveChangesCommandSequence();
+	
 };

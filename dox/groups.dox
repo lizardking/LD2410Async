@@ -65,7 +65,32 @@
  */
 /** @} */
 
+/** 
+ * @defgroup LD2410Async_MainMethods Constructor & Main methods
+ *
+ * Constructor and main methods (begin(), end() of the LD2410Async class.
+ *
+ * @{
+ */
+/** @} */
 
 
+/** 
+ * @defgroup LD2410Async_InactivityHandling Inactivity Handling
+ *
+ * Methods for inactivity handling. Inactivity handling allows to automatically recover from situations where the sensor remains silent for a long time.
+ * Typically this happen only if the sensor is stuck resp. left in config mode unwillingly.
+ *
+ * @{
+ */
+/** @} */
 
+/** 
+ * @defgroup  LD2410Async_AsyncCommands Async Commands
+ *
+ * Commands with async behaviour. These commands return immediately and the result of the command is provided later via a callback.
+ * The return value of these methods indicates whther the command could be sent to the sensor or if there was a problem. When commands cant be executed, the causes are either another pending async command (only one async command allowed at a time) or due to invalid parameters. *
+ * @{
+ */
+/** @} */
 

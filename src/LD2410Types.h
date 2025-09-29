@@ -335,12 +335,12 @@ namespace LD2410Types {
 	 * (e.g. sensitivities, timeouts, resolution).
 	 *
 	 * The values are typically filled by request commands
-	 * such as requestAllConfigDataAsync() or requestGateParametersAsync() or
+	 * such as requestAllConfigSettingsAsync() or requestGateParametersAsync() or
 	 * requestAuxControlSettingsAsync() or requestDistanceResolutioncmAsync().
 	 */
 	struct ConfigData {
 		// === Radar capabilities ===
-		byte numberOfGates = 0; ///< Number of distance gates (2–8). This member is readonly resp. changing its value will not influence the radar setting when setConfigDataAsync() is called. It is not 100% clear what this value stands for, but it seems to indicate the number of gates on the sensor.
+		byte numberOfGates = 0; ///< Number of distance gates (2–8). This member is readonly resp. changing its value will not influence the radar setting when configureAllConfigSettingsAsync() is called. It is not 100% clear what this value stands for, but it seems to indicate the number of gates on the sensor.
 
 		// === Max distance gate settings ===
 		byte maxMotionDistanceGate = 0; ///< Furthest gate used for motion detection.
@@ -354,7 +354,7 @@ namespace LD2410Types {
 		unsigned short noOneTimeout = 0; ///< Timeout (seconds) until "no presence" is declared.
 
 		// === Distance resolution ===
-		DistanceResolution distanceResolution = DistanceResolution::NOT_SET; ///< Current distance resolution. A reboot is required to activate changed setting after calling setConfigDataAsync() is called.
+		DistanceResolution distanceResolution = DistanceResolution::NOT_SET; ///< Current distance resolution. A reboot is required to activate changed setting after calling configureAllConfigSettingsAsync() is called.
 
 		// === Auxiliary controls ===
 		byte lightThreshold = 0; ///< Threshold for auxiliary light control (0–255).
@@ -369,7 +369,7 @@ namespace LD2410Types {
 		 *
 		 * Ensures that enum values are set and values are within valid ranges.
 		 * This method is called internally before applying a config
-		 * via setConfigDataAsync().
+		 * via configureAllConfigSettingsAsync().
 		 *
 		 * @returns True if the configuration is valid, false otherwise.
 		 */

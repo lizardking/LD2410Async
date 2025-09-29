@@ -592,7 +592,7 @@ bool LD2410Async::sendCommandAsync(const byte* command, AsyncCommandCallback cal
 ***********************************************************************************/
 
 bool LD2410Async::asyncIsBusy() {
-	return asyncCommandActive || sendAsyncSequenceActive || setConfigDataAsyncConfigActive;
+	return asyncCommandActive || sendAsyncSequenceActive || configureAllConfigSettingsAsyncConfigActive;
 }
 
 /**********************************************************************************
@@ -798,7 +798,7 @@ bool LD2410Async::disableConfigModeAsync(AsyncCommandCallback callback, byte use
 // All these commands need to be executed in config mode.
 // The code takes care of that. Enables/disable config mode if necessary, 
 // but also keeps config mode active if it was already active before the command
-bool LD2410Async::setMaxGateAndNoOneTimeoutAsync(byte maxMovingGate, byte maxStationaryGate,
+bool LD2410Async::configureMaxGateAndNoOneTimeoutAsync(byte maxMovingGate, byte maxStationaryGate,
 	unsigned short noOneTimeout,
 	AsyncCommandCallback callback, byte userData)
 {
@@ -835,7 +835,7 @@ bool LD2410Async::disableEngineeringModeAsync(AsyncCommandCallback callback, byt
 	return sendConfigCommandAsync(LD2410Defs::engineeringModeDisableCommandData, callback, userData);
 }
 
-bool LD2410Async::setDistanceGateSensitivityAsync(const byte movingThresholds[9],
+bool LD2410Async::configureDistanceGateSensitivityAsync(const byte movingThresholds[9],
 	const byte stationaryThresholds[9],
 	AsyncCommandCallback callback, byte userData)
 {
@@ -857,7 +857,7 @@ bool LD2410Async::setDistanceGateSensitivityAsync(const byte movingThresholds[9]
 
 
 
-bool LD2410Async::setDistanceGateSensitivityAsync(byte gate, byte movingThreshold,
+bool LD2410Async::configureDistanceGateSensitivityAsync(byte gate, byte movingThreshold,
 	byte stationaryThreshold,
 	AsyncCommandCallback callback, byte userData)
 {
@@ -884,7 +884,7 @@ bool LD2410Async::requestFirmwareAsync(AsyncCommandCallback callback, byte userD
 }
 
 
-bool LD2410Async::setBaudRateAsync(byte baudRateSetting,
+bool LD2410Async::configureBaudRateAsync(byte baudRateSetting,
 	AsyncCommandCallback callback, byte userData)
 {
 	DEBUG_PRINT_MILLIS;
@@ -903,11 +903,11 @@ bool LD2410Async::setBaudRateAsync(byte baudRateSetting,
 
 
 
-bool LD2410Async::setBaudRateAsync(LD2410Types::Baudrate baudRate, AsyncCommandCallback callback, byte userData) {
+bool LD2410Async::configureBaudRateAsync(LD2410Types::Baudrate baudRate, AsyncCommandCallback callback, byte userData) {
 
 	if (asyncIsBusy()) return false;
 
-	return setBaudRateAsync((byte)baudRate, callback, userData);
+	return configureBaudRateAsync((byte)baudRate, callback, userData);
 }
 
 
@@ -944,7 +944,7 @@ bool LD2410Async::requestBluetoothMacAddressAsync(AsyncCommandCallback callback,
 	return sendConfigCommandAsync(LD2410Defs::requestMacAddressCommandData, callback, userData);
 }
 
-bool LD2410Async::setBluetoothpasswordAsync(const char* password,
+bool LD2410Async::configureBluetoothPasswordAsync(const char* password,
 	AsyncCommandCallback callback, byte userData)
 {
 	DEBUG_PRINT_MILLIS;
@@ -959,27 +959,27 @@ bool LD2410Async::setBluetoothpasswordAsync(const char* password,
 
 
 
-bool LD2410Async::setBluetoothpasswordAsync(const String& password, AsyncCommandCallback callback, byte userData) {
+bool LD2410Async::configureBluetoothPasswordAsync(const String& password, AsyncCommandCallback callback, byte userData) {
 
-	return setBluetoothpasswordAsync(password.c_str(), callback, userData);
+	return configureBluetoothPasswordAsync(password.c_str(), callback, userData);
 }
 
 
-bool LD2410Async::resetBluetoothpasswordAsync(AsyncCommandCallback callback, byte userData) {
+bool LD2410Async::configureDefaultBluetoothPasswordAsync(AsyncCommandCallback callback, byte userData) {
 	DEBUG_PRINT_MILLIS;
 	DEBUG_PRINTLN("Reset Bluetooth Password");
 	if (asyncIsBusy()) return false;
 	return sendConfigCommandAsync(LD2410Defs::setBluetoothPasswordCommandData, callback, userData);
 }
 
-bool LD2410Async::setDistanceResolution75cmAsync(AsyncCommandCallback callback, byte userData) {
+bool LD2410Async::configureDistanceResolution75cmAsync(AsyncCommandCallback callback, byte userData) {
 	DEBUG_PRINT_MILLIS;
 	DEBUG_PRINTLN("Set Distance Resolution 75cm");
 	if (asyncIsBusy()) return false;
 	return sendConfigCommandAsync(LD2410Defs::setDistanceResolution75cmCommandData, callback, userData);
 };
 
-bool LD2410Async::setDistanceResolutionAsync(LD2410Types::DistanceResolution distanceResolution,
+bool LD2410Async::configureDistanceResolutionAsync(LD2410Types::DistanceResolution distanceResolution,
 	AsyncCommandCallback callback, byte userData)
 {
 	DEBUG_PRINT_MILLIS;
@@ -992,7 +992,7 @@ bool LD2410Async::setDistanceResolutionAsync(LD2410Types::DistanceResolution dis
 	return sendConfigCommandAsync(cmd, callback, userData);
 }
 
-bool LD2410Async::setDistanceResolution20cmAsync(AsyncCommandCallback callback, byte userData) {
+bool LD2410Async::configuresDistanceResolution20cmAsync(AsyncCommandCallback callback, byte userData) {
 	DEBUG_PRINT_MILLIS;
 	DEBUG_PRINTLN("Set Distance Resolution 20cm");
 	if (asyncIsBusy()) return false;
@@ -1006,7 +1006,7 @@ bool LD2410Async::requestDistanceResolutioncmAsync(AsyncCommandCallback callback
 	return sendConfigCommandAsync(LD2410Defs::requestDistanceResolutionCommandData, callback, userData);
 }
 
-bool LD2410Async::setAuxControlSettingsAsync(LD2410Types::LightControl lightControl, byte lightThreshold,
+bool LD2410Async::configureAuxControlSettingsAsync(LD2410Types::LightControl lightControl, byte lightThreshold,
 	LD2410Types::OutputControl outputControl,
 	AsyncCommandCallback callback, byte userData)
 {
@@ -1057,7 +1057,7 @@ bool LD2410Async::requestAutoConfigStatusAsync(AsyncCommandCallback callback, by
 // and reduce the total number of commands that have to be called.
 
 
-bool LD2410Async::requestAllStaticData(AsyncCommandCallback callback, byte userData) {
+bool LD2410Async::requestAllStaticDataAsync(AsyncCommandCallback callback, byte userData) {
 	DEBUG_PRINT_MILLIS;
 	DEBUG_PRINTLN("Request all static data");
 
@@ -1072,7 +1072,7 @@ bool LD2410Async::requestAllStaticData(AsyncCommandCallback callback, byte userD
 	return executeCommandSequenceAsync(callback, userData);
 }
 
-bool LD2410Async::requestAllConfigDataAsync(AsyncCommandCallback callback, byte userData) {
+bool LD2410Async::requestAllConfigSettingsAsync(AsyncCommandCallback callback, byte userData) {
 	DEBUG_PRINT_MILLIS;
 	DEBUG_PRINTLN("Request all config data");
 
@@ -1093,11 +1093,11 @@ bool LD2410Async::requestAllConfigDataAsync(AsyncCommandCallback callback, byte 
 // It uses a first command sequences to get the current sensor config, then checks what 
 // actually needs to be changed and then creates a second command sequence to do the needed changes.
 
-void LD2410Async::setConfigDataAsyncExecuteCallback(LD2410Async::AsyncCommandResult result) {
-	AsyncCommandCallback cb = setConfigDataAsyncConfigCallback;
-	setConfigDataAsyncConfigCallback = nullptr;
-	byte userData = setConfigDataAsyncConfigUserData;
-	setConfigDataAsyncConfigActive = false;
+void LD2410Async::configureAllConfigSettingsAsyncExecuteCallback(LD2410Async::AsyncCommandResult result) {
+	AsyncCommandCallback cb = configureAllConfigSettingsAsyncConfigCallback;
+	configureAllConfigSettingsAsyncConfigCallback = nullptr;
+	byte userData = configureAllConfigSettingsAsyncConfigUserData;
+	configureAllConfigSettingsAsyncConfigActive = false;
 
 	DEBUG_PRINT_MILLIS
 		DEBUG_PRINT("SetConfigDataAsync complete. Result: ");
@@ -1109,47 +1109,47 @@ void LD2410Async::setConfigDataAsyncExecuteCallback(LD2410Async::AsyncCommandRes
 
 }
 
-void LD2410Async::setConfigDataAsyncConfigModeDisabledCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData) {
+void LD2410Async::configureAllConfigSettingsAsyncConfigModeDisabledCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData) {
 	if (result != LD2410Async::AsyncCommandResult::SUCCESS) {
 		DEBUG_PRINT_MILLIS;
-		DEBUG_PRINTLN("Warning: Disabling config mode after setConfigDataAsync failed. Result: ");
+		DEBUG_PRINTLN("Warning: Disabling config mode after configureAllConfigSettingsAsync failed. Result: ");
 		DEBUG_PRINTLN(result);
-		sender->setConfigDataAsyncExecuteCallback(result);
+		sender->configureAllConfigSettingsAsyncExecuteCallback(result);
 	}
 	else {
 		// Config mode disabled successfully
-		sender->setConfigDataAsyncExecuteCallback(sender->setConfigDataAsyncResultToReport);
+		sender->configureAllConfigSettingsAsyncExecuteCallback(sender->configureAllConfigSettingsAsyncResultToReport);
 	}
 }
 
-void LD2410Async::setConfigDataAsyncFinalize(LD2410Async::AsyncCommandResult resultToReport) {
+void LD2410Async::configureAllConfigSettingsAsyncFinalize(LD2410Async::AsyncCommandResult resultToReport) {
 
-	if (setConfigDataAsyncConfigInitialConfigMode) {
-		setConfigDataAsyncResultToReport = resultToReport;
+	if (configureAllConfigSettingsAsyncConfigInitialConfigMode) {
+		configureAllConfigSettingsAsyncResultToReport = resultToReport;
 
-		if (!disableConfigModeAsync(setConfigDataAsyncConfigModeDisabledCallback, 0)) {
+		if (!disableConfigModeAsync(configureAllConfigSettingsAsyncConfigModeDisabledCallback, 0)) {
 			DEBUG_PRINT_MILLIS;
-			DEBUG_PRINTLN("Error: Disabling config mode after setConfigDataAsync failed.");
-			setConfigDataAsyncExecuteCallback(LD2410Async::AsyncCommandResult::FAILED);
+			DEBUG_PRINTLN("Error: Disabling config mode after configureAllConfigSettingsAsync failed.");
+			configureAllConfigSettingsAsyncExecuteCallback(LD2410Async::AsyncCommandResult::FAILED);
 		}
 	}
 	else {
-		setConfigDataAsyncExecuteCallback(resultToReport);
+		configureAllConfigSettingsAsyncExecuteCallback(resultToReport);
 	}
 }
 
 
-void LD2410Async::setConfigDataAsyncWriteConfigCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData) {
+void LD2410Async::configureAllConfigSettingsAsyncWriteConfigCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData) {
 	if (AsyncCommandResult::SUCCESS != result) {
 		DEBUG_PRINT_MILLIS;
 		DEBUG_PRINTLN("Error: Writing config data to sensor failed.");
 	};
 	//Pass result to finalize method, which will also disable config mode if needed
-	sender->setConfigDataAsyncFinalize(result);
+	sender->configureAllConfigSettingsAsyncFinalize(result);
 }
 
 
-bool LD2410Async::setConfigDataAsyncBuildSaveChangesCommandSequence() {
+bool LD2410Async::configureAllConfigSettingsAsyncBuildSaveChangesCommandSequence() {
 	//Get a clone of the current config, so it does not get changed while we are working
 	LD2410Types::ConfigData currentConfig = LD2410Async::getConfigData();
 
@@ -1159,15 +1159,15 @@ bool LD2410Async::setConfigDataAsyncBuildSaveChangesCommandSequence() {
 		return false;
 	};
 	// 1. Max gate + no one timeout
-	if (setConfigDataAsyncWriteFullConfig
-		|| currentConfig.maxMotionDistanceGate != setConfigDataAsyncConfigDataToWrite.maxMotionDistanceGate
-		|| currentConfig.maxStationaryDistanceGate != setConfigDataAsyncConfigDataToWrite.maxStationaryDistanceGate
-		|| currentConfig.noOneTimeout != setConfigDataAsyncConfigDataToWrite.noOneTimeout) {
+	if (configureAllConfigSettingsAsyncWriteFullConfig
+		|| currentConfig.maxMotionDistanceGate != configureAllConfigSettingsAsyncConfigDataToWrite.maxMotionDistanceGate
+		|| currentConfig.maxStationaryDistanceGate != configureAllConfigSettingsAsyncConfigDataToWrite.maxStationaryDistanceGate
+		|| currentConfig.noOneTimeout != configureAllConfigSettingsAsyncConfigDataToWrite.noOneTimeout) {
 		byte cmd[sizeof(LD2410Defs::maxGateCommandData)];
 		if (!LD2410CommandBuilder::buildMaxGateCommand(cmd,
-			setConfigDataAsyncConfigDataToWrite.maxMotionDistanceGate,
-			setConfigDataAsyncConfigDataToWrite.maxStationaryDistanceGate,
-			setConfigDataAsyncConfigDataToWrite.noOneTimeout)) {
+			configureAllConfigSettingsAsyncConfigDataToWrite.maxMotionDistanceGate,
+			configureAllConfigSettingsAsyncConfigDataToWrite.maxStationaryDistanceGate,
+			configureAllConfigSettingsAsyncConfigDataToWrite.noOneTimeout)) {
 			DEBUG_PRINT_MILLIS;
 			DEBUG_PRINTLN("Error: Building max gate command failed.");
 			return false;
@@ -1182,13 +1182,13 @@ bool LD2410Async::setConfigDataAsyncBuildSaveChangesCommandSequence() {
 	}
 	// 2. Gate sensitivities (sequence of commands)
 	for (byte gate = 0; gate < 9; gate++) {
-		if (setConfigDataAsyncWriteFullConfig
-			|| currentConfig.distanceGateMotionSensitivity[gate] != setConfigDataAsyncConfigDataToWrite.distanceGateMotionSensitivity[gate]
-			|| currentConfig.distanceGateStationarySensitivity[gate] != setConfigDataAsyncConfigDataToWrite.distanceGateStationarySensitivity[gate]) {
+		if (configureAllConfigSettingsAsyncWriteFullConfig
+			|| currentConfig.distanceGateMotionSensitivity[gate] != configureAllConfigSettingsAsyncConfigDataToWrite.distanceGateMotionSensitivity[gate]
+			|| currentConfig.distanceGateStationarySensitivity[gate] != configureAllConfigSettingsAsyncConfigDataToWrite.distanceGateStationarySensitivity[gate]) {
 			byte cmd[sizeof(LD2410Defs::distanceGateSensitivityConfigCommandData)];
 			if (!LD2410CommandBuilder::buildGateSensitivityCommand(cmd, gate,
-				setConfigDataAsyncConfigDataToWrite.distanceGateMotionSensitivity[gate],
-				setConfigDataAsyncConfigDataToWrite.distanceGateStationarySensitivity[gate])) {
+				configureAllConfigSettingsAsyncConfigDataToWrite.distanceGateMotionSensitivity[gate],
+				configureAllConfigSettingsAsyncConfigDataToWrite.distanceGateStationarySensitivity[gate])) {
 				DEBUG_PRINT_MILLIS;
 				DEBUG_PRINT("Error: Error building gate sensitivity command for gate ");
 				DEBUG_PRINTLN(gate);
@@ -1211,10 +1211,10 @@ bool LD2410Async::setConfigDataAsyncBuildSaveChangesCommandSequence() {
 	}
 
 	//3. Distance resolution
-	if (setConfigDataAsyncWriteFullConfig
-		|| currentConfig.distanceResolution != setConfigDataAsyncConfigDataToWrite.distanceResolution) {
+	if (configureAllConfigSettingsAsyncWriteFullConfig
+		|| currentConfig.distanceResolution != configureAllConfigSettingsAsyncConfigDataToWrite.distanceResolution) {
 		byte cmd[6]; // resolution commands are 6 bytes long
-		if (!LD2410CommandBuilder::buildDistanceResolutionCommand(cmd, setConfigDataAsyncConfigDataToWrite.distanceResolution)) {
+		if (!LD2410CommandBuilder::buildDistanceResolutionCommand(cmd, configureAllConfigSettingsAsyncConfigDataToWrite.distanceResolution)) {
 			DEBUG_PRINT_MILLIS;
 			DEBUG_PRINTLN("Error: Building distance resolution command failed.");
 			return false;
@@ -1229,15 +1229,15 @@ bool LD2410Async::setConfigDataAsyncBuildSaveChangesCommandSequence() {
 	};
 
 	//4. Aux control settings
-	if (setConfigDataAsyncWriteFullConfig
-		|| currentConfig.lightControl != setConfigDataAsyncConfigDataToWrite.lightControl
-		|| currentConfig.lightThreshold != setConfigDataAsyncConfigDataToWrite.lightThreshold
-		|| currentConfig.outputControl != setConfigDataAsyncConfigDataToWrite.outputControl) {
+	if (configureAllConfigSettingsAsyncWriteFullConfig
+		|| currentConfig.lightControl != configureAllConfigSettingsAsyncConfigDataToWrite.lightControl
+		|| currentConfig.lightThreshold != configureAllConfigSettingsAsyncConfigDataToWrite.lightThreshold
+		|| currentConfig.outputControl != configureAllConfigSettingsAsyncConfigDataToWrite.outputControl) {
 		byte cmd[sizeof(LD2410Defs::setAuxControlSettingCommandData)];
 		if (!LD2410CommandBuilder::buildAuxControlCommand(cmd,
-			setConfigDataAsyncConfigDataToWrite.lightControl,
-			setConfigDataAsyncConfigDataToWrite.lightThreshold,
-			setConfigDataAsyncConfigDataToWrite.outputControl)) {
+			configureAllConfigSettingsAsyncConfigDataToWrite.lightControl,
+			configureAllConfigSettingsAsyncConfigDataToWrite.lightThreshold,
+			configureAllConfigSettingsAsyncConfigDataToWrite.outputControl)) {
 			DEBUG_PRINT_MILLIS;
 			DEBUG_PRINTLN("Error: Building aux control command failed.");
 			return false;
@@ -1253,9 +1253,9 @@ bool LD2410Async::setConfigDataAsyncBuildSaveChangesCommandSequence() {
 	return true;
 };
 
-bool LD2410Async::setConfigDataAsyncWriteConfig() {
+bool LD2410Async::configureAllConfigSettingsAsyncWriteConfig() {
 
-	if (!setConfigDataAsyncBuildSaveChangesCommandSequence()) {
+	if (!configureAllConfigSettingsAsyncBuildSaveChangesCommandSequence()) {
 		//Could not build command sequence
 		return false;
 	}
@@ -1265,7 +1265,7 @@ bool LD2410Async::setConfigDataAsyncWriteConfig() {
 			DEBUG_PRINTLN("No config changes detected, not need to write anything");
 	}
 
-	if (!executeCommandSequenceAsync(setConfigDataAsyncWriteConfigCallback, 0)) {
+	if (!executeCommandSequenceAsync(configureAllConfigSettingsAsyncWriteConfigCallback, 0)) {
 		DEBUG_PRINT_MILLIS;
 		DEBUG_PRINTLN("Error: Starting command sequence to write config data failed.");
 
@@ -1275,32 +1275,32 @@ bool LD2410Async::setConfigDataAsyncWriteConfig() {
 
 };
 
-void LD2410Async::setConfigDataAsyncRequestAllConfigDataCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData) {
+void LD2410Async::configureAllConfigSettingsAsyncRequestAllConfigDataCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData) {
 	if (result != LD2410Async::AsyncCommandResult::SUCCESS) {
 		DEBUG_PRINT_MILLIS;
 		DEBUG_PRINTLN("Error: Requesting current config data failed. Result: ");
 		DEBUG_PRINTLN(result);
-		sender->setConfigDataAsyncFinalize(result);
+		sender->configureAllConfigSettingsAsyncFinalize(result);
 		return;
 	}
 	//Got current config data, now write the changed values
 	DEBUG_PRINT_MILLIS;
 	DEBUG_PRINTLN("Current config data received.");
 
-	if (!sender->setConfigDataAsyncWriteConfig()) {
+	if (!sender->configureAllConfigSettingsAsyncWriteConfig()) {
 		DEBUG_PRINT_MILLIS;
 		DEBUG_PRINTLN("Error: Starting saving config data changes failed.");
-		sender->setConfigDataAsyncFinalize(AsyncCommandResult::FAILED);
+		sender->configureAllConfigSettingsAsyncFinalize(AsyncCommandResult::FAILED);
 	}
 }
 
-bool LD2410Async::setConfigDataAsyncRequestAllConfigData() {
+bool LD2410Async::configureAllConfigSettingsAsyncRequestAllConfigData() {
 	if (resetCommandSequence()
 		&& addCommandToSequence(LD2410Defs::requestDistanceResolutionCommandData)
 		&& addCommandToSequence(LD2410Defs::requestParamsCommandData)
 		&& addCommandToSequence(LD2410Defs::requestAuxControlSettingsCommandData))
 	{
-		if (executeCommandSequenceAsync(setConfigDataAsyncRequestAllConfigDataCallback, 0)) {
+		if (executeCommandSequenceAsync(configureAllConfigSettingsAsyncRequestAllConfigDataCallback, 0)) {
 			DEBUG_PRINT_MILLIS;
 			DEBUG_PRINTLN("Requesting current config data");
 			return true;
@@ -1313,13 +1313,13 @@ bool LD2410Async::setConfigDataAsyncRequestAllConfigData() {
 	return false;
 }
 
-void LD2410Async::setConfigDataAsyncConfigModeEnabledCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData) {
+void LD2410Async::configureAllConfigSettingsAsyncConfigModeEnabledCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData) {
 	if (result != AsyncCommandResult::SUCCESS) {
 
 		DEBUG_PRINT_MILLIS;
 		DEBUG_PRINTLN("Error: Enabling config mode failed. Result: ");
 		DEBUG_PRINTLN(result);
-		sender->setConfigDataAsyncFinalize(result);
+		sender->configureAllConfigSettingsAsyncFinalize(result);
 		return;
 	};
 
@@ -1328,24 +1328,24 @@ void LD2410Async::setConfigDataAsyncConfigModeEnabledCallback(LD2410Async* sende
 	DEBUG_PRINTLN("Config mode enabled.");
 
 	bool ret = false;
-	if (sender->setConfigDataAsyncWriteFullConfig) {
+	if (sender->configureAllConfigSettingsAsyncWriteFullConfig) {
 		//If we save all changes anyway, no need to request current config data first
-		ret = sender->setConfigDataAsyncWriteConfig();
+		ret = sender->configureAllConfigSettingsAsyncWriteConfig();
 
 	}
 	else {
-		ret = sender->setConfigDataAsyncRequestAllConfigData();
+		ret = sender->configureAllConfigSettingsAsyncRequestAllConfigData();
 	}
 	if (!ret) {
 		DEBUG_PRINT_MILLIS;
 		DEBUG_PRINTLN("Error: Starting config data write or request of current config data failed.");
-		sender->setConfigDataAsyncFinalize(AsyncCommandResult::FAILED);
+		sender->configureAllConfigSettingsAsyncFinalize(AsyncCommandResult::FAILED);
 	}
 
 
 }
 
-bool LD2410Async::setConfigDataAsync(const LD2410Types::ConfigData& configToWrite, bool writeAllConfigData, AsyncCommandCallback callback, byte userData)
+bool LD2410Async::configureAllConfigSettingsAsync(const LD2410Types::ConfigData& configToWrite, bool writeAllConfigData, AsyncCommandCallback callback, byte userData)
 {
 
 	DEBUG_PRINT_MILLIS;
@@ -1360,23 +1360,23 @@ bool LD2410Async::setConfigDataAsync(const LD2410Types::ConfigData& configToWrit
 		return false;
 	}
 
-	setConfigDataAsyncConfigActive = true;
-	setConfigDataAsyncConfigDataToWrite = configToWrite;
-	setConfigDataAsyncWriteFullConfig = writeAllConfigData;
-	setConfigDataAsyncConfigCallback = callback;
-	setConfigDataAsyncConfigUserData = userData;
-	setConfigDataAsyncConfigInitialConfigMode = isConfigModeEnabled();
+	configureAllConfigSettingsAsyncConfigActive = true;
+	configureAllConfigSettingsAsyncConfigDataToWrite = configToWrite;
+	configureAllConfigSettingsAsyncWriteFullConfig = writeAllConfigData;
+	configureAllConfigSettingsAsyncConfigCallback = callback;
+	configureAllConfigSettingsAsyncConfigUserData = userData;
+	configureAllConfigSettingsAsyncConfigInitialConfigMode = isConfigModeEnabled();
 
-	if (!setConfigDataAsyncConfigInitialConfigMode) {
-		return enableConfigModeInternalAsync(setConfigDataAsyncConfigModeEnabledCallback, 0);
+	if (!configureAllConfigSettingsAsyncConfigInitialConfigMode) {
+		return enableConfigModeInternalAsync(configureAllConfigSettingsAsyncConfigModeEnabledCallback, 0);
 	}
 	else {
-		if (setConfigDataAsyncWriteFullConfig) {
+		if (configureAllConfigSettingsAsyncWriteFullConfig) {
 			//If we save all changes anyway, no need to request current config data first
-			return setConfigDataAsyncWriteConfig();
+			return configureAllConfigSettingsAsyncWriteConfig();
 		}
 		else {
-			return setConfigDataAsyncRequestAllConfigData();
+			return configureAllConfigSettingsAsyncRequestAllConfigData();
 		}
 	}
 

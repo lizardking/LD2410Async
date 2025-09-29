@@ -14,6 +14,8 @@
 /**
  * @brief Asynchronous driver for the LD2410 human presence radar sensor.
  *
+ * @mainpage
+ * @section intro_sec Introduction
  * The LD2410 is a mmWave radar sensor capable of detecting both moving and
  * stationary targets, reporting presence, distance, and per-gate signal strength.
  * This class implements a non-blocking, asynchronous interface for communicating
@@ -85,14 +87,17 @@
 
 class LD2410Async {
 public:
-
-
-	/**
-	 * @brief Result of an asynchronous command execution.
-	 *
-	 * Every async command reports back its outcome via the callback.
+	/** @defgroup LD2410Async_Types Types And Callbacks
+	 *  Public types , enums and callback definitions
+	 *  @{
 	 */
-	enum class AsyncCommandResult: byte {
+
+	 /**
+	  * @brief Result of an asynchronous command execution.
+	  *
+	  * Every async command reports back its outcome via the callback.
+	  */
+	enum class AsyncCommandResult : byte {
 		SUCCESS,    ///< Command completed successfully and ACK was received.
 		FAILED,     ///< Command failed (sensor responded with negative ACK).
 		TIMEOUT,    ///< No ACK received within the expected time window.
@@ -135,24 +140,30 @@ public:
 
 
 
-
+	/** @} */ // end of LD2410Async_Types
 
 public:
-	/**
-	   * @brief Latest detection results from the radar.
-	   *
-	   * Updated automatically whenever new data frames are received.
-	   * Use registerDetectionDataReceivedCallback() to be notified
-	   * whenever this struct changes.
-	   * Use getDetectionData() or getDetectionDataRef() to access the current values, rather than accessing the struct directly.
-	   */
+	/** @defgroup LD2410Async_Data Public Data Members
+ *  Public data structures and variables.
+ *  @{
+ */
+
+
+ /**
+	* @brief Latest detection results from the radar.
+	*
+	* Updated automatically whenever new data frames are received.
+	* Use registerDetectionDataReceivedCallback() to be notified
+	* whenever this struct changes.
+	* Use getDetectionData() or getDetectionDataRef() to access the current values, rather than accessing the struct directly.
+	*/
 	LD2410Types::DetectionData detectionData;
 
 	/**
 	 * @brief Current configuration parameters of the radar.
 	 *
 	 * Filled when configuration query commands are issued
-	 * (e.g. requestAllConfigSettingsAsync() or requestGateParametersAsync() ect). 
+	 * (e.g. requestAllConfigSettingsAsync() or requestGateParametersAsync() ect).
 	 * Use registerConfigUpdateReceivedCallback() to be notified when data in this struct changes.
 	 * Use getConfigData() or getConfigDataRef() to access the current values, rather than accessing the struct directly.
 	 *
@@ -224,28 +235,32 @@ public:
 	* Updated by requestAutoConfigStatusAsync().
 	*/
 	LD2410Types::AutoConfigStatus	autoConfigStatus = LD2410Types::AutoConfigStatus::NOT_SET;
+	/** @} */ // end of LD2410Async_Data
 
+	/** @defgroup LD2410Async_Lifecycle Constructor & Basic Methods
+	 *  Constructor and basic start/stop methods.
+	 *  @{
+	 */
 
+	 /**********************************************************************************
+	 * Constrcutor
+	 ***********************************************************************************/
 
-	/**********************************************************************************
-	* Constrcutor
-	***********************************************************************************/
-
-	/**
-	* @brief Constructs a new LD2410Async instance bound to a given serial stream.
-	*
-	* The sensor communicates over a UART interface. Pass the corresponding
-	* Stream object (e.g. HardwareSerial, SoftwareSerial, or another compatible
-	* implementation) that is connected to the LD2410 sensor.
-	*
-	* Example:
-	* @code
-	*   HardwareSerial radarSerial(2);
-	*   LD2410Async radar(radarSerial);
-	* @endcode
-	*
-	* @param serial Reference to a Stream object used to exchange data with the sensor.
-	*/
+	 /**
+	 * @brief Constructs a new LD2410Async instance bound to a given serial stream.
+	 *
+	 * The sensor communicates over a UART interface. Pass the corresponding
+	 * Stream object (e.g. HardwareSerial, SoftwareSerial, or another compatible
+	 * implementation) that is connected to the LD2410 sensor.
+	 *
+	 * Example:
+	 * @code
+	 *   HardwareSerial radarSerial(2);
+	 *   LD2410Async radar(radarSerial);
+	 * @endcode
+	 *
+	 * @param serial Reference to a Stream object used to exchange data with the sensor.
+	 */
 	LD2410Async(Stream& serial);
 
 	/**********************************************************************************
@@ -272,25 +287,33 @@ public:
 	*/
 	bool end();
 
-	/**********************************************************************************
-	* Inactivity handling
-	***********************************************************************************/
-	/**
-	 * @brief Enables or disables automatic inactivity handling of the sensor.
-	 *
-	 * When inactivity handling is enabled, the library continuously monitors the time
-	 * since the last activity (received data or command ACK). If no activity is detected
-	 * for a longer period (defined by activityTimeoutMs), the library will attempt to
-	 * recover the sensor automatically:
-	 *   1. It first tries to exit config mode (even if configModeEnabled is false).
-	 *   2. If no activity is restored within 5 seconds after leaving config mode,
-	 *      the library reboots the sensor.
-	 *
-	 * This helps recover the sensor from rare cases where it gets "stuck"
-	 * in config mode or stops sending data.
-	 *
-	 * @param enable Pass true to enable inactivity handling, false to disable it.
-	 */
+	/** @} */ // end of LD2410Async_Lifecycle
+
+	 /**********************************************************************************
+	 * Inactivity handling
+	 ***********************************************************************************/
+
+	 /** @defgroup LD2410Async_Inactivity Inactivity Handling
+	  *  Methods for automatic inactivity detection and recovery.
+	  *  @{
+	  */
+
+	 /**
+	  * @brief Enables or disables automatic inactivity handling of the sensor.
+	  *
+	  * When inactivity handling is enabled, the library continuously monitors the time
+	  * since the last activity (received data or command ACK). If no activity is detected
+	  * for a longer period (defined by activityTimeoutMs), the library will attempt to
+	  * recover the sensor automatically:
+	  *   1. It first tries to exit config mode (even if configModeEnabled is false).
+	  *   2. If no activity is restored within 5 seconds after leaving config mode,
+	  *      the library reboots the sensor.
+	  *
+	  * This helps recover the sensor from rare cases where it gets "stuck"
+	  * in config mode or stops sending data.
+	  *
+	  * @param enable Pass true to enable inactivity handling, false to disable it.
+	  */
 	void setInactivityHandling(bool enable);
 
 	/**
@@ -334,11 +357,17 @@ public:
 	 */
 	unsigned long getInactivityTimeoutMs() const { return inactivityHandlingTimeoutMs; };
 
+	/** @} */ // end of LD2410Async_Inactivity
+
 	/**********************************************************************************
 	* Callback registration methods
 	***********************************************************************************/
+	/** @defgroup LD2410Async_Callbacks Callback Registration
+	 *  Registrierung von Callback-Funktionen.
+	 *  @{
+	 */
 
-	/**
+	 /**
 	  * @brief Registers a callback for new detection data.
 	  *
 	  * The callback is invoked whenever a valid data frame is received
@@ -373,6 +402,8 @@ public:
 	 * @param userData Optional value that will be passed to the callback.
 	 */
 	void registerConfigUpdateReceivedCallback(GenericCallback callback, byte userData = 0);
+
+	/** @} */ // end of LD2410Async_Callbacks
 
 	/**********************************************************************************
 	* Detection and config data access commands
@@ -679,7 +710,7 @@ public:
 
 	/**
 	 * @brief Configures the maximum detection gates and "no-one" timeout on the sensor.
-	 * 
+	 *
 	 * This command updates:
 	 *   - Maximum motion detection distance gate (2–8).
 	 *   - Maximum stationary detection distance gate (2–8).
@@ -917,7 +948,7 @@ public:
 	* @note Requires config mode. Will be managed automatically.
 	* @note Requires a reboot to activate value changes. Call rebootAsync() after setting.
 	* @note Fails if another async command is pending.
-	* 
+	*
 	* @param callback Function pointer with signature:
 	*        void(LD2410Async* sender, AsyncCommandResult result, byte userData).
 	* @param userData Optional value passed to the callback.
@@ -967,7 +998,7 @@ public:
 	 *
 	 * @note Requires config mode. Will be managed automatically.
 	 * @note Both enums must be set to valid values (not NOT_SET).
-	 * @note Fails if another async command is pending.	
+	 * @note Fails if another async command is pending.
 	 *
 	 * @param lightControl Light control behavior (see LightControl enum).
 	 * @param lightThreshold Threshold (0–255) used for light-based switching.
@@ -1247,9 +1278,9 @@ public:
 	 *
 	 * @returns true if the command sequence has been started, false otherwise.
 	 */
-	bool configureAllConfigSettingsAsync(const LD2410Types::ConfigData& configToWrite, bool writeAllConfigData, AsyncCommandCallback callback, byte userData=0);
+	bool configureAllConfigSettingsAsync(const LD2410Types::ConfigData& configToWrite, bool writeAllConfigData, AsyncCommandCallback callback, byte userData = 0);
 
-	
+
 
 private:
 	// ============================================================================
@@ -1501,5 +1532,5 @@ private:
 	static void configureAllConfigSettingsAsyncConfigModeEnabledCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData);
 
 	bool configureAllConfigSettingsAsyncBuildSaveChangesCommandSequence();
-	
+
 };

@@ -31,6 +31,7 @@
     <None Include="$(MSBuildThisFileDirectory).gitattributes" />
     <None Include="$(MSBuildThisFileDirectory).gitignore" />
     <None Include="$(MSBuildThisFileDirectory).github\workflows\build.yml" />
+    <None Include="$(MSBuildThisFileDirectory).github\workflows\arduinoLint.yml" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)src\LD2410CommandBuilder.h">

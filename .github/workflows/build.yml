@@ -5,7 +5,7 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-  workflow_dispatch:   # allows manual triggering from the GitHub Actions tab
+  workflow_dispatch:
 
 jobs:
   build:
@@ -17,25 +17,16 @@ jobs:
           - fqbn: "esp32:esp32:esp32"
             platform-name: esp32:esp32
 
-  # Make board type-specific customizations to the matrix jobs
         include:
           - board:
               platform-name: esp32:esp32
             platforms: |
-              # Install ESP32 platform via Boards Manager
               - name: esp32:esp32
                 source-url: https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
 
-
     steps:
-      # Checkout repo
       - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Arduino Lint
-        uses: arduino/arduino-lint-action@v1
-        with:
-          compliance: strict
 
       - name: Cache Arduino platform
         uses: actions/cache@v3
@@ -57,4 +48,3 @@ jobs:
           sketch-paths: |
             - examples
           enable-warnings-report: 'true'
-

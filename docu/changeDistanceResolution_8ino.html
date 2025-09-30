@@ -100,12 +100,9 @@ $(function(){initNavTree('changeDistanceResolution_8ino.html',''); initResizable
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">changeDistanceResolution.ino File Reference<div class="ingroups"><a class="el" href="group__examples.html">Examples</a></div></div></div>
+  <div class="headertitle"><div class="title">changeDistanceResolution.ino File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>Example: Changing distance resolution on LD2410.  
-<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;Arduino.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>&quot;</code><br />
 </div>
@@ -143,20 +140,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:afe461d27b9c48d5921c00d521181f12f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arduino loop function which does nothing.  <br /></td></tr>
 <tr class="separator:afe461d27b9c48d5921c00d521181f12f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Example: Changing distance resolution on LD2410. </p>
-<p>This sketch demonstrates how to:</p><ol type="1">
-<li>Initialize the radar on Serial1.</li>
-<li>Query all current configuration values from the sensor.</li>
-<li>Clone the config into a local variable.</li>
-<li>Modify the distance resolution.</li>
-<li>Apply the new config.</li>
-<li>Reboot the sensor to ensure changes take effect.</li>
-</ol>
-<dl class="section warning"><dt>Warning</dt><dd>Important: Make sure to adjust RADAR_RX_PIN and ADAR_TX_PIN to match you actual wiring. </dd></dl>
-
-<p class="definition">Definition in file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
-</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a78243257c4f1bb044c720dce7198d7cb" name="a78243257c4f1bb044c720dce7198d7cb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a78243257c4f1bb044c720dce7198d7cb">&#9670;&#160;</a></span>RADAR_BAUDRATE</h2>
 
@@ -169,7 +153,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00030">30</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00031">31</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
 
 </div>
 </div>
@@ -185,7 +169,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00026">26</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00027">27</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
 
 </div>
 </div>
@@ -201,7 +185,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00027">27</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00028">28</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
 
 </div>
 </div>
@@ -224,7 +208,7 @@ Functions</h2></td></tr>
 <p>Arduino loop function which does nothing. </p>
 <p>The LD2410Async library runs a FreeRTOS background task that automatically handles all jobs that are related to the radar sensor. Therefore the main loop doesnt have to da any LD2410 related work and is free for anything else you might want to do. </p>
 
-<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00174">174</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00175">175</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
 
 </div>
 </div>
@@ -256,7 +240,7 @@ Functions</h2></td></tr>
 <p>After checking if the async <a class="el" href="LD2410Async_8h.html#a509170bfc50580131d0c72f5c91daede" title="Applies a full ConfigData struct to the LD2410.">configureAllConfigSettingsAsync()</a> method was successful (always do that!), it will initiate a reboot of the sensor to activate the changed distance resolution.</p>
 <dl class="section note"><dt>Note</dt><dd>Always check the result of the async command that has triggered the callback. Otherweise async commands can fail, timeout or get canceled without you relizing it. In callback methods is is generally advised to access members of the LD2410Async instance via the sender pointer. This ensures that you are allways working with the correct instance, which is important if you have multiple LD2410Async instances. Also keep in mind that callbacks should be as short and efficient as possible to avoid blocking the background task of the library. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00072">72</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00073">73</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
 
 </div>
 </div>
@@ -288,7 +272,7 @@ Functions</h2></td></tr>
 <p>This method is called when the config data has been received from the sensor. After checking if the async <a class="el" href="LD2410Async_8h.html#ab578ee25526c8bb808fe7200fae95a38" title="Requests all configuration settings from the sensor.">requestAllConfigSettingsAsync()</a> method was successful (always do that!), it clones the config using <a class="el" href="LD2410Async_8h.html#a54388c929cea610f92891def29db66a5" title="Returns a clone of the current configuration data of the radar.">getConfigData()</a>, modifies the distance resolution and applies the new config using <a class="el" href="LD2410Async_8h.html#a509170bfc50580131d0c72f5c91daede" title="Applies a full ConfigData struct to the LD2410.">configureAllConfigSettingsAsync()</a></p>
 <dl class="section note"><dt>Note</dt><dd>Always check the result of the async command that has triggered the callback. Otherweise async commands can fail, timeout or get canceled without you relizing it. In callback methods is is generally advised to access members of the LD2410Async instance via the sender pointer. This ensures that you are allways working with the correct instance, which is important if you have multiple LD2410Async instances. Also keep in mind that callbacks should be as short and efficient as possible to avoid blocking the background task of the library. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00103">103</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00104">104</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
 
 </div>
 </div>
@@ -319,7 +303,7 @@ Functions</h2></td></tr>
 <p>Callback after the reboot command has been confirmed. </p>
 <p>This method just checks and prints the result </p>
 
-<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00050">50</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00051">51</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
 
 </div>
 </div>
@@ -378,7 +362,7 @@ Functions</h2></td></tr>
 <p>Arduino setup function which initializes the radar and starts the config change process. </p>
 <p><a class="el" href="LD2410Async_8h.html#a1358f6f0b8d55a676b5b8147906c9024" title="Starts the background task that continuously reads data from the sensor.">begin()</a> starts the background task of the LD2410Async library which automatically handles incoming data and triggers callbacks. The onDetectionDataReceived callback is registered to receive detection data. <a class="el" href="LD2410Async_8h.html#ab578ee25526c8bb808fe7200fae95a38" title="Requests all configuration settings from the sensor.">requestAllConfigSettingsAsync()</a> will fetch all config data from the sensor and triggers the onConfigReceived callback when done. </p>
 
-<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00139">139</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00140">140</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
 
 </div>
 </div>

@@ -71,8 +71,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"Example-example.html",
-"namespaceLD2410Defs.html#a975ffcb4167ef7e6438dbf1d8de49b34"
+"Basic-example.html",
+"namespaceLD2410CommandBuilder.html#a8b54a13a534e713b1fc2b29818bbe255"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

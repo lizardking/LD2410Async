@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>LD2410Async: Examples</title>
+<title>LD2410Async: Webservice</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -71,7 +71,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('examples.html',''); initResizable(true); });
+$(function(){initNavTree('Webservice-example.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -97,17 +97,18 @@ $(function(){initNavTree('examples.html',''); initResizable(true); });
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">Examples</div></div>
+  <div class="headertitle"><div class="title">Webservice</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock">Here is a list of all examples:</div><ul>
-<li><a class="el" href="Basic-example.html">Basic</a></li>
-<li><a class="el" href="Change-example.html">Change</a></li>
-<li><a class="el" href="Changing-example.html">Changing</a></li>
-<li><a class="el" href="Receive-example.html">Receive</a></li>
-<li><a class="el" href="Webservice-example.html">Webservice</a></li>
+<p>This example demonstrates how to use the LD2410Async library with an ESP32 to provide a web-based presence detection service. The ESP32 connects to a WiFi network, starts a web server, and serves a simple HTML page. The page connects via WebSocket to receive live presence detection data (presenceDetected, detectedDistance) from the LD2410 radar sensor.</p>
+<p>This example demonstrates how to use the LD2410Async library with an ESP32 to provide a web-based presence detection service. The ESP32 connects to a WiFi network, starts a web server, and serves a simple HTML page. The page connects via WebSocket to receive live presence detection data (presenceDetected, detectedDistance) from the LD2410 radar sensor. for Presence Detection with LD2410Async and ESP Async WebServer</p>
+<p>Dependencies:</p><ul>
+<li>ESPAsyncWebServer: <a href="https://github.com/me-no-dev/ESPAsyncWebServer">https://github.com/me-no-dev/ESPAsyncWebServer</a></li>
+<li>AsyncTCP: <a href="https://github.com/me-no-dev/AsyncTCP">https://github.com/me-no-dev/AsyncTCP</a></li>
+<li>LD2410Async library</li>
 </ul>
-</div><!-- contents -->
+<dl class="section warning"><dt>Warning</dt><dd>Make sure to install the required libraries and adjust the configuration section below to match your hardware and network setup.</dd></dl>
+<div class="fragment"></div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

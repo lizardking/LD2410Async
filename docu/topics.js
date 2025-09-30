@@ -1,4 +1,4 @@
 var topics =
 [
-    [ "Examples", "group__examples.html", "group__examples" ]
+    [ "Examples", "group__examples.html", null ]
 ];

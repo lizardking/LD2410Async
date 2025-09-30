@@ -36,6 +36,7 @@
     <None Include="$(MSBuildThisFileDirectory).github\workflows\generateDoxygenDocu.yml" />
     <None Include="$(MSBuildThisFileDirectory)Doxyfile" />
     <None Include="$(MSBuildThisFileDirectory)dox\mainPage.md" />
+    <None Include="$(MSBuildThisFileDirectory)examples\simplePresenceDetectionWebservice\simplePresenceDetectionWebservice.ino" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)src\LD2410CommandBuilder.h">

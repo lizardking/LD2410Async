@@ -31,6 +31,7 @@
     <None Include="$(MSBuildThisFileDirectory)examples\changeConfig\changeConfig.ino" />
     <None Include="$(MSBuildThisFileDirectory)examples\changeDistanceResolution\changeDistanceResolution.ino" />
     <None Include="$(MSBuildThisFileDirectory)examples\receiveData\receiveData.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\simplePresenceDetectionWebservice\simplePresenceDetectionWebservice.ino" />
     <None Include="$(MSBuildThisFileDirectory)LICENSE" />
     <None Include="$(MSBuildThisFileDirectory)README.md" />
   </ItemGroup>

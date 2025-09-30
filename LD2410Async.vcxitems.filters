@@ -37,6 +37,7 @@
     <None Include="$(MSBuildThisFileDirectory)Doxyfile" />
     <None Include="$(MSBuildThisFileDirectory)dox\mainPage.md" />
     <None Include="$(MSBuildThisFileDirectory)examples\simplePresenceDetectionWebservice\simplePresenceDetectionWebservice.ino" />
+    <None Include="$(MSBuildThisFileDirectory)dox\examples.dox" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)src\LD2410CommandBuilder.h">

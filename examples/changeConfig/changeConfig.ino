@@ -1,8 +1,7 @@
 /**
-* @file Example: Change configuration of the LD2410
+* @file 
 * @brief Example: Change configuration of the LD2410
 *
-* @details
 * This sketch shows how to:
 *   1. Initialize the radar on Serial1.
 *   2. Query all current configuration values from the sensor.
@@ -13,6 +12,8 @@
 * @warning
 * Important:
 * Make sure to adjust RADAR_RX_PIN and ADAR_TX_PIN to match you actual wiring.
+* 
+* @ingroup examples
 */
 
 #include <Arduino.h>

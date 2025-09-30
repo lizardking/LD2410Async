@@ -1,7 +1,8 @@
 /**
 * @file 
-* @brief Example: Change configuration of the LD2410
+* @example Change configuration of the LD2410
 *
+* @brief
 * This sketch shows how to:
 *   1. Initialize the radar on Serial1.
 *   2. Query all current configuration values from the sensor.

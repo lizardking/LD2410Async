@@ -1,7 +1,8 @@
 /**
 * @file
-* @brief Example: Changing distance resolution on LD2410
+* @example Changing distance resolution on LD2410
 *
+* @brief
 * This sketch demonstrates how to:
 *   1. Initialize the radar on Serial1.
 *   2. Query all current configuration values from the sensor.

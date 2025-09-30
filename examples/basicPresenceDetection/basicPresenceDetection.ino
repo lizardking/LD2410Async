@@ -1,7 +1,8 @@
 /**
 * @file 
-* @brief Example: Basic Presence Detection with LD2410Async
+* @example Basic Presence Detection with LD2410Async
 *
+* @brief
 * This sketch demonstrates how to use the LD2410Async library to detect presence
 * using only the presenceDetected variable from the detection data callback.
 * It prints a message with a timestamp whenever the presence state changes.

@@ -1,6 +1,6 @@
 /**
 * @file
-* @example Example: Webservice for Presence Detection with LD2410Async and ESP Async WebServer
+* @example Webservice for Presence Detection with LD2410Async and ESP Async WebServer
 * 
 * @brief
 * This example demonstrates how to use the LD2410Async library with an ESP32 to provide a web-based

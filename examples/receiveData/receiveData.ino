@@ -1,7 +1,8 @@
 /**
 * @file 
-* @brief Example: Receive detection data from the LD2410
+* @example Receive detection data from the LD2410
 *
+* @brief
 * This sketch initializes the LD2410 radar sensor on Serial1 and
 * prints detection data to the Serial Monitor as soon as it arrives.
 * This sketch demonstrates how to:

@@ -25,7 +25,5 @@ var searchData=
   ['example_3a_20retrieve_20firmware_20and_20mac_22',['Example: Retrieve firmware and MAC',['../LD2410Async_8h.html#autotoc_md21',1,'']]],
   ['example_3a_20run_20auto_20config_23',['Example: Run auto-config',['../LD2410Async_8h.html#autotoc_md12',1,'']]],
   ['example_3a_20using_20callback_20for_20presence_20detection_20updates_24',['Example: Using callback for presence detection updates',['../index.html#autotoc_md32',1,'']]],
-  ['examples_25',['Examples',['../index.html#autotoc_md31',1,'']]],
-  ['examples_20overview_26',['Examples Overview',['../examples.html',1,'']]],
-  ['examples_2edox_27',['examples.dox',['../examples_8dox.html',1,'']]]
+  ['examples_25',['Examples',['../index.html#autotoc_md31',1,'']]]
 ];

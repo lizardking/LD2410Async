@@ -35,7 +35,6 @@ var NAVTREE =
         [ "Example: Clone config data, modify, and write back", "index.html#autotoc_md34", null ]
       ] ]
     ] ],
-    [ "Examples Overview", "examples.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -71,7 +70,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "LD2410Async_8cpp.html",
-"namespaceLD2410Defs.html#a9558e2afe2a1a0c9c65efcd302bf32df"
+"namespaceLD2410Defs.html#a19f0400caf0a9d8f5154e9bde1fc4e89"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

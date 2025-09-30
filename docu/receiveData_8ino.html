@@ -97,11 +97,210 @@ $(function(){initNavTree('receiveData_8ino.html',''); initResizable(true); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">receiveData.ino File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
+<div class="textblock"><code>#include &lt;Arduino.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>&quot;</code><br />
+</div>
 <p><a href="receiveData_8ino_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a7e649b7675aa97ae8a3c2b2a329e55d7" id="r_a7e649b7675aa97ae8a3c2b2a329e55d7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e649b7675aa97ae8a3c2b2a329e55d7">RADAR_RX_PIN</a>&#160;&#160;&#160;16</td></tr>
+<tr class="memdesc:a7e649b7675aa97ae8a3c2b2a329e55d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">: Example: Receive detection data from the LD2410  <br /></td></tr>
+<tr class="separator:a7e649b7675aa97ae8a3c2b2a329e55d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acce505b164e2cee65fd975d0bc859ca8" id="r_acce505b164e2cee65fd975d0bc859ca8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acce505b164e2cee65fd975d0bc859ca8">RADAR_TX_PIN</a>&#160;&#160;&#160;17</td></tr>
+<tr class="separator:acce505b164e2cee65fd975d0bc859ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78243257c4f1bb044c720dce7198d7cb" id="r_a78243257c4f1bb044c720dce7198d7cb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78243257c4f1bb044c720dce7198d7cb">RADAR_BAUDRATE</a>&#160;&#160;&#160;256000</td></tr>
+<tr class="separator:a78243257c4f1bb044c720dce7198d7cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a49d7843d70c3fb5607ee7c62c655fa41" id="r_a49d7843d70c3fb5607ee7c62c655fa41"><td class="memItemLeft" align="right" valign="top">HardwareSerial&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49d7843d70c3fb5607ee7c62c655fa41">RadarSerial</a> (1)</td></tr>
+<tr class="separator:a49d7843d70c3fb5607ee7c62c655fa41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a795abfb02964341e3c3e09b8459d94bc" id="r_a795abfb02964341e3c3e09b8459d94bc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="LD2410Async_8h.html#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a795abfb02964341e3c3e09b8459d94bc">radar</a> (<a class="el" href="basicPresenceDetection_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41">RadarSerial</a>)</td></tr>
+<tr class="memdesc:a795abfb02964341e3c3e09b8459d94bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates LD2410Async object bound to the serial port defined in RadarSerial.  <br /></td></tr>
+<tr class="separator:a795abfb02964341e3c3e09b8459d94bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30ccb5184463f968f4a30895646dec1d" id="r_a30ccb5184463f968f4a30895646dec1d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30ccb5184463f968f4a30895646dec1d">onDetectionDataReceived</a> (<a class="el" href="LD2410Async_8h.html#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a> *sender, bool presenceDetected, byte userData)</td></tr>
+<tr class="separator:a30ccb5184463f968f4a30895646dec1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fc01d736fe50cf5b977f755b675f11d" id="r_a4fc01d736fe50cf5b977f755b675f11d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fc01d736fe50cf5b977f755b675f11d">setup</a> ()</td></tr>
+<tr class="memdesc:a4fc01d736fe50cf5b977f755b675f11d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arduino setup function which initializes the radar and registers the callback.  <br /></td></tr>
+<tr class="separator:a4fc01d736fe50cf5b977f755b675f11d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe461d27b9c48d5921c00d521181f12f" id="r_afe461d27b9c48d5921c00d521181f12f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe461d27b9c48d5921c00d521181f12f">loop</a> ()</td></tr>
+<tr class="memdesc:afe461d27b9c48d5921c00d521181f12f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arduino loop function which does nothing.  <br /></td></tr>
+<tr class="separator:afe461d27b9c48d5921c00d521181f12f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a78243257c4f1bb044c720dce7198d7cb" name="a78243257c4f1bb044c720dce7198d7cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78243257c4f1bb044c720dce7198d7cb">&#9670;&#160;</a></span>RADAR_BAUDRATE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RADAR_BAUDRATE&#160;&#160;&#160;256000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="receiveData_8ino_source.html#l00029">29</a> of file <a class="el" href="receiveData_8ino_source.html">receiveData.ino</a>.</p>
+
+</div>
+</div>
+<a id="a7e649b7675aa97ae8a3c2b2a329e55d7" name="a7e649b7675aa97ae8a3c2b2a329e55d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e649b7675aa97ae8a3c2b2a329e55d7">&#9670;&#160;</a></span>RADAR_RX_PIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RADAR_RX_PIN&#160;&#160;&#160;16</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>: Example: Receive detection data from the LD2410 </p>
+<p>This sketch initializes the LD2410 radar sensor on Serial1 and prints detection data to the Serial Monitor as soon as it arrives. This sketch demonstrates how to:</p><ol type="1">
+<li>Initialize the radar on Serial1.</li>
+<li>register a callback to receive detection data.</li>
+<li>Get a pointer to the detection data struct.</li>
+</ol>
+<dl class="section warning"><dt>Warning</dt><dd>Important: Make sure to adjust RADAR_RX_PIN and RADAR_TX_PIN to match you actual wiring. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="receiveData_8ino_source.html#l00025">25</a> of file <a class="el" href="receiveData_8ino_source.html">receiveData.ino</a>.</p>
+
+</div>
+</div>
+<a id="acce505b164e2cee65fd975d0bc859ca8" name="acce505b164e2cee65fd975d0bc859ca8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acce505b164e2cee65fd975d0bc859ca8">&#9670;&#160;</a></span>RADAR_TX_PIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RADAR_TX_PIN&#160;&#160;&#160;17</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="receiveData_8ino_source.html#l00026">26</a> of file <a class="el" href="receiveData_8ino_source.html">receiveData.ino</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="afe461d27b9c48d5921c00d521181f12f" name="afe461d27b9c48d5921c00d521181f12f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe461d27b9c48d5921c00d521181f12f">&#9670;&#160;</a></span>loop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void loop </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Arduino loop function which does nothing. </p>
+<p>The LD2410Async library runs a FreeRTOS background task that automatically handles all jobs that are related to the radar sensor. Therefore the main loop doesnt have to da any LD2410 related work and is free for anything else you might want to do. </p>
+
+<p class="definition">Definition at line <a class="el" href="receiveData_8ino_source.html#l00124">124</a> of file <a class="el" href="receiveData_8ino_source.html">receiveData.ino</a>.</p>
+
+</div>
+</div>
+<a id="a30ccb5184463f968f4a30895646dec1d" name="a30ccb5184463f968f4a30895646dec1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30ccb5184463f968f4a30895646dec1d">&#9670;&#160;</a></span>onDetectionDataReceived()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void onDetectionDataReceived </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="LD2410Async_8h.html#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a> *</td>          <td class="paramname"><span class="paramname"><em>sender</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>presenceDetected</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="receiveData_8ino_source.html#l00056">56</a> of file <a class="el" href="receiveData_8ino_source.html">receiveData.ino</a>.</p>
+
+</div>
+</div>
+<a id="a795abfb02964341e3c3e09b8459d94bc" name="a795abfb02964341e3c3e09b8459d94bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a795abfb02964341e3c3e09b8459d94bc">&#9670;&#160;</a></span>radar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="LD2410Async_8h.html#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a> radar </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="basicPresenceDetection_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41">RadarSerial</a></td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates LD2410Async object bound to the serial port defined in RadarSerial. </p>
+
+</div>
+</div>
+<a id="a49d7843d70c3fb5607ee7c62c655fa41" name="a49d7843d70c3fb5607ee7c62c655fa41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49d7843d70c3fb5607ee7c62c655fa41">&#9670;&#160;</a></span>RadarSerial()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HardwareSerial RadarSerial </td>
+          <td>(</td>
+          <td class="paramtype">1</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Create a HardwareSerial instance (ESP32 has multiple UARTs) bound to UART1 </p>
+
+</div>
+</div>
+<a id="a4fc01d736fe50cf5b977f755b675f11d" name="a4fc01d736fe50cf5b977f755b675f11d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fc01d736fe50cf5b977f755b675f11d">&#9670;&#160;</a></span>setup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setup </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Arduino setup function which initializes the radar and registers the callback. </p>
+<p>radar.begin() starts the background task of the LD2410Async library which automatically handles incoming data and triggers callbacks. The onDetectionDataReceived callback is registered to receive detection data. </p>
+
+<p class="definition">Definition at line <a class="el" href="receiveData_8ino_source.html#l00094">94</a> of file <a class="el" href="receiveData_8ino_source.html">receiveData.ino</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -97,11 +97,648 @@ $(function(){initNavTree('simplePresenceDetectionWebservice_8ino.html',''); init
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">simplePresenceDetectionWebservice.ino File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
+<div class="textblock"><code>#include &lt;Arduino.h&gt;</code><br />
+<code>#include &lt;WiFi.h&gt;</code><br />
+<code>#include &lt;ESPAsyncWebServer.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>&quot;</code><br />
+</div>
 <p><a href="simplePresenceDetectionWebservice_8ino_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">UART Configuration</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Example: Webservice for Presence Detection with LD2410Async and ESP Async WebServer</p>
+<p>This example demonstrates how to use the LD2410Async library with an ESP32 to provide a web-based presence detection service. The ESP32 connects to a WiFi network, starts a web server, and serves a simple HTML page. The page connects via WebSocket to receive live presence detection data (presenceDetected, detectedDistance) from the LD2410 radar sensor.</p>
+<p>Dependencies:</p><ul>
+<li>ESPAsyncWebServer: <a href="https://github.com/me-no-dev/ESPAsyncWebServer">https://github.com/me-no-dev/ESPAsyncWebServer</a></li>
+<li>AsyncTCP: <a href="https://github.com/me-no-dev/AsyncTCP">https://github.com/me-no-dev/AsyncTCP</a></li>
+<li>LD2410Async library</li>
+</ul>
+<dl class="section warning"><dt>Warning</dt><dd>Make sure to install the required libraries and adjust the configuration section below to match your hardware and network setup. </dd></dl>
+</div></td></tr>
+<tr class="memitem:a7e649b7675aa97ae8a3c2b2a329e55d7" id="r_a7e649b7675aa97ae8a3c2b2a329e55d7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e649b7675aa97ae8a3c2b2a329e55d7">RADAR_RX_PIN</a>&#160;&#160;&#160;16</td></tr>
+<tr class="memdesc:a7e649b7675aa97ae8a3c2b2a329e55d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">ESP32 pin that receives data from the radar (radar TX)  <br /></td></tr>
+<tr class="separator:a7e649b7675aa97ae8a3c2b2a329e55d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acce505b164e2cee65fd975d0bc859ca8" id="r_acce505b164e2cee65fd975d0bc859ca8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acce505b164e2cee65fd975d0bc859ca8">RADAR_TX_PIN</a>&#160;&#160;&#160;17</td></tr>
+<tr class="memdesc:acce505b164e2cee65fd975d0bc859ca8"><td class="mdescLeft">&#160;</td><td class="mdescRight">ESP32 pin that transmits data to the radar (radar RX)  <br /></td></tr>
+<tr class="separator:acce505b164e2cee65fd975d0bc859ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78243257c4f1bb044c720dce7198d7cb" id="r_a78243257c4f1bb044c720dce7198d7cb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78243257c4f1bb044c720dce7198d7cb">RADAR_BAUDRATE</a>&#160;&#160;&#160;256000</td></tr>
+<tr class="memdesc:a78243257c4f1bb044c720dce7198d7cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">UART baudrate for the radar sensor (default is 256000)  <br /></td></tr>
+<tr class="separator:a78243257c4f1bb044c720dce7198d7cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Webserver Configuration</div></td></tr>
+<tr class="memitem:aa430974dd59e17390636a1e876166997" id="r_aa430974dd59e17390636a1e876166997"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa430974dd59e17390636a1e876166997">WEBSERVER_PORT</a>&#160;&#160;&#160;80</td></tr>
+<tr class="memdesc:aa430974dd59e17390636a1e876166997"><td class="mdescLeft">&#160;</td><td class="mdescRight">HTTP/WebSocket server port.  <br /></td></tr>
+<tr class="separator:aa430974dd59e17390636a1e876166997"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a49d7843d70c3fb5607ee7c62c655fa41" id="r_a49d7843d70c3fb5607ee7c62c655fa41"><td class="memItemLeft" align="right" valign="top">HardwareSerial&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49d7843d70c3fb5607ee7c62c655fa41">RadarSerial</a> (1)</td></tr>
+<tr class="memdesc:a49d7843d70c3fb5607ee7c62c655fa41"><td class="mdescLeft">&#160;</td><td class="mdescRight">HardwareSerial instance for UART1 (LD2410 sensor)  <br /></td></tr>
+<tr class="separator:a49d7843d70c3fb5607ee7c62c655fa41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a795abfb02964341e3c3e09b8459d94bc" id="r_a795abfb02964341e3c3e09b8459d94bc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="LD2410Async_8h.html#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a795abfb02964341e3c3e09b8459d94bc">radar</a> (<a class="el" href="basicPresenceDetection_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41">RadarSerial</a>)</td></tr>
+<tr class="memdesc:a795abfb02964341e3c3e09b8459d94bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">LD2410Async instance for radar communication.  <br /></td></tr>
+<tr class="separator:a795abfb02964341e3c3e09b8459d94bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01a73e9084f1c989ffd6f78879d85760" id="r_a01a73e9084f1c989ffd6f78879d85760"><td class="memItemLeft" align="right" valign="top">AsyncWebServer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01a73e9084f1c989ffd6f78879d85760">server</a> (<a class="el" href="#aa430974dd59e17390636a1e876166997">WEBSERVER_PORT</a>)</td></tr>
+<tr class="memdesc:a01a73e9084f1c989ffd6f78879d85760"><td class="mdescLeft">&#160;</td><td class="mdescRight">AsyncWebServer instance for HTTP/WebSocket.  <br /></td></tr>
+<tr class="separator:a01a73e9084f1c989ffd6f78879d85760"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12b97dd15b0118cb30b85286f7c4b3c9" id="r_a12b97dd15b0118cb30b85286f7c4b3c9"><td class="memItemLeft" align="right" valign="top">AsyncWebSocket&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12b97dd15b0118cb30b85286f7c4b3c9">ws</a> (&quot;/ws&quot;)</td></tr>
+<tr class="memdesc:a12b97dd15b0118cb30b85286f7c4b3c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">AsyncWebSocket instance for live data updates.  <br /></td></tr>
+<tr class="separator:a12b97dd15b0118cb30b85286f7c4b3c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff1e26a91174e9c38aa1fb834f03d71c" id="r_aff1e26a91174e9c38aa1fb834f03d71c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff1e26a91174e9c38aa1fb834f03d71c">notifyClients</a> ()</td></tr>
+<tr class="memdesc:aff1e26a91174e9c38aa1fb834f03d71c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Notifies all connected WebSocket clients with the latest presence data.  <br /></td></tr>
+<tr class="separator:aff1e26a91174e9c38aa1fb834f03d71c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30ccb5184463f968f4a30895646dec1d" id="r_a30ccb5184463f968f4a30895646dec1d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30ccb5184463f968f4a30895646dec1d">onDetectionDataReceived</a> (<a class="el" href="LD2410Async_8h.html#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a> *sender, bool presenceDetected, byte userData)</td></tr>
+<tr class="memdesc:a30ccb5184463f968f4a30895646dec1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function called whenever new detection data arrives from the radar.  <br /></td></tr>
+<tr class="separator:a30ccb5184463f968f4a30895646dec1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7064e9828984f378d3e04f9b7a47bcae" id="r_a7064e9828984f378d3e04f9b7a47bcae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7064e9828984f378d3e04f9b7a47bcae">onWsEvent</a> (AsyncWebSocket *<a class="el" href="#a01a73e9084f1c989ffd6f78879d85760">server</a>, AsyncWebSocketClient *client, AwsEventType type, void *arg, uint8_t *data, size_t len)</td></tr>
+<tr class="memdesc:a7064e9828984f378d3e04f9b7a47bcae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles WebSocket events (client connect/disconnect).  <br /></td></tr>
+<tr class="separator:a7064e9828984f378d3e04f9b7a47bcae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2a97dbe5f144cd247e3b15c6af7c767" id="r_ad2a97dbe5f144cd247e3b15c6af7c767"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2a97dbe5f144cd247e3b15c6af7c767">setupWiFi</a> ()</td></tr>
+<tr class="memdesc:ad2a97dbe5f144cd247e3b15c6af7c767"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connects to WiFi using the user configuration.  <br /></td></tr>
+<tr class="separator:ad2a97dbe5f144cd247e3b15c6af7c767"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fc01d736fe50cf5b977f755b675f11d" id="r_a4fc01d736fe50cf5b977f755b675f11d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fc01d736fe50cf5b977f755b675f11d">setup</a> ()</td></tr>
+<tr class="memdesc:a4fc01d736fe50cf5b977f755b675f11d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arduino setup function.  <br /></td></tr>
+<tr class="separator:a4fc01d736fe50cf5b977f755b675f11d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe461d27b9c48d5921c00d521181f12f" id="r_afe461d27b9c48d5921c00d521181f12f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe461d27b9c48d5921c00d521181f12f">loop</a> ()</td></tr>
+<tr class="memdesc:afe461d27b9c48d5921c00d521181f12f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arduino loop function.  <br /></td></tr>
+<tr class="separator:afe461d27b9c48d5921c00d521181f12f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ab3783c936ad22cc24385b3b1351bd2d8" id="r_ab3783c936ad22cc24385b3b1351bd2d8"><td class="memItemLeft" align="right" valign="top">volatile bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab3783c936ad22cc24385b3b1351bd2d8">latestPresenceDetected</a> = false</td></tr>
+<tr class="memdesc:ab3783c936ad22cc24385b3b1351bd2d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores the latest presence detection state.  <br /></td></tr>
+<tr class="separator:ab3783c936ad22cc24385b3b1351bd2d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae64a732d208313ca045e833567fb7fdf" id="r_ae64a732d208313ca045e833567fb7fdf"><td class="memItemLeft" align="right" valign="top">volatile uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae64a732d208313ca045e833567fb7fdf">latestDetectedDistance</a> = 0</td></tr>
+<tr class="memdesc:ae64a732d208313ca045e833567fb7fdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores the latest detected distance (cm)  <br /></td></tr>
+<tr class="separator:ae64a732d208313ca045e833567fb7fdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74ae6f03d132b99a2e41ee2366bd6777" id="r_a74ae6f03d132b99a2e41ee2366bd6777"><td class="memItemLeft" align="right" valign="top">const char index_html[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74ae6f03d132b99a2e41ee2366bd6777">PROGMEM</a></td></tr>
+<tr class="memdesc:a74ae6f03d132b99a2e41ee2366bd6777"><td class="mdescLeft">&#160;</td><td class="mdescRight">HTML page served to clients.  <br /></td></tr>
+<tr class="separator:a74ae6f03d132b99a2e41ee2366bd6777"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">WiFi Configuration</h2></td></tr>
+<tr class="memitem:a437d5adf3828750386f66bc45b3e7e9c" id="r_a437d5adf3828750386f66bc45b3e7e9c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a437d5adf3828750386f66bc45b3e7e9c">USE_STATIC_IP</a>&#160;&#160;&#160;true</td></tr>
+<tr class="separator:a437d5adf3828750386f66bc45b3e7e9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a586c86c64e7d30517aeee0fe47a25ae4" id="r_a586c86c64e7d30517aeee0fe47a25ae4"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a586c86c64e7d30517aeee0fe47a25ae4">WIFI_SSID</a> = &quot;YOUR_WIFI_SSID&quot;</td></tr>
+<tr class="memdesc:a586c86c64e7d30517aeee0fe47a25ae4"><td class="mdescLeft">&#160;</td><td class="mdescRight">WiFi SSID.  <br /></td></tr>
+<tr class="separator:a586c86c64e7d30517aeee0fe47a25ae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a148a1777c915283bcb3f4bf32233e16b" id="r_a148a1777c915283bcb3f4bf32233e16b"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a148a1777c915283bcb3f4bf32233e16b">WIFI_PASSWORD</a> = &quot;YOUR_WIFI_PASSWORD&quot;</td></tr>
+<tr class="memdesc:a148a1777c915283bcb3f4bf32233e16b"><td class="mdescLeft">&#160;</td><td class="mdescRight">WiFi password.  <br /></td></tr>
+<tr class="separator:a148a1777c915283bcb3f4bf32233e16b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a9a77b7e2709907f3b84da947708d54" id="r_a5a9a77b7e2709907f3b84da947708d54"><td class="memItemLeft" align="right" valign="top">IPAddress&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a9a77b7e2709907f3b84da947708d54">LOCAL_IP</a> (192, 168, 1, 123)</td></tr>
+<tr class="memdesc:a5a9a77b7e2709907f3b84da947708d54"><td class="mdescLeft">&#160;</td><td class="mdescRight">ESP32 static IP address.  <br /></td></tr>
+<tr class="separator:a5a9a77b7e2709907f3b84da947708d54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a232b5605d59abb7391a6857484193f70" id="r_a232b5605d59abb7391a6857484193f70"><td class="memItemLeft" align="right" valign="top">IPAddress&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a232b5605d59abb7391a6857484193f70">GATEWAY</a> (192, 168, 1, 1)</td></tr>
+<tr class="memdesc:a232b5605d59abb7391a6857484193f70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Network gateway.  <br /></td></tr>
+<tr class="separator:a232b5605d59abb7391a6857484193f70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01919959c5e72529122db54c63452dae" id="r_a01919959c5e72529122db54c63452dae"><td class="memItemLeft" align="right" valign="top">IPAddress&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01919959c5e72529122db54c63452dae">SUBNET</a> (255, 255, 255, 0)</td></tr>
+<tr class="memdesc:a01919959c5e72529122db54c63452dae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Network subnet mask.  <br /></td></tr>
+<tr class="separator:a01919959c5e72529122db54c63452dae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a78243257c4f1bb044c720dce7198d7cb" name="a78243257c4f1bb044c720dce7198d7cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78243257c4f1bb044c720dce7198d7cb">&#9670;&#160;</a></span>RADAR_BAUDRATE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RADAR_BAUDRATE&#160;&#160;&#160;256000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>UART baudrate for the radar sensor (default is 256000) </p>
+
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00034">34</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+
+</div>
+</div>
+<a id="a7e649b7675aa97ae8a3c2b2a329e55d7" name="a7e649b7675aa97ae8a3c2b2a329e55d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e649b7675aa97ae8a3c2b2a329e55d7">&#9670;&#160;</a></span>RADAR_RX_PIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RADAR_RX_PIN&#160;&#160;&#160;16</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ESP32 pin that receives data from the radar (radar TX) </p>
+
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00032">32</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+
+</div>
+</div>
+<a id="acce505b164e2cee65fd975d0bc859ca8" name="acce505b164e2cee65fd975d0bc859ca8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acce505b164e2cee65fd975d0bc859ca8">&#9670;&#160;</a></span>RADAR_TX_PIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RADAR_TX_PIN&#160;&#160;&#160;17</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ESP32 pin that transmits data to the radar (radar RX) </p>
+
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00033">33</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+
+</div>
+</div>
+<a id="a437d5adf3828750386f66bc45b3e7e9c" name="a437d5adf3828750386f66bc45b3e7e9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a437d5adf3828750386f66bc45b3e7e9c">&#9670;&#160;</a></span>USE_STATIC_IP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USE_STATIC_IP&#160;&#160;&#160;true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00045">45</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+
+</div>
+</div>
+<a id="aa430974dd59e17390636a1e876166997" name="aa430974dd59e17390636a1e876166997"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa430974dd59e17390636a1e876166997">&#9670;&#160;</a></span>WEBSERVER_PORT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WEBSERVER_PORT&#160;&#160;&#160;80</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>HTTP/WebSocket server port. </p>
+
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00057">57</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a232b5605d59abb7391a6857484193f70" name="a232b5605d59abb7391a6857484193f70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a232b5605d59abb7391a6857484193f70">&#9670;&#160;</a></span>GATEWAY()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">IPAddress GATEWAY </td>
+          <td>(</td>
+          <td class="paramtype">192</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">168</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">1</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">1</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Network gateway. </p>
+
+</div>
+</div>
+<a id="a5a9a77b7e2709907f3b84da947708d54" name="a5a9a77b7e2709907f3b84da947708d54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a9a77b7e2709907f3b84da947708d54">&#9670;&#160;</a></span>LOCAL_IP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">IPAddress LOCAL_IP </td>
+          <td>(</td>
+          <td class="paramtype">192</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">168</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">1</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">123</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ESP32 static IP address. </p>
+
+</div>
+</div>
+<a id="afe461d27b9c48d5921c00d521181f12f" name="afe461d27b9c48d5921c00d521181f12f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe461d27b9c48d5921c00d521181f12f">&#9670;&#160;</a></span>loop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void loop </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Arduino loop function. </p>
+<p>No code required; all logic is handled by callbacks and background tasks. </p>
+
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00269">269</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+
+</div>
+</div>
+<a id="aff1e26a91174e9c38aa1fb834f03d71c" name="aff1e26a91174e9c38aa1fb834f03d71c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff1e26a91174e9c38aa1fb834f03d71c">&#9670;&#160;</a></span>notifyClients()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void notifyClients </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Notifies all connected WebSocket clients with the latest presence data. </p>
+<p>Sends a JSON string with the fields "presenceDetected" (bool) and "detectedDistance" (uint16_t). </p>
+
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00097">97</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+
+</div>
+</div>
+<a id="a30ccb5184463f968f4a30895646dec1d" name="a30ccb5184463f968f4a30895646dec1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30ccb5184463f968f4a30895646dec1d">&#9670;&#160;</a></span>onDetectionDataReceived()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void onDetectionDataReceived </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="LD2410Async_8h.html#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a> *</td>          <td class="paramname"><span class="paramname"><em>sender</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>presenceDetected</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Callback function called whenever new detection data arrives from the radar. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sender</td><td>Pointer to the LD2410Async instance (for multi-sensor setups) </td></tr>
+    <tr><td class="paramname">presenceDetected</td><td>True if presence is detected, false otherwise </td></tr>
+    <tr><td class="paramname">userData</td><td>User data (not used) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00113">113</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+
+</div>
+</div>
+<a id="a7064e9828984f378d3e04f9b7a47bcae" name="a7064e9828984f378d3e04f9b7a47bcae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7064e9828984f378d3e04f9b7a47bcae">&#9670;&#160;</a></span>onWsEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void onWsEvent </td>
+          <td>(</td>
+          <td class="paramtype">AsyncWebSocket *</td>          <td class="paramname"><span class="paramname"><em>server</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">AsyncWebSocketClient *</td>          <td class="paramname"><span class="paramname"><em>client</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">AwsEventType</td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>arg</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Handles WebSocket events (client connect/disconnect). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">server</td><td>Pointer to the AsyncWebSocket server </td></tr>
+    <tr><td class="paramname">client</td><td>Pointer to the connected client </td></tr>
+    <tr><td class="paramname">type</td><td>Event type (connect, disconnect, etc.) </td></tr>
+    <tr><td class="paramname">arg</td><td>Event argument </td></tr>
+    <tr><td class="paramname">data</td><td>Event data </td></tr>
+    <tr><td class="paramname">len</td><td>Data length </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00130">130</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+
+</div>
+</div>
+<a id="a795abfb02964341e3c3e09b8459d94bc" name="a795abfb02964341e3c3e09b8459d94bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a795abfb02964341e3c3e09b8459d94bc">&#9670;&#160;</a></span>radar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="LD2410Async_8h.html#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a> radar </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="basicPresenceDetection_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41">RadarSerial</a></td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>LD2410Async instance for radar communication. </p>
+
+</div>
+</div>
+<a id="a49d7843d70c3fb5607ee7c62c655fa41" name="a49d7843d70c3fb5607ee7c62c655fa41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49d7843d70c3fb5607ee7c62c655fa41">&#9670;&#160;</a></span>RadarSerial()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HardwareSerial RadarSerial </td>
+          <td>(</td>
+          <td class="paramtype">1</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>HardwareSerial instance for UART1 (LD2410 sensor) </p>
+
+</div>
+</div>
+<a id="a01a73e9084f1c989ffd6f78879d85760" name="a01a73e9084f1c989ffd6f78879d85760"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01a73e9084f1c989ffd6f78879d85760">&#9670;&#160;</a></span>server()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AsyncWebServer server </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#aa430974dd59e17390636a1e876166997">WEBSERVER_PORT</a></td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>AsyncWebServer instance for HTTP/WebSocket. </p>
+
+</div>
+</div>
+<a id="a4fc01d736fe50cf5b977f755b675f11d" name="a4fc01d736fe50cf5b977f755b675f11d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fc01d736fe50cf5b977f755b675f11d">&#9670;&#160;</a></span>setup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setup </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Arduino setup function. </p>
+<p>Initializes serial, WiFi, radar sensor, and webserver. Registers the detection data callback and sets up the WebSocket and HTTP handlers. </p>
+
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00229">229</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+
+</div>
+</div>
+<a id="ad2a97dbe5f144cd247e3b15c6af7c767" name="ad2a97dbe5f144cd247e3b15c6af7c767"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2a97dbe5f144cd247e3b15c6af7c767">&#9670;&#160;</a></span>setupWiFi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setupWiFi </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Connects to WiFi using the user configuration. </p>
+<p>If USE_STATIC_IP is true, configures a static IP, subnet, and gateway. Prints connection status and IP address to Serial. </p>
+
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00199">199</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+
+</div>
+</div>
+<a id="a01919959c5e72529122db54c63452dae" name="a01919959c5e72529122db54c63452dae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01919959c5e72529122db54c63452dae">&#9670;&#160;</a></span>SUBNET()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">IPAddress SUBNET </td>
+          <td>(</td>
+          <td class="paramtype">255</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">255</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">255</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">0</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Network subnet mask. </p>
+
+</div>
+</div>
+<a id="a12b97dd15b0118cb30b85286f7c4b3c9" name="a12b97dd15b0118cb30b85286f7c4b3c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12b97dd15b0118cb30b85286f7c4b3c9">&#9670;&#160;</a></span>ws()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AsyncWebSocket ws </td>
+          <td>(</td>
+          <td class="paramtype">&quot;/ws&quot;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>AsyncWebSocket instance for live data updates. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="ae64a732d208313ca045e833567fb7fdf" name="ae64a732d208313ca045e833567fb7fdf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae64a732d208313ca045e833567fb7fdf">&#9670;&#160;</a></span>latestDetectedDistance</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint16_t latestDetectedDistance = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stores the latest detected distance (cm) </p>
+
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00090">90</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+
+</div>
+</div>
+<a id="ab3783c936ad22cc24385b3b1351bd2d8" name="ab3783c936ad22cc24385b3b1351bd2d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3783c936ad22cc24385b3b1351bd2d8">&#9670;&#160;</a></span>latestPresenceDetected</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile bool latestPresenceDetected = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stores the latest presence detection state. </p>
+
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00085">85</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+
+</div>
+</div>
+<a id="a74ae6f03d132b99a2e41ee2366bd6777" name="a74ae6f03d132b99a2e41ee2366bd6777"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74ae6f03d132b99a2e41ee2366bd6777">&#9670;&#160;</a></span>PROGMEM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char index_html [] PROGMEM</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>HTML page served to clients. </p>
+<p>Connects to the WebSocket and displays live presence and distance data. </p>
+
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00147">147</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+
+</div>
+</div>
+<a id="a148a1777c915283bcb3f4bf32233e16b" name="a148a1777c915283bcb3f4bf32233e16b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a148a1777c915283bcb3f4bf32233e16b">&#9670;&#160;</a></span>WIFI_PASSWORD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* WIFI_PASSWORD = &quot;YOUR_WIFI_PASSWORD&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>WiFi password. </p>
+
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00042">42</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+
+</div>
+</div>
+<a id="a586c86c64e7d30517aeee0fe47a25ae4" name="a586c86c64e7d30517aeee0fe47a25ae4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a586c86c64e7d30517aeee0fe47a25ae4">&#9670;&#160;</a></span>WIFI_SSID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* WIFI_SSID = &quot;YOUR_WIFI_SSID&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>WiFi SSID. </p>
+
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00041">41</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

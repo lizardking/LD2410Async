@@ -531,7 +531,7 @@ Variables</h2></td></tr>
 Auto-config temporarily suspends normal detection reporting.</dd></dl>
 <h2><a class="anchor" id="autotoc_md12"></a>
 Example: Run auto-config</h2>
-<div class="fragment"><div class="line">radar.beginAutoConfigAsync([](<a class="code hl_function" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a>* sender,</div>
+<div class="fragment"><div class="line"><a class="code hl_function" href="basicPresenceDetection_8ino.html#a795abfb02964341e3c3e09b8459d94bc">radar</a>.beginAutoConfigAsync([](<a class="code hl_function" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a>* sender,</div>
 <div class="line">                              <a class="code hl_enumeration" href="#aa44c3b86a77e4577f3c47fee29c963fe">AsyncCommandResult</a> result,</div>
 <div class="line">                              <span class="keywordtype">byte</span>) {</div>
 <div class="line">  <span class="keywordflow">if</span> (result == <a class="code hl_enumvalue" href="#aa44c3b86a77e4577f3c47fee29c963fead0749aaba8b833466dfcbb0428e4f89c">AsyncCommandResult::SUCCESS</a>) {</div>
@@ -543,6 +543,7 @@ Example: Run auto-config</h2>
 <div class="ttc" id="aLD2410Async_8h_html_aa44c3b86a77e4577f3c47fee29c963fe"><div class="ttname"><a href="#aa44c3b86a77e4577f3c47fee29c963fe">AsyncCommandResult</a></div><div class="ttdeci">AsyncCommandResult</div><div class="ttdoc">Asynchronous driver class for the LD2410 human presence radar sensor.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8h_source.html#l00030">LD2410Async.h:30</a></div></div>
 <div class="ttc" id="aLD2410Async_8h_html_aa44c3b86a77e4577f3c47fee29c963fead0749aaba8b833466dfcbb0428e4f89c"><div class="ttname"><a href="#aa44c3b86a77e4577f3c47fee29c963fead0749aaba8b833466dfcbb0428e4f89c">AsyncCommandResult::SUCCESS</a></div><div class="ttdeci">@ SUCCESS</div><div class="ttdoc">Command completed successfully and ACK was received.</div></div>
 <div class="ttc" id="aLD2410Async_8h_html_ac500fb301e250ede1a608c67fc1a8900"><div class="ttname"><a href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a></div><div class="ttdeci">LD2410Async(Stream &amp;serial)</div><div class="ttdoc">Constructs a new LD2410Async instance bound to a given serial stream.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l01651">LD2410Async.cpp:1651</a></div></div>
+<div class="ttc" id="abasicPresenceDetection_8ino_html_a795abfb02964341e3c3e09b8459d94bc"><div class="ttname"><a href="basicPresenceDetection_8ino.html#a795abfb02964341e3c3e09b8459d94bc">radar</a></div><div class="ttdeci">LD2410Async radar(RadarSerial)</div><div class="ttdoc">Creates LD2410Async object bound to the serial port defined in RadarSerial.</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md13"></a>
 Do:</h2>
 <ul>
@@ -607,11 +608,11 @@ If another async command is already pending, the command fails. </dd>
 Any members of ConfigData that are left at invalid values (e.g. enums set to NOT_SET) will cause the sequence to fail.</dd></dl>
 <h2><a class="anchor" id="autotoc_md24"></a>
 Example: Clone, modify, and apply config</h2>
-<div class="fragment"><div class="line">ConfigData cfg = radar.getConfigData();  <span class="comment">// clone current config</span></div>
+<div class="fragment"><div class="line">ConfigData cfg = <a class="code hl_function" href="basicPresenceDetection_8ino.html#a795abfb02964341e3c3e09b8459d94bc">radar</a>.getConfigData();  <span class="comment">// clone current config</span></div>
 <div class="line">cfg.noOneTimeout = 120;                  <span class="comment">// change timeout</span></div>
 <div class="line">cfg.distanceGateMotionSensitivity[2] = 75;</div>
 <div class="line"> </div>
-<div class="line">radar.configureAllConfigSettingsAsync(cfg, [](<a class="code hl_function" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a>* sender,</div>
+<div class="line"><a class="code hl_function" href="basicPresenceDetection_8ino.html#a795abfb02964341e3c3e09b8459d94bc">radar</a>.configureAllConfigSettingsAsync(cfg, [](<a class="code hl_function" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a>* sender,</div>
 <div class="line">                                 <a class="code hl_enumeration" href="#aa44c3b86a77e4577f3c47fee29c963fe">AsyncCommandResult</a> result,</div>
 <div class="line">                                 <span class="keywordtype">byte</span>) {</div>
 <div class="line">  <span class="keywordflow">if</span> (result == <a class="code hl_enumvalue" href="#aa44c3b86a77e4577f3c47fee29c963fead0749aaba8b833466dfcbb0428e4f89c">AsyncCommandResult::SUCCESS</a>) {</div>
@@ -1513,14 +1514,14 @@ Requires config mode. Will be enabled automatically if not active.</dd></dl>
 <h2><a class="anchor" id="autotoc_md6"></a>
 Example: Clone, modify, and write back</h2>
 <div class="fragment"><div class="line"><span class="comment">// Clone current config</span></div>
-<div class="line">ConfigData cfg = radar.getConfigData();</div>
+<div class="line">ConfigData cfg = <a class="code hl_function" href="basicPresenceDetection_8ino.html#a795abfb02964341e3c3e09b8459d94bc">radar</a>.getConfigData();</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Modify locally</span></div>
 <div class="line">cfg.noOneTimeout = 60;  <span class="comment">// change timeout</span></div>
 <div class="line">cfg.distanceGateMotionSensitivity[3] = 80;  <span class="comment">// adjust sensitivity</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Send modified config back to sensor</span></div>
-<div class="line">radar.configureAllConfigSettingsAsync(cfg, [](<a class="code hl_function" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a>* sender,</div>
+<div class="line"><a class="code hl_function" href="basicPresenceDetection_8ino.html#a795abfb02964341e3c3e09b8459d94bc">radar</a>.configureAllConfigSettingsAsync(cfg, [](<a class="code hl_function" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a>* sender,</div>
 <div class="line">                                 <a class="code hl_enumeration" href="#aa44c3b86a77e4577f3c47fee29c963fe">AsyncCommandResult</a> result,</div>
 <div class="line">                                 <span class="keywordtype">byte</span>) {</div>
 <div class="line">  <span class="keywordflow">if</span> (result == <a class="code hl_enumvalue" href="#aa44c3b86a77e4577f3c47fee29c963fead0749aaba8b833466dfcbb0428e4f89c">AsyncCommandResult::SUCCESS</a>) {</div>
@@ -1566,7 +1567,7 @@ Don’t:</h2>
 This function will not query the sensor for data. It just returns the data that has already been received from the sensor.</dd></dl>
 <h2><a class="anchor" id="autotoc_md9"></a>
 Example: Efficient read access without cloning</h2>
-<div class="fragment"><div class="line"><span class="keyword">const</span> ConfigData&amp; cfg = radar.getConfigDataRef();  <span class="comment">// no copy</span></div>
+<div class="fragment"><div class="line"><span class="keyword">const</span> ConfigData&amp; cfg = <a class="code hl_function" href="basicPresenceDetection_8ino.html#a795abfb02964341e3c3e09b8459d94bc">radar</a>.getConfigDataRef();  <span class="comment">// no copy</span></div>
 <div class="line">Serial.print(<span class="stringliteral">&quot;Resolution: &quot;</span>);</div>
 <div class="line">Serial.println(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(cfg.distanceResolution));</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md10"></a>
@@ -1608,7 +1609,7 @@ Don’t:</h2>
 <dl class="section note"><dt>Note</dt><dd>This function will not query the sensor for data. It just returns the data that has already been received from the sensor.</dd></dl>
 <h2><a class="anchor" id="autotoc_md0"></a>
 Example: Access values from a clone</h2>
-<div class="fragment"><div class="line">DetectionData data = radar.getDetectionData();  <span class="comment">// makes a copy</span></div>
+<div class="fragment"><div class="line">DetectionData data = <a class="code hl_function" href="basicPresenceDetection_8ino.html#a795abfb02964341e3c3e09b8459d94bc">radar</a>.getDetectionData();  <span class="comment">// makes a copy</span></div>
 <div class="line"><span class="keywordflow">if</span> (data.targetState == TargetState::MOVING_TARGET) {</div>
 <div class="line">  Serial.print(<span class="stringliteral">&quot;Moving target at distance: &quot;</span>);</div>
 <div class="line">  Serial.println(data.movingTargetDistance);</div>
@@ -1652,7 +1653,7 @@ Don’t:</h2>
 This function will not query the sensor for data. It just returns the data that has already been received from the sensor.</dd></dl>
 <h2><a class="anchor" id="autotoc_md3"></a>
 Example: Efficient read access without cloning</h2>
-<div class="fragment"><div class="line"><span class="keyword">const</span> DetectionData&amp; data = radar.getDetectionDataRef();  <span class="comment">// no copy</span></div>
+<div class="fragment"><div class="line"><span class="keyword">const</span> DetectionData&amp; data = <a class="code hl_function" href="basicPresenceDetection_8ino.html#a795abfb02964341e3c3e09b8459d94bc">radar</a>.getDetectionDataRef();  <span class="comment">// no copy</span></div>
 <div class="line">Serial.print(<span class="stringliteral">&quot;Stationary signal: &quot;</span>);</div>
 <div class="line">Serial.println(data.stationaryTargetSignal);</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md4"></a>
@@ -1779,7 +1780,7 @@ Don’t:</h2>
 <p>Constructs a new LD2410Async instance bound to a given serial stream. </p>
 <p>The sensor communicates over a UART interface. Pass the corresponding Stream object (e.g. HardwareSerial, SoftwareSerial, or another compatible implementation) that is connected to the LD2410 sensor.</p>
 <p>Example: </p><div class="fragment"><div class="line">HardwareSerial radarSerial(2);</div>
-<div class="line"><a class="code hl_function" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a> radar(radarSerial);</div>
+<div class="line"><a class="code hl_function" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a> <a class="code hl_function" href="basicPresenceDetection_8ino.html#a795abfb02964341e3c3e09b8459d94bc">radar</a>(radarSerial);</div>
 </div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">serial</td><td>Reference to a Stream object used to exchange data with the sensor. </td></tr>
@@ -1958,7 +1959,7 @@ Requires config mode. This method will manage mode switching automatically. </dd
 If another async command is already pending, the request fails.</dd></dl>
 <h2><a class="anchor" id="autotoc_md18"></a>
 Example: Refresh config data</h2>
-<div class="fragment"><div class="line">radar.requestAllConfigSettingsAsync([](<a class="code hl_function" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a>* sender,</div>
+<div class="fragment"><div class="line"><a class="code hl_function" href="basicPresenceDetection_8ino.html#a795abfb02964341e3c3e09b8459d94bc">radar</a>.requestAllConfigSettingsAsync([](<a class="code hl_function" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a>* sender,</div>
 <div class="line">                              <a class="code hl_enumeration" href="#aa44c3b86a77e4577f3c47fee29c963fe">AsyncCommandResult</a> result,</div>
 <div class="line">                              <span class="keywordtype">byte</span>) {</div>
 <div class="line">  <span class="keywordflow">if</span> (result == <a class="code hl_enumvalue" href="#aa44c3b86a77e4577f3c47fee29c963fead0749aaba8b833466dfcbb0428e4f89c">AsyncCommandResult::SUCCESS</a>) {</div>
@@ -2022,7 +2023,7 @@ Requires config mode. Managed automatically by this method. </dd>
 If another async command is already pending, the request fails.</dd></dl>
 <h2><a class="anchor" id="autotoc_md21"></a>
 Example: Retrieve firmware and MAC</h2>
-<div class="fragment"><div class="line">radar.requestAllStaticDataAsync([](<a class="code hl_function" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a>* sender,</div>
+<div class="fragment"><div class="line"><a class="code hl_function" href="basicPresenceDetection_8ino.html#a795abfb02964341e3c3e09b8459d94bc">radar</a>.requestAllStaticDataAsync([](<a class="code hl_function" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a>* sender,</div>
 <div class="line">                              <a class="code hl_enumeration" href="#aa44c3b86a77e4577f3c47fee29c963fe">AsyncCommandResult</a> result,</div>
 <div class="line">                              <span class="keywordtype">byte</span>) {</div>
 <div class="line">  <span class="keywordflow">if</span> (result == <a class="code hl_enumvalue" href="#aa44c3b86a77e4577f3c47fee29c963fead0749aaba8b833466dfcbb0428e4f89c">AsyncCommandResult::SUCCESS</a>) {</div>
@@ -2087,7 +2088,7 @@ Don’t:</h2>
 If another async command is already pending, this call fails.</dd></dl>
 <h2><a class="anchor" id="autotoc_md15"></a>
 Example: Check auto-config status</h2>
-<div class="fragment"><div class="line">radar.requestAutoConfigStatusAsync([](<a class="code hl_function" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a>* sender,</div>
+<div class="fragment"><div class="line"><a class="code hl_function" href="basicPresenceDetection_8ino.html#a795abfb02964341e3c3e09b8459d94bc">radar</a>.requestAutoConfigStatusAsync([](<a class="code hl_function" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a>* sender,</div>
 <div class="line">                                      <a class="code hl_enumeration" href="#aa44c3b86a77e4577f3c47fee29c963fe">AsyncCommandResult</a> result,</div>
 <div class="line">                                      <span class="keywordtype">byte</span>) {</div>
 <div class="line">  <span class="keywordflow">if</span> (result == <a class="code hl_enumvalue" href="#aa44c3b86a77e4577f3c47fee29c963fead0749aaba8b833466dfcbb0428e4f89c">AsyncCommandResult::SUCCESS</a>) {</div>

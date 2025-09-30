@@ -1,7 +1,8 @@
 /**
 * @file
-* @brief Example: Webservice for Presence Detection with LD2410Async and ESP Async WebServer
-*
+* @example Example: Webservice for Presence Detection with LD2410Async and ESP Async WebServer
+* 
+* @brief
 * This example demonstrates how to use the LD2410Async library with an ESP32 to provide a web-based
 * presence detection service. The ESP32 connects to a WiFi network, starts a web server, and serves
 * a simple HTML page. The page connects via WebSocket to receive live presence detection data
@@ -17,7 +18,6 @@
 * Make sure to install the required libraries and adjust the configuration section below
 * to match your hardware and network setup.
 * 
-* @ingroup examples
 */
 
 #include <Arduino.h>

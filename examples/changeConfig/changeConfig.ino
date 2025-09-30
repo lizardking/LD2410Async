@@ -1,4 +1,5 @@
 /**
+* @file Example: Change configuration of the LD2410
 * @brief Example: Change configuration of the LD2410
 *
 * @details

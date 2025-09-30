@@ -1,5 +1,5 @@
 /**
-*
+* @file 
 * @brief Example: Basic Presence Detection with LD2410Async
 *
 * @details
@@ -16,13 +16,17 @@
 #include "LD2410Async.h"
 
  // ========================= USER CONFIGURATION =========================
+/// @name User Configuration
+/// @brief Pins and constants that must be adjusted for your wiring and sensor config.
+/// @{
 
- // UART pins for the LD2410 sensor
+// UART pins for the LD2410 sensor
 #define RADAR_RX_PIN 16   // ESP32 pin that receives data from the radar (radar TX)
 #define RADAR_TX_PIN 17   // ESP32 pin that transmits data to the radar (radar RX)
 
 // UART baudrate for the radar sensor (default is 256000)
 #define RADAR_BAUDRATE 256000
+/// @}
 
 // ======================================================================
 

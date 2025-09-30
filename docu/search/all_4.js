@@ -13,7 +13,7 @@ var searchData=
   ['engineeringmodeenablecommanddata_10',['engineeringModeEnableCommandData',['../namespaceLD2410Defs.html#af478c0573d7fd15a2e1b5a5c4534241d',1,'LD2410Defs']]],
   ['engineeringmodeenabled_11',['engineeringModeEnabled',['../LD2410Async_8h.html#ae1a87d1e33a4e42f40bf2c8f10583315',1,'LD2410Async.h']]],
   ['equals_12',['equals',['../structLD2410Types_1_1ConfigData.html#a3b184d70dc6af3ac292325b7ffbd5028',1,'LD2410Types::ConfigData']]],
-  ['esp32_13',['ESP32',['../index.html',1,'LD2410Async library for ESP32'],['../index.html#autotoc_md27',1,'LD2410Async library for ESP32']]],
+  ['esp32_13',['LD2410Async library for ESP32',['../index.html#autotoc_md27',1,'']]],
   ['example_3a_20access_20detection_20data_20without_20cloning_14',['Example: Access detection data without cloning',['../index.html#autotoc_md33',1,'']]],
   ['example_3a_20access_20values_20from_20a_20clone_15',['Example: Access values from a clone',['../LD2410Async_8h.html#autotoc_md0',1,'']]],
   ['example_3a_20check_20auto_20config_20status_16',['Example: Check auto-config status',['../LD2410Async_8h.html#autotoc_md15',1,'']]],
@@ -25,5 +25,7 @@ var searchData=
   ['example_3a_20retrieve_20firmware_20and_20mac_22',['Example: Retrieve firmware and MAC',['../LD2410Async_8h.html#autotoc_md21',1,'']]],
   ['example_3a_20run_20auto_20config_23',['Example: Run auto-config',['../LD2410Async_8h.html#autotoc_md12',1,'']]],
   ['example_3a_20using_20callback_20for_20presence_20detection_20updates_24',['Example: Using callback for presence detection updates',['../index.html#autotoc_md32',1,'']]],
-  ['examples_25',['Examples',['../index.html#autotoc_md31',1,'']]]
+  ['examples_25',['Examples',['../index.html#autotoc_md31',1,'']]],
+  ['examples_20overview_26',['Examples Overview',['../examples.html',1,'']]],
+  ['examples_2edox_27',['examples.dox',['../examples_8dox.html',1,'']]]
 ];

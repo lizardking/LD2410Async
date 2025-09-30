@@ -1,8 +1,8 @@
 var searchData=
 [
   ['ld2410_5fbuffer_5fsize_0',['LD2410_Buffer_Size',['../namespaceLD2410Defs.html#ab5971df32a3e09229234634c403d711f',1,'LD2410Defs']]],
-  ['ld2410async_1',['LD2410Async',['../LD2410Async_8h.html#ac500fb301e250ede1a608c67fc1a8900',1,'LD2410Async.cpp']]],
-  ['ld2410async_20library_20for_20esp32_2',['LD2410Async library for ESP32',['../index.html',1,'LD2410Async library for ESP32'],['../index.html#autotoc_md27',1,'LD2410Async library for ESP32']]],
+  ['ld2410async_1',['LD2410Async',['../LD2410Async_8h.html#ac500fb301e250ede1a608c67fc1a8900',1,'LD2410Async(Stream &amp;serial):&#160;LD2410Async.cpp'],['../index.html',1,'LD2410Async']]],
+  ['ld2410async_20library_20for_20esp32_2',['LD2410Async library for ESP32',['../index.html#autotoc_md27',1,'']]],
   ['ld2410async_2ecpp_3',['LD2410Async.cpp',['../LD2410Async_8cpp.html',1,'']]],
   ['ld2410async_2eh_4',['LD2410Async.h',['../LD2410Async_8h.html',1,'']]],
   ['ld2410async_5fdebug_5fdata_5flevel_5',['LD2410ASYNC_DEBUG_DATA_LEVEL',['../LD2410Debug_8h.html#a4c215a1265c9473347aad0ad82d53c40',1,'LD2410Debug.h']]],
@@ -14,7 +14,7 @@ var searchData=
   ['ld2410defs_2eh_11',['LD2410Defs.h',['../LD2410Defs_8h.html',1,'']]],
   ['ld2410types_12',['LD2410Types',['../namespaceLD2410Types.html',1,'']]],
   ['ld2410types_2eh_13',['LD2410Types.h',['../LD2410Types_8h.html',1,'']]],
-  ['library_20for_20esp32_14',['library for ESP32',['../index.html',1,'LD2410Async library for ESP32'],['../index.html#autotoc_md27',1,'LD2410Async library for ESP32']]],
+  ['library_20for_20esp32_14',['LD2410Async library for ESP32',['../index.html#autotoc_md27',1,'']]],
   ['light_5fabove_5fthreshold_15',['LIGHT_ABOVE_THRESHOLD',['../namespaceLD2410Types.html#afbd22de9579db591b3f122c51c730844aa04a7bc4c5ceb6927e051bfb3e1cfd2e',1,'LD2410Types']]],
   ['light_5fbelow_5fthreshold_16',['LIGHT_BELOW_THRESHOLD',['../namespaceLD2410Types.html#afbd22de9579db591b3f122c51c730844a6a9d30a8d1d6df98b89d66c50e47cd6c',1,'LD2410Types']]],
   ['lightcontrol_17',['LightControl',['../namespaceLD2410Types.html#afbd22de9579db591b3f122c51c730844',1,'LD2410Types']]],

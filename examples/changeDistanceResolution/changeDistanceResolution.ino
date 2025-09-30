@@ -1,6 +1,4 @@
 /**
-* @page example_changeDistanceResolution Changing distance resolution on LD2410
-*
 * @brief Example: Changing distance resolution on LD2410
 *
 * @details

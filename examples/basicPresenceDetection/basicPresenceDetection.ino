@@ -1,17 +1,16 @@
 /**
-* @page example_basicPresenceDetection Basic Presence Detection with LD2410Async
 *
- * @brief Example: Basic Presence Detection with LD2410Async
- *
- * @details
- * This sketch demonstrates how to use the LD2410Async library to detect presence
- * using only the presenceDetected variable from the detection data callback.
- * It prints a message with a timestamp whenever the presence state changes.
- *
- * @warning
- * Important!
- * Adjust RADAR_RX_PIN and RADAR_TX_PIN to match your wiring.
- */
+* @brief Example: Basic Presence Detection with LD2410Async
+*
+* @details
+* This sketch demonstrates how to use the LD2410Async library to detect presence
+* using only the presenceDetected variable from the detection data callback.
+* It prints a message with a timestamp whenever the presence state changes.
+*
+* @warning
+* Important!
+* Adjust RADAR_RX_PIN and RADAR_TX_PIN to match your wiring.
+*/
 
 #include <Arduino.h>
 #include "LD2410Async.h"

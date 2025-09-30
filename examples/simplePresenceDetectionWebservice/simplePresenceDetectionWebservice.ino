@@ -1,6 +1,4 @@
 /**
-* @page example_simplePresenceDetectionWebservice Webservice for Presence Detection with LD2410Async and ESP Async WebServer
-*
 * @brief Example: Webservice for Presence Detection with LD2410Async and ESP Async WebServer
 *
 * @details

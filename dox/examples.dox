@@ -1,9 +1,0 @@
-/**
- * @page examples Examples Overview
- *
- * - @subpage example_basicPresenceDetection
- * - @subpage example_receiveData
- * - @subpage example_changeConfig
- * - @subpage example_changeDistanceResolution
- * - @subpage example_simplePresenceDetectionWebservice
- */

@@ -18,6 +18,7 @@ SORT_GROUP_NAMES = YES
 # Input
 INPUT                  = src examples dox
 FILE_PATTERNS          = *.h *.cpp *.ino *.dox *.md
+EXTENSION_MAPPING	   = ino=C++
 RECURSIVE              = YES
 
 # Source code browsing

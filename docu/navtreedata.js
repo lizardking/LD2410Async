@@ -64,14 +64,15 @@ var NAVTREE =
         [ "Enumerations", "globals_enum.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
-    ] ]
+    ] ],
+    [ "Examples", "examples.html", "examples" ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"LD2410Async_8cpp.html",
-"namespaceLD2410Defs.html#aa1b5e5bcf1889588b28416af63dab7c5"
+"Example-example.html",
+"namespaceLD2410Defs.html#a975ffcb4167ef7e6438dbf1d8de49b34"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

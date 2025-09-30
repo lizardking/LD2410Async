@@ -1,34 +1,28 @@
 /**
-* @file 
-* @example Basic Presence Detection with LD2410Async
-*
-* @brief
-* This sketch demonstrates how to use the LD2410Async library to detect presence
-* using only the presenceDetected variable from the detection data callback.
-* It prints a message with a timestamp whenever the presence state changes.
-*
-* @warning
-* Important!
-* Adjust RADAR_RX_PIN and RADAR_TX_PIN to match your wiring.
-* 
-* @ingroup examples 
-*/
+ * @brief 
+ * Example: Basic Presence Detection with LD2410Async
+ *
+ * @details
+ * This sketch demonstrates how to use the LD2410Async library to detect presence
+ * using only the presenceDetected variable from the detection data callback.
+ * It prints a message with a timestamp whenever the presence state changes.
+ *
+ * @warning
+ * Important!
+ * Adjust RADAR_RX_PIN and RADAR_TX_PIN to match your wiring.
+ */
 
 #include <Arduino.h>
 #include "LD2410Async.h"
 
  // ========================= USER CONFIGURATION =========================
-/// @name User Configuration
-/// @brief Pins and constants that must be adjusted for your wiring and sensor config.
-/// @{
 
-// UART pins for the LD2410 sensor
+ // UART pins for the LD2410 sensor
 #define RADAR_RX_PIN 16   // ESP32 pin that receives data from the radar (radar TX)
 #define RADAR_TX_PIN 17   // ESP32 pin that transmits data to the radar (radar RX)
 
 // UART baudrate for the radar sensor (default is 256000)
 #define RADAR_BAUDRATE 256000
-/// @}
 
 // ======================================================================
 

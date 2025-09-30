@@ -26,7 +26,6 @@
     <None Include="$(MSBuildThisFileDirectory).github\workflows\generateDoxygenDocu.yml" />
     <None Include="$(MSBuildThisFileDirectory).gitignore" />
     <None Include="$(MSBuildThisFileDirectory)Doxyfile" />
-    <None Include="$(MSBuildThisFileDirectory)dox\examples.dox" />
     <None Include="$(MSBuildThisFileDirectory)dox\mainPage.md" />
     <None Include="$(MSBuildThisFileDirectory)examples\basicPresenceDetection\basicPresenceDetection.ino" />
     <None Include="$(MSBuildThisFileDirectory)examples\changeConfig\changeConfig.ino" />

@@ -1,8 +1,0 @@
-/** 
-* @defgroup examples Examples
-* @brief Example sketches demonstrating usage of LD2410Async.
-*
-* @warning
-* Important!
-* When trying the example sketches, always remember to adjust RADAR_RX_PIN and RADAR_TX_PIN to match your wiring. 
-*/

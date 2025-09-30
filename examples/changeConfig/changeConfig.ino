@@ -1,21 +1,18 @@
 /**
-* @file 
-* @example Change configuration of the LD2410
-*
-* @brief
-* This sketch shows how to:
-*   1. Initialize the radar on Serial1.
-*   2. Query all current configuration values from the sensor.
-*   3. Clone the config into a local variable.
-*   4. Modify some settings (timeout, sensitivities).
-*   5. Write the modified config back to the sensor.
-*
-* @warning
-* Important:
-* Make sure to adjust RADAR_RX_PIN and ADAR_TX_PIN to match you actual wiring.
-* 
-* @ingroup examples
-*/
+ * @brief Example: Change configuration of the LD2410
+ *
+ * @details
+ * This sketch shows how to:
+ *   1. Initialize the radar on Serial1.
+ *   2. Query all current configuration values from the sensor.
+ *   3. Clone the config into a local variable.
+ *   4. Modify some settings (timeout, sensitivities).
+ *   5. Write the modified config back to the sensor.
+ *
+ * @warning
+ * Important:
+ * Make sure to adjust RADAR_RX_PIN and ADAR_TX_PIN to match you actual wiring.
+ */
 
 #include <Arduino.h>
 #include "LD2410Async.h"

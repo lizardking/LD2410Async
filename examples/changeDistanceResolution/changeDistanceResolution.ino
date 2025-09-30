@@ -1,22 +1,19 @@
 /**
-* @file
-* @example Changing distance resolution on LD2410
-*
-* @brief
-* This sketch demonstrates how to:
-*   1. Initialize the radar on Serial1.
-*   2. Query all current configuration values from the sensor.
-*   3. Clone the config into a local variable.
-*   4. Modify the distance resolution.
-*   5. Apply the new config.
-*   6. Reboot the sensor to ensure changes take effect.
-*
-* @warning
-* Important:
-* Make sure to adjust RADAR_RX_PIN and ADAR_TX_PIN to match you actual wiring.
-* 
-* @ingroup examples
-*/
+ * @brief Example: Changing detection resolution on LD2410
+ *
+ * @details
+ * This sketch demonstrates how to:
+ *   1. Initialize the radar on Serial1.
+ *   2. Query all current configuration values from the sensor.
+ *   3. Clone the config into a local variable.
+ *   4. Modify the distance resolution.
+ *   5. Apply the new config.
+ *   6. Reboot the sensor to ensure changes take effect.
+ *
+ * @warning
+ * Important:
+ * Make sure to adjust RADAR_RX_PIN and ADAR_TX_PIN to match you actual wiring.
+ */
 
 #include <Arduino.h>
 #include "LD2410Async.h"

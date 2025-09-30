@@ -100,9 +100,12 @@ $(function(){initNavTree('simplePresenceDetectionWebservice_8ino.html',''); init
   <div class="summary">
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
-  <div class="headertitle"><div class="title">simplePresenceDetectionWebservice.ino File Reference</div></div>
+  <div class="headertitle"><div class="title">simplePresenceDetectionWebservice.ino File Reference<div class="ingroups"><a class="el" href="group__examples.html">Examples</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Example: Webservice for Presence Detection with LD2410Async and ESP Async WebServer.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;Arduino.h&gt;</code><br />
 <code>#include &lt;WiFi.h&gt;</code><br />
 <code>#include &lt;ESPAsyncWebServer.h&gt;</code><br />
@@ -113,15 +116,6 @@ $(function(){initNavTree('simplePresenceDetectionWebservice_8ino.html',''); init
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">UART Configuration</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>Example: Webservice for Presence Detection with LD2410Async and ESP Async WebServer</p>
-<p>This example demonstrates how to use the LD2410Async library with an ESP32 to provide a web-based presence detection service. The ESP32 connects to a WiFi network, starts a web server, and serves a simple HTML page. The page connects via WebSocket to receive live presence detection data (presenceDetected, detectedDistance) from the LD2410 radar sensor.</p>
-<p>Dependencies:</p><ul>
-<li>ESPAsyncWebServer: <a href="https://github.com/me-no-dev/ESPAsyncWebServer">https://github.com/me-no-dev/ESPAsyncWebServer</a></li>
-<li>AsyncTCP: <a href="https://github.com/me-no-dev/AsyncTCP">https://github.com/me-no-dev/AsyncTCP</a></li>
-<li>LD2410Async library</li>
-</ul>
-<dl class="section warning"><dt>Warning</dt><dd>Make sure to install the required libraries and adjust the configuration section below to match your hardware and network setup. </dd></dl>
-</div></td></tr>
 <tr class="memitem:a7e649b7675aa97ae8a3c2b2a329e55d7" id="r_a7e649b7675aa97ae8a3c2b2a329e55d7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e649b7675aa97ae8a3c2b2a329e55d7">RADAR_RX_PIN</a>&#160;&#160;&#160;16</td></tr>
 <tr class="memdesc:a7e649b7675aa97ae8a3c2b2a329e55d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">ESP32 pin that receives data from the radar (radar TX)  <br /></td></tr>
 <tr class="separator:a7e649b7675aa97ae8a3c2b2a329e55d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -200,7 +194,18 @@ Variables</h2></td></tr>
 <tr class="memdesc:a01919959c5e72529122db54c63452dae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Network subnet mask.  <br /></td></tr>
 <tr class="separator:a01919959c5e72529122db54c63452dae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Example: Webservice for Presence Detection with LD2410Async and ESP Async WebServer. </p>
+<p>This example demonstrates how to use the LD2410Async library with an ESP32 to provide a web-based presence detection service. The ESP32 connects to a WiFi network, starts a web server, and serves a simple HTML page. The page connects via WebSocket to receive live presence detection data (presenceDetected, detectedDistance) from the LD2410 radar sensor.</p>
+<p>Dependencies:</p><ul>
+<li>ESPAsyncWebServer: <a href="https://github.com/me-no-dev/ESPAsyncWebServer">https://github.com/me-no-dev/ESPAsyncWebServer</a></li>
+<li>AsyncTCP: <a href="https://github.com/me-no-dev/AsyncTCP">https://github.com/me-no-dev/AsyncTCP</a></li>
+<li>LD2410Async library</li>
+</ul>
+<dl class="section warning"><dt>Warning</dt><dd>Make sure to install the required libraries and adjust the configuration section below to match your hardware and network setup. </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a78243257c4f1bb044c720dce7198d7cb" name="a78243257c4f1bb044c720dce7198d7cb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a78243257c4f1bb044c720dce7198d7cb">&#9670;&#160;</a></span>RADAR_BAUDRATE</h2>
 
@@ -215,7 +220,7 @@ Variables</h2></td></tr>
 
 <p>UART baudrate for the radar sensor (default is 256000) </p>
 
-<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00034">34</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00036">36</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
 
 </div>
 </div>
@@ -233,7 +238,7 @@ Variables</h2></td></tr>
 
 <p>ESP32 pin that receives data from the radar (radar TX) </p>
 
-<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00032">32</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00034">34</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
 
 </div>
 </div>
@@ -251,7 +256,7 @@ Variables</h2></td></tr>
 
 <p>ESP32 pin that transmits data to the radar (radar RX) </p>
 
-<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00033">33</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00035">35</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
 
 </div>
 </div>
@@ -267,7 +272,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00045">45</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00047">47</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
 
 </div>
 </div>
@@ -285,7 +290,7 @@ Variables</h2></td></tr>
 
 <p>HTTP/WebSocket server port. </p>
 
-<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00057">57</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00059">59</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
 
 </div>
 </div>
@@ -374,7 +379,7 @@ Variables</h2></td></tr>
 <p>Arduino loop function. </p>
 <p>No code required; all logic is handled by callbacks and background tasks. </p>
 
-<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00269">269</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00271">271</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
 
 </div>
 </div>
@@ -396,7 +401,7 @@ Variables</h2></td></tr>
 <p>Notifies all connected WebSocket clients with the latest presence data. </p>
 <p>Sends a JSON string with the fields "presenceDetected" (bool) and "detectedDistance" (uint16_t). </p>
 
-<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00097">97</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00099">99</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
 
 </div>
 </div>
@@ -434,7 +439,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00113">113</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00115">115</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
 
 </div>
 </div>
@@ -490,7 +495,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00130">130</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00132">132</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
 
 </div>
 </div>
@@ -569,7 +574,7 @@ Variables</h2></td></tr>
 <p>Arduino setup function. </p>
 <p>Initializes serial, WiFi, radar sensor, and webserver. Registers the detection data callback and sets up the WebSocket and HTTP handlers. </p>
 
-<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00229">229</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00231">231</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
 
 </div>
 </div>
@@ -591,7 +596,7 @@ Variables</h2></td></tr>
 <p>Connects to WiFi using the user configuration. </p>
 <p>If USE_STATIC_IP is true, configures a static IP, subnet, and gateway. Prints connection status and IP address to Serial. </p>
 
-<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00199">199</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00201">201</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
 
 </div>
 </div>
@@ -662,7 +667,7 @@ Variables</h2></td></tr>
 
 <p>Stores the latest detected distance (cm) </p>
 
-<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00090">90</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00092">92</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
 
 </div>
 </div>
@@ -680,7 +685,7 @@ Variables</h2></td></tr>
 
 <p>Stores the latest presence detection state. </p>
 
-<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00085">85</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00087">87</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
 
 </div>
 </div>
@@ -699,7 +704,7 @@ Variables</h2></td></tr>
 <p>HTML page served to clients. </p>
 <p>Connects to the WebSocket and displays live presence and distance data. </p>
 
-<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00147">147</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00149">149</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
 
 </div>
 </div>
@@ -717,7 +722,7 @@ Variables</h2></td></tr>
 
 <p>WiFi password. </p>
 
-<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00042">42</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00044">44</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
 
 </div>
 </div>
@@ -735,7 +740,7 @@ Variables</h2></td></tr>
 
 <p>WiFi SSID. </p>
 
-<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00041">41</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00043">43</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
 
 </div>
 </div>

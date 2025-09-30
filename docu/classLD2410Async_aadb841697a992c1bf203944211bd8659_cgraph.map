@@ -1,5 +1,0 @@
-<map id="LD2410Async::restoreFactorySettingsAsync" name="LD2410Async::restoreFactorySettingsAsync">
-<area shape="rect" id="Node000001" title="Restores factory settings of the sensor." alt="" coords="5,5,197,46"/>
-<area shape="rect" id="Node000002" href="$classLD2410Async.html#a72e853afaba8373fb90524c3c4e8a153" title="Checks if an asynchronous command is currently pending." alt="" coords="245,13,427,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="197,23,229,23,229,28,197,28"/>
-</map>

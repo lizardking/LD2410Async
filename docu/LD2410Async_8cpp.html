@@ -105,9 +105,6 @@ $(function(){initNavTree('LD2410Async_8cpp.html',''); initResizable(true); });
 <div class="textblock"><code>#include &quot;Arduino.h&quot;</code><br />
 <code>#include &quot;Ticker.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="LD2410Defs_8h_source.html">LD2410Defs.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="LD2410CommandBuilder_8h_source.html">LD2410CommandBuilder.h</a>&quot;</code><br />
 </div>
 <p><a href="LD2410Async_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -147,17 +144,7 @@ Functions</h2></td></tr>
 <p>Checks whther the last 4 bytes of a buffer match the value supplied in pattern. </p>
 
 <p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00017">17</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   18</span>{</div>
-<div class="line"><span class="lineno">   19</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 3; j &gt;= 0; j--)</div>
-<div class="line"><span class="lineno">   20</span>    {</div>
-<div class="line"><span class="lineno">   21</span>        --iMax;</div>
-<div class="line"><span class="lineno">   22</span>        <span class="keywordflow">if</span> (buffer[iMax] != pattern[j]) {</div>
-<div class="line"><span class="lineno">   23</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   24</span>        }</div>
-<div class="line"><span class="lineno">   25</span>    }</div>
-<div class="line"><span class="lineno">   26</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   27</span>}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a20fb4b833b19bd31c1b37ea4747c059d" name="a20fb4b833b19bd31c1b37ea4747c059d"></a>
@@ -180,14 +167,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00029">29</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   30</span>{</div>
-<div class="line"><span class="lineno">   31</span>    String bStr(b, HEX);</div>
-<div class="line"><span class="lineno">   32</span>    bStr.toUpperCase();</div>
-<div class="line"><span class="lineno">   33</span>    <span class="keywordflow">if</span> (addZero &amp;&amp; (bStr.length() == 1))</div>
-<div class="line"><span class="lineno">   34</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;0&quot;</span> + bStr;</div>
-<div class="line"><span class="lineno">   35</span>    <span class="keywordflow">return</span> bStr;</div>
-<div class="line"><span class="lineno">   36</span>}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 </div><!-- contents -->

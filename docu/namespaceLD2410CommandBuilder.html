@@ -157,22 +157,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="LD2410CommandBuilder_8h_source.html#l00064">64</a> of file <a class="el" href="LD2410CommandBuilder_8h_source.html">LD2410CommandBuilder.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   64</span>                                                                                                                                                     {</div>
-<div class="line"><span class="lineno">   65</span>        memcpy(out, <a class="code hl_variable" href="namespaceLD2410Defs.html#a17f67486a419c2e53c2a114c70e3475e">LD2410Defs::setAuxControlSettingCommandData</a>,</div>
-<div class="line"><span class="lineno">   66</span>            <span class="keyword">sizeof</span>(<a class="code hl_variable" href="namespaceLD2410Defs.html#a17f67486a419c2e53c2a114c70e3475e">LD2410Defs::setAuxControlSettingCommandData</a>));</div>
-<div class="line"><span class="lineno">   67</span> </div>
-<div class="line"><span class="lineno">   68</span>        <span class="keywordflow">if</span> (lightControl == <a class="code hl_enumvalue" href="namespaceLD2410Types.html#afbd22de9579db591b3f122c51c730844a1c250a21210b7b88a14db9a0cbe71162">LD2410Types::LightControl::NOT_SET</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   69</span>        <span class="keywordflow">if</span> (outputControl == <a class="code hl_enumvalue" href="namespaceLD2410Types.html#a420c188999635485028764fe98cb0bffa1c250a21210b7b88a14db9a0cbe71162">LD2410Types::OutputControl::NOT_SET</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   70</span> </div>
-<div class="line"><span class="lineno">   71</span>        out[4] = byte(lightControl);</div>
-<div class="line"><span class="lineno">   72</span>        out[5] = lightThreshold;</div>
-<div class="line"><span class="lineno">   73</span>        out[6] = byte(outputControl);</div>
-<div class="line"><span class="lineno">   74</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   75</span>    }</div>
-<div class="ttc" id="anamespaceLD2410Defs_html_a17f67486a419c2e53c2a114c70e3475e"><div class="ttname"><a href="namespaceLD2410Defs.html#a17f67486a419c2e53c2a114c70e3475e">LD2410Defs::setAuxControlSettingCommandData</a></div><div class="ttdeci">constexpr byte setAuxControlSettingCommandData[8]</div><div class="ttdef"><b>Definition</b> <a href="LD2410Defs_8h_source.html#l00068">LD2410Defs.h:68</a></div></div>
-<div class="ttc" id="anamespaceLD2410Types_html_a420c188999635485028764fe98cb0bffa1c250a21210b7b88a14db9a0cbe71162"><div class="ttname"><a href="namespaceLD2410Types.html#a420c188999635485028764fe98cb0bffa1c250a21210b7b88a14db9a0cbe71162">LD2410Types::OutputControl::NOT_SET</a></div><div class="ttdeci">@ NOT_SET</div><div class="ttdoc">Placeholder resp. inital value. Do not use as a config value (will result in abortion of the config c...</div></div>
-<div class="ttc" id="anamespaceLD2410Types_html_afbd22de9579db591b3f122c51c730844a1c250a21210b7b88a14db9a0cbe71162"><div class="ttname"><a href="namespaceLD2410Types.html#afbd22de9579db591b3f122c51c730844a1c250a21210b7b88a14db9a0cbe71162">LD2410Types::LightControl::NOT_SET</a></div><div class="ttdeci">@ NOT_SET</div><div class="ttdoc">Placeholder resp. inital value. Do not use as a config value (will result in abortion of the config c...</div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="af8eb163ccaa819b1504b79459ed48729" name="af8eb163ccaa819b1504b79459ed48729"></a>
@@ -203,14 +188,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="LD2410CommandBuilder_8h_source.html#l00077">77</a> of file <a class="el" href="LD2410CommandBuilder_8h_source.html">LD2410CommandBuilder.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   77</span>                                                                      {</div>
-<div class="line"><span class="lineno">   78</span>        memcpy(out, <a class="code hl_variable" href="namespaceLD2410Defs.html#a7fc888217a5c3212c4f1875d2b46e790">LD2410Defs::setBaudRateCommandData</a>, <span class="keyword">sizeof</span>(<a class="code hl_variable" href="namespaceLD2410Defs.html#a7fc888217a5c3212c4f1875d2b46e790">LD2410Defs::setBaudRateCommandData</a>));</div>
-<div class="line"><span class="lineno">   79</span>        <span class="keywordflow">if</span> (baudRateSetting &lt; 1 || baudRateSetting &gt; 8) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   80</span>        out[4] = baudRateSetting;</div>
-<div class="line"><span class="lineno">   81</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   82</span>    }</div>
-<div class="ttc" id="anamespaceLD2410Defs_html_a7fc888217a5c3212c4f1875d2b46e790"><div class="ttname"><a href="namespaceLD2410Defs.html#a7fc888217a5c3212c4f1875d2b46e790">LD2410Defs::setBaudRateCommandData</a></div><div class="ttdeci">constexpr byte setBaudRateCommandData[6]</div><div class="ttdef"><b>Definition</b> <a href="LD2410Defs_8h_source.html#l00038">LD2410Defs.h:38</a></div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="abf6ee0e1bb505fd30efd8b776557cf1f" name="abf6ee0e1bb505fd30efd8b776557cf1f"></a>
@@ -241,24 +219,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="LD2410CommandBuilder_8h_source.html#l00084">84</a> of file <a class="el" href="LD2410CommandBuilder_8h_source.html">LD2410CommandBuilder.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   84</span>                                                                               {</div>
-<div class="line"><span class="lineno">   85</span>        <span class="keywordflow">if</span> (!password) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   86</span>        <span class="keywordtype">size_t</span> len = strlen(password);</div>
-<div class="line"><span class="lineno">   87</span>        <span class="keywordflow">if</span> (len &gt; 6) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   88</span> </div>
-<div class="line"><span class="lineno">   89</span>        memcpy(out, <a class="code hl_variable" href="namespaceLD2410Defs.html#a3b188cd2f935fad68b0500477b3f99d8">LD2410Defs::setBluetoothPasswordCommandData</a>,</div>
-<div class="line"><span class="lineno">   90</span>            <span class="keyword">sizeof</span>(<a class="code hl_variable" href="namespaceLD2410Defs.html#a3b188cd2f935fad68b0500477b3f99d8">LD2410Defs::setBluetoothPasswordCommandData</a>));</div>
-<div class="line"><span class="lineno">   91</span> </div>
-<div class="line"><span class="lineno">   92</span>        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; 6; i++) {</div>
-<div class="line"><span class="lineno">   93</span>            <span class="keywordflow">if</span> (i &lt; strlen(password))</div>
-<div class="line"><span class="lineno">   94</span>                out[4 + i] = byte(password[i]);</div>
-<div class="line"><span class="lineno">   95</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   96</span>                out[4 + i] = byte(<span class="charliteral">&#39; &#39;</span>); <span class="comment">// pad with spaces</span></div>
-<div class="line"><span class="lineno">   97</span>        }</div>
-<div class="line"><span class="lineno">   98</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   99</span>    }</div>
-<div class="ttc" id="anamespaceLD2410Defs_html_a3b188cd2f935fad68b0500477b3f99d8"><div class="ttname"><a href="namespaceLD2410Defs.html#a3b188cd2f935fad68b0500477b3f99d8">LD2410Defs::setBluetoothPasswordCommandData</a></div><div class="ttdeci">constexpr byte setBluetoothPasswordCommandData[10]</div><div class="ttdef"><b>Definition</b> <a href="LD2410Defs_8h_source.html#l00053">LD2410Defs.h:53</a></div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a2a87725992c2b7bd53fc2b24f5ac4a0f" name="a2a87725992c2b7bd53fc2b24f5ac4a0f"></a>
@@ -289,25 +250,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="LD2410CommandBuilder_8h_source.html#l00049">49</a> of file <a class="el" href="LD2410CommandBuilder_8h_source.html">LD2410CommandBuilder.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   49</span>                                                                                                    {</div>
-<div class="line"><span class="lineno">   50</span>        <span class="keywordflow">if</span> (resolution == <a class="code hl_enumvalue" href="namespaceLD2410Types.html#a89e3189ddef9f36629c460fbeb398c79a868c4df7b718ac01b3bf93354a43c8f8">LD2410Types::DistanceResolution::RESOLUTION_75CM</a>) {</div>
-<div class="line"><span class="lineno">   51</span>            memcpy(out, <a class="code hl_variable" href="namespaceLD2410Defs.html#a9dd438a7c03fa3263c0536d1cfbc7dfb">LD2410Defs::setDistanceResolution75cmCommandData</a>,</div>
-<div class="line"><span class="lineno">   52</span>                <span class="keyword">sizeof</span>(<a class="code hl_variable" href="namespaceLD2410Defs.html#a9dd438a7c03fa3263c0536d1cfbc7dfb">LD2410Defs::setDistanceResolution75cmCommandData</a>));</div>
-<div class="line"><span class="lineno">   53</span>        }</div>
-<div class="line"><span class="lineno">   54</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (resolution == <a class="code hl_enumvalue" href="namespaceLD2410Types.html#a89e3189ddef9f36629c460fbeb398c79a7d931e972250eb3e9b9557c87fc7c23e">LD2410Types::DistanceResolution::RESOLUTION_20CM</a>) {</div>
-<div class="line"><span class="lineno">   55</span>            memcpy(out, <a class="code hl_variable" href="namespaceLD2410Defs.html#a41dce04a3403987c72459f430e494151">LD2410Defs::setDistanceResolution20cmCommandData</a>,</div>
-<div class="line"><span class="lineno">   56</span>                <span class="keyword">sizeof</span>(<a class="code hl_variable" href="namespaceLD2410Defs.html#a41dce04a3403987c72459f430e494151">LD2410Defs::setDistanceResolution20cmCommandData</a>));</div>
-<div class="line"><span class="lineno">   57</span>        }</div>
-<div class="line"><span class="lineno">   58</span>        <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   59</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   60</span>        }</div>
-<div class="line"><span class="lineno">   61</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   62</span>    }</div>
-<div class="ttc" id="anamespaceLD2410Defs_html_a41dce04a3403987c72459f430e494151"><div class="ttname"><a href="namespaceLD2410Defs.html#a41dce04a3403987c72459f430e494151">LD2410Defs::setDistanceResolution20cmCommandData</a></div><div class="ttdeci">constexpr byte setDistanceResolution20cmCommandData[6]</div><div class="ttdef"><b>Definition</b> <a href="LD2410Defs_8h_source.html#l00035">LD2410Defs.h:35</a></div></div>
-<div class="ttc" id="anamespaceLD2410Defs_html_a9dd438a7c03fa3263c0536d1cfbc7dfb"><div class="ttname"><a href="namespaceLD2410Defs.html#a9dd438a7c03fa3263c0536d1cfbc7dfb">LD2410Defs::setDistanceResolution75cmCommandData</a></div><div class="ttdeci">constexpr byte setDistanceResolution75cmCommandData[6]</div><div class="ttdef"><b>Definition</b> <a href="LD2410Defs_8h_source.html#l00034">LD2410Defs.h:34</a></div></div>
-<div class="ttc" id="anamespaceLD2410Types_html_a89e3189ddef9f36629c460fbeb398c79a7d931e972250eb3e9b9557c87fc7c23e"><div class="ttname"><a href="namespaceLD2410Types.html#a89e3189ddef9f36629c460fbeb398c79a7d931e972250eb3e9b9557c87fc7c23e">LD2410Types::DistanceResolution::RESOLUTION_20CM</a></div><div class="ttdeci">@ RESOLUTION_20CM</div><div class="ttdoc">Each gate ~0.20 m, max range ~1.8 m.</div></div>
-<div class="ttc" id="anamespaceLD2410Types_html_a89e3189ddef9f36629c460fbeb398c79a868c4df7b718ac01b3bf93354a43c8f8"><div class="ttname"><a href="namespaceLD2410Types.html#a89e3189ddef9f36629c460fbeb398c79a868c4df7b718ac01b3bf93354a43c8f8">LD2410Types::DistanceResolution::RESOLUTION_75CM</a></div><div class="ttdeci">@ RESOLUTION_75CM</div><div class="ttdoc">Each gate ~0.75 m, max range ~6 m.</div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a9879fbf4d013640f1a9bffdbc21122f6" name="a9879fbf4d013640f1a9bffdbc21122f6"></a>
@@ -348,31 +291,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="LD2410CommandBuilder_8h_source.html#l00025">25</a> of file <a class="el" href="LD2410CommandBuilder_8h_source.html">LD2410CommandBuilder.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   25</span>                                                                                                                  {</div>
-<div class="line"><span class="lineno">   26</span> </div>
-<div class="line"><span class="lineno">   27</span>        <span class="keywordflow">if</span> (gate &gt; 8 &amp;&amp; gate != 0xFF) <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// 0–8 allowed, or 0xFF (all gates)</span></div>
-<div class="line"><span class="lineno">   28</span> </div>
-<div class="line"><span class="lineno">   29</span>        memcpy(out, <a class="code hl_variable" href="namespaceLD2410Defs.html#a38aba7176fd8cb28fb74ae61e8b237f4">LD2410Defs::distanceGateSensitivityConfigCommandData</a>,</div>
-<div class="line"><span class="lineno">   30</span>            <span class="keyword">sizeof</span>(<a class="code hl_variable" href="namespaceLD2410Defs.html#a38aba7176fd8cb28fb74ae61e8b237f4">LD2410Defs::distanceGateSensitivityConfigCommandData</a>));</div>
-<div class="line"><span class="lineno">   31</span> </div>
-<div class="line"><span class="lineno">   32</span>        <span class="keywordflow">if</span> (gate &gt; 8) {</div>
-<div class="line"><span class="lineno">   33</span>            out[6] = 0xFF;</div>
-<div class="line"><span class="lineno">   34</span>            out[7] = 0xFF;</div>
-<div class="line"><span class="lineno">   35</span>        }</div>
-<div class="line"><span class="lineno">   36</span>        <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   37</span>            out[6] = gate;</div>
-<div class="line"><span class="lineno">   38</span>            out[7] = 0;</div>
-<div class="line"><span class="lineno">   39</span>        }</div>
-<div class="line"><span class="lineno">   40</span> </div>
-<div class="line"><span class="lineno">   41</span>        <span class="keywordflow">if</span> (movingThreshold &gt; 100) movingThreshold = 100;</div>
-<div class="line"><span class="lineno">   42</span>        <span class="keywordflow">if</span> (stationaryThreshold &gt; 100) stationaryThreshold = 100;</div>
-<div class="line"><span class="lineno">   43</span> </div>
-<div class="line"><span class="lineno">   44</span>        out[12] = movingThreshold;</div>
-<div class="line"><span class="lineno">   45</span>        out[18] = stationaryThreshold;</div>
-<div class="line"><span class="lineno">   46</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   47</span>    }</div>
-<div class="ttc" id="anamespaceLD2410Defs_html_a38aba7176fd8cb28fb74ae61e8b237f4"><div class="ttname"><a href="namespaceLD2410Defs.html#a38aba7176fd8cb28fb74ae61e8b237f4">LD2410Defs::distanceGateSensitivityConfigCommandData</a></div><div class="ttdeci">constexpr byte distanceGateSensitivityConfigCommandData[0x16]</div><div class="ttdef"><b>Definition</b> <a href="LD2410Defs_8h_source.html#l00077">LD2410Defs.h:77</a></div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a1891c87b48a0ec24a7a6066fe48bd63e" name="a1891c87b48a0ec24a7a6066fe48bd63e"></a>
@@ -413,23 +332,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="LD2410CommandBuilder_8h_source.html#l00009">9</a> of file <a class="el" href="LD2410CommandBuilder_8h_source.html">LD2410CommandBuilder.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">    9</span>                                                                                                                        {</div>
-<div class="line"><span class="lineno">   10</span> </div>
-<div class="line"><span class="lineno">   11</span>        <span class="keywordflow">if</span> (maxMotionGate &lt; 2 || maxMotionGate &gt; 8) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   12</span>        <span class="keywordflow">if</span> (maxStationaryGate &lt; 2 || maxStationaryGate &gt; 8) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   13</span> </div>
-<div class="line"><span class="lineno">   14</span>        memcpy(out, <a class="code hl_variable" href="namespaceLD2410Defs.html#a4ad071572bfd4cd28163b87cd3774e97">LD2410Defs::maxGateCommandData</a>, <span class="keyword">sizeof</span>(<a class="code hl_variable" href="namespaceLD2410Defs.html#a4ad071572bfd4cd28163b87cd3774e97">LD2410Defs::maxGateCommandData</a>));</div>
-<div class="line"><span class="lineno">   15</span> </div>
-<div class="line"><span class="lineno">   16</span>        out[6] = maxMotionGate;</div>
-<div class="line"><span class="lineno">   17</span>        out[12] = maxStationaryGate;</div>
-<div class="line"><span class="lineno">   18</span> </div>
-<div class="line"><span class="lineno">   19</span>        memcpy(&amp;out[18], &amp;noOneTimeout, 2);</div>
-<div class="line"><span class="lineno">   20</span> </div>
-<div class="line"><span class="lineno">   21</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   22</span> </div>
-<div class="line"><span class="lineno">   23</span>    }</div>
-<div class="ttc" id="anamespaceLD2410Defs_html_a4ad071572bfd4cd28163b87cd3774e97"><div class="ttname"><a href="namespaceLD2410Defs.html#a4ad071572bfd4cd28163b87cd3774e97">LD2410Defs::maxGateCommandData</a></div><div class="ttdeci">constexpr byte maxGateCommandData[0x16]</div><div class="ttdef"><b>Definition</b> <a href="LD2410Defs_8h_source.html#l00083">LD2410Defs.h:83</a></div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 </div><!-- contents -->

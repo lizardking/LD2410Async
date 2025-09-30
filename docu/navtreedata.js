@@ -25,14 +25,7 @@
 var NAVTREE =
 [
   [ "LD2410Async", "index.html", [
-    [ "Introduction", "index.html#intro_sec", [
-      [ "Features", "index.html#autotoc_md0", null ],
-      [ "Accessing data", "index.html#autotoc_md1", [
-        [ "Example: Access detection data without cloning", "index.html#autotoc_md2", null ],
-        [ "Example: Clone config data, modify, and write back", "index.html#autotoc_md3", null ]
-      ] ],
-      [ "Usage", "index.html#autotoc_md4", null ]
-    ] ],
+    [ "LD2410Async library for ESP32", "index.html", "index" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -48,9 +41,7 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ],
-        [ "Typedefs", "functions_type.html", null ],
-        [ "Enumerations", "functions_enum.html", null ]
+        [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -58,6 +49,9 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ],
+        [ "Typedefs", "globals_type.html", null ],
+        [ "Enumerations", "globals_enum.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
@@ -67,7 +61,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "LD2410Async_8cpp.html",
-"namespaceLD2410Defs.html#aaeb20d14777a0c2cce3d28e11a9cb200"
+"namespaceLD2410Defs.html#a9558e2afe2a1a0c9c65efcd302bf32df"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

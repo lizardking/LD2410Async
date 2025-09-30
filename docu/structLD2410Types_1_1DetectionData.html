@@ -202,81 +202,7 @@ Public Attributes</h2></td></tr>
 <p>Debug helper: print detection data contents to Serial. </p>
 
 <p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00280">280</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  280</span>                           {</div>
-<div class="line"><span class="lineno">  281</span>            Serial.println(<span class="stringliteral">&quot;=== DetectionData ===&quot;</span>);</div>
-<div class="line"><span class="lineno">  282</span> </div>
-<div class="line"><span class="lineno">  283</span>            Serial.print(<span class="stringliteral">&quot;  Timestamp: &quot;</span>);</div>
-<div class="line"><span class="lineno">  284</span>            Serial.println(<a class="code hl_variable" href="#adc003171384bf1b2bbc0dd69777e579d">timestamp</a>);</div>
-<div class="line"><span class="lineno">  285</span> </div>
-<div class="line"><span class="lineno">  286</span>            Serial.print(<span class="stringliteral">&quot;  Engineering Mode: &quot;</span>);</div>
-<div class="line"><span class="lineno">  287</span>            Serial.println(<a class="code hl_variable" href="#a0ba0acc8f10c3b03bc19b35dd3e3e6d7">engineeringMode</a> ? <span class="stringliteral">&quot;Yes&quot;</span> : <span class="stringliteral">&quot;No&quot;</span>);</div>
-<div class="line"><span class="lineno">  288</span> </div>
-<div class="line"><span class="lineno">  289</span>            Serial.print(<span class="stringliteral">&quot;  Target State: &quot;</span>);</div>
-<div class="line"><span class="lineno">  290</span>            Serial.println(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="#a6e7b02bc521240618e108867a2f9a1f7">targetState</a>));</div>
-<div class="line"><span class="lineno">  291</span> </div>
-<div class="line"><span class="lineno">  292</span>            Serial.print(<span class="stringliteral">&quot;  Moving Target Distance (cm): &quot;</span>);</div>
-<div class="line"><span class="lineno">  293</span>            Serial.println(<a class="code hl_variable" href="#af407da6370ae3d06e0d435fa61175af6">movingTargetDistance</a>);</div>
-<div class="line"><span class="lineno">  294</span> </div>
-<div class="line"><span class="lineno">  295</span>            Serial.print(<span class="stringliteral">&quot;  Moving Target Signal: &quot;</span>);</div>
-<div class="line"><span class="lineno">  296</span>            Serial.println(<a class="code hl_variable" href="#aae0463d0906b1abee50b21e648347b7a">movingTargetSignal</a>);</div>
-<div class="line"><span class="lineno">  297</span> </div>
-<div class="line"><span class="lineno">  298</span>            Serial.print(<span class="stringliteral">&quot;  Stationary Target Distance (cm): &quot;</span>);</div>
-<div class="line"><span class="lineno">  299</span>            Serial.println(<a class="code hl_variable" href="#af4c2bdd33c176a09c79da11aebb44317">stationaryTargetDistance</a>);</div>
-<div class="line"><span class="lineno">  300</span> </div>
-<div class="line"><span class="lineno">  301</span>            Serial.print(<span class="stringliteral">&quot;  Stationary Target Signal: &quot;</span>);</div>
-<div class="line"><span class="lineno">  302</span>            Serial.println(<a class="code hl_variable" href="#a29b0cbb338b2b29c11727427dabf0a73">stationaryTargetSignal</a>);</div>
-<div class="line"><span class="lineno">  303</span> </div>
-<div class="line"><span class="lineno">  304</span>            Serial.print(<span class="stringliteral">&quot;  Detected Distance (cm): &quot;</span>);</div>
-<div class="line"><span class="lineno">  305</span>            Serial.println(<a class="code hl_variable" href="#a559f723db6a5b2fe88ab99c39b1b6507">detectedDistance</a>);</div>
-<div class="line"><span class="lineno">  306</span> </div>
-<div class="line"><span class="lineno">  307</span>            Serial.print(<span class="stringliteral">&quot;  Light Level: &quot;</span>);</div>
-<div class="line"><span class="lineno">  308</span>            Serial.println(<a class="code hl_variable" href="#a34c54eeec586ff7aed6d1a774741b92c">lightLevel</a>);</div>
-<div class="line"><span class="lineno">  309</span> </div>
-<div class="line"><span class="lineno">  310</span>            Serial.print(<span class="stringliteral">&quot;  OUT Pin Status: &quot;</span>);</div>
-<div class="line"><span class="lineno">  311</span>            Serial.println(<a class="code hl_variable" href="#ac524295d914ba301c5777a9e6d781ce2">outPinStatus</a> ? <span class="stringliteral">&quot;High&quot;</span> : <span class="stringliteral">&quot;Low&quot;</span>);</div>
-<div class="line"><span class="lineno">  312</span> </div>
-<div class="line"><span class="lineno">  313</span>            <span class="comment">// --- Engineering mode fields ---</span></div>
-<div class="line"><span class="lineno">  314</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a0ba0acc8f10c3b03bc19b35dd3e3e6d7">engineeringMode</a>) {</div>
-<div class="line"><span class="lineno">  315</span>                Serial.println(<span class="stringliteral">&quot;  --- Engineering Mode Data ---&quot;</span>);</div>
-<div class="line"><span class="lineno">  316</span> </div>
-<div class="line"><span class="lineno">  317</span>                Serial.print(<span class="stringliteral">&quot;  Moving Target Gate Signal Count: &quot;</span>);</div>
-<div class="line"><span class="lineno">  318</span>                Serial.println(<a class="code hl_variable" href="#a69de276715421c7e163357fa6fb3cf96">movingTargetGateSignalCount</a>);</div>
-<div class="line"><span class="lineno">  319</span> </div>
-<div class="line"><span class="lineno">  320</span>                Serial.print(<span class="stringliteral">&quot;  Moving Target Gate Signals: &quot;</span>);</div>
-<div class="line"><span class="lineno">  321</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="#a69de276715421c7e163357fa6fb3cf96">movingTargetGateSignalCount</a>; i++) {</div>
-<div class="line"><span class="lineno">  322</span>                    Serial.print(<a class="code hl_variable" href="#a745753d912c11f3e73fe2e2b6be34696">movingTargetGateSignals</a>[i]);</div>
-<div class="line"><span class="lineno">  323</span>                    <span class="keywordflow">if</span> (i &lt; <a class="code hl_variable" href="#a69de276715421c7e163357fa6fb3cf96">movingTargetGateSignalCount</a> - 1) Serial.print(<span class="stringliteral">&quot;,&quot;</span>);</div>
-<div class="line"><span class="lineno">  324</span>                }</div>
-<div class="line"><span class="lineno">  325</span>                Serial.println();</div>
-<div class="line"><span class="lineno">  326</span> </div>
-<div class="line"><span class="lineno">  327</span>                Serial.print(<span class="stringliteral">&quot;  Stationary Target Gate Signal Count: &quot;</span>);</div>
-<div class="line"><span class="lineno">  328</span>                Serial.println(<a class="code hl_variable" href="#a79fb6d1050658ab88b967e9d52052fa1">stationaryTargetGateSignalCount</a>);</div>
-<div class="line"><span class="lineno">  329</span> </div>
-<div class="line"><span class="lineno">  330</span>                Serial.print(<span class="stringliteral">&quot;  Stationary Target Gate Signals: &quot;</span>);</div>
-<div class="line"><span class="lineno">  331</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="#a79fb6d1050658ab88b967e9d52052fa1">stationaryTargetGateSignalCount</a>; i++) {</div>
-<div class="line"><span class="lineno">  332</span>                    Serial.print(<a class="code hl_variable" href="#a0a76b94acfc9d9aa655721c7945c990b">stationaryTargetGateSignals</a>[i]);</div>
-<div class="line"><span class="lineno">  333</span>                    <span class="keywordflow">if</span> (i &lt; <a class="code hl_variable" href="#a79fb6d1050658ab88b967e9d52052fa1">stationaryTargetGateSignalCount</a> - 1) Serial.print(<span class="stringliteral">&quot;,&quot;</span>);</div>
-<div class="line"><span class="lineno">  334</span>                }</div>
-<div class="line"><span class="lineno">  335</span>                Serial.println();</div>
-<div class="line"><span class="lineno">  336</span>            }</div>
-<div class="line"><span class="lineno">  337</span> </div>
-<div class="line"><span class="lineno">  338</span>            Serial.println(<span class="stringliteral">&quot;======================&quot;</span>);</div>
-<div class="line"><span class="lineno">  339</span>        }</div>
-<div class="ttc" id="astructLD2410Types_1_1DetectionData_html_a0a76b94acfc9d9aa655721c7945c990b"><div class="ttname"><a href="#a0a76b94acfc9d9aa655721c7945c990b">LD2410Types::DetectionData::stationaryTargetGateSignals</a></div><div class="ttdeci">byte stationaryTargetGateSignals[9]</div><div class="ttdoc">Per-gate signal strengths for stationary targets.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00271">LD2410Types.h:271</a></div></div>
-<div class="ttc" id="astructLD2410Types_1_1DetectionData_html_a0ba0acc8f10c3b03bc19b35dd3e3e6d7"><div class="ttname"><a href="#a0ba0acc8f10c3b03bc19b35dd3e3e6d7">LD2410Types::DetectionData::engineeringMode</a></div><div class="ttdeci">bool engineeringMode</div><div class="ttdoc">True if engineering mode data was received.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00253">LD2410Types.h:253</a></div></div>
-<div class="ttc" id="astructLD2410Types_1_1DetectionData_html_a29b0cbb338b2b29c11727427dabf0a73"><div class="ttname"><a href="#a29b0cbb338b2b29c11727427dabf0a73">LD2410Types::DetectionData::stationaryTargetSignal</a></div><div class="ttdeci">byte stationaryTargetSignal</div><div class="ttdoc">Signal strength (0–100) of the stationary target.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00263">LD2410Types.h:263</a></div></div>
-<div class="ttc" id="astructLD2410Types_1_1DetectionData_html_a34c54eeec586ff7aed6d1a774741b92c"><div class="ttname"><a href="#a34c54eeec586ff7aed6d1a774741b92c">LD2410Types::DetectionData::lightLevel</a></div><div class="ttdeci">byte lightLevel</div><div class="ttdoc">Reported ambient light level (0–255).</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00273">LD2410Types.h:273</a></div></div>
-<div class="ttc" id="astructLD2410Types_1_1DetectionData_html_a559f723db6a5b2fe88ab99c39b1b6507"><div class="ttname"><a href="#a559f723db6a5b2fe88ab99c39b1b6507">LD2410Types::DetectionData::detectedDistance</a></div><div class="ttdeci">unsigned int detectedDistance</div><div class="ttdoc">General detection distance (cm).</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00264">LD2410Types.h:264</a></div></div>
-<div class="ttc" id="astructLD2410Types_1_1DetectionData_html_a69de276715421c7e163357fa6fb3cf96"><div class="ttname"><a href="#a69de276715421c7e163357fa6fb3cf96">LD2410Types::DetectionData::movingTargetGateSignalCount</a></div><div class="ttdeci">byte movingTargetGateSignalCount</div><div class="ttdoc">Number of gates with moving target signals.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00267">LD2410Types.h:267</a></div></div>
-<div class="ttc" id="astructLD2410Types_1_1DetectionData_html_a6e7b02bc521240618e108867a2f9a1f7"><div class="ttname"><a href="#a6e7b02bc521240618e108867a2f9a1f7">LD2410Types::DetectionData::targetState</a></div><div class="ttdeci">TargetState targetState</div><div class="ttdoc">Current detection state.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00259">LD2410Types.h:259</a></div></div>
-<div class="ttc" id="astructLD2410Types_1_1DetectionData_html_a745753d912c11f3e73fe2e2b6be34696"><div class="ttname"><a href="#a745753d912c11f3e73fe2e2b6be34696">LD2410Types::DetectionData::movingTargetGateSignals</a></div><div class="ttdeci">byte movingTargetGateSignals[9]</div><div class="ttdoc">Per-gate signal strengths for moving targets.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00268">LD2410Types.h:268</a></div></div>
-<div class="ttc" id="astructLD2410Types_1_1DetectionData_html_a79fb6d1050658ab88b967e9d52052fa1"><div class="ttname"><a href="#a79fb6d1050658ab88b967e9d52052fa1">LD2410Types::DetectionData::stationaryTargetGateSignalCount</a></div><div class="ttdeci">byte stationaryTargetGateSignalCount</div><div class="ttdoc">Number of gates with stationary target signals.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00270">LD2410Types.h:270</a></div></div>
-<div class="ttc" id="astructLD2410Types_1_1DetectionData_html_aae0463d0906b1abee50b21e648347b7a"><div class="ttname"><a href="#aae0463d0906b1abee50b21e648347b7a">LD2410Types::DetectionData::movingTargetSignal</a></div><div class="ttdeci">byte movingTargetSignal</div><div class="ttdoc">Signal strength (0–100) of the moving target.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00261">LD2410Types.h:261</a></div></div>
-<div class="ttc" id="astructLD2410Types_1_1DetectionData_html_ac524295d914ba301c5777a9e6d781ce2"><div class="ttname"><a href="#ac524295d914ba301c5777a9e6d781ce2">LD2410Types::DetectionData::outPinStatus</a></div><div class="ttdeci">bool outPinStatus</div><div class="ttdoc">Current status of the OUT pin (true = high, false = low).</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00274">LD2410Types.h:274</a></div></div>
-<div class="ttc" id="astructLD2410Types_1_1DetectionData_html_adc003171384bf1b2bbc0dd69777e579d"><div class="ttname"><a href="#adc003171384bf1b2bbc0dd69777e579d">LD2410Types::DetectionData::timestamp</a></div><div class="ttdeci">unsigned long timestamp</div><div class="ttdoc">Timestamp (ms since boot) when this data was received.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00249">LD2410Types.h:249</a></div></div>
-<div class="ttc" id="astructLD2410Types_1_1DetectionData_html_af407da6370ae3d06e0d435fa61175af6"><div class="ttname"><a href="#af407da6370ae3d06e0d435fa61175af6">LD2410Types::DetectionData::movingTargetDistance</a></div><div class="ttdeci">unsigned int movingTargetDistance</div><div class="ttdoc">Distance (cm) to the nearest moving target.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00260">LD2410Types.h:260</a></div></div>
-<div class="ttc" id="astructLD2410Types_1_1DetectionData_html_af4c2bdd33c176a09c79da11aebb44317"><div class="ttname"><a href="#af4c2bdd33c176a09c79da11aebb44317">LD2410Types::DetectionData::stationaryTargetDistance</a></div><div class="ttdeci">unsigned int stationaryTargetDistance</div><div class="ttdoc">Distance (cm) to the nearest stationary target.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00262">LD2410Types.h:262</a></div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -403,8 +329,7 @@ Public Attributes</h2></td></tr>
 <p>Per-gate signal strengths for moving targets. </p>
 
 <p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00268">268</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  268</span>{ 0 }; <span class="comment">///&lt; Per-gate signal strengths for moving targets.</span></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="aae0463d0906b1abee50b21e648347b7a" name="aae0463d0906b1abee50b21e648347b7a"></a>
@@ -530,8 +455,7 @@ Public Attributes</h2></td></tr>
 <p>Per-gate signal strengths for stationary targets. </p>
 
 <p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00271">271</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  271</span>{ 0 }; <span class="comment">///&lt; Per-gate signal strengths for stationary targets.</span></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a29b0cbb338b2b29c11727427dabf0a73" name="a29b0cbb338b2b29c11727427dabf0a73"></a>

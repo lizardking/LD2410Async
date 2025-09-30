@@ -98,7 +98,10 @@ $(function(){initNavTree('LD2410Async_8h.html',''); initResizable(true); });
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">LD2410Async.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -110,11 +113,2444 @@ $(function(){initNavTree('LD2410Async_8h.html',''); initResizable(true); });
 </div>
 <p><a href="LD2410Async_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLD2410Async.html">LD2410Async</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a99848867d52a313cc59f83665e65f2d5" id="r_a99848867d52a313cc59f83665e65f2d5"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a>) (<a class="el" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a> *sender, <a class="el" href="#aa44c3b86a77e4577f3c47fee29c963fe">AsyncCommandResult</a> result, byte userData)</td></tr>
+<tr class="memdesc:a99848867d52a313cc59f83665e65f2d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback signature for asynchronous command completion.  <br /></td></tr>
+<tr class="separator:a99848867d52a313cc59f83665e65f2d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d8f4b34555ce2a2b1cc69a6a4d970fb" id="r_a1d8f4b34555ce2a2b1cc69a6a4d970fb"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d8f4b34555ce2a2b1cc69a6a4d970fb">GenericCallback</a>) (<a class="el" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a> *sender, byte userData)</td></tr>
+<tr class="memdesc:a1d8f4b34555ce2a2b1cc69a6a4d970fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic callback signature used for simple notifications.  <br /></td></tr>
+<tr class="separator:a1d8f4b34555ce2a2b1cc69a6a4d970fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37a4aeb9eecbb9e258f73a807fc7b973" id="r_a37a4aeb9eecbb9e258f73a807fc7b973"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37a4aeb9eecbb9e258f73a807fc7b973">DetectionDataCallback</a>) (<a class="el" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a> *sender, bool presenceDetected, byte userData)</td></tr>
+<tr class="memdesc:a37a4aeb9eecbb9e258f73a807fc7b973"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback type for receiving detection data events.  <br /></td></tr>
+<tr class="separator:a37a4aeb9eecbb9e258f73a807fc7b973"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:aa44c3b86a77e4577f3c47fee29c963fe" id="r_aa44c3b86a77e4577f3c47fee29c963fe"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa44c3b86a77e4577f3c47fee29c963fe">AsyncCommandResult</a> : byte { <a class="el" href="#aa44c3b86a77e4577f3c47fee29c963fead0749aaba8b833466dfcbb0428e4f89c">SUCCESS</a>
+, <a class="el" href="#aa44c3b86a77e4577f3c47fee29c963feab9e14d9b2886bcff408b85aefa780419">FAILED</a>
+, <a class="el" href="#aa44c3b86a77e4577f3c47fee29c963fea070a0fb40f6c308ab544b227660aadff">TIMEOUT</a>
+, <a class="el" href="#aa44c3b86a77e4577f3c47fee29c963fead4539bffb6062bdcbd7e7cc1b1228926">CANCELED</a>
+ }</td></tr>
+<tr class="memdesc:aa44c3b86a77e4577f3c47fee29c963fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asynchronous driver class for the LD2410 human presence radar sensor.  <a href="#aa44c3b86a77e4577f3c47fee29c963fe">More...</a><br /></td></tr>
+<tr class="separator:aa44c3b86a77e4577f3c47fee29c963fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ac500fb301e250ede1a608c67fc1a8900" id="r_ac500fb301e250ede1a608c67fc1a8900"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a> (Stream &amp;serial)</td></tr>
+<tr class="memdesc:ac500fb301e250ede1a608c67fc1a8900"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new LD2410Async instance bound to a given serial stream.  <br /></td></tr>
+<tr class="separator:ac500fb301e250ede1a608c67fc1a8900"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1358f6f0b8d55a676b5b8147906c9024" id="r_a1358f6f0b8d55a676b5b8147906c9024"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1358f6f0b8d55a676b5b8147906c9024">begin</a> ()</td></tr>
+<tr class="memdesc:a1358f6f0b8d55a676b5b8147906c9024"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the background task that continuously reads data from the sensor.  <br /></td></tr>
+<tr class="separator:a1358f6f0b8d55a676b5b8147906c9024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af52e0e8aaa30a81fa84024fdb975aa54" id="r_af52e0e8aaa30a81fa84024fdb975aa54"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af52e0e8aaa30a81fa84024fdb975aa54">end</a> ()</td></tr>
+<tr class="memdesc:af52e0e8aaa30a81fa84024fdb975aa54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the background task started by <a class="el" href="#a1358f6f0b8d55a676b5b8147906c9024" title="Starts the background task that continuously reads data from the sensor.">begin()</a>.  <br /></td></tr>
+<tr class="separator:af52e0e8aaa30a81fa84024fdb975aa54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b30773f7a69dad507caaa636f08fa76" id="r_a4b30773f7a69dad507caaa636f08fa76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b30773f7a69dad507caaa636f08fa76">setInactivityHandling</a> (bool enable)</td></tr>
+<tr class="memdesc:a4b30773f7a69dad507caaa636f08fa76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables or disables automatic inactivity handling of the sensor.  <br /></td></tr>
+<tr class="separator:a4b30773f7a69dad507caaa636f08fa76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afccb406a90ceda487c45241f02018a00" id="r_afccb406a90ceda487c45241f02018a00"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afccb406a90ceda487c45241f02018a00">enableInactivityHandling</a> ()</td></tr>
+<tr class="memdesc:afccb406a90ceda487c45241f02018a00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience method: enables inactivity handling.  <br /></td></tr>
+<tr class="separator:afccb406a90ceda487c45241f02018a00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6bf8102c5fb5ccfdcc3730a6a563f5c" id="r_ae6bf8102c5fb5ccfdcc3730a6a563f5c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6bf8102c5fb5ccfdcc3730a6a563f5c">disableInactivityHandling</a> ()</td></tr>
+<tr class="memdesc:ae6bf8102c5fb5ccfdcc3730a6a563f5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience method: disables inactivity handling.  <br /></td></tr>
+<tr class="separator:ae6bf8102c5fb5ccfdcc3730a6a563f5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af07b89c2041033852ee61adc98176aca" id="r_af07b89c2041033852ee61adc98176aca"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af07b89c2041033852ee61adc98176aca">isInactivityHandlingEnabled</a> () const</td></tr>
+<tr class="memdesc:af07b89c2041033852ee61adc98176aca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether inactivity handling is currently enabled.  <br /></td></tr>
+<tr class="separator:af07b89c2041033852ee61adc98176aca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a088d288af2200de524c81e84ce801ea9" id="r_a088d288af2200de524c81e84ce801ea9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a088d288af2200de524c81e84ce801ea9">setInactivityTimeoutMs</a> (unsigned long timeoutMs)</td></tr>
+<tr class="memdesc:a088d288af2200de524c81e84ce801ea9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the timeout period for inactivity handling.  <br /></td></tr>
+<tr class="separator:a088d288af2200de524c81e84ce801ea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39e87e521e1d1aef26fb8a6ffab92965" id="r_a39e87e521e1d1aef26fb8a6ffab92965"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39e87e521e1d1aef26fb8a6ffab92965">getInactivityTimeoutMs</a> () const</td></tr>
+<tr class="memdesc:a39e87e521e1d1aef26fb8a6ffab92965"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current inactivity timeout period.  <br /></td></tr>
+<tr class="separator:a39e87e521e1d1aef26fb8a6ffab92965"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4a5bb569a656f369f739060b9a3f282" id="r_af4a5bb569a656f369f739060b9a3f282"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af4a5bb569a656f369f739060b9a3f282">registerDetectionDataReceivedCallback</a> (<a class="el" href="#a37a4aeb9eecbb9e258f73a807fc7b973">DetectionDataCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:af4a5bb569a656f369f739060b9a3f282"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a callback for new detection data.  <br /></td></tr>
+<tr class="separator:af4a5bb569a656f369f739060b9a3f282"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a714e62534394a52243f8f50fd58726f9" id="r_a714e62534394a52243f8f50fd58726f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a714e62534394a52243f8f50fd58726f9">registerConfigChangedCallback</a> (<a class="el" href="#a1d8f4b34555ce2a2b1cc69a6a4d970fb">GenericCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:a714e62534394a52243f8f50fd58726f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a callback for configuration changes.  <br /></td></tr>
+<tr class="separator:a714e62534394a52243f8f50fd58726f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad320d7e80fd719f0bbc41ebb96c0f285" id="r_ad320d7e80fd719f0bbc41ebb96c0f285"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad320d7e80fd719f0bbc41ebb96c0f285">registerConfigUpdateReceivedCallback</a> (<a class="el" href="#a1d8f4b34555ce2a2b1cc69a6a4d970fb">GenericCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:ad320d7e80fd719f0bbc41ebb96c0f285"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a callback for configuration data updates.  <br /></td></tr>
+<tr class="separator:ad320d7e80fd719f0bbc41ebb96c0f285"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bf997474cd5eb58ac2a142a8d134a50" id="r_a5bf997474cd5eb58ac2a142a8d134a50"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLD2410Types_1_1DetectionData.html">LD2410Types::DetectionData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5bf997474cd5eb58ac2a142a8d134a50">getDetectionData</a> () const</td></tr>
+<tr class="memdesc:a5bf997474cd5eb58ac2a142a8d134a50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a clone of the latest detection data from the radar.  <br /></td></tr>
+<tr class="separator:a5bf997474cd5eb58ac2a142a8d134a50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24251f16e5afc8155c5c66449842109f" id="r_a24251f16e5afc8155c5c66449842109f"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structLD2410Types_1_1DetectionData.html">LD2410Types::DetectionData</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24251f16e5afc8155c5c66449842109f">getDetectionDataRef</a> () const</td></tr>
+<tr class="memdesc:a24251f16e5afc8155c5c66449842109f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the current detection data without making a copy.  <br /></td></tr>
+<tr class="separator:a24251f16e5afc8155c5c66449842109f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54388c929cea610f92891def29db66a5" id="r_a54388c929cea610f92891def29db66a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLD2410Types_1_1ConfigData.html">LD2410Types::ConfigData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54388c929cea610f92891def29db66a5">getConfigData</a> () const</td></tr>
+<tr class="memdesc:a54388c929cea610f92891def29db66a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a clone of the current configuration data of the radar.  <br /></td></tr>
+<tr class="separator:a54388c929cea610f92891def29db66a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a366ee0d3515b8855058f562a8421d9e3" id="r_a366ee0d3515b8855058f562a8421d9e3"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structLD2410Types_1_1ConfigData.html">LD2410Types::ConfigData</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a366ee0d3515b8855058f562a8421d9e3">getConfigDataRef</a> () const</td></tr>
+<tr class="memdesc:a366ee0d3515b8855058f562a8421d9e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the current config data without making a copy.  <br /></td></tr>
+<tr class="separator:a366ee0d3515b8855058f562a8421d9e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72e853afaba8373fb90524c3c4e8a153" id="r_a72e853afaba8373fb90524c3c4e8a153"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72e853afaba8373fb90524c3c4e8a153">asyncIsBusy</a> ()</td></tr>
+<tr class="memdesc:a72e853afaba8373fb90524c3c4e8a153"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if an asynchronous command is currently pending.  <br /></td></tr>
+<tr class="separator:a72e853afaba8373fb90524c3c4e8a153"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a072ae754e7f12512e8051f4c6246e1e1" id="r_a072ae754e7f12512e8051f4c6246e1e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a072ae754e7f12512e8051f4c6246e1e1">asyncCancel</a> ()</td></tr>
+<tr class="memdesc:a072ae754e7f12512e8051f4c6246e1e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cancels any pending asynchronous command or sequence.  <br /></td></tr>
+<tr class="separator:a072ae754e7f12512e8051f4c6246e1e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e4245a2a843b29dde5ef52a8c9ed0ae" id="r_a7e4245a2a843b29dde5ef52a8c9ed0ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e4245a2a843b29dde5ef52a8c9ed0ae">setAsyncCommandTimeoutMs</a> (unsigned long timeoutMs)</td></tr>
+<tr class="memdesc:a7e4245a2a843b29dde5ef52a8c9ed0ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the timeout for async command callbacks.  <br /></td></tr>
+<tr class="separator:a7e4245a2a843b29dde5ef52a8c9ed0ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bebb50ddb8e84a70aee5dd43ed1eb0e" id="r_a2bebb50ddb8e84a70aee5dd43ed1eb0e"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2bebb50ddb8e84a70aee5dd43ed1eb0e">getAsyncCommandTimeoutMs</a> () const</td></tr>
+<tr class="memdesc:a2bebb50ddb8e84a70aee5dd43ed1eb0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current async command timeout.  <br /></td></tr>
+<tr class="separator:a2bebb50ddb8e84a70aee5dd43ed1eb0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad24f13c9381aa35460908b4c0edb5fa9" id="r_ad24f13c9381aa35460908b4c0edb5fa9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad24f13c9381aa35460908b4c0edb5fa9">enableConfigModeAsync</a> (<a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:ad24f13c9381aa35460908b4c0edb5fa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables config mode on the radar.  <br /></td></tr>
+<tr class="separator:ad24f13c9381aa35460908b4c0edb5fa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99910e37f7cf20d05be573fec341ef0c" id="r_a99910e37f7cf20d05be573fec341ef0c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a99910e37f7cf20d05be573fec341ef0c">disableConfigModeAsync</a> (<a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:a99910e37f7cf20d05be573fec341ef0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables config mode on the radar.  <br /></td></tr>
+<tr class="separator:a99910e37f7cf20d05be573fec341ef0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae138a647a3a3c8f5b1eac93a8300c899" id="r_ae138a647a3a3c8f5b1eac93a8300c899"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae138a647a3a3c8f5b1eac93a8300c899">isConfigModeEnabled</a> () const</td></tr>
+<tr class="memdesc:ae138a647a3a3c8f5b1eac93a8300c899"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detects if config mode is enabled.  <br /></td></tr>
+<tr class="separator:ae138a647a3a3c8f5b1eac93a8300c899"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7b1c7d38ac3948ebf159b20e1a3bb1d" id="r_ad7b1c7d38ac3948ebf159b20e1a3bb1d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7b1c7d38ac3948ebf159b20e1a3bb1d">enableEngineeringModeAsync</a> (<a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:ad7b1c7d38ac3948ebf159b20e1a3bb1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables engineering mode.  <br /></td></tr>
+<tr class="separator:ad7b1c7d38ac3948ebf159b20e1a3bb1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a377464026350140b0277369a13e8c1d3" id="r_a377464026350140b0277369a13e8c1d3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a377464026350140b0277369a13e8c1d3">disableEngineeringModeAsync</a> (<a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:a377464026350140b0277369a13e8c1d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables engineering mode.  <br /></td></tr>
+<tr class="separator:a377464026350140b0277369a13e8c1d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6b9e026c447bf5b47be8670b5b9610c" id="r_ab6b9e026c447bf5b47be8670b5b9610c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6b9e026c447bf5b47be8670b5b9610c">isEngineeringModeEnabled</a> () const</td></tr>
+<tr class="memdesc:ab6b9e026c447bf5b47be8670b5b9610c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detects if engineering mode is enabled.  <br /></td></tr>
+<tr class="separator:ab6b9e026c447bf5b47be8670b5b9610c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7bfb9c212c452898053f167555a0bb6" id="r_ad7bfb9c212c452898053f167555a0bb6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7bfb9c212c452898053f167555a0bb6">requestGateParametersAsync</a> (<a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:ad7bfb9c212c452898053f167555a0bb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests the current gate parameters from the sensor.  <br /></td></tr>
+<tr class="separator:ad7bfb9c212c452898053f167555a0bb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0eb274f41635209e31f34f869fe1826a" id="r_a0eb274f41635209e31f34f869fe1826a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0eb274f41635209e31f34f869fe1826a">configureMaxGateAndNoOneTimeoutAsync</a> (byte maxMovingGate, byte maxStationaryGate, unsigned short noOneTimeout, <a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:a0eb274f41635209e31f34f869fe1826a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the maximum detection gates and "no-one" timeout on the sensor.  <br /></td></tr>
+<tr class="separator:a0eb274f41635209e31f34f869fe1826a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cf70cb5f55626596530d050b0812b38" id="r_a1cf70cb5f55626596530d050b0812b38"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1cf70cb5f55626596530d050b0812b38">configureDistanceGateSensitivityAsync</a> (const byte movingThresholds[9], const byte stationaryThresholds[9], <a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:a1cf70cb5f55626596530d050b0812b38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures sensitivity thresholds for all gates at once.  <br /></td></tr>
+<tr class="separator:a1cf70cb5f55626596530d050b0812b38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9493caef9e22a89445741da019b99213" id="r_a9493caef9e22a89445741da019b99213"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9493caef9e22a89445741da019b99213">configureDistanceGateSensitivityAsync</a> (byte gate, byte movingThreshold, byte stationaryThreshold, <a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:a9493caef9e22a89445741da019b99213"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures sensitivity thresholds for a single gate.  <br /></td></tr>
+<tr class="separator:a9493caef9e22a89445741da019b99213"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5eeae3b4525a303e0e3bc208c4bcff21" id="r_a5eeae3b4525a303e0e3bc208c4bcff21"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5eeae3b4525a303e0e3bc208c4bcff21">requestFirmwareAsync</a> (<a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:a5eeae3b4525a303e0e3bc208c4bcff21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests the firmware version of the sensor.  <br /></td></tr>
+<tr class="separator:a5eeae3b4525a303e0e3bc208c4bcff21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39aa1e94b76c2a08d96ab80fe2c9ed9c" id="r_a39aa1e94b76c2a08d96ab80fe2c9ed9c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39aa1e94b76c2a08d96ab80fe2c9ed9c">configureBaudRateAsync</a> (byte baudRateSetting, <a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:a39aa1e94b76c2a08d96ab80fe2c9ed9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the UART baud rate of the sensor.  <br /></td></tr>
+<tr class="separator:a39aa1e94b76c2a08d96ab80fe2c9ed9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcd209213cc2e418aefd20573a868e0a" id="r_adcd209213cc2e418aefd20573a868e0a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adcd209213cc2e418aefd20573a868e0a">configureBaudRateAsync</a> (<a class="el" href="namespaceLD2410Types.html#a5e710aa1a69067aab369a0a463189fdf">LD2410Types::Baudrate</a> baudRate, <a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:adcd209213cc2e418aefd20573a868e0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the baudrate of the serial port of the sensor.  <br /></td></tr>
+<tr class="separator:adcd209213cc2e418aefd20573a868e0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadb841697a992c1bf203944211bd8659" id="r_aadb841697a992c1bf203944211bd8659"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aadb841697a992c1bf203944211bd8659">restoreFactorySettingsAsync</a> (<a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:aadb841697a992c1bf203944211bd8659"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restores factory settings of the sensor.  <br /></td></tr>
+<tr class="separator:aadb841697a992c1bf203944211bd8659"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb856d32612fba953b07280cf5d9a235" id="r_aeb856d32612fba953b07280cf5d9a235"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb856d32612fba953b07280cf5d9a235">rebootAsync</a> (<a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:aeb856d32612fba953b07280cf5d9a235"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reboots the sensor.  <br /></td></tr>
+<tr class="separator:aeb856d32612fba953b07280cf5d9a235"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ebecb17389f2dffb7c2d86c607be973" id="r_a9ebecb17389f2dffb7c2d86c607be973"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ebecb17389f2dffb7c2d86c607be973">enableBluetoothAsync</a> (<a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:a9ebecb17389f2dffb7c2d86c607be973"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables bluetooth.  <br /></td></tr>
+<tr class="separator:a9ebecb17389f2dffb7c2d86c607be973"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addcbab1709f2a80571563609f4a23862" id="r_addcbab1709f2a80571563609f4a23862"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#addcbab1709f2a80571563609f4a23862">disableBluetoothAsync</a> (<a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:addcbab1709f2a80571563609f4a23862"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables bluetooth.  <br /></td></tr>
+<tr class="separator:addcbab1709f2a80571563609f4a23862"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3923c4b746d90fbd314eae7094bb90be" id="r_a3923c4b746d90fbd314eae7094bb90be"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3923c4b746d90fbd314eae7094bb90be">requestBluetoothMacAddressAsync</a> (<a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:a3923c4b746d90fbd314eae7094bb90be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests the bluetooth mac address.  <br /></td></tr>
+<tr class="separator:a3923c4b746d90fbd314eae7094bb90be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa0138cb624b66482e9a05b197c21f22" id="r_aaa0138cb624b66482e9a05b197c21f22"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa0138cb624b66482e9a05b197c21f22">configureBluetoothPasswordAsync</a> (const char *password, <a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:aaa0138cb624b66482e9a05b197c21f22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the password for bluetooth access to the sensor.  <br /></td></tr>
+<tr class="separator:aaa0138cb624b66482e9a05b197c21f22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfe79850fa3e040a12de72ea99747266" id="r_abfe79850fa3e040a12de72ea99747266"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abfe79850fa3e040a12de72ea99747266">configureBluetoothPasswordAsync</a> (const String &amp;password, <a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:abfe79850fa3e040a12de72ea99747266"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the password for bluetooth access to the sensor.  <br /></td></tr>
+<tr class="separator:abfe79850fa3e040a12de72ea99747266"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9f9858ab6d6cf4c4ab91e4580a2ea50" id="r_ab9f9858ab6d6cf4c4ab91e4580a2ea50"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab9f9858ab6d6cf4c4ab91e4580a2ea50">configureDefaultBluetoothPasswordAsync</a> (<a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:ab9f9858ab6d6cf4c4ab91e4580a2ea50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the password for bluetooth access to the default value (HiLink)  <br /></td></tr>
+<tr class="separator:ab9f9858ab6d6cf4c4ab91e4580a2ea50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6e3792586e3bac35ca187d41a0b9250" id="r_ae6e3792586e3bac35ca187d41a0b9250"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6e3792586e3bac35ca187d41a0b9250">configureDistanceResolutionAsync</a> (<a class="el" href="namespaceLD2410Types.html#a89e3189ddef9f36629c460fbeb398c79">LD2410Types::DistanceResolution</a> distanceResolution, <a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:ae6e3792586e3bac35ca187d41a0b9250"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the distance resolution of the radar.  <br /></td></tr>
+<tr class="separator:ae6e3792586e3bac35ca187d41a0b9250"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ebfc3c3547f3894ae264b82a32c1a82" id="r_a3ebfc3c3547f3894ae264b82a32c1a82"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ebfc3c3547f3894ae264b82a32c1a82">configureDistanceResolution75cmAsync</a> (<a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:a3ebfc3c3547f3894ae264b82a32c1a82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the distance resolution explicitly to 75 cm per gate.  <br /></td></tr>
+<tr class="separator:a3ebfc3c3547f3894ae264b82a32c1a82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01705b527bc80949417de15b6e95140c" id="r_a01705b527bc80949417de15b6e95140c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01705b527bc80949417de15b6e95140c">configuresDistanceResolution20cmAsync</a> (<a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:a01705b527bc80949417de15b6e95140c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the distance resolution explicitly to 20 cm per gate.  <br /></td></tr>
+<tr class="separator:a01705b527bc80949417de15b6e95140c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3260f74672079a7200f210e4ffde1046" id="r_a3260f74672079a7200f210e4ffde1046"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3260f74672079a7200f210e4ffde1046">requestDistanceResolutioncmAsync</a> (<a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:a3260f74672079a7200f210e4ffde1046"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests the current distance resolution setting from the sensor.  <br /></td></tr>
+<tr class="separator:a3260f74672079a7200f210e4ffde1046"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90e3bc56482783249d966a670310bffd" id="r_a90e3bc56482783249d966a670310bffd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90e3bc56482783249d966a670310bffd">configureAuxControlSettingsAsync</a> (<a class="el" href="namespaceLD2410Types.html#afbd22de9579db591b3f122c51c730844">LD2410Types::LightControl</a> light_control, byte light_threshold, <a class="el" href="namespaceLD2410Types.html#a420c188999635485028764fe98cb0bff">LD2410Types::OutputControl</a> output_control, <a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:a90e3bc56482783249d966a670310bffd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the auxiliary control parameters (light and output pin).  <br /></td></tr>
+<tr class="separator:a90e3bc56482783249d966a670310bffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaa6e2c1842ebd96c6e04fe542af66cb" id="r_afaa6e2c1842ebd96c6e04fe542af66cb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afaa6e2c1842ebd96c6e04fe542af66cb">requestAuxControlSettingsAsync</a> (<a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:afaa6e2c1842ebd96c6e04fe542af66cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests the current auxiliary control settings.  <br /></td></tr>
+<tr class="separator:afaa6e2c1842ebd96c6e04fe542af66cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed89a0870ddacee96bc2f0fb9c1c96fc" id="r_aed89a0870ddacee96bc2f0fb9c1c96fc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed89a0870ddacee96bc2f0fb9c1c96fc">beginAutoConfigAsync</a> (<a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:aed89a0870ddacee96bc2f0fb9c1c96fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the automatic configuration (auto-config) routine on the sensor.  <br /></td></tr>
+<tr class="separator:aed89a0870ddacee96bc2f0fb9c1c96fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad219580b6e47f54a8aac0847e2054bf6" id="r_ad219580b6e47f54a8aac0847e2054bf6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad219580b6e47f54a8aac0847e2054bf6">requestAutoConfigStatusAsync</a> (<a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:ad219580b6e47f54a8aac0847e2054bf6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests the current status of the auto-config routine.  <br /></td></tr>
+<tr class="separator:ad219580b6e47f54a8aac0847e2054bf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab578ee25526c8bb808fe7200fae95a38" id="r_ab578ee25526c8bb808fe7200fae95a38"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab578ee25526c8bb808fe7200fae95a38">requestAllConfigSettingsAsync</a> (<a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:ab578ee25526c8bb808fe7200fae95a38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests all configuration settings from the sensor.  <br /></td></tr>
+<tr class="separator:ab578ee25526c8bb808fe7200fae95a38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86968c2e9be09d9acb6b62ad7496a2a6" id="r_a86968c2e9be09d9acb6b62ad7496a2a6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86968c2e9be09d9acb6b62ad7496a2a6">requestAllStaticDataAsync</a> (<a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:a86968c2e9be09d9acb6b62ad7496a2a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests all static information from the sensor.  <br /></td></tr>
+<tr class="separator:a86968c2e9be09d9acb6b62ad7496a2a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a509170bfc50580131d0c72f5c91daede" id="r_a509170bfc50580131d0c72f5c91daede"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a509170bfc50580131d0c72f5c91daede">configureAllConfigSettingsAsync</a> (const <a class="el" href="structLD2410Types_1_1ConfigData.html">LD2410Types::ConfigData</a> &amp;configToWrite, bool writeAllConfigData, <a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:a509170bfc50580131d0c72f5c91daede"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a full ConfigData struct to the LD2410.  <br /></td></tr>
+<tr class="separator:a509170bfc50580131d0c72f5c91daede"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a9c7dd860ae92521db2e99291bd86f37a" id="r_a9c7dd860ae92521db2e99291bd86f37a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLD2410Types_1_1DetectionData.html">LD2410Types::DetectionData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c7dd860ae92521db2e99291bd86f37a">detectionData</a></td></tr>
+<tr class="memdesc:a9c7dd860ae92521db2e99291bd86f37a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Latest detection results from the radar.  <br /></td></tr>
+<tr class="separator:a9c7dd860ae92521db2e99291bd86f37a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac51d85631e61298e1a5d1b2784620c5b" id="r_ac51d85631e61298e1a5d1b2784620c5b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLD2410Types_1_1ConfigData.html">LD2410Types::ConfigData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac51d85631e61298e1a5d1b2784620c5b">configData</a></td></tr>
+<tr class="memdesc:ac51d85631e61298e1a5d1b2784620c5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current configuration parameters of the radar.  <br /></td></tr>
+<tr class="separator:ac51d85631e61298e1a5d1b2784620c5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0874fa08a9cb452c8d96b053360e6755" id="r_a0874fa08a9cb452c8d96b053360e6755"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLD2410Types_1_1StaticData.html">LD2410Types::StaticData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0874fa08a9cb452c8d96b053360e6755">staticData</a></td></tr>
+<tr class="memdesc:a0874fa08a9cb452c8d96b053360e6755"><td class="mdescLeft">&#160;</td><td class="mdescRight">Static data of the radar.  <br /></td></tr>
+<tr class="separator:a0874fa08a9cb452c8d96b053360e6755"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad67c3e0fd778c17ec30eb5580e3b2cd2" id="r_ad67c3e0fd778c17ec30eb5580e3b2cd2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad67c3e0fd778c17ec30eb5580e3b2cd2">configModeEnabled</a> = false</td></tr>
+<tr class="memdesc:ad67c3e0fd778c17ec30eb5580e3b2cd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">True if the sensor is currently in config mode.  <br /></td></tr>
+<tr class="separator:ad67c3e0fd778c17ec30eb5580e3b2cd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1a87d1e33a4e42f40bf2c8f10583315" id="r_ae1a87d1e33a4e42f40bf2c8f10583315"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1a87d1e33a4e42f40bf2c8f10583315">engineeringModeEnabled</a> = false</td></tr>
+<tr class="memdesc:ae1a87d1e33a4e42f40bf2c8f10583315"><td class="mdescLeft">&#160;</td><td class="mdescRight">True if the sensor is currently in engineering mode.  <br /></td></tr>
+<tr class="separator:ae1a87d1e33a4e42f40bf2c8f10583315"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2ff60e85fe189d54ac6abf5d5a23b51" id="r_ae2ff60e85fe189d54ac6abf5d5a23b51"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceLD2410Types.html#a035762090f81b93ab2008c3a8d37e995">LD2410Types::AutoConfigStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2ff60e85fe189d54ac6abf5d5a23b51">autoConfigStatus</a> = <a class="el" href="namespaceLD2410Types.html#a035762090f81b93ab2008c3a8d37e995a1c250a21210b7b88a14db9a0cbe71162">LD2410Types::AutoConfigStatus::NOT_SET</a></td></tr>
+<tr class="memdesc:ae2ff60e85fe189d54ac6abf5d5a23b51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current status of the auto-configuration routine.  <br /></td></tr>
+<tr class="separator:ae2ff60e85fe189d54ac6abf5d5a23b51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="a99848867d52a313cc59f83665e65f2d5" name="a99848867d52a313cc59f83665e65f2d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99848867d52a313cc59f83665e65f2d5">&#9670;&#160;</a></span>AsyncCommandCallback</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(* AsyncCommandCallback) (<a class="el" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a> *sender, <a class="el" href="#aa44c3b86a77e4577f3c47fee29c963fe">AsyncCommandResult</a> result, byte userData)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Callback signature for asynchronous command completion. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sender</td><td>Pointer to the LD2410Async instance that triggered the callback. </td></tr>
+    <tr><td class="paramname">result</td><td>Outcome of the async operation (SUCCESS, FAILED, TIMEOUT, CANCELED). </td></tr>
+    <tr><td class="paramname">userData</td><td>User-specified value passed when registering the callback. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00048">48</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+
+</div>
+</div>
+<a id="a37a4aeb9eecbb9e258f73a807fc7b973" name="a37a4aeb9eecbb9e258f73a807fc7b973"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37a4aeb9eecbb9e258f73a807fc7b973">&#9670;&#160;</a></span>DetectionDataCallback</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(* DetectionDataCallback) (<a class="el" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a> *sender, bool presenceDetected, byte userData)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Callback type for receiving detection data events. </p>
+<p>This callback is invoked whenever new detection data is processed. It provides direct access to the LD2410Async instance, along with a quick flag for presence detection so that applications which only care about presence can avoid parsing the full DetectionData struct.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sender</td><td>Pointer to the LD2410Async instance that triggered the callback. </td></tr>
+    <tr><td class="paramname">presenceDetected</td><td>True if the radar currently detects presence (moving or stationary), false otherwise. </td></tr>
+    <tr><td class="paramname">userData</td><td>User-defined value passed when registering the callback. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00073">73</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+
+</div>
+</div>
+<a id="a1d8f4b34555ce2a2b1cc69a6a4d970fb" name="a1d8f4b34555ce2a2b1cc69a6a4d970fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d8f4b34555ce2a2b1cc69a6a4d970fb">&#9670;&#160;</a></span>GenericCallback</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(* GenericCallback) (<a class="el" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a> *sender, byte userData)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generic callback signature used for simple notifications. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sender</td><td>Pointer to the LD2410Async instance that triggered the callback. </td></tr>
+    <tr><td class="paramname">userData</td><td>User-specified value passed when registering the callback. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00058">58</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="aa44c3b86a77e4577f3c47fee29c963fe" name="aa44c3b86a77e4577f3c47fee29c963fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa44c3b86a77e4577f3c47fee29c963fe">&#9670;&#160;</a></span>AsyncCommandResult</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#aa44c3b86a77e4577f3c47fee29c963fe">AsyncCommandResult</a> : byte</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Asynchronous driver class for the LD2410 human presence radar sensor. </p>
+<p>This class provides a non-blocking interface for communicating with the LD2410 sensor, allowing for efficient data retrieval and configuration without halting the main program flow. It supports multiple instances and features automatic handling of communication timeouts and errors. It suipports all native commands of the LD2410 and has several additional high level commands for more consistent access to the sensor.</p>
+<p>class LD2410Async { public: </p><pre class="fragment">/**
+   @brief Result of an asynchronous command execution.
+
+   Every async command reports back its outcome via the callback.
+</pre> <table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aa44c3b86a77e4577f3c47fee29c963fead0749aaba8b833466dfcbb0428e4f89c" name="aa44c3b86a77e4577f3c47fee29c963fead0749aaba8b833466dfcbb0428e4f89c"></a>SUCCESS&#160;</td><td class="fielddoc"><p>Command completed successfully and ACK was received. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa44c3b86a77e4577f3c47fee29c963feab9e14d9b2886bcff408b85aefa780419" name="aa44c3b86a77e4577f3c47fee29c963feab9e14d9b2886bcff408b85aefa780419"></a>FAILED&#160;</td><td class="fielddoc"><p>Command failed (sensor responded with negative ACK). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa44c3b86a77e4577f3c47fee29c963fea070a0fb40f6c308ab544b227660aadff" name="aa44c3b86a77e4577f3c47fee29c963fea070a0fb40f6c308ab544b227660aadff"></a>TIMEOUT&#160;</td><td class="fielddoc"><p>No ACK received within the expected time window. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa44c3b86a77e4577f3c47fee29c963fead4539bffb6062bdcbd7e7cc1b1228926" name="aa44c3b86a77e4577f3c47fee29c963fead4539bffb6062bdcbd7e7cc1b1228926"></a>CANCELED&#160;</td><td class="fielddoc"><p>Command was canceled by the user before completion. </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00030">30</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a072ae754e7f12512e8051f4c6246e1e1" name="a072ae754e7f12512e8051f4c6246e1e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a072ae754e7f12512e8051f4c6246e1e1">&#9670;&#160;</a></span>asyncCancel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LD2410Async::asyncCancel </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cancels any pending asynchronous command or sequence. </p>
+<p>If canceled, the callback of the running command is invoked with result type CANCELED. After canceling, the sensor may remain in config mode — consider disabling config mode or rebooting to return to detection operation. </p>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00539">539</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a72e853afaba8373fb90524c3c4e8a153" name="a72e853afaba8373fb90524c3c4e8a153"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72e853afaba8373fb90524c3c4e8a153">&#9670;&#160;</a></span>asyncIsBusy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::asyncIsBusy </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if an asynchronous command is currently pending. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if there is an active command awaiting an ACK, false if the library is idle. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00599">599</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a1358f6f0b8d55a676b5b8147906c9024" name="a1358f6f0b8d55a676b5b8147906c9024"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1358f6f0b8d55a676b5b8147906c9024">&#9670;&#160;</a></span>begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::begin </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Starts the background task that continuously reads data from the sensor. </p>
+<p>This method creates a FreeRTOS task which parses all incoming frames and dispatches registered callbacks. Without calling <a class="el" href="#a1358f6f0b8d55a676b5b8147906c9024" title="Starts the background task that continuously reads data from the sensor.">begin()</a>, the sensor cannot deliver detection results asynchronously.</p>
+<dl class="section return"><dt>Returns</dt><dd>true if the task was successfully started, false if already running. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01582">1582</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aed89a0870ddacee96bc2f0fb9c1c96fc" name="aed89a0870ddacee96bc2f0fb9c1c96fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed89a0870ddacee96bc2f0fb9c1c96fc">&#9670;&#160;</a></span>beginAutoConfigAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::beginAutoConfigAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Starts the automatic configuration (auto-config) routine on the sensor. </p>
+<p>Auto-config lets the radar adjust its internal thresholds and sensitivities for the current environment. This can take several seconds to complete and results in updated sensitivity values.</p>
+<p>The progress and result can be checked with <a class="el" href="#ad219580b6e47f54a8aac0847e2054bf6" title="Requests the current status of the auto-config routine.">requestAutoConfigStatusAsync()</a>.</p>
+<dl class="section note"><dt>Note</dt><dd>Requires config mode. This method will manage entering and exiting config mode automatically. </dd>
+<dd>
+Auto-config temporarily suspends normal detection reporting.</dd></dl>
+<h2><a class="anchor" id="autotoc_md12"></a>
+Example: Run auto-config</h2>
+<div class="fragment"><div class="line">radar.beginAutoConfigAsync([](<a class="code hl_function" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a>* sender,</div>
+<div class="line">                              <a class="code hl_enumeration" href="#aa44c3b86a77e4577f3c47fee29c963fe">AsyncCommandResult</a> result,</div>
+<div class="line">                              <span class="keywordtype">byte</span>) {</div>
+<div class="line">  <span class="keywordflow">if</span> (result == <a class="code hl_enumvalue" href="#aa44c3b86a77e4577f3c47fee29c963fead0749aaba8b833466dfcbb0428e4f89c">AsyncCommandResult::SUCCESS</a>) {</div>
+<div class="line">    Serial.println(<span class="stringliteral">&quot;Auto-config started.&quot;</span>);</div>
+<div class="line">  } <span class="keywordflow">else</span> {</div>
+<div class="line">    Serial.println(<span class="stringliteral">&quot;Failed to start auto-config.&quot;</span>);</div>
+<div class="line">  }</div>
+<div class="line">});</div>
+<div class="ttc" id="aLD2410Async_8h_html_aa44c3b86a77e4577f3c47fee29c963fe"><div class="ttname"><a href="#aa44c3b86a77e4577f3c47fee29c963fe">AsyncCommandResult</a></div><div class="ttdeci">AsyncCommandResult</div><div class="ttdoc">Asynchronous driver class for the LD2410 human presence radar sensor.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8h_source.html#l00030">LD2410Async.h:30</a></div></div>
+<div class="ttc" id="aLD2410Async_8h_html_aa44c3b86a77e4577f3c47fee29c963fead0749aaba8b833466dfcbb0428e4f89c"><div class="ttname"><a href="#aa44c3b86a77e4577f3c47fee29c963fead0749aaba8b833466dfcbb0428e4f89c">AsyncCommandResult::SUCCESS</a></div><div class="ttdeci">@ SUCCESS</div><div class="ttdoc">Command completed successfully and ACK was received.</div></div>
+<div class="ttc" id="aLD2410Async_8h_html_ac500fb301e250ede1a608c67fc1a8900"><div class="ttname"><a href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a></div><div class="ttdeci">LD2410Async(Stream &amp;serial)</div><div class="ttdoc">Constructs a new LD2410Async instance bound to a given serial stream.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l01651">LD2410Async.cpp:1651</a></div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md13"></a>
+Do:</h2>
+<ul>
+<li>Use in new environments to optimize detection performance.</li>
+<li>Query status afterwards with <a class="el" href="#ad219580b6e47f54a8aac0847e2054bf6" title="Requests the current status of the auto-config routine.">requestAutoConfigStatusAsync()</a>.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md14"></a>
+Don’t:</h2>
+<ul>
+<li>Expect instant results — the sensor needs time to complete the process.</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Callback with signature: void(LD2410Async* sender, AsyncCommandResult result, byte userData). Fired when the command is acknowledged or on failure/timeout. </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value passed to the callback.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01047">1047</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a509170bfc50580131d0c72f5c91daede" name="a509170bfc50580131d0c72f5c91daede"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a509170bfc50580131d0c72f5c91daede">&#9670;&#160;</a></span>configureAllConfigSettingsAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::configureAllConfigSettingsAsync </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structLD2410Types_1_1ConfigData.html">LD2410Types::ConfigData</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>configToWrite</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>writeAllConfigData</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Applies a full ConfigData struct to the LD2410. </p>
+<p>If writeAllConfigData is true, the method will first fetch the current config, compare it with the provide Config data and then create a command sequence that will only update the changes config values. If writeAllConfigData is false, the method will write all values in the provided ConfigData to the sensor, regardless of whether they differ from the current config.</p>
+<dl class="section note"><dt>Note</dt><dd>This is a high-level method that involves multiple commands (up to 18). </dd>
+<dd>
+Requires config mode. This method will manage entering and exiting config mode automatically (if config mode is not already active). </dd>
+<dd>
+If another async command is already pending, the command fails. </dd>
+<dd>
+Any members of ConfigData that are left at invalid values (e.g. enums set to NOT_SET) will cause the sequence to fail.</dd></dl>
+<h2><a class="anchor" id="autotoc_md24"></a>
+Example: Clone, modify, and apply config</h2>
+<div class="fragment"><div class="line">ConfigData cfg = radar.getConfigData();  <span class="comment">// clone current config</span></div>
+<div class="line">cfg.noOneTimeout = 120;                  <span class="comment">// change timeout</span></div>
+<div class="line">cfg.distanceGateMotionSensitivity[2] = 75;</div>
+<div class="line"> </div>
+<div class="line">radar.configureAllConfigSettingsAsync(cfg, [](<a class="code hl_function" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a>* sender,</div>
+<div class="line">                                 <a class="code hl_enumeration" href="#aa44c3b86a77e4577f3c47fee29c963fe">AsyncCommandResult</a> result,</div>
+<div class="line">                                 <span class="keywordtype">byte</span>) {</div>
+<div class="line">  <span class="keywordflow">if</span> (result == <a class="code hl_enumvalue" href="#aa44c3b86a77e4577f3c47fee29c963fead0749aaba8b833466dfcbb0428e4f89c">AsyncCommandResult::SUCCESS</a>) {</div>
+<div class="line">    Serial.println(<span class="stringliteral">&quot;All config applied successfully!&quot;</span>);</div>
+<div class="line">  }</div>
+<div class="line">});</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md25"></a>
+Do:</h2>
+<ul>
+<li>Always start from a clone of <a class="el" href="#a54388c929cea610f92891def29db66a5" title="Returns a clone of the current configuration data of the radar.">getConfigData()</a> to avoid settings unwanted values for settings that dont need to change.</li>
+<li>If the methods callback does not report SUCCESS, any portion of the config might have been written to the sensor or the sensor might has remained in config mode. Make sure to take appropriate measures to return the sensor to normal operaion mode if required (reboot usually does the trick) and check the config values, if they are what you need.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md26"></a>
+Don’t:</h2>
+<ul>
+<li>Dont write all config data (writeAllConfigData=true) if not really necessary. This generates unnecessary wear on the sensors memory.</li>
+<li>Pass uninitialized or partially filled ConfigData (may fail or result in unwanted settings)</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">configToWrite</td><td>The configuration data to be applied. </td></tr>
+    <tr><td class="paramname">writeAllConfigData</td><td>If true, all fields in configToWrite are applied. If false, changed values are written. </td></tr>
+    <tr><td class="paramname">callback</td><td>Function with signature: void(LD2410Async* sender, AsyncCommandResult result, byte userData), executed when the sequence finishes (success/fail/timeout/cancel). </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value passed to the callback.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command sequence has been started, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01360">1360</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a90e3bc56482783249d966a670310bffd" name="a90e3bc56482783249d966a670310bffd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90e3bc56482783249d966a670310bffd">&#9670;&#160;</a></span>configureAuxControlSettingsAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::configureAuxControlSettingsAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceLD2410Types.html#afbd22de9579db591b3f122c51c730844">LD2410Types::LightControl</a></td>          <td class="paramname"><span class="paramname"><em>light_control</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>light_threshold</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespaceLD2410Types.html#a420c188999635485028764fe98cb0bff">LD2410Types::OutputControl</a></td>          <td class="paramname"><span class="paramname"><em>output_control</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configures the auxiliary control parameters (light and output pin). </p>
+<p>This configures how the OUT pin behaves depending on light levels and presence detection. Typical use cases include controlling an external lamp or relay.</p>
+<dl class="section note"><dt>Note</dt><dd>Requires config mode. Will be managed automatically. </dd>
+<dd>
+Both enums must be set to valid values (not NOT_SET). </dd>
+<dd>
+Fails if another async command is pending.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lightControl</td><td>Light control behavior (see LightControl enum). </td></tr>
+    <tr><td class="paramname">lightThreshold</td><td>Threshold (0–255) used for light-based switching. </td></tr>
+    <tr><td class="paramname">outputControl</td><td>Output pin logic configuration (see OutputControl enum). </td></tr>
+    <tr><td class="paramname">callback</td><td>Function pointer with signature: void(LD2410Async* sender, AsyncCommandResult result, byte userData). Fired when ACK is received or on failure/timeout. </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value passed to the callback.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01021">1021</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a39aa1e94b76c2a08d96ab80fe2c9ed9c" name="a39aa1e94b76c2a08d96ab80fe2c9ed9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39aa1e94b76c2a08d96ab80fe2c9ed9c">&#9670;&#160;</a></span>configureBaudRateAsync() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::configureBaudRateAsync </td>
+          <td>(</td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>baudRateSetting</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configures the UART baud rate of the sensor. </p>
+<p>The new baud rate becomes active only after reboot. The ESP32’s Serial interface must also be reconfigured to the new baud rate after reboot.</p>
+<dl class="section note"><dt>Note</dt><dd>Valid values are 1–8. Values outside range are rejected resp. method will fail. </dd>
+<dd>
+Requires config mode. Will be managed automatically. </dd>
+<dd>
+If another async command is pending, this call fails. </dd>
+<dd>
+After execution, call <a class="el" href="#aeb856d32612fba953b07280cf5d9a235" title="Reboots the sensor.">rebootAsync()</a> to activate changes.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">baudRateSetting</td><td>Numeric setting: 1=9600, 2=19200, 3=38400, 4=57600, 5=115200, 6=230400, 7=25600 (factory default), 8=460800. </td></tr>
+    <tr><td class="paramname">callback</td><td>Callback fired when ACK is received or on failure. </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value passed to the callback.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00899">899</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="adcd209213cc2e418aefd20573a868e0a" name="adcd209213cc2e418aefd20573a868e0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcd209213cc2e418aefd20573a868e0a">&#9670;&#160;</a></span>configureBaudRateAsync() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::configureBaudRateAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceLD2410Types.html#a5e710aa1a69067aab369a0a463189fdf">LD2410Types::Baudrate</a></td>          <td class="paramname"><span class="paramname"><em>baudRate</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configures the baudrate of the serial port of the sensor. </p>
+<p>The new baudrate will only become active after a reboot of the sensor. If changing the baud rate, remember that you also need to addjust the baud rate of the ESP32 serial that is associated with then sensor.</p>
+<dl class="section note"><dt>Note</dt><dd>If another async command is pending, this call fails. </dd>
+<dd>
+After execution, call <a class="el" href="#aeb856d32612fba953b07280cf5d9a235" title="Reboots the sensor.">rebootAsync()</a> to activate changes.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">baudrate</td><td>A valid baud rate from the Baudrate enum.</td></tr>
+    <tr><td class="paramname">callback</td><td>Callback method with void methodName(LD2410Async* sender, AsyncCommandResult result, byte userData) signature. Will be called after the Ack for the command has been received (success=true) or after the command timeout (success=false) or after the command has been canceld (sucess=false). </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value that will be passed to the callback function.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command has been sent, false if the command cant be sent (typically because another async command is pending). </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00918">918</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aaa0138cb624b66482e9a05b197c21f22" name="aaa0138cb624b66482e9a05b197c21f22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa0138cb624b66482e9a05b197c21f22">&#9670;&#160;</a></span>configureBluetoothPasswordAsync() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::configureBluetoothPasswordAsync </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>password</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the password for bluetooth access to the sensor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">password</td><td>New bluetooth password. Max 6. chars. </td></tr>
+    <tr><td class="paramname">callback</td><td>Callback method with void methodName(LD2410Async* sender, AsyncCommandResult result, byte userData) signature. Will be called after the Ack for the command has been received (success=true) or after the command timeout (success=false) or after the command has been canceld (sucess=false). </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value that will be passed to the callback function.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command has been sent, false if the command cant be sent (typically because another async command is pending). </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00959">959</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="abfe79850fa3e040a12de72ea99747266" name="abfe79850fa3e040a12de72ea99747266"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfe79850fa3e040a12de72ea99747266">&#9670;&#160;</a></span>configureBluetoothPasswordAsync() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::configureBluetoothPasswordAsync </td>
+          <td>(</td>
+          <td class="paramtype">const String &amp;</td>          <td class="paramname"><span class="paramname"><em>password</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the password for bluetooth access to the sensor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">password</td><td>New bluetooth password. Max 6. chars. </td></tr>
+    <tr><td class="paramname">callback</td><td>Callback method with void methodName(LD2410Async* sender, AsyncCommandResult result, byte userData) signature. Will be called after the Ack for the command has been received (success=true) or after the command timeout (success=false) or after the command has been canceld (sucess=false). </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value that will be passed to the callback function.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command has been sent, false if the command cant be sent (typically because another async command is pending). </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00974">974</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ab9f9858ab6d6cf4c4ab91e4580a2ea50" name="ab9f9858ab6d6cf4c4ab91e4580a2ea50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9f9858ab6d6cf4c4ab91e4580a2ea50">&#9670;&#160;</a></span>configureDefaultBluetoothPasswordAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::configureDefaultBluetoothPasswordAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Resets the password for bluetooth access to the default value (HiLink) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Callback method with void methodName(LD2410Async* sender, AsyncCommandResult result, byte userData) signature. Will be called after the Ack for the command has been received (success=true) or after the command timeout (success=false) or after the command has been canceld (sucess=false). </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value that will be passed to the callback function.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command has been sent, false if the command cant be sent (typically because another async command is pending). </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00980">980</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a9493caef9e22a89445741da019b99213" name="a9493caef9e22a89445741da019b99213"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9493caef9e22a89445741da019b99213">&#9670;&#160;</a></span>configureDistanceGateSensitivityAsync() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::configureDistanceGateSensitivityAsync </td>
+          <td>(</td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>gate</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>movingThreshold</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>stationaryThreshold</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configures sensitivity thresholds for a single gate. </p>
+<p>Updates both moving and stationary thresholds for the given gate index. If the gate index is greater than 8, all gates are updated instead.</p>
+<dl class="section note"><dt>Note</dt><dd>Requires config mode. Will be managed automatically. </dd>
+<dd>
+If another async command is pending, this call fails.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gate</td><td>Index of the gate (0–8). Values &gt;8 apply to all gates. </td></tr>
+    <tr><td class="paramname">movingThreshold</td><td>Sensitivity for moving targets (0–100). </td></tr>
+    <tr><td class="paramname">stationaryThreshold</td><td>Sensitivity for stationary targets (0–100). </td></tr>
+    <tr><td class="paramname">callback</td><td>Callback fired when ACK is received or on failure. </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value passed to the callback.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00872">872</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a1cf70cb5f55626596530d050b0812b38" name="a1cf70cb5f55626596530d050b0812b38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cf70cb5f55626596530d050b0812b38">&#9670;&#160;</a></span>configureDistanceGateSensitivityAsync() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::configureDistanceGateSensitivityAsync </td>
+          <td>(</td>
+          <td class="paramtype">const byte</td>          <td class="paramname"><span class="paramname"><em>movingThresholds</em></span>[9], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const byte</td>          <td class="paramname"><span class="paramname"><em>stationaryThresholds</em></span>[9], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configures sensitivity thresholds for all gates at once. </p>
+<p>A sequence of commands will be sent, one for each gate. Threshold values are automatically clamped to 0–100.</p>
+<dl class="section note"><dt>Note</dt><dd>Requires config mode. Will be managed automatically. </dd>
+<dd>
+If another async command is pending, this call fails.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">movingThresholds</td><td>Array of 9 sensitivity values for moving targets (0–100). </td></tr>
+    <tr><td class="paramname">stationaryThresholds</td><td>Array of 9 sensitivity values for stationary targets (0–100). </td></tr>
+    <tr><td class="paramname">callback</td><td>Callback fired when all updates are acknowledged or on failure. </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value passed to the callback.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the sequence was started, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00850">850</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a3ebfc3c3547f3894ae264b82a32c1a82" name="a3ebfc3c3547f3894ae264b82a32c1a82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ebfc3c3547f3894ae264b82a32c1a82">&#9670;&#160;</a></span>configureDistanceResolution75cmAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::configureDistanceResolution75cmAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configures the distance resolution explicitly to 75 cm per gate. </p>
+<p>Equivalent to configureDistanceResolutionAsync(DistanceResolution::RESOLUTION_75CM).</p>
+<dl class="section note"><dt>Note</dt><dd>Requires config mode. Will be managed automatically. </dd>
+<dd>
+Requires a reboot to activate value changes. Call <a class="el" href="#aeb856d32612fba953b07280cf5d9a235" title="Reboots the sensor.">rebootAsync()</a> after setting. </dd>
+<dd>
+Fails if another async command is pending.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Function pointer with signature: void(LD2410Async* sender, AsyncCommandResult result, byte userData). </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value passed to the callback.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00987">987</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ae6e3792586e3bac35ca187d41a0b9250" name="ae6e3792586e3bac35ca187d41a0b9250"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6e3792586e3bac35ca187d41a0b9250">&#9670;&#160;</a></span>configureDistanceResolutionAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::configureDistanceResolutionAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceLD2410Types.html#a89e3189ddef9f36629c460fbeb398c79">LD2410Types::DistanceResolution</a></td>          <td class="paramname"><span class="paramname"><em>distanceResolution</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configures the distance resolution of the radar. </p>
+<p>The distance resolution defines the size of each distance gate and the maximum detection range:</p><ul>
+<li>RESOLUTION_75CM → longer range, coarser detail.</li>
+<li>RESOLUTION_20CM → shorter range, finer detail.</li>
+</ul>
+<dl class="section note"><dt>Note</dt><dd>Requires config mode. Will be managed automatically. </dd>
+<dd>
+Requires a reboot to activate value changes. Call <a class="el" href="#aeb856d32612fba953b07280cf5d9a235" title="Reboots the sensor.">rebootAsync()</a> after setting. </dd>
+<dd>
+Fails if another async command is pending.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">distanceResolution</td><td>Value from the DistanceResolution enum. Must not be NOT_SET. </td></tr>
+    <tr><td class="paramname">callback</td><td>Function pointer with signature: void(LD2410Async* sender, AsyncCommandResult result, byte userData). Fired when the ACK is received or on failure/timeout. </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value passed to the callback.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false if invalid parameters or the library is busy. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00994">994</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a0eb274f41635209e31f34f869fe1826a" name="a0eb274f41635209e31f34f869fe1826a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0eb274f41635209e31f34f869fe1826a">&#9670;&#160;</a></span>configureMaxGateAndNoOneTimeoutAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::configureMaxGateAndNoOneTimeoutAsync </td>
+          <td>(</td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>maxMovingGate</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>maxStationaryGate</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short</td>          <td class="paramname"><span class="paramname"><em>noOneTimeout</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configures the maximum detection gates and "no-one" timeout on the sensor. </p>
+<p>This command updates:</p><ul>
+<li>Maximum motion detection distance gate (2–8).</li>
+<li>Maximum stationary detection distance gate (2–8).</li>
+<li>Timeout duration (0–65535 seconds) until "no presence" is declared.</li>
+</ul>
+<dl class="section note"><dt>Note</dt><dd>Requires config mode to be enabled. The method will internally enable/disable config mode if necessary. </dd>
+<dd>
+If another async command is pending, this call fails.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">maxMovingGate</td><td>Furthest gate used for motion detection (2–8). </td></tr>
+    <tr><td class="paramname">maxStationaryGate</td><td>Furthest gate used for stationary detection (2–8). </td></tr>
+    <tr><td class="paramname">noOneTimeout</td><td>Timeout in seconds until "no one" is reported (0–65535). </td></tr>
+    <tr><td class="paramname">callback</td><td>Callback fired when ACK is received or on failure/timeout. </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value passed to the callback.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise (busy state or invalid values). </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00813">813</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a01705b527bc80949417de15b6e95140c" name="a01705b527bc80949417de15b6e95140c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01705b527bc80949417de15b6e95140c">&#9670;&#160;</a></span>configuresDistanceResolution20cmAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::configuresDistanceResolution20cmAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configures the distance resolution explicitly to 20 cm per gate. </p>
+<p>Equivalent to configureDistanceResolutionAsync(DistanceResolution::RESOLUTION_20CM).</p>
+<dl class="section note"><dt>Note</dt><dd>Requires config mode. Will be managed automatically. </dd>
+<dd>
+Requires a reboot to activate value changes. Call <a class="el" href="#aeb856d32612fba953b07280cf5d9a235" title="Reboots the sensor.">rebootAsync()</a> after setting. </dd>
+<dd>
+Fails if another async command is pending.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Function pointer with signature: void(LD2410Async* sender, AsyncCommandResult result, byte userData). </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value passed to the callback.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01007">1007</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="addcbab1709f2a80571563609f4a23862" name="addcbab1709f2a80571563609f4a23862"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addcbab1709f2a80571563609f4a23862">&#9670;&#160;</a></span>disableBluetoothAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::disableBluetoothAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Disables bluetooth. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Callback method with void methodName(LD2410Async* sender, AsyncCommandResult result, byte userData) signature. Will be called after the Ack for the command has been received (success=true) or after the command timeout (success=false) or after the command has been canceld (sucess=false). </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value that will be passed to the callback function.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command has been sent, false if the command cant be sent (typically because another async command is pending). </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00944">944</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a99910e37f7cf20d05be573fec341ef0c" name="a99910e37f7cf20d05be573fec341ef0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99910e37f7cf20d05be573fec341ef0c">&#9670;&#160;</a></span>disableConfigModeAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::disableConfigModeAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Disables config mode on the radar. </p>
+<p>This should be called after finishing configuration, to return the sensor to normal detection operation.</p>
+<dl class="section note"><dt>Note</dt><dd>If an async command is already pending (<a class="el" href="#a72e853afaba8373fb90524c3c4e8a153" title="Checks if an asynchronous command is currently pending.">asyncIsBusy()</a> == true), this command will not be sent.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Callback with signature void(LD2410Async* sender, AsyncCommandResult result, byte userData). </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value passed to the callback.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00802">802</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a377464026350140b0277369a13e8c1d3" name="a377464026350140b0277369a13e8c1d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a377464026350140b0277369a13e8c1d3">&#9670;&#160;</a></span>disableEngineeringModeAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::disableEngineeringModeAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Disables engineering mode. </p>
+<p>Returns sensor reporting to basic detection results only.</p>
+<dl class="section note"><dt>Note</dt><dd>Requires config mode. Will be enabled automatically if not active.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Callback fired when ACK is received or on failure. </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value passed to the callback.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00843">843</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ae6bf8102c5fb5ccfdcc3730a6a563f5c" name="ae6bf8102c5fb5ccfdcc3730a6a563f5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6bf8102c5fb5ccfdcc3730a6a563f5c">&#9670;&#160;</a></span>disableInactivityHandling()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void disableInactivityHandling </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convenience method: disables inactivity handling. </p>
+<p>Equivalent to calling setInactivityHandling(false). </p>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00243">243</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+
+</div>
+</div>
+<a id="a9ebecb17389f2dffb7c2d86c607be973" name="a9ebecb17389f2dffb7c2d86c607be973"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ebecb17389f2dffb7c2d86c607be973">&#9670;&#160;</a></span>enableBluetoothAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::enableBluetoothAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enables bluetooth. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Callback method with void methodName(LD2410Async* sender, AsyncCommandResult result, byte userData) signature. Will be called after the Ack for the command has been received (success=true) or after the command timeout (success=false) or after the command has been canceld (sucess=false). </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value that will be passed to the callback function.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command has been sent, false if the command cant be sent (typically because another async command is pending). </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00936">936</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad24f13c9381aa35460908b4c0edb5fa9" name="ad24f13c9381aa35460908b4c0edb5fa9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad24f13c9381aa35460908b4c0edb5fa9">&#9670;&#160;</a></span>enableConfigModeAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::enableConfigModeAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enables config mode on the radar. </p>
+<p>Config mode must be enabled before issuing most configuration commands. This command itself is asynchronous — the callback fires once the sensor acknowledges the mode switch.</p>
+<dl class="section note"><dt>Note</dt><dd>If <a class="el" href="#a72e853afaba8373fb90524c3c4e8a153" title="Checks if an asynchronous command is currently pending.">asyncIsBusy()</a> is true, this command will not be sent. </dd>
+<dd>
+Normal detection data is suspended while config mode is active.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Callback with signature void(LD2410Async* sender, AsyncCommandResult result, byte userData). </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value that will be passed to the callback.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false if blocked. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00791">791</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad7b1c7d38ac3948ebf159b20e1a3bb1d" name="ad7b1c7d38ac3948ebf159b20e1a3bb1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7b1c7d38ac3948ebf159b20e1a3bb1d">&#9670;&#160;</a></span>enableEngineeringModeAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::enableEngineeringModeAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enables engineering mode. </p>
+<p>In this mode, the sensor sends detailed per-gate signal values in addition to basic detection results.</p>
+<dl class="section note"><dt>Note</dt><dd>Engineering mode is temporary and lost after power cycle. </dd>
+<dd>
+Requires config mode. Will be enabled automatically if not active.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Callback fired when ACK is received or on failure. </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value passed to the callback.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00836">836</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="afccb406a90ceda487c45241f02018a00" name="afccb406a90ceda487c45241f02018a00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afccb406a90ceda487c45241f02018a00">&#9670;&#160;</a></span>enableInactivityHandling()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void enableInactivityHandling </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convenience method: enables inactivity handling. </p>
+<p>Equivalent to calling setInactivityHandling(true). </p>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00235">235</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+
+</div>
+</div>
+<a id="af52e0e8aaa30a81fa84024fdb975aa54" name="af52e0e8aaa30a81fa84024fdb975aa54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af52e0e8aaa30a81fa84024fdb975aa54">&#9670;&#160;</a></span>end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::end </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stops the background task started by <a class="el" href="#a1358f6f0b8d55a676b5b8147906c9024" title="Starts the background task that continuously reads data from the sensor.">begin()</a>. </p>
+<p>After calling <a class="el" href="#af52e0e8aaa30a81fa84024fdb975aa54" title="Stops the background task started by begin().">end()</a>, no more data will be processed until <a class="el" href="#a1358f6f0b8d55a676b5b8147906c9024" title="Starts the background task that continuously reads data from the sensor.">begin()</a> is called again. This is useful to temporarily suspend radar processing without rebooting.</p>
+<dl class="section return"><dt>Returns</dt><dd>true if the task was stopped, false if it was not active. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01617">1617</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a2bebb50ddb8e84a70aee5dd43ed1eb0e" name="a2bebb50ddb8e84a70aee5dd43ed1eb0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bebb50ddb8e84a70aee5dd43ed1eb0e">&#9670;&#160;</a></span>getAsyncCommandTimeoutMs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned long getAsyncCommandTimeoutMs </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the current async command timeout. </p>
+<dl class="section return"><dt>Returns</dt><dd>Timeout in milliseconds. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00516">516</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+
+</div>
+</div>
+<a id="a54388c929cea610f92891def29db66a5" name="a54388c929cea610f92891def29db66a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54388c929cea610f92891def29db66a5">&#9670;&#160;</a></span>getConfigData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structLD2410Types_1_1ConfigData.html">LD2410Types::ConfigData</a> LD2410Async::getConfigData </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns a clone of the current configuration data of the radar. </p>
+<p>The returned struct contains the most recently requested or received configuration values, such as sensitivities, resolution, timeouts, and auxiliary settings.</p>
+<p>Equivalent to directly accessing the public member configData, but provided for encapsulation and future-proofing.</p>
+<dl class="section note"><dt>Note</dt><dd>This function will not query the sensor for data. It just returns the data that has already been received from the sensor.</dd></dl>
+<h2><a class="anchor" id="autotoc_md6"></a>
+Example: Clone, modify, and write back</h2>
+<div class="fragment"><div class="line"><span class="comment">// Clone current config</span></div>
+<div class="line">ConfigData cfg = radar.getConfigData();</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Modify locally</span></div>
+<div class="line">cfg.noOneTimeout = 60;  <span class="comment">// change timeout</span></div>
+<div class="line">cfg.distanceGateMotionSensitivity[3] = 80;  <span class="comment">// adjust sensitivity</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Send modified config back to sensor</span></div>
+<div class="line">radar.configureAllConfigSettingsAsync(cfg, [](<a class="code hl_function" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a>* sender,</div>
+<div class="line">                                 <a class="code hl_enumeration" href="#aa44c3b86a77e4577f3c47fee29c963fe">AsyncCommandResult</a> result,</div>
+<div class="line">                                 <span class="keywordtype">byte</span>) {</div>
+<div class="line">  <span class="keywordflow">if</span> (result == <a class="code hl_enumvalue" href="#aa44c3b86a77e4577f3c47fee29c963fead0749aaba8b833466dfcbb0428e4f89c">AsyncCommandResult::SUCCESS</a>) {</div>
+<div class="line">    Serial.println(<span class="stringliteral">&quot;Config updated successfully!&quot;</span>);</div>
+<div class="line">  }</div>
+<div class="line">});</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md7"></a>
+Do:</h2>
+<ul>
+<li>Use when you want a clone of the current config to adjust and send back.</li>
+<li>Safely modify the struct without risking internal state corruption.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md8"></a>
+Don’t:</h2>
+<ul>
+<li>Assume this always reflects the live sensor config (it’s only as fresh as the last received config data).</li>
+</ul>
+<dl class="section return"><dt>Returns</dt><dd>A copy of the current ConfigData. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01456">1456</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a366ee0d3515b8855058f562a8421d9e3" name="a366ee0d3515b8855058f562a8421d9e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a366ee0d3515b8855058f562a8421d9e3">&#9670;&#160;</a></span>getConfigDataRef()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structLD2410Types_1_1ConfigData.html">LD2410Types::ConfigData</a> &amp; getConfigDataRef </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Access the current config data without making a copy. </p>
+<p>This returns a const reference to the internal struct. It is efficient, but the data must not be modified directly. Use this if you only want to read values.</p>
+<dl class="section note"><dt>Note</dt><dd>Since this returns a reference to the internal data, the values may change when new configuration is received. Do not store the reference for long-term use. </dd>
+<dd>
+This function will not query the sensor for data. It just returns the data that has already been received from the sensor.</dd></dl>
+<h2><a class="anchor" id="autotoc_md9"></a>
+Example: Efficient read access without cloning</h2>
+<div class="fragment"><div class="line"><span class="keyword">const</span> ConfigData&amp; cfg = radar.getConfigDataRef();  <span class="comment">// no copy</span></div>
+<div class="line">Serial.print(<span class="stringliteral">&quot;Resolution: &quot;</span>);</div>
+<div class="line">Serial.println(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(cfg.distanceResolution));</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md10"></a>
+Do:</h2>
+<ul>
+<li>Use when you only want to inspect configuration quickly.</li>
+<li>Use for efficient read-only access.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md11"></a>
+Don’t:</h2>
+<ul>
+<li>Try to modify the returned struct (it’s const).</li>
+<li>Keep the reference and assume it will remain valid forever.</li>
+</ul>
+<dl class="section return"><dt>Returns</dt><dd>Const reference to the current ConfigData. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00473">473</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+
+</div>
+</div>
+<a id="a5bf997474cd5eb58ac2a142a8d134a50" name="a5bf997474cd5eb58ac2a142a8d134a50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bf997474cd5eb58ac2a142a8d134a50">&#9670;&#160;</a></span>getDetectionData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structLD2410Types_1_1DetectionData.html">LD2410Types::DetectionData</a> LD2410Async::getDetectionData </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns a clone of the latest detection data from the radar. </p>
+<p>The returned struct contains the most recently received frame, including target state, distances, signal strengths, and (if enabled) engineering mode per-gate data.</p>
+<p>Equivalent to directly accessing the public member detectionData, but provided for encapsulation and future-proofing.</p>
+<dl class="section note"><dt>Note</dt><dd>This function will not query the sensor for data. It just returns the data that has already been received from the sensor.</dd></dl>
+<h2><a class="anchor" id="autotoc_md0"></a>
+Example: Access values from a clone</h2>
+<div class="fragment"><div class="line">DetectionData data = radar.getDetectionData();  <span class="comment">// makes a copy</span></div>
+<div class="line"><span class="keywordflow">if</span> (data.targetState == TargetState::MOVING_TARGET) {</div>
+<div class="line">  Serial.print(<span class="stringliteral">&quot;Moving target at distance: &quot;</span>);</div>
+<div class="line">  Serial.println(data.movingTargetDistance);</div>
+<div class="line">}</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md1"></a>
+Do:</h2>
+<ul>
+<li>Use when you want a snapshot of the latest detection data.</li>
+<li>Modify the returned struct freely without affecting the internal state.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md2"></a>
+Don’t:</h2>
+<ul>
+<li>Expect this to fetch new data from the sensor (it only returns what was already received).</li>
+</ul>
+<dl class="section return"><dt>Returns</dt><dd>A copy of the current DetectionData. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01452">1452</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a24251f16e5afc8155c5c66449842109f" name="a24251f16e5afc8155c5c66449842109f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24251f16e5afc8155c5c66449842109f">&#9670;&#160;</a></span>getDetectionDataRef()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structLD2410Types_1_1DetectionData.html">LD2410Types::DetectionData</a> &amp; getDetectionDataRef </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Access the current detection data without making a copy. </p>
+<p>This returns a const reference to the internal struct. It is efficient, but the data must not be modified directly. Use this if you only want to read values.</p>
+<dl class="section note"><dt>Note</dt><dd>Since this returns a reference to the internal data, the values may change as new frames arrive. Do not store the reference for long-term use. </dd>
+<dd>
+This function will not query the sensor for data. It just returns the data that has already been received from the sensor.</dd></dl>
+<h2><a class="anchor" id="autotoc_md3"></a>
+Example: Efficient read access without cloning</h2>
+<div class="fragment"><div class="line"><span class="keyword">const</span> DetectionData&amp; data = radar.getDetectionDataRef();  <span class="comment">// no copy</span></div>
+<div class="line">Serial.print(<span class="stringliteral">&quot;Stationary signal: &quot;</span>);</div>
+<div class="line">Serial.println(data.stationaryTargetSignal);</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md4"></a>
+Do:</h2>
+<ul>
+<li>Use when you only need to read values quickly and efficiently.</li>
+<li>Use when printing or inspecting live data without keeping it.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Don’t:</h2>
+<ul>
+<li>Try to modify the returned struct (it’s const).</li>
+<li>Store the reference long-term (it may be updated at any time).</li>
+</ul>
+<dl class="section return"><dt>Returns</dt><dd>Const reference to the current DetectionData. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00394">394</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+
+</div>
+</div>
+<a id="a39e87e521e1d1aef26fb8a6ffab92965" name="a39e87e521e1d1aef26fb8a6ffab92965"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39e87e521e1d1aef26fb8a6ffab92965">&#9670;&#160;</a></span>getInactivityTimeoutMs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned long getInactivityTimeoutMs </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the current inactivity timeout period. </p>
+<dl class="section return"><dt>Returns</dt><dd>Timeout in milliseconds. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00273">273</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+
+</div>
+</div>
+<a id="ae138a647a3a3c8f5b1eac93a8300c899" name="ae138a647a3a3c8f5b1eac93a8300c899"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae138a647a3a3c8f5b1eac93a8300c899">&#9670;&#160;</a></span>isConfigModeEnabled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool isConfigModeEnabled </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Detects if config mode is enabled. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if config mode is anabled, false if config mode is disabled </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00569">569</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+
+</div>
+</div>
+<a id="ab6b9e026c447bf5b47be8670b5b9610c" name="ab6b9e026c447bf5b47be8670b5b9610c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6b9e026c447bf5b47be8670b5b9610c">&#9670;&#160;</a></span>isEngineeringModeEnabled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool isEngineeringModeEnabled </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Detects if engineering mode is enabled. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if engineering mode is anabled, false if engineering mode is disabled </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00615">615</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+
+</div>
+</div>
+<a id="af07b89c2041033852ee61adc98176aca" name="af07b89c2041033852ee61adc98176aca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af07b89c2041033852ee61adc98176aca">&#9670;&#160;</a></span>isInactivityHandlingEnabled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool isInactivityHandlingEnabled </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns whether inactivity handling is currently enabled. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if inactivity handling is enabled, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00251">251</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+
+</div>
+</div>
+<a id="ac500fb301e250ede1a608c67fc1a8900" name="ac500fb301e250ede1a608c67fc1a8900"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac500fb301e250ede1a608c67fc1a8900">&#9670;&#160;</a></span>LD2410Async()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LD2410Async::LD2410Async </td>
+          <td>(</td>
+          <td class="paramtype">Stream &amp;</td>          <td class="paramname"><span class="paramname"><em>serial</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs a new LD2410Async instance bound to a given serial stream. </p>
+<p>The sensor communicates over a UART interface. Pass the corresponding Stream object (e.g. HardwareSerial, SoftwareSerial, or another compatible implementation) that is connected to the LD2410 sensor.</p>
+<p>Example: </p><div class="fragment"><div class="line">HardwareSerial radarSerial(2);</div>
+<div class="line"><a class="code hl_function" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a> radar(radarSerial);</div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">serial</td><td>Reference to a Stream object used to exchange data with the sensor. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01651">1651</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aeb856d32612fba953b07280cf5d9a235" name="aeb856d32612fba953b07280cf5d9a235"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb856d32612fba953b07280cf5d9a235">&#9670;&#160;</a></span>rebootAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::rebootAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reboots the sensor. </p>
+<p>After reboot, the sensor stops responding for a few seconds. Config and engineering mode are reset.</p>
+<dl class="section note"><dt>Note</dt><dd>The reboot of the sensor takes place after the ACK has been sent.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Callback fired when ACK is received or on failure. </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value passed to the callback.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01438">1438</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a714e62534394a52243f8f50fd58726f9" name="a714e62534394a52243f8f50fd58726f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a714e62534394a52243f8f50fd58726f9">&#9670;&#160;</a></span>registerConfigChangedCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LD2410Async::registerConfigChangedCallback </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a1d8f4b34555ce2a2b1cc69a6a4d970fb">GenericCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registers a callback for configuration changes. </p>
+<p>The callback is invoked whenever the sensor’s configuration has been successfully updated (e.g. after setting sensitivity).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Function pointer with signature void methodName(LD2410Async* sender, byte userData). </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value that will be passed to the callback. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00212">212</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad320d7e80fd719f0bbc41ebb96c0f285" name="ad320d7e80fd719f0bbc41ebb96c0f285"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad320d7e80fd719f0bbc41ebb96c0f285">&#9670;&#160;</a></span>registerConfigUpdateReceivedCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LD2410Async::registerConfigUpdateReceivedCallback </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a1d8f4b34555ce2a2b1cc69a6a4d970fb">GenericCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registers a callback for configuration data updates. </p>
+<p>The callback is invoked whenever new configuration information has been received from the sensor (e.g. after <a class="el" href="#ad7bfb9c212c452898053f167555a0bb6" title="Requests the current gate parameters from the sensor.">requestGateParametersAsync()</a>).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Function pointer with signature void methodName(LD2410Async* sender, byte userData). </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value that will be passed to the callback. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00206">206</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af4a5bb569a656f369f739060b9a3f282" name="af4a5bb569a656f369f739060b9a3f282"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4a5bb569a656f369f739060b9a3f282">&#9670;&#160;</a></span>registerDetectionDataReceivedCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LD2410Async::registerDetectionDataReceivedCallback </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a37a4aeb9eecbb9e258f73a807fc7b973">DetectionDataCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registers a callback for new detection data. </p>
+<p>The callback is invoked whenever a valid data frame is received from the radar, after detectionData has been updated.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Function pointer with signature void methodName(LD2410Async* sender, bool presenceDetected, byte userData). </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value that will be passed to the callback. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00201">201</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ab578ee25526c8bb808fe7200fae95a38" name="ab578ee25526c8bb808fe7200fae95a38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab578ee25526c8bb808fe7200fae95a38">&#9670;&#160;</a></span>requestAllConfigSettingsAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::requestAllConfigSettingsAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Requests all configuration settings from the sensor. </p>
+<p>This triggers a sequence of queries that retrieves and updates:</p><ul>
+<li>Gate parameters (sensitivities, max gates, timeout).</li>
+<li>Distance resolution setting.</li>
+<li>Auxiliary light/output control settings.</li>
+</ul>
+<p>The results are stored in configData, and the <a class="el" href="#ad320d7e80fd719f0bbc41ebb96c0f285" title="Registers a callback for configuration data updates.">registerConfigUpdateReceivedCallback()</a> is invoked after completion.</p>
+<dl class="section note"><dt>Note</dt><dd>This is a high-level method that involves multiple commands. </dd>
+<dd>
+Requires config mode. This method will manage mode switching automatically. </dd>
+<dd>
+If another async command is already pending, the request fails.</dd></dl>
+<h2><a class="anchor" id="autotoc_md18"></a>
+Example: Refresh config data</h2>
+<div class="fragment"><div class="line">radar.requestAllConfigSettingsAsync([](<a class="code hl_function" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a>* sender,</div>
+<div class="line">                              <a class="code hl_enumeration" href="#aa44c3b86a77e4577f3c47fee29c963fe">AsyncCommandResult</a> result,</div>
+<div class="line">                              <span class="keywordtype">byte</span>) {</div>
+<div class="line">  <span class="keywordflow">if</span> (result == <a class="code hl_enumvalue" href="#aa44c3b86a77e4577f3c47fee29c963fead0749aaba8b833466dfcbb0428e4f89c">AsyncCommandResult::SUCCESS</a>) {</div>
+<div class="line">    Serial.println(<span class="stringliteral">&quot;All config data refreshed:&quot;</span>);</div>
+<div class="line">    sender-&gt;getConfigDataRef().print();</div>
+<div class="line">  }</div>
+<div class="line">});</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md19"></a>
+Do:</h2>
+<ul>
+<li>Use this after connecting to ensure configData is fully populated.</li>
+<li>Call before modifying config if you’re unsure of current values.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md20"></a>
+Don’t:</h2>
+<ul>
+<li>Expect it to succeed if another async command is still running.</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Callback with signature: void(LD2410Async* sender, AsyncCommandResult result, byte userData). Fired when all config data has been received or on failure. </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value passed to the callback.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01087">1087</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a86968c2e9be09d9acb6b62ad7496a2a6" name="a86968c2e9be09d9acb6b62ad7496a2a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86968c2e9be09d9acb6b62ad7496a2a6">&#9670;&#160;</a></span>requestAllStaticDataAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::requestAllStaticDataAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Requests all static information from the sensor. </p>
+<p>This includes:</p><ul>
+<li>Firmware version string.</li>
+<li>Bluetooth MAC address (numeric and string form).</li>
+</ul>
+<p>The values are written into the public members <code>firmware</code>, <code>mac</code>, and <code>macString</code>.</p>
+<dl class="section note"><dt>Note</dt><dd>This is a high-level method that involves multiple commands. </dd>
+<dd>
+Requires config mode. Managed automatically by this method. </dd>
+<dd>
+If another async command is already pending, the request fails.</dd></dl>
+<h2><a class="anchor" id="autotoc_md21"></a>
+Example: Retrieve firmware and MAC</h2>
+<div class="fragment"><div class="line">radar.requestAllStaticDataAsync([](<a class="code hl_function" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a>* sender,</div>
+<div class="line">                              <a class="code hl_enumeration" href="#aa44c3b86a77e4577f3c47fee29c963fe">AsyncCommandResult</a> result,</div>
+<div class="line">                              <span class="keywordtype">byte</span>) {</div>
+<div class="line">  <span class="keywordflow">if</span> (result == <a class="code hl_enumvalue" href="#aa44c3b86a77e4577f3c47fee29c963fead0749aaba8b833466dfcbb0428e4f89c">AsyncCommandResult::SUCCESS</a>) {</div>
+<div class="line">    Serial.print(<span class="stringliteral">&quot;Firmware: &quot;</span>);</div>
+<div class="line">    Serial.println(sender-&gt;firmware);</div>
+<div class="line"> </div>
+<div class="line">    Serial.print(<span class="stringliteral">&quot;MAC: &quot;</span>);</div>
+<div class="line">    Serial.println(sender-&gt;macString);</div>
+<div class="line">  }</div>
+<div class="line">});</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md22"></a>
+Do:</h2>
+<ul>
+<li>Use after initialization to log firmware version and MAC.</li>
+<li>Useful for debugging or inventory identification.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md23"></a>
+Don’t:</h2>
+<ul>
+<li>Expect frequently changing data — this is static information.</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Callback with signature: void(LD2410Async* sender, AsyncCommandResult result, byte userData). Fired when static data is received or on failure. </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value passed to the callback.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01072">1072</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad219580b6e47f54a8aac0847e2054bf6" name="ad219580b6e47f54a8aac0847e2054bf6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad219580b6e47f54a8aac0847e2054bf6">&#9670;&#160;</a></span>requestAutoConfigStatusAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::requestAutoConfigStatusAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Requests the current status of the auto-config routine. </p>
+<p>The status is written into the member variable autoConfigStatus:</p><ul>
+<li>NOT_IN_PROGRESS → no auto-config running.</li>
+<li>IN_PROGRESS → auto-config is currently running.</li>
+<li>COMPLETED → auto-config finished (success or failure).</li>
+</ul>
+<dl class="section note"><dt>Note</dt><dd>Requires config mode. This method will manage mode switching automatically. </dd>
+<dd>
+If another async command is already pending, this call fails.</dd></dl>
+<h2><a class="anchor" id="autotoc_md15"></a>
+Example: Check auto-config status</h2>
+<div class="fragment"><div class="line">radar.requestAutoConfigStatusAsync([](<a class="code hl_function" href="#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a>* sender,</div>
+<div class="line">                                      <a class="code hl_enumeration" href="#aa44c3b86a77e4577f3c47fee29c963fe">AsyncCommandResult</a> result,</div>
+<div class="line">                                      <span class="keywordtype">byte</span>) {</div>
+<div class="line">  <span class="keywordflow">if</span> (result == <a class="code hl_enumvalue" href="#aa44c3b86a77e4577f3c47fee29c963fead0749aaba8b833466dfcbb0428e4f89c">AsyncCommandResult::SUCCESS</a>) {</div>
+<div class="line">    <span class="keywordflow">switch</span> (sender-&gt;autoConfigStatus) {</div>
+<div class="line">      <span class="keywordflow">case</span> AutoConfigStatus::NOT_IN_PROGRESS:</div>
+<div class="line">        Serial.println(<span class="stringliteral">&quot;Auto-config not running.&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">break</span>;</div>
+<div class="line">      <span class="keywordflow">case</span> AutoConfigStatus::IN_PROGRESS:</div>
+<div class="line">        Serial.println(<span class="stringliteral">&quot;Auto-config in progress...&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">break</span>;</div>
+<div class="line">      <span class="keywordflow">case</span> AutoConfigStatus::COMPLETED:</div>
+<div class="line">        Serial.println(<span class="stringliteral">&quot;Auto-config completed.&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">break</span>;</div>
+<div class="line">      <span class="keywordflow">default</span>:</div>
+<div class="line">        Serial.println(<span class="stringliteral">&quot;Unknown auto-config status.&quot;</span>);</div>
+<div class="line">    }</div>
+<div class="line">  } <span class="keywordflow">else</span> {</div>
+<div class="line">    Serial.println(<span class="stringliteral">&quot;Failed to request auto-config status.&quot;</span>);</div>
+<div class="line">  }</div>
+<div class="line">});</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md16"></a>
+Do:</h2>
+<ul>
+<li>Use this after <a class="el" href="#aed89a0870ddacee96bc2f0fb9c1c96fc" title="Starts the automatic configuration (auto-config) routine on the sensor.">beginAutoConfigAsync()</a> to track progress.</li>
+<li>Use autoConfigStatus for decision-making in your logic.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md17"></a>
+Don’t:</h2>
+<ul>
+<li>Assume COMPLETED means success — thresholds should still be verified.</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Callback with signature: void(LD2410Async* sender, AsyncCommandResult result, byte userData). Fired when the sensor replies or on failure/timeout. </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value passed to the callback.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01056">1056</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="afaa6e2c1842ebd96c6e04fe542af66cb" name="afaa6e2c1842ebd96c6e04fe542af66cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afaa6e2c1842ebd96c6e04fe542af66cb">&#9670;&#160;</a></span>requestAuxControlSettingsAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::requestAuxControlSettingsAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Requests the current auxiliary control settings. </p>
+<p>Fills configData.lightControl, configData.lightThreshold, and configData.outputControl.</p>
+<dl class="section note"><dt>Note</dt><dd>Requires config mode. Will be managed automatically.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Function pointer with signature: void(LD2410Async* sender, AsyncCommandResult result, byte userData). Fired when ACK is received or on failure/timeout. </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value passed to the callback.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01037">1037</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a3923c4b746d90fbd314eae7094bb90be" name="a3923c4b746d90fbd314eae7094bb90be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3923c4b746d90fbd314eae7094bb90be">&#9670;&#160;</a></span>requestBluetoothMacAddressAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::requestBluetoothMacAddressAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Requests the bluetooth mac address. </p>
+<dl class="section note"><dt>Note</dt><dd>The callback fires when the mac address has been received from the sensor (is sent with the ACK).</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Callback method with void methodName(LD2410Async* sender, AsyncCommandResult result, byte userData) signature. Will be called after the Ack for the command has been received (success=true) or after the command timeout (success=false) or after the command has been canceld (sucess=false). </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value that will be passed to the callback function.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command has been sent, false if the command cant be sent (typically because another async command is pending). </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00952">952</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a3260f74672079a7200f210e4ffde1046" name="a3260f74672079a7200f210e4ffde1046"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3260f74672079a7200f210e4ffde1046">&#9670;&#160;</a></span>requestDistanceResolutioncmAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::requestDistanceResolutioncmAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Requests the current distance resolution setting from the sensor. </p>
+<p>The result is written into configData.distanceResolution.</p>
+<dl class="section note"><dt>Note</dt><dd>Requires config mode. Will be managed automatically.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Function pointer with signature: void(LD2410Async* sender, AsyncCommandResult result, byte userData). </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value passed to the callback.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01014">1014</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a5eeae3b4525a303e0e3bc208c4bcff21" name="a5eeae3b4525a303e0e3bc208c4bcff21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5eeae3b4525a303e0e3bc208c4bcff21">&#9670;&#160;</a></span>requestFirmwareAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::requestFirmwareAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Requests the firmware version of the sensor. </p>
+<p>Populates the firmware string when the ACK response arrives.</p>
+<dl class="section note"><dt>Note</dt><dd>Requires config mode. Will be managed automatically.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Callback fired when firmware info is received. </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value passed to the callback.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00889">889</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad7bfb9c212c452898053f167555a0bb6" name="ad7bfb9c212c452898053f167555a0bb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7bfb9c212c452898053f167555a0bb6">&#9670;&#160;</a></span>requestGateParametersAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::requestGateParametersAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Requests the current gate parameters from the sensor. </p>
+<p>Retrieves sensitivities, max gates, and timeout settings, which will be written into configData.</p>
+<dl class="section note"><dt>Note</dt><dd>Requires config mode. The method will manage mode switching if needed. </dd>
+<dd>
+If an async command is already pending, the request is rejected.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Callback fired when data is received or on failure. </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value passed to the callback.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00829">829</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aadb841697a992c1bf203944211bd8659" name="aadb841697a992c1bf203944211bd8659"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aadb841697a992c1bf203944211bd8659">&#9670;&#160;</a></span>restoreFactorySettingsAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LD2410Async::restoreFactorySettingsAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a99848867d52a313cc59f83665e65f2d5">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Restores factory settings of the sensor. </p>
+<p>Restored settings only become active after a reboot.</p>
+<dl class="section note"><dt>Note</dt><dd>Requires config mode. Will be managed automatically. </dd>
+<dd>
+After execution, call <a class="el" href="#aeb856d32612fba953b07280cf5d9a235" title="Reboots the sensor.">rebootAsync()</a> to activate changes.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Callback fired when ACK is received or on failure. </td></tr>
+    <tr><td class="paramname">userData</td><td>Optional value passed to the callback.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00926">926</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a7e4245a2a843b29dde5ef52a8c9ed0ae" name="a7e4245a2a843b29dde5ef52a8c9ed0ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e4245a2a843b29dde5ef52a8c9ed0ae">&#9670;&#160;</a></span>setAsyncCommandTimeoutMs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setAsyncCommandTimeoutMs </td>
+          <td>(</td>
+          <td class="paramtype">unsigned long</td>          <td class="paramname"><span class="paramname"><em>timeoutMs</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the timeout for async command callbacks. </p>
+<p>#note Make sure the timeout is long enough to allow for the execution of long running commands. In partuclar enabling config mode can take up to 6 secs.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timeoutMs</td><td>Timeout in milliseconds (default 6000 ms). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00508">508</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+
+</div>
+</div>
+<a id="a4b30773f7a69dad507caaa636f08fa76" name="a4b30773f7a69dad507caaa636f08fa76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b30773f7a69dad507caaa636f08fa76">&#9670;&#160;</a></span>setInactivityHandling()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LD2410Async::setInactivityHandling </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>enable</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enables or disables automatic inactivity handling of the sensor. </p>
+<p>When inactivity handling is enabled, the library continuously monitors the time since the last activity (received data or command ACK). If no activity is detected for a longer period (defined by activityTimeoutMs), the library will attempt to recover the sensor automatically:</p><ol type="1">
+<li>It first tries to exit config mode (even if configModeEnabled is false).</li>
+<li>If no activity is restored within 5 seconds after leaving config mode, the library reboots the sensor.</li>
+</ol>
+<p>This helps recover the sensor from rare cases where it gets "stuck" in config mode or stops sending data.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enable</td><td>Pass true to enable inactivity handling, false to disable it. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01526">1526</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a088d288af2200de524c81e84ce801ea9" name="a088d288af2200de524c81e84ce801ea9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a088d288af2200de524c81e84ce801ea9">&#9670;&#160;</a></span>setInactivityTimeoutMs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setInactivityTimeoutMs </td>
+          <td>(</td>
+          <td class="paramtype">unsigned long</td>          <td class="paramname"><span class="paramname"><em>timeoutMs</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the timeout period for inactivity handling. </p>
+<p>If no data or command ACK is received within this period, the library will attempt to recover the sensor as described in <a class="el" href="#a4b30773f7a69dad507caaa636f08fa76" title="Enables or disables automatic inactivity handling of the sensor.">setInactivityHandling()</a>.</p>
+<p>Default is 60000 ms (1 minute).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timeoutMs</td><td>Timeout in milliseconds (minimum 10000 ms recommended). 0 will diable inactivity checking and handling. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00265">265</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="ae2ff60e85fe189d54ac6abf5d5a23b51" name="ae2ff60e85fe189d54ac6abf5d5a23b51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2ff60e85fe189d54ac6abf5d5a23b51">&#9670;&#160;</a></span>autoConfigStatus</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceLD2410Types.html#a035762090f81b93ab2008c3a8d37e995">LD2410Types::AutoConfigStatus</a> autoConfigStatus = <a class="el" href="namespaceLD2410Types.html#a035762090f81b93ab2008c3a8d37e995a1c250a21210b7b88a14db9a0cbe71162">LD2410Types::AutoConfigStatus::NOT_SET</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Current status of the auto-configuration routine. </p>
+<p>Updated by <a class="el" href="#ad219580b6e47f54a8aac0847e2054bf6" title="Requests the current status of the auto-config routine.">requestAutoConfigStatusAsync()</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00149">149</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+
+</div>
+</div>
+<a id="ac51d85631e61298e1a5d1b2784620c5b" name="ac51d85631e61298e1a5d1b2784620c5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac51d85631e61298e1a5d1b2784620c5b">&#9670;&#160;</a></span>configData</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structLD2410Types_1_1ConfigData.html">LD2410Types::ConfigData</a> configData</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Current configuration parameters of the radar. </p>
+<p>Filled when configuration query commands are issued (e.g. <a class="el" href="#ab578ee25526c8bb808fe7200fae95a38" title="Requests all configuration settings from the sensor.">requestAllConfigSettingsAsync()</a> or <a class="el" href="#ad7bfb9c212c452898053f167555a0bb6" title="Requests the current gate parameters from the sensor.">requestGateParametersAsync()</a> ect). Use <a class="el" href="#ad320d7e80fd719f0bbc41ebb96c0f285" title="Registers a callback for configuration data updates.">registerConfigUpdateReceivedCallback()</a> to be notified when data in this struct changes. Use <a class="el" href="#a54388c929cea610f92891def29db66a5" title="Returns a clone of the current configuration data of the radar.">getConfigData()</a> or <a class="el" href="#a366ee0d3515b8855058f562a8421d9e3" title="Access the current config data without making a copy.">getConfigDataRef()</a> to access the current values, rather than accessing the struct directly.</p>
+<p>Structure will contain only uninitilaized data if config data is not queried explicitly. </p>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00106">106</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+
+</div>
+</div>
+<a id="ad67c3e0fd778c17ec30eb5580e3b2cd2" name="ad67c3e0fd778c17ec30eb5580e3b2cd2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad67c3e0fd778c17ec30eb5580e3b2cd2">&#9670;&#160;</a></span>configModeEnabled</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool configModeEnabled = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>True if the sensor is currently in config mode. </p>
+<p>Config mode must be enabled using <a class="el" href="#ad24f13c9381aa35460908b4c0edb5fa9" title="Enables config mode on the radar.">enableConfigModeAsync()</a> before sending configuration commands. After sending config commands, always disable the config mode using <a class="el" href="#a99910e37f7cf20d05be573fec341ef0c" title="Disables config mode on the radar.">disableConfigModeAsync()</a>, otherwiese the radar will not send any detection data. </p>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00126">126</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+
+</div>
+</div>
+<a id="a9c7dd860ae92521db2e99291bd86f37a" name="a9c7dd860ae92521db2e99291bd86f37a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c7dd860ae92521db2e99291bd86f37a">&#9670;&#160;</a></span>detectionData</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structLD2410Types_1_1DetectionData.html">LD2410Types::DetectionData</a> detectionData</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Latest detection results from the radar. </p>
+<p>Updated automatically whenever new data frames are received. Use <a class="el" href="#af4a5bb569a656f369f739060b9a3f282" title="Registers a callback for new detection data.">registerDetectionDataReceivedCallback()</a> to be notified whenever this struct changes. Use <a class="el" href="#a5bf997474cd5eb58ac2a142a8d134a50" title="Returns a clone of the latest detection data from the radar.">getDetectionData()</a> or <a class="el" href="#a24251f16e5afc8155c5c66449842109f" title="Access the current detection data without making a copy.">getDetectionDataRef()</a> to access the current values, rather than accessing the struct directly. </p>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00093">93</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+
+</div>
+</div>
+<a id="ae1a87d1e33a4e42f40bf2c8f10583315" name="ae1a87d1e33a4e42f40bf2c8f10583315"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1a87d1e33a4e42f40bf2c8f10583315">&#9670;&#160;</a></span>engineeringModeEnabled</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool engineeringModeEnabled = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>True if the sensor is currently in engineering mode. </p>
+<p>In engineering mode, the radar sends detailed per-gate signal data in addition to basic detection data.</p>
+<p>Use <a class="el" href="#ad7b1c7d38ac3948ebf159b20e1a3bb1d" title="Enables engineering mode.">enableEngineeringModeAsync()</a> and <a class="el" href="#a377464026350140b0277369a13e8c1d3" title="Disables engineering mode.">disableEngineeringModeAsync()</a> to control the engineering mode. </p>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00138">138</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+
+</div>
+</div>
+<a id="a0874fa08a9cb452c8d96b053360e6755" name="a0874fa08a9cb452c8d96b053360e6755"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0874fa08a9cb452c8d96b053360e6755">&#9670;&#160;</a></span>staticData</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structLD2410Types_1_1StaticData.html">LD2410Types::StaticData</a> staticData</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Static data of the radar. </p>
+<p>Filled when config mode is being enabled (protocol version and buffer size) annd when issuing query commands for the static data (<a class="el" href="#a86968c2e9be09d9acb6b62ad7496a2a6" title="Requests all static information from the sensor.">requestAllStaticDataAsync()</a>, <a class="el" href="#a5eeae3b4525a303e0e3bc208c4bcff21" title="Requests the firmware version of the sensor.">requestFirmwareAsync()</a>, <a class="el" href="#a3923c4b746d90fbd314eae7094bb90be" title="Requests the bluetooth mac address.">requestBluetoothMacAddressAsync()</a> ) </p>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00114">114</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

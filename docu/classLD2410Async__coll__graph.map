@@ -1,7 +1,0 @@
-<map id="LD2410Async" name="LD2410Async">
-<area shape="rect" id="Node000001" title=" " alt="" coords="150,94,252,120"/>
-<area shape="rect" id="Node000002" href="$structLD2410Types_1_1DetectionData.html" title="Holds the most recent detection data reported by the radar." alt="" coords="5,5,195,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,39,189,92,186,96,124,43"/>
-<area shape="rect" id="Node000003" href="$structLD2410Types_1_1ConfigData.html" title="Stores the sensor’s configuration parameters." alt="" coords="219,5,389,31"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="280,44,247,72,218,96,215,91,244,68,277,40"/>
-</map>

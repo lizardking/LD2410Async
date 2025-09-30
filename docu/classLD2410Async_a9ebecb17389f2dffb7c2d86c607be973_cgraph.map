@@ -1,5 +1,0 @@
-<map id="LD2410Async::enableBluetoothAsync" name="LD2410Async::enableBluetoothAsync">
-<area shape="rect" id="Node000001" title="Enables bluetooth." alt="" coords="5,5,207,46"/>
-<area shape="rect" id="Node000002" href="$classLD2410Async.html#a72e853afaba8373fb90524c3c4e8a153" title="Checks if an asynchronous command is currently pending." alt="" coords="255,13,437,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="207,23,239,23,239,28,207,28"/>
-</map>

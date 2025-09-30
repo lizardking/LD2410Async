@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['autoconfigstatus_0',['autoConfigStatus',['../classLD2410Async.html#aa6ee467bd1911a2bb8d06b48a3e5b694',1,'LD2410Async']]]
+  ['autoconfigstatus_0',['autoConfigStatus',['../LD2410Async_8h.html#ae2ff60e85fe189d54ac6abf5d5a23b51',1,'LD2410Async.h']]]
 ];

@@ -101,150 +101,151 @@ $(function(){initNavTree('receiveData_8ino_source.html',''); initResizable(true)
 </div><!--header-->
 <div class="contents">
 <a href="receiveData_8ino.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">* @brief: Example: Receive detection data from the LD2410</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">*</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">* @details</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">* This sketch initializes the LD2410 radar sensor on Serial1 and</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">* prints detection data to the Serial Monitor as soon as it arrives.</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">* This sketch demonstrates how to:</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">*   1. Initialize the radar on Serial1.</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">*   2. register a callback to receive detection data.</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">*   3. Get a pointer to the detection data struct.</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">*</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">* @warning</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">* Important:</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">* Make sure to adjust RADAR_RX_PIN and RADAR_TX_PIN to match you actual wiring.</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;Arduino.h&gt;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="LD2410Async_8h.html">LD2410Async.h</a>&quot;</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">* @file receiveData.ino</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">* @brief: Example: Receive detection data from the LD2410</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">*</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">* @details</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">* This sketch initializes the LD2410 radar sensor on Serial1 and</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">* prints detection data to the Serial Monitor as soon as it arrives.</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">* This sketch demonstrates how to:</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">*   1. Initialize the radar on Serial1.</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">*   2. register a callback to receive detection data.</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">*   3. Get a pointer to the detection data struct.</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">*</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">* @warning</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">* Important:</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">* Make sure to adjust RADAR_RX_PIN and RADAR_TX_PIN to match you actual wiring.</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">*/</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;Arduino.h&gt;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="LD2410Async_8h.html">LD2410Async.h</a>&quot;</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">// ========================= USER CONFIGURATION =========================</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> <span class="comment">// UART pins for the LD2410 sensor</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="receiveData_8ino.html#a7e649b7675aa97ae8a3c2b2a329e55d7">   25</a></span><span class="preprocessor">#define RADAR_RX_PIN 16   </span><span class="comment">// ESP32 pin that receives data from the radar (radar TX)</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="receiveData_8ino.html#acce505b164e2cee65fd975d0bc859ca8">   26</a></span><span class="preprocessor">#define RADAR_TX_PIN 17   </span><span class="comment">// ESP32 pin that transmits data to the radar (radar RX)</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">// UART baudrate for the radar sensor (default is 256000)</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="receiveData_8ino.html#a78243257c4f1bb044c720dce7198d7cb">   29</a></span><span class="preprocessor">#define RADAR_BAUDRATE 256000</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">// ======================================================================</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment"></span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">/**</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">* Create a HardwareSerial instance (ESP32 has multiple UARTs) bound to UART1</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="receiveData_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41">   36</a></span>HardwareSerial <a class="code hl_function" href="receiveData_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41">RadarSerial</a>(1);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment"></span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">/**</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">* @brief Creates LD2410Async object bound to the serial port defined in RadarSerial</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="receiveData_8ino.html#a795abfb02964341e3c3e09b8459d94bc">   41</a></span><a class="code hl_function" href="LD2410Async_8h.html#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a> <a class="code hl_function" href="receiveData_8ino.html#a795abfb02964341e3c3e09b8459d94bc">radar</a>(<a class="code hl_function" href="receiveData_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41">RadarSerial</a>);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">/*</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment"> * @brief Callback function called whenever new detection data arrives</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment"> * @details</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment"> * The detection data is accessed via a reference to avoid making a copy. This is more efficient and saves memory.</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment"> * The callback provides the presenceDetected variable for convenience, but all other detection data is available</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment"> * in the DetectionData struct that can be accessed using .getDetectionDataRef()</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment"> * @note</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment"> * In callback methods is is generally advised to access members of the LD2410Async instance via the sender pointer.</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment"> * This ensures that you are allways working with the correct instance, which is important if you have multiple LD2410Async instances.</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment"> * Also keep in mind that callbacks should be as short and efficient as possible to avoid blocking the background task of the library.</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment"> */</span></div>
-<div class="foldopen" id="foldopen00056" data-start="{" data-end="}">
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="receiveData_8ino.html#a30ccb5184463f968f4a30895646dec1d">   56</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="receiveData_8ino.html#a30ccb5184463f968f4a30895646dec1d">onDetectionDataReceived</a>(<a class="code hl_function" href="LD2410Async_8h.html#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a>* sender, <span class="keywordtype">bool</span> presenceDetected, <span class="keywordtype">byte</span> userData) {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="comment">// Access detection data efficiently without making a copy</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keyword">const</span> <a class="code hl_struct" href="structLD2410Types_1_1DetectionData.html">LD2410Types::DetectionData</a>&amp; data = sender-&gt;getDetectionDataRef();</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    Serial.println(<span class="stringliteral">&quot;=== Detection Data ===&quot;</span>);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    Serial.<a class="code hl_function" href="structLD2410Types_1_1DetectionData.html#a05545713d5314398cf8c87ac50bbf4ca">print</a>(<span class="stringliteral">&quot;Target State: &quot;</span>);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    Serial.println(LD2410Types::targetStateToString(data.<a class="code hl_variable" href="structLD2410Types_1_1DetectionData.html#a6e7b02bc521240618e108867a2f9a1f7">targetState</a>));</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    Serial.print(<span class="stringliteral">&quot;Presence detected: &quot;</span>);</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    Serial.println(data.<a class="code hl_variable" href="structLD2410Types_1_1DetectionData.html#aa617db540a884f75ee26c0a850c55023">presenceDetected</a> ? <span class="stringliteral">&quot;Yes&quot;</span> : <span class="stringliteral">&quot;No&quot;</span>);</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    Serial.print(<span class="stringliteral">&quot;Moving presence: &quot;</span>);</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    Serial.println(data.<a class="code hl_variable" href="structLD2410Types_1_1DetectionData.html#ae7ad914bcdb01c5d8bb6c07b78b19d81">movingPresenceDetected</a> ? <span class="stringliteral">&quot;Yes&quot;</span> : <span class="stringliteral">&quot;No&quot;</span>);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    Serial.print(<span class="stringliteral">&quot;Stationary presence: &quot;</span>);</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    Serial.println(data.<a class="code hl_variable" href="structLD2410Types_1_1DetectionData.html#a16c4d7d9899bf62a253c82c2d57f1aad">stationaryPresenceDetected</a> ? <span class="stringliteral">&quot;Yes&quot;</span> : <span class="stringliteral">&quot;No&quot;</span>);</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    Serial.print(<span class="stringliteral">&quot;Moving Distance (cm): &quot;</span>);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    Serial.println(data.<a class="code hl_variable" href="structLD2410Types_1_1DetectionData.html#af407da6370ae3d06e0d435fa61175af6">movingTargetDistance</a>);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    Serial.print(<span class="stringliteral">&quot;Stationary Distance (cm): &quot;</span>);</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    Serial.println(data.<a class="code hl_variable" href="structLD2410Types_1_1DetectionData.html#af4c2bdd33c176a09c79da11aebb44317">stationaryTargetDistance</a>);</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    Serial.print(<span class="stringliteral">&quot;Light Level: &quot;</span>);</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    Serial.println(data.<a class="code hl_variable" href="structLD2410Types_1_1DetectionData.html#a34c54eeec586ff7aed6d1a774741b92c">lightLevel</a>);</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    Serial.println(<span class="stringliteral">&quot;======================&quot;</span>);</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>}</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">// ========================= USER CONFIGURATION =========================</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> <span class="comment">// UART pins for the LD2410 sensor</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="receiveData_8ino.html#a7e649b7675aa97ae8a3c2b2a329e55d7">   26</a></span><span class="preprocessor">#define RADAR_RX_PIN 16   </span><span class="comment">// ESP32 pin that receives data from the radar (radar TX)</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="receiveData_8ino.html#acce505b164e2cee65fd975d0bc859ca8">   27</a></span><span class="preprocessor">#define RADAR_TX_PIN 17   </span><span class="comment">// ESP32 pin that transmits data to the radar (radar RX)</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">// UART baudrate for the radar sensor (default is 256000)</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="receiveData_8ino.html#a78243257c4f1bb044c720dce7198d7cb">   30</a></span><span class="preprocessor">#define RADAR_BAUDRATE 256000</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">// ======================================================================</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment"></span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">* Create a HardwareSerial instance (ESP32 has multiple UARTs) bound to UART1</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">*/</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="receiveData_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41">   37</a></span>HardwareSerial <a class="code hl_function" href="receiveData_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41">RadarSerial</a>(1);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment"></span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">* @brief Creates LD2410Async object bound to the serial port defined in RadarSerial</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">*/</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="receiveData_8ino.html#a795abfb02964341e3c3e09b8459d94bc">   42</a></span><a class="code hl_function" href="LD2410Async_8h.html#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a> <a class="code hl_function" href="receiveData_8ino.html#a795abfb02964341e3c3e09b8459d94bc">radar</a>(<a class="code hl_function" href="receiveData_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41">RadarSerial</a>);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment"> * @brief Callback function called whenever new detection data arrives</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment"> * @details</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment"> * The detection data is accessed via a reference to avoid making a copy. This is more efficient and saves memory.</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment"> * The callback provides the presenceDetected variable for convenience, but all other detection data is available</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment"> * in the DetectionData struct that can be accessed using .getDetectionDataRef()</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment"> * @note</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment"> * In callback methods is is generally advised to access members of the LD2410Async instance via the sender pointer.</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment"> * This ensures that you are allways working with the correct instance, which is important if you have multiple LD2410Async instances.</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment"> * Also keep in mind that callbacks should be as short and efficient as possible to avoid blocking the background task of the library.</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00057" data-start="{" data-end="}">
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="receiveData_8ino.html#a30ccb5184463f968f4a30895646dec1d">   57</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="receiveData_8ino.html#a30ccb5184463f968f4a30895646dec1d">onDetectionDataReceived</a>(<a class="code hl_function" href="LD2410Async_8h.html#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a>* sender, <span class="keywordtype">bool</span> presenceDetected, <span class="keywordtype">byte</span> userData) {</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="comment">// Access detection data efficiently without making a copy</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keyword">const</span> <a class="code hl_struct" href="structLD2410Types_1_1DetectionData.html">LD2410Types::DetectionData</a>&amp; data = sender-&gt;getDetectionDataRef();</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    Serial.println(<span class="stringliteral">&quot;=== Detection Data ===&quot;</span>);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    Serial.<a class="code hl_function" href="structLD2410Types_1_1DetectionData.html#a05545713d5314398cf8c87ac50bbf4ca">print</a>(<span class="stringliteral">&quot;Target State: &quot;</span>);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    Serial.println(LD2410Types::targetStateToString(data.<a class="code hl_variable" href="structLD2410Types_1_1DetectionData.html#a6e7b02bc521240618e108867a2f9a1f7">targetState</a>));</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    Serial.print(<span class="stringliteral">&quot;Presence detected: &quot;</span>);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    Serial.println(data.<a class="code hl_variable" href="structLD2410Types_1_1DetectionData.html#aa617db540a884f75ee26c0a850c55023">presenceDetected</a> ? <span class="stringliteral">&quot;Yes&quot;</span> : <span class="stringliteral">&quot;No&quot;</span>);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    Serial.print(<span class="stringliteral">&quot;Moving presence: &quot;</span>);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    Serial.println(data.<a class="code hl_variable" href="structLD2410Types_1_1DetectionData.html#ae7ad914bcdb01c5d8bb6c07b78b19d81">movingPresenceDetected</a> ? <span class="stringliteral">&quot;Yes&quot;</span> : <span class="stringliteral">&quot;No&quot;</span>);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    Serial.print(<span class="stringliteral">&quot;Stationary presence: &quot;</span>);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    Serial.println(data.<a class="code hl_variable" href="structLD2410Types_1_1DetectionData.html#a16c4d7d9899bf62a253c82c2d57f1aad">stationaryPresenceDetected</a> ? <span class="stringliteral">&quot;Yes&quot;</span> : <span class="stringliteral">&quot;No&quot;</span>);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    Serial.print(<span class="stringliteral">&quot;Moving Distance (cm): &quot;</span>);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    Serial.println(data.<a class="code hl_variable" href="structLD2410Types_1_1DetectionData.html#af407da6370ae3d06e0d435fa61175af6">movingTargetDistance</a>);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    Serial.print(<span class="stringliteral">&quot;Stationary Distance (cm): &quot;</span>);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    Serial.println(data.<a class="code hl_variable" href="structLD2410Types_1_1DetectionData.html#af4c2bdd33c176a09c79da11aebb44317">stationaryTargetDistance</a>);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    Serial.print(<span class="stringliteral">&quot;Light Level: &quot;</span>);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    Serial.println(data.<a class="code hl_variable" href="structLD2410Types_1_1DetectionData.html#a34c54eeec586ff7aed6d1a774741b92c">lightLevel</a>);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    Serial.println(<span class="stringliteral">&quot;======================&quot;</span>);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>}</div>
 </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment"></span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">/**</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">* @brief Arduino setup function which initializes the radar and registers the callback</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment">*</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment">* @details</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment">* radar.begin() starts the background task of the LD2410Async library which automatically handles</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment">* incoming data and triggers callbacks. The onDetectionDataReceived callback is registered to receive detection data.</span></div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">*</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">*/</span></div>
-<div class="foldopen" id="foldopen00094" data-start="{" data-end="}">
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="receiveData_8ino.html#a4fc01d736fe50cf5b977f755b675f11d">   94</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="receiveData_8ino.html#a4fc01d736fe50cf5b977f755b675f11d">setup</a>() {</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="comment">// Initialize USB serial for debug output</span></div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    Serial.begin(115200);</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordflow">while</span> (!Serial) {</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        ; <span class="comment">// wait for Serial Monitor</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    }</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    Serial.println(<span class="stringliteral">&quot;LD2410Async Example: Receive Data&quot;</span>);</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="comment">// Initialize Serial1 with user-defined pins and baudrate</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <a class="code hl_function" href="receiveData_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41">RadarSerial</a>.begin(<a class="code hl_define" href="receiveData_8ino.html#a78243257c4f1bb044c720dce7198d7cb">RADAR_BAUDRATE</a>, SERIAL_8N1, <a class="code hl_define" href="receiveData_8ino.html#a7e649b7675aa97ae8a3c2b2a329e55d7">RADAR_RX_PIN</a>, <a class="code hl_define" href="receiveData_8ino.html#acce505b164e2cee65fd975d0bc859ca8">RADAR_TX_PIN</a>);</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="comment">// Start the radar background task (parses incoming data frames)</span></div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="receiveData_8ino.html#a795abfb02964341e3c3e09b8459d94bc">radar</a>.begin()) {</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        Serial.println(<span class="stringliteral">&quot;Radar task started successfully.&quot;</span>);</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        <span class="comment">// Register callback for detection updates</span></div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <a class="code hl_function" href="receiveData_8ino.html#a795abfb02964341e3c3e09b8459d94bc">radar</a>.registerDetectionDataReceivedCallback(<a class="code hl_function" href="receiveData_8ino.html#a30ccb5184463f968f4a30895646dec1d">onDetectionDataReceived</a>, 0);</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    }</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        Serial.println(<span class="stringliteral">&quot;ERROR! Could not start radar task.&quot;</span>);</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    }</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment"></span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment">* @brief Arduino setup function which initializes the radar and registers the callback</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment">*</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment">* @details</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment">* radar.begin() starts the background task of the LD2410Async library which automatically handles</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">* incoming data and triggers callbacks. The onDetectionDataReceived callback is registered to receive detection data.</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">*</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment">*/</span></div>
+<div class="foldopen" id="foldopen00095" data-start="{" data-end="}">
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="receiveData_8ino.html#a4fc01d736fe50cf5b977f755b675f11d">   95</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="receiveData_8ino.html#a4fc01d736fe50cf5b977f755b675f11d">setup</a>() {</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="comment">// Initialize USB serial for debug output</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    Serial.begin(115200);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordflow">while</span> (!Serial) {</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        ; <span class="comment">// wait for Serial Monitor</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    }</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    Serial.println(<span class="stringliteral">&quot;LD2410Async Example: Receive Data&quot;</span>);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="comment">// Initialize Serial1 with user-defined pins and baudrate</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <a class="code hl_function" href="receiveData_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41">RadarSerial</a>.begin(<a class="code hl_define" href="receiveData_8ino.html#a78243257c4f1bb044c720dce7198d7cb">RADAR_BAUDRATE</a>, SERIAL_8N1, <a class="code hl_define" href="receiveData_8ino.html#a7e649b7675aa97ae8a3c2b2a329e55d7">RADAR_RX_PIN</a>, <a class="code hl_define" href="receiveData_8ino.html#acce505b164e2cee65fd975d0bc859ca8">RADAR_TX_PIN</a>);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="comment">// Start the radar background task (parses incoming data frames)</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="receiveData_8ino.html#a795abfb02964341e3c3e09b8459d94bc">radar</a>.begin()) {</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        Serial.println(<span class="stringliteral">&quot;Radar task started successfully.&quot;</span>);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <span class="comment">// Register callback for detection updates</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <a class="code hl_function" href="receiveData_8ino.html#a795abfb02964341e3c3e09b8459d94bc">radar</a>.registerDetectionDataReceivedCallback(<a class="code hl_function" href="receiveData_8ino.html#a30ccb5184463f968f4a30895646dec1d">onDetectionDataReceived</a>, 0);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    }</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        Serial.println(<span class="stringliteral">&quot;ERROR! Could not start radar task.&quot;</span>);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    }</div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>}<span class="comment"></span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>}<span class="comment"></span></div>
 </div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="comment">/**</span></div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="comment">* @brief Arduino loop function which does nothing</span></div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="comment">*</span></div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="comment">* @details</span></div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="comment">* The LD2410Async library runs a FreeRTOS background task that automatically handles all jobs that are related to the radar sensor.</span></div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="comment">* Therefore the main loop doesnt have to da any LD2410 related work and is free for anything else you might want to do.</span></div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="comment">*/</span></div>
-<div class="foldopen" id="foldopen00124" data-start="{" data-end="}">
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno"><a class="line" href="receiveData_8ino.html#afe461d27b9c48d5921c00d521181f12f">  124</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="receiveData_8ino.html#afe461d27b9c48d5921c00d521181f12f">loop</a>() {</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="comment">// Nothing to do here!</span></div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="comment">// The LD2410Async library runs a FreeRTOS background task</span></div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="comment">// that automatically parses incoming radar data and triggers callbacks.</span></div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    delay(1000); <span class="comment">// idle delay (optional)</span></div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>}</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="comment">* @brief Arduino loop function which does nothing</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="comment">*</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="comment">* @details</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="comment">* The LD2410Async library runs a FreeRTOS background task that automatically handles all jobs that are related to the radar sensor.</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="comment">* Therefore the main loop doesnt have to da any LD2410 related work and is free for anything else you might want to do.</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="comment">*/</span></div>
+<div class="foldopen" id="foldopen00125" data-start="{" data-end="}">
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno"><a class="line" href="receiveData_8ino.html#afe461d27b9c48d5921c00d521181f12f">  125</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="receiveData_8ino.html#afe461d27b9c48d5921c00d521181f12f">loop</a>() {</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="comment">// Nothing to do here!</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="comment">// The LD2410Async library runs a FreeRTOS background task</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="comment">// that automatically parses incoming radar data and triggers callbacks.</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    delay(1000); <span class="comment">// idle delay (optional)</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>}</div>
 </div>
 <div class="ttc" id="aLD2410Async_8h_html"><div class="ttname"><a href="LD2410Async_8h.html">LD2410Async.h</a></div></div>
 <div class="ttc" id="aLD2410Async_8h_html_ac500fb301e250ede1a608c67fc1a8900"><div class="ttname"><a href="LD2410Async_8h.html#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a></div><div class="ttdeci">LD2410Async(Stream &amp;serial)</div><div class="ttdoc">Constructs a new LD2410Async instance bound to a given serial stream.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l01651">LD2410Async.cpp:1651</a></div></div>
-<div class="ttc" id="areceiveData_8ino_html_a30ccb5184463f968f4a30895646dec1d"><div class="ttname"><a href="receiveData_8ino.html#a30ccb5184463f968f4a30895646dec1d">onDetectionDataReceived</a></div><div class="ttdeci">void onDetectionDataReceived(LD2410Async *sender, bool presenceDetected, byte userData)</div><div class="ttdef"><b>Definition</b> <a href="#l00056">receiveData.ino:56</a></div></div>
+<div class="ttc" id="areceiveData_8ino_html_a30ccb5184463f968f4a30895646dec1d"><div class="ttname"><a href="receiveData_8ino.html#a30ccb5184463f968f4a30895646dec1d">onDetectionDataReceived</a></div><div class="ttdeci">void onDetectionDataReceived(LD2410Async *sender, bool presenceDetected, byte userData)</div><div class="ttdef"><b>Definition</b> <a href="#l00057">receiveData.ino:57</a></div></div>
 <div class="ttc" id="areceiveData_8ino_html_a49d7843d70c3fb5607ee7c62c655fa41"><div class="ttname"><a href="receiveData_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41">RadarSerial</a></div><div class="ttdeci">HardwareSerial RadarSerial(1)</div></div>
-<div class="ttc" id="areceiveData_8ino_html_a4fc01d736fe50cf5b977f755b675f11d"><div class="ttname"><a href="receiveData_8ino.html#a4fc01d736fe50cf5b977f755b675f11d">setup</a></div><div class="ttdeci">void setup()</div><div class="ttdoc">Arduino setup function which initializes the radar and registers the callback.</div><div class="ttdef"><b>Definition</b> <a href="#l00094">receiveData.ino:94</a></div></div>
-<div class="ttc" id="areceiveData_8ino_html_a78243257c4f1bb044c720dce7198d7cb"><div class="ttname"><a href="receiveData_8ino.html#a78243257c4f1bb044c720dce7198d7cb">RADAR_BAUDRATE</a></div><div class="ttdeci">#define RADAR_BAUDRATE</div><div class="ttdef"><b>Definition</b> <a href="#l00029">receiveData.ino:29</a></div></div>
+<div class="ttc" id="areceiveData_8ino_html_a4fc01d736fe50cf5b977f755b675f11d"><div class="ttname"><a href="receiveData_8ino.html#a4fc01d736fe50cf5b977f755b675f11d">setup</a></div><div class="ttdeci">void setup()</div><div class="ttdoc">Arduino setup function which initializes the radar and registers the callback.</div><div class="ttdef"><b>Definition</b> <a href="#l00095">receiveData.ino:95</a></div></div>
+<div class="ttc" id="areceiveData_8ino_html_a78243257c4f1bb044c720dce7198d7cb"><div class="ttname"><a href="receiveData_8ino.html#a78243257c4f1bb044c720dce7198d7cb">RADAR_BAUDRATE</a></div><div class="ttdeci">#define RADAR_BAUDRATE</div><div class="ttdef"><b>Definition</b> <a href="#l00030">receiveData.ino:30</a></div></div>
 <div class="ttc" id="areceiveData_8ino_html_a795abfb02964341e3c3e09b8459d94bc"><div class="ttname"><a href="receiveData_8ino.html#a795abfb02964341e3c3e09b8459d94bc">radar</a></div><div class="ttdeci">LD2410Async radar(RadarSerial)</div><div class="ttdoc">Creates LD2410Async object bound to the serial port defined in RadarSerial.</div></div>
-<div class="ttc" id="areceiveData_8ino_html_a7e649b7675aa97ae8a3c2b2a329e55d7"><div class="ttname"><a href="receiveData_8ino.html#a7e649b7675aa97ae8a3c2b2a329e55d7">RADAR_RX_PIN</a></div><div class="ttdeci">#define RADAR_RX_PIN</div><div class="ttdoc">: Example: Receive detection data from the LD2410</div><div class="ttdef"><b>Definition</b> <a href="#l00025">receiveData.ino:25</a></div></div>
-<div class="ttc" id="areceiveData_8ino_html_acce505b164e2cee65fd975d0bc859ca8"><div class="ttname"><a href="receiveData_8ino.html#acce505b164e2cee65fd975d0bc859ca8">RADAR_TX_PIN</a></div><div class="ttdeci">#define RADAR_TX_PIN</div><div class="ttdef"><b>Definition</b> <a href="#l00026">receiveData.ino:26</a></div></div>
-<div class="ttc" id="areceiveData_8ino_html_afe461d27b9c48d5921c00d521181f12f"><div class="ttname"><a href="receiveData_8ino.html#afe461d27b9c48d5921c00d521181f12f">loop</a></div><div class="ttdeci">void loop()</div><div class="ttdoc">Arduino loop function which does nothing.</div><div class="ttdef"><b>Definition</b> <a href="#l00124">receiveData.ino:124</a></div></div>
+<div class="ttc" id="areceiveData_8ino_html_a7e649b7675aa97ae8a3c2b2a329e55d7"><div class="ttname"><a href="receiveData_8ino.html#a7e649b7675aa97ae8a3c2b2a329e55d7">RADAR_RX_PIN</a></div><div class="ttdeci">#define RADAR_RX_PIN</div><div class="ttdef"><b>Definition</b> <a href="#l00026">receiveData.ino:26</a></div></div>
+<div class="ttc" id="areceiveData_8ino_html_acce505b164e2cee65fd975d0bc859ca8"><div class="ttname"><a href="receiveData_8ino.html#acce505b164e2cee65fd975d0bc859ca8">RADAR_TX_PIN</a></div><div class="ttdeci">#define RADAR_TX_PIN</div><div class="ttdef"><b>Definition</b> <a href="#l00027">receiveData.ino:27</a></div></div>
+<div class="ttc" id="areceiveData_8ino_html_afe461d27b9c48d5921c00d521181f12f"><div class="ttname"><a href="receiveData_8ino.html#afe461d27b9c48d5921c00d521181f12f">loop</a></div><div class="ttdeci">void loop()</div><div class="ttdoc">Arduino loop function which does nothing.</div><div class="ttdef"><b>Definition</b> <a href="#l00125">receiveData.ino:125</a></div></div>
 <div class="ttc" id="astructLD2410Types_1_1DetectionData_html"><div class="ttname"><a href="structLD2410Types_1_1DetectionData.html">LD2410Types::DetectionData</a></div><div class="ttdoc">Holds the most recent detection data reported by the radar.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00247">LD2410Types.h:248</a></div></div>
 <div class="ttc" id="astructLD2410Types_1_1DetectionData_html_a05545713d5314398cf8c87ac50bbf4ca"><div class="ttname"><a href="structLD2410Types_1_1DetectionData.html#a05545713d5314398cf8c87ac50bbf4ca">LD2410Types::DetectionData::print</a></div><div class="ttdeci">void print() const</div><div class="ttdoc">Debug helper: print detection data contents to Serial.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00280">LD2410Types.h:280</a></div></div>
 <div class="ttc" id="astructLD2410Types_1_1DetectionData_html_a16c4d7d9899bf62a253c82c2d57f1aad"><div class="ttname"><a href="structLD2410Types_1_1DetectionData.html#a16c4d7d9899bf62a253c82c2d57f1aad">LD2410Types::DetectionData::stationaryPresenceDetected</a></div><div class="ttdeci">bool stationaryPresenceDetected</div><div class="ttdoc">True if a stationary target is detected.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00257">LD2410Types.h:257</a></div></div>

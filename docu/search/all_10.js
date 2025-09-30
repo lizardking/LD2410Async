@@ -5,8 +5,5 @@ var searchData=
   ['targetstate_2',['TargetState',['../namespaceLD2410Types.html#af838f34651382f6262c0d19397ac0be9',1,'LD2410Types']]],
   ['targetstate_3',['targetState',['../structLD2410Types_1_1DetectionData.html#a6e7b02bc521240618e108867a2f9a1f7',1,'LD2410Types::DetectionData']]],
   ['timeout_4',['TIMEOUT',['../classLD2410Async.html#a136b50e19cfddad787637fb65421d9aba070a0fb40f6c308ab544b227660aadff',1,'LD2410Async']]],
-  ['timestamp_5',['timestamp',['../structLD2410Types_1_1DetectionData.html#adc003171384bf1b2bbc0dd69777e579d',1,'LD2410Types::DetectionData']]],
-  ['topic_6',['LD2410Async: Index by topic',['../LD2410Async_TopicIndex.html',1,'']]],
-  ['topicindex_2edox_7',['topicIndex.dox',['../topicIndex_8dox.html',1,'']]],
-  ['types_20enums_20structs_8',['Types, Enums &amp; Structs',['..//github/workspace/dox/topicIndex.dox#group_types',1,'']]]
+  ['timestamp_5',['timestamp',['../structLD2410Types_1_1DetectionData.html#adc003171384bf1b2bbc0dd69777e579d',1,'LD2410Types::DetectionData']]]
 ];

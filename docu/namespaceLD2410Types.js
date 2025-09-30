@@ -2,6 +2,7 @@ var namespaceLD2410Types =
 [
     [ "ConfigData", "structLD2410Types_1_1ConfigData.html", "structLD2410Types_1_1ConfigData" ],
     [ "DetectionData", "structLD2410Types_1_1DetectionData.html", "structLD2410Types_1_1DetectionData" ],
+    [ "StaticData", "structLD2410Types_1_1StaticData.html", "structLD2410Types_1_1StaticData" ],
     [ "AutoConfigStatus", "namespaceLD2410Types.html#a035762090f81b93ab2008c3a8d37e995", [
       [ "NOT_SET", "namespaceLD2410Types.html#a035762090f81b93ab2008c3a8d37e995a1c250a21210b7b88a14db9a0cbe71162", null ],
       [ "NOT_IN_PROGRESS", "namespaceLD2410Types.html#a035762090f81b93ab2008c3a8d37e995ae5c386bd6bfc609aa2b2274edf873665", null ],

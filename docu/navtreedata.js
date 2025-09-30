@@ -33,7 +33,6 @@ var NAVTREE =
       ] ],
       [ "Usage", "index.html#autotoc_md4", null ]
     ] ],
-    [ "LD2410Async: Index by topic", "LD2410Async_TopicIndex.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -68,7 +67,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "LD2410Async_8cpp.html",
-"namespaceLD2410Defs.html#a94d0e80954d9fd9303361ed7c6b859c7"
+"namespaceLD2410Defs.html#aaeb20d14777a0c2cce3d28e11a9cb200"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -62,13 +62,9 @@ var classLD2410Async =
     [ "setInactivityHandling", "classLD2410Async.html#a4b30773f7a69dad507caaa636f08fa76", null ],
     [ "setInactivityTimeoutMs", "classLD2410Async.html#a0abdd66e6b6bdbef7b1b262cdf286aa4", null ],
     [ "autoConfigStatus", "classLD2410Async.html#aa6ee467bd1911a2bb8d06b48a3e5b694", null ],
-    [ "bufferSize", "classLD2410Async.html#ac5ec829f7d9077e77a8155d0b7e253f1", null ],
     [ "configData", "classLD2410Async.html#a6495ed4d6773b25b21f09c207897cc02", null ],
     [ "configModeEnabled", "classLD2410Async.html#a77e2a7d4aa981b40334302c37fcc6da7", null ],
     [ "detectionData", "classLD2410Async.html#aa46b4b77c4280a97be324c98562073c8", null ],
     [ "engineeringModeEnabled", "classLD2410Async.html#aac3eef4a0da57ccc1c32d28dd029ccc7", null ],
-    [ "firmware", "classLD2410Async.html#a70f850c8a6262c948b0fe7705a8b9caf", null ],
-    [ "mac", "classLD2410Async.html#a80ed3831922280cb6c912b4928e4754e", null ],
-    [ "macString", "classLD2410Async.html#a86241ae8f71137b12661a5d72f3ac9b1", null ],
-    [ "protocolVersion", "classLD2410Async.html#ad807582b1b6fb2fb0a461c346794b40b", null ]
+    [ "staticData", "classLD2410Async.html#a131b84086401e8d1b3e3e5e0ef7d7d9a", null ]
 ];

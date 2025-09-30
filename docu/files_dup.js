@@ -1,10 +1,9 @@
 var files_dup =
 [
-    [ "basicPresenceDetection", "dir_30f1c3aaa201f9bae8f75919357e181e.html", "dir_30f1c3aaa201f9bae8f75919357e181e" ],
-    [ "changeConfig", "dir_55a0bb9b3d2fa4df0d3e71daeff4f6fe.html", "dir_55a0bb9b3d2fa4df0d3e71daeff4f6fe" ],
-    [ "changeDistanceResolution", "dir_595d66bff896d8b55fe1899c99f27ac3.html", "dir_595d66bff896d8b55fe1899c99f27ac3" ],
-    [ "dox", "dir_107e309f9f293897177ec4de6cf5a764.html", null ],
-    [ "receiveData", "dir_50142b4b88c8e10a7393418c3979093f.html", "dir_50142b4b88c8e10a7393418c3979093f" ],
+    [ "basicPresenceDetection", "dir_094f9dbbdfe7cfb87799ec39fb2dbfcf.html", "dir_094f9dbbdfe7cfb87799ec39fb2dbfcf" ],
+    [ "changeConfig", "dir_0877bab65d936efc50d6280cdd9a4b61.html", "dir_0877bab65d936efc50d6280cdd9a4b61" ],
+    [ "changeDistanceResolution", "dir_cbdfb87722f5bb03bbdd3fbaa888c5cd.html", "dir_cbdfb87722f5bb03bbdd3fbaa888c5cd" ],
+    [ "receiveData", "dir_214001d413268a160f69364489f85961.html", "dir_214001d413268a160f69364489f85961" ],
     [ "LD2410Async.cpp", "LD2410Async_8cpp.html", "LD2410Async_8cpp" ],
     [ "LD2410Async.h", "LD2410Async_8h.html", "LD2410Async_8h" ],
     [ "LD2410CommandBuilder.h", "LD2410CommandBuilder_8h.html", "LD2410CommandBuilder_8h" ],

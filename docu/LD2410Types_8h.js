@@ -2,6 +2,7 @@ var LD2410Types_8h =
 [
     [ "LD2410Types::DetectionData", "structLD2410Types_1_1DetectionData.html", "structLD2410Types_1_1DetectionData" ],
     [ "LD2410Types::ConfigData", "structLD2410Types_1_1ConfigData.html", "structLD2410Types_1_1ConfigData" ],
+    [ "LD2410Types::StaticData", "structLD2410Types_1_1StaticData.html", "structLD2410Types_1_1StaticData" ],
     [ "AutoConfigStatus", "LD2410Types_8h.html#a035762090f81b93ab2008c3a8d37e995", [
       [ "NOT_SET", "LD2410Types_8h.html#a035762090f81b93ab2008c3a8d37e995a1c250a21210b7b88a14db9a0cbe71162", null ],
       [ "NOT_IN_PROGRESS", "LD2410Types_8h.html#a035762090f81b93ab2008c3a8d37e995ae5c386bd6bfc609aa2b2274edf873665", null ],

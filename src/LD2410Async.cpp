@@ -256,8 +256,8 @@ bool LD2410Async::processAck()
 	{
 	case LD2410Defs::configEnableCommand: // entered config mode
 		configModeEnabled = true;
-		protocolVersion = receiveBuffer[4] | (receiveBuffer[5] << 8);
-		bufferSize = receiveBuffer[6] | (receiveBuffer[7] << 8);
+		staticData.protocolVersion = receiveBuffer[4] | (receiveBuffer[5] << 8);
+		staticData.bufferSize = receiveBuffer[6] | (receiveBuffer[7] << 8);
 		DEBUG_PRINT_MILLIS;
 		DEBUG_PRINTLN("ACK for config mode enable received");
 		break;
@@ -326,21 +326,26 @@ bool LD2410Async::processAck()
 		break;
 	case LD2410Defs::requestMacAddressCommand:
 		for (int i = 0; i < 6; i++) {
-			mac[i] = receiveBuffer[i + 4];
-		};
-		macString = byte2hex(mac[0])
-			+ ":" + byte2hex(mac[1])
-			+ ":" + byte2hex(mac[2])
-			+ ":" + byte2hex(mac[3])
-			+ ":" + byte2hex(mac[4])
-			+ ":" + byte2hex(mac[5]);
+			staticData.bluetoothMac[i] = receiveBuffer[i + 4];
+		}
+
+		// Format MAC as "AA:BB:CC:DD:EE:FF"
+		snprintf(staticData.bluetoothMacText, sizeof(staticData.bluetoothMacText),
+			"%02X:%02X:%02X:%02X:%02X:%02X",
+			staticData.bluetoothMac[0], staticData.bluetoothMac[1], staticData.bluetoothMac[2],
+			staticData.bluetoothMac[3], staticData.bluetoothMac[4], staticData.bluetoothMac[5]);
 		DEBUG_PRINT_MILLIS;
 		DEBUG_PRINTLN("ACK for requestBluetoothMacAddressAsyncCommand received");
 		break;
 	case LD2410Defs::requestFirmwareCommand:
-		firmware = byte2hex(receiveBuffer[7], false)
-			+ "." + byte2hex(receiveBuffer[6])
-			+ "." + byte2hex(receiveBuffer[11]) + byte2hex(receiveBuffer[10]) + byte2hex(receiveBuffer[9]) + byte2hex(receiveBuffer[8]);
+		snprintf(staticData.firmwareText, sizeof(staticData.firmwareText),
+			"%X.%02X.%02X%02X%02X%02X",
+			receiveBuffer[7],  // major (no leading zero)
+			receiveBuffer[6],  // minor (keep 2 digits)
+			receiveBuffer[11],
+			receiveBuffer[10],
+			receiveBuffer[9],
+			receiveBuffer[8]);
 		DEBUG_PRINT_MILLIS;
 		DEBUG_PRINTLN("ACK for requestFirmwareAsyncCommand received");
 		break;

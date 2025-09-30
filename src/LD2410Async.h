@@ -150,7 +150,7 @@ public:
 	/**
 	* @brief Latest detection results from the radar.
 	*
-	* Updated automatically whenever new data frames are received.
+	* @details Updated automatically whenever new data frames are received.
 	* Use registerDetectionDataReceivedCallback() to be notified
 	* whenever this struct changes.
 	* Use getDetectionData() or getDetectionDataRef() to access the current values, rather than accessing the struct directly.
@@ -162,7 +162,7 @@ public:
 	/**
 	* @brief Current configuration parameters of the radar.
 	*
-	* Filled when configuration query commands are issued
+	* @details Filled when configuration query commands are issued
 	* (e.g. requestAllConfigSettingsAsync() or requestGateParametersAsync() ect).
 	* Use registerConfigUpdateReceivedCallback() to be notified when data in this struct changes.
 	* Use getConfigData() or getConfigDataRef() to access the current values, rather than accessing the struct directly.
@@ -173,22 +173,14 @@ public:
 	LD2410Types::ConfigData configData;
 
 	/**
-	* @brief Protocol version reported by the radar.
-	*
-	* This value is set when entering config mode. It can be useful
-	* for compatibility checks between firmware and library.
-	*
+	* @brief Static data of the radar
+	* 
+	* @details Filled when config mode is being enabled (protocol version and buffer size)
+	* annd when issuing query commands for the static data (@ref requestAllStaticDataAsync, @ref requestFirmwareAsync, @ref requestBluetoothMacAddressAsync)
 	*/
-	unsigned long protocolVersion = 0;
+	LD2410Types::StaticData staticData;
 
-	/**
-	* @brief Buffer size reported by the radar protocol.
-	*
-	* Set when entering config mode. Typically not required by users
-	* unless debugging low-level protocol behavior.
-	*
-	*/
-	unsigned long bufferSize = 0;
+
 
 	/**
 	* @brief True if the sensor is currently in config mode.
@@ -212,30 +204,7 @@ public:
 	*/
 	bool engineeringModeEnabled = false;
 
-	/**
-	* @brief Firmware version string of the radar.
-	*
-	* Populated by requestFirmwareAsync(). Format is usually
-	* "major.minor.build".
-	*
-	*/
-	String firmware = "";
 
-	/**
-	* @brief MAC address of the radar’s Bluetooth module (if available).
-	*
-	* Populated by requestBluetoothMacAddressAsync().
-	*
-	*/
-	byte mac[6];
-	
-	/**
-	* @brief MAC address as a human-readable string (e.g. "AA:BB:CC:DD:EE:FF").
-	*
-	* Populated by requestBluetoothMacAddressAsync().
-	*
-	*/
-	String macString = "";
 
 
 	/**

@@ -477,5 +477,51 @@ namespace LD2410Types {
 		}
 	};
 
+	struct StaticData {
+		/**
+		* @brief Protocol version reported by the radar.
+		*
+		* This value is set when entering config mode. It can be useful
+		* for compatibility checks between firmware and library.
+		*
+		*/
+		uint16_t protocolVersion = 0;
+
+		/**
+		* @brief Buffer size reported by the radar protocol.
+		*
+		* Set when entering config mode. Typically not required by users
+		* unless debugging low-level protocol behavior.
+		*
+		*/
+		uint16_t bufferSize = 0;
+
+
+		/**
+		* @brief Firmware version string of the radar.
+		*
+		* Populated by @ref requestFirmwareAsync(). Format is usually
+		* "major.minor.build".
+		*
+		*/
+		char firmwareText[16] = { 0 };
+
+		/**
+		* @brief MAC address of the radar’s Bluetooth module (if available).
+		*
+		* Populated by @ref requestBluetoothMacAddressAsync().
+		*
+		*/
+		byte bluetoothMac[6];
+
+		/**
+		* @brief MAC address as a human-readable string (e.g. "AA:BB:CC:DD:EE:FF").
+		*
+		* Populated by @ref requestBluetoothMacAddressAsync().
+		*
+		*/
+		char bluetoothMacText[18] = { 0 };
+
+	};
 
 }

@@ -17,12 +17,12 @@ SORT_GROUP_NAMES = YES
 
 # Input
 INPUT                  = src examples dox
-FILE_PATTERNS          = *.h *.cpp *.ino *.dox
+FILE_PATTERNS          = *.h *.cpp *.ino *.dox *.md
 RECURSIVE              = YES
 
 # Source code browsing
 SOURCE_BROWSER         = YES
-INLINE_SOURCES         = YES
+INLINE_SOURCES         = FALSE
 STRIP_CODE_COMMENTS    = NO
 
 # HTML output

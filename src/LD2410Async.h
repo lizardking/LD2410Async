@@ -9,81 +9,14 @@
 
 
 
-
-
 /**
- * @brief Asynchronous driver for the LD2410 human presence radar sensor.
+ * @brief Asynchronous driver class for the LD2410 human presence radar sensor.
  *
- * @mainpage
- * @section intro_sec Introduction
- * The LD2410 is a mmWave radar sensor capable of detecting both moving and
- * stationary targets, reporting presence, distance, and per-gate signal strength.
- * This class implements a non-blocking, asynchronous interface for communicating
- * with the sensor over a UART stream (HardwareSerial, SoftwareSerial, etc.).
+ * @details This class provides a non-blocking interface for communicating with the LD2410 sensor,
+ * allowing for efficient data retrieval and configuration without halting the main program flow.
+ * It supports multiple instances and features automatic handling of communication timeouts and errors.
+ * It suipports all native commands of the LD2410 and has several additional high level commands for more consistent access to the sensor.
  *
- * ## Features
- * - Continuous background task that parses incoming frames and updates data.
- * - Access to latest detection results via getDetectionData() or getDetectionDataRef().
- * - Access to current configuration via getConfigData() or getConfigDataRef().
- * - Asynchronous commands for configuration (with callbacks).
- * - Support for engineering mode (per-gate signal values).
- * - Automatic inactivity handling (optional recovery and reboot).
- * - Utility methods for safe enum conversion and debugging output.
- *
- * ## Accessing data
- * You can either clone the structs (safe to modify) or access them by reference (efficient read-only):
- *
- * ### Example: Access detection data without cloning
- * @code
- *   const DetectionData& data = radar.getDetectionDataRef();  // no copy
- *   Serial.print("Target state: ");
- *   Serial.println(static_cast<int>(data.targetState));
- * @endcode
- *
- * ### Example: Clone config data, modify, and write back
- * @code
- *   ConfigData cfg = radar.getConfigData();  // clone
- *   cfg.noOneTimeout = 60;
- *   radar.configureAllConfigSettingsAsync(cfg, [](LD2410Async* sender,
- *                                    AsyncCommandResult result,
- *                                    byte) {
- *     if (result == AsyncCommandResult::SUCCESS) {
- *       Serial.println("Config updated successfully!");
- *     }
- *   });
- * @endcode
- *
- * ## Usage
- * Typical workflow:
- * 1. Construct with a reference to a Stream object connected to the sensor.
- * 2. Call begin() to start the background task.
- * 3. Register callbacks for detection data and/or config updates.
- * 4. Use async commands to adjust sensor configuration as needed.
- * 5. Call end() to stop background processing if no longer required.
- *
- * Example:
- * @code
- *   HardwareSerial radarSerial(2);
- *   LD2410Async radar(radarSerial);
- *
- *   void setup() {
- *     Serial.begin(115200);
- *     radar.begin();
- *
- *     // Register callback for detection updates
- *     radar.registerDetectionDataReceivedCallback([](LD2410Async* sender, bool presenceDetetced, byte userData) {
- *       sender->getDetectionDataRef().print();  // direct access, no copy
- *     });
- *   }
- *
- *   void loop() {
- *     // Other application logic
- *   }
- * @endcode
- */
-
-
-
 
 class LD2410Async {
 public:
@@ -176,7 +109,7 @@ public:
 	* @brief Static data of the radar
 	* 
 	* @details Filled when config mode is being enabled (protocol version and buffer size)
-	* annd when issuing query commands for the static data (@ref requestAllStaticDataAsync, @ref requestFirmwareAsync, @ref requestBluetoothMacAddressAsync)
+	* annd when issuing query commands for the static data (requestAllStaticDataAsync(), requestFirmwareAsync(), requestBluetoothMacAddressAsync() )
 	*/
 	LD2410Types::StaticData staticData;
 

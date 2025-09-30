@@ -500,7 +500,7 @@ namespace LD2410Types {
 		/**
 		* @brief Firmware version string of the radar.
 		*
-		* Populated by @ref requestFirmwareAsync(). Format is usually
+		* Populated by requestFirmwareAsync(). Format is usually
 		* "major.minor.build".
 		*
 		*/
@@ -509,7 +509,7 @@ namespace LD2410Types {
 		/**
 		* @brief MAC address of the radar’s Bluetooth module (if available).
 		*
-		* Populated by @ref requestBluetoothMacAddressAsync().
+		* Populated by requestBluetoothMacAddressAsync().
 		*
 		*/
 		byte bluetoothMac[6];
@@ -517,7 +517,7 @@ namespace LD2410Types {
 		/**
 		* @brief MAC address as a human-readable string (e.g. "AA:BB:CC:DD:EE:FF").
 		*
-		* Populated by @ref requestBluetoothMacAddressAsync().
+		* Populated by requestBluetoothMacAddressAsync().
 		*
 		*/
 		char bluetoothMacText[18] = { 0 };

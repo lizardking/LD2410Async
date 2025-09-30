@@ -1,6 +1,7 @@
 /**
- * Example sketch for LD2410Async library
+ * @brief Example: Change configuration of the LD2410
  *
+ * @details
  * This sketch shows how to:
  *   1. Initialize the radar on Serial1.
  *   2. Query all current configuration values from the sensor.
@@ -8,6 +9,7 @@
  *   4. Modify some settings (timeout, sensitivities).
  *   5. Write the modified config back to the sensor.
  *
+ * @warning
  * Important:
  * Make sure to adjust RADAR_RX_PIN and ADAR_TX_PIN to match you actual wiring.
  */
@@ -26,13 +28,22 @@
 
 // ======================================================================
 
-// Create a HardwareSerial instance (ESP32 has multiple UARTs)
+/**
+* Create a HardwareSerial instance (ESP32 has multiple UARTs) bound to UART1
+*/
 HardwareSerial RadarSerial(1);
 
-// Create LD2410Async object bound to Serial1
+/**
+* @brief Creates LD2410Async object bound to the serial port defined in RadarSerial
+*/
 LD2410Async radar(RadarSerial);
 
-// Callback after attempting to apply a modified config
+/**
+* @brief Callback after the new config has been written to the sensor
+*
+* @details
+* This method just checks and prints the result
+*/
 void onConfigApplied(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData) {
 	if (result == LD2410Async::AsyncCommandResult::SUCCESS) {
 		Serial.println("Config updated successfully!");
@@ -42,7 +53,19 @@ void onConfigApplied(LD2410Async* sender, LD2410Async::AsyncCommandResult result
 	}
 }
 
-// Callback after requesting config data
+/**
+* @brief Callback after receiving the config data
+*
+* @details
+* Checks the result of the async requestAllConfigSettingsAsync() command, gets a clone of the config data using getConfigData(), modifies it and writes back
+* using the async configureAllConfigSettingsAsync() command.
+*
+* @note
+* Always check the result of the async command that has triggered the callback. Otherweise async commands can fail, timeout or get canceled without you relizing it.
+* In callback methods is is generally advised to access members of the LD2410Async instance via the sender pointer.
+* This ensures that you are allways working with the correct instance, which is important if you have multiple LD2410Async instances.
+* Also keep in mind that callbacks should be as short and efficient as possible to avoid blocking the background task of the library.
+*/
 void onConfigReceived(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData) {
 	if (result != LD2410Async::AsyncCommandResult::SUCCESS) {
 		Serial.println("Failed to request config data.");
@@ -74,8 +97,18 @@ void onConfigReceived(LD2410Async* sender, LD2410Async::AsyncCommandResult resul
 	//radar.configureAllConfigSettingsAsync(cfg, false, onConfigApplied);
 	//However, working with the reference in sender is a good practice since it will always point to the LD2410Async instance that triggered the callback (important if you have several instances resp. more than one LD2410 connected to your board)..
 
-}
+};
 
+/**
+* @brief Arduino setup function which initializes the radar and starts the config change process
+*
+* @details
+* begin() starts the background task of the LD2410Async library which automatically handles
+* incoming data and triggers callbacks. The onDetectionDataReceived callback is registered to
+* receive detection data.
+* requestAllConfigSettingsAsync() will fetch all config data from the sensor and triggers the
+* onConfigReceived callback when done.
+*/
 void setup() {
 	// Initialize USB serial for debug output
 	Serial.begin(115200);
@@ -105,6 +138,13 @@ void setup() {
 
 }
 
+/**
+* @brief Arduino loop function which does nothing
+*
+* @details
+* The LD2410Async library runs a FreeRTOS background task that automatically handles all jobs that are related to the radar sensor.
+* Therefore the main loop doesnt have to da any LD2410 related work and is free for anything else you might want to do.
+*/
 void loop() {
 	// Nothing to do here.
 	// The library handles communication and invokes callbacks automatically.

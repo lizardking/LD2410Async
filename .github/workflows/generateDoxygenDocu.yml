@@ -23,9 +23,10 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
+          rm -rf docu
           mkdir -p docu
-          cp -r docs/html/* docu/ || true
-          git add docu
+          cp -r docs/html/* docu/
+          git add -A docu
           if ! git diff --cached --quiet; then
             git commit -m "Update documentation"
             git push

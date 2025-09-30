@@ -1,22 +1,24 @@
 /**
- * @brief Example: Webservice for Presence Detection with LD2410Async and ESP Async WebServer
- *
- * @details
- * This example demonstrates how to use the LD2410Async library with an ESP32 to provide a web-based
- * presence detection service. The ESP32 connects to a WiFi network, starts a web server, and serves
- * a simple HTML page. The page connects via WebSocket to receive live presence detection data
- * (presenceDetected, detectedDistance) from the LD2410 radar sensor.
- *
- *
- * Dependencies:
- *   - ESPAsyncWebServer: https://github.com/me-no-dev/ESPAsyncWebServer
- *   - AsyncTCP: https://github.com/me-no-dev/AsyncTCP
- *   - LD2410Async library
- *
- * @warning
- * Make sure to install the required libraries and adjust the configuration section below
- * to match your hardware and network setup.
- */
+* @page example_simplePresenceDetectionWebservice Webservice for Presence Detection with LD2410Async and ESP Async WebServer
+*
+* @brief Example: Webservice for Presence Detection with LD2410Async and ESP Async WebServer
+*
+* @details
+* This example demonstrates how to use the LD2410Async library with an ESP32 to provide a web-based
+* presence detection service. The ESP32 connects to a WiFi network, starts a web server, and serves
+* a simple HTML page. The page connects via WebSocket to receive live presence detection data
+* (presenceDetected, detectedDistance) from the LD2410 radar sensor.
+*
+*
+* Dependencies:
+*   - ESPAsyncWebServer: https://github.com/me-no-dev/ESPAsyncWebServer
+*   - AsyncTCP: https://github.com/me-no-dev/AsyncTCP
+*   - LD2410Async library
+*
+* @warning
+* Make sure to install the required libraries and adjust the configuration section below
+* to match your hardware and network setup.
+*/
 
 #include <Arduino.h>
 #include <WiFi.h>

@@ -1,5 +1,4 @@
-@mainpage LD2410Async library for ESP32
-
+@mainpage
 # LD2410Async library for ESP32
 
 ## Introduction

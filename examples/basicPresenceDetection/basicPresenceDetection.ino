@@ -1,4 +1,6 @@
 /**
+* @page example_basicPresenceDetection Basic Presence Detection with LD2410Async
+*
  * @brief Example: Basic Presence Detection with LD2410Async
  *
  * @details

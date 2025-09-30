@@ -1,4 +1,6 @@
 /**
+* @page example_receiveData Receive Data Example
+* 
 * @brief: Example: Receive detection data from the LD2410
 *
 * @details

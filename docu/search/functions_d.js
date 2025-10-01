@@ -1,4 +1,32 @@
 var searchData=
 [
-  ['ws_0',['ws',['../simplePresenceDetectionWebservice_8ino.html#a12b97dd15b0118cb30b85286f7c4b3c9',1,'simplePresenceDetectionWebservice.ino']]]
+  ['radarserial_0',['RadarSerial',['../basicPresenceDetection_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41',1,'RadarSerial(1):&#160;basicPresenceDetection.ino'],['../changeConfig_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41',1,'RadarSerial(1):&#160;changeConfig.ino'],['../changeDistanceResolution_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41',1,'RadarSerial(1):&#160;changeDistanceResolution.ino'],['../receiveData_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41',1,'RadarSerial(1):&#160;receiveData.ino'],['../simplePresenceDetectionWebservice_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41',1,'RadarSerial(1):&#160;simplePresenceDetectionWebservice.ino'],['../unitTest_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41',1,'RadarSerial(1):&#160;unitTest.ino']]],
+  ['rebootasync_1',['rebootAsync',['../classLD2410Async.html#aeb856d32612fba953b07280cf5d9a235',1,'LD2410Async::rebootAsync(AsyncCommandCallback callback, byte userData=0)'],['../classLD2410Async.html#addc50802cb6dc98759ae090e9db4a74d',1,'LD2410Async::rebootAsync(bool dontWaitForNormalOperationAfterReboot, AsyncCommandCallback callback, byte userData=0)']]],
+  ['reboottest_2',['rebootTest',['../unitTest_8ino.html#a28dba50beca3aeecc237fbb0613f8977',1,'unitTest.ino']]],
+  ['reboottestcallback_3',['rebootTestCallback',['../unitTest_8ino.html#a870e223bc01b0db366246214a756ae47',1,'unitTest.ino']]],
+  ['registerconfigchangedcallback_4',['registerConfigChangedCallback',['../classLD2410Async.html#a714e62534394a52243f8f50fd58726f9',1,'LD2410Async']]],
+  ['registerconfigupdatereceivedcallback_5',['registerConfigUpdateReceivedCallback',['../classLD2410Async.html#ad320d7e80fd719f0bbc41ebb96c0f285',1,'LD2410Async']]],
+  ['registerdetectiondatareceivedcallback_6',['registerDetectionDataReceivedCallback',['../classLD2410Async.html#af4a5bb569a656f369f739060b9a3f282',1,'LD2410Async']]],
+  ['requestallconfigsettingsasync_7',['requestAllConfigSettingsAsync',['../classLD2410Async.html#ab578ee25526c8bb808fe7200fae95a38',1,'LD2410Async']]],
+  ['requestallconfigsettingsasynctest_8',['requestAllConfigSettingsAsyncTest',['../unitTest_8ino.html#a48d1c08b461041bb33c8e158e5b67a4c',1,'unitTest.ino']]],
+  ['requestallconfigsettingsasynctestcallback_9',['requestAllConfigSettingsAsyncTestCallback',['../unitTest_8ino.html#a58169e89bb7f26a1c139429e47c2fb27',1,'unitTest.ino']]],
+  ['requestallstaticdataasync_10',['requestAllStaticDataAsync',['../classLD2410Async.html#a86968c2e9be09d9acb6b62ad7496a2a6',1,'LD2410Async']]],
+  ['requestautoconfigstatusasync_11',['requestAutoConfigStatusAsync',['../classLD2410Async.html#ad219580b6e47f54a8aac0847e2054bf6',1,'LD2410Async']]],
+  ['requestauxcontrolsettingsasync_12',['requestAuxControlSettingsAsync',['../classLD2410Async.html#afaa6e2c1842ebd96c6e04fe542af66cb',1,'LD2410Async']]],
+  ['requestauxcontrolsettingsasynctest_13',['requestAuxControlSettingsAsyncTest',['../unitTest_8ino.html#acae070b0778ccef2401b5bf92610c617',1,'unitTest.ino']]],
+  ['requestauxcontrolsettingsasynctestcallback_14',['requestAuxControlSettingsAsyncTestCallback',['../unitTest_8ino.html#af175329976a749db59db28d2083f33a5',1,'unitTest.ino']]],
+  ['requestbluetoothmacaddressasync_15',['requestBluetoothMacAddressAsync',['../classLD2410Async.html#a3923c4b746d90fbd314eae7094bb90be',1,'LD2410Async']]],
+  ['requestbluetoothmacaddressasynctest_16',['requestBluetoothMacAddressAsyncTest',['../unitTest_8ino.html#afa5628d74b2f41affc5d08f67b1f2b9e',1,'unitTest.ino']]],
+  ['requestbluetoothmacaddressasynctestcallback_17',['requestBluetoothMacAddressAsyncTestCallback',['../unitTest_8ino.html#aac1d2833ae1ee5d07b4db17f29cb801b',1,'unitTest.ino']]],
+  ['requestdistanceresolutioncmasync_18',['requestDistanceResolutionCmAsync',['../classLD2410Async.html#a69a03d1800087383e5a256c43179b4b5',1,'LD2410Async']]],
+  ['requestdistanceresolutioncmasynctest_19',['requestDistanceResolutionCmAsyncTest',['../unitTest_8ino.html#a0064c82d0e2d6520f9a16442720bb4fc',1,'unitTest.ino']]],
+  ['requestdistanceresolutioncmasynctestcallback_20',['requestDistanceResolutionCmAsyncTestCallback',['../unitTest_8ino.html#a6cf9928cb82d3339e01fd76597868a91',1,'unitTest.ino']]],
+  ['requestfirmwareasync_21',['requestFirmwareAsync',['../classLD2410Async.html#a5eeae3b4525a303e0e3bc208c4bcff21',1,'LD2410Async']]],
+  ['requestfirmwareasynctest_22',['requestFirmwareAsyncTest',['../unitTest_8ino.html#a08d0d76930cfff52163fc002c933395d',1,'unitTest.ino']]],
+  ['requestfirmwareasynctestcallback_23',['requestFirmwareAsyncTestCallback',['../unitTest_8ino.html#aa8d04d69c51e714209be6e5386146b4b',1,'unitTest.ino']]],
+  ['requestgateparametersasync_24',['requestGateParametersAsync',['../classLD2410Async.html#ad7bfb9c212c452898053f167555a0bb6',1,'LD2410Async']]],
+  ['requestgateparametersasynctest_25',['requestGateParametersAsyncTest',['../unitTest_8ino.html#a1bc5bd46a386120530d0173e315d88e0',1,'unitTest.ino']]],
+  ['requestgateparametersasynctestcallback_26',['requestGateParametersAsyncTestCallback',['../unitTest_8ino.html#a58a05d28ebcd630d53583da0921f9c8b',1,'unitTest.ino']]],
+  ['resetconfigdata_27',['resetConfigData',['../classLD2410Async.html#a1ef175e017d90223863177a57d07052a',1,'LD2410Async']]],
+  ['restorefactorysettingsasync_28',['restoreFactorySettingsAsync',['../classLD2410Async.html#aadb841697a992c1bf203944211bd8659',1,'LD2410Async']]]
 ];

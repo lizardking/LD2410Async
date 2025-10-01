@@ -35,7 +35,6 @@ var NAVTREE =
         [ "Example: Clone config data, modify, and write back", "index.html#autotoc_md34", null ]
       ] ]
     ] ],
-    [ "Topics", "topics.html", "topics" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -51,7 +50,9 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "Variables", "functions_vars.html", null ],
+        [ "Typedefs", "functions_type.html", null ],
+        [ "Enumerations", "functions_enum.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -61,18 +62,17 @@ var NAVTREE =
         [ "Functions", "globals_func.html", null ],
         [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
-        [ "Enumerations", "globals_enum.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
-    ] ],
-    [ "Examples", "examples.html", "examples" ]
+    ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"Basic-example.html",
-"namespaceLD2410CommandBuilder.html#a8b54a13a534e713b1fc2b29818bbe255"
+"LD2410Async_8cpp.html",
+"namespaceLD2410CommandBuilder.html#a2a87725992c2b7bd53fc2b24f5ac4a0f",
+"unitTest_8ino.html#a6e4be82e3efb9253d9d81ab7b665cacd"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

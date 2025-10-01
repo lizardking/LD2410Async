@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['staticdata_0',['StaticData',['../structLD2410Types_1_1StaticData.html',1,'LD2410Types']]]
+  ['ld2410async_0',['LD2410Async',['../classLD2410Async.html',1,'']]]
 ];

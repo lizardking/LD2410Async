@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+#define LD2410ASYNC_DEBUG_LEVEL 2
 
 #include "Arduino.h"
 #include "Ticker.h"
@@ -17,7 +18,7 @@
  * It supports multiple instances and features automatic handling of communication timeouts and errors.
  * It suipports all native commands of the LD2410 and has several additional high level commands for more consistent access to the sensor.
  *
-
+ */
 class LD2410Async {
 public:
 
@@ -107,7 +108,7 @@ public:
 
 	/**
 	* @brief Static data of the radar
-	* 
+	*
 	* @details Filled when config mode is being enabled (protocol version and buffer size)
 	* annd when issuing query commands for the static data (requestAllStaticDataAsync(), requestFirmwareAsync(), requestBluetoothMacAddressAsync() )
 	*/
@@ -169,7 +170,7 @@ public:
 	* @endcode
 	*
 	* @param serial Reference to a Stream object used to exchange data with the sensor.
-	* 
+	*
 	*/
 	LD2410Async(Stream& serial);
 
@@ -184,7 +185,7 @@ public:
 	* sensor cannot deliver detection results asynchronously.
 	*
 	* @returns true if the task was successfully started, false if already running.
-	* 
+	*
 	*/
 	bool begin();
 
@@ -195,7 +196,7 @@ public:
 	* This is useful to temporarily suspend radar processing without rebooting.
 	*
 	* @returns true if the task was stopped, false if it was not active.
-	* 
+	*
 	*/
 	bool end();
 
@@ -211,18 +212,18 @@ public:
 	* @brief Enables or disables automatic inactivity handling of the sensor.
 	*
 	* When inactivity handling is enabled, the library continuously monitors the time
-	* since the last activity (received data or command ACK). If no activity is detected
-	* for a longer period (defined by activityTimeoutMs), the library will attempt to
-	* recover the sensor automatically:
-	*   1. It first tries to exit config mode (even if configModeEnabled is false).
-	*   2. If no activity is restored within 5 seconds after leaving config mode,
-	*      the library reboots the sensor.
+	* since the last activity of the sensore (received data or ack). If no activity is detected
+	* for a longer period, the library will attempt to return the sensor to normal detection operation.
+	* 
+	* It will attempt the following steps (each seaparted by the timeout period for async commands):
+	*   1. Cancel pending async commands, just in case the users code is still waiting for a callback.
+	*   2. If the cancel did not help, it will try to disable config mode, even if the lib thinks config mode is diabled.
+	*   3. As a last step, it will try to reboot the sensor.
 	*
-	* This helps recover the sensor from rare cases where it gets "stuck"
-	* in config mode or stops sending data.
+	* If all those recovery steps dont work, the lib will try again to recover the sensor after the inactivity timeout period has elapsed again.
 	*
 	* @param enable Pass true to enable inactivity handling, false to disable it.
-	* 
+	*
 	*/
 	void setInactivityHandling(bool enable);
 
@@ -231,6 +232,8 @@ public:
 	*
 	* Equivalent to calling setInactivityHandling(true).
 	* 
+	* Check setInactivityHandling() for details.
+	*
 	*/
 	void enableInactivityHandling() { setInactivityHandling(true); };
 
@@ -238,7 +241,8 @@ public:
 	* @brief Convenience method: disables inactivity handling.
 	*
 	* Equivalent to calling setInactivityHandling(false).
-	* 
+	*
+	* Check setInactivityHandling() for details.
 	*/
 	void disableInactivityHandling() { setInactivityHandling(false); };
 
@@ -246,7 +250,7 @@ public:
 	* @brief Returns whether inactivity handling is currently enabled.
 	*
 	* @returns true if inactivity handling is enabled, false otherwise.
-	* 
+	*
 	*/
 	bool isInactivityHandlingEnabled() const { return inactivityHandlingEnabled; };
 
@@ -258,17 +262,21 @@ public:
 	* in setInactivityHandling().
 	*
 	* Default is 60000 ms (1 minute).
+	* 
+	* @note
+	* Make sure to set a value that is larger than the timeout for async commands (see getAsyncCommandTimeoutMs() and setAsyncCommandTimeoutMs()). 
+	* Otherwise inactivity handling might kick in while commands are still pending (usually waiting for ack), which will result in the cancelation of the pending async command.
 	*
 	* @param timeoutMs Timeout in milliseconds (minimum 10000 ms recommended). 0 will diable inactivity checking and handling.
-	* 
+	*
 	*/
-	void setInactivityTimeoutMs(unsigned long timeoutMs) { inactivityHandlingTimeoutMs = timeoutMs; };
+	void setInactivityTimeoutMs(unsigned long timeoutMs=60000) { inactivityHandlingTimeoutMs = timeoutMs; };
 
 	/**
-	* @brief Returns the current inactivity timeout period.
+	* @brief Returns the current inactivity handling timeout period.
 	*
 	* @returns Timeout in milliseconds.
-	* 
+	*
 	*/
 	unsigned long getInactivityTimeoutMs() const { return inactivityHandlingTimeoutMs; };
 
@@ -288,7 +296,7 @@ public:
 	* @param callback Function pointer with signature
 	*        void methodName(LD2410Async* sender, bool presenceDetected, byte userData).
 	* @param userData Optional value that will be passed to the callback.
-	* 
+	*
 	*/
 	void registerDetectionDataReceivedCallback(DetectionDataCallback callback, byte userData = 0);
 
@@ -301,7 +309,7 @@ public:
 	* @param callback Function pointer with signature
 	*        void methodName(LD2410Async* sender, byte userData).
 	* @param userData Optional value that will be passed to the callback.
-	* 
+	*
 	*/
 	void registerConfigChangedCallback(GenericCallback callback, byte userData = 0);
 
@@ -314,7 +322,7 @@ public:
 	* @param callback Function pointer with signature
 	*        void methodName(LD2410Async* sender, byte userData).
 	* @param userData Optional value that will be passed to the callback.
-	* 
+	*
 	*/
 	void registerConfigUpdateReceivedCallback(GenericCallback callback, byte userData = 0);
 
@@ -355,7 +363,7 @@ public:
 	* - Expect this to fetch new data from the sensor (it only returns what was already received).
 	*
 	* @returns A copy of the current DetectionData.
-	* 
+	*
 	*/
 	LD2410Types::DetectionData getDetectionData() const;
 
@@ -389,7 +397,7 @@ public:
 	* - Store the reference long-term (it may be updated at any time).
 	*
 	* @returns Const reference to the current DetectionData.
-	* 
+	*
 	*/
 	const LD2410Types::DetectionData& getDetectionDataRef() const { return detectionData; }
 
@@ -434,7 +442,7 @@ public:
 	* - Assume this always reflects the live sensor config (it’s only as fresh as the last received config data).
 	*
 	* @returns A copy of the current ConfigData.
-	* 
+	*
 	*/
 	LD2410Types::ConfigData getConfigData() const;
 
@@ -468,10 +476,15 @@ public:
 	* - Keep the reference and assume it will remain valid forever.
 	*
 	* @returns Const reference to the current ConfigData.
-	* 
+	*
 	*/
 	const LD2410Types::ConfigData& getConfigDataRef() const { return configData; }
 
+
+	/**
+	* Resets the config data to the initial values
+	*/
+	void resetConfigData();
 
 	/**********************************************************************************
 	* Special async commands
@@ -481,29 +494,32 @@ public:
 	*
 	* @returns true if there is an active command awaiting an ACK,
 	*          false if the library is idle.
-	* 
+	*
 	*/
 	bool asyncIsBusy();
 
 	/**
 	* @brief Cancels any pending asynchronous command or sequence.
-	*
-	* If canceled, the callback of the running command is invoked
-	* with result type CANCELED. After canceling, the sensor may
-	* remain in config mode — consider disabling config mode or
-	* rebooting to return to detection operation.
 	* 
+	* @note
+	* Since this cammoand can lead to incomplete operations (in particular with high level commands),
+	* it is not advised to use this command unless really, really necessary. Better wait for the callback
+	* of the current operation.
+	* If canceled, the callback of the running command or command sequence is invoked
+	* with result type CANCELED. After canceling, the sensor may remain in config mode,
+	* consider disabling config mode or rebooting to resume normal detection operation.	*
 	*/
 	void asyncCancel();
 
 	/**
 	* @brief Sets the timeout for async command callbacks.
 	*
-	* #note Make sure the timeout is long enough to allow for the execution of long running commands. In partuclar enabling config mode can take up to 6 secs.
-	*
+	* @note 
+	* Make sure the timeout is long enough to allow for the execution of long running commands. 
+	* In partuclar enabling config mode can take up to 6 secs, therefore using a value below 6000 is not recommended..
 	*
 	* @param timeoutMs Timeout in milliseconds (default 6000 ms).
-	* 
+	*
 	*/
 	void setAsyncCommandTimeoutMs(unsigned long timeoutMs) { asyncCommandTimeoutMs = timeoutMs; }
 
@@ -511,7 +527,7 @@ public:
 	* @brief Returns the current async command timeout.
 	*
 	* @return Timeout in milliseconds.
-	* 
+	*
 	*/
 	unsigned long getAsyncCommandTimeoutMs() const { return asyncCommandTimeoutMs; }
 
@@ -526,7 +542,7 @@ public:
 	/**
 	* @brief Enables config mode on the radar.
 	*
-	* Config mode must be enabled before issuing most configuration commands.
+	* Config mode must be enabled before sending any commands (apart from this commend) to the sensor.
 	* This command itself is asynchronous — the callback fires once the
 	* sensor acknowledges the mode switch.
 	*
@@ -537,15 +553,37 @@ public:
 	*        void(LD2410Async* sender, AsyncCommandResult result, byte userData).
 	* @param userData Optional value that will be passed to the callback.
 	*
-	* @returns true if the command was sent, false if blocked.
-	* 
+	* @returns true if the command was accepted, false if blocked (typically because another async command is pending).
+	*
 	*/
-	bool enableConfigModeAsync(AsyncCommandCallback callback, byte userData = 0);
+	bool enableConfigModeAsync(AsyncCommandCallback callback, byte userData = 0) {
+		return enableConfigModeAsync(false, callback, userData);
+	}
+
+	/**
+	* @brief Enables config mode on the radar.
+	*
+	* Config mode must be enabled before sending any commands (apart from this commend) to the sensor.
+	* This command itself is asynchronous — the callback fires once the
+	* sensor acknowledges the mode switch.
+	*
+	* @note If asyncIsBusy() is true, this command will not be sent.
+	* @note Normal detection data is suspended while config mode is active.
+	*
+	* @param callback Callback with signature
+	*        void(LD2410Async* sender, AsyncCommandResult result, byte userData).
+	* @param userData Optional value that will be passed to the callback.
+	* @param force Foces the command to send the config mode enable command, even if the current status of the lib indicates that the config mode is already active. The callback of the method will be called anyway, either after the sent command has sent a ack or after a minimal delay (if the command is not sent).
+	*
+	* @returns true if the command was accapted, false if blocked (typically because another async command is pending).
+	*
+	*/
+	bool enableConfigModeAsync(bool force, AsyncCommandCallback callback, byte userData = 0);
 
 	/**
 	* @brief Disables config mode on the radar.
 	*
-	* This should be called after finishing configuration, to return
+	* This must be called after finishing sending commands to the sensor, to return
 	* the sensor to normal detection operation.
 	*
 	* @note If an async command is already pending (asyncIsBusy() == true),
@@ -555,10 +593,32 @@ public:
 	*        void(LD2410Async* sender, AsyncCommandResult result, byte userData).
 	* @param userData Optional value passed to the callback.
 	*
-	* @returns true if the command was sent, false otherwise.
+	* @returns true if the command was accepted, false otherwise (typically because another async command is pending).
 	*
 	*/
-	bool disableConfigModeAsync(AsyncCommandCallback callback, byte userData = 0);
+	bool disableConfigModeAsync(AsyncCommandCallback callback, byte userData = 0) {
+		return disableConfigModeAsync(false, callback, userData);
+	}
+
+	/**
+	* @brief Disables config mode on the radar.
+	*
+	* This should be called after finishing  sending commands to the sensor, to return
+	* the sensor to normal detection operation.
+	*
+	* @note If an async command is already pending (asyncIsBusy() == true), this command will not be sent, but will still trigger the callback.
+	* @note If config mode is already disabled and sending the command is forced using the force param, thwe command will timeout, since the sensor will not send an ack on the command.
+	*
+	* @param callback Callback with signature
+	*        void(LD2410Async* sender, AsyncCommandResult result, byte userData).
+	* @param userData Optional value passed to the callback.
+	* @param force Forces sending the commend to disable the config mode, even if config mode is according to the local data of the lib not enabled. If config mode is not enabled, this command will time out when force is true. The callback of the method will be called anyway, either after the sent command has sent a ack or after a minimal delay (if the command is not sent).
+	*
+	* @returns true if the command was accepted, false otherwise (typically because another async command is pending).
+	*
+	*/
+	bool disableConfigModeAsync(bool force, AsyncCommandCallback callback, byte userData = 0);
+
 
 	/**
 	* @brief Detects if config mode is enabled
@@ -567,7 +627,7 @@ public:
 	*
 	*/
 	bool isConfigModeEnabled() const {
-	return configModeEnabled;
+		return configModeEnabled;
 	};
 
 
@@ -610,10 +670,10 @@ public:
 	* @brief Detects if engineering mode is enabled
 	*
 	* @returns true if engineering mode is anabled, false if engineering mode is disabled
-	* 
+	*
 	*/
 	bool isEngineeringModeEnabled() const {
-	return engineeringModeEnabled;
+		return engineeringModeEnabled;
 	};
 
 	/*---------------------------------------------------------------------------------
@@ -699,7 +759,7 @@ public:
 	* @param userData Optional value passed to the callback.
 	*
 	* @returns true if the command was sent, false otherwise.
-	* 
+	*
 	*
 	*/
 	bool configureDistanceGateSensitivityAsync(byte gate, byte movingThreshold, byte stationaryThreshold, AsyncCommandCallback callback, byte userData = 0);
@@ -779,18 +839,39 @@ public:
 	/**
 	* @brief Reboots the sensor.
 	*
-	* After reboot, the sensor stops responding for a few seconds.
-	* Config and engineering mode are reset.
+	* After reboot, the sensor stops responding for a few seconds. 
+	* The callback if this method will be triggered as soon as normal operation of the sensor has been detected. 
+	* Config and engineering mode are reset once the sensor is back to normal operation.
 	*
-	* @note The reboot of the sensor takes place after the ACK has been sent.
 	*
 	* @param callback Callback fired when ACK is received or on failure.
 	* @param userData Optional value passed to the callback.
 	*
 	* @returns true if the command was sent, false otherwise.
 	*
-		*/
-	bool rebootAsync(AsyncCommandCallback callback, byte userData = 0);
+	*/
+	bool rebootAsync(AsyncCommandCallback callback, byte userData = 0) {
+		return rebootAsync(false, callback, userData);
+	}
+
+	/**
+	* @brief Reboots the sensor.
+	*
+	* After reboot, the sensor stops responding for a few seconds. 
+	* Depending on the value of the dontWaitForNormalOperationAfterReboot param, the callback will be triggered once the the sensor has sent ack on the reboot command (on false) or when normal operation of the sensor resumes.
+	* Config and engineering mode are reset once normal operation of the sensor resumes. 
+	*
+	* @note If dontWaitForNormalOperationAfterReboot is true, the reboot of the sensor takes will only place after the ACK has been sent. Make sure to wait a short period, before sending command, to ensure the reboot is complete and the sensor is responsive.
+	*
+	* @param dontWaitForNormalOperationAfterReboot Controlse whether the callback will be triggered once the the sensor has sent ack on the reboot command (on false) or when normal operation of the sensor resumes (on true).
+	* @param callback Callback fired when ACK is received or on failure.
+	* @param userData Optional value passed to the callback.
+	*
+	* @returns true if the command was sent, false otherwise.
+	*
+	*/
+	bool rebootAsync(bool dontWaitForNormalOperationAfterReboot, AsyncCommandCallback callback, byte userData = 0);
+
 
 	/**
 	* @brief Enables bluetooth
@@ -936,7 +1017,7 @@ public:
 	* @returns true if the command was sent, false otherwise.
 	*
 	*/
-	bool requestDistanceResolutioncmAsync(AsyncCommandCallback callback, byte userData = 0);
+	bool requestDistanceResolutionCmAsync(AsyncCommandCallback callback, byte userData = 0);
 
 	/**
 	* @brief Configures the auxiliary control parameters (light and output pin).
@@ -1176,7 +1257,7 @@ public:
 	* @param userData Optional value passed to the callback.
 	*
 	* @returns true if the command was sent, false otherwise.
-	* 
+	*
 	*/
 	bool requestAllStaticDataAsync(AsyncCommandCallback callback, byte userData = 0);
 
@@ -1232,13 +1313,13 @@ public:
 	* @param userData Optional value passed to the callback.
 	*
 	* @returns true if the command sequence has been started, false otherwise.
-	* 
+	*
 	*/
 	bool configureAllConfigSettingsAsync(const LD2410Types::ConfigData& configToWrite, bool writeAllConfigData, AsyncCommandCallback callback, byte userData = 0);
 
 
 
-	private:
+private:
 	// ============================================================================
 	// Low-level serial interface
 	// ============================================================================
@@ -1253,20 +1334,20 @@ public:
 
 	/// States used when parsing incoming frames from the sensor
 	enum ReadFrameState {
-	WAITING_FOR_HEADER,   ///< Waiting for frame header sequence
-	ACK_HEADER,           ///< Parsing header of an ACK frame
-	DATA_HEADER,          ///< Parsing header of a DATA frame
-	READ_ACK_SIZE,        ///< Reading payload size field of an ACK frame
-	READ_DATA_SIZE,       ///< Reading payload size field of a DATA frame
-	READ_ACK_PAYLOAD,     ///< Reading payload content of an ACK frame
-	READ_DATA_PAYLOAD     ///< Reading payload content of a DATA frame
+		WAITING_FOR_HEADER,   ///< Waiting for frame header sequence
+		ACK_HEADER,           ///< Parsing header of an ACK frame
+		DATA_HEADER,          ///< Parsing header of a DATA frame
+		READ_ACK_SIZE,        ///< Reading payload size field of an ACK frame
+		READ_DATA_SIZE,       ///< Reading payload size field of a DATA frame
+		READ_ACK_PAYLOAD,     ///< Reading payload content of an ACK frame
+		READ_DATA_PAYLOAD     ///< Reading payload content of a DATA frame
 	};
 
 	/// Result type when trying to read a frame
 	enum FrameReadResponse {
-	FAIL = 0, ///< Frame was invalid or incomplete
-	ACK,      ///< A valid ACK frame was received
-	DATA      ///< A valid DATA frame was received
+		FAIL = 0, ///< Frame was invalid or incomplete
+		ACK,      ///< A valid ACK frame was received
+		DATA      ///< A valid DATA frame was received
 	};
 
 	int readFrameHeaderIndex = 0; ///< Current index while matching the frame header
@@ -1317,7 +1398,7 @@ public:
 	byte executeCommandSequenceUserData = 0;
 
 	/// True if an async sequence is currently pending.
-	bool executeCommandSequenceActive = false;
+	bool executeCommandSequencePending = false;
 
 	/// Ticker used for small delay before firing the commandsequence callback when the command sequence is empty.
 	/// This ensures that the callback is always called asynchronously and never directly from the calling context.
@@ -1358,7 +1439,11 @@ public:
 
 	bool inactivityHandlingEnabled = true;     ///< Whether automatic inactivity handling is active
 	unsigned long inactivityHandlingTimeoutMs = 60000; ///< Timeout until recovery action is triggered (ms)
-	unsigned long lastActivityMs = 0;          ///< Timestamp of last received activity
+	unsigned long lastSensorActivityTimestamp = 0;          ///< Timestamp of last sensor activity resp. when last data from the sensor was received
+	
+	byte inactivityHandlingStep = 0;
+	unsigned long lastInactivityHandlingTimestamp = 0;
+
 	bool handleInactivityExitConfigModeDone = false; ///< Flag to avoid repeating config-mode exit
 
 	/// Main inactivity handler: exit config mode or reboot if stuck
@@ -1376,10 +1461,16 @@ public:
 	// ============================================================================
 
 	/// Step 1: Enter config mode before reboot
-	static void rebootEnableConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData = 0);
+	static void rebootAsyncEnableConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData = 0);
 
 	/// Step 2: Issue reboot command
-	static void rebootRebootCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData = 0);
+	static void rebootAsyncRebootCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData = 0);
+
+	void rebootAsyncFinialize(LD2410Async::AsyncCommandResult result);
+
+	unsigned long rebootAsyncWaitTimeoutMs = 5000;
+	bool rebootAsyncDontWaitForNormalOperationAfterReboot = false;
+	bool rebootAsyncPending = false;
 
 
 	// ============================================================================
@@ -1437,21 +1528,22 @@ public:
 	bool sendCommandAsync(const byte* command, AsyncCommandCallback callback, byte userData = 0);
 
 	/// Invoke async command callback with result
-	void executeAsyncCommandCallback(byte commandCode, LD2410Async::AsyncCommandResult result);
+	void sendCommandAsyncExecuteCallback(byte commandCode, LD2410Async::AsyncCommandResult result);
 
-
+	///Stares the data that is needed for the execution of the callback later on
+	void sendCommandAsyncStoreDataForCallback(byte commandCode, AsyncCommandCallback callback, byte userData);
 
 	/// Handle async command timeout
-	void handleAsyncCommandCallbackTimeout();
+	void sendCommandAsyncHandleTimeout();
 
 	/// Send async command that modifies configuration
 	bool sendConfigCommandAsync(const byte* command, AsyncCommandCallback callback, byte userData = 0);
 
-	AsyncCommandCallback asyncCommandCallback = nullptr; ///< Current async command callback
-	byte asyncCommandCallbackUserData = 0;               ///< UserData for current async command
-	unsigned long asyncCommandStartMs = 0;               ///< Timestamp when async command started
-	byte asyncCommandCommandCode = 0;                    ///< Last command code issued
-	bool asyncCommandActive = false;					 ///< True if an async command is currently pending.
+	AsyncCommandCallback sendCommandAsyncCallback = nullptr; ///< Current async command callback
+	byte sendCommandAsyncCallbackUserData = 0;               ///< UserData for current async command
+	unsigned long sendCommandAsyncStartMs = 0;               ///< Timestamp when async command started
+	byte sendCommandAsyncCommandCode = 0;                    ///< Last command code issued
+	bool sendCommandAsyncCommandPending = false;					 ///< True if an async command is currently pending.
 
 
 	// ============================================================================
@@ -1464,8 +1556,17 @@ public:
 	// ============================================================================
 	// Config mode 
 	// ============================================================================
-	bool enableConfigModeInternalAsync(AsyncCommandCallback callback, byte userData);
-	bool disableConfigModeInternalAsync(AsyncCommandCallback callback, byte userData);
+	bool enableConfigModeInternalAsync(bool force, AsyncCommandCallback callback, byte userData);
+	bool enableConfigModeInternalAsync(AsyncCommandCallback callback, byte userData) {
+		return enableConfigModeInternalAsync(false, callback, userData);
+	}
+
+	bool disableConfigModeInternalAsync(AsyncCommandCallback callback, byte userData) {
+		return disableConfigModeInternalAsync(false, callback, userData);
+	};
+	bool disableConfigModeInternalAsync(bool force, AsyncCommandCallback callback, byte userData);
+
+	Ticker configModeOnceTicker; //Used for short delay when config mode just has to execute the callback
 
 	// ============================================================================
 	// Config writing 

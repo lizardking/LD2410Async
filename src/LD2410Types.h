@@ -377,7 +377,6 @@ namespace LD2410Types {
 
 
 
-
 		/**
 		 * @brief Validates the configuration data for correctness.
 		 *

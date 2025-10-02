@@ -551,11 +551,12 @@ void LD2410Async::asyncCancel() {
 void LD2410Async::sendCommandAsyncHandleTimeout() {
 
 	if (sendCommandAsyncCommandPending && sendCommandAsyncStartMs != 0) {
-		if (millis() - sendCommandAsyncStartMs > asyncCommandTimeoutMs) {
+		unsigned long elapsedTime = millis() - sendCommandAsyncStartMs;
+		if (elapsedTime > asyncCommandTimeoutMs) {
 			DEBUG_PRINT_MILLIS;
-			DEBUG_PRINT("Command timeout detected. Start time ms is: ");
-			DEBUG_PRINT(sendCommandAsyncStartMs);
-			DEBUG_PRINTLN(". Execute callback with timeout result.");
+			DEBUG_PRINT("Command timeout detected. Elapsed time: ");
+			DEBUG_PRINT(elapsedTime);
+			DEBUG_PRINTLN(". Execute callback with TIMEOUT result.");
 			sendCommandAsyncExecuteCallback(sendCommandAsyncCommandCode, LD2410Async::AsyncCommandResult::TIMEOUT);
 		}
 	}
@@ -686,6 +687,7 @@ void LD2410Async::executeCommandSequenceAsyncCommandCallback(LD2410Async* sender
 		// Abort sequence if a command fails
 		DEBUG_PRINT_MILLIS
 			DEBUG_PRINT("Error: Command sequence aborted due to command failure. Result: ");
+		DEBUG_PRINTLN((byte)result);
 		sender->executeCommandSequenceAsyncFinalize(result);
 
 		return;
@@ -850,6 +852,7 @@ bool LD2410Async::configureMaxGateAndNoOneTimeoutAsync(byte maxMovingGate, byte 
 	AsyncCommandCallback callback, byte userData)
 {
 	DEBUG_PRINT_MILLIS;
+	DEBUG_PRINT(noOneTimeout);
 	DEBUG_PRINTLN("Set Max Gate");
 	if (asyncIsBusy()) return false;
 
@@ -1046,7 +1049,7 @@ bool LD2410Async::configuresDistanceResolution20cmAsync(AsyncCommandCallback cal
 	return sendConfigCommandAsync(LD2410Defs::setDistanceResolution20cmCommandData, callback, userData);
 };
 
-bool LD2410Async::requestDistanceResolutionCmAsync(AsyncCommandCallback callback, byte userData) {
+bool LD2410Async::requestDistanceResolutionAsync(AsyncCommandCallback callback, byte userData) {
 	DEBUG_PRINT_MILLIS;
 	DEBUG_PRINTLN("Request Distance Resolution cm");
 	if (asyncIsBusy()) return false;
@@ -1150,7 +1153,7 @@ void LD2410Async::configureAllConfigSettingsAsyncExecuteCallback(LD2410Async::As
 	configureAllConfigSettingsAsyncConfigActive = false;
 
 	DEBUG_PRINT_MILLIS
-		DEBUG_PRINT("SetConfigDataAsync complete. Result: ");
+		DEBUG_PRINT("configureAllConfigSettingsAsync complete. Result: ");
 	DEBUG_PRINTLN((byte)result);
 
 	if (cb) {
@@ -1168,22 +1171,30 @@ void LD2410Async::configureAllConfigSettingsAsyncConfigModeDisabledCallback(LD24
 	}
 	else {
 		// Config mode disabled successfully
+		DEBUG_PRINT_MILLIS;
+		DEBUG_PRINTLN("Config mode disabled, call the callback");
+
 		sender->configureAllConfigSettingsAsyncExecuteCallback(sender->configureAllConfigSettingsAsyncResultToReport);
 	}
 }
 
 void LD2410Async::configureAllConfigSettingsAsyncFinalize(LD2410Async::AsyncCommandResult resultToReport) {
 
-	if (configureAllConfigSettingsAsyncConfigInitialConfigMode) {
+	if (!configureAllConfigSettingsAsyncConfigInitialConfigMode) {
+		DEBUG_PRINT_MILLIS;
+		DEBUG_PRINTLN("Config mode was not enabled initially, disable it.");
 		configureAllConfigSettingsAsyncResultToReport = resultToReport;
 
-		if (!disableConfigModeAsync(configureAllConfigSettingsAsyncConfigModeDisabledCallback, 0)) {
+		if (!disableConfigModeInternalAsync(configureAllConfigSettingsAsyncConfigModeDisabledCallback, 0)) {
 			DEBUG_PRINT_MILLIS;
 			DEBUG_PRINTLN("Error: Disabling config mode after configureAllConfigSettingsAsync failed.");
 			configureAllConfigSettingsAsyncExecuteCallback(LD2410Async::AsyncCommandResult::FAILED);
 		}
 	}
 	else {
+		DEBUG_PRINT_MILLIS;
+		DEBUG_PRINTLN("Config mode was enabled initially, no need to disable it, just execute the callback.");
+
 		configureAllConfigSettingsAsyncExecuteCallback(resultToReport);
 	}
 }
@@ -1307,6 +1318,8 @@ bool LD2410Async::configureAllConfigSettingsAsyncWriteConfig() {
 
 	if (!configureAllConfigSettingsAsyncBuildSaveChangesCommandSequence()) {
 		//Could not build command sequence
+		DEBUG_PRINT_MILLIS;
+		DEBUG_PRINTLN("Could not build the command sequence to save the config data");
 		return false;
 	}
 
@@ -1357,7 +1370,7 @@ bool LD2410Async::configureAllConfigSettingsAsyncRequestAllConfigData() {
 		}
 		else {
 			DEBUG_PRINT_MILLIS;
-			DEBUG_PRINTLN("Error: Stating command sequence to request current config data failed.");
+			DEBUG_PRINTLN("Error: Starting command sequence to request current config data failed.");
 		}
 	}
 	return false;
@@ -1380,10 +1393,14 @@ void LD2410Async::configureAllConfigSettingsAsyncConfigModeEnabledCallback(LD241
 	bool ret = false;
 	if (sender->configureAllConfigSettingsAsyncWriteFullConfig) {
 		//If we save all changes anyway, no need to request current config data first
+		DEBUG_PRINT_MILLIS;
+		DEBUG_PRINTLN("Saving all data is forced, save directly");
 		ret = sender->configureAllConfigSettingsAsyncWriteConfig();
 
 	}
 	else {
+		DEBUG_PRINT_MILLIS;
+		DEBUG_PRINTLN("Request current config data");
 		ret = sender->configureAllConfigSettingsAsyncRequestAllConfigData();
 	}
 	if (!ret) {
@@ -1418,14 +1435,20 @@ bool LD2410Async::configureAllConfigSettingsAsync(const LD2410Types::ConfigData&
 	configureAllConfigSettingsAsyncConfigInitialConfigMode = isConfigModeEnabled();
 
 	if (!configureAllConfigSettingsAsyncConfigInitialConfigMode) {
+		DEBUG_PRINT_MILLIS;
+		DEBUG_PRINTLN("Enable the config mode");
 		return enableConfigModeInternalAsync(configureAllConfigSettingsAsyncConfigModeEnabledCallback, 0);
 	}
 	else {
 		if (configureAllConfigSettingsAsyncWriteFullConfig) {
 			//If we save all changes anyway, no need to request current config data first
+			DEBUG_PRINT_MILLIS;
+			DEBUG_PRINTLN("Saving all data is force and configmode is enable -> save directly");
 			return configureAllConfigSettingsAsyncWriteConfig();
 		}
 		else {
+			DEBUG_PRINT_MILLIS;
+			DEBUG_PRINTLN("Config mode is already enabled, just request all config data");
 			return configureAllConfigSettingsAsyncRequestAllConfigData();
 		}
 	}
@@ -1613,7 +1636,7 @@ void LD2410Async::handleInactivity() {
 					DEBUG_PRINT_MILLIS;
 					DEBUG_PRINTLN("Inactivity handling tries to force diable config mode");
 					//We dont care about the result resp. a callback, if the command has the desired effect, fine, otherwise will try to reboot the sensor anyway
-					disableConfigModeAsync(true, nullptr);
+					disableConfigModeInternalAsync(true, nullptr, 0);
 					break;
 				case 3:
 					DEBUG_PRINT_MILLIS;

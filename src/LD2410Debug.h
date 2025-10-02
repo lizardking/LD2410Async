@@ -7,6 +7,7 @@
 // Debug level configuration
 // =======================================================================================
 // If not defined by the user/project, initialize to 0 (disabled).
+//This scetion must appear before the includes.
 #ifndef LD2410ASYNC_DEBUG_LEVEL
 #define LD2410ASYNC_DEBUG_LEVEL 0
 #endif
@@ -14,6 +15,7 @@
 #ifndef LD2410ASYNC_DEBUG_DATA_LEVEL
 #define LD2410ASYNC_DEBUG_DATA_LEVEL 0
 #endif
+
 
 // =======================================================================================
 // Helper: Hex buffer print (only compiled if needed)

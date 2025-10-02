@@ -97,7 +97,7 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">LD2410Async </div></div>
+  <div class="headertitle"><div class="title"><a class="el" href="classLD2410Async.html" title="Asynchronous driver class for the LD2410 human presence radar sensor.">LD2410Async</a> </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="autotoc_md27"></a>
@@ -120,10 +120,10 @@ Features</h2>
 Usage</h2>
 <p>Typical workflow:</p><ol type="1">
 <li>Construct with a reference to a Stream object connected to the sensor.</li>
-<li>Call <a class="el" href="LD2410Async_8h.html#a1358f6f0b8d55a676b5b8147906c9024" title="Starts the background task that continuously reads data from the sensor.">begin()</a> to start the background task.</li>
+<li>Call begin() to start the background task.</li>
 <li>Register callbacks for detection data and/or config updates.</li>
 <li>Use async commands to adjust sensor configuration as needed.</li>
-<li>Call <a class="el" href="LD2410Async_8h.html#af52e0e8aaa30a81fa84024fdb975aa54" title="Stops the background task started by begin().">end()</a> to stop background processing if no longer required.</li>
+<li>Call end() to stop background processing if no longer required.</li>
 </ol>
 <p>Example: </p><div class="fragment"><div class="line">HardwareSerial radarSerial(2);</div>
 <div class="line">LD2410Async radar(radarSerial);</div>

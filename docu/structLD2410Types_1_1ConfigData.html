@@ -125,7 +125,7 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:acabeb381bc21ae97893101726ab1d589" id="r_acabeb381bc21ae97893101726ab1d589"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acabeb381bc21ae97893101726ab1d589">numberOfGates</a> = 0</td></tr>
-<tr class="memdesc:acabeb381bc21ae97893101726ab1d589"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of distance gates (2–8). This member is readonly resp. changing its value will not influence the radar setting when <a class="el" href="LD2410Async_8h.html#a509170bfc50580131d0c72f5c91daede" title="Applies a full ConfigData struct to the LD2410.">configureAllConfigSettingsAsync()</a> is called. It is not 100% clear what this value stands for, but it seems to indicate the number of gates on the sensor.  <br /></td></tr>
+<tr class="memdesc:acabeb381bc21ae97893101726ab1d589"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of distance gates (2–8). This member is readonly resp. changing its value will not influence the radar setting when configureAllConfigSettingsAsync() is called. It is not 100% clear what this value stands for, but it seems to indicate the number of gates on the sensor.  <br /></td></tr>
 <tr class="separator:acabeb381bc21ae97893101726ab1d589"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18a9dc2b43a849c46892158fcfa9b382" id="r_a18a9dc2b43a849c46892158fcfa9b382"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a18a9dc2b43a849c46892158fcfa9b382">maxMotionDistanceGate</a> = 0</td></tr>
 <tr class="memdesc:a18a9dc2b43a849c46892158fcfa9b382"><td class="mdescLeft">&#160;</td><td class="mdescRight">Furthest gate used for motion detection.  <br /></td></tr>
@@ -143,7 +143,7 @@ Public Attributes</h2></td></tr>
 <tr class="memdesc:aed0b489a9e500b199397a9db7103e3bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timeout (seconds) until "no presence" is declared.  <br /></td></tr>
 <tr class="separator:aed0b489a9e500b199397a9db7103e3bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4b3263e4da6bcc2ef64d1e727eb6f06" id="r_ad4b3263e4da6bcc2ef64d1e727eb6f06"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceLD2410Types.html#a89e3189ddef9f36629c460fbeb398c79">DistanceResolution</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4b3263e4da6bcc2ef64d1e727eb6f06">distanceResolution</a> = <a class="el" href="namespaceLD2410Types.html#a89e3189ddef9f36629c460fbeb398c79a1c250a21210b7b88a14db9a0cbe71162">DistanceResolution::NOT_SET</a></td></tr>
-<tr class="memdesc:ad4b3263e4da6bcc2ef64d1e727eb6f06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current distance resolution. A reboot is required to activate changed setting after calling <a class="el" href="LD2410Async_8h.html#a509170bfc50580131d0c72f5c91daede" title="Applies a full ConfigData struct to the LD2410.">configureAllConfigSettingsAsync()</a> is called.  <br /></td></tr>
+<tr class="memdesc:ad4b3263e4da6bcc2ef64d1e727eb6f06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current distance resolution. A reboot is required to activate changed setting after calling configureAllConfigSettingsAsync() is called.  <br /></td></tr>
 <tr class="separator:ad4b3263e4da6bcc2ef64d1e727eb6f06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a409cf828c80e4c75b9200ef3f1c4de88" id="r_a409cf828c80e4c75b9200ef3f1c4de88"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a409cf828c80e4c75b9200ef3f1c4de88">lightThreshold</a> = 0</td></tr>
 <tr class="memdesc:a409cf828c80e4c75b9200ef3f1c4de88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Threshold for auxiliary light control (0–255).  <br /></td></tr>
@@ -158,7 +158,7 @@ Public Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Stores the sensor’s configuration parameters. </p>
 <p>This structure represents both static capabilities (e.g. number of gates) and configurable settings (e.g. sensitivities, timeouts, resolution).</p>
-<p>The values are typically filled by request commands such as <a class="el" href="LD2410Async_8h.html#ab578ee25526c8bb808fe7200fae95a38" title="Requests all configuration settings from the sensor.">requestAllConfigSettingsAsync()</a> or <a class="el" href="LD2410Async_8h.html#ad7bfb9c212c452898053f167555a0bb6" title="Requests the current gate parameters from the sensor.">requestGateParametersAsync()</a> or <a class="el" href="LD2410Async_8h.html#afaa6e2c1842ebd96c6e04fe542af66cb" title="Requests the current auxiliary control settings.">requestAuxControlSettingsAsync()</a> or <a class="el" href="LD2410Async_8h.html#a3260f74672079a7200f210e4ffde1046" title="Requests the current distance resolution setting from the sensor.">requestDistanceResolutioncmAsync()</a>. </p>
+<p>The values are typically filled by request commands such as requestAllConfigSettingsAsync() or requestGateParametersAsync() or requestAuxControlSettingsAsync() or requestDistanceResolutioncmAsync(). </p>
 
 <p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00355">355</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
@@ -194,7 +194,7 @@ Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if all fields are equal, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00415">415</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00414">414</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
 
 </div>
 </div>
@@ -222,10 +222,10 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Validates the configuration data for correctness. </p>
-<p>Ensures that enum values are set and values are within valid ranges. This method is called internally before applying a config via <a class="el" href="LD2410Async_8h.html#a509170bfc50580131d0c72f5c91daede" title="Applies a full ConfigData struct to the LD2410.">configureAllConfigSettingsAsync()</a>.</p>
+<p>Ensures that enum values are set and values are within valid ranges. This method is called internally before applying a config via configureAllConfigSettingsAsync().</p>
 <dl class="section return"><dt>Returns</dt><dd>True if the configuration is valid, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00390">390</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00389">389</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
 
 </div>
 </div>
@@ -254,7 +254,7 @@ Public Attributes</h2></td></tr>
 
 <p>Debug helper: print configuration contents to Serial. </p>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00435">435</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00434">434</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
 
 </div>
 </div>
@@ -307,7 +307,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Current distance resolution. A reboot is required to activate changed setting after calling <a class="el" href="LD2410Async_8h.html#a509170bfc50580131d0c72f5c91daede" title="Applies a full ConfigData struct to the LD2410.">configureAllConfigSettingsAsync()</a> is called. </p>
+<p>Current distance resolution. A reboot is required to activate changed setting after calling configureAllConfigSettingsAsync() is called. </p>
 
 <p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00371">371</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
 
@@ -415,7 +415,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Number of distance gates (2–8). This member is readonly resp. changing its value will not influence the radar setting when <a class="el" href="LD2410Async_8h.html#a509170bfc50580131d0c72f5c91daede" title="Applies a full ConfigData struct to the LD2410.">configureAllConfigSettingsAsync()</a> is called. It is not 100% clear what this value stands for, but it seems to indicate the number of gates on the sensor. </p>
+<p>Number of distance gates (2–8). This member is readonly resp. changing its value will not influence the radar setting when configureAllConfigSettingsAsync() is called. It is not 100% clear what this value stands for, but it seems to indicate the number of gates on the sensor. </p>
 
 <p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00357">357</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
 

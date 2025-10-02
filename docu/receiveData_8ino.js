@@ -5,7 +5,7 @@ var receiveData_8ino =
     [ "RADAR_TX_PIN", "receiveData_8ino.html#acce505b164e2cee65fd975d0bc859ca8", null ],
     [ "loop", "receiveData_8ino.html#afe461d27b9c48d5921c00d521181f12f", null ],
     [ "onDetectionDataReceived", "receiveData_8ino.html#a30ccb5184463f968f4a30895646dec1d", null ],
-    [ "radar", "receiveData_8ino.html#a795abfb02964341e3c3e09b8459d94bc", null ],
     [ "RadarSerial", "receiveData_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41", null ],
-    [ "setup", "receiveData_8ino.html#a4fc01d736fe50cf5b977f755b675f11d", null ]
+    [ "setup", "receiveData_8ino.html#a4fc01d736fe50cf5b977f755b675f11d", null ],
+    [ "radar", "receiveData_8ino.html#a668d1ce20a8d66eeb5ab88238e59c2d4", null ]
 ];

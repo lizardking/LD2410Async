@@ -4,5 +4,6 @@ var annotated_dup =
       [ "ConfigData", "structLD2410Types_1_1ConfigData.html", "structLD2410Types_1_1ConfigData" ],
       [ "DetectionData", "structLD2410Types_1_1DetectionData.html", "structLD2410Types_1_1DetectionData" ],
       [ "StaticData", "structLD2410Types_1_1StaticData.html", "structLD2410Types_1_1StaticData" ]
-    ] ]
+    ] ],
+    [ "LD2410Async", "classLD2410Async.html", "classLD2410Async" ]
 ];

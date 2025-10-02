@@ -99,7 +99,8 @@ $(function(){initNavTree('changeDistanceResolution_8ino.html',''); initResizable
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">changeDistanceResolution.ino File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -111,6 +112,7 @@ $(function(){initNavTree('changeDistanceResolution_8ino.html',''); initResizable
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a7e649b7675aa97ae8a3c2b2a329e55d7" id="r_a7e649b7675aa97ae8a3c2b2a329e55d7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e649b7675aa97ae8a3c2b2a329e55d7">RADAR_RX_PIN</a>&#160;&#160;&#160;16</td></tr>
+<tr class="memdesc:a7e649b7675aa97ae8a3c2b2a329e55d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Example: Changing detection resolution on LD2410.  <br /></td></tr>
 <tr class="separator:a7e649b7675aa97ae8a3c2b2a329e55d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acce505b164e2cee65fd975d0bc859ca8" id="r_acce505b164e2cee65fd975d0bc859ca8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acce505b164e2cee65fd975d0bc859ca8">RADAR_TX_PIN</a>&#160;&#160;&#160;17</td></tr>
 <tr class="separator:acce505b164e2cee65fd975d0bc859ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -121,16 +123,13 @@ Macros</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a49d7843d70c3fb5607ee7c62c655fa41" id="r_a49d7843d70c3fb5607ee7c62c655fa41"><td class="memItemLeft" align="right" valign="top">HardwareSerial&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49d7843d70c3fb5607ee7c62c655fa41">RadarSerial</a> (1)</td></tr>
 <tr class="separator:a49d7843d70c3fb5607ee7c62c655fa41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a795abfb02964341e3c3e09b8459d94bc" id="r_a795abfb02964341e3c3e09b8459d94bc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="LD2410Async_8h.html#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a795abfb02964341e3c3e09b8459d94bc">radar</a> (<a class="el" href="basicPresenceDetection_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41">RadarSerial</a>)</td></tr>
-<tr class="memdesc:a795abfb02964341e3c3e09b8459d94bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates LD2410Async object bound to the serial port defined in RadarSerial.  <br /></td></tr>
-<tr class="separator:a795abfb02964341e3c3e09b8459d94bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf738f8c6c1dcce3da6c22a991818bf7" id="r_adf738f8c6c1dcce3da6c22a991818bf7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf738f8c6c1dcce3da6c22a991818bf7">onReboot</a> (<a class="el" href="LD2410Async_8h.html#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a> *sender, <a class="el" href="LD2410Async_8h.html#aa44c3b86a77e4577f3c47fee29c963fe">LD2410Async::AsyncCommandResult</a> result, byte userData)</td></tr>
+<tr class="memitem:adf738f8c6c1dcce3da6c22a991818bf7" id="r_adf738f8c6c1dcce3da6c22a991818bf7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf738f8c6c1dcce3da6c22a991818bf7">onReboot</a> (<a class="el" href="classLD2410Async.html">LD2410Async</a> *sender, <a class="el" href="classLD2410Async.html#a136b50e19cfddad787637fb65421d9ab">LD2410Async::AsyncCommandResult</a> result, byte userData)</td></tr>
 <tr class="memdesc:adf738f8c6c1dcce3da6c22a991818bf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback after the reboot command has been confirmed.  <br /></td></tr>
 <tr class="separator:adf738f8c6c1dcce3da6c22a991818bf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4764a008d0bc89c14e21fdbfc84214b9" id="r_a4764a008d0bc89c14e21fdbfc84214b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4764a008d0bc89c14e21fdbfc84214b9">onConfigApplied</a> (<a class="el" href="LD2410Async_8h.html#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a> *sender, <a class="el" href="LD2410Async_8h.html#aa44c3b86a77e4577f3c47fee29c963fe">LD2410Async::AsyncCommandResult</a> result, byte userData)</td></tr>
+<tr class="memitem:a4764a008d0bc89c14e21fdbfc84214b9" id="r_a4764a008d0bc89c14e21fdbfc84214b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4764a008d0bc89c14e21fdbfc84214b9">onConfigApplied</a> (<a class="el" href="classLD2410Async.html">LD2410Async</a> *sender, <a class="el" href="classLD2410Async.html#a136b50e19cfddad787637fb65421d9ab">LD2410Async::AsyncCommandResult</a> result, byte userData)</td></tr>
 <tr class="memdesc:a4764a008d0bc89c14e21fdbfc84214b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback after applying modified config.  <br /></td></tr>
 <tr class="separator:a4764a008d0bc89c14e21fdbfc84214b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b428f5d1a0e521ff99915142feab9f8" id="r_a4b428f5d1a0e521ff99915142feab9f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b428f5d1a0e521ff99915142feab9f8">onConfigReceived</a> (<a class="el" href="LD2410Async_8h.html#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a> *sender, <a class="el" href="LD2410Async_8h.html#aa44c3b86a77e4577f3c47fee29c963fe">LD2410Async::AsyncCommandResult</a> result, byte userData)</td></tr>
+<tr class="memitem:a4b428f5d1a0e521ff99915142feab9f8" id="r_a4b428f5d1a0e521ff99915142feab9f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b428f5d1a0e521ff99915142feab9f8">onConfigReceived</a> (<a class="el" href="classLD2410Async.html">LD2410Async</a> *sender, <a class="el" href="classLD2410Async.html#a136b50e19cfddad787637fb65421d9ab">LD2410Async::AsyncCommandResult</a> result, byte userData)</td></tr>
 <tr class="memdesc:a4b428f5d1a0e521ff99915142feab9f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback after requesting config data.  <br /></td></tr>
 <tr class="separator:a4b428f5d1a0e521ff99915142feab9f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fc01d736fe50cf5b977f755b675f11d" id="r_a4fc01d736fe50cf5b977f755b675f11d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fc01d736fe50cf5b977f755b675f11d">setup</a> ()</td></tr>
@@ -139,6 +138,12 @@ Functions</h2></td></tr>
 <tr class="memitem:afe461d27b9c48d5921c00d521181f12f" id="r_afe461d27b9c48d5921c00d521181f12f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe461d27b9c48d5921c00d521181f12f">loop</a> ()</td></tr>
 <tr class="memdesc:afe461d27b9c48d5921c00d521181f12f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arduino loop function which does nothing.  <br /></td></tr>
 <tr class="separator:afe461d27b9c48d5921c00d521181f12f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a668d1ce20a8d66eeb5ab88238e59c2d4" id="r_a668d1ce20a8d66eeb5ab88238e59c2d4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLD2410Async.html">LD2410Async</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a668d1ce20a8d66eeb5ab88238e59c2d4">radar</a> (<a class="el" href="basicPresenceDetection_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41">RadarSerial</a>)</td></tr>
+<tr class="memdesc:a668d1ce20a8d66eeb5ab88238e59c2d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates <a class="el" href="classLD2410Async.html" title="Asynchronous driver class for the LD2410 human presence radar sensor.">LD2410Async</a> object bound to the serial port defined in RadarSerial.  <br /></td></tr>
+<tr class="separator:a668d1ce20a8d66eeb5ab88238e59c2d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a78243257c4f1bb044c720dce7198d7cb" name="a78243257c4f1bb044c720dce7198d7cb"></a>
@@ -153,7 +158,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00031">31</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00028">28</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
 
 </div>
 </div>
@@ -169,7 +174,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00027">27</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
+<p>Example: Changing detection resolution on LD2410. </p>
+<p>This sketch demonstrates how to:</p><ol type="1">
+<li>Initialize the radar on Serial1.</li>
+<li>Query all current configuration values from the sensor.</li>
+<li>Clone the config into a local variable.</li>
+<li>Modify the distance resolution.</li>
+<li>Apply the new config.</li>
+<li>Reboot the sensor to ensure changes take effect.</li>
+</ol>
+<dl class="section warning"><dt>Warning</dt><dd>Important: Make sure to adjust RADAR_RX_PIN and ADAR_TX_PIN to match you actual wiring. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00024">24</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
 
 </div>
 </div>
@@ -185,7 +201,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00028">28</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00025">25</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
 
 </div>
 </div>
@@ -206,9 +222,9 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Arduino loop function which does nothing. </p>
-<p>The LD2410Async library runs a FreeRTOS background task that automatically handles all jobs that are related to the radar sensor. Therefore the main loop doesnt have to da any LD2410 related work and is free for anything else you might want to do. </p>
+<p>The <a class="el" href="classLD2410Async.html" title="Asynchronous driver class for the LD2410 human presence radar sensor.">LD2410Async</a> library runs a FreeRTOS background task that automatically handles all jobs that are related to the radar sensor. Therefore the main loop doesnt have to da any LD2410 related work and is free for anything else you might want to do. </p>
 
-<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00175">175</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00172">172</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
 
 </div>
 </div>
@@ -221,12 +237,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void onConfigApplied </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="LD2410Async_8h.html#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a> *</td>          <td class="paramname"><span class="paramname"><em>sender</em></span>, </td>
+          <td class="paramtype"><a class="el" href="classLD2410Async.html">LD2410Async</a> *</td>          <td class="paramname"><span class="paramname"><em>sender</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="LD2410Async_8h.html#aa44c3b86a77e4577f3c47fee29c963fe">LD2410Async::AsyncCommandResult</a></td>          <td class="paramname"><span class="paramname"><em>result</em></span>, </td>
+          <td class="paramtype"><a class="el" href="classLD2410Async.html#a136b50e19cfddad787637fb65421d9ab">LD2410Async::AsyncCommandResult</a></td>          <td class="paramname"><span class="paramname"><em>result</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -237,10 +253,10 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Callback after applying modified config. </p>
-<p>After checking if the async <a class="el" href="LD2410Async_8h.html#a509170bfc50580131d0c72f5c91daede" title="Applies a full ConfigData struct to the LD2410.">configureAllConfigSettingsAsync()</a> method was successful (always do that!), it will initiate a reboot of the sensor to activate the changed distance resolution.</p>
-<dl class="section note"><dt>Note</dt><dd>Always check the result of the async command that has triggered the callback. Otherweise async commands can fail, timeout or get canceled without you relizing it. In callback methods is is generally advised to access members of the LD2410Async instance via the sender pointer. This ensures that you are allways working with the correct instance, which is important if you have multiple LD2410Async instances. Also keep in mind that callbacks should be as short and efficient as possible to avoid blocking the background task of the library. </dd></dl>
+<p>After checking if the async configureAllConfigSettingsAsync() method was successful (always do that!), it will initiate a reboot of the sensor to activate the changed distance resolution.</p>
+<dl class="section note"><dt>Note</dt><dd>Always check the result of the async command that has triggered the callback. Otherweise async commands can fail, timeout or get canceled without you relizing it. In callback methods is is generally advised to access members of the <a class="el" href="classLD2410Async.html" title="Asynchronous driver class for the LD2410 human presence radar sensor.">LD2410Async</a> instance via the sender pointer. This ensures that you are allways working with the correct instance, which is important if you have multiple <a class="el" href="classLD2410Async.html" title="Asynchronous driver class for the LD2410 human presence radar sensor.">LD2410Async</a> instances. Also keep in mind that callbacks should be as short and efficient as possible to avoid blocking the background task of the library. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00073">73</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00070">70</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
 
 </div>
 </div>
@@ -253,12 +269,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void onConfigReceived </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="LD2410Async_8h.html#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a> *</td>          <td class="paramname"><span class="paramname"><em>sender</em></span>, </td>
+          <td class="paramtype"><a class="el" href="classLD2410Async.html">LD2410Async</a> *</td>          <td class="paramname"><span class="paramname"><em>sender</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="LD2410Async_8h.html#aa44c3b86a77e4577f3c47fee29c963fe">LD2410Async::AsyncCommandResult</a></td>          <td class="paramname"><span class="paramname"><em>result</em></span>, </td>
+          <td class="paramtype"><a class="el" href="classLD2410Async.html#a136b50e19cfddad787637fb65421d9ab">LD2410Async::AsyncCommandResult</a></td>          <td class="paramname"><span class="paramname"><em>result</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -269,10 +285,10 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Callback after requesting config data. </p>
-<p>This method is called when the config data has been received from the sensor. After checking if the async <a class="el" href="LD2410Async_8h.html#ab578ee25526c8bb808fe7200fae95a38" title="Requests all configuration settings from the sensor.">requestAllConfigSettingsAsync()</a> method was successful (always do that!), it clones the config using <a class="el" href="LD2410Async_8h.html#a54388c929cea610f92891def29db66a5" title="Returns a clone of the current configuration data of the radar.">getConfigData()</a>, modifies the distance resolution and applies the new config using <a class="el" href="LD2410Async_8h.html#a509170bfc50580131d0c72f5c91daede" title="Applies a full ConfigData struct to the LD2410.">configureAllConfigSettingsAsync()</a></p>
-<dl class="section note"><dt>Note</dt><dd>Always check the result of the async command that has triggered the callback. Otherweise async commands can fail, timeout or get canceled without you relizing it. In callback methods is is generally advised to access members of the LD2410Async instance via the sender pointer. This ensures that you are allways working with the correct instance, which is important if you have multiple LD2410Async instances. Also keep in mind that callbacks should be as short and efficient as possible to avoid blocking the background task of the library. </dd></dl>
+<p>This method is called when the config data has been received from the sensor. After checking if the async requestAllConfigSettingsAsync() method was successful (always do that!), it clones the config using getConfigData(), modifies the distance resolution and applies the new config using configureAllConfigSettingsAsync()</p>
+<dl class="section note"><dt>Note</dt><dd>Always check the result of the async command that has triggered the callback. Otherweise async commands can fail, timeout or get canceled without you relizing it. In callback methods is is generally advised to access members of the <a class="el" href="classLD2410Async.html" title="Asynchronous driver class for the LD2410 human presence radar sensor.">LD2410Async</a> instance via the sender pointer. This ensures that you are allways working with the correct instance, which is important if you have multiple <a class="el" href="classLD2410Async.html" title="Asynchronous driver class for the LD2410 human presence radar sensor.">LD2410Async</a> instances. Also keep in mind that callbacks should be as short and efficient as possible to avoid blocking the background task of the library. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00104">104</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00101">101</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
 
 </div>
 </div>
@@ -285,12 +301,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void onReboot </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="LD2410Async_8h.html#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a> *</td>          <td class="paramname"><span class="paramname"><em>sender</em></span>, </td>
+          <td class="paramtype"><a class="el" href="classLD2410Async.html">LD2410Async</a> *</td>          <td class="paramname"><span class="paramname"><em>sender</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="LD2410Async_8h.html#aa44c3b86a77e4577f3c47fee29c963fe">LD2410Async::AsyncCommandResult</a></td>          <td class="paramname"><span class="paramname"><em>result</em></span>, </td>
+          <td class="paramtype"><a class="el" href="classLD2410Async.html#a136b50e19cfddad787637fb65421d9ab">LD2410Async::AsyncCommandResult</a></td>          <td class="paramname"><span class="paramname"><em>result</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -303,26 +319,7 @@ Functions</h2></td></tr>
 <p>Callback after the reboot command has been confirmed. </p>
 <p>This method just checks and prints the result </p>
 
-<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00051">51</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
-
-</div>
-</div>
-<a id="a795abfb02964341e3c3e09b8459d94bc" name="a795abfb02964341e3c3e09b8459d94bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a795abfb02964341e3c3e09b8459d94bc">&#9670;&#160;</a></span>radar()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="LD2410Async_8h.html#ac500fb301e250ede1a608c67fc1a8900">LD2410Async</a> radar </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="basicPresenceDetection_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41">RadarSerial</a></td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Creates LD2410Async object bound to the serial port defined in RadarSerial. </p>
+<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00048">48</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
 
 </div>
 </div>
@@ -360,9 +357,29 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Arduino setup function which initializes the radar and starts the config change process. </p>
-<p><a class="el" href="LD2410Async_8h.html#a1358f6f0b8d55a676b5b8147906c9024" title="Starts the background task that continuously reads data from the sensor.">begin()</a> starts the background task of the LD2410Async library which automatically handles incoming data and triggers callbacks. The onDetectionDataReceived callback is registered to receive detection data. <a class="el" href="LD2410Async_8h.html#ab578ee25526c8bb808fe7200fae95a38" title="Requests all configuration settings from the sensor.">requestAllConfigSettingsAsync()</a> will fetch all config data from the sensor and triggers the onConfigReceived callback when done. </p>
+<p>begin() starts the background task of the <a class="el" href="classLD2410Async.html" title="Asynchronous driver class for the LD2410 human presence radar sensor.">LD2410Async</a> library which automatically handles incoming data and triggers callbacks. The onDetectionDataReceived callback is registered to receive detection data. requestAllConfigSettingsAsync() will fetch all config data from the sensor and triggers the onConfigReceived callback when done. </p>
 
-<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00140">140</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="changeDistanceResolution_8ino_source.html#l00137">137</a> of file <a class="el" href="changeDistanceResolution_8ino_source.html">changeDistanceResolution.ino</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a668d1ce20a8d66eeb5ab88238e59c2d4" name="a668d1ce20a8d66eeb5ab88238e59c2d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a668d1ce20a8d66eeb5ab88238e59c2d4">&#9670;&#160;</a></span>radar</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classLD2410Async.html">LD2410Async</a> radar(<a class="el" href="basicPresenceDetection_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41">RadarSerial</a>) </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="basicPresenceDetection_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41">RadarSerial</a></td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates <a class="el" href="classLD2410Async.html" title="Asynchronous driver class for the LD2410 human presence radar sensor.">LD2410Async</a> object bound to the serial port defined in RadarSerial. </p>
 
 </div>
 </div>

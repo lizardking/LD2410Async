@@ -7,7 +7,7 @@ var changeDistanceResolution_8ino =
     [ "onConfigApplied", "changeDistanceResolution_8ino.html#a4764a008d0bc89c14e21fdbfc84214b9", null ],
     [ "onConfigReceived", "changeDistanceResolution_8ino.html#a4b428f5d1a0e521ff99915142feab9f8", null ],
     [ "onReboot", "changeDistanceResolution_8ino.html#adf738f8c6c1dcce3da6c22a991818bf7", null ],
-    [ "radar", "changeDistanceResolution_8ino.html#a795abfb02964341e3c3e09b8459d94bc", null ],
     [ "RadarSerial", "changeDistanceResolution_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41", null ],
-    [ "setup", "changeDistanceResolution_8ino.html#a4fc01d736fe50cf5b977f755b675f11d", null ]
+    [ "setup", "changeDistanceResolution_8ino.html#a4fc01d736fe50cf5b977f755b675f11d", null ],
+    [ "radar", "changeDistanceResolution_8ino.html#a668d1ce20a8d66eeb5ab88238e59c2d4", null ]
 ];

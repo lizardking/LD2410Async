@@ -1,17 +1,23 @@
 ﻿#pragma once
 
-// =======================================================================================
-// Debug level configuration
-// =======================================================================================
-// If not defined by the user/project, initialize to 0 (disabled).
-//This scetion must appear before the includes.
-#ifndef LD2410ASYNC_DEBUG_LEVEL
-#define LD2410ASYNC_DEBUG_LEVEL 0
-#endif
 
-#ifndef LD2410ASYNC_DEBUG_DATA_LEVEL
+/**
+* @brief 
+* Use the following defines to set the debug level for the lib.
+* 
+* @details
+* LD2410ASYNC_DEBUG_LEVEL is used to control output nof debug message for commands and command responses/acks from the sensor.
+* LD2410ASYNC_DEBUG_DATA_LEVEL controls debug messages for received detection data.
+* 
+* For both defines 0 will turn off all debug message, 1 will enable the message and 2 will enable additional output of the received data.
+* 
+* @note
+* Dont enable debug messages in production. They will clutteer the compiled build with tons of print commands which will increase the size 
+* of the build and also have a negative impact on performance.
+*/
+#define LD2410ASYNC_DEBUG_LEVEL 0
 #define LD2410ASYNC_DEBUG_DATA_LEVEL 0
-#endif
+
 
 #include "Arduino.h"
 #include "Ticker.h"
@@ -27,7 +33,7 @@
  * @details This class provides a non-blocking interface for communicating with the LD2410 sensor,
  * allowing for efficient data retrieval and configuration without halting the main program flow.
  * It supports multiple instances and features automatic handling of communication timeouts and errors.
- * It suipports all native commands of the LD2410 and has several additional high level commands for more consistent access to the sensor.
+ * It supports all native commands of the LD2410 and has several additional high level commands for more consistent access to the sensor.
  *
  */
 class LD2410Async {

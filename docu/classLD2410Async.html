@@ -275,9 +275,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a01705b527bc80949417de15b6e95140c" id="r_a01705b527bc80949417de15b6e95140c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01705b527bc80949417de15b6e95140c">configuresDistanceResolution20cmAsync</a> (<a class="el" href="#adc0bdb769283d0d49aaaebc9c10dc603">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
 <tr class="memdesc:a01705b527bc80949417de15b6e95140c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the distance resolution explicitly to 20 cm per gate.  <br /></td></tr>
 <tr class="separator:a01705b527bc80949417de15b6e95140c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a69a03d1800087383e5a256c43179b4b5" id="r_a69a03d1800087383e5a256c43179b4b5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69a03d1800087383e5a256c43179b4b5">requestDistanceResolutionCmAsync</a> (<a class="el" href="#adc0bdb769283d0d49aaaebc9c10dc603">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
-<tr class="memdesc:a69a03d1800087383e5a256c43179b4b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests the current distance resolution setting from the sensor.  <br /></td></tr>
-<tr class="separator:a69a03d1800087383e5a256c43179b4b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b3d1e8478f0ae97c96cda96e3ccc2b2" id="r_a0b3d1e8478f0ae97c96cda96e3ccc2b2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b3d1e8478f0ae97c96cda96e3ccc2b2">requestDistanceResolutionAsync</a> (<a class="el" href="#adc0bdb769283d0d49aaaebc9c10dc603">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
+<tr class="memdesc:a0b3d1e8478f0ae97c96cda96e3ccc2b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests the current distance resolution setting from the sensor.  <br /></td></tr>
+<tr class="separator:a0b3d1e8478f0ae97c96cda96e3ccc2b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90e3bc56482783249d966a670310bffd" id="r_a90e3bc56482783249d966a670310bffd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90e3bc56482783249d966a670310bffd">configureAuxControlSettingsAsync</a> (<a class="el" href="namespaceLD2410Types.html#afbd22de9579db591b3f122c51c730844">LD2410Types::LightControl</a> light_control, byte light_threshold, <a class="el" href="namespaceLD2410Types.html#a420c188999635485028764fe98cb0bff">LD2410Types::OutputControl</a> output_control, <a class="el" href="#adc0bdb769283d0d49aaaebc9c10dc603">AsyncCommandCallback</a> callback, byte userData=0)</td></tr>
 <tr class="memdesc:a90e3bc56482783249d966a670310bffd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the auxiliary control parameters (light and output pin).  <br /></td></tr>
 <tr class="separator:a90e3bc56482783249d966a670310bffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -325,7 +325,7 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p>Asynchronous driver class for the LD2410 human presence radar sensor. </p>
 <p>This class provides a non-blocking interface for communicating with the LD2410 sensor, allowing for efficient data retrieval and configuration without halting the main program flow. It supports multiple instances and features automatic handling of communication timeouts and errors. It suipports all native commands of the LD2410 and has several additional high level commands for more consistent access to the sensor. </p>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00022">22</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00033">33</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="adc0bdb769283d0d49aaaebc9c10dc603" name="adc0bdb769283d0d49aaaebc9c10dc603"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adc0bdb769283d0d49aaaebc9c10dc603">&#9670;&#160;</a></span>AsyncCommandCallback</h2>
@@ -349,7 +349,7 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00049">49</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00060">60</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
 
 </div>
 </div>
@@ -376,7 +376,7 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00074">74</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00085">85</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
 
 </div>
 </div>
@@ -401,7 +401,7 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00059">59</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00070">70</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
 
 </div>
 </div>
@@ -439,7 +439,7 @@ Public Attributes</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00031">31</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00042">42</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
 
 </div>
 </div>
@@ -464,7 +464,7 @@ Public Attributes</h2></td></tr>
 <p>Example: </p><div class="fragment"><div class="line">HardwareSerial radarSerial(2);</div>
 <div class="line"><a class="code hl_class" href="classLD2410Async.html">LD2410Async</a> <a class="code hl_variable" href="basicPresenceDetection_8ino.html#a668d1ce20a8d66eeb5ab88238e59c2d4">radar</a>(radarSerial);</div>
 <div class="ttc" id="abasicPresenceDetection_8ino_html_a668d1ce20a8d66eeb5ab88238e59c2d4"><div class="ttname"><a href="basicPresenceDetection_8ino.html#a668d1ce20a8d66eeb5ab88238e59c2d4">radar</a></div><div class="ttdeci">LD2410Async radar(RadarSerial)</div><div class="ttdoc">Creates LD2410Async object bound to the serial port defined in RadarSerial.</div></div>
-<div class="ttc" id="aclassLD2410Async_html"><div class="ttname"><a href="classLD2410Async.html">LD2410Async</a></div><div class="ttdoc">Asynchronous driver class for the LD2410 human presence radar sensor.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8h_source.html#l00022">LD2410Async.h:22</a></div></div>
+<div class="ttc" id="aclassLD2410Async_html"><div class="ttname"><a href="classLD2410Async.html">LD2410Async</a></div><div class="ttdoc">Asynchronous driver class for the LD2410 human presence radar sensor.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8h_source.html#l00033">LD2410Async.h:33</a></div></div>
 </div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">serial</td><td>Reference to a Stream object used to exchange data with the sensor. </td></tr>
@@ -472,7 +472,7 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01770">1770</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01793">1793</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -517,7 +517,7 @@ Public Attributes</h2></td></tr>
 <p>Checks if an asynchronous command is currently pending. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if there is an active command awaiting an ACK, false if the library is idle. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00609">609</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00610">610</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -540,7 +540,7 @@ Public Attributes</h2></td></tr>
 <p>This method creates a FreeRTOS task which parses all incoming frames and dispatches registered callbacks. Without calling <a class="el" href="#a1358f6f0b8d55a676b5b8147906c9024" title="Starts the background task that continuously reads data from the sensor.">begin()</a>, the sensor cannot deliver detection results asynchronously.</p>
 <dl class="section return"><dt>Returns</dt><dd>true if the task was successfully started, false if already running. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01701">1701</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01724">1724</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -580,9 +580,9 @@ Example: Run auto-config</h2>
 <div class="line">    Serial.println(<span class="stringliteral">&quot;Failed to start auto-config.&quot;</span>);</div>
 <div class="line">  }</div>
 <div class="line">});</div>
-<div class="ttc" id="aclassLD2410Async_html_a136b50e19cfddad787637fb65421d9ab"><div class="ttname"><a href="#a136b50e19cfddad787637fb65421d9ab">LD2410Async::AsyncCommandResult</a></div><div class="ttdeci">AsyncCommandResult</div><div class="ttdoc">Result of an asynchronous command execution.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8h_source.html#l00031">LD2410Async.h:31</a></div></div>
+<div class="ttc" id="aclassLD2410Async_html_a136b50e19cfddad787637fb65421d9ab"><div class="ttname"><a href="#a136b50e19cfddad787637fb65421d9ab">LD2410Async::AsyncCommandResult</a></div><div class="ttdeci">AsyncCommandResult</div><div class="ttdoc">Result of an asynchronous command execution.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8h_source.html#l00042">LD2410Async.h:42</a></div></div>
 <div class="ttc" id="aclassLD2410Async_html_a136b50e19cfddad787637fb65421d9abad0749aaba8b833466dfcbb0428e4f89c"><div class="ttname"><a href="#a136b50e19cfddad787637fb65421d9abad0749aaba8b833466dfcbb0428e4f89c">LD2410Async::AsyncCommandResult::SUCCESS</a></div><div class="ttdeci">@ SUCCESS</div><div class="ttdoc">Command completed successfully and ACK was received.</div></div>
-<div class="ttc" id="aclassLD2410Async_html_aed89a0870ddacee96bc2f0fb9c1c96fc"><div class="ttname"><a href="#aed89a0870ddacee96bc2f0fb9c1c96fc">LD2410Async::beginAutoConfigAsync</a></div><div class="ttdeci">bool beginAutoConfigAsync(AsyncCommandCallback callback, byte userData=0)</div><div class="ttdoc">Starts the automatic configuration (auto-config) routine on the sensor.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l01082">LD2410Async.cpp:1082</a></div></div>
+<div class="ttc" id="aclassLD2410Async_html_aed89a0870ddacee96bc2f0fb9c1c96fc"><div class="ttname"><a href="#aed89a0870ddacee96bc2f0fb9c1c96fc">LD2410Async::beginAutoConfigAsync</a></div><div class="ttdeci">bool beginAutoConfigAsync(AsyncCommandCallback callback, byte userData=0)</div><div class="ttdoc">Starts the automatic configuration (auto-config) routine on the sensor.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l01085">LD2410Async.cpp:1085</a></div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md13"></a>
 Do:</h2>
 <ul>
@@ -603,7 +603,7 @@ Don’t:</h2>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01082">1082</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01085">1085</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -658,8 +658,8 @@ Example: Clone, modify, and apply config</h2>
 <div class="line">    Serial.println(<span class="stringliteral">&quot;All config applied successfully!&quot;</span>);</div>
 <div class="line">  }</div>
 <div class="line">});</div>
-<div class="ttc" id="aclassLD2410Async_html_a509170bfc50580131d0c72f5c91daede"><div class="ttname"><a href="#a509170bfc50580131d0c72f5c91daede">LD2410Async::configureAllConfigSettingsAsync</a></div><div class="ttdeci">bool configureAllConfigSettingsAsync(const LD2410Types::ConfigData &amp;configToWrite, bool writeAllConfigData, AsyncCommandCallback callback, byte userData=0)</div><div class="ttdoc">Applies a full ConfigData struct to the LD2410.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l01398">LD2410Async.cpp:1398</a></div></div>
-<div class="ttc" id="aclassLD2410Async_html_a54388c929cea610f92891def29db66a5"><div class="ttname"><a href="#a54388c929cea610f92891def29db66a5">LD2410Async::getConfigData</a></div><div class="ttdeci">LD2410Types::ConfigData getConfigData() const</div><div class="ttdoc">Returns a clone of the current configuration data of the radar.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l01542">LD2410Async.cpp:1542</a></div></div>
+<div class="ttc" id="aclassLD2410Async_html_a509170bfc50580131d0c72f5c91daede"><div class="ttname"><a href="#a509170bfc50580131d0c72f5c91daede">LD2410Async::configureAllConfigSettingsAsync</a></div><div class="ttdeci">bool configureAllConfigSettingsAsync(const LD2410Types::ConfigData &amp;configToWrite, bool writeAllConfigData, AsyncCommandCallback callback, byte userData=0)</div><div class="ttdoc">Applies a full ConfigData struct to the LD2410.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l01415">LD2410Async.cpp:1415</a></div></div>
+<div class="ttc" id="aclassLD2410Async_html_a54388c929cea610f92891def29db66a5"><div class="ttname"><a href="#a54388c929cea610f92891def29db66a5">LD2410Async::getConfigData</a></div><div class="ttdeci">LD2410Types::ConfigData getConfigData() const</div><div class="ttdoc">Returns a clone of the current configuration data of the radar.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l01565">LD2410Async.cpp:1565</a></div></div>
 <div class="ttc" id="astructLD2410Types_1_1ConfigData_html_aed0b489a9e500b199397a9db7103e3bf"><div class="ttname"><a href="structLD2410Types_1_1ConfigData.html#aed0b489a9e500b199397a9db7103e3bf">LD2410Types::ConfigData::noOneTimeout</a></div><div class="ttdeci">unsigned short noOneTimeout</div><div class="ttdoc">Timeout (seconds) until &quot;no presence&quot; is declared.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00368">LD2410Types.h:368</a></div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md25"></a>
 Do:</h2>
@@ -684,7 +684,7 @@ Don’t:</h2>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command sequence has been started, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01398">1398</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01415">1415</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -741,7 +741,7 @@ Fails if another async command is pending.</dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01056">1056</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01059">1059</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -788,7 +788,7 @@ After execution, call <a class="el" href="#aeb856d32612fba953b07280cf5d9a235" ti
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00934">934</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00937">937</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -831,7 +831,7 @@ After execution, call <a class="el" href="#aeb856d32612fba953b07280cf5d9a235" ti
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command has been sent, false if the command cant be sent (typically because another async command is pending). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00953">953</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00956">956</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -870,7 +870,7 @@ After execution, call <a class="el" href="#aeb856d32612fba953b07280cf5d9a235" ti
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command has been sent, false if the command cant be sent (typically because another async command is pending). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00994">994</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00997">997</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -909,7 +909,7 @@ After execution, call <a class="el" href="#aeb856d32612fba953b07280cf5d9a235" ti
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command has been sent, false if the command cant be sent (typically because another async command is pending). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01009">1009</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01012">1012</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -942,7 +942,7 @@ After execution, call <a class="el" href="#aeb856d32612fba953b07280cf5d9a235" ti
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command has been sent, false if the command cant be sent (typically because another async command is pending). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01015">1015</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01018">1018</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -997,7 +997,7 @@ If another async command is pending, this call fails.</dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00907">907</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00910">910</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -1046,7 +1046,7 @@ If another async command is pending, this call fails.</dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the sequence was started, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00885">885</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00888">888</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -1085,7 +1085,7 @@ Fails if another async command is pending.</dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01022">1022</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01025">1025</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -1133,7 +1133,7 @@ Fails if another async command is pending.</dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false if invalid parameters or the library is busy. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01029">1029</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01032">1032</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -1192,7 +1192,7 @@ If another async command is pending, this call fails.</dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise (busy state or invalid values). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00848">848</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00850">850</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -1231,7 +1231,7 @@ Fails if another async command is pending.</dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01042">1042</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01045">1045</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -1264,7 +1264,7 @@ Fails if another async command is pending.</dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command has been sent, false if the command cant be sent (typically because another async command is pending). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00979">979</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00982">982</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -1307,7 +1307,7 @@ Fails if another async command is pending.</dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command was accepted, false otherwise (typically because another async command is pending). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00599">599</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00610">610</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
 
 </div>
 </div>
@@ -1350,7 +1350,7 @@ If config mode is already disabled and sending the command is forced using the f
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command was accepted, false otherwise (typically because another async command is pending). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00837">837</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00839">839</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -1385,7 +1385,7 @@ If config mode is already disabled and sending the command is forced using the f
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00878">878</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00881">881</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -1416,7 +1416,7 @@ If config mode is already disabled and sending the command is forced using the f
 <p>Equivalent to calling setInactivityHandling(false).</p>
 <p>Check <a class="el" href="#a4b30773f7a69dad507caaa636f08fa76" title="Enables or disables automatic inactivity handling of the sensor.">setInactivityHandling()</a> for details. </p>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00247">247</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00258">258</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
 
 </div>
 </div>
@@ -1449,7 +1449,7 @@ If config mode is already disabled and sending the command is forced using the f
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command has been sent, false if the command cant be sent (typically because another async command is pending). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00971">971</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00974">974</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -1494,7 +1494,7 @@ Normal detection data is suspended while config mode is active.</dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command was accepted, false if blocked (typically because another async command is pending). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00559">559</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00570">570</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
 
 </div>
 </div>
@@ -1537,7 +1537,7 @@ Normal detection data is suspended while config mode is active.</dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command was accapted, false if blocked (typically because another async command is pending). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00815">815</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00817">817</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -1574,7 +1574,7 @@ Requires config mode. Will be enabled automatically if not active.</dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00871">871</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00874">874</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -1605,7 +1605,7 @@ Requires config mode. Will be enabled automatically if not active.</dd></dl>
 <p>Equivalent to calling setInactivityHandling(true).</p>
 <p>Check <a class="el" href="#a4b30773f7a69dad507caaa636f08fa76" title="Enables or disables automatic inactivity handling of the sensor.">setInactivityHandling()</a> for details. </p>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00238">238</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00249">249</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
 
 </div>
 </div>
@@ -1628,7 +1628,7 @@ Requires config mode. Will be enabled automatically if not active.</dd></dl>
 <p>After calling <a class="el" href="#af52e0e8aaa30a81fa84024fdb975aa54" title="Stops the background task started by begin().">end()</a>, no more data will be processed until <a class="el" href="#a1358f6f0b8d55a676b5b8147906c9024" title="Starts the background task that continuously reads data from the sensor.">begin()</a> is called again. This is useful to temporarily suspend radar processing without rebooting.</p>
 <dl class="section return"><dt>Returns</dt><dd>true if the task was stopped, false if it was not active. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01736">1736</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01759">1759</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -1658,7 +1658,7 @@ Requires config mode. Will be enabled automatically if not active.</dd></dl>
 <p>Returns the current async command timeout. </p>
 <dl class="section return"><dt>Returns</dt><dd>Timeout in milliseconds. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00532">532</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00543">543</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
 
 </div>
 </div>
@@ -1711,7 +1711,7 @@ Don’t:</h2>
 </ul>
 <dl class="section return"><dt>Returns</dt><dd>A copy of the current ConfigData. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01542">1542</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01565">1565</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -1748,7 +1748,7 @@ Example: Efficient read access without cloning</h2>
 <div class="fragment"><div class="line"><span class="keyword">const</span> ConfigData&amp; cfg = <a class="code hl_variable" href="basicPresenceDetection_8ino.html#a668d1ce20a8d66eeb5ab88238e59c2d4">radar</a>.<a class="code hl_function" href="#af9f1d59211106a3b582a1417063b3a13">getConfigDataRef</a>();  <span class="comment">// no copy</span></div>
 <div class="line">Serial.<a class="code hl_function" href="structLD2410Types_1_1ConfigData.html#a14f6b9d23c5eac3fbf70b397398ae624">print</a>(<span class="stringliteral">&quot;Resolution: &quot;</span>);</div>
 <div class="line">Serial.println(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(cfg.distanceResolution));</div>
-<div class="ttc" id="aclassLD2410Async_html_af9f1d59211106a3b582a1417063b3a13"><div class="ttname"><a href="#af9f1d59211106a3b582a1417063b3a13">LD2410Async::getConfigDataRef</a></div><div class="ttdeci">const LD2410Types::ConfigData &amp; getConfigDataRef() const</div><div class="ttdoc">Access the current config data without making a copy.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8h_source.html#l00481">LD2410Async.h:481</a></div></div>
+<div class="ttc" id="aclassLD2410Async_html_af9f1d59211106a3b582a1417063b3a13"><div class="ttname"><a href="#af9f1d59211106a3b582a1417063b3a13">LD2410Async::getConfigDataRef</a></div><div class="ttdeci">const LD2410Types::ConfigData &amp; getConfigDataRef() const</div><div class="ttdoc">Access the current config data without making a copy.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8h_source.html#l00492">LD2410Async.h:492</a></div></div>
 <div class="ttc" id="astructLD2410Types_1_1ConfigData_html_a14f6b9d23c5eac3fbf70b397398ae624"><div class="ttname"><a href="structLD2410Types_1_1ConfigData.html#a14f6b9d23c5eac3fbf70b397398ae624">LD2410Types::ConfigData::print</a></div><div class="ttdeci">void print() const</div><div class="ttdoc">Debug helper: print configuration contents to Serial.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00434">LD2410Types.h:434</a></div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md10"></a>
 Do:</h2>
@@ -1764,7 +1764,7 @@ Don’t:</h2>
 </ul>
 <dl class="section return"><dt>Returns</dt><dd>Const reference to the current ConfigData. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00481">481</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00492">492</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
 
 </div>
 </div>
@@ -1794,7 +1794,7 @@ Example: Access values from a clone</h2>
 <div class="line">  Serial.print(<span class="stringliteral">&quot;Moving target at distance: &quot;</span>);</div>
 <div class="line">  Serial.println(data.movingTargetDistance);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassLD2410Async_html_a5bf997474cd5eb58ac2a142a8d134a50"><div class="ttname"><a href="#a5bf997474cd5eb58ac2a142a8d134a50">LD2410Async::getDetectionData</a></div><div class="ttdeci">LD2410Types::DetectionData getDetectionData() const</div><div class="ttdoc">Returns a clone of the latest detection data from the radar.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l01538">LD2410Async.cpp:1538</a></div></div>
+<div class="ttc" id="aclassLD2410Async_html_a5bf997474cd5eb58ac2a142a8d134a50"><div class="ttname"><a href="#a5bf997474cd5eb58ac2a142a8d134a50">LD2410Async::getDetectionData</a></div><div class="ttdeci">LD2410Types::DetectionData getDetectionData() const</div><div class="ttdoc">Returns a clone of the latest detection data from the radar.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l01561">LD2410Async.cpp:1561</a></div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md1"></a>
 Do:</h2>
 <ul>
@@ -1808,7 +1808,7 @@ Don’t:</h2>
 </ul>
 <dl class="section return"><dt>Returns</dt><dd>A copy of the current DetectionData. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01538">1538</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01561">1561</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -1845,7 +1845,7 @@ Example: Efficient read access without cloning</h2>
 <div class="fragment"><div class="line"><span class="keyword">const</span> DetectionData&amp; data = <a class="code hl_variable" href="basicPresenceDetection_8ino.html#a668d1ce20a8d66eeb5ab88238e59c2d4">radar</a>.<a class="code hl_function" href="#ade2ef7c106c38e11fd450e75a6494090">getDetectionDataRef</a>();  <span class="comment">// no copy</span></div>
 <div class="line">Serial.<a class="code hl_function" href="structLD2410Types_1_1DetectionData.html#a05545713d5314398cf8c87ac50bbf4ca">print</a>(<span class="stringliteral">&quot;Stationary signal: &quot;</span>);</div>
 <div class="line">Serial.println(data.stationaryTargetSignal);</div>
-<div class="ttc" id="aclassLD2410Async_html_ade2ef7c106c38e11fd450e75a6494090"><div class="ttname"><a href="#ade2ef7c106c38e11fd450e75a6494090">LD2410Async::getDetectionDataRef</a></div><div class="ttdeci">const LD2410Types::DetectionData &amp; getDetectionDataRef() const</div><div class="ttdoc">Access the current detection data without making a copy.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8h_source.html#l00402">LD2410Async.h:402</a></div></div>
+<div class="ttc" id="aclassLD2410Async_html_ade2ef7c106c38e11fd450e75a6494090"><div class="ttname"><a href="#ade2ef7c106c38e11fd450e75a6494090">LD2410Async::getDetectionDataRef</a></div><div class="ttdeci">const LD2410Types::DetectionData &amp; getDetectionDataRef() const</div><div class="ttdoc">Access the current detection data without making a copy.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8h_source.html#l00413">LD2410Async.h:413</a></div></div>
 <div class="ttc" id="astructLD2410Types_1_1DetectionData_html_a05545713d5314398cf8c87ac50bbf4ca"><div class="ttname"><a href="structLD2410Types_1_1DetectionData.html#a05545713d5314398cf8c87ac50bbf4ca">LD2410Types::DetectionData::print</a></div><div class="ttdeci">void print() const</div><div class="ttdoc">Debug helper: print detection data contents to Serial.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00280">LD2410Types.h:280</a></div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md4"></a>
 Do:</h2>
@@ -1861,7 +1861,7 @@ Don’t:</h2>
 </ul>
 <dl class="section return"><dt>Returns</dt><dd>Const reference to the current DetectionData. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00402">402</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00413">413</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
 
 </div>
 </div>
@@ -1891,7 +1891,7 @@ Don’t:</h2>
 <p>Returns the current inactivity handling timeout period. </p>
 <dl class="section return"><dt>Returns</dt><dd>Timeout in milliseconds. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00281">281</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00292">292</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
 
 </div>
 </div>
@@ -1921,7 +1921,7 @@ Don’t:</h2>
 <p>Detects if config mode is enabled. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if config mode is anabled, false if config mode is disabled </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00629">629</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00640">640</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
 
 </div>
 </div>
@@ -1951,7 +1951,7 @@ Don’t:</h2>
 <p>Detects if engineering mode is enabled. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if engineering mode is anabled, false if engineering mode is disabled </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00675">675</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00686">686</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
 
 </div>
 </div>
@@ -1981,7 +1981,7 @@ Don’t:</h2>
 <p>Returns whether inactivity handling is currently enabled. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if inactivity handling is enabled, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00255">255</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00266">266</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
 
 </div>
 </div>
@@ -2023,7 +2023,7 @@ Don’t:</h2>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00853">853</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00864">864</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
 
 </div>
 </div>
@@ -2064,7 +2064,7 @@ Don’t:</h2>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01512">1512</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01535">1535</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -2208,7 +2208,7 @@ Example: Refresh config data</h2>
 <div class="line">    sender-&gt;<a class="code hl_function" href="#af9f1d59211106a3b582a1417063b3a13">getConfigDataRef</a>().<a class="code hl_function" href="structLD2410Types_1_1ConfigData.html#a14f6b9d23c5eac3fbf70b397398ae624">print</a>();</div>
 <div class="line">  }</div>
 <div class="line">});</div>
-<div class="ttc" id="aclassLD2410Async_html_ab578ee25526c8bb808fe7200fae95a38"><div class="ttname"><a href="#ab578ee25526c8bb808fe7200fae95a38">LD2410Async::requestAllConfigSettingsAsync</a></div><div class="ttdeci">bool requestAllConfigSettingsAsync(AsyncCommandCallback callback, byte userData=0)</div><div class="ttdoc">Requests all configuration settings from the sensor.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l01122">LD2410Async.cpp:1122</a></div></div>
+<div class="ttc" id="aclassLD2410Async_html_ab578ee25526c8bb808fe7200fae95a38"><div class="ttname"><a href="#ab578ee25526c8bb808fe7200fae95a38">LD2410Async::requestAllConfigSettingsAsync</a></div><div class="ttdeci">bool requestAllConfigSettingsAsync(AsyncCommandCallback callback, byte userData=0)</div><div class="ttdoc">Requests all configuration settings from the sensor.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l01125">LD2410Async.cpp:1125</a></div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md19"></a>
 Do:</h2>
 <ul>
@@ -2229,7 +2229,7 @@ Don’t:</h2>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01122">1122</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01125">1125</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -2276,7 +2276,7 @@ Example: Retrieve firmware and MAC</h2>
 <div class="line">    Serial.println(sender-&gt;macString);</div>
 <div class="line">  }</div>
 <div class="line">});</div>
-<div class="ttc" id="aclassLD2410Async_html_a86968c2e9be09d9acb6b62ad7496a2a6"><div class="ttname"><a href="#a86968c2e9be09d9acb6b62ad7496a2a6">LD2410Async::requestAllStaticDataAsync</a></div><div class="ttdeci">bool requestAllStaticDataAsync(AsyncCommandCallback callback, byte userData=0)</div><div class="ttdoc">Requests all static information from the sensor.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l01107">LD2410Async.cpp:1107</a></div></div>
+<div class="ttc" id="aclassLD2410Async_html_a86968c2e9be09d9acb6b62ad7496a2a6"><div class="ttname"><a href="#a86968c2e9be09d9acb6b62ad7496a2a6">LD2410Async::requestAllStaticDataAsync</a></div><div class="ttdeci">bool requestAllStaticDataAsync(AsyncCommandCallback callback, byte userData=0)</div><div class="ttdoc">Requests all static information from the sensor.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l01110">LD2410Async.cpp:1110</a></div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md22"></a>
 Do:</h2>
 <ul>
@@ -2297,7 +2297,7 @@ Don’t:</h2>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01107">1107</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01110">1110</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -2352,8 +2352,8 @@ Example: Check auto-config status</h2>
 <div class="line">    Serial.println(<span class="stringliteral">&quot;Failed to request auto-config status.&quot;</span>);</div>
 <div class="line">  }</div>
 <div class="line">});</div>
-<div class="ttc" id="aclassLD2410Async_html_aa6ee467bd1911a2bb8d06b48a3e5b694"><div class="ttname"><a href="#aa6ee467bd1911a2bb8d06b48a3e5b694">LD2410Async::autoConfigStatus</a></div><div class="ttdeci">LD2410Types::AutoConfigStatus autoConfigStatus</div><div class="ttdoc">Current status of the auto-configuration routine.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8h_source.html#l00150">LD2410Async.h:150</a></div></div>
-<div class="ttc" id="aclassLD2410Async_html_ad219580b6e47f54a8aac0847e2054bf6"><div class="ttname"><a href="#ad219580b6e47f54a8aac0847e2054bf6">LD2410Async::requestAutoConfigStatusAsync</a></div><div class="ttdeci">bool requestAutoConfigStatusAsync(AsyncCommandCallback callback, byte userData=0)</div><div class="ttdoc">Requests the current status of the auto-config routine.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l01091">LD2410Async.cpp:1091</a></div></div>
+<div class="ttc" id="aclassLD2410Async_html_aa6ee467bd1911a2bb8d06b48a3e5b694"><div class="ttname"><a href="#aa6ee467bd1911a2bb8d06b48a3e5b694">LD2410Async::autoConfigStatus</a></div><div class="ttdeci">LD2410Types::AutoConfigStatus autoConfigStatus</div><div class="ttdoc">Current status of the auto-configuration routine.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8h_source.html#l00161">LD2410Async.h:161</a></div></div>
+<div class="ttc" id="aclassLD2410Async_html_ad219580b6e47f54a8aac0847e2054bf6"><div class="ttname"><a href="#ad219580b6e47f54a8aac0847e2054bf6">LD2410Async::requestAutoConfigStatusAsync</a></div><div class="ttdeci">bool requestAutoConfigStatusAsync(AsyncCommandCallback callback, byte userData=0)</div><div class="ttdoc">Requests the current status of the auto-config routine.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l01094">LD2410Async.cpp:1094</a></div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md16"></a>
 Do:</h2>
 <ul>
@@ -2374,7 +2374,7 @@ Don’t:</h2>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01091">1091</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01094">1094</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -2409,7 +2409,7 @@ Don’t:</h2>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01072">1072</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01075">1075</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -2443,18 +2443,18 @@ Don’t:</h2>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command has been sent, false if the command cant be sent (typically because another async command is pending). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00987">987</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00990">990</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a69a03d1800087383e5a256c43179b4b5" name="a69a03d1800087383e5a256c43179b4b5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69a03d1800087383e5a256c43179b4b5">&#9670;&#160;</a></span>requestDistanceResolutionCmAsync()</h2>
+<a id="a0b3d1e8478f0ae97c96cda96e3ccc2b2" name="a0b3d1e8478f0ae97c96cda96e3ccc2b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b3d1e8478f0ae97c96cda96e3ccc2b2">&#9670;&#160;</a></span>requestDistanceResolutionAsync()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool LD2410Async::requestDistanceResolutionCmAsync </td>
+          <td class="memname">bool LD2410Async::requestDistanceResolutionAsync </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="#adc0bdb769283d0d49aaaebc9c10dc603">AsyncCommandCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
         </tr>
@@ -2478,7 +2478,7 @@ Don’t:</h2>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01049">1049</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01052">1052</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -2513,7 +2513,7 @@ Don’t:</h2>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00924">924</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00927">927</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -2550,7 +2550,7 @@ If an async command is already pending, the request is rejected.</dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00864">864</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00867">867</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -2570,7 +2570,7 @@ If an async command is already pending, the request is rejected.</dd></dl>
 </div><div class="memdoc">
 <p>Resets the config data to the initial values </p>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01550">1550</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01573">1573</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -2607,7 +2607,7 @@ After execution, call <a class="el" href="#aeb856d32612fba953b07280cf5d9a235" ti
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the command was sent, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00961">961</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l00964">964</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -2643,7 +2643,7 @@ After execution, call <a class="el" href="#aeb856d32612fba953b07280cf5d9a235" ti
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00524">524</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00535">535</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
 
 </div>
 </div>
@@ -2677,7 +2677,7 @@ After execution, call <a class="el" href="#aeb856d32612fba953b07280cf5d9a235" ti
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01645">1645</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8cpp_source.html#l01668">1668</a> of file <a class="el" href="LD2410Async_8cpp_source.html">LD2410Async.cpp</a>.</p>
 
 </div>
 </div>
@@ -2715,7 +2715,7 @@ After execution, call <a class="el" href="#aeb856d32612fba953b07280cf5d9a235" ti
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00273">273</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00284">284</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
 
 </div>
 </div>
@@ -2735,7 +2735,7 @@ After execution, call <a class="el" href="#aeb856d32612fba953b07280cf5d9a235" ti
 <p>Current status of the auto-configuration routine. </p>
 <p>Updated by <a class="el" href="#ad219580b6e47f54a8aac0847e2054bf6" title="Requests the current status of the auto-config routine.">requestAutoConfigStatusAsync()</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00150">150</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00161">161</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
 
 </div>
 </div>
@@ -2755,7 +2755,7 @@ After execution, call <a class="el" href="#aeb856d32612fba953b07280cf5d9a235" ti
 <p>Filled when configuration query commands are issued (e.g. <a class="el" href="#ab578ee25526c8bb808fe7200fae95a38" title="Requests all configuration settings from the sensor.">requestAllConfigSettingsAsync()</a> or <a class="el" href="#ad7bfb9c212c452898053f167555a0bb6" title="Requests the current gate parameters from the sensor.">requestGateParametersAsync()</a> ect). Use <a class="el" href="#ad320d7e80fd719f0bbc41ebb96c0f285" title="Registers a callback for configuration data updates.">registerConfigUpdateReceivedCallback()</a> to be notified when data in this struct changes. Use <a class="el" href="#a54388c929cea610f92891def29db66a5" title="Returns a clone of the current configuration data of the radar.">getConfigData()</a> or <a class="el" href="#af9f1d59211106a3b582a1417063b3a13" title="Access the current config data without making a copy.">getConfigDataRef()</a> to access the current values, rather than accessing the struct directly.</p>
 <p>Structure will contain only uninitilaized data if config data is not queried explicitly. </p>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00107">107</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00118">118</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
 
 </div>
 </div>
@@ -2774,7 +2774,7 @@ After execution, call <a class="el" href="#aeb856d32612fba953b07280cf5d9a235" ti
 <p>True if the sensor is currently in config mode. </p>
 <p>Config mode must be enabled using <a class="el" href="#ad24f13c9381aa35460908b4c0edb5fa9" title="Enables config mode on the radar.">enableConfigModeAsync()</a> before sending configuration commands. After sending config commands, always disable the config mode using <a class="el" href="#a99910e37f7cf20d05be573fec341ef0c" title="Disables config mode on the radar.">disableConfigModeAsync()</a>, otherwiese the radar will not send any detection data. </p>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00127">127</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00138">138</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
 
 </div>
 </div>
@@ -2793,7 +2793,7 @@ After execution, call <a class="el" href="#aeb856d32612fba953b07280cf5d9a235" ti
 <p>Latest detection results from the radar. </p>
 <p>Updated automatically whenever new data frames are received. Use <a class="el" href="#af4a5bb569a656f369f739060b9a3f282" title="Registers a callback for new detection data.">registerDetectionDataReceivedCallback()</a> to be notified whenever this struct changes. Use <a class="el" href="#a5bf997474cd5eb58ac2a142a8d134a50" title="Returns a clone of the latest detection data from the radar.">getDetectionData()</a> or <a class="el" href="#ade2ef7c106c38e11fd450e75a6494090" title="Access the current detection data without making a copy.">getDetectionDataRef()</a> to access the current values, rather than accessing the struct directly. </p>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00094">94</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00105">105</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
 
 </div>
 </div>
@@ -2813,7 +2813,7 @@ After execution, call <a class="el" href="#aeb856d32612fba953b07280cf5d9a235" ti
 <p>In engineering mode, the radar sends detailed per-gate signal data in addition to basic detection data.</p>
 <p>Use <a class="el" href="#ad7b1c7d38ac3948ebf159b20e1a3bb1d" title="Enables engineering mode.">enableEngineeringModeAsync()</a> and <a class="el" href="#a377464026350140b0277369a13e8c1d3" title="Disables engineering mode.">disableEngineeringModeAsync()</a> to control the engineering mode. </p>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00139">139</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00150">150</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
 
 </div>
 </div>
@@ -2832,7 +2832,7 @@ After execution, call <a class="el" href="#aeb856d32612fba953b07280cf5d9a235" ti
 <p>Static data of the radar. </p>
 <p>Filled when config mode is being enabled (protocol version and buffer size) annd when issuing query commands for the static data (<a class="el" href="#a86968c2e9be09d9acb6b62ad7496a2a6" title="Requests all static information from the sensor.">requestAllStaticDataAsync()</a>, <a class="el" href="#a5eeae3b4525a303e0e3bc208c4bcff21" title="Requests the firmware version of the sensor.">requestFirmwareAsync()</a>, <a class="el" href="#a3923c4b746d90fbd314eae7094bb90be" title="Requests the bluetooth mac address.">requestBluetoothMacAddressAsync()</a> ) </p>
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00115">115</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00126">126</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
 
 </div>
 </div>

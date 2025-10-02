@@ -57,7 +57,7 @@ var classLD2410Async =
     [ "requestAutoConfigStatusAsync", "classLD2410Async.html#ad219580b6e47f54a8aac0847e2054bf6", null ],
     [ "requestAuxControlSettingsAsync", "classLD2410Async.html#afaa6e2c1842ebd96c6e04fe542af66cb", null ],
     [ "requestBluetoothMacAddressAsync", "classLD2410Async.html#a3923c4b746d90fbd314eae7094bb90be", null ],
-    [ "requestDistanceResolutionCmAsync", "classLD2410Async.html#a69a03d1800087383e5a256c43179b4b5", null ],
+    [ "requestDistanceResolutionAsync", "classLD2410Async.html#a0b3d1e8478f0ae97c96cda96e3ccc2b2", null ],
     [ "requestFirmwareAsync", "classLD2410Async.html#a5eeae3b4525a303e0e3bc208c4bcff21", null ],
     [ "requestGateParametersAsync", "classLD2410Async.html#ad7bfb9c212c452898053f167555a0bb6", null ],
     [ "resetConfigData", "classLD2410Async.html#a1ef175e017d90223863177a57d07052a", null ],

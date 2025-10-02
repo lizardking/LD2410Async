@@ -16,5 +16,9 @@ var searchData=
   ['disableinactivityhandling_13',['disableInactivityHandling',['../classLD2410Async.html#a66ca514c34bec7957b46395dabb602f2',1,'LD2410Async']]],
   ['disableinactivityhandlingtest_14',['disableInactivityHandlingTest',['../unitTest_8ino.html#a4d02db8a1028efeffe24aa285bce7b5d',1,'unitTest.ino']]],
   ['disableinactivityhandlingtestcallback_15',['disableInactivityHandlingTestCallback',['../unitTest_8ino.html#aa344243d81dc6cb912b30643d98c872d',1,'unitTest.ino']]],
-  ['disableinactivityhandlingtestend_16',['disableInactivityHandlingTestEnd',['../unitTest_8ino.html#a7d022806a53e0d2de3e2ebadae996b6a',1,'unitTest.ino']]]
+  ['disableinactivityhandlingtestconfigmodedisabled_16',['disableInactivityHandlingTestConfigModeDisabled',['../unitTest_8ino.html#a343f30da2cb2c135e1a0429c9f78d92a',1,'unitTest.ino']]],
+  ['disableinactivityhandlingtesttimeelapsed_17',['disableInactivityHandlingTestTimeElapsed',['../unitTest_8ino.html#a07a7bba5f9b488da2c6341c392da17a2',1,'unitTest.ino']]],
+  ['distanceresolutiontest_18',['distanceResolutionTest',['../unitTest_8ino.html#a81c12317b1cad3ada1cb9a1a39286a37',1,'unitTest.ino']]],
+  ['distanceresolutiontestconfigurecallback_19',['distanceResolutionTestConfigureCallback',['../unitTest_8ino.html#a1f25fe9af8fd9ce090336e94ba382a4a',1,'unitTest.ino']]],
+  ['distanceresolutiontestrequestcallback_20',['distanceResolutionTestRequestCallback',['../unitTest_8ino.html#af11e80dd741c12a79008d9e8b7407fce',1,'unitTest.ino']]]
 ];

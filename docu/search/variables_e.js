@@ -14,5 +14,6 @@ var searchData=
   ['stationarytargetdistance_11',['stationaryTargetDistance',['../structLD2410Types_1_1DetectionData.html#af4c2bdd33c176a09c79da11aebb44317',1,'LD2410Types::DetectionData']]],
   ['stationarytargetgatesignalcount_12',['stationaryTargetGateSignalCount',['../structLD2410Types_1_1DetectionData.html#a79fb6d1050658ab88b967e9d52052fa1',1,'LD2410Types::DetectionData']]],
   ['stationarytargetgatesignals_13',['stationaryTargetGateSignals',['../structLD2410Types_1_1DetectionData.html#a0a76b94acfc9d9aa655721c7945c990b',1,'LD2410Types::DetectionData']]],
-  ['stationarytargetsignal_14',['stationaryTargetSignal',['../structLD2410Types_1_1DetectionData.html#a29b0cbb338b2b29c11727427dabf0a73',1,'LD2410Types::DetectionData']]]
+  ['stationarytargetsignal_14',['stationaryTargetSignal',['../structLD2410Types_1_1DetectionData.html#a29b0cbb338b2b29c11727427dabf0a73',1,'LD2410Types::DetectionData']]],
+  ['stationarythresholdtoapply_15',['stationaryThresholdToApply',['../unitTest_8ino.html#a839d02a301029ffaf2009cc99b4c8516',1,'unitTest.ino']]]
 ];

@@ -11,5 +11,8 @@ var searchData=
   ['asyncisbusytest_8',['asyncIsBusyTest',['../unitTest_8ino.html#aad33a1b57ff67e8cff41182262c5eaf8',1,'unitTest.ino']]],
   ['asyncisbusytestcheckbusy_9',['asyncIsBusyTestCheckBusy',['../unitTest_8ino.html#a81fc638d65bf32043c99483fcb4fa6a6',1,'unitTest.ino']]],
   ['asyncisbusytestdisableconfigmodecallback_10',['asyncIsBusyTestDisableConfigModeCallback',['../unitTest_8ino.html#ac901bb4f632834f08a6d9fc88f9aa5b1',1,'unitTest.ino']]],
-  ['asyncisbusytestenableconfigmodecallback_11',['asyncIsBusyTestEnableConfigModeCallback',['../unitTest_8ino.html#a09b275759a94f9203c9be1794e84bfa8',1,'unitTest.ino']]]
+  ['asyncisbusytestenableconfigmodecallback_11',['asyncIsBusyTestEnableConfigModeCallback',['../unitTest_8ino.html#a09b275759a94f9203c9be1794e84bfa8',1,'unitTest.ino']]],
+  ['auxcontrolsettingstest_12',['auxControlSettingsTest',['../unitTest_8ino.html#ae1113002eb437fdea2572e84a624ada0',1,'unitTest.ino']]],
+  ['auxcontrolsettingstestconfigurecallback_13',['auxControlSettingsTestConfigureCallback',['../unitTest_8ino.html#a2d0081791a96a5f2050e3b1af63cf535',1,'unitTest.ino']]],
+  ['auxcontrolsettingstestrequestcallback_14',['auxControlSettingsTestRequestCallback',['../unitTest_8ino.html#a698d749403913a2d22d33c1d95ebeb52',1,'unitTest.ino']]]
 ];

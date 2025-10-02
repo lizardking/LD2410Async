@@ -9,8 +9,8 @@ var searchData=
   ['ld2410async_20library_20for_20esp32_6',['LD2410Async library for ESP32',['../index.html#autotoc_md27',1,'']]],
   ['ld2410async_2ecpp_7',['LD2410Async.cpp',['../LD2410Async_8cpp.html',1,'']]],
   ['ld2410async_2eh_8',['LD2410Async.h',['../LD2410Async_8h.html',1,'']]],
-  ['ld2410async_5fdebug_5fdata_5flevel_9',['LD2410ASYNC_DEBUG_DATA_LEVEL',['../LD2410Debug_8h.html#a4c215a1265c9473347aad0ad82d53c40',1,'LD2410Debug.h']]],
-  ['ld2410async_5fdebug_5flevel_10',['LD2410ASYNC_DEBUG_LEVEL',['../LD2410Async_8h.html#ae8c652c94c043cf64207bb6b6f983163',1,'LD2410ASYNC_DEBUG_LEVEL:&#160;LD2410Async.h'],['../LD2410Debug_8h.html#ae8c652c94c043cf64207bb6b6f983163',1,'LD2410ASYNC_DEBUG_LEVEL:&#160;LD2410Debug.h']]],
+  ['ld2410async_5fdebug_5fdata_5flevel_9',['LD2410ASYNC_DEBUG_DATA_LEVEL',['../LD2410Async_8h.html#a4c215a1265c9473347aad0ad82d53c40',1,'LD2410ASYNC_DEBUG_DATA_LEVEL:&#160;LD2410Async.h'],['../LD2410Debug_8h.html#a4c215a1265c9473347aad0ad82d53c40',1,'LD2410ASYNC_DEBUG_DATA_LEVEL:&#160;LD2410Debug.h']]],
+  ['ld2410async_5fdebug_5flevel_10',['LD2410ASYNC_DEBUG_LEVEL',['../LD2410Async_8h.html#ae8c652c94c043cf64207bb6b6f983163',1,'LD2410ASYNC_DEBUG_LEVEL:&#160;LD2410Async.h'],['../LD2410Debug_8h.html#ae8c652c94c043cf64207bb6b6f983163',1,'LD2410ASYNC_DEBUG_LEVEL:&#160;LD2410Debug.h'],['../unitTest_8ino.html#ae8c652c94c043cf64207bb6b6f983163',1,'LD2410ASYNC_DEBUG_LEVEL:&#160;unitTest.ino']]],
   ['ld2410commandbuilder_11',['LD2410CommandBuilder',['../namespaceLD2410CommandBuilder.html',1,'']]],
   ['ld2410commandbuilder_2eh_12',['LD2410CommandBuilder.h',['../LD2410CommandBuilder_8h.html',1,'']]],
   ['ld2410debug_2eh_13',['LD2410Debug.h',['../LD2410Debug_8h.html',1,'']]],
@@ -23,9 +23,11 @@ var searchData=
   ['light_5fbelow_5fthreshold_20',['LIGHT_BELOW_THRESHOLD',['../namespaceLD2410Types.html#afbd22de9579db591b3f122c51c730844a6a9d30a8d1d6df98b89d66c50e47cd6c',1,'LD2410Types']]],
   ['lightcontrol_21',['LightControl',['../namespaceLD2410Types.html#afbd22de9579db591b3f122c51c730844',1,'LD2410Types']]],
   ['lightcontrol_22',['lightControl',['../structLD2410Types_1_1ConfigData.html#a90a9b0911fdf7ee1b05a90b70b76d2d7',1,'LD2410Types::ConfigData']]],
-  ['lightlevel_23',['lightLevel',['../structLD2410Types_1_1DetectionData.html#a34c54eeec586ff7aed6d1a774741b92c',1,'LD2410Types::DetectionData']]],
-  ['lightthreshold_24',['lightThreshold',['../structLD2410Types_1_1ConfigData.html#a409cf828c80e4c75b9200ef3f1c4de88',1,'LD2410Types::ConfigData']]],
-  ['line_5flen_25',['LINE_LEN',['../unitTest_8ino.html#a807a3ea57348f9546a90db0b079848cb',1,'unitTest.ino']]],
-  ['local_5fip_26',['LOCAL_IP',['../simplePresenceDetectionWebservice_8ino.html#a5a9a77b7e2709907f3b84da947708d54',1,'simplePresenceDetectionWebservice.ino']]],
-  ['loop_27',['loop',['../basicPresenceDetection_8ino.html#afe461d27b9c48d5921c00d521181f12f',1,'loop():&#160;basicPresenceDetection.ino'],['../changeConfig_8ino.html#afe461d27b9c48d5921c00d521181f12f',1,'loop():&#160;changeConfig.ino'],['../changeDistanceResolution_8ino.html#afe461d27b9c48d5921c00d521181f12f',1,'loop():&#160;changeDistanceResolution.ino'],['../receiveData_8ino.html#afe461d27b9c48d5921c00d521181f12f',1,'loop():&#160;receiveData.ino'],['../simplePresenceDetectionWebservice_8ino.html#afe461d27b9c48d5921c00d521181f12f',1,'loop():&#160;simplePresenceDetectionWebservice.ino'],['../unitTest_8ino.html#afe461d27b9c48d5921c00d521181f12f',1,'loop():&#160;unitTest.ino']]]
+  ['lightcontroltoapply_23',['lightControlToApply',['../unitTest_8ino.html#aab1a07860355e95a25bf5fd761f953d7',1,'unitTest.ino']]],
+  ['lightlevel_24',['lightLevel',['../structLD2410Types_1_1DetectionData.html#a34c54eeec586ff7aed6d1a774741b92c',1,'LD2410Types::DetectionData']]],
+  ['lightthreshold_25',['lightThreshold',['../structLD2410Types_1_1ConfigData.html#a409cf828c80e4c75b9200ef3f1c4de88',1,'LD2410Types::ConfigData']]],
+  ['lightthresholdtoapply_26',['lightThresholdToApply',['../unitTest_8ino.html#afeab53221abf16f42ff9090221d03739',1,'unitTest.ino']]],
+  ['line_5flen_27',['LINE_LEN',['../unitTest_8ino.html#a807a3ea57348f9546a90db0b079848cb',1,'unitTest.ino']]],
+  ['local_5fip_28',['LOCAL_IP',['../simplePresenceDetectionWebservice_8ino.html#a5a9a77b7e2709907f3b84da947708d54',1,'simplePresenceDetectionWebservice.ino']]],
+  ['loop_29',['loop',['../basicPresenceDetection_8ino.html#afe461d27b9c48d5921c00d521181f12f',1,'loop():&#160;basicPresenceDetection.ino'],['../changeConfig_8ino.html#afe461d27b9c48d5921c00d521181f12f',1,'loop():&#160;changeConfig.ino'],['../changeDistanceResolution_8ino.html#afe461d27b9c48d5921c00d521181f12f',1,'loop():&#160;changeDistanceResolution.ino'],['../receiveData_8ino.html#afe461d27b9c48d5921c00d521181f12f',1,'loop():&#160;receiveData.ino'],['../simplePresenceDetectionWebservice_8ino.html#afe461d27b9c48d5921c00d521181f12f',1,'loop():&#160;simplePresenceDetectionWebservice.ino'],['../unitTest_8ino.html#afe461d27b9c48d5921c00d521181f12f',1,'loop():&#160;unitTest.ino']]]
 ];

@@ -27,8 +27,9 @@ var searchData=
   ['stationarytargetgatesignalcount_24',['stationaryTargetGateSignalCount',['../structLD2410Types_1_1DetectionData.html#a79fb6d1050658ab88b967e9d52052fa1',1,'LD2410Types::DetectionData']]],
   ['stationarytargetgatesignals_25',['stationaryTargetGateSignals',['../structLD2410Types_1_1DetectionData.html#a0a76b94acfc9d9aa655721c7945c990b',1,'LD2410Types::DetectionData']]],
   ['stationarytargetsignal_26',['stationaryTargetSignal',['../structLD2410Types_1_1DetectionData.html#a29b0cbb338b2b29c11727427dabf0a73',1,'LD2410Types::DetectionData']]],
-  ['status_27',['Example: Check auto-config status',['../classLD2410Async.html#autotoc_md15',1,'']]],
-  ['stopdataupdatecounter_28',['stopDataUpdateCounter',['../unitTest_8ino.html#a7c43e08c82feeb034027e6d00b93ec3b',1,'unitTest.ino']]],
-  ['subnet_29',['SUBNET',['../simplePresenceDetectionWebservice_8ino.html#a01919959c5e72529122db54c63452dae',1,'simplePresenceDetectionWebservice.ino']]],
-  ['success_30',['SUCCESS',['../classLD2410Async.html#a136b50e19cfddad787637fb65421d9abad0749aaba8b833466dfcbb0428e4f89c',1,'LD2410Async']]]
+  ['stationarythresholdtoapply_27',['stationaryThresholdToApply',['../unitTest_8ino.html#a839d02a301029ffaf2009cc99b4c8516',1,'unitTest.ino']]],
+  ['status_28',['Example: Check auto-config status',['../classLD2410Async.html#autotoc_md15',1,'']]],
+  ['stopdataupdatecounter_29',['stopDataUpdateCounter',['../unitTest_8ino.html#a7c43e08c82feeb034027e6d00b93ec3b',1,'unitTest.ino']]],
+  ['subnet_30',['SUBNET',['../simplePresenceDetectionWebservice_8ino.html#a01919959c5e72529122db54c63452dae',1,'simplePresenceDetectionWebservice.ino']]],
+  ['success_31',['SUCCESS',['../classLD2410Async.html#a136b50e19cfddad787637fb65421d9abad0749aaba8b833466dfcbb0428e4f89c',1,'LD2410Async']]]
 ];

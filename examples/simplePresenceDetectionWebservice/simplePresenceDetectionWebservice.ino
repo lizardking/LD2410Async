@@ -108,9 +108,8 @@ void notifyClients() {
  *
  * @param sender Pointer to the LD2410Async instance (for multi-sensor setups)
  * @param presenceDetected True if presence is detected, false otherwise
- * @param userData User data (not used)
  */
-void onDetectionDataReceived(LD2410Async* sender, bool presenceDetected, byte userData) {
+void onDetectionDataReceived(LD2410Async* sender, bool presenceDetected) {
     const LD2410Types::DetectionData& data = sender->getDetectionDataRef();
     latestPresenceDetected = data.presenceDetected;
     latestDetectedDistance = data.detectedDistance;
@@ -241,7 +240,7 @@ void setup() {
     // Start radar background task
     if (radar.begin()) {
         Serial.println("Radar task started successfully.");
-        radar.registerDetectionDataReceivedCallback(onDetectionDataReceived, 0);
+        radar.registerDetectionDataReceivedCallback(onDetectionDataReceived);
     }
     else {
         Serial.println("ERROR! Could not start radar task.");

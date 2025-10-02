@@ -53,7 +53,7 @@ LD2410Async radar(RadarSerial);
  * This ensures that you are allways working with the correct instance, which is important if you have multiple LD2410Async instances.
  * Also keep in mind that callbacks should be as short and efficient as possible to avoid blocking the background task of the library.
  */
-void onDetectionDataReceived(LD2410Async* sender, bool presenceDetected, byte userData) {
+void onDetectionDataReceived(LD2410Async* sender, bool presenceDetected) {
     // Access detection data efficiently without making a copy
     const LD2410Types::DetectionData& data = sender->getDetectionDataRef();
 
@@ -106,7 +106,7 @@ void setup() {
     if (radar.begin()) {
         Serial.println("Radar task started successfully.");
         // Register callback for detection updates
-        radar.registerDetectionDataReceivedCallback(onDetectionDataReceived, 0);
+        radar.registerDetectionDataReceivedCallback(onDetectionDataReceived);
     }
     else {
         Serial.println("ERROR! Could not start radar task.");

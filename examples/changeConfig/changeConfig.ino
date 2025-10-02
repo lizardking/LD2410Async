@@ -44,7 +44,7 @@ LD2410Async radar(RadarSerial);
 * @details
 * This method just checks and prints the result
 */
-void onConfigApplied(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData) {
+void onConfigApplied(LD2410Async* sender, LD2410Async::AsyncCommandResult result) {
 	if (result == LD2410Async::AsyncCommandResult::SUCCESS) {
 		Serial.println("Config updated successfully!");
 	}
@@ -66,7 +66,7 @@ void onConfigApplied(LD2410Async* sender, LD2410Async::AsyncCommandResult result
 * This ensures that you are allways working with the correct instance, which is important if you have multiple LD2410Async instances.
 * Also keep in mind that callbacks should be as short and efficient as possible to avoid blocking the background task of the library.
 */
-void onConfigReceived(LD2410Async* sender, LD2410Async::AsyncCommandResult result, byte userData) {
+void onConfigReceived(LD2410Async* sender, LD2410Async::AsyncCommandResult result) {
 	if (result != LD2410Async::AsyncCommandResult::SUCCESS) {
 		Serial.println("Failed to request config data.");
 		return;

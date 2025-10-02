@@ -9,7 +9,7 @@
 */
 
 
-#define LD2410ASYNC_DEBUG_LEVEL 1
+
 
 #include <Arduino.h>
 #include <Ticker.h>
@@ -282,7 +282,7 @@ void dataUpdateCounterReset() {
 }
 
 //Callback method for data received event
-void dataUpdateCounterCallback(LD2410Async* sender, bool presenceDetected, byte userData) {
+void dataUpdateCounterCallback(LD2410Async* sender, bool presenceDetected) {
 	//Output . or * depending on presence detected
 	Serial.print(presenceDetected ? "x" : ".");
 
@@ -326,7 +326,7 @@ void beginTest() {
 ** Reboot test
 ********************************************************************************************************************************/
 
-void rebootTestCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void rebootTestCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	testPrint("Callback for rebootAsync() executed. Result: ", asyncCommandResultToString(asyncResult));
 
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
@@ -402,7 +402,7 @@ void normalModeDataReceiveTest() {
 ** Enable engineering mode test
 ********************************************************************************************************************************/
 
-void enableEngineeringModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void enableEngineeringModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	testPrint("Callback for enableEngineeringModeAsync() executed. Result: ", asyncCommandResultToString(asyncResult));
 
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
@@ -474,7 +474,7 @@ void engineeringModeDataReceiveTest() {
 ** Disable engineering mode test
 ********************************************************************************************************************************/
 
-void disableEngineeringModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void disableEngineeringModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	testPrint("Callback for disableEngineeringModeAsync() executed. Result: ", asyncCommandResultToString(asyncResult));
 
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
@@ -523,7 +523,7 @@ void enableConfigModeTestCheckForDataUpdates() {
 }
 
 
-void enableConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void enableConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	testPrint("Callback for enableConfigModeAsync() executed. Result: ", asyncCommandResultToString(asyncResult));
 
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
@@ -577,7 +577,7 @@ void configModePersistenceTestCheckConfigMode() {
 }
 
 
-void configModePersistenceTestCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void configModePersistenceTestCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	testPrint("Callback for requestFirmwareAsync() executed. Result: ", asyncCommandResultToString(asyncResult));
 
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
@@ -624,7 +624,7 @@ void disableConfigModeTestCheckForDataUpdates() {
 
 
 
-void  disableConfigModeTestDisableConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void  disableConfigModeTestDisableConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	testPrint("Callback for disableConfigModeAsync() executed. Result: ", asyncCommandResultToString(asyncResult));
 
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
@@ -654,7 +654,7 @@ void disableConfigModeTest() {
 ** Disable disabled config mode test
 ********************************************************************************************************************************/
 
-void disableDisabledConfigModeTestDisableConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void disableDisabledConfigModeTestDisableConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	testPrint("Callback for disableConfigModeAsync() executed. Result: ", asyncCommandResultToString(asyncResult));
 
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
@@ -687,7 +687,7 @@ void disableDisabledConfigModeTest() {
 //** Force Disable disabled config mode test
 //********************************************************************************************************************************/
 //
-//void forceDisableDisabledConfigModeTestDisableDisabledConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+//void forceDisableDisabledConfigModeTestDisableDisabledConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 //	testPrint("Callback for disableConfigModeAsync() executed. Result: ", asyncCommandResultToString(asyncResult));
 //
 //	if (asyncResult == LD2410Async::AsyncCommandResult::TIMEOUT) {
@@ -721,7 +721,7 @@ void disableDisabledConfigModeTest() {
 
 int asyncIsBusyTest_Count = 0;
 
-void asyncIsBusyTestDisableConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void asyncIsBusyTestDisableConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
 		testEnd(true, "asyncIsBusy() reported true / busy ", asyncIsBusyTest_Count, " times.");
 	}
@@ -730,7 +730,7 @@ void asyncIsBusyTestDisableConfigModeCallback(LD2410Async* sender, LD2410Async::
 	}
 }
 
-void asyncIsBusyTestEnableConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void asyncIsBusyTestEnableConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	onceTicker.detach();
 
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
@@ -782,7 +782,7 @@ void asyncIsBusyTest() {
 
 int asyncCancelTest_Count = 0;
 
-void asyncCancelTestDisableConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void asyncCancelTestDisableConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
 		testEnd(true, "asyncCancel() has successfully canceled the disableConfigModeAsync() command");
 	}
@@ -802,7 +802,7 @@ void asyncCancelTestDiableConfigMode() {
 	}
 }
 
-void asyncCancelTestEnableConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void asyncCancelTestEnableConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	onceTicker.detach();
 
 	if (asyncResult == LD2410Async::AsyncCommandResult::CANCELED) {
@@ -845,7 +845,7 @@ void asyncCancelTest() {
 ** requestFirmwareAsync() Test
 ********************************************************************************************************************************/
 
-void requestFirmwareAsyncTestCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void requestFirmwareAsyncTestCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
 		testEnd(true, "requestFirmwareAsync() callback reports success");
 	}
@@ -872,7 +872,7 @@ void requestFirmwareAsyncTest() {
 ** requestBluetoothMacAddressAsync() Test
 ********************************************************************************************************************************/
 
-void requestBluetoothMacAddressAsyncTestCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void requestBluetoothMacAddressAsyncTestCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
 		testEnd(true, "requestBluetoothMacAddressAsync() callback reports success");
 	}
@@ -899,7 +899,7 @@ void requestBluetoothMacAddressAsyncTest() {
 ** requestDistanceResolutionAsync() Test
 ********************************************************************************************************************************/
 
-void requestDistanceResolutionAsyncTestCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void requestDistanceResolutionAsyncTestCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
 		const LD2410Types::ConfigData& cfg = sender->getConfigDataRef();
 		if (cfg.distanceResolution == LD2410Types::DistanceResolution::NOT_SET)
@@ -950,7 +950,7 @@ void inactivityHandlingTestEnd() {
 	}
 }
 
-void inactivityHandlingTestEnableConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void inactivityHandlingTestEnableConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	testPrint("Callback for enableConfigModeAsync() executed. Result: ", asyncCommandResultToString(asyncResult));
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
 		testPrint("LD2410 is now in config mode. Waiting 25 secs to see whether it goes back to detection mode after inactivity timeout (will try cancel without effect first and then try exit config mode).");
@@ -993,7 +993,7 @@ void inactivityHandlingTest() {
 ********************************************************************************************************************************/
 
 
-void disableInactivityHandlingTestConfigModeDisabled(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void disableInactivityHandlingTestConfigModeDisabled(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
 		testEnd(true, "As expected inactivity handling did not kick in an revert sensor to detection mode");
 	}
@@ -1025,7 +1025,7 @@ void disableInactivityHandlingTestTimeElapsed() {
 }
 
 
-void disableInactivityHandlingTestCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void disableInactivityHandlingTestCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	testPrint("Callback for enableConfigModeAsync() executed. Result: ", asyncCommandResultToString(asyncResult));
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
 		testPrint("Will wait for 25 secs to see whether the LD2410 goes back to detection mode (it should not do this since inactivity handling is disabled).");
@@ -1162,7 +1162,7 @@ void configDataStructValidationTest() {
 ** requestAllConfigSettingsAsync() Test
 ********************************************************************************************************************************/
 
-void requestAllConfigSettingsAsyncTestCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void requestAllConfigSettingsAsyncTestCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
 		const LD2410Types::ConfigData& cfg = sender->getConfigDataRef();
 		if (!cfg.isValid())
@@ -1229,7 +1229,7 @@ LD2410Types::LightControl lightControlToApply;
 LD2410Types::OutputControl outputControlToApply;
 byte lightThresholdToApply;
 
-void auxControlSettingsTestRequestCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void auxControlSettingsTestRequestCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
 
 		//Get reference to the last read config data
@@ -1253,7 +1253,7 @@ void auxControlSettingsTestRequestCallback(LD2410Async* sender, LD2410Async::Asy
 	}
 }
 
-void auxControlSettingsTestConfigureCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void auxControlSettingsTestConfigureCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
 		testPrint("configureAuxControlSettingsAsync() has reported success. Fetch the relevant settings so we can check if they have been configured as expected.");
 
@@ -1300,7 +1300,7 @@ byte movingThresholdToApply;
 byte stationaryThresholdToApply;
 
 
-void gateParametersTestRequestGateParametersCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void gateParametersTestRequestGateParametersCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
 
 		//Get reference to the last read config data
@@ -1322,7 +1322,7 @@ void gateParametersTestRequestGateParametersCallback(LD2410Async* sender, LD2410
 	}
 }
 
-void gateParametersTestConfigureSingleGateCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void gateParametersTestConfigureSingleGateCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
 		testPrint("configureDistanceGateSensitivityAsync() has reported success. Fetch the relevant settings so we can check if they have been configured as expected.");
 
@@ -1370,7 +1370,7 @@ byte maxStationaryGateToApply;
 short nooneTimeoutToApply;
 
 
-void configureMaxGateAndNoOneTimeoutAsyncTestRequestCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void configureMaxGateAndNoOneTimeoutAsyncTestRequestCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
 
 		//Get reference to the last read config data
@@ -1393,7 +1393,7 @@ void configureMaxGateAndNoOneTimeoutAsyncTestRequestCallback(LD2410Async* sender
 	}
 }
 
-void configureMaxGateAndNoOneTimeoutAsyncTestConfigureCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void configureMaxGateAndNoOneTimeoutAsyncTestConfigureCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
 		testPrint("configureMaxGateAndNoOneTimeoutAsync() has reported success. Fetch the relevant settings so we can check if they have been configured as expected.");
 
@@ -1438,7 +1438,7 @@ void configureMaxGateAndNoOneTimeoutAsyncTest() {
 
 LD2410Types::DistanceResolution distanceResolutionToApply;
 
-void distanceResolutionTestRequestCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void distanceResolutionTestRequestCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
 
 		//Get reference to the last read config data
@@ -1459,7 +1459,7 @@ void distanceResolutionTestRequestCallback(LD2410Async* sender, LD2410Async::Asy
 	}
 }
 
-void distanceResolutionTestConfigureCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void distanceResolutionTestConfigureCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
 		testPrint("configureDistanceResolutionAsync() has reported success. Fetch the relevant settings so we can check if they have been configured as expected.");
 
@@ -1502,7 +1502,7 @@ void distanceResolutionTest() {
 //Also used in restore factory settings test
 LD2410Types::ConfigData configDataToApply;
 
-void configureAllSettingsTestRequestCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void configureAllSettingsTestRequestCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
 
 		//Get reference to the last read config data
@@ -1523,7 +1523,7 @@ void configureAllSettingsTestRequestCallback(LD2410Async* sender, LD2410Async::A
 	}
 }
 
-void configureAllSettingsTestConfigureCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void configureAllSettingsTestConfigureCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
 		testPrint("configureAllConfigSettingsAsync() has reported success. Fetch the relevant settings so we can check if they have been configured as expected.");
 
@@ -1548,7 +1548,7 @@ void configureAllSettingsTest() {
 
 	//Modify the config data
 	configDataToApply.distanceResolution = configDataToApply.distanceResolution == LD2410Types::DistanceResolution::RESOLUTION_20CM ? LD2410Types::DistanceResolution::RESOLUTION_75CM : LD2410Types::DistanceResolution::RESOLUTION_20CM;
-	configDataToApply.maxMotionDistanceGate == configDataToApply.maxMotionDistanceGate != 4 ? 4 : 5;
+	configDataToApply.maxMotionDistanceGate = configDataToApply.maxMotionDistanceGate != 4 ? 4 : 5;
 	configDataToApply.maxStationaryDistanceGate = configDataToApply.maxStationaryDistanceGate != 6 ? 6 : 7;
 	configDataToApply.noOneTimeout = configDataToApply.noOneTimeout != 44 ? 44 : 55;
 	configDataToApply.lightControl = (configDataToApply.lightControl == LD2410Types::LightControl::LIGHT_ABOVE_THRESHOLD ? LD2410Types::LightControl::LIGHT_BELOW_THRESHOLD : LD2410Types::LightControl::LIGHT_ABOVE_THRESHOLD);
@@ -1577,7 +1577,7 @@ void configureAllSettingsTest() {
 
 
 
-void restoreFactorySettingsTesttRequestCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void restoreFactorySettingsTesttRequestCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
 
 		//Get reference to the last read config data
@@ -1598,7 +1598,7 @@ void restoreFactorySettingsTesttRequestCallback(LD2410Async* sender, LD2410Async
 	}
 }
 
-void restoreFactorySettingsTestResetCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void restoreFactorySettingsTestResetCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
 		testPrint("configureAllConfigSettingsAsync() has reported success. Fetch the relevant settings so we can check if they have been configured as expected.");
 
@@ -1637,7 +1637,7 @@ void restoreFactorySettingsTest() {
 ** This is not really a test. It just writes back the org config data that was found on the sensor
 ** at the start of the configuration tests.
 ********************************************************************************************************************************/
-void writeBackOrgConfigDataCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult, byte userData) {
+void writeBackOrgConfigDataCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult asyncResult) {
 	if (asyncResult == LD2410Async::AsyncCommandResult::SUCCESS) {
 		testEnd(true, "configureAllConfigSettingsAsync() has reported success. Fetch the relevant settings so we can check if they have been configured as expected.");
 	}

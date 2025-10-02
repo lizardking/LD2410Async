@@ -51,7 +51,7 @@ bool firstCallback = true;
  * If only basic presence detection is needed, use the presenceDetected variable directly instead of accessing the full detection data struct.
  * For more advanced use cases, the full detection data can be accessed using getDetectionDataRef() or getDetectionData().
 */
-void onDetectionDataReceived(LD2410Async* sender, bool presenceDetected, byte userData) {
+void onDetectionDataReceived(LD2410Async* sender, bool presenceDetected) {
     if (firstCallback || presenceDetected != lastPresenceDetected) {
         unsigned long now = millis();
         Serial.print("[");
@@ -86,7 +86,7 @@ void setup() {
     if (radar.begin()) {
         Serial.println("Radar task started successfully.");
         // Register callback for detection updates
-        radar.registerDetectionDataReceivedCallback(onDetectionDataReceived, 0);
+        radar.registerDetectionDataReceivedCallback(onDetectionDataReceived);
     }
     else {
         Serial.println("ERROR! Could not start radar task.");

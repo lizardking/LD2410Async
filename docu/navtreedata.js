@@ -25,27 +25,29 @@
 var NAVTREE =
 [
   [ "LD2410Async", "index.html", [
-    [ "Introduction", "index.html#autotoc_md34", [
-      [ "Features", "index.html#autotoc_md35", null ],
-      [ "Usage", "index.html#autotoc_md36", null ],
-      [ "Examples", "index.html#autotoc_md37", [
-        [ "Example: Using callback for presence detection updates", "index.html#autotoc_md38", null ],
-        [ "Example: Access detection data without cloning", "index.html#autotoc_md39", null ],
-        [ "Example: Clone config data, modify, and write back", "index.html#autotoc_md40", null ]
+    [ "Introduction", "index.html#autotoc_md36", [
+      [ "Features", "index.html#autotoc_md37", null ],
+      [ "Usage", "index.html#autotoc_md38", null ],
+      [ "Examples", "index.html#autotoc_md39", [
+        [ "Example: Using callback for presence detection updates", "index.html#autotoc_md40", null ],
+        [ "Example: Access detection data without cloning", "index.html#autotoc_md41", null ],
+        [ "Example: Clone config data, modify, and write back", "index.html#autotoc_md42", null ]
       ] ]
     ] ],
     [ "Async Processing & Commands", "md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html", [
       [ "Why asynchronous processing matters for the LD2410", "md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html#autotoc_md28", null ],
       [ "Detection Data Callback", "md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html#autotoc_md29", null ],
-      [ "Async Commands BAsics", "md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html#autotoc_md30", null ],
-      [ "List of Asynchronous Commands", "md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html#autotoc_md31", null ],
-      [ "Best Practices for Async Commands", "md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html#autotoc_md32", null ]
+      [ "Detection Data Callback Example", "md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html#autotoc_md30", null ],
+      [ "Async Commands Basics", "md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html#autotoc_md31", null ],
+      [ "List of Asynchronous Commands", "md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html#autotoc_md32", null ],
+      [ "Async Commands Example", "md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html#autotoc_md33", null ],
+      [ "Best Practices for Async Commands", "md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html#autotoc_md34", null ]
     ] ],
     [ "Inactivity Handling", "md__2github_2workspace_2dox_2Inactivity_01Handling.html", null ],
     [ "LD2410 Operation Modes", "md__2github_2workspace_2dox_2Operation_01Modes.html", [
-      [ "Normal Detection Mode", "md__2github_2workspace_2dox_2Operation_01Modes.html#autotoc_md42", null ],
-      [ "Engineering Mode", "md__2github_2workspace_2dox_2Operation_01Modes.html#autotoc_md43", null ],
-      [ "Configuration Mode", "md__2github_2workspace_2dox_2Operation_01Modes.html#autotoc_md44", null ]
+      [ "Normal Detection Mode", "md__2github_2workspace_2dox_2Operation_01Modes.html#autotoc_md44", null ],
+      [ "Engineering Mode", "md__2github_2workspace_2dox_2Operation_01Modes.html#autotoc_md45", null ],
+      [ "Configuration Mode", "md__2github_2workspace_2dox_2Operation_01Modes.html#autotoc_md46", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -84,7 +86,7 @@ var NAVTREEINDEX =
 [
 "LD2410Async_8cpp.html",
 "md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html#autotoc_md29",
-"unitTest_8ino.html#a40f1c210583d10df928cb531fdc6ecae"
+"unitTest_8ino.html#a3baf3ebf4f32551d0be637d564559ac2"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

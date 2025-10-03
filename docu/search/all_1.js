@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['back_0',['back',['../index.html#autotoc_md40',1,'Example: Clone config data, modify, and write back'],['../classLD2410Async.html#autotoc_md6',1,'Example: Clone, modify, and write back']]],
+  ['back_0',['back',['../index.html#autotoc_md42',1,'Example: Clone config data, modify, and write back'],['../classLD2410Async.html#autotoc_md6',1,'Example: Clone, modify, and write back']]],
   ['basicpresencedetection_2eino_1',['basicPresenceDetection.ino',['../basicPresenceDetection_8ino.html',1,'']]],
-  ['basics_2',['Async Commands BAsics',['../md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html#autotoc_md30',1,'']]],
+  ['basics_2',['Async Commands Basics',['../md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html#autotoc_md31',1,'']]],
   ['baudrate_3',['Baudrate',['../namespaceLD2410Types.html#a5e710aa1a69067aab369a0a463189fdf',1,'LD2410Types']]],
   ['baudrate_5f115200_4',['BAUDRATE_115200',['../namespaceLD2410Types.html#a5e710aa1a69067aab369a0a463189fdfa78e2af9dfa03cb0b145cddd2ee481c05',1,'LD2410Types']]],
   ['baudrate_5f19200_5',['BAUDRATE_19200',['../namespaceLD2410Types.html#a5e710aa1a69067aab369a0a463189fdfabb642209526f1aea2a33487afcb94159',1,'LD2410Types']]],
@@ -17,7 +17,7 @@ var searchData=
   ['beginautoconfigcommand_14',['beginAutoConfigCommand',['../namespaceLD2410Defs.html#abbc9d3d8f8519f6e67d54d3d7f11b398',1,'LD2410Defs']]],
   ['beginautoconfigcommanddata_15',['beginAutoConfigCommandData',['../namespaceLD2410Defs.html#aaeb20d14777a0c2cce3d28e11a9cb200',1,'LD2410Defs']]],
   ['begintest_16',['beginTest',['../unitTest_8ino.html#a4b41aff3613fb8cbeb51359fb60af310',1,'unitTest.ino']]],
-  ['best_20practices_20for_20async_20commands_17',['Best Practices for Async Commands',['../md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html#autotoc_md32',1,'']]],
+  ['best_20practices_20for_20async_20commands_17',['Best Practices for Async Commands',['../md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html#autotoc_md34',1,'']]],
   ['bluetoothmac_18',['bluetoothMac',['../structLD2410Types_1_1StaticData.html#ab4496c0bdcc6c3b1685195c5dcf49f73',1,'LD2410Types::StaticData']]],
   ['bluetoothmactext_19',['bluetoothMacText',['../structLD2410Types_1_1StaticData.html#a3ed3e5fb2b813aa176859d6889a75608',1,'LD2410Types::StaticData']]],
   ['bluetoothsettingscommand_20',['bluetoothSettingsCommand',['../namespaceLD2410Defs.html#a339b0ed2010ad37503a32f05fb79f105',1,'LD2410Defs']]],

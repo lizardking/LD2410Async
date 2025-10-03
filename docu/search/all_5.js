@@ -1,12 +1,12 @@
 var searchData=
 [
   ['failed_0',['FAILED',['../classLD2410Async.html#a136b50e19cfddad787637fb65421d9abab9e14d9b2886bcff408b85aefa780419',1,'LD2410Async']]],
-  ['features_1',['Features',['../index.html#autotoc_md35',1,'']]],
+  ['features_1',['Features',['../index.html#autotoc_md37',1,'']]],
   ['firmware_20and_20mac_2',['Example: Retrieve firmware and MAC',['../classLD2410Async.html#autotoc_md21',1,'']]],
   ['firmwaretext_3',['firmwareText',['../structLD2410Types_1_1StaticData.html#abc4453fabb65d93959e00f7520ac6bab',1,'LD2410Types::StaticData']]],
   ['firstcallback_4',['firstCallback',['../basicPresenceDetection_8ino.html#a78d217c5e8c960dd88db68e6ea303244',1,'basicPresenceDetection.ino']]],
-  ['for_20async_20commands_5',['Best Practices for Async Commands',['../md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html#autotoc_md32',1,'']]],
-  ['for_20presence_20detection_20updates_6',['Example: Using callback for presence detection updates',['../index.html#autotoc_md38',1,'']]],
+  ['for_20async_20commands_5',['Best Practices for Async Commands',['../md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html#autotoc_md34',1,'']]],
+  ['for_20presence_20detection_20updates_6',['Example: Using callback for presence detection updates',['../index.html#autotoc_md40',1,'']]],
   ['for_20the_20ld2410_7',['Why asynchronous processing matters for the LD2410',['../md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html#autotoc_md28',1,'']]],
   ['from_20a_20clone_8',['Example: Access values from a clone',['../classLD2410Async.html#autotoc_md0',1,'']]]
 ];

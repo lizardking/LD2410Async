@@ -663,7 +663,7 @@ $(function(){initNavTree('LD2410Async_8h_source.html',''); initResizable(true); 
 <div class="line"><a id="l00558" name="l00558"></a><span class="lineno">  558</span><span class="comment">    * @brief Enables config mode on the radar.</span></div>
 <div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span><span class="comment">    *</span></div>
 <div class="line"><a id="l00560" name="l00560"></a><span class="lineno">  560</span><span class="comment">    * Config mode must be enabled before sending any commands (apart from this commend) to the sensor.</span></div>
-<div class="line"><a id="l00561" name="l00561"></a><span class="lineno">  561</span><span class="comment">    * This command itself is asynchronous — the callback fires once the</span></div>
+<div class="line"><a id="l00561" name="l00561"></a><span class="lineno">  561</span><span class="comment">    * This command itself is asynchronous - the callback fires once the</span></div>
 <div class="line"><a id="l00562" name="l00562"></a><span class="lineno">  562</span><span class="comment">    * sensor acknowledges the mode switch.</span></div>
 <div class="line"><a id="l00563" name="l00563"></a><span class="lineno">  563</span><span class="comment">    *</span></div>
 <div class="line"><a id="l00564" name="l00564"></a><span class="lineno">  564</span><span class="comment">    * @note If asyncIsBusy() is true, this command will not be sent.</span></div>
@@ -686,7 +686,7 @@ $(function(){initNavTree('LD2410Async_8h_source.html',''); initResizable(true); 
 <div class="line"><a id="l00579" name="l00579"></a><span class="lineno">  579</span><span class="comment">    * @brief Enables config mode on the radar.</span></div>
 <div class="line"><a id="l00580" name="l00580"></a><span class="lineno">  580</span><span class="comment">    *</span></div>
 <div class="line"><a id="l00581" name="l00581"></a><span class="lineno">  581</span><span class="comment">    * Config mode must be enabled before sending any commands (apart from this commend) to the sensor.</span></div>
-<div class="line"><a id="l00582" name="l00582"></a><span class="lineno">  582</span><span class="comment">    * This command itself is asynchronous — the callback fires once the</span></div>
+<div class="line"><a id="l00582" name="l00582"></a><span class="lineno">  582</span><span class="comment">    * This command itself is asynchronous - the callback fires once the</span></div>
 <div class="line"><a id="l00583" name="l00583"></a><span class="lineno">  583</span><span class="comment">    * sensor acknowledges the mode switch.</span></div>
 <div class="line"><a id="l00584" name="l00584"></a><span class="lineno">  584</span><span class="comment">    *</span></div>
 <div class="line"><a id="l00585" name="l00585"></a><span class="lineno">  585</span><span class="comment">    * @note If asyncIsBusy() is true, this command will not be sent.</span></div>
@@ -1223,7 +1223,7 @@ $(function(){initNavTree('LD2410Async_8h_source.html',''); initResizable(true); 
 <div class="line"><a id="l01108" name="l01108"></a><span class="lineno"> 1108</span><span class="comment">    * - Query status afterwards with requestAutoConfigStatusAsync().</span></div>
 <div class="line"><a id="l01109" name="l01109"></a><span class="lineno"> 1109</span><span class="comment">    *</span></div>
 <div class="line"><a id="l01110" name="l01110"></a><span class="lineno"> 1110</span><span class="comment">    * ## Don’t:</span></div>
-<div class="line"><a id="l01111" name="l01111"></a><span class="lineno"> 1111</span><span class="comment">    * - Expect instant results — the sensor needs time to complete the process.</span></div>
+<div class="line"><a id="l01111" name="l01111"></a><span class="lineno"> 1111</span><span class="comment">    * - Expect instant results - the sensor needs time to complete the process.</span></div>
 <div class="line"><a id="l01112" name="l01112"></a><span class="lineno"> 1112</span><span class="comment">    *</span></div>
 <div class="line"><a id="l01113" name="l01113"></a><span class="lineno"> 1113</span><span class="comment">    * @param callback Callback with signature:</span></div>
 <div class="line"><a id="l01114" name="l01114"></a><span class="lineno"> 1114</span><span class="comment">    *        void(LD2410Async* sender, AsyncCommandResult result).</span></div>
@@ -1277,7 +1277,7 @@ $(function(){initNavTree('LD2410Async_8h_source.html',''); initResizable(true); 
 <div class="line"><a id="l01162" name="l01162"></a><span class="lineno"> 1162</span><span class="comment">    * - Use autoConfigStatus for decision-making in your logic.</span></div>
 <div class="line"><a id="l01163" name="l01163"></a><span class="lineno"> 1163</span><span class="comment">    *</span></div>
 <div class="line"><a id="l01164" name="l01164"></a><span class="lineno"> 1164</span><span class="comment">    * ## Don’t:</span></div>
-<div class="line"><a id="l01165" name="l01165"></a><span class="lineno"> 1165</span><span class="comment">    * - Assume COMPLETED means success — thresholds should still be verified.</span></div>
+<div class="line"><a id="l01165" name="l01165"></a><span class="lineno"> 1165</span><span class="comment">    * - Assume COMPLETED means success - thresholds should still be verified.</span></div>
 <div class="line"><a id="l01166" name="l01166"></a><span class="lineno"> 1166</span><span class="comment">    *</span></div>
 <div class="line"><a id="l01167" name="l01167"></a><span class="lineno"> 1167</span><span class="comment">    * @param callback Callback with signature:</span></div>
 <div class="line"><a id="l01168" name="l01168"></a><span class="lineno"> 1168</span><span class="comment">    *        void(LD2410Async* sender, AsyncCommandResult result).</span></div>
@@ -1379,7 +1379,7 @@ $(function(){initNavTree('LD2410Async_8h_source.html',''); initResizable(true); 
 <div class="line"><a id="l01264" name="l01264"></a><span class="lineno"> 1264</span><span class="comment">    * - Useful for debugging or inventory identification.</span></div>
 <div class="line"><a id="l01265" name="l01265"></a><span class="lineno"> 1265</span><span class="comment">    *</span></div>
 <div class="line"><a id="l01266" name="l01266"></a><span class="lineno"> 1266</span><span class="comment">    * ## Don’t:</span></div>
-<div class="line"><a id="l01267" name="l01267"></a><span class="lineno"> 1267</span><span class="comment">    * - Expect frequently changing data — this is static information.</span></div>
+<div class="line"><a id="l01267" name="l01267"></a><span class="lineno"> 1267</span><span class="comment">    * - Expect frequently changing data - this is static information.</span></div>
 <div class="line"><a id="l01268" name="l01268"></a><span class="lineno"> 1268</span><span class="comment">    *</span></div>
 <div class="line"><a id="l01269" name="l01269"></a><span class="lineno"> 1269</span><span class="comment">    * @param callback Callback with signature:</span></div>
 <div class="line"><a id="l01270" name="l01270"></a><span class="lineno"> 1270</span><span class="comment">    *        void(LD2410Async* sender, AsyncCommandResult result).</span></div>

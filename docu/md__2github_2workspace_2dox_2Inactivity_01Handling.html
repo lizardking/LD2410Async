@@ -100,7 +100,7 @@ $(function(){initNavTree('md__2github_2workspace_2dox_2Inactivity_01Handling.htm
   <div class="headertitle"><div class="title">Inactivity Handling</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md33"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md35"></a></p>
 <p>The library has built in logic that will detect long inactivity of the sensor resp. long periods without any data coming in. The most common reason for a silent sensor is the conmfiguration mode, which has not been disabled.</p>
 <p>If long silent periods are detected the lib will try to return its own state and the sensor back to normal operation mode. It will attempt the following steps (each separated by the timeout period for a async commands):</p><ol type="1">
 <li>Cancel pending async commands, just in case the users code is still waiting for a callback.</li>

@@ -100,9 +100,9 @@ $(function(){initNavTree('md__2github_2workspace_2dox_2Operation_01Modes.html','
   <div class="headertitle"><div class="title">LD2410 Operation Modes</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md41"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md43"></a></p>
 <p>The LD2410 has several operation modes, which have differen behaviour.</p>
-<h1><a class="anchor" id="autotoc_md42"></a>
+<h1><a class="anchor" id="autotoc_md44"></a>
 Normal Detection Mode</h1>
 <p>In normal detection mode the sensor automatically send new detection data, usually several times per second.</p>
 <p>The sent data includes:</p><ul>
@@ -123,7 +123,7 @@ Normal Detection Mode</h1>
 <li>6 → Auto config failed</li>
 </ul>
 <p>Unless auto config has been explicitly triggered, only the values 0-3 occur.</p>
-<h1><a class="anchor" id="autotoc_md43"></a>
+<h1><a class="anchor" id="autotoc_md45"></a>
 Engineering Mode</h1>
 <p>Behaves similar to the normal mode but send addition data:</p><ul>
 <li>Number of gates with moving target signals.</li>
@@ -135,7 +135,7 @@ Engineering Mode</h1>
 </ul>
 <p>This allows for more detailed analysis of what the sensor is detecting.</p>
 <p>To control the engineering mode use the commands enableEngineeringModeAsync() and disableEngineeringModeAsync. To detect if engineering mode is active use isEngineeringModeEnabled().</p>
-<h1><a class="anchor" id="autotoc_md44"></a>
+<h1><a class="anchor" id="autotoc_md46"></a>
 Configuration Mode</h1>
 <p>Config mode is used to send commands to the sensor. Before any command, e.g. to configure a setting, can be sent to the sensor, config mode has to be enabled using the config mode enable command (the only command allowed in the other modes).</p>
 <p>While config mode is active, the sensor will not send any detection data and remain silent, appart from send acknowledgements/acks for the commands it receives. For this reason it is good practice, to disable config mode again, when all necessary cammnds have been sent.</p>

@@ -23,51 +23,57 @@
  5. Call end() to stop background processing if no longer required.
 
  Example:
-@code{.cpp}
+ @code{.cpp}
    HardwareSerial radarSerial(2);
    LD2410Async radar(radarSerial);
 
    void setup() {
      Serial.begin(115200);
-     @ref LD2410Async::begin "radar.begin()" ;
+     radar.begin();
 
      // Register callback for detection updates
-     @ref LD2410Async::registerDetectionDataReceivedCallback "radar.registerDetectionDataReceivedCallback"([](LD2410Async* sender, bool presenceDetetced, byte userData) {
-       @ref LD2410Async::getDetectionDataRef "sender->getDetectionDataRef()".print();  // direct access, no copy
+     radar.registerDetectionDataReceivedCallback([](LD2410Async* sender, bool presenceDetetced, byte userData) {
+       sender->getDetectionDataRef().print();  // direct access, no copy
      });
    }
 
    void loop() {
      // Other application logic
    }
-@endcode
+ @endcode
 
-## Examples
-### Example: Using callback for presence detection updates
-@code{.cpp}
-     @ref LD2410Async::registerDetectionDataReceivedCallback "radar.registerDetectionDataReceivedCallback"([](LD2410Async* sender, bool presenceDetetced, byte userData) {
-       @ref LD2410Async::getDetectionDataRef "sender->getDetectionDataRef()".print();  // direct access, no copy
+ **Commands used in this example:**  
+- @ref LD2410Async::begin "LD2410Async::begin()"  
+- @ref LD2410Async::registerDetectionDataReceivedCallback "LD2410Async::registerDetectionDataReceivedCallback()"  
+- @ref LD2410Async::getDetectionDataRef "LD2410Async::getDetectionDataRef()"
+
+ ## Examples
+ ### Example: Using callback for presence detection updates
+ @code{.cpp}
+     radar.registerDetectionDataReceivedCallback([](LD2410Async* sender, bool presenceDetetced, byte userData) {
+       sender->getDetectionDataRef().print();  // direct access, no copy
      });
-@endcode
+ @endcode
 
-### Example: Access detection data without cloning
-@code{.cpp}
-   const DetectionData& data = @ref LD2410Async::getDetectionDataRef "radar.getDetectionDataRef()";  // no copy
-   Serial.print("Target state: ");
-   Serial.println(static_cast<int>(data.targetState));
-@endcode
+ **Commands used in this example:**  
+- @ref LD2410Async::registerDetectionDataReceivedCallback "LD2410Async::registerDetectionDataReceivedCallback()"  
+- @ref LD2410Async::getDetectionDataRef "LD2410Async::getDetectionDataRef()"
 
-### Example: Clone config data, modify, and write back
-@code{.cpp}
-   ConfigData cfg = @ref LD2410Async::getConfigData "radar.getConfigData()";  // clone
+ ### Example: Clone config data, modify, and write back
+ @code{.cpp}
+   ConfigData cfg = radar.getConfigData();  // clone
    cfg.noOneTimeout = 60;
-   @ref LD2410Async::configureAllConfigSettingsAsync "radar.configureAllConfigSettingsAsync"(cfg, false, [](LD2410Async* sender,
-                                    AsyncCommandResult result,
-                                    byte) {
+   radar.configureAllConfigSettingsAsync(cfg, false, [](LD2410Async* sender, AsyncCommandResult result, byte) {
      if (result == AsyncCommandResult::SUCCESS) {
        Serial.println("Config updated successfully!");
      }
    });
-@endcode
+ @endcode
+
+
+ **Commands used in this example:**  
+- @ref LD2410Async::getConfigData "LD2410Async::getConfigData()"  
+- @ref LD2410Async::configureAllConfigSettingsAsync "LD2410Async::configureAllConfigSettingsAsync()"
+
 
 

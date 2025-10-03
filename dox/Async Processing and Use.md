@@ -104,7 +104,7 @@ This design makes the library suitable for complex applications where other task
     - @ref LD2410Async::asyncCancel "asyncCancel()" - Cancels any currently pending async command. This will just abort the waiting for the Ack of the command. The actual command (or parts of it) have probably already been executed anyway.
 
 
-## Async Commands Example
+## Async Command Example
 
 @code{.cpp}
 #include "LD2410Async.h"
@@ -112,6 +112,7 @@ This design makes the library suitable for complex applications where other task
 HardwareSerial RadarSerial(1);
 LD2410Async radar(RadarSerial);
 
+//Callback method gets triggered when all config data has been received
 void onConfigReceived(LD2410Async* sender, LD2410Async::AsyncCommandResult result) {
     if (result == LD2410Async::AsyncCommandResult::SUCCESS) {
         // Access latest config via getConfigData()
@@ -129,9 +130,12 @@ void setup() {
     Serial.begin(115200);
     RadarSerial.begin(256000, SERIAL_8N1, 32, 33); // RX=Pin 32, TX=Pin 33
 
-    radar.begin();
+    if(radar.begin()) {
+        Serial.println("Could not initialize the LD2410Async lib");
+        return;
+    }:
 
-    // Query all configuration parameters
+    // Query all configuration parameters and register callback
     radar.requestAllConfigSettingsAsync(onConfigReceived);
 }
 

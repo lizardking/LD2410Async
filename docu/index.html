@@ -124,44 +124,55 @@ Usage</h2>
 <li>Call end() to stop background processing if no longer required.</li>
 </ol>
 <p>Example: </p><div class="fragment"><div class="line">HardwareSerial radarSerial(2);</div>
-<div class="line">LD2410Async radar(radarSerial);</div>
+<div class="line"><a class="code hl_class" href="classLD2410Async.html">LD2410Async</a> <a class="code hl_variable" href="basicPresenceDetection_8ino.html#a668d1ce20a8d66eeb5ab88238e59c2d4">radar</a>(radarSerial);</div>
 <div class="line"> </div>
-<div class="line">void setup() {</div>
+<div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="basicPresenceDetection_8ino.html#a4fc01d736fe50cf5b977f755b675f11d">setup</a>() {</div>
 <div class="line">  Serial.begin(115200);</div>
-<div class="line">  radar.begin();</div>
+<div class="line">  <a class="code hl_variable" href="basicPresenceDetection_8ino.html#a668d1ce20a8d66eeb5ab88238e59c2d4">radar</a>.<a class="code hl_function" href="classLD2410Async.html#a1358f6f0b8d55a676b5b8147906c9024">begin</a>();</div>
 <div class="line"> </div>
-<div class="line">  // Register callback for detection updates</div>
-<div class="line">  radar.registerDetectionDataReceivedCallback([](LD2410Async* sender, bool presenceDetetced, byte userData) {</div>
-<div class="line">    sender-&gt;getDetectionDataRef().print();  // direct access, no copy</div>
+<div class="line">  <span class="comment">// Register callback for detection updates</span></div>
+<div class="line">  <a class="code hl_variable" href="basicPresenceDetection_8ino.html#a668d1ce20a8d66eeb5ab88238e59c2d4">radar</a>.<a class="code hl_function" href="classLD2410Async.html#aa6cd71f36a502143cbbc563c4a763346">registerDetectionDataReceivedCallback</a>([](<a class="code hl_class" href="classLD2410Async.html">LD2410Async</a>* sender, <span class="keywordtype">bool</span> presenceDetetced, <span class="keywordtype">byte</span> userData) {</div>
+<div class="line">    sender-&gt;<a class="code hl_function" href="classLD2410Async.html#ade2ef7c106c38e11fd450e75a6494090">getDetectionDataRef</a>().<a class="code hl_function" href="structLD2410Types_1_1DetectionData.html#a05545713d5314398cf8c87ac50bbf4ca">print</a>();  <span class="comment">// direct access, no copy</span></div>
 <div class="line">  });</div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="line">void loop() {</div>
-<div class="line">  // Other application logic</div>
+<div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="basicPresenceDetection_8ino.html#afe461d27b9c48d5921c00d521181f12f">loop</a>() {</div>
+<div class="line">  <span class="comment">// Other application logic</span></div>
 <div class="line">}</div>
+<div class="ttc" id="abasicPresenceDetection_8ino_html_a4fc01d736fe50cf5b977f755b675f11d"><div class="ttname"><a href="basicPresenceDetection_8ino.html#a4fc01d736fe50cf5b977f755b675f11d">setup</a></div><div class="ttdeci">void setup()</div><div class="ttdoc">Arduino setup function which initializes the radar and registers the callback.</div><div class="ttdef"><b>Definition</b> <a href="basicPresenceDetection_8ino_source.html#l00074">basicPresenceDetection.ino:74</a></div></div>
+<div class="ttc" id="abasicPresenceDetection_8ino_html_a668d1ce20a8d66eeb5ab88238e59c2d4"><div class="ttname"><a href="basicPresenceDetection_8ino.html#a668d1ce20a8d66eeb5ab88238e59c2d4">radar</a></div><div class="ttdeci">LD2410Async radar(RadarSerial)</div><div class="ttdoc">Creates LD2410Async object bound to the serial port defined in RadarSerial.</div></div>
+<div class="ttc" id="abasicPresenceDetection_8ino_html_afe461d27b9c48d5921c00d521181f12f"><div class="ttname"><a href="basicPresenceDetection_8ino.html#afe461d27b9c48d5921c00d521181f12f">loop</a></div><div class="ttdeci">void loop()</div><div class="ttdoc">Arduino loop function which does nothing.</div><div class="ttdef"><b>Definition</b> <a href="basicPresenceDetection_8ino_source.html#l00103">basicPresenceDetection.ino:103</a></div></div>
+<div class="ttc" id="aclassLD2410Async_html"><div class="ttname"><a href="classLD2410Async.html">LD2410Async</a></div><div class="ttdoc">Asynchronous driver class for the LD2410 human presence radar sensor.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8h_source.html#l00039">LD2410Async.h:39</a></div></div>
+<div class="ttc" id="aclassLD2410Async_html_a1358f6f0b8d55a676b5b8147906c9024"><div class="ttname"><a href="classLD2410Async.html#a1358f6f0b8d55a676b5b8147906c9024">LD2410Async::begin</a></div><div class="ttdeci">bool begin()</div><div class="ttdoc">Starts the background task that continuously reads data from the sensor.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l01728">LD2410Async.cpp:1728</a></div></div>
+<div class="ttc" id="aclassLD2410Async_html_aa6cd71f36a502143cbbc563c4a763346"><div class="ttname"><a href="classLD2410Async.html#aa6cd71f36a502143cbbc563c4a763346">LD2410Async::registerDetectionDataReceivedCallback</a></div><div class="ttdeci">void registerDetectionDataReceivedCallback(DetectionDataCallback callback)</div><div class="ttdoc">Registers a callback for new detection data.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l00197">LD2410Async.cpp:197</a></div></div>
+<div class="ttc" id="aclassLD2410Async_html_ade2ef7c106c38e11fd450e75a6494090"><div class="ttname"><a href="classLD2410Async.html#ade2ef7c106c38e11fd450e75a6494090">LD2410Async::getDetectionDataRef</a></div><div class="ttdeci">const LD2410Types::DetectionData &amp; getDetectionDataRef() const</div><div class="ttdoc">Access the current detection data without making a copy.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8h_source.html#l00417">LD2410Async.h:417</a></div></div>
+<div class="ttc" id="astructLD2410Types_1_1DetectionData_html_a05545713d5314398cf8c87ac50bbf4ca"><div class="ttname"><a href="structLD2410Types_1_1DetectionData.html#a05545713d5314398cf8c87ac50bbf4ca">LD2410Types::DetectionData::print</a></div><div class="ttdeci">void print() const</div><div class="ttdoc">Debug helper: print detection data contents to Serial.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00280">LD2410Types.h:280</a></div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md31"></a>
 Examples</h2>
 <h3><a class="anchor" id="autotoc_md32"></a>
 Example: Using callback for presence detection updates</h3>
-<div class="fragment"><div class="line">radar.registerDetectionDataReceivedCallback([](LD2410Async* sender, bool presenceDetetced, byte userData) {</div>
-<div class="line">  sender-&gt;getDetectionDataRef().print();  // direct access, no copy</div>
+<div class="fragment"><div class="line"><a class="code hl_variable" href="basicPresenceDetection_8ino.html#a668d1ce20a8d66eeb5ab88238e59c2d4">radar</a>.<a class="code hl_function" href="classLD2410Async.html#aa6cd71f36a502143cbbc563c4a763346">registerDetectionDataReceivedCallback</a>([](<a class="code hl_class" href="classLD2410Async.html">LD2410Async</a>* sender, <span class="keywordtype">bool</span> presenceDetetced, <span class="keywordtype">byte</span> userData) {</div>
+<div class="line">  sender-&gt;<a class="code hl_function" href="classLD2410Async.html#ade2ef7c106c38e11fd450e75a6494090">getDetectionDataRef</a>().<a class="code hl_function" href="structLD2410Types_1_1DetectionData.html#a05545713d5314398cf8c87ac50bbf4ca">print</a>();  <span class="comment">// direct access, no copy</span></div>
 <div class="line">});</div>
 </div><!-- fragment --><h3><a class="anchor" id="autotoc_md33"></a>
 Example: Access detection data without cloning</h3>
-<div class="fragment"><div class="line">const DetectionData&amp; data = radar.getDetectionDataRef();  // no copy</div>
-<div class="line">Serial.print(&quot;Target state: &quot;);</div>
-<div class="line">Serial.println(static_cast&lt;int&gt;(data.targetState));</div>
+<div class="fragment"><div class="line"><span class="keyword">const</span> DetectionData&amp; data = <a class="code hl_variable" href="basicPresenceDetection_8ino.html#a668d1ce20a8d66eeb5ab88238e59c2d4">radar</a>.<a class="code hl_function" href="classLD2410Async.html#ade2ef7c106c38e11fd450e75a6494090">getDetectionDataRef</a>();  <span class="comment">// no copy</span></div>
+<div class="line">Serial.<a class="code hl_function" href="structLD2410Types_1_1DetectionData.html#a05545713d5314398cf8c87ac50bbf4ca">print</a>(<span class="stringliteral">&quot;Target state: &quot;</span>);</div>
+<div class="line">Serial.println(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(data.targetState));</div>
 </div><!-- fragment --><h3><a class="anchor" id="autotoc_md34"></a>
 Example: Clone config data, modify, and write back</h3>
-<div class="fragment"><div class="line">ConfigData cfg = radar.getConfigData();  // clone</div>
-<div class="line">cfg.noOneTimeout = 60;</div>
-<div class="line">radar.configureAllConfigSettingsAsync(cfg, false, [](LD2410Async* sender,</div>
+<div class="fragment"><div class="line">ConfigData cfg = <a class="code hl_variable" href="basicPresenceDetection_8ino.html#a668d1ce20a8d66eeb5ab88238e59c2d4">radar</a>.<a class="code hl_function" href="classLD2410Async.html#a54388c929cea610f92891def29db66a5">getConfigData</a>();  <span class="comment">// clone</span></div>
+<div class="line">cfg.<a class="code hl_variable" href="structLD2410Types_1_1ConfigData.html#aed0b489a9e500b199397a9db7103e3bf">noOneTimeout</a> = 60;</div>
+<div class="line"><a class="code hl_variable" href="basicPresenceDetection_8ino.html#a668d1ce20a8d66eeb5ab88238e59c2d4">radar</a>.<a class="code hl_function" href="classLD2410Async.html#a2b715cdadb6672d869fd4b5bcbe3a06d">configureAllConfigSettingsAsync</a>(cfg, <span class="keyword">false</span>, [](<a class="code hl_class" href="classLD2410Async.html">LD2410Async</a>* sender,</div>
 <div class="line">                                 AsyncCommandResult result,</div>
-<div class="line">                                 byte) {</div>
-<div class="line">  if (result == AsyncCommandResult::SUCCESS) {</div>
-<div class="line">    Serial.println(&quot;Config updated successfully!&quot;);</div>
+<div class="line">                                 <span class="keywordtype">byte</span>) {</div>
+<div class="line">  <span class="keywordflow">if</span> (result == AsyncCommandResult::SUCCESS) {</div>
+<div class="line">    Serial.println(<span class="stringliteral">&quot;Config updated successfully!&quot;</span>);</div>
 <div class="line">  }</div>
 <div class="line">});</div>
+<div class="ttc" id="aclassLD2410Async_html_a2b715cdadb6672d869fd4b5bcbe3a06d"><div class="ttname"><a href="classLD2410Async.html#a2b715cdadb6672d869fd4b5bcbe3a06d">LD2410Async::configureAllConfigSettingsAsync</a></div><div class="ttdeci">bool configureAllConfigSettingsAsync(const LD2410Types::ConfigData &amp;configToWrite, bool writeAllConfigData, AsyncCommandCallback callback)</div><div class="ttdoc">Applies a full ConfigData struct to the LD2410.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l01417">LD2410Async.cpp:1417</a></div></div>
+<div class="ttc" id="aclassLD2410Async_html_a54388c929cea610f92891def29db66a5"><div class="ttname"><a href="classLD2410Async.html#a54388c929cea610f92891def29db66a5">LD2410Async::getConfigData</a></div><div class="ttdeci">LD2410Types::ConfigData getConfigData() const</div><div class="ttdoc">Returns a clone of the current configuration data of the radar.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l01565">LD2410Async.cpp:1565</a></div></div>
+<div class="ttc" id="astructLD2410Types_1_1ConfigData_html_aed0b489a9e500b199397a9db7103e3bf"><div class="ttname"><a href="structLD2410Types_1_1ConfigData.html#aed0b489a9e500b199397a9db7103e3bf">LD2410Types::ConfigData::noOneTimeout</a></div><div class="ttdeci">unsigned short noOneTimeout</div><div class="ttdoc">Timeout (seconds) until &quot;no presence&quot; is declared.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00368">LD2410Types.h:368</a></div></div>
 </div><!-- fragment --> </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
 </div><!-- contents -->

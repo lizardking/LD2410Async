@@ -636,9 +636,9 @@ $(function(){initNavTree('LD2410Async_8h_source.html',''); initResizable(true); 
 <div class="line"><a id="l00531" name="l00531"></a><span class="lineno">  531</span><span class="comment">    *</span></div>
 <div class="line"><a id="l00532" name="l00532"></a><span class="lineno">  532</span><span class="comment">    * @note</span></div>
 <div class="line"><a id="l00533" name="l00533"></a><span class="lineno">  533</span><span class="comment">    * Make sure the timeout is long enough to allow for the execution of long running commands.</span></div>
-<div class="line"><a id="l00534" name="l00534"></a><span class="lineno">  534</span><span class="comment">    * In partuclar enabling config mode can take up to 6 secs, therefore using a value below 6000 is not recommended..</span></div>
+<div class="line"><a id="l00534" name="l00534"></a><span class="lineno">  534</span><span class="comment">    * In partuclar enabling config mode can take up to 4 secs, therefore using a value below 4000 is not recommended..</span></div>
 <div class="line"><a id="l00535" name="l00535"></a><span class="lineno">  535</span><span class="comment">    *</span></div>
-<div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span><span class="comment">    * @param timeoutMs Timeout in milliseconds (default 6000 ms).</span></div>
+<div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span><span class="comment">    * @param timeoutMs Timeout in milliseconds (default 4000 ms).</span></div>
 <div class="line"><a id="l00537" name="l00537"></a><span class="lineno">  537</span><span class="comment">    *</span></div>
 <div class="line"><a id="l00538" name="l00538"></a><span class="lineno">  538</span><span class="comment">    */</span></div>
 <div class="line"><a id="l00539" name="l00539"></a><span class="lineno"><a class="line" href="classLD2410Async.html#a5e5d9d9537d918a27abb1c1f8e56d325">  539</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLD2410Async.html#a5e5d9d9537d918a27abb1c1f8e56d325">setAsyncCommandTimeoutMs</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> timeoutMs) { asyncCommandTimeoutMs = timeoutMs; }</div>
@@ -1646,8 +1646,8 @@ $(function(){initNavTree('LD2410Async_8h_source.html',''); initResizable(true); 
 <div class="line"><a id="l01531" name="l01531"></a><span class="lineno"> 1531</span>    <span class="comment">// Async command handling</span></div>
 <div class="line"><a id="l01532" name="l01532"></a><span class="lineno"> 1532</span>    <span class="comment">// ============================================================================</span></div>
 <div class="line"><a id="l01533" name="l01533"></a><span class="lineno"> 1533</span><span class="comment"></span> </div>
-<div class="line"><a id="l01534" name="l01534"></a><span class="lineno"> 1534</span><span class="comment">    ///&lt; Timeout for async commands in ms (default 6000).</span></div>
-<div class="line"><a id="l01535" name="l01535"></a><span class="lineno"> 1535</span><span class="comment"></span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> asyncCommandTimeoutMs = 6000;</div>
+<div class="line"><a id="l01534" name="l01534"></a><span class="lineno"> 1534</span><span class="comment">    ///&lt; Timeout for async commands in ms (default 4000).</span></div>
+<div class="line"><a id="l01535" name="l01535"></a><span class="lineno"> 1535</span><span class="comment"></span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> asyncCommandTimeoutMs = 4000;</div>
 <div class="line"><a id="l01536" name="l01536"></a><span class="lineno"> 1536</span><span class="comment"></span> </div>
 <div class="line"><a id="l01537" name="l01537"></a><span class="lineno"> 1537</span><span class="comment">    /// Send a generic async command</span></div>
 <div class="line"><a id="l01538" name="l01538"></a><span class="lineno"> 1538</span><span class="comment"></span>    <span class="keywordtype">bool</span> sendCommandAsync(<span class="keyword">const</span> <span class="keywordtype">byte</span>* command, <span class="keywordtype">byte</span> retries, <a class="code hl_typedef" href="classLD2410Async.html#a26696271e0fcf501604345b231e3c91a">AsyncCommandCallback</a> callback);</div>

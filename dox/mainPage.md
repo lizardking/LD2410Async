@@ -1,17 +1,16 @@
 @mainpage
-# LD2410Async library for ESP32
+# Introduction
 
-## Introduction
  The LD2410 is a mmWave radar sensor capable of detecting both moving and
  stationary targets, reporting presence, distance, and per-gate signal strength.
  This class implements a non-blocking, asynchronous interface for communicating
- with the sensor over a UART stream (HardwareSerial, SoftwareSerial, etc.).
+ with the sensor over a UART stream.
 
  ## Features
  - Fully asynchronous operation with no blocking calls and callback.
  - Support for all native commands of the LD2410.
  - High level commands to allow for more consistent communication with the sensor.
- - SUpport for several instances if you have more than one sensor.   
+ - Support for several instances if you have more than one sensor.   
  - Continuous background task that parses incoming frames and updates data.
  - Automatic inactivity handling if sensor is stuck or unreposive (tries to disable config mode or reboot).
 

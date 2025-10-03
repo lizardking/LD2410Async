@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>LD2410Async: LD2410 Operation Modes</title>
+<title>LD2410Async: Async Processing and Use.md File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -71,7 +71,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('md__2github_2workspace_2dox_2Operation_01Modes.html',''); initResizable(true); });
+$(function(){initNavTree('Async_01Processing_01and_01Use_8md.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -96,58 +96,16 @@ $(function(){initNavTree('md__2github_2workspace_2dox_2Operation_01Modes.html','
 </div>
 </div>
 
-<div><div class="header">
-  <div class="headertitle"><div class="title">LD2410 Operation Modes</div></div>
+<div class="header">
+  <div class="headertitle"><div class="title">Async Processing and Use.md File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md41"></a></p>
-<p>The LD2410 has several operation modes, which have differen behaviour.</p>
-<h1><a class="anchor" id="autotoc_md42"></a>
-Normal Detection Mode</h1>
-<p>In normal detection mode the sensor automatically send new detection data, usually several times per second.</p>
-<p>The sent data includes:</p><ul>
-<li>Detection state.</li>
-<li>Distance (cm) to the nearest moving target.</li>
-<li>Signal strength (0–100) of the moving target.</li>
-<li>Distance (cm) to the nearest stationary target.</li>
-<li>Signal strength (0–100) of the stationary target.</li>
-<li>General detection distance (cm).</li>
-</ul>
-<p>Detection state is the most relevant. It has one of the following values:</p><ul>
-<li>0 → No Target</li>
-<li>1 → Moving target</li>
-<li>2 → Stationary target</li>
-<li>3 → Moving and stationary target</li>
-<li>4 → Auto config in progress</li>
-<li>5 → Auto config success</li>
-<li>6 → Auto config failed</li>
-</ul>
-<p>Unless auto config has been explicitly triggered, only the values 0-3 occur.</p>
-<h1><a class="anchor" id="autotoc_md43"></a>
-Engineering Mode</h1>
-<p>Behaves similar to the normal mode but send addition data:</p><ul>
-<li>Number of gates with moving target signals.</li>
-<li>Per-gate signal strengths for moving targets.</li>
-<li>Number of gates with stationary target signals.</li>
-<li>Per-gate signal strengths for stationary targets.</li>
-<li>Reported ambient light level (0–255).</li>
-<li>Current status of the OUT pin (true = high, false = low).</li>
-</ul>
-<p>This allows for more detailed analysis of what the sensor is detecting.</p>
-<p>To control the engineering mode use the commands enableEngineeringModeAsync() and disableEngineeringModeAsync. To detect if engineering mode is active use isEngineeringModeEnabled().</p>
-<h1><a class="anchor" id="autotoc_md44"></a>
-Configuration Mode</h1>
-<p>Config mode is used to send commands to the sensor. Before any command, e.g. to configure a setting, can be sent to the sensor, config mode has to be enabled using the config mode enable command (the only command allowed in the other modes).</p>
-<p>While config mode is active, the sensor will not send any detection data and remain silent, appart from send acknowledgements/acks for the commands it receives. For this reason it is good practice, to disable config mode again, when all necessary cammnds have been sent.</p>
-<p>All commands in the <a class="el" href="classLD2410Async.html" title="Asynchronous driver class for the LD2410 human presence radar sensor.">LD2410Async</a> lib are implemented to automatically enable and disable to config mode.</p>
-<p>Since the enable config mode command can take a long time to execute (varies anywhere between 120ms - 3300ms) and sometimes even failes and needs a retry (also automatically handled in the lib), it is also possible to use enableConfigModeAsync() and disableConfigModeAsync() to control the config mode. This allows to sends several commands in a row without repeatedly enabling/disabling config mode and wasting a lot of time. All other commands will detect that config mode is enabled when they are executed and will keep it enabled when done. So dont forget to disable config mode with disableConfigModeAsync() when all comands are sent.</p>
-<p>To check whther to config mode is currently active use isConfigModeEnabled(). </p>
-</div></div><!-- contents -->
-</div><!-- PageDoc -->
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
+    <li class="navelem"><a class="el" href="Async_01Processing_01and_01Use_8md.html">Async Processing and Use.md</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>

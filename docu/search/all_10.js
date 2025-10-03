@@ -14,6 +14,7 @@ var searchData=
   ['teststart_11',['testStart',['../unitTest_8ino.html#af4fc7ae7dc8d7ef4ce9eb3092226393d',1,'unitTest.ino']]],
   ['teststartms_12',['testStartMs',['../unitTest_8ino.html#a6d640f75658e47f62f000346be67a8d1',1,'unitTest.ino']]],
   ['testsuccesscount_13',['testSuccessCount',['../unitTest_8ino.html#a82c002d6579dbb365c1fd65f8f1de583',1,'unitTest.ino']]],
-  ['timeout_14',['TIMEOUT',['../classLD2410Async.html#a136b50e19cfddad787637fb65421d9aba070a0fb40f6c308ab544b227660aadff',1,'LD2410Async']]],
-  ['timestamp_15',['timestamp',['../structLD2410Types_1_1DetectionData.html#adc003171384bf1b2bbc0dd69777e579d',1,'LD2410Types::DetectionData']]]
+  ['the_20ld2410_14',['Why asynchronous processing matters for the LD2410',['../md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html#autotoc_md28',1,'']]],
+  ['timeout_15',['TIMEOUT',['../classLD2410Async.html#a136b50e19cfddad787637fb65421d9aba070a0fb40f6c308ab544b227660aadff',1,'LD2410Async']]],
+  ['timestamp_16',['timestamp',['../structLD2410Types_1_1DetectionData.html#adc003171384bf1b2bbc0dd69777e579d',1,'LD2410Types::DetectionData']]]
 ];

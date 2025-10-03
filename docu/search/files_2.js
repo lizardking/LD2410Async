@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['inactivity_20handling_2emd_0',['Inactivity Handling.md',['../Inactivity_01Handling_8md.html',1,'']]]
+  ['changeconfig_2eino_0',['changeConfig.ino',['../changeConfig_8ino.html',1,'']]],
+  ['changedistanceresolution_2eino_1',['changeDistanceResolution.ino',['../changeDistanceResolution_8ino.html',1,'']]]
 ];

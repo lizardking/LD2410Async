@@ -120,6 +120,7 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ae8c652c94c043cf64207bb6b6f983163" id="r_ae8c652c94c043cf64207bb6b6f983163"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8c652c94c043cf64207bb6b6f983163">LD2410ASYNC_DEBUG_LEVEL</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:ae8c652c94c043cf64207bb6b6f983163"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use the following defines to set the debug level for the lib.  <br /></td></tr>
 <tr class="separator:ae8c652c94c043cf64207bb6b6f983163"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c215a1265c9473347aad0ad82d53c40" id="r_a4c215a1265c9473347aad0ad82d53c40"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c215a1265c9473347aad0ad82d53c40">LD2410ASYNC_DEBUG_DATA_LEVEL</a>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:a4c215a1265c9473347aad0ad82d53c40"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -137,7 +138,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00013">13</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00019">19</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
 
 </div>
 </div>
@@ -153,7 +154,12 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00009">9</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
+<p>Use the following defines to set the debug level for the lib. </p>
+<p>LD2410ASYNC_DEBUG_LEVEL is used to control output nof debug message for commands and command responses/acks from the sensor. LD2410ASYNC_DEBUG_DATA_LEVEL controls debug messages for received detection data.</p>
+<p>For both defines 0 will turn off all debug message, 1 will enable the message and 2 will enable additional output of the received data.</p>
+<dl class="section note"><dt>Note</dt><dd>Dont enable debug messages in production. They will clutteer the compiled build with tons of print commands which will increase the size of the build and also have a negative impact on performance. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LD2410Async_8h_source.html#l00018">18</a> of file <a class="el" href="LD2410Async_8h_source.html">LD2410Async.h</a>.</p>
 
 </div>
 </div>

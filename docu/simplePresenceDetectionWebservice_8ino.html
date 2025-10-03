@@ -150,9 +150,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aff1e26a91174e9c38aa1fb834f03d71c" id="r_aff1e26a91174e9c38aa1fb834f03d71c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff1e26a91174e9c38aa1fb834f03d71c">notifyClients</a> ()</td></tr>
 <tr class="memdesc:aff1e26a91174e9c38aa1fb834f03d71c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Notifies all connected WebSocket clients with the latest presence data.  <br /></td></tr>
 <tr class="separator:aff1e26a91174e9c38aa1fb834f03d71c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30ccb5184463f968f4a30895646dec1d" id="r_a30ccb5184463f968f4a30895646dec1d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30ccb5184463f968f4a30895646dec1d">onDetectionDataReceived</a> (<a class="el" href="classLD2410Async.html">LD2410Async</a> *sender, bool presenceDetected, byte userData)</td></tr>
-<tr class="memdesc:a30ccb5184463f968f4a30895646dec1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function called whenever new detection data arrives from the radar.  <br /></td></tr>
-<tr class="separator:a30ccb5184463f968f4a30895646dec1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bf9a458e204b109072f4278a63e1e51" id="r_a5bf9a458e204b109072f4278a63e1e51"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5bf9a458e204b109072f4278a63e1e51">onDetectionDataReceived</a> (<a class="el" href="classLD2410Async.html">LD2410Async</a> *sender, bool presenceDetected)</td></tr>
+<tr class="memdesc:a5bf9a458e204b109072f4278a63e1e51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function called whenever new detection data arrives from the radar.  <br /></td></tr>
+<tr class="separator:a5bf9a458e204b109072f4278a63e1e51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7064e9828984f378d3e04f9b7a47bcae" id="r_a7064e9828984f378d3e04f9b7a47bcae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7064e9828984f378d3e04f9b7a47bcae">onWsEvent</a> (AsyncWebSocket *<a class="el" href="#a01a73e9084f1c989ffd6f78879d85760">server</a>, AsyncWebSocketClient *client, AwsEventType type, void *arg, uint8_t *data, size_t len)</td></tr>
 <tr class="memdesc:a7064e9828984f378d3e04f9b7a47bcae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles WebSocket events (client connect/disconnect).  <br /></td></tr>
 <tr class="separator:a7064e9828984f378d3e04f9b7a47bcae"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -374,7 +374,7 @@ Variables</h2></td></tr>
 <p>Arduino loop function. </p>
 <p>No code required; all logic is handled by callbacks and background tasks. </p>
 
-<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00269">269</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00268">268</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
 
 </div>
 </div>
@@ -400,8 +400,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a30ccb5184463f968f4a30895646dec1d" name="a30ccb5184463f968f4a30895646dec1d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a30ccb5184463f968f4a30895646dec1d">&#9670;&#160;</a></span>onDetectionDataReceived()</h2>
+<a id="a5bf9a458e204b109072f4278a63e1e51" name="a5bf9a458e204b109072f4278a63e1e51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bf9a458e204b109072f4278a63e1e51">&#9670;&#160;</a></span>onDetectionDataReceived()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -414,12 +414,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>presenceDetected</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>userData</em></span>&#160;)</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>presenceDetected</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -429,12 +424,11 @@ Variables</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">sender</td><td>Pointer to the <a class="el" href="classLD2410Async.html" title="Asynchronous driver class for the LD2410 human presence radar sensor.">LD2410Async</a> instance (for multi-sensor setups) </td></tr>
     <tr><td class="paramname">presenceDetected</td><td>True if presence is detected, false otherwise </td></tr>
-    <tr><td class="paramname">userData</td><td>User data (not used) </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00113">113</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00112">112</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
 
 </div>
 </div>
@@ -490,7 +484,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00130">130</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00129">129</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
 
 </div>
 </div>
@@ -550,7 +544,7 @@ Variables</h2></td></tr>
 <p>Arduino setup function. </p>
 <p>Initializes serial, WiFi, radar sensor, and webserver. Registers the detection data callback and sets up the WebSocket and HTTP handlers. </p>
 
-<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00229">229</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00228">228</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
 
 </div>
 </div>
@@ -572,7 +566,7 @@ Variables</h2></td></tr>
 <p>Connects to WiFi using the user configuration. </p>
 <p>If USE_STATIC_IP is true, configures a static IP, subnet, and gateway. Prints connection status and IP address to Serial. </p>
 
-<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00199">199</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00198">198</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
 
 </div>
 </div>
@@ -680,7 +674,7 @@ Variables</h2></td></tr>
 <p>HTML page served to clients. </p>
 <p>Connects to the WebSocket and displays live presence and distance data. </p>
 
-<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00147">147</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html#l00146">146</a> of file <a class="el" href="simplePresenceDetectionWebservice_8ino_source.html">simplePresenceDetectionWebservice.ino</a>.</p>
 
 </div>
 </div>

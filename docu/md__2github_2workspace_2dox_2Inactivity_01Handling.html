@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>LD2410Async: Class Members - Typedefs</title>
+<title>LD2410Async: Inactivity Handling</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -71,7 +71,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('functions_type.html',''); initResizable(true); });
+$(function(){initNavTree('md__2github_2workspace_2dox_2Inactivity_01Handling.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -96,13 +96,31 @@ $(function(){initNavTree('functions_type.html',''); initResizable(true); });
 </div>
 </div>
 
+<div><div class="header">
+  <div class="headertitle"><div class="title">Inactivity Handling</div></div>
+</div><!--header-->
 <div class="contents">
-<div class="textblock">Here is a list of all typedefs with links to the classes they belong to:</div><ul>
-<li>AsyncCommandCallback&#160;:&#160;<a class="el" href="classLD2410Async.html#a26696271e0fcf501604345b231e3c91a">LD2410Async</a></li>
-<li>DetectionDataCallback&#160;:&#160;<a class="el" href="classLD2410Async.html#ac02d1eeaa71a96eb28173c97ca320d21">LD2410Async</a></li>
-<li>GenericCallback&#160;:&#160;<a class="el" href="classLD2410Async.html#aa40b53542674609cdc9ed0dd1b24b51e">LD2410Async</a></li>
+<div class="textblock"><p><a class="anchor" id="autotoc_md27"></a></p>
+<p>The library has built in logic that will detect long inactivity of the sensor resp. long periods without any data coming in. The most common reason for a silent sensor is the conmfiguration mode, which has not been disabled.</p>
+<p>If long silent periods are detected the lib will try to return its own state and the sensor back to normal operation mode. It will attempt the following steps (each separated by the timeout period for a async commands):</p><ol type="1">
+<li>Cancel pending async commands, just in case the users code is still waiting for a callback.</li>
+<li>If the cancel did not help, it will try to disable config mode, even if the lib thinks config mode is diabled.</li>
+<li>As a last step, it will try to reboot the sensor.</li>
+</ol>
+<p>If all those recovery steps dont work, the lib will try again to recover the sensor after the inactivity timeout period has elapsed again.</p>
+<p>Inactivity handling can be enabled/disabled with the following commands:</p><ul>
+<li>enableInactivityHandling()</li>
+<li>disableInactivityHandling()</li>
+<li>setInactivityHandling(true/false)</li>
 </ul>
-</div><!-- contents -->
+<p>By default the inactivity handling is enabled</p>
+<p>The timeout period for the inactivity handling can be set and read with:</p><ul>
+<li>setInactivityTimeoutMs(timeoutInMilliseconds)</li>
+<li>getInactivityTimeoutMs()</li>
+</ul>
+<p>The default timeout is 60000ms resp. 1 minute. Make sure to set a value that is larger than the timeout for async commands (see getAsyncCommandTimeoutMs() and setAsyncCommandTimeoutMs()). Otherwise inactivity handling could kick in while commands are still pending (usually waiting for ack), which will result in the cancelation of the pending async command. To make sure this this will not happen, the inactivity handling will not use the set timeout, if it is shorter than the command time out and use the command timeout + 1000ms instead. </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

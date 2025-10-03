@@ -25,8 +25,7 @@
 var NAVTREE =
 [
   [ "LD2410Async", "index.html", [
-    [ "LD2410Async library for ESP32", "index.html#autotoc_md27", [
-      [ "Introduction", "index.html#autotoc_md28", null ],
+    [ "Introduction", "index.html#autotoc_md28", [
       [ "Features", "index.html#autotoc_md29", null ],
       [ "Usage", "index.html#autotoc_md30", null ],
       [ "Examples", "index.html#autotoc_md31", [
@@ -34,6 +33,12 @@ var NAVTREE =
         [ "Example: Access detection data without cloning", "index.html#autotoc_md33", null ],
         [ "Example: Clone config data, modify, and write back", "index.html#autotoc_md34", null ]
       ] ]
+    ] ],
+    [ "Inactivity Handling", "md__2github_2workspace_2dox_2Inactivity_01Handling.html", null ],
+    [ "LD2410 Operation Modes", "md__2github_2workspace_2dox_2Operation_01Modes.html", [
+      [ "Normal Detection Mode", "md__2github_2workspace_2dox_2Operation_01Modes.html#autotoc_md36", null ],
+      [ "Engineering Mode", "md__2github_2workspace_2dox_2Operation_01Modes.html#autotoc_md37", null ],
+      [ "Configuration Mode", "md__2github_2workspace_2dox_2Operation_01Modes.html#autotoc_md38", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -71,8 +76,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "LD2410Async_8cpp.html",
-"namespaceLD2410CommandBuilder.html#a1891c87b48a0ec24a7a6066fe48bd63e",
-"unitTest_8ino.html#a4d02db8a1028efeffe24aa285bce7b5d"
+"md__2github_2workspace_2dox_2Operation_01Modes.html#autotoc_md36",
+"unitTest_8ino.html#a4ae744e2bd837ec2b161266e5e4d90fc"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

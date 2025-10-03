@@ -9,7 +9,7 @@ var simplePresenceDetectionWebservice_8ino =
     [ "LOCAL_IP", "simplePresenceDetectionWebservice_8ino.html#a5a9a77b7e2709907f3b84da947708d54", null ],
     [ "loop", "simplePresenceDetectionWebservice_8ino.html#afe461d27b9c48d5921c00d521181f12f", null ],
     [ "notifyClients", "simplePresenceDetectionWebservice_8ino.html#aff1e26a91174e9c38aa1fb834f03d71c", null ],
-    [ "onDetectionDataReceived", "simplePresenceDetectionWebservice_8ino.html#a30ccb5184463f968f4a30895646dec1d", null ],
+    [ "onDetectionDataReceived", "simplePresenceDetectionWebservice_8ino.html#a5bf9a458e204b109072f4278a63e1e51", null ],
     [ "onWsEvent", "simplePresenceDetectionWebservice_8ino.html#a7064e9828984f378d3e04f9b7a47bcae", null ],
     [ "RadarSerial", "simplePresenceDetectionWebservice_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41", null ],
     [ "server", "simplePresenceDetectionWebservice_8ino.html#a01a73e9084f1c989ffd6f78879d85760", null ],

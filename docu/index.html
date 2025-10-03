@@ -100,18 +100,16 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
   <div class="headertitle"><div class="title"><a class="el" href="classLD2410Async.html" title="Asynchronous driver class for the LD2410 human presence radar sensor.">LD2410Async</a> </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md27"></a>
-LD2410Async library for ESP32</h1>
-<h2><a class="anchor" id="autotoc_md28"></a>
-Introduction</h2>
-<p>The LD2410 is a mmWave radar sensor capable of detecting both moving and stationary targets, reporting presence, distance, and per-gate signal strength. This class implements a non-blocking, asynchronous interface for communicating with the sensor over a UART stream (HardwareSerial, SoftwareSerial, etc.).</p>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md28"></a>
+Introduction</h1>
+<p>The LD2410 is a mmWave radar sensor capable of detecting both moving and stationary targets, reporting presence, distance, and per-gate signal strength. This class implements a non-blocking, asynchronous interface for communicating with the sensor over a UART stream.</p>
 <h2><a class="anchor" id="autotoc_md29"></a>
 Features</h2>
 <ul>
 <li>Fully asynchronous operation with no blocking calls and callback.</li>
 <li>Support for all native commands of the LD2410.</li>
 <li>High level commands to allow for more consistent communication with the sensor.</li>
-<li>SUpport for several instances if you have more than one sensor. <br  />
+<li>Support for several instances if you have more than one sensor. <br  />
 </li>
 <li>Continuous background task that parses incoming frames and updates data.</li>
 <li>Automatic inactivity handling if sensor is stuck or unreposive (tries to disable config mode or reboot).</li>

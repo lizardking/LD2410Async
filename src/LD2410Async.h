@@ -1535,13 +1535,19 @@ private:
 	unsigned long asyncCommandTimeoutMs = 6000;
 
 	/// Send a generic async command
-	bool sendCommandAsync(const byte* command, AsyncCommandCallback callback);
+	bool sendCommandAsync(const byte* command, byte retries, AsyncCommandCallback callback);
+
+	//If the number of retries is not defined, there will be no retries
+	bool sendCommandAsync(const byte* command, AsyncCommandCallback callback) {
+		return sendCommandAsync(command, 0, callback);
+	};
+
 
 	/// Invoke async command callback with result
 	void sendCommandAsyncExecuteCallback(byte commandCode, LD2410Async::AsyncCommandResult result);
 
 	///Stares the data that is needed for the execution of the callback later on
-	void sendCommandAsyncStoreDataForCallback(byte commandCode, AsyncCommandCallback callback);
+	void sendCommandAsyncStoreDataForCallback(const byte* command, byte retries, AsyncCommandCallback callback);
 
 	/// Handle async command timeout
 	void sendCommandAsyncHandleTimeout();
@@ -1553,8 +1559,8 @@ private:
 	unsigned long sendCommandAsyncStartMs = 0;               ///< Timestamp when async command started
 	byte sendCommandAsyncCommandCode = 0;                    ///< Last command code issued
 	bool sendCommandAsyncCommandPending = false;					 ///< True if an async command is currently pending.
-
-
+	byte sendCommandAsyncCommandBuffer[LD2410Defs::LD2410_Buffer_Size];
+	byte sendCommandAsyncRetriesLeft = 0;
 	// ============================================================================
 	// Data processing
 	// ============================================================================

@@ -546,22 +546,38 @@ void LD2410Async::sendCommandAsyncHandleTimeout() {
 			DEBUG_PRINT_MILLIS;
 			DEBUG_PRINT("Command timeout detected. Elapsed time: ");
 			DEBUG_PRINT(elapsedTime);
-			DEBUG_PRINTLN(". Execute callback with TIMEOUT result.");
-			sendCommandAsyncExecuteCallback(sendCommandAsyncCommandCode, LD2410Async::AsyncCommandResult::TIMEOUT);
+			DEBUG_PRINTLN("ms.");
+
+			if (sendCommandAsyncRetriesLeft > 0) {
+				DEBUG_PRINT("Retries left ");
+				DEBUG_PRINTLN(sendCommandAsyncRetriesLeft);
+				sendCommandAsyncRetriesLeft--;
+
+				sendCommandAsyncStartMs = millis();
+				sendCommand(sendCommandAsyncCommandBuffer);
+			}
+			else {
+
+				DEBUG_PRINTLN("Execute callback with TIMEOUT result.");
+				sendCommandAsyncExecuteCallback(sendCommandAsyncCommandCode, LD2410Async::AsyncCommandResult::TIMEOUT);
+			}
 		}
 	}
 }
 
 
 
-void LD2410Async::sendCommandAsyncStoreDataForCallback(byte commandCode, AsyncCommandCallback callback) {
+void LD2410Async::sendCommandAsyncStoreDataForCallback(const byte* command, byte retries, AsyncCommandCallback callback) {
 	sendCommandAsyncCommandPending = true;
 	sendCommandAsyncCallback = callback;
-	sendCommandAsyncStartMs = millis();
-	sendCommandAsyncCommandCode = commandCode;
+	sendCommandAsyncCommandCode = command[2];
+	sendCommandAsyncRetriesLeft = retries;
+	if (retries > 0) {	//No need to copy the data if we are not going to retry anyway
+		memcpy(sendCommandAsyncCommandBuffer, command, command[0] + 2);
+	}
 }
 
-bool LD2410Async::sendCommandAsync(const byte* command, AsyncCommandCallback callback)
+bool LD2410Async::sendCommandAsync(const byte* command, byte retries, AsyncCommandCallback callback)
 {
 	vTaskSuspendAll();
 
@@ -570,13 +586,14 @@ bool LD2410Async::sendCommandAsync(const byte* command, AsyncCommandCallback cal
 
 
 		//Register data for callback
-		sendCommandAsyncStoreDataForCallback(command[2], callback);
+		sendCommandAsyncStoreDataForCallback(command, retries, callback);
 		xTaskResumeAll();
 
+		sendCommandAsyncStartMs = millis();
 		sendCommand(command);
 		DEBUG_PRINT_MILLIS;
 		DEBUG_PRINT("Async command ");
-		DEBUG_PRINT(byte2hex(command[2]));
+		DEBUG_PRINT(byte2hex(sendCommandAsyncCommandCode));
 		DEBUG_PRINTLN(" sent");
 
 		return true;
@@ -723,7 +740,7 @@ bool LD2410Async::executeCommandSequenceAsync(AsyncCommandCallback callback) {
 		// Need to enable config mode first
 		// So set the sequence index to -1 to ensure the first command in the sequence (at index 0) is executed when the callback fires.
 		executeCommandSequenceIndex = -1;
-		return sendCommandAsync(LD2410Defs::configEnableCommandData, executeCommandSequenceAsyncCommandCallback);
+		return sendCommandAsync(LD2410Defs::configEnableCommandData, 1, executeCommandSequenceAsyncCommandCallback); //Retry once since this command will sometimes not work resp. not send an ack.
 	}
 	else {
 		// Already in config mode, start directly. 
@@ -779,17 +796,20 @@ bool LD2410Async::resetCommandSequence() {
 ***********************************************************************************/
 //Config mode command have a internal version which does not check for busy and can therefore be used within other command implementations
 
+
+
+
 bool LD2410Async::enableConfigModeInternalAsync(bool force, AsyncCommandCallback callback) {
 	DEBUG_PRINT_MILLIS;
 	DEBUG_PRINTLN("Enable Config Mode");
 
 	if (!configModeEnabled || force) {
-		// Actually send the enable command
-		return sendCommandAsync(LD2410Defs::configEnableCommandData, callback);
+		// Need to send the enable command
+		return sendCommandAsync(LD2410Defs::configEnableCommandData, 1, callback); //We do 1 retry if necessary, since this command does sometimes not work/resp not send a ack
 	}
 	else {
 		// Already in config mode -> just trigger the callback after a tiny delay
-		sendCommandAsyncStoreDataForCallback(LD2410Defs::configEnableCommand, callback);
+		sendCommandAsyncStoreDataForCallback(LD2410Defs::configEnableCommandData, 0, callback);
 		configModeOnceTicker.once_ms(1, [this]() {
 			sendCommandAsyncExecuteCallback(LD2410Defs::configEnableCommand, LD2410Async::AsyncCommandResult::SUCCESS);
 			});
@@ -811,7 +831,7 @@ bool LD2410Async::disableConfigModeInternalAsync(bool force, AsyncCommandCallbac
 	}
 	else {
 		//If config mode doesnt have to be disabled, the callback gets triggered after a minimal delay (to ensure the disableConfigMode method can complete before the callback fires.
-		sendCommandAsyncStoreDataForCallback(LD2410Defs::configDisableCommand, callback);
+		sendCommandAsyncStoreDataForCallback(LD2410Defs::configDisableCommandData, 0, callback);
 		configModeOnceTicker.once_ms(1, [this]() {
 			sendCommandAsyncExecuteCallback(LD2410Defs::configDisableCommand, LD2410Async::AsyncCommandResult::SUCCESS);
 			});

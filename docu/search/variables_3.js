@@ -8,5 +8,6 @@ var searchData=
   ['distancegatesensitivityconfigcommand_5',['distanceGateSensitivityConfigCommand',['../namespaceLD2410Defs.html#a2bce8cbfc0a5b390431492c2b34bf9f8',1,'LD2410Defs']]],
   ['distancegatesensitivityconfigcommanddata_6',['distanceGateSensitivityConfigCommandData',['../namespaceLD2410Defs.html#a38aba7176fd8cb28fb74ae61e8b237f4',1,'LD2410Defs']]],
   ['distancegatestationarysensitivity_7',['distanceGateStationarySensitivity',['../structLD2410Types_1_1ConfigData.html#a126164bd0a2f25ec1cb24ca87f2d6eb8',1,'LD2410Types::ConfigData']]],
-  ['distanceresolution_8',['distanceResolution',['../structLD2410Types_1_1ConfigData.html#ad4b3263e4da6bcc2ef64d1e727eb6f06',1,'LD2410Types::ConfigData']]]
+  ['distanceresolution_8',['distanceResolution',['../structLD2410Types_1_1ConfigData.html#ad4b3263e4da6bcc2ef64d1e727eb6f06',1,'LD2410Types::ConfigData']]],
+  ['distanceresolutiontoapply_9',['distanceResolutionToApply',['../unitTest_8ino.html#a2ab5987b83da18ecde4bb7a1b7d082d3',1,'unitTest.ino']]]
 ];

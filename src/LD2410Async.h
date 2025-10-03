@@ -531,9 +531,9 @@ public:
 	*
 	* @note
 	* Make sure the timeout is long enough to allow for the execution of long running commands.
-	* In partuclar enabling config mode can take up to 6 secs, therefore using a value below 6000 is not recommended..
+	* In partuclar enabling config mode can take up to 4 secs, therefore using a value below 4000 is not recommended..
 	*
-	* @param timeoutMs Timeout in milliseconds (default 6000 ms).
+	* @param timeoutMs Timeout in milliseconds (default 4000 ms).
 	*
 	*/
 	void setAsyncCommandTimeoutMs(unsigned long timeoutMs) { asyncCommandTimeoutMs = timeoutMs; }
@@ -1531,8 +1531,8 @@ private:
 	// Async command handling
 	// ============================================================================
 
-	///< Timeout for async commands in ms (default 6000).
-	unsigned long asyncCommandTimeoutMs = 6000;
+	///< Timeout for async commands in ms (default 4000).
+	unsigned long asyncCommandTimeoutMs = 4000;
 
 	/// Send a generic async command
 	bool sendCommandAsync(const byte* command, byte retries, AsyncCommandCallback callback);

@@ -1,7 +1,7 @@
 ﻿
 # LD2410 Operation Modes
 
-The LD2410 has several operation modes. Normal detection mode, engginnering/enhance detection mode and configuration mode. In each mode the sensor behaves differently.
+The LD2410 has several operation modes, which have differen behaviour.
 
 ## Normal Detection Mode
 
@@ -38,6 +38,8 @@ Behaves similar to the normal mode but send addition data:
 
 This allows for more detailed analysis of what the sensor is detecting.
 
+To control the engineering mode use the commands enableEngineeringModeAsync() and disableEngineeringModeAsync. To detect if engineering mode is active use isEngineeringModeEnabled().
+
 ## Configuration Mode
 
 Config mode is used to send commands to the sensor. Before any command, e.g. to configure a setting, can be sent to the sensor, config mode has to be enabled using the config mode enable command (the only command allowed in the other modes).
@@ -46,5 +48,7 @@ While config mode is active, the sensor will not send any detection data and rem
 
 All commands in the LD2410Async lib are implemented to automatically enable and disable to config mode.
 
-Since the enable config mode command can take a long time to execute (varies anywhere between 120ms - 3300ms) and sometimes even failes and needs a retry (also automatically handled in the lib), it is also possible to enabled and disable the config mode with specific commands. This allows to sends several commands in a row without repeatedly enabling/disabling config mode and wasting a lot of time.
-All other commands will detect that config mode is enabled when they are executed and will keep it enabled when done. So dont forget to disable config mode in the code when all comands are sent.
+Since the enable config mode command can take a long time to execute (varies anywhere between 120ms - 3300ms) and sometimes even failes and needs a retry (also automatically handled in the lib), it is also possible to use enableConfigModeAsync() and disableConfigModeAsync() to control the config mode. This allows to sends several commands in a row without repeatedly enabling/disabling config mode and wasting a lot of time.
+All other commands will detect that config mode is enabled when they are executed and will keep it enabled when done. So dont forget to disable config mode with disableConfigModeAsync() when all comands are sent.
+
+To check whther to config mode is currently active use isConfigModeEnabled().

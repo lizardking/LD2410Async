@@ -23,7 +23,7 @@
  5. Call end() to stop background processing if no longer required.
 
  Example:
- @code
+ @code{.cpp}
    HardwareSerial radarSerial(2);
    LD2410Async radar(radarSerial);
 
@@ -44,21 +44,21 @@
 
  ## Examples
  ### Example: Using callback for presence detection updates
- @code
+ @code{.cpp}
      radar.registerDetectionDataReceivedCallback([](LD2410Async* sender, bool presenceDetetced, byte userData) {
        sender->getDetectionDataRef().print();  // direct access, no copy
      });
  @endcode
 
  ### Example: Access detection data without cloning
- @code
+ @code{.cpp}
    const DetectionData& data = radar.getDetectionDataRef();  // no copy
    Serial.print("Target state: ");
    Serial.println(static_cast<int>(data.targetState));
  @endcode
 
  ### Example: Clone config data, modify, and write back
- @code
+ @code{.cpp}
    ConfigData cfg = radar.getConfigData();  // clone
    cfg.noOneTimeout = 60;
    radar.configureAllConfigSettingsAsync(cfg, false, [](LD2410Async* sender,

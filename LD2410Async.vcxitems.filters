@@ -17,7 +17,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)dox\Operation Modes.md">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)dox\Async Commands &amp; Use">
+    <ClCompile Include="$(MSBuildThisFileDirectory)dox\Async Processing and Use.md">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

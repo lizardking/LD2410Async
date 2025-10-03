@@ -549,7 +549,7 @@ void LD2410Async::sendCommandAsyncHandleTimeout() {
 			DEBUG_PRINTLN("ms.");
 
 			if (sendCommandAsyncRetriesLeft > 0) {
-				DEBUG_PRINT("Retries left ");
+				DEBUG_PRINT("Retries left: ");
 				DEBUG_PRINTLN(sendCommandAsyncRetriesLeft);
 				sendCommandAsyncRetriesLeft--;
 

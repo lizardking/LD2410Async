@@ -105,14 +105,15 @@ $(function(){initNavTree('md__2github_2workspace_2dox_2Async_01Processing_01and_
 Why asynchronous processing matters for the LD2410</h1>
 <p>The LD2410 radar sensor continuously streams detection frames and requires explicit configuration commands to adjust its behavior. If the library were implemented with blocking (synchronous) calls, every command would have to wait for the sensor’s response before the application could continue. Since enabling config mode or requesting data can take several seconds, blocking calls would freeze the main program loop and would disrupt other tasks.</p>
 <p>An asynchronous approach avoids this problem. Commands are sent non-blocking, and the library reports back via callbacks when acknowledgements or data arrive. This has several benefits:</p><ul>
-<li>Responsiveness – the main loop and other tasks keep running while waiting for the sensor.</li>
-<li>Efficiency – incoming data frames are parsed in the background without polling or busy-waiting.</li>
-<li>Scalability – multiple sensors or other asynchronous components (Wi-Fi, MQTT, UI updates) can run in parallel without interfering with each other.</li>
-<li>Robustness – timeouts and retries can be handled cleanly without stalling the system.</li>
+<li>Responsiveness - the main loop and other tasks keep running while waiting for the sensor.</li>
+<li>Efficiency - incoming data frames are parsed in the background without polling or busy-waiting.</li>
+<li>Scalability - multiple sensors or other asynchronous components (Wi-Fi, MQTT, UI updates) can run in parallel without interfering with each other.</li>
+<li>Robustness - timeouts and retries can be handled cleanly without stalling the system.</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md29"></a>
 Detection Data Callback</h1>
 <p>Whenever the LD2410 sensor transmits a valid data frame, the library automatically parses it and invokes the detection data callback. This allows your application to react immediately to presence changes without polling the sensor.</p>
+<p>Use <a class="el" href="classLD2410Async.html#aa6cd71f36a502143cbbc563c4a763346">registerDetectionDataReceivedCallback()</a> to register a callback function to receive the detection callback.</p>
 <p>The callback delivers two things:</p><ul>
 <li>A pointer to the <a class="el" href="classLD2410Async.html" title="Asynchronous driver class for the LD2410 human presence radar sensor.">LD2410Async</a> instance that triggered the event. Allows for easy access to the members of that instance.</li>
 <li>A simple presenceDetected flag (true if presence has been detected, false otherwise).</li>
@@ -141,7 +142,7 @@ Detection Data Callback</h1>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="basicPresenceDetection_8ino.html#afe461d27b9c48d5921c00d521181f12f">loop</a>() {</div>
-<div class="line">    <span class="comment">// Nothing needed here – data is processed asynchronously.</span></div>
+<div class="line">    <span class="comment">// Nothing needed here - data is processed asynchronously.</span></div>
 <div class="line">}</div>
 <div class="ttc" id="aLD2410Async_8h_html"><div class="ttname"><a href="LD2410Async_8h.html">LD2410Async.h</a></div></div>
 <div class="ttc" id="abasicPresenceDetection_8ino_html_a49d7843d70c3fb5607ee7c62c655fa41"><div class="ttname"><a href="basicPresenceDetection_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41">RadarSerial</a></div><div class="ttdeci">HardwareSerial RadarSerial(1)</div></div>
@@ -152,61 +153,72 @@ Detection Data Callback</h1>
 <div class="ttc" id="aclassLD2410Async_html_a1358f6f0b8d55a676b5b8147906c9024"><div class="ttname"><a href="classLD2410Async.html#a1358f6f0b8d55a676b5b8147906c9024">LD2410Async::begin</a></div><div class="ttdeci">bool begin()</div><div class="ttdoc">Starts the background task that continuously reads data from the sensor.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l01728">LD2410Async.cpp:1728</a></div></div>
 <div class="ttc" id="aclassLD2410Async_html_aa6cd71f36a502143cbbc563c4a763346"><div class="ttname"><a href="classLD2410Async.html#aa6cd71f36a502143cbbc563c4a763346">LD2410Async::registerDetectionDataReceivedCallback</a></div><div class="ttdeci">void registerDetectionDataReceivedCallback(DetectionDataCallback callback)</div><div class="ttdoc">Registers a callback for new detection data.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l00197">LD2410Async.cpp:197</a></div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md30"></a>
-Async Commands</h1>
+Async Commands BAsics</h1>
 <p>The LD2410 sensor can be configured and queried using a large set of commands.</p>
-<p>All commands that need to coommunicate with the sensor are implemented as asynchronous operations:</p><ul>
+<p>All commands that need to communicate with the sensor are implemented as asynchronous operations:</p><ul>
 <li>They return immediately without blocking the main loop.</li>
 <li>When the sensor sends back an acknowledgement (ACK) or a response, the library automatically calls the user-provided callback with the result.</li>
 <li>Callbacks allow your application to handle success, timeout, or failure in a clean and non-blocking way.</li>
 </ul>
 <p>This design makes the library suitable for complex applications where other tasks (e.g. networking, user input) must continue running while waiting for the radar to respond.</p>
-<h2><a class="anchor" id="autotoc_md31"></a>
-List of Asynchronous Commands</h2>
-<p>-Config mode control</p><ul>
-<li>enableConfigModeAsync() – enable configuration mode.</li>
-<li><code>disableConfigModeAsync()</code> – disable configuration mode, return to normal detection.</li>
+<h1><a class="anchor" id="autotoc_md31"></a>
+List of Asynchronous Commands</h1>
+<ul>
+<li>Config mode control<ul>
+<li><a class="el" href="classLD2410Async.html#a3fe6e98d1a839616e5fcc67c36555541">enableConfigModeAsync()</a> - enable configuration mode.</li>
+<li><a class="el" href="classLD2410Async.html#a20a2e6cc699e4f8b433013b0991e016b">disableConfigModeAsync()</a> - disable configuration mode, return to normal detection.</li>
 </ul>
-<p>Engineering mode</p><ul>
-<li><code>enableEngineeringModeAsync()</code> – enable detailed per-gate reporting.</li>
-<li><code>disableEngineeringModeAsync()</code> – disable engineering mode.</li>
+</li>
+<li>Engineering mode<ul>
+<li><a class="el" href="classLD2410Async.html#ad9194e58c5049ad954214176ac78bad9">enableEngineeringModeAsync()</a> - enable detailed per-gate reporting.</li>
+<li><a class="el" href="classLD2410Async.html#aeb2e5c33b784c447057a6ed81ff3ce22">disableEngineeringModeAsync()</a> - disable engineering mode.</li>
 </ul>
-<p>Request configuration data</p><ul>
-<li><code>requestAllConfigSettingsAsync()</code> – query all configuration parameters at once (bundles the next 3 commands into one). <b>Use this command whenever possible.</b></li>
-<li><code>requestGateParametersAsync()</code> – query max gates, timeouts, sensitivities.</li>
-<li><code>requestAuxControlSettingsAsync()</code> – query auxiliary control settings.</li>
-<li><code>requestDistanceResolutionAsync()</code> – query current resolution.</li>
+</li>
+<li>Request configuration data<ul>
+<li><a class="el" href="classLD2410Async.html#aac12b536c30e05d6c0dc5e8703e0a534">requestAllConfigSettingsAsync()</a> - query all configuration parameters at once (bundles the next 3 commands into one). <b>Use this command whenever possible.</b></li>
+<li><a class="el" href="classLD2410Async.html#a0624ca35e57ae7b8a9366a35bf5ec8f4">requestGateParametersAsync()</a> - query max gates, timeouts, sensitivities.</li>
+<li><a class="el" href="classLD2410Async.html#acb6a2d3e9a150cd168936c2688eedf6f">requestAuxControlSettingsAsync()</a> - query auxiliary control settings.</li>
+<li><a class="el" href="classLD2410Async.html#a69f4b0a91fe1a118b96f46ae35b4ce02">requestDistanceResolutionAsync()</a> - query current resolution.</li>
 </ul>
-<p>Write configuration data</p><ul>
-<li><code>configureAllConfigSettingsAsync()</code> - writes all config settings (combines the next 4 commands). Requires reboot if display resolution has changed. <b>Use this command whenever possible.</b></li>
-<li><code>configureMaxGateAndNoOneTimeoutAsync()</code> – set max gates and timeout.</li>
-<li><code>configureDistanceGateSensitivityAsync()</code> – set per-gate sensitivity (single or all).</li>
-<li><code>configureDistanceResolutionAsync()</code> – set resolution (20 cm or 75 cm). Requires reboot.</li>
-<li><code>configureAuxControlSettingsAsync()</code> – configure light/output pins.</li>
-<li><code>configureBaudRateAsync()</code> – change UART baud rate. Requires reboot.</li>
+</li>
+<li>Write configuration data<ul>
+<li><a class="el" href="classLD2410Async.html#a2b715cdadb6672d869fd4b5bcbe3a06d">configureAllConfigSettingsAsync()</a> - writes all config settings (combines the next 4 commands). Requires reboot if display resolution has changed. <b>Use this command whenever possible.</b></li>
+<li><a class="el" href="classLD2410Async.html#a140b778638c6f9bce329b0e419764a9e">configureMaxGateAndNoOneTimeoutAsync()</a> - set max gates and timeout.</li>
+<li><a class="el" href="classLD2410Async.html#ab483e456a70997f40da0e2342c261ef0">configureDistanceGateSensitivityAsync()</a> - set per-gate sensitivity (single or all).</li>
+<li><a class="el" href="classLD2410Async.html#a0ce1664f1c18a6583a5e5cb37f2f6abe">configureDistanceResolutionAsync()</a> - set resolution (20 cm or 75 cm). Requires reboot.</li>
+<li><a class="el" href="classLD2410Async.html#a016abc4a3c63a672b5e190d0473042df">configureAuxControlSettingsAsync()</a> - configure light/output pins.</li>
+<li><a class="el" href="classLD2410Async.html#af019e7283d06ef1acc49cb773f68ce53">configureBaudRateAsync()</a> - change UART baud rate. Requires reboot.</li>
 </ul>
-<p>Request static data <br  />
-</p><ul>
-<li><code>requestAllStaticDataAsync()</code> – query all static information (protocol version, buffer size, firmware version and bluetooth mac).</li>
-<li><code>requestFirmwareAsync()</code> – query firmware version.</li>
+</li>
+<li>Request static data <br  />
+<ul>
+<li><a class="el" href="classLD2410Async.html#a191650cf8a3eb42072beba99518f0aa9">requestAllStaticDataAsync()</a> - query all static information (protocol version, buffer size, firmware version and bluetooth mac).</li>
+<li><a class="el" href="classLD2410Async.html#a97de448d25732233c6e2840f0ae71882">requestFirmwareAsync()</a> - query firmware version.</li>
 </ul>
-<p>Bluetooth functions</p><ul>
-<li><code>enableBluetoothAsync()</code> – turn on Bluetooth.</li>
-<li><code>disableBluetoothAsync()</code> – turn off Bluetooth.</li>
-<li><code>requestBluetoothMacAddressAsync()</code> – query Bluetooth MAC address.</li>
-<li><code>configureBluetoothPasswordAsync()</code> – set custom password.</li>
-<li><code>configureDefaultBluetoothPasswordAsync()</code> – reset password to default.</li>
+</li>
+<li>Bluetooth functions<ul>
+<li><a class="el" href="classLD2410Async.html#afa914515dda6e971dcffde60b26ea659">enableBluetoothAsync()</a> - turn on Bluetooth.</li>
+<li><a class="el" href="classLD2410Async.html#a47bd2ee6ec0e5b4c3eca2fa8a72bad90">disableBluetoothAsync()</a> - turn off Bluetooth.</li>
+<li><a class="el" href="classLD2410Async.html#aa1ccf028c8ff10ce4d7fb19d99cec3f3">requestBluetoothMacAddressAsync()</a> - query Bluetooth MAC address.</li>
+<li><a class="el" href="classLD2410Async.html#a7b7cec137a68796b8f6bce9230ae3704">configureBluetoothPasswordAsync()</a> - set custom password.</li>
+<li><a class="el" href="classLD2410Async.html#ab0d3227098f6b8ecb3ed35ce3d114e04">configureDefaultBluetoothPasswordAsync()</a> - reset password to default.</li>
 </ul>
-<p>Auto-config</p><ul>
-<li><code>beginAutoConfigAsync()</code> – start auto-configuration routine.</li>
-<li><code>requestAutoConfigStatusAsync()</code> – query status of auto-config.</li>
+</li>
+<li>Auto-config<ul>
+<li><a class="el" href="classLD2410Async.html#ac881baff7adccbc47f9d3bd96ffaedeb">beginAutoConfigAsync()</a> - start auto-configuration routine.</li>
+<li><a class="el" href="classLD2410Async.html#af4fb70de9f21fad216272e35d7136483">requestAutoConfigStatusAsync()</a> - query status of auto-config.</li>
 </ul>
-<p>Other</p><ul>
-<li><code>rebootAsync()</code> – reboot the sensor (needed after some config changes).</li>
-<li><code>restoreFactorySettingsAsync()</code> – restore default settings. Requires reboot.</li>
+</li>
+<li>Other<ul>
+<li><a class="el" href="classLD2410Async.html#a0fefa06a0cbcc70e1aa5e655315851ee">rebootAsync()</a> - reboot the sensor (needed after some config changes).</li>
+<li><a class="el" href="classLD2410Async.html#a19a50908e4fae4f35106b2cd2fe1ac34">restoreFactorySettingsAsync()</a> - restore default settings. Requires reboot.</li>
 </ul>
-<p>Async Command helpers</p><ul>
-<li><code>asyncIsBusy()</code> - checks if another async command is pending</li>
-<li><code>asyncCancel()</code> - Cancels any currently pending async command. This will just abort the waiting for the Ack of the command. The actual command (or parts of it) have probably already been executed anyway.</li>
+</li>
+<li>Async Command helpers<ul>
+<li><a class="el" href="classLD2410Async.html#a72e853afaba8373fb90524c3c4e8a153">asyncIsBusy()</a> - checks if another async command is pending</li>
+<li><a class="el" href="classLD2410Async.html#a072ae754e7f12512e8051f4c6246e1e1">asyncCancel()</a> - Cancels any currently pending async command. This will just abort the waiting for the Ack of the command. The actual command (or parts of it) have probably already been executed anyway.</li>
+</ul>
+</li>
 </ul>
 <p><b>Example</b></p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="LD2410Async_8h.html">LD2410Async.h</a>&quot;</span></div>
@@ -238,7 +250,7 @@ List of Asynchronous Commands</h2>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="basicPresenceDetection_8ino.html#afe461d27b9c48d5921c00d521181f12f">loop</a>() {</div>
-<div class="line">    <span class="comment">// Async – nothing needed here</span></div>
+<div class="line">    <span class="comment">// Async - nothing needed here</span></div>
 <div class="line">}</div>
 <div class="ttc" id="achangeConfig_8ino_html_a4fb783f10dd13731d0744dccd34a517c"><div class="ttname"><a href="changeConfig_8ino.html#a4fb783f10dd13731d0744dccd34a517c">onConfigReceived</a></div><div class="ttdeci">void onConfigReceived(LD2410Async *sender, LD2410Async::AsyncCommandResult result)</div><div class="ttdoc">Callback after receiving the config data.</div><div class="ttdef"><b>Definition</b> <a href="changeConfig_8ino_source.html#l00069">changeConfig.ino:69</a></div></div>
 <div class="ttc" id="aclassLD2410Async_html_a136b50e19cfddad787637fb65421d9ab"><div class="ttname"><a href="classLD2410Async.html#a136b50e19cfddad787637fb65421d9ab">LD2410Async::AsyncCommandResult</a></div><div class="ttdeci">AsyncCommandResult</div><div class="ttdoc">Result of an asynchronous command execution.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8h_source.html#l00048">LD2410Async.h:48</a></div></div>
@@ -249,11 +261,11 @@ List of Asynchronous Commands</h2>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md32"></a>
 Best Practices for Async Commands</h1>
 <ul>
-<li><b>Be aware of busy state</b> – before sending a command, ensure the library is not already executing another one. Use asyncIsBusy() if needed. All commands are checking for busy state internally and will return false, if another command is pending.</li>
-<li><b>Use callbacks</b> – never assume a command succeeded immediately. Handle SUCCESS, FAILED, TIMEOUT, or CANCELED in the callback.</li>
-<li><b>Don’t block in callbacks</b> – keep callbacks short and non-blocking; offload heavy work to the main loop or a task.</li>
-<li><b>Config mode handling</b> – you don’t need to manually enable/disable config mode; the library handles this automatically for commands that require it. Only use enableConfigModeAsync()/disableConfigModeAsync() directly if you need to stay in config mode across multiple operations.</li>
-<li><b>Avoid overlapping commands</b> – sending a new command while one is pending will cause failures. Either wait for the callback or call asyncCancel() if you must interrupt. </li>
+<li><b>Be aware of busy state</b> - before sending a command, ensure the library is not already executing another one. Use asyncIsBusy() if needed. All commands are checking for busy state internally and will return false, if another command is pending.</li>
+<li><b>Use callbacks</b> - never assume a command succeeded immediately. Handle SUCCESS, FAILED, TIMEOUT, or CANCELED in the callback.</li>
+<li><b>Don’t block in callbacks</b> - keep callbacks short and non-blocking; offload heavy work to the main loop or a task.</li>
+<li><b>Config mode handling</b> - you don’t need to manually enable/disable config mode; the library handles this automatically for commands that require it. Only use enableConfigModeAsync()/disableConfigModeAsync() directly if you need to stay in config mode across multiple operations.</li>
+<li><b>Avoid overlapping commands</b> - sending a new command while one is pending will cause failures. Either wait for the callback or call asyncCancel() if you must interrupt. </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

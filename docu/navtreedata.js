@@ -37,9 +37,8 @@ var NAVTREE =
     [ "Async Processing & Commands", "md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html", [
       [ "Why asynchronous processing matters for the LD2410", "md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html#autotoc_md28", null ],
       [ "Detection Data Callback", "md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html#autotoc_md29", null ],
-      [ "Async Commands", "md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html#autotoc_md30", [
-        [ "List of Asynchronous Commands", "md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html#autotoc_md31", null ]
-      ] ],
+      [ "Async Commands BAsics", "md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html#autotoc_md30", null ],
+      [ "List of Asynchronous Commands", "md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html#autotoc_md31", null ],
       [ "Best Practices for Async Commands", "md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html#autotoc_md32", null ]
     ] ],
     [ "Inactivity Handling", "md__2github_2workspace_2dox_2Inactivity_01Handling.html", null ],

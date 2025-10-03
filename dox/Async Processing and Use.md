@@ -22,9 +22,9 @@ The callback delivers two things:
 - A pointer to the LD2410Async instance that triggered the event. Allows for easy access to the members of that instance.
 - A simple presenceDetected flag (true if presence has been detected, false otherwise).
 
-This mechanism makes it easy to update your logic in real time — for example to turn lights on/off or send MQTT updates.
+This mechanism makes it easy to update your logic in real time - for example to turn lights on/off or send MQTT updates.
 
-**Example**
+## Detection Data Callback Example
 
 @code{.cpp}
 #include "LD2410Async.h"
@@ -53,7 +53,7 @@ void loop() {
 }
 @endcode
 
-## Async Commands BAsics
+## Async Commands Basics
 
 The LD2410 sensor can be configured and queried using a large set of commands.
 
@@ -104,7 +104,7 @@ This design makes the library suitable for complex applications where other task
     - @ref LD2410Async::asyncCancel "asyncCancel()" - Cancels any currently pending async command. This will just abort the waiting for the Ack of the command. The actual command (or parts of it) have probably already been executed anyway.
 
 
-**Example**
+## Async Commands Example
 
 @code{.cpp}
 #include "LD2410Async.h"

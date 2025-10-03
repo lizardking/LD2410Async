@@ -133,13 +133,13 @@ When working with the LD2410Async library, keep the following points in mind:
 
 - **Engineering Mode**  
   - Engineering mode provides detailed gate signal data for development and debugging.  
-  - Do **not** enable engineering mode in production unless required — it increases the amount of data sent and will trigger the detection callback more often.  
+  - Do **not** enable engineering mode in production unless required - it increases the amount of data sent and will trigger the detection callback more often.  
   - Leaving it on continuously can increase CPU load and reduce performance.
 
   **Keep Callbacks Short**  
   - Callbacks are executed inside the radar’s processing task.  
   - Keep them **short and non-blocking** (e.g., update a variable or post to a queue).
-  - Avoid long delay code, heavy computations, or blocking I/O inside callbacks — otherwise, sensor data processing may be delayed or datection data can get lost.
+  - Avoid long delay code, heavy computations, or blocking I/O inside callbacks - otherwise, sensor data processing may be delayed or datection data can get lost.
 
 - **Presence Detection**  
   - Use the dedicated detection callback with the `presenceDetected` flag of the DetectionDataReceivedCallback (use registerDetectionDataReceivedCallback() to register for that callback) if you only care about *whether* something is present.  
@@ -173,11 +173,11 @@ If you run into issues when using the library, check the following common proble
   - Make sure the radar is connected to the correct serial port and pins.  
   - Verify the baud rate: the LD2410 uses `256000` by default.  
   - Ensure `radar.begin()` was called after initializing the serial port.  
-  - Make sure the config mode is not acctive accidentally — in config mode, no detection data is sent.
+  - Make sure the config mode is not acctive accidentally - in config mode, no detection data is sent.
 
 - **Callbacks not firing**  
   - Confirm that you registered the callback before expecting data.  
-  - Check that the sensor is not stuck in config mode — in config mode, no detection data is sent.  
+  - Check that the sensor is not stuck in config mode - in config mode, no detection data is sent.  
   - If you enabled engineering mode, expect more frequent callbacks with more data.  
 
 - **Async commands not working**  

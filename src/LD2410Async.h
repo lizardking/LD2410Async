@@ -558,7 +558,7 @@ public:
 	* @brief Enables config mode on the radar.
 	*
 	* Config mode must be enabled before sending any commands (apart from this commend) to the sensor.
-	* This command itself is asynchronous — the callback fires once the
+	* This command itself is asynchronous - the callback fires once the
 	* sensor acknowledges the mode switch.
 	*
 	* @note If asyncIsBusy() is true, this command will not be sent.
@@ -579,7 +579,7 @@ public:
 	* @brief Enables config mode on the radar.
 	*
 	* Config mode must be enabled before sending any commands (apart from this commend) to the sensor.
-	* This command itself is asynchronous — the callback fires once the
+	* This command itself is asynchronous - the callback fires once the
 	* sensor acknowledges the mode switch.
 	*
 	* @note If asyncIsBusy() is true, this command will not be sent.
@@ -1108,7 +1108,7 @@ public:
 	* - Query status afterwards with requestAutoConfigStatusAsync().
 	*
 	* ## Don’t:
-	* - Expect instant results — the sensor needs time to complete the process.
+	* - Expect instant results - the sensor needs time to complete the process.
 	*
 	* @param callback Callback with signature:
 	*        void(LD2410Async* sender, AsyncCommandResult result).
@@ -1162,7 +1162,7 @@ public:
 	* - Use autoConfigStatus for decision-making in your logic.
 	*
 	* ## Don’t:
-	* - Assume COMPLETED means success — thresholds should still be verified.
+	* - Assume COMPLETED means success - thresholds should still be verified.
 	*
 	* @param callback Callback with signature:
 	*        void(LD2410Async* sender, AsyncCommandResult result).
@@ -1264,7 +1264,7 @@ public:
 	* - Useful for debugging or inventory identification.
 	*
 	* ## Don’t:
-	* - Expect frequently changing data — this is static information.
+	* - Expect frequently changing data - this is static information.
 	*
 	* @param callback Callback with signature:
 	*        void(LD2410Async* sender, AsyncCommandResult result).

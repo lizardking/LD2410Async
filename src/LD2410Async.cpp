@@ -46,20 +46,16 @@ bool LD2410Async::readFramePayloadSize(byte b, ReadFrameState nextReadFrameState
 	if (receiveBufferIndex >= 2) {
 		payloadSize = receiveBuffer[0] | (receiveBuffer[1] << 8);
 		if (payloadSize <= 0 || payloadSize > sizeof(receiveBuffer) - 4) {
-			//Serial.print("Invalid payload size read: ");
-			//Serial.print(payloadSize);
-			//Serial.print(" ");
-			//printBuf(receiveBuffer, 2);
-
 			//Invalid payload size, wait for header.
+
+			DEBUG_PRINT("Invalid payload size read: ");
+			DEBUG_PRINTLN(payloadSize);
+
 			readFrameState = ReadFrameState::WAITING_FOR_HEADER;
 		}
 		else {
 
-			//Serial.print("Payloadsize read: ");
-			//Serial.print(payloadSize);
-			//Serial.print(" ");
-			//printBuf(receiveBuffer, 2);
+
 
 
 			receiveBufferIndex = 0;
@@ -79,14 +75,13 @@ LD2410Async::FrameReadResponse LD2410Async::readFramePayload(byte b, const byte*
 		readFrameState = ReadFrameState::WAITING_FOR_HEADER;
 
 		if (bufferEndsWith(receiveBuffer, receiveBufferIndex, tailPattern)) {
-			//Serial.println("Payload read: ");
-			//printBuf(receiveBuffer, receiveBufferIndex);
+
 
 			return succesResponseType;
 		}
 		else {
-			//Serial.print(" Invalid frame end: ");
-			//printBuf(receiveBuffer, receiveBufferIndex);
+			DEBUG_PRINTLN(" Invalid frame end: ");
+			DEBUG_PRINTBUF(receiveBuffer, receiveBufferIndex);
 
 		}
 
@@ -124,6 +119,7 @@ LD2410Async::FrameReadResponse LD2410Async::readFrame()
 			}
 			else if (b == LD2410Defs::headData[0]) {
 				// fallback: this byte might be the start of a new header
+
 				readFrameHeaderIndex = 1;
 
 				// stay in DATA_HEADER
@@ -1604,9 +1600,13 @@ void LD2410Async::handleInactivityDisableConfigmodeCallback(LD2410Async* sender,
 void LD2410Async::handleInactivity() {
 
 	if (inactivityHandlingEnabled && inactivityHandlingTimeoutMs > 0) {
+		unsigned long timeoutToUse = inactivityHandlingTimeoutMs;
+		if (timeoutToUse < asyncCommandTimeoutMs + 1000) {
+			timeoutToUse = asyncCommandTimeoutMs + 1000;
+		}
 		unsigned long currentTime = millis();
 		unsigned long inactiveDurationMs = currentTime - lastSensorActivityTimestamp;
-		if (lastSensorActivityTimestamp != 0 && inactiveDurationMs > inactivityHandlingTimeoutMs) {
+		if (lastSensorActivityTimestamp != 0 && inactiveDurationMs > timeoutToUse) {
 			if (inactivityHandlingStep == 0 || currentTime - lastInactivityHandlingTimestamp > asyncCommandTimeoutMs + 1000) {
 				lastInactivityHandlingTimestamp = currentTime;
 

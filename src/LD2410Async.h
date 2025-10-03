@@ -279,9 +279,10 @@ public:
 	*
 	* @note
 	* Make sure to set a value that is larger than the timeout for async commands (see getAsyncCommandTimeoutMs() and setAsyncCommandTimeoutMs()).
-	* Otherwise inactivity handling might kick in while commands are still pending (usually waiting for ack), which will result in the cancelation of the pending async command.
+	* Otherwise inactivity handling could kick in while commands are still pending (usually waiting for ack), which will result in the cancelation of the pending async command.
+	* To make sure this this will not happen, the inactivity handling will not use the set timeout if it is shorter than the command time out and use the command timeout + 1000ms instead.
 	*
-	* @param timeoutMs Timeout in milliseconds (minimum 10000 ms recommended). 0 will diable inactivity checking and handling.
+	* @param timeoutMs Timeout in milliseconds (minimum 10000 ms recommended). 0 will disable inactivity checking and handling.
 	*
 	*/
 	void setInactivityTimeoutMs(unsigned long timeoutMs = 60000) { inactivityHandlingTimeoutMs = timeoutMs; };

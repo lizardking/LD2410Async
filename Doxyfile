@@ -22,6 +22,7 @@ INPUT                  = src examples dox
 FILE_PATTERNS          = *.h *.cpp *.ino *.dox *.md
 EXTENSION_MAPPING	   = ino=C++
 RECURSIVE              = YES
+IMAGE_PATH			   = gfx
 
 # Source code browsing
 SOURCE_BROWSER         = YES

@@ -125,7 +125,7 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:acabeb381bc21ae97893101726ab1d589" id="r_acabeb381bc21ae97893101726ab1d589"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acabeb381bc21ae97893101726ab1d589">numberOfGates</a> = 0</td></tr>
-<tr class="memdesc:acabeb381bc21ae97893101726ab1d589"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of distance gates (2–8). This member is readonly resp. changing its value will not influence the radar setting when configureAllConfigSettingsAsync() is called. It is not 100% clear what this value stands for, but it seems to indicate the number of gates on the sensor.  <br /></td></tr>
+<tr class="memdesc:acabeb381bc21ae97893101726ab1d589"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of distance gates (2-8). This member is readonly resp. changing its value will not influence the radar setting when configureAllConfigSettingsAsync() is called. It is not 100% clear what this value stands for, but it seems to indicate the number of gates on the sensor.  <br /></td></tr>
 <tr class="separator:acabeb381bc21ae97893101726ab1d589"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18a9dc2b43a849c46892158fcfa9b382" id="r_a18a9dc2b43a849c46892158fcfa9b382"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a18a9dc2b43a849c46892158fcfa9b382">maxMotionDistanceGate</a> = 0</td></tr>
 <tr class="memdesc:a18a9dc2b43a849c46892158fcfa9b382"><td class="mdescLeft">&#160;</td><td class="mdescRight">Furthest gate used for motion detection.  <br /></td></tr>
@@ -134,10 +134,10 @@ Public Attributes</h2></td></tr>
 <tr class="memdesc:a95ae8ec4ba27e50135f0cc38fd4621a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Furthest gate used for stationary detection.  <br /></td></tr>
 <tr class="separator:a95ae8ec4ba27e50135f0cc38fd4621a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16240bb5af9b2e367e78a5fc2c4e107c" id="r_a16240bb5af9b2e367e78a5fc2c4e107c"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16240bb5af9b2e367e78a5fc2c4e107c">distanceGateMotionSensitivity</a> [9] = { 0 }</td></tr>
-<tr class="memdesc:a16240bb5af9b2e367e78a5fc2c4e107c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Motion sensitivity values per gate (0–100).  <br /></td></tr>
+<tr class="memdesc:a16240bb5af9b2e367e78a5fc2c4e107c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Motion sensitivity values per gate (0-100).  <br /></td></tr>
 <tr class="separator:a16240bb5af9b2e367e78a5fc2c4e107c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a126164bd0a2f25ec1cb24ca87f2d6eb8" id="r_a126164bd0a2f25ec1cb24ca87f2d6eb8"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a126164bd0a2f25ec1cb24ca87f2d6eb8">distanceGateStationarySensitivity</a> [9] = { 0 }</td></tr>
-<tr class="memdesc:a126164bd0a2f25ec1cb24ca87f2d6eb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stationary sensitivity values per gate (0–100).  <br /></td></tr>
+<tr class="memdesc:a126164bd0a2f25ec1cb24ca87f2d6eb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stationary sensitivity values per gate (0-100).  <br /></td></tr>
 <tr class="separator:a126164bd0a2f25ec1cb24ca87f2d6eb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed0b489a9e500b199397a9db7103e3bf" id="r_aed0b489a9e500b199397a9db7103e3bf"><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed0b489a9e500b199397a9db7103e3bf">noOneTimeout</a> = 0</td></tr>
 <tr class="memdesc:aed0b489a9e500b199397a9db7103e3bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timeout (seconds) until "no presence" is declared.  <br /></td></tr>
@@ -146,7 +146,7 @@ Public Attributes</h2></td></tr>
 <tr class="memdesc:ad4b3263e4da6bcc2ef64d1e727eb6f06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current distance resolution. A reboot is required to activate changed setting after calling configureAllConfigSettingsAsync() is called.  <br /></td></tr>
 <tr class="separator:ad4b3263e4da6bcc2ef64d1e727eb6f06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a409cf828c80e4c75b9200ef3f1c4de88" id="r_a409cf828c80e4c75b9200ef3f1c4de88"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a409cf828c80e4c75b9200ef3f1c4de88">lightThreshold</a> = 0</td></tr>
-<tr class="memdesc:a409cf828c80e4c75b9200ef3f1c4de88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Threshold for auxiliary light control (0–255).  <br /></td></tr>
+<tr class="memdesc:a409cf828c80e4c75b9200ef3f1c4de88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Threshold for auxiliary light control (0-255).  <br /></td></tr>
 <tr class="separator:a409cf828c80e4c75b9200ef3f1c4de88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90a9b0911fdf7ee1b05a90b70b76d2d7" id="r_a90a9b0911fdf7ee1b05a90b70b76d2d7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceLD2410Types.html#afbd22de9579db591b3f122c51c730844">LightControl</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90a9b0911fdf7ee1b05a90b70b76d2d7">lightControl</a> = <a class="el" href="namespaceLD2410Types.html#afbd22de9579db591b3f122c51c730844a1c250a21210b7b88a14db9a0cbe71162">LightControl::NOT_SET</a></td></tr>
 <tr class="memdesc:a90a9b0911fdf7ee1b05a90b70b76d2d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Light-dependent auxiliary control mode.  <br /></td></tr>
@@ -271,7 +271,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Motion sensitivity values per gate (0–100). </p>
+<p>Motion sensitivity values per gate (0-100). </p>
 
 <p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00364">364</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
 
@@ -289,7 +289,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Stationary sensitivity values per gate (0–100). </p>
+<p>Stationary sensitivity values per gate (0-100). </p>
 
 <p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00365">365</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
 
@@ -343,7 +343,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Threshold for auxiliary light control (0–255). </p>
+<p>Threshold for auxiliary light control (0-255). </p>
 
 <p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00374">374</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
 
@@ -415,7 +415,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Number of distance gates (2–8). This member is readonly resp. changing its value will not influence the radar setting when configureAllConfigSettingsAsync() is called. It is not 100% clear what this value stands for, but it seems to indicate the number of gates on the sensor. </p>
+<p>Number of distance gates (2-8). This member is readonly resp. changing its value will not influence the radar setting when configureAllConfigSettingsAsync() is called. It is not 100% clear what this value stands for, but it seems to indicate the number of gates on the sensor. </p>
 
 <p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00357">357</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
 

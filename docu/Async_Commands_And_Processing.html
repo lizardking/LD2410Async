@@ -100,9 +100,7 @@ $(function(){initNavTree('Async_Commands_And_Processing.html',''); initResizable
   <div class="headertitle"><div class="title">Async Commands &amp; Processing</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md35"></a>
-Async Commands &amp; Processing</h1>
-<h2><a class="anchor" id="autotoc_md36"></a>
+<div class="textblock"><h2><a class="anchor" id="autotoc_md35"></a>
 Why asynchronous processing matters for the LD2410</h2>
 <p>The LD2410 radar sensor continuously streams detection frames and requires explicit configuration commands to adjust its behavior. If the library were implemented with blocking (synchronous) calls, every command would have to wait for the sensor’s response before the application could continue. Since enabling config mode or requesting data can take several seconds, blocking calls would freeze the main program loop and would disrupt other tasks.</p>
 <p>An asynchronous approach avoids this problem. Commands are sent non-blocking, and the library reports back via callbacks when acknowledgements or data arrive. This has several benefits:</p><ul>
@@ -111,7 +109,7 @@ Why asynchronous processing matters for the LD2410</h2>
 <li>Scalability - multiple sensors or other asynchronous components (Wi-Fi, MQTT, UI updates) can run in parallel without interfering with each other.</li>
 <li>Robustness - timeouts and retries can be handled cleanly without stalling the system.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md37"></a>
+<h2><a class="anchor" id="autotoc_md36"></a>
 Detection Data Callback</h2>
 <p>Whenever the LD2410 sensor transmits a valid data frame, the library automatically parses it and invokes the detection data callback. This allows your application to react immediately to sensor input without the need for polling.</p>
 <p>Use <a class="el" href="classLD2410Async.html#ad45ae5bd8cbdfe48634f7ff158867dff">onDetectionDataReceived()</a> to register a callback function for detection events.</p>
@@ -121,7 +119,7 @@ Detection Data Callback</h2>
 </ul>
 <dl class="section note"><dt>Note</dt><dd>The callback is triggered for every received frame, not only when presenceDetected changes. This means you can always rely on it to reflect the most recent sensor state.</dd></dl>
 <p>For applications that need more than just the quick presence flag, the library provides full access to the updated <a class="el" href="structLD2410Types_1_1DetectionData.html">DetectionData</a> struct. This struct contains distances, signal strengths and other info.</p>
-<h2><a class="anchor" id="autotoc_md38"></a>
+<h2><a class="anchor" id="autotoc_md37"></a>
 Detection Data Callback Example</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="LD2410Async_8h.html">LD2410Async.h</a>&quot;</span></div>
 <div class="line"> </div>
@@ -155,13 +153,13 @@ Detection Data Callback Example</h2>
 <div class="ttc" id="aclassLD2410Async_html"><div class="ttname"><a href="classLD2410Async.html">LD2410Async</a></div><div class="ttdoc">Asynchronous driver class for the LD2410 human presence radar sensor.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8h_source.html#l00039">LD2410Async.h:39</a></div></div>
 <div class="ttc" id="aclassLD2410Async_html_a1358f6f0b8d55a676b5b8147906c9024"><div class="ttname"><a href="classLD2410Async.html#a1358f6f0b8d55a676b5b8147906c9024">LD2410Async::begin</a></div><div class="ttdeci">bool begin()</div><div class="ttdoc">Starts the background task that continuously reads data from the sensor.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l01728">LD2410Async.cpp:1728</a></div></div>
 <div class="ttc" id="aclassLD2410Async_html_ad45ae5bd8cbdfe48634f7ff158867dff"><div class="ttname"><a href="classLD2410Async.html#ad45ae5bd8cbdfe48634f7ff158867dff">LD2410Async::onDetectionDataReceived</a></div><div class="ttdeci">void onDetectionDataReceived(DetectionDataCallback callback)</div><div class="ttdoc">Registers a callback for new detection data.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l00197">LD2410Async.cpp:197</a></div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md39"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md38"></a>
 Configuration Callbacks</h2>
 <p>Whenever the LD2410 sensor executes or reports configuration changes, the library provides two separate callback mechanisms to keep your application informed.</p>
 <p>Use <a class="el" href="classLD2410Async.html#a92d50b2d598e6d605ee10c69e5d24eb5">onConfigChanged()</a> to register a callback that is invoked whenever the sensor acknowledges and applies a configuration-changing command (for example, after setting sensitivities or timeouts). This event serves as a notification that the sensor has accepted a change, but it does not mean that the local configuration data has been refreshed. If you need updated values, you must explicitly request them from the sensor (e.g. with <a class="el" href="classLD2410Async.html#aac12b536c30e05d6c0dc5e8703e0a534">requestAllConfigSettingsAsync()</a>).</p>
 <p>Use <a class="el" href="classLD2410Async.html#a4fc3d335adf6b21328f30d6f33a422ff">onConfigDataReceived()</a> to register a callback that is invoked whenever new configuration data has actually been received from the sensor. This happens after request commands such as <a class="el" href="classLD2410Async.html#aac12b536c30e05d6c0dc5e8703e0a534">requestAllConfigSettingsAsync()</a> or <a class="el" href="classLD2410Async.html#a0624ca35e57ae7b8a9366a35bf5ec8f4">requestGateParametersAsync()</a>. Within this callback, the library guarantees that the internal <a class="el" href="structLD2410Types_1_1ConfigData.html">ConfigData</a> structure has been updated, so you can safely access it via <a class="el" href="classLD2410Async.html#a54388c929cea610f92891def29db66a5">getConfigData()</a> or <a class="el" href="classLD2410Async.html#af9f1d59211106a3b582a1417063b3a13">getConfigDataRef()</a>.</p>
 <dl class="section note"><dt>Note</dt><dd>Configuration data is <b>not sent automatically</b> by the sensor and is <b>not updated automatically</b> when internal changes occur. To refresh the local configuration structure, you must explicitly request the latest values from the sensor. The recommended way is to call <a class="el" href="classLD2410Async.html#aac12b536c30e05d6c0dc5e8703e0a534">requestAllConfigSettingsAsync()</a>, which retrieves the complete configuration in one operation.</dd></dl>
-<h2><a class="anchor" id="autotoc_md40"></a>
+<h2><a class="anchor" id="autotoc_md39"></a>
 Configuration Callbacks Example</h2>
 <div class="fragment"><div class="line"><span class="comment">// Define the callback function</span></div>
 <div class="line"><span class="keywordtype">void</span> onConfigChanged(<a class="code hl_class" href="classLD2410Async.html">LD2410Async</a>* sender) {</div>
@@ -191,7 +189,7 @@ Configuration Callbacks Example</h2>
 <div class="ttc" id="astructLD2410Types_1_1ConfigData_html"><div class="ttname"><a href="structLD2410Types_1_1ConfigData.html">LD2410Types::ConfigData</a></div><div class="ttdoc">Stores the sensorâ€™s configuration parameters.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00355">LD2410Types.h:355</a></div></div>
 <div class="ttc" id="astructLD2410Types_1_1ConfigData_html_a14f6b9d23c5eac3fbf70b397398ae624"><div class="ttname"><a href="structLD2410Types_1_1ConfigData.html#a14f6b9d23c5eac3fbf70b397398ae624">LD2410Types::ConfigData::print</a></div><div class="ttdeci">void print() const</div><div class="ttdoc">Debug helper: print configuration contents to Serial.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00434">LD2410Types.h:434</a></div></div>
 <div class="ttc" id="astructLD2410Types_1_1ConfigData_html_aed0b489a9e500b199397a9db7103e3bf"><div class="ttname"><a href="structLD2410Types_1_1ConfigData.html#aed0b489a9e500b199397a9db7103e3bf">LD2410Types::ConfigData::noOneTimeout</a></div><div class="ttdeci">unsigned short noOneTimeout</div><div class="ttdoc">Timeout (seconds) until &quot;no presence&quot; is declared.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00368">LD2410Types.h:368</a></div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md41"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md40"></a>
 Async Commands Basics</h2>
 <p>The LD2410 sensor can be configured and queried using a large set of commands.</p>
 <p>All commands that need to communicate with the sensor are implemented as asynchronous operations:</p><ul>
@@ -204,7 +202,7 @@ Async Commands Basics</h2>
 <li>When the sensor sends back an acknowledgement (ACK) or a response, the library automatically calls the user-provided callback with a result of type <a class="el" href="classLD2410Async.html#a136b50e19cfddad787637fb65421d9ab">AsyncCommandResult</a>.</li>
 <li>Callbacks allow your application to handle SUCCESS, FAILED, TIMEOUT, or CANCELED in a clean and non-blocking way.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md42"></a>
+<h2><a class="anchor" id="autotoc_md41"></a>
 List of Asynchronous Commands</h2>
 <ul>
 <li>Config mode control<ul>
@@ -263,7 +261,7 @@ List of Asynchronous Commands</h2>
 </ul>
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md43"></a>
+<h2><a class="anchor" id="autotoc_md42"></a>
 Async Command Example</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="LD2410Async_8h.html">LD2410Async.h</a>&quot;</span></div>
 <div class="line"> </div>
@@ -303,7 +301,7 @@ Async Command Example</h2>
 <div class="line">    <span class="comment">// Nothing required here – everything runs asynchronously</span></div>
 <div class="line">}</div>
 <div class="ttc" id="astructLD2410Types_1_1ConfigData_html_a18a9dc2b43a849c46892158fcfa9b382"><div class="ttname"><a href="structLD2410Types_1_1ConfigData.html#a18a9dc2b43a849c46892158fcfa9b382">LD2410Types::ConfigData::maxMotionDistanceGate</a></div><div class="ttdeci">byte maxMotionDistanceGate</div><div class="ttdoc">Furthest gate used for motion detection.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00360">LD2410Types.h:360</a></div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md44"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md43"></a>
 Best Practices for Async Commands</h2>
 <ul>
 <li><b>Check the return value</b> - all async methods return true if the command is getting executed or false when execution of the commands is not possible for some reason (e.g. another async command pending or a para is inavlid/out of range)</li>

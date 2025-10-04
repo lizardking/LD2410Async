@@ -100,10 +100,10 @@ $(function(){initNavTree('Operation_Modes.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">Operation Modes</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md82"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md80"></a>
 LD2410 Operation Modes</h1>
 <p>The LD2410 sensor supports several operation modes, each with different behavior and purpose.</p>
-<h2><a class="anchor" id="autotoc_md83"></a>
+<h2><a class="anchor" id="autotoc_md81"></a>
 Normal Detection Mode</h2>
 <p>In normal detection mode the sensor automatically transmits new detection data, usually several times per second. <br  />
 </p>
@@ -112,11 +112,11 @@ Normal Detection Mode</h2>
 </li>
 <li>Distance (cm) to the nearest moving target <br  />
 </li>
-<li>Signal strength (0–100) of the moving target <br  />
+<li>Signal strength (0-100) of the moving target <br  />
 </li>
 <li>Distance (cm) to the nearest stationary target <br  />
 </li>
-<li>Signal strength (0–100) of the stationary target <br  />
+<li>Signal strength (0-100) of the stationary target <br  />
 </li>
 <li>General detection distance (cm) <br  />
 </li>
@@ -137,10 +137,10 @@ Normal Detection Mode</h2>
 <li>6 - Auto config failed <br  />
 </li>
 </ul>
-<p>Unless auto config has been explicitly triggered, only the values 0–3 occur. <br  />
+<p>Unless auto config has been explicitly triggered, only the values 0-3 occur. <br  />
 </p>
 <p>All detection data is represented in the <a class="el" href="structLD2410Types_1_1DetectionData.html">DetectionData</a> struct, which also includes an <code>engineeringMode</code> flag that indicates whether engineering data fields in the struct are valid.</p>
-<h2><a class="anchor" id="autotoc_md84"></a>
+<h2><a class="anchor" id="autotoc_md82"></a>
 Engineering Mode</h2>
 <p>Engineering mode behaves similar to normal detection mode but provides additional data for detailed analysis:</p>
 <ul>
@@ -152,7 +152,7 @@ Engineering Mode</h2>
 </li>
 <li>Per-gate signal strengths for stationary targets <br  />
 </li>
-<li>Reported ambient light level (0–255) <br  />
+<li>Reported ambient light level (0-255) <br  />
 </li>
 <li>Current status of the OUT pin (true = high, false = low) <br  />
 </li>
@@ -171,7 +171,7 @@ Engineering Mode</h2>
 <li><a class="el" href="classLD2410Async.html#ad2909a5a2c7c92b72e49ce93ddc59d19">isEngineeringModeEnabled()</a> <br  />
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md85"></a>
+<h2><a class="anchor" id="autotoc_md83"></a>
 Configuration Mode</h2>
 <p>Configuration mode is required to send configuration commands to the sensor. <br  />
 </p>
@@ -185,7 +185,7 @@ Configuration Mode</h2>
 </ul>
 <p>All commands in the <a class="el" href="classLD2410Async.html">LD2410Async</a> library automatically handle enabling and disabling config mode as needed. <br  />
 </p>
-<p>Because entering config mode can take significant time (120–3300 ms) and may occasionally fail and then requiring retries (handled internally), it can be more efficient to explicitly control config mode when sending multiple commands in sequence. In this case: <br  />
+<p>Because entering config mode can take significant time (120-3300 ms) and may occasionally fail and then requiring retries (handled internally), it can be more efficient to explicitly control config mode when sending multiple commands in sequence. In this case: <br  />
 </p><ul>
 <li>Enable config mode once with <a class="el" href="classLD2410Async.html#a3fe6e98d1a839616e5fcc67c36555541">enableConfigModeAsync()</a> <br  />
 </li>

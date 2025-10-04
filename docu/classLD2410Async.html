@@ -713,7 +713,7 @@ Fails if another async command is pending.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">lightControl</td><td>Light control behavior (see LightControl enum). </td></tr>
-    <tr><td class="paramname">lightThreshold</td><td>Threshold (0–255) used for light-based switching. </td></tr>
+    <tr><td class="paramname">lightThreshold</td><td>Threshold (0-255) used for light-based switching. </td></tr>
     <tr><td class="paramname">outputControl</td><td>Output pin logic configuration (see OutputControl enum). </td></tr>
     <tr><td class="paramname">callback</td><td>Function pointer with signature: void(LD2410Async* sender, AsyncCommandResult result). Fired when ACK is received or on failure/timeout.</td></tr>
   </table>
@@ -746,7 +746,7 @@ Fails if another async command is pending.</dd></dl>
 
 <p>Configures the UART baud rate of the sensor. </p>
 <p>The new baud rate becomes active only after reboot. The ESP32’s Serial interface must also be reconfigured to the new baud rate after reboot.</p>
-<dl class="section note"><dt>Note</dt><dd>Valid values are 1–8. Values outside range are rejected resp. method will fail. </dd>
+<dl class="section note"><dt>Note</dt><dd>Valid values are 1-8. Values outside range are rejected resp. method will fail. </dd>
 <dd>
 Requires config mode. Will be managed automatically. </dd>
 <dd>
@@ -933,9 +933,9 @@ After execution, call <a class="el" href="#a0fefa06a0cbcc70e1aa5e655315851ee" ti
 If another async command is pending, this call fails.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">gate</td><td>Index of the gate (0–8). Values &gt;8 apply to all gates. </td></tr>
-    <tr><td class="paramname">movingThreshold</td><td>Sensitivity for moving targets (0–100). </td></tr>
-    <tr><td class="paramname">stationaryThreshold</td><td>Sensitivity for stationary targets (0–100). </td></tr>
+    <tr><td class="paramname">gate</td><td>Index of the gate (0-8). Values &gt;8 apply to all gates. </td></tr>
+    <tr><td class="paramname">movingThreshold</td><td>Sensitivity for moving targets (0-100). </td></tr>
+    <tr><td class="paramname">stationaryThreshold</td><td>Sensitivity for stationary targets (0-100). </td></tr>
     <tr><td class="paramname">callback</td><td>Callback fired when ACK is received or on failure.</td></tr>
   </table>
   </dd>
@@ -971,14 +971,14 @@ If another async command is pending, this call fails.</dd></dl>
 </div><div class="memdoc">
 
 <p>Configures sensitivity thresholds for all gates at once. </p>
-<p>A sequence of commands will be sent, one for each gate. Threshold values are automatically clamped to 0–100.</p>
+<p>A sequence of commands will be sent, one for each gate. Threshold values are automatically clamped to 0-100.</p>
 <dl class="section note"><dt>Note</dt><dd>Requires config mode. Will be managed automatically. </dd>
 <dd>
 If another async command is pending, this call fails.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">movingThresholds</td><td>Array of 9 sensitivity values for moving targets (0–100). </td></tr>
-    <tr><td class="paramname">stationaryThresholds</td><td>Array of 9 sensitivity values for stationary targets (0–100). </td></tr>
+    <tr><td class="paramname">movingThresholds</td><td>Array of 9 sensitivity values for moving targets (0-100). </td></tr>
+    <tr><td class="paramname">stationaryThresholds</td><td>Array of 9 sensitivity values for stationary targets (0-100). </td></tr>
     <tr><td class="paramname">callback</td><td>Callback fired when all updates are acknowledged or on failure.</td></tr>
   </table>
   </dd>
@@ -1096,18 +1096,18 @@ Fails if another async command is pending.</dd></dl>
 
 <p>Configures the maximum detection gates and "no-one" timeout on the sensor. </p>
 <p>This command updates:</p><ul>
-<li>Maximum motion detection distance gate (2–8).</li>
-<li>Maximum stationary detection distance gate (2–8).</li>
-<li>Timeout duration (0–65535 seconds) until "no presence" is declared.</li>
+<li>Maximum motion detection distance gate (2-8).</li>
+<li>Maximum stationary detection distance gate (2-8).</li>
+<li>Timeout duration (0-65535 seconds) until "no presence" is declared.</li>
 </ul>
 <dl class="section note"><dt>Note</dt><dd>Requires config mode to be enabled. The method will internally enable/disable config mode if necessary. </dd>
 <dd>
 If another async command is pending, this call fails.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">maxMovingGate</td><td>Furthest gate used for motion detection (2–8). </td></tr>
-    <tr><td class="paramname">maxStationaryGate</td><td>Furthest gate used for stationary detection (2–8). </td></tr>
-    <tr><td class="paramname">noOneTimeout</td><td>Timeout in seconds until "no one" is reported (0–65535). </td></tr>
+    <tr><td class="paramname">maxMovingGate</td><td>Furthest gate used for motion detection (2-8). </td></tr>
+    <tr><td class="paramname">maxStationaryGate</td><td>Furthest gate used for stationary detection (2-8). </td></tr>
+    <tr><td class="paramname">noOneTimeout</td><td>Timeout in seconds until "no one" is reported (0-65535). </td></tr>
     <tr><td class="paramname">callback</td><td>Callback fired when ACK is received or on failure/timeout.</td></tr>
   </table>
   </dd>

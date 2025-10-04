@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['practices_0',['Important Notes and Best Practices',['../BestPractices.html',1,'Introduction']]],
-  ['processing_1',['Async Commands &amp; Processing',['../Async_Commands_And_Processing.html',1,'Introduction']]]
+  ['operation_20modes_0',['Operation Modes',['../Operation_Modes.html',1,'index']]]
 ];

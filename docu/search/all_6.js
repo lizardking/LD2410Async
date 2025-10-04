@@ -15,5 +15,5 @@ var searchData=
   ['getdetectiondata_12',['getDetectionData',['../classLD2410Async.html#a5bf997474cd5eb58ac2a142a8d134a50',1,'LD2410Async']]],
   ['getdetectiondataref_13',['getDetectionDataRef',['../classLD2410Async.html#ade2ef7c106c38e11fd450e75a6494090',1,'LD2410Async']]],
   ['getinactivitytimeoutms_14',['getInactivityTimeoutMs',['../classLD2410Async.html#a74138af198ac827349a25e122277803f',1,'LD2410Async']]],
-  ['guide_15',['Troubleshooting Guide',['../Troubleshooting.html',1,'Introduction']]]
+  ['guide_15',['Troubleshooting Guide',['../Troubleshooting.html',1,'index']]]
 ];

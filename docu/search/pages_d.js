@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['troubleshooting_20guide_0',['Troubleshooting Guide',['../Troubleshooting.html',1,'Introduction']]]
+  ['structures_0',['Data Structures',['../Data_Structures.html',1,'index']]]
 ];

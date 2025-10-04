@@ -1,4 +1,5 @@
-@mainpage Introduction Introduction
+@mainpage intro
+@page Introduction Introduction
 
 @section main_intro Introduction
 

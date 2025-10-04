@@ -1,13 +1,13 @@
-@page main LD2410Async Introduction
+@mainpage
 
-@section main_intro Introduction
+## Introduction
 
  The LD2410 is a mmWave radar sensor capable of detecting both moving and
  stationary targets, reporting presence, distance, and per-gate signal strength.
  This class implements a non-blocking, asynchronous interface for communicating
  with the sensor over a UART stream.
 
- @section main_features Features
+ ## Features
  - Fully asynchronous operation with no blocking calls and callback.
  - Support for all native commands of the LD2410.
  - High level commands to allow for more consistent communication with the sensor.
@@ -15,7 +15,7 @@
  - Continuous background task that parses incoming frames and updates data.
  - Automatic inactivity handling if sensor is stuck or unreposive (tries to disable config mode or reboot).
 
-@section main_docu Documentation
+## Documentation
 
 The following pages provide detailed explanations of the libs components and usage patterns:
 
@@ -44,13 +44,13 @@ The following pages provide detailed explanations of the libs components and usa
   * A guide to solving common issues such as no data received, callbacks not firing, async commands failing, or unexpected sensor reboots.
 
 
-@section main_classRef Main Class Reference
+## Main Class Reference
 
 All interaction with the sensor is performed through the main class:  
 - @ref LD2410Async "LD2410Async"  
  
 
- @section main_typicalUse Typical Usage
+ ## Typical Usage
 
  Typical workflow:
  1. Construct with a reference to a Stream object connected to the sensor.
@@ -84,13 +84,13 @@ All interaction with the sensor is performed through the main class:
 - @ref LD2410Async::onDetectionDataReceived "LD2410Async::onDetectionDataReceived()"  
 - @ref LD2410Async::getDetectionDataRef "LD2410Async::getDetectionDataRef()"
 
- @section main_examples Examples
+ ## Examples
 
- @subsection main_examples_sketches Example Sketches
+ ### Example Sketches
  
  Details on the example sketches in the examples folder can be found at the @ref Examples "Examples page".
 
- @subsection main_examples_presenceDetect Example: Using callback for presence detection updates
+ ### Example: Using callback for presence detection updates
  
  @code{.cpp}
      radar.onDetectionDataReceived([](LD2410Async* sender, bool presenceDetetced, byte userData) {
@@ -102,7 +102,7 @@ All interaction with the sensor is performed through the main class:
 - @ref LD2410Async::onDetectionDataReceived "LD2410Async::onDetectionDataReceived()"  
 - @ref LD2410Async::getDetectionDataRef "LD2410Async::getDetectionDataRef()"
 
- @subsection main_examples_modifyConfig Example: Clone config data, modify, and write back
+ ### Example: Clone config data, modify, and write back
  @code{.cpp}
    ConfigData cfg = radar.getConfigData();  // clone
    cfg.noOneTimeout = 60;

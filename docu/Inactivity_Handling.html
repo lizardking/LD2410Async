@@ -100,10 +100,8 @@ $(function(){initNavTree('Inactivity_Handling.html',''); initResizable(true); })
   <div class="headertitle"><div class="title">Inactivity Handling</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md65"></a>
-Inactivity Handling</h1>
-<h2><a class="anchor" id="autotoc_md66"></a>
-Basics</h2>
+<div class="textblock"><h1><a class="anchor" id="Inactivity_Handling_Basics"></a>
+Basics</h1>
 <p>The library includes built-in logic to detect long inactivity of the sensor, i.e. long periods without any data being received. <br  />
  The most common cause for a "silent" sensor is that <b>configuration mode</b> was enabled but never disabled.</p>
 <p>If long silent periods are detected, the library attempts to bring both its internal state and the sensor back to <b>normal operation mode</b>. <br  />
@@ -129,8 +127,8 @@ Basics</h2>
 </li>
 </ol>
 <p>If none of these recovery steps succeed, the library will retry after the inactivity timeout period has elapsed again.</p>
-<h2><a class="anchor" id="autotoc_md67"></a>
-Enabling / Disabling Inactivity Handling</h2>
+<h1><a class="anchor" id="Inactivity_Handling_EnableDisable"></a>
+Enabling / Disabling Inactivity Handling</h1>
 <p>Inactivity handling can be enabled or disabled using: <br  />
 </p>
 <ul>
@@ -142,8 +140,8 @@ Enabling / Disabling Inactivity Handling</h2>
 </li>
 </ul>
 <p>By default, inactivity handling is <b>enabled</b>.</p>
-<h2><a class="anchor" id="autotoc_md68"></a>
-Timeout Configuration</h2>
+<h1><a class="anchor" id="Inactivity_Handling_Timeout"></a>
+Timeout Configuration</h1>
 <p>The inactivity timeout can be configured with: <br  />
 </p>
 <ul>

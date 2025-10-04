@@ -100,14 +100,12 @@ $(function(){initNavTree('Data_Structures.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">Data Structures</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md44"></a>
-LD2410 Data Structures</h1>
-<p>This section documents the main data structures provided by the library for accessing sensor state and configuration: <br  />
+<div class="textblock"><p>This section documents the main data structures provided by the library for accessing sensor state and configuration: <br  />
  <a class="el" href="structLD2410Types_1_1DetectionData.html">DetectionData</a> and <a class="el" href="structLD2410Types_1_1ConfigData.html">ConfigData</a>. <br  />
 </p>
 <hr  />
-<h2><a class="anchor" id="autotoc_md46"></a>
-DetectionData</h2>
+<h1><a class="anchor" id="Data_Structures_DetectionData"></a>
+DetectionData</h1>
 <p>The <a class="el" href="structLD2410Types_1_1DetectionData.html">DetectionData</a> struct holds the most recent detection data reported by the radar. It is continuously updated as new frames arrive. <br  />
 </p>
 <p>You can access it through: <br  />
@@ -116,10 +114,10 @@ DetectionData</h2>
 </li>
 <li><a class="el" href="classLD2410Async.html#ade2ef7c106c38e11fd450e75a6494090">getDetectionDataRef()</a> - returns a const reference (efficient, no copy)</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md47"></a>
-Members</h3>
-<h4><a class="anchor" id="autotoc_md48"></a>
-General</h4>
+<h2><a class="anchor" id="Data_Structures_DetectionData_Members"></a>
+Members</h2>
+<h3><a class="anchor" id="Data_Structures_DetectionData_General"></a>
+General</h3>
 <ul>
 <li><b>timestamp</b> (<code>unsigned long</code>) <br  />
  Milliseconds since boot when this data was received. <br  />
@@ -128,8 +126,8 @@ General</h4>
  True if engineering mode data was received. <br  />
 </li>
 </ul>
-<h4><a class="anchor" id="autotoc_md49"></a>
-Basic Detection Results</h4>
+<h3><a class="anchor" id="Data_Structures_DetectionData_Basic"></a>
+Basic Detection Results</h3>
 <ul>
 <li><b>presenceDetected</b> (<code>bool</code>) <br  />
  True if any target is detected. <br  />
@@ -159,8 +157,8 @@ Basic Detection Results</h4>
  General detection distance in cm. <br  />
 </li>
 </ul>
-<h4><a class="anchor" id="autotoc_md50"></a>
-Engineering Mode Data</h4>
+<h3><a class="anchor" id="Data_Structures_DetectionData_Engineering"></a>
+Engineering Mode Data</h3>
 <p>(Only valid if <b>engineeringMode</b> is true.)</p>
 <ul>
 <li><b>movingTargetGateSignalCount</b> (<code>byte</code>) <br  />
@@ -183,8 +181,8 @@ Engineering Mode Data</h4>
 </li>
 </ul>
 <hr  />
-<h2><a class="anchor" id="autotoc_md52"></a>
-ConfigData</h2>
+<h1><a class="anchor" id="Data_Structures_ConfigData"></a>
+Data_Structures_ConfigData</h1>
 <p>The <a class="el" href="structLD2410Types_1_1ConfigData.html">ConfigData</a> struct stores the radar’s configuration parameters. <br  />
  This includes both static capabilities (like number of gates) and adjustable settings (like sensitivities and timeouts). <br  />
 </p>
@@ -199,28 +197,26 @@ ConfigData</h2>
 <li><a class="el" href="classLD2410Async.html#a69f4b0a91fe1a118b96f46ae35b4ce02">requestDistanceResolutionAsync()</a> <br  />
 </li>
 </ul>
-<h3><a class="anchor" id="autotoc_md53"></a>
-Members</h3>
-<h4><a class="anchor" id="autotoc_md54"></a>
-Radar Capabilities</h4>
+<p>You can access it through: <br  />
+</p><ul>
+<li><a class="el" href="classLD2410Async.html#a54388c929cea610f92891def29db66a5">getConfigData()</a> - returns a copy <br  />
+</li>
+<li><a class="el" href="classLD2410Async.html#af9f1d59211106a3b582a1417063b3a13">getConfigDataRef()</a> - returns a const reference (efficient, no copy)</li>
+</ul>
+<h2><a class="anchor" id="Data_Structures_ConfigData_Members"></a>
+Members</h2>
+<h3><a class="anchor" id="Data_Structures_ConfigData_Members_Gates"></a>
+Radar Gates</h3>
 <ul>
 <li><b>numberOfGates</b> (<code>byte</code>) <br  />
  Number of distance gates (2-8). Read-only; changing has no effect. <br  />
 </li>
-</ul>
-<h4><a class="anchor" id="autotoc_md55"></a>
-Max Distance Gate Settings</h4>
-<ul>
 <li><b>maxMotionDistanceGate</b> (<code>byte</code>) <br  />
  Furthest gate used for motion detection. <br  />
 </li>
 <li><b>maxStationaryDistanceGate</b> (<code>byte</code>) <br  />
  Furthest gate used for stationary detection. <br  />
 </li>
-</ul>
-<h4><a class="anchor" id="autotoc_md56"></a>
-Per-Gate Sensitivity</h4>
-<ul>
 <li><b>distanceGateMotionSensitivity[9]</b> (<code>byte[9]</code>) <br  />
  Motion sensitivity values per gate (0-100). <br  />
 </li>
@@ -228,23 +224,23 @@ Per-Gate Sensitivity</h4>
  Stationary sensitivity values per gate (0-100). <br  />
 </li>
 </ul>
-<h4><a class="anchor" id="autotoc_md57"></a>
-Timeout</h4>
+<h3><a class="anchor" id="Data_Structures_ConfigData_Members_Timeout"></a>
+Timeout</h3>
 <ul>
 <li><b>noOneTimeout</b> (<code>unsigned short</code>) <br  />
  Timeout in seconds until “no presence” is declared. <br  />
 </li>
 </ul>
-<h4><a class="anchor" id="autotoc_md58"></a>
-Distance Resolution</h4>
+<h3><a class="anchor" id="Data_Structures_ConfigData_Members_Distance_Resolution"></a>
+Distance Resolution</h3>
 <ul>
 <li><b>distanceResolution</b> (<a class="el" href="namespaceLD2410Types.html#a89e3189ddef9f36629c460fbeb398c79">DistanceResolution</a>) <br  />
  Current distance resolution (20 cm or 75 cm). <br  />
  Requires reboot to apply after change. <br  />
 </li>
 </ul>
-<h4><a class="anchor" id="autotoc_md59"></a>
-Auxiliary Controls</h4>
+<h3><a class="anchor" id="Data_Structures_ConfigData_Members_Aux"></a>
+Auxiliary Controls</h3>
 <ul>
 <li><b>lightThreshold</b> (<code>byte</code>) <br  />
  Threshold for auxiliary light control (0-255). <br  />
@@ -254,18 +250,8 @@ Auxiliary Controls</h4>
 </li>
 <li><b>outputControl</b> (<a class="el" href="namespaceLD2410Types.html#a420c188999635485028764fe98cb0bff">OutputControl</a>) <br  />
  Logic configuration of the OUT pin. <br  />
-</li>
+ </li>
 </ul>
-<hr  />
-<h2><a class="anchor" id="autotoc_md61"></a>
-Summary</h2>
-<ul>
-<li><b>DetectionData</b> - continuously updated runtime measurements, including both simple presence and optional per-gate details when engineering mode is enabled. <br  />
-</li>
-<li><b>ConfigData</b> - sensor configuration and capabilities, only updated when explicitly requested. <br  />
-</li>
-</ul>
-<p>For efficiency, use the reference accessors (<code>getDetectionDataRef()</code>, <code>getConfigDataRef()</code>) whenever possible, and refresh <code>ConfigData</code> after writes to stay synchronized with the sensor. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

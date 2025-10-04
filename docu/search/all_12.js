@@ -1,29 +1,4 @@
 var searchData=
 [
-  ['tailconfig_0',['tailConfig',['../namespaceLD2410Defs.html#a54f46c31b33373a8f1d0d41b1418b2ce',1,'LD2410Defs']]],
-  ['taildata_1',['tailData',['../namespaceLD2410Defs.html#ae14e5ef44857bd31bc38e0381e80427f',1,'LD2410Defs']]],
-  ['targetstate_2',['TargetState',['../namespaceLD2410Types.html#af838f34651382f6262c0d19397ac0be9',1,'LD2410Types']]],
-  ['targetstate_3',['targetState',['../structLD2410Types_1_1DetectionData.html#a6e7b02bc521240618e108867a2f9a1f7',1,'LD2410Types::DetectionData']]],
-  ['test_20sketches_4',['Test Sketches',['../Examples.html#autotoc_md64',1,'']]],
-  ['testaction_5',['TestAction',['../unitTest_8ino.html#ac2ac4a063923acc15e3517fe3fab597e',1,'unitTest.ino']]],
-  ['testdelayticker_6',['testDelayTicker',['../unitTest_8ino.html#a97877a53b77e639de69b4dc8e8d5aaeb',1,'unitTest.ino']]],
-  ['testend_7',['testEnd',['../unitTest_8ino.html#a452fe9c9cadc9cc646c8ac0233911be2',1,'unitTest.ino']]],
-  ['testfailcount_8',['testFailCount',['../unitTest_8ino.html#ad462ea767f5b03e34ed8d61fbfa80233',1,'unitTest.ino']]],
-  ['testprint_9',['testPrint',['../unitTest_8ino.html#a7e2d51b5a7dffaf8dd8e13dfc5ef45bd',1,'unitTest.ino']]],
-  ['testsequencerunning_10',['testSequenceRunning',['../unitTest_8ino.html#ac6bef1b454e54514ad387107517e6ec8',1,'unitTest.ino']]],
-  ['teststart_11',['testStart',['../unitTest_8ino.html#af4fc7ae7dc8d7ef4ce9eb3092226393d',1,'unitTest.ino']]],
-  ['teststartms_12',['testStartMs',['../unitTest_8ino.html#a6d640f75658e47f62f000346be67a8d1',1,'unitTest.ino']]],
-  ['testsuccesscount_13',['testSuccessCount',['../unitTest_8ino.html#a82c002d6579dbb365c1fd65f8f1de583',1,'unitTest.ino']]],
-  ['the_20detection_20data_20callback_14',['Example: Registering the detection data callback',['../classLD2410Async.html#autotoc_md1',1,'']]],
-  ['the_20ld2410_15',['Why asynchronous processing matters for the LD2410',['../Async_Commands_And_Processing.html#autotoc_md35',1,'']]],
-  ['the_20lib_16',['Example Sketches in the lib',['../Examples.html#autotoc_md62',1,'']]],
-  ['timeout_17',['TIMEOUT',['../classLD2410Async.html#a136b50e19cfddad787637fb65421d9aba070a0fb40f6c308ab544b227660aadff',1,'LD2410Async']]],
-  ['timeout_18',['Timeout',['../Data_Structures.html#autotoc_md57',1,'']]],
-  ['timeout_20configuration_19',['Timeout Configuration',['../Inactivity_Handling.html#autotoc_md68',1,'']]],
-  ['timestamp_20',['timestamp',['../structLD2410Types_1_1DetectionData.html#adc003171384bf1b2bbc0dd69777e579d',1,'LD2410Types::DetectionData']]],
-  ['torturetest_2eino_21',['tortureTest.ino',['../tortureTest_8ino.html',1,'']]],
-  ['totalenabledurationms_22',['totalEnableDurationMs',['../enableConfigModeTest_8ino.html#abde548b9248e1e9976f96a2f8d553e64',1,'enableConfigModeTest.ino']]],
-  ['troubleshooting_20guide_23',['Troubleshooting Guide',['../Troubleshooting.html',1,'index']]],
-  ['troubleshooting_2emd_24',['Troubleshooting.md',['../Troubleshooting_8md.html',1,'']]],
-  ['typical_20usage_25',['Typical Usage',['../index.html#autotoc_md75',1,'']]]
+  ['values_20from_20a_20clone_0',['Example: Access values from a clone',['../classLD2410Async.html#autotoc_md8',1,'']]]
 ];

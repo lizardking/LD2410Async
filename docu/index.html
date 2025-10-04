@@ -100,11 +100,11 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
   <div class="headertitle"><div class="title"><a class="el" href="classLD2410Async.html" title="Asynchronous driver class for the LD2410 human presence radar sensor.">LD2410Async</a> </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md71"></a>
+<div class="textblock"><h1><a class="anchor" id="main_intro"></a>
 Introduction</h1>
 <p>The LD2410 is a mmWave radar sensor capable of detecting both moving and stationary targets, reporting presence, distance, and per-gate signal strength. This class implements a non-blocking, asynchronous interface for communicating with the sensor over a UART stream.</p>
-<h2><a class="anchor" id="autotoc_md72"></a>
-Features</h2>
+<h1><a class="anchor" id="main_features"></a>
+Features</h1>
 <ul>
 <li>Fully asynchronous operation with no blocking calls and callback.</li>
 <li>Support for all native commands of the LD2410.</li>
@@ -114,8 +114,8 @@ Features</h2>
 <li>Continuous background task that parses incoming frames and updates data.</li>
 <li>Automatic inactivity handling if sensor is stuck or unreposive (tries to disable config mode or reboot).</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md73"></a>
-Documentation</h2>
+<h1><a class="anchor" id="main_docu"></a>
+Documentation</h1>
 <p>The following pages provide detailed explanations of the libs components and usage patterns:</p>
 <ul>
 <li><a class="el" href="Installation.html">Installation</a> <br  />
@@ -165,15 +165,15 @@ Documentation</h2>
 </ul>
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md74"></a>
-Main Class Reference</h2>
+<h1><a class="anchor" id="main_classRef"></a>
+Main Class Reference</h1>
 <p>All interaction with the sensor is performed through the main class: <br  />
 </p><ul>
 <li><a class="el" href="classLD2410Async.html">LD2410Async</a> <br  />
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md75"></a>
-Typical Usage</h2>
+<h1><a class="anchor" id="main_typicalUse"></a>
+Typical Usage</h1>
 <p>Typical workflow:</p><ol type="1">
 <li>Construct with a reference to a Stream object connected to the sensor.</li>
 <li>Call begin() to start the background task.</li>
@@ -213,11 +213,13 @@ Typical Usage</h2>
 </li>
 <li><a class="el" href="classLD2410Async.html#ade2ef7c106c38e11fd450e75a6494090">LD2410Async::getDetectionDataRef()</a></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md76"></a>
-Examples</h2>
+<h1><a class="anchor" id="main_examples"></a>
+Examples</h1>
+<h2><a class="anchor" id="main_examples_sketches"></a>
+Example Sketches</h2>
 <p>Details on the example sketches in the examples folder can be found at the <a class="el" href="Examples.html">Examples page</a>.</p>
-<h3><a class="anchor" id="autotoc_md77"></a>
-Example: Using callback for presence detection updates</h3>
+<h2><a class="anchor" id="main_examples_presenceDetect"></a>
+Example: Using callback for presence detection updates</h2>
 <div class="fragment"><div class="line"><a class="code hl_variable" href="basicPresenceDetection_8ino.html#a668d1ce20a8d66eeb5ab88238e59c2d4">radar</a>.<a class="code hl_function" href="classLD2410Async.html#ad45ae5bd8cbdfe48634f7ff158867dff">onDetectionDataReceived</a>([](<a class="code hl_class" href="classLD2410Async.html">LD2410Async</a>* sender, <span class="keywordtype">bool</span> presenceDetetced, <span class="keywordtype">byte</span> userData) {</div>
 <div class="line">  sender-&gt;<a class="code hl_function" href="classLD2410Async.html#ade2ef7c106c38e11fd450e75a6494090">getDetectionDataRef</a>().<a class="code hl_function" href="structLD2410Types_1_1DetectionData.html#a05545713d5314398cf8c87ac50bbf4ca">print</a>();  <span class="comment">// direct access, no copy</span></div>
 <div class="line">});</div>
@@ -227,8 +229,8 @@ Example: Using callback for presence detection updates</h3>
 </li>
 <li><a class="el" href="classLD2410Async.html#ade2ef7c106c38e11fd450e75a6494090">LD2410Async::getDetectionDataRef()</a></li>
 </ul>
-<h3><a class="anchor" id="autotoc_md78"></a>
-Example: Clone config data, modify, and write back</h3>
+<h2><a class="anchor" id="main_examples_modifyConfig"></a>
+Example: Clone config data, modify, and write back</h2>
 <div class="fragment"><div class="line">ConfigData cfg = <a class="code hl_variable" href="basicPresenceDetection_8ino.html#a668d1ce20a8d66eeb5ab88238e59c2d4">radar</a>.<a class="code hl_function" href="classLD2410Async.html#a54388c929cea610f92891def29db66a5">getConfigData</a>();  <span class="comment">// clone</span></div>
 <div class="line">cfg.<a class="code hl_variable" href="structLD2410Types_1_1ConfigData.html#aed0b489a9e500b199397a9db7103e3bf">noOneTimeout</a> = 60;</div>
 <div class="line"><a class="code hl_variable" href="basicPresenceDetection_8ino.html#a668d1ce20a8d66eeb5ab88238e59c2d4">radar</a>.<a class="code hl_function" href="classLD2410Async.html#a2b715cdadb6672d869fd4b5bcbe3a06d">configureAllConfigSettingsAsync</a>(cfg, <span class="keyword">false</span>, [](<a class="code hl_class" href="classLD2410Async.html">LD2410Async</a>* sender, AsyncCommandResult result, <span class="keywordtype">byte</span>) {</div>

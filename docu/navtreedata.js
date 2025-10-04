@@ -25,64 +25,74 @@
 var NAVTREE =
 [
   [ "LD2410Async", "index.html", [
-    [ "Introduction", "index.html#autotoc_md71", [
-      [ "Features", "index.html#autotoc_md72", null ],
-      [ "Documentation", "index.html#autotoc_md73", null ],
-      [ "Main Class Reference", "index.html#autotoc_md74", null ],
-      [ "Typical Usage", "index.html#autotoc_md75", null ],
-      [ "Examples", "index.html#autotoc_md76", [
-        [ "Example: Using callback for presence detection updates", "index.html#autotoc_md77", null ],
-        [ "Example: Clone config data, modify, and write back", "index.html#autotoc_md78", null ]
-      ] ]
+    [ "Introduction", "index.html#main_intro", null ],
+    [ "Features", "index.html#main_features", null ],
+    [ "Documentation", "index.html#main_docu", null ],
+    [ "Main Class Reference", "index.html#main_classRef", null ],
+    [ "Typical Usage", "index.html#main_typicalUse", null ],
+    [ "Examples", "index.html#main_examples", [
+      [ "Example Sketches", "index.html#main_examples_sketches", null ],
+      [ "Example: Using callback for presence detection updates", "index.html#main_examples_presenceDetect", null ],
+      [ "Example: Clone config data, modify, and write back", "index.html#main_examples_modifyConfig", null ]
     ] ],
-    [ "Installation", "Installation.html", null ],
-    [ "Async Commands & Processing", "Async_Commands_And_Processing.html", null ],
+    [ "Installation", "Installation.html", [
+      [ "Using Arduino Library Manager (recommended)", "Installation.html#Installation_LibManager", null ],
+      [ "Manual installation", "Installation.html#Installation_Manual", null ]
+    ] ],
+    [ "Async Commands & Processing", "Async_Commands_And_Processing.html", [
+      [ "Why asynchronous processing matters for the LD2410", "Async_Commands_And_Processing.html#Async_Commands_And_Processing_Why", null ],
+      [ "Detection Data Callback", "Async_Commands_And_Processing.html#Async_Commands_And_Processing_Detection_Data_Callback", null ],
+      [ "Detection Data Callback Example", "Async_Commands_And_Processing.html#Async_Commands_And_Processing_Dtection_Data_Callback_Example_", null ],
+      [ "Configuration Callbacks", "Async_Commands_And_Processing.html#Async_Commands_And_Processing_Configuration_Callbacks", null ],
+      [ "Configuration Callbacks Example", "Async_Commands_And_Processing.html#Async_Commands_And_Processing_Configuration_Callbacks_Exampample", null ],
+      [ "Async Commands Basics", "Async_Commands_And_Processing.html#Async_Commands_And_Processing_Async_Commands_Basics", null ],
+      [ "List of Asynchronous Commands", "Async_Commands_And_Processing.html#Async_Commands_And_Processing_Async_Commands_List", null ],
+      [ "Async Command Example", "Async_Commands_And_Processing.html#Async_Commands_And_Processing_AsyncCommands__Example", null ],
+      [ "Best Practices for Async Commands", "Async_Commands_And_Processing.html#Async_Commands_And_Processing_Async_Commands_Best_Practices", null ]
+    ] ],
     [ "Data Structures", "Data_Structures.html", [
-      [ "LD2410 Data Structures", "Data_Structures.html#autotoc_md44", [
-        [ "DetectionData", "Data_Structures.html#autotoc_md46", [
-          [ "Members", "Data_Structures.html#autotoc_md47", [
-            [ "General", "Data_Structures.html#autotoc_md48", null ],
-            [ "Basic Detection Results", "Data_Structures.html#autotoc_md49", null ],
-            [ "Engineering Mode Data", "Data_Structures.html#autotoc_md50", null ]
-          ] ]
-        ] ],
-        [ "ConfigData", "Data_Structures.html#autotoc_md52", [
-          [ "Members", "Data_Structures.html#autotoc_md53", [
-            [ "Radar Capabilities", "Data_Structures.html#autotoc_md54", null ],
-            [ "Max Distance Gate Settings", "Data_Structures.html#autotoc_md55", null ],
-            [ "Per-Gate Sensitivity", "Data_Structures.html#autotoc_md56", null ],
-            [ "Timeout", "Data_Structures.html#autotoc_md57", null ],
-            [ "Distance Resolution", "Data_Structures.html#autotoc_md58", null ],
-            [ "Auxiliary Controls", "Data_Structures.html#autotoc_md59", null ]
-          ] ]
-        ] ],
-        [ "Summary", "Data_Structures.html#autotoc_md61", null ]
+      [ "DetectionData", "Data_Structures.html#Data_Structures_DetectionData", [
+        [ "Members", "Data_Structures.html#Data_Structures_DetectionData_Members", [
+          [ "General", "Data_Structures.html#Data_Structures_DetectionData_General", null ],
+          [ "Basic Detection Results", "Data_Structures.html#Data_Structures_DetectionData_Basic", null ],
+          [ "Engineering Mode Data", "Data_Structures.html#Data_Structures_DetectionData_Engineering", null ]
+        ] ]
+      ] ],
+      [ "Data_Structures_ConfigData", "Data_Structures.html#Data_Structures_ConfigData", [
+        [ "Members", "Data_Structures.html#Data_Structures_ConfigData_Members", [
+          [ "Radar Gates", "Data_Structures.html#Data_Structures_ConfigData_Members_Gates", null ],
+          [ "Timeout", "Data_Structures.html#Data_Structures_ConfigData_Members_Timeout", null ],
+          [ "Distance Resolution", "Data_Structures.html#Data_Structures_ConfigData_Members_Distance_Resolution", null ],
+          [ "Auxiliary Controls", "Data_Structures.html#Data_Structures_ConfigData_Members_Aux", null ]
+        ] ]
       ] ]
     ] ],
     [ "Operation Modes", "Operation_Modes.html", [
-      [ "LD2410 Operation Modes", "Operation_Modes.html#autotoc_md80", [
-        [ "Normal Detection Mode", "Operation_Modes.html#autotoc_md81", null ],
-        [ "Engineering Mode", "Operation_Modes.html#autotoc_md82", null ],
-        [ "Configuration Mode", "Operation_Modes.html#autotoc_md83", null ]
-      ] ]
+      [ "Normal Detection Mode", "Operation_Modes.html#Operation_Modes_Normal_Mode", null ],
+      [ "Engineering Mode", "Operation_Modes.html#Operation_Modes_Engineering_Mode", null ],
+      [ "Configuration Mode", "Operation_Modes.html#Operation_Modes_Configuration_Mode", null ]
     ] ],
     [ "Inactivity Handling", "Inactivity_Handling.html", [
-      [ "Inactivity Handling", "Inactivity_Handling.html#autotoc_md65", [
-        [ "Basics", "Inactivity_Handling.html#autotoc_md66", null ],
-        [ "Enabling / Disabling Inactivity Handling", "Inactivity_Handling.html#autotoc_md67", null ],
-        [ "Timeout Configuration", "Inactivity_Handling.html#autotoc_md68", null ]
-      ] ]
+      [ "Basics", "Inactivity_Handling.html#Inactivity_Handling_Basics", null ],
+      [ "Enabling / Disabling Inactivity Handling", "Inactivity_Handling.html#Inactivity_Handling_EnableDisable", null ],
+      [ "Timeout Configuration", "Inactivity_Handling.html#Inactivity_Handling_Timeout", null ]
     ] ],
     [ "Examples", "Examples.html", [
-      [ "Example Sketches in the lib", "Examples.html#autotoc_md62", [
-        [ "Usage Examples", "Examples.html#autotoc_md63", null ],
-        [ "Test Sketches", "Examples.html#autotoc_md64", null ]
-      ] ]
+      [ "Usage Examples **", "Examples.html#Examples_Usage", null ],
+      [ "Test Sketches", "Examples.html#Examples_Test", null ]
     ] ],
-    [ "Important Notes and Best Practices", "BestPractices.html", [
-      [ "Important Notes & Best Practices", "BestPractices.html#autotoc_md79", null ]
+    [ "Important Notes and Best Practices", "BestPractices.html", null ],
+    [ "Troubleshooting Guide", "Troubleshooting.html", [
+      [ "Problem Scenarios", "Troubleshooting.html#Troubleshooting_Problems", [
+        [ "No Data Received", "Troubleshooting.html#autotoc_md37", null ],
+        [ "Callbacks Not Firing", "Troubleshooting.html#autotoc_md38", null ],
+        [ "Async Commands Not Working", "Troubleshooting.html#autotoc_md39", null ],
+        [ "Unexpected Sensor Reboots", "Troubleshooting.html#autotoc_md40", null ],
+        [ "Data Loss", "Troubleshooting.html#autotoc_md42", null ],
+        [ "Strange or Invalid Data", "Troubleshooting.html#autotoc_md44", null ]
+      ] ],
+      [ "Debugging", "Troubleshooting.html#Troubleshooting_Debugging", null ]
     ] ],
-    [ "Troubleshooting Guide", "Troubleshooting.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -121,8 +131,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "Async_Commands_And_Processing.html",
-"classLD2410Async.html#af019e7283d06ef1acc49cb773f68ce53",
-"structLD2410Types_1_1DetectionData.html#a0ba0acc8f10c3b03bc19b35dd3e3e6d7"
+"classLD2410Async.html#ac02d1eeaa71a96eb28173c97ca320d21",
+"structLD2410Types_1_1ConfigData.html#acabeb381bc21ae97893101726ab1d589"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -100,9 +100,7 @@ $(function(){initNavTree('BestPractices.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">Important Notes and Best Practices</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md79"></a>
-Important Notes &amp; Best Practices</h1>
-<p>When working with the <a class="el" href="classLD2410Async.html" title="Asynchronous driver class for the LD2410 human presence radar sensor.">LD2410Async</a> library, keep the following points in mind:</p>
+<div class="textblock"><p>When working with the <a class="el" href="classLD2410Async.html" title="Asynchronous driver class for the LD2410 human presence radar sensor.">LD2410Async</a> library, keep the following points in mind:</p>
 <ul>
 <li><b>Consider if you really need the lib</b><ul>
 <li>The lib makes communication with the LD2410 easy and straightforward. However, for usages where you never need anything else than a simple presence detected signal, it might be easier more more efficent to just connect the out pin of the sensor to the microcontroller and not to connect the serial pins. This will allow you to query presence with a simple digital read command, without having to care about anything else. The downside of this is that you cant get more detailed detection data or do anything about the config of the sensor. This is where this lib comes in.</li>

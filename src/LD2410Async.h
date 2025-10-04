@@ -917,7 +917,7 @@ public:
          *
          * @returns true if the command has been sent, false if the command can't be sent (typically because another async command is pending).
          *
-         *//
+         */
 	bool configureBaudRateAsync(LD2410Types::Baudrate baudRate, AsyncCommandCallback callback);
 
 

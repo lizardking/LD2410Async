@@ -1,6 +1,6 @@
 @page BestPractices Important Notes and Best Practices
 
-## Important Notes & Best Practices
+# Important Notes & Best Practices
 
 When working with the LD2410Async library, keep the following points in mind:
 

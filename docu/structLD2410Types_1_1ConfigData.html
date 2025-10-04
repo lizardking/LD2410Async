@@ -105,9 +105,6 @@ $(function(){initNavTree('structLD2410Types_1_1ConfigData.html',''); initResizab
 </div><!--header-->
 <div class="contents">
 
-<p>Stores the sensor’s configuration parameters.  
- <a href="#details">More...</a></p>
-
 <p><code>#include &lt;<a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -116,7 +113,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a78c2665adcc382224455dfde7f05b885"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates the configuration data for correctness.  <br /></td></tr>
 <tr class="separator:a78c2665adcc382224455dfde7f05b885"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b184d70dc6af3ac292325b7ffbd5028" id="r_a3b184d70dc6af3ac292325b7ffbd5028"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b184d70dc6af3ac292325b7ffbd5028">equals</a> (const <a class="el" href="structLD2410Types_1_1ConfigData.html">ConfigData</a> &amp;other) const</td></tr>
-<tr class="memdesc:a3b184d70dc6af3ac292325b7ffbd5028"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares this <a class="el" href="structLD2410Types_1_1ConfigData.html" title="Stores the sensor’s configuration parameters.">ConfigData</a> with another for equality.  <br /></td></tr>
+<tr class="memdesc:a3b184d70dc6af3ac292325b7ffbd5028"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares this <a class="el" href="structLD2410Types_1_1ConfigData.html">ConfigData</a> with another for equality.  <br /></td></tr>
 <tr class="separator:a3b184d70dc6af3ac292325b7ffbd5028"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14f6b9d23c5eac3fbf70b397398ae624" id="r_a14f6b9d23c5eac3fbf70b397398ae624"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14f6b9d23c5eac3fbf70b397398ae624">print</a> () const</td></tr>
 <tr class="memdesc:a14f6b9d23c5eac3fbf70b397398ae624"><td class="mdescLeft">&#160;</td><td class="mdescRight">Debug helper: print configuration contents to Serial.  <br /></td></tr>
@@ -125,7 +122,7 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:acabeb381bc21ae97893101726ab1d589" id="r_acabeb381bc21ae97893101726ab1d589"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acabeb381bc21ae97893101726ab1d589">numberOfGates</a> = 0</td></tr>
-<tr class="memdesc:acabeb381bc21ae97893101726ab1d589"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of distance gates (2-8). This member is readonly resp. changing its value will not influence the radar setting when configureAllConfigSettingsAsync() is called. It is not 100% clear what this value stands for, but it seems to indicate the number of gates on the sensor.  <br /></td></tr>
+<tr class="memdesc:acabeb381bc21ae97893101726ab1d589"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of distance gates (2-8). This member is read-only; changing its value will not influence the radar setting when configureAllConfigSettingsAsync() is called. It is not entirely clear what this value represents, but it seems to indicate the number of gates on the sensor.  <br /></td></tr>
 <tr class="separator:acabeb381bc21ae97893101726ab1d589"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18a9dc2b43a849c46892158fcfa9b382" id="r_a18a9dc2b43a849c46892158fcfa9b382"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a18a9dc2b43a849c46892158fcfa9b382">maxMotionDistanceGate</a> = 0</td></tr>
 <tr class="memdesc:a18a9dc2b43a849c46892158fcfa9b382"><td class="mdescLeft">&#160;</td><td class="mdescRight">Furthest gate used for motion detection.  <br /></td></tr>
@@ -143,7 +140,7 @@ Public Attributes</h2></td></tr>
 <tr class="memdesc:aed0b489a9e500b199397a9db7103e3bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timeout (seconds) until "no presence" is declared.  <br /></td></tr>
 <tr class="separator:aed0b489a9e500b199397a9db7103e3bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4b3263e4da6bcc2ef64d1e727eb6f06" id="r_ad4b3263e4da6bcc2ef64d1e727eb6f06"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceLD2410Types.html#a89e3189ddef9f36629c460fbeb398c79">DistanceResolution</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4b3263e4da6bcc2ef64d1e727eb6f06">distanceResolution</a> = <a class="el" href="namespaceLD2410Types.html#a89e3189ddef9f36629c460fbeb398c79a1c250a21210b7b88a14db9a0cbe71162">DistanceResolution::NOT_SET</a></td></tr>
-<tr class="memdesc:ad4b3263e4da6bcc2ef64d1e727eb6f06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current distance resolution. A reboot is required to activate changed setting after calling configureAllConfigSettingsAsync() is called.  <br /></td></tr>
+<tr class="memdesc:ad4b3263e4da6bcc2ef64d1e727eb6f06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current distance resolution. A reboot is required to activate changes after configureAllConfigSettingsAsync() is called.  <br /></td></tr>
 <tr class="separator:ad4b3263e4da6bcc2ef64d1e727eb6f06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a409cf828c80e4c75b9200ef3f1c4de88" id="r_a409cf828c80e4c75b9200ef3f1c4de88"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a409cf828c80e4c75b9200ef3f1c4de88">lightThreshold</a> = 0</td></tr>
 <tr class="memdesc:a409cf828c80e4c75b9200ef3f1c4de88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Threshold for auxiliary light control (0-255).  <br /></td></tr>
@@ -156,8 +153,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a39e4ebc6e1f47066af450b7660cabb87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Stores the sensor’s configuration parameters. </p>
-<p>This structure represents both static capabilities (e.g. number of gates) and configurable settings (e.g. sensitivities, timeouts, resolution).</p>
+<div class="textblock"><pre class="fragment">@brief Stores the sensor's configuration parameters.
+</pre><p>This structure represents both static capabilities (e.g. number of gates) and configurable settings (e.g. sensitivities, timeouts, resolution).</p>
 <p>The values are typically filled by request commands such as requestAllConfigSettingsAsync() or requestGateParametersAsync() or requestAuxControlSettingsAsync() or requestDistanceResolutioncmAsync(). </p>
 
 <p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00355">355</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
@@ -185,10 +182,10 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Compares this <a class="el" href="structLD2410Types_1_1ConfigData.html" title="Stores the sensor’s configuration parameters.">ConfigData</a> with another for equality. </p>
+<p>Compares this <a class="el" href="structLD2410Types_1_1ConfigData.html">ConfigData</a> with another for equality. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">other</td><td>The other <a class="el" href="structLD2410Types_1_1ConfigData.html" title="Stores the sensor’s configuration parameters.">ConfigData</a> instance to compare against. </td></tr>
+    <tr><td class="paramname">other</td><td>The other <a class="el" href="structLD2410Types_1_1ConfigData.html">ConfigData</a> instance to compare against. </td></tr>
   </table>
   </dd>
 </dl>
@@ -307,7 +304,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Current distance resolution. A reboot is required to activate changed setting after calling configureAllConfigSettingsAsync() is called. </p>
+<p>Current distance resolution. A reboot is required to activate changes after configureAllConfigSettingsAsync() is called. </p>
 
 <p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00371">371</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
 
@@ -415,7 +412,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Number of distance gates (2-8). This member is readonly resp. changing its value will not influence the radar setting when configureAllConfigSettingsAsync() is called. It is not 100% clear what this value stands for, but it seems to indicate the number of gates on the sensor. </p>
+<p>Number of distance gates (2-8). This member is read-only; changing its value will not influence the radar setting when configureAllConfigSettingsAsync() is called. It is not entirely clear what this value represents, but it seems to indicate the number of gates on the sensor. </p>
 
 <p class="definition">Definition at line <a class="el" href="LD2410Types_8h_source.html#l00357">357</a> of file <a class="el" href="LD2410Types_8h_source.html">LD2410Types.h</a>.</p>
 

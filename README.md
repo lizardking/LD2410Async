@@ -4,6 +4,7 @@
 
 # This lib is still in development. Therefore breaking changes are likely. Use at at your own risk.
 
+ ![LD2410](/dox/gfx/LD2410.jpg)
 
 ## Introduction
 
@@ -13,11 +14,11 @@ LD2410Async runs in the background using FreeRTOS tasks. This allows your main l
 
 The library has the following functionality:  
 
-- **Non-blocking operation** - sensor data is parsed in the background, no polling loops required.  
+- **All LD2410 commands supported** are available in the library.
+- **Full access to sensor data** - all data that is sent by the sensor is available.  
 - **Async command API** - send commands (e.g., request firmware, change settings) without blocking the main loop().
-- **Callbacks** - are executed when detection data has arrived or when commands complete. If you only care about presence detection and dont need additional data, you only have to check the `presenceDetected` flag that is sent with the DetectionDataReceivedCallback. 
-- **Full access to sensor data** - if you need more than just the basic `presenceDetected` information. All data that is sent by the sensor is available.  
-- **All LD2410 commands** are available in the library.
+- **Callbacks** - are executed when detection data has arrived or when commands complete.
+- **Non-blocking operation** - sensor data is parsed in the background, no polling loops required.  
  
 ---
 
@@ -65,6 +66,8 @@ The docs also include a class reference for the [LD2410Async class](docu/classLD
 
 Include the library, create an instance for your radar, and start it with `begin()`.  
 Register a callback to get notified when new detection data arrives.
+
+Check the [examples](docu/Examples.html) section for more examples.
 
 ### Simply sensing presence
 

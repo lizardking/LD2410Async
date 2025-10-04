@@ -63,4 +63,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="$(MSBuildThisFileDirectory)dox\gfx\LD2410.jpg" />
+  </ItemGroup>
 </Project>

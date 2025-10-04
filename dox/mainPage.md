@@ -2,7 +2,7 @@
 
 ## Introduction
 
- ![LD2410](/dox/gfx/LD2410.jpg)
+ ![LD2410](/gfx/LD2410.jpg)
 
  The LD2410 is a mmWave radar sensor capable of detecting both moving and
  stationary targets, reporting presence, distance, and per-gate signal strength.

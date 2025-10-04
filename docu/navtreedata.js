@@ -25,7 +25,8 @@
 var NAVTREE =
 [
   [ "LD2410Async", "index.html", [
-    [ "Introduction Introduction", "index.html", "index" ],
+    [ "intro", "index.html", null ],
+    [ "Introduction", "Introduction.html", "Introduction" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -64,8 +65,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "Async_Commands_And_Processing.html",
-"classLD2410Async.html#ac02d1eeaa71a96eb28173c97ca320d21",
-"structLD2410Types_1_1ConfigData.html#acabeb381bc21ae97893101726ab1d589"
+"classLD2410Async.html#a96f2a9b255ec1658c0d2c5c311315c35",
+"structLD2410Types_1_1ConfigData.html#a95ae8ec4ba27e50135f0cc38fd4621a6"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

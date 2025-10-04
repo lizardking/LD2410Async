@@ -1,14 +1,14 @@
-var index =
+var Introduction =
 [
-    [ "Introduction", "index.html#main_intro", null ],
-    [ "Features", "index.html#main_features", null ],
-    [ "Documentation", "index.html#main_docu", null ],
-    [ "Main Class Reference", "index.html#main_classRef", null ],
-    [ "Typical Usage", "index.html#main_typicalUse", null ],
-    [ "Examples", "index.html#main_examples", [
-      [ "Example Sketches", "index.html#main_examples_sketches", null ],
-      [ "Example: Using callback for presence detection updates", "index.html#main_examples_presenceDetect", null ],
-      [ "Example: Clone config data, modify, and write back", "index.html#main_examples_modifyConfig", null ]
+    [ "Introduction", "Introduction.html#main_intro", null ],
+    [ "Features", "Introduction.html#main_features", null ],
+    [ "Documentation", "Introduction.html#main_docu", null ],
+    [ "Main Class Reference", "Introduction.html#main_classRef", null ],
+    [ "Typical Usage", "Introduction.html#main_typicalUse", null ],
+    [ "Examples", "Introduction.html#main_examples", [
+      [ "Example Sketches", "Introduction.html#main_examples_sketches", null ],
+      [ "Example: Using callback for presence detection updates", "Introduction.html#main_examples_presenceDetect", null ],
+      [ "Example: Clone config data, modify, and write back", "Introduction.html#main_examples_modifyConfig", null ]
     ] ],
     [ "Installation", "Installation.html", [
       [ "Using Arduino Library Manager (recommended)", "Installation.html#Installation_LibManager", null ],

@@ -1,7 +1,8 @@
 ﻿@page Inactivity_Handling Inactivity Handling
-# Inactivity Handling
 
-## Basics
+
+@section Inactivity_Handling_Basics Basics
+
 The library includes built-in logic to detect long inactivity of the sensor, i.e. long periods without any data being received.  
 The most common cause for a "silent" sensor is that **configuration mode** was enabled but never disabled.
 
@@ -17,7 +18,7 @@ Recovery is performed in the following steps (each step is separated by the curr
 
 If none of these recovery steps succeed, the library will retry after the inactivity timeout period has elapsed again.
 
-## Enabling / Disabling Inactivity Handling
+@section Inactivity_Handling_EnableDisable Enabling / Disabling Inactivity Handling
 
 Inactivity handling can be enabled or disabled using:  
 
@@ -27,7 +28,7 @@ Inactivity handling can be enabled or disabled using:
 
 By default, inactivity handling is **enabled**.
 
-## Timeout Configuration
+@section Inactivity_Handling_Timeout Timeout Configuration
 
 The inactivity timeout can be configured with:  
 

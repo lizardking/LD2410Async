@@ -1,5 +1,4 @@
 @page Data_Structures Data Structures
-# LD2410 Data Structures
 
 This section documents the main data structures provided by the library for accessing sensor state
 and configuration:  
@@ -7,7 +6,7 @@ and configuration:
 
 ---
 
-## DetectionData
+@section Data_Structures_DetectionData DetectionData
 
 The @ref LD2410Types::DetectionData "DetectionData" struct holds the most recent detection data
 reported by the radar. It is continuously updated as new frames arrive.  
@@ -16,16 +15,16 @@ You can access it through:
 - @ref LD2410Async::getDetectionData "getDetectionData()" - returns a copy  
 - @ref LD2410Async::getDetectionDataRef "getDetectionDataRef()" - returns a const reference (efficient, no copy)
 
-### Members
+@subsection Data_Structures_DetectionData_Members Members
 
-#### General
+@subsubsection Data_Structures_DetectionData_General General
 - **timestamp** (`unsigned long`)  
   Milliseconds since boot when this data was received.  
 
 - **engineeringMode** (`bool`)  
   True if engineering mode data was received.  
 
-#### Basic Detection Results
+@subsubsection Data_Structures_DetectionData_Basic Basic Detection Results
 - **presenceDetected** (`bool`)  
   True if any target is detected.  
 
@@ -53,7 +52,7 @@ You can access it through:
 - **detectedDistance** (`unsigned int`)  
   General detection distance in cm.  
 
-#### Engineering Mode Data
+@subsubsection Data_Structures_DetectionData_Engineering Engineering Mode Data
 (Only valid if **engineeringMode** is true.)
 
 - **movingTargetGateSignalCount** (`byte`)  
@@ -76,7 +75,7 @@ You can access it through:
 
 ---
 
-## ConfigData
+@section Data_Structures_ConfigData
 
 The @ref LD2410Types::ConfigData "ConfigData" struct stores the radar’s configuration parameters.  
 This includes both static capabilities (like number of gates) and adjustable settings (like sensitivities and timeouts).  
@@ -87,36 +86,38 @@ Values are filled by commands such as:
 - @ref LD2410Async::requestAuxControlSettingsAsync "requestAuxControlSettingsAsync()"  
 - @ref LD2410Async::requestDistanceResolutionAsync "requestDistanceResolutionAsync()"  
 
-### Members
+You can access it through:  
+- @ref LD2410Async::getConfigData "getConfigData()" - returns a copy  
+- @ref LD2410Async::getConfigDataRef "getConfigDataRef()" - returns a const reference (efficient, no copy)
 
-#### Radar Capabilities
+@subsection Data_Structures_ConfigData_Members Members
+
+@subsubsection Data_Structures_ConfigData_Members_Gates Radar Gates
 - **numberOfGates** (`byte`)  
   Number of distance gates (2-8). Read-only; changing has no effect.  
 
-#### Max Distance Gate Settings
 - **maxMotionDistanceGate** (`byte`)  
   Furthest gate used for motion detection.  
 
 - **maxStationaryDistanceGate** (`byte`)  
   Furthest gate used for stationary detection.  
 
-#### Per-Gate Sensitivity
 - **distanceGateMotionSensitivity[9]** (`byte[9]`)  
   Motion sensitivity values per gate (0-100).  
 
 - **distanceGateStationarySensitivity[9]** (`byte[9]`)  
   Stationary sensitivity values per gate (0-100).  
 
-#### Timeout
+@subsubsection Data_Structures_ConfigData_Members_Timeout Timeout
 - **noOneTimeout** (`unsigned short`)  
   Timeout in seconds until “no presence” is declared.  
 
-#### Distance Resolution
+@subsubsection Data_Structures_ConfigData_Members_Distance_Resolution Distance Resolution
 - **distanceResolution** (@ref LD2410Types::DistanceResolution "DistanceResolution")  
   Current distance resolution (20 cm or 75 cm).  
   Requires reboot to apply after change.  
 
-#### Auxiliary Controls
+@subsubsection Data_Structures_ConfigData_Members_Aux Auxiliary Controls
 - **lightThreshold** (`byte`)  
   Threshold for auxiliary light control (0-255).  
 
@@ -126,11 +127,4 @@ Values are filled by commands such as:
 - **outputControl** (@ref LD2410Types::OutputControl "OutputControl")  
   Logic configuration of the OUT pin.  
 
----
 
-## Summary
-
-- **DetectionData** - continuously updated runtime measurements, including both simple presence and optional per-gate details when engineering mode is enabled.  
-- **ConfigData** - sensor configuration and capabilities, only updated when explicitly requested.  
-
-For efficiency, use the reference accessors (`getDetectionDataRef()`, `getConfigDataRef()`) whenever possible, and refresh `ConfigData` after writes to stay synchronized with the sensor.

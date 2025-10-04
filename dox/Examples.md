@@ -1,10 +1,10 @@
 @page Examples Examples
-# Example Sketches in the lib
+
 
 The library ships with several example sketches that demonstrate typical usage as well as specialized test scenarios.  
 All examples reside in the `examples/` folder of the library and are organized in subfolders named after the sketch.
 
-## Usage Examples
+@section Examples_Usage Usage Examples **
 
 - @ref basicPresenceDetection_8ino  
   *Minimal example showing how to detect presence and print state changes via Serial.*  
@@ -21,7 +21,7 @@ All examples reside in the `examples/` folder of the library and are organized i
 - @ref simplePresenceDetectionWebservice_8ino  
   *Integrates presence detection with a simple web service endpoint, useful for IoT or home automation setups.*  
 
-## Test Sketches
+@section Examples_Test Test Sketches
 
 - @ref enableConfigModeTest_8ino  
   *Test sketch to explicitly measure entering configuration mode and handling success/failure cases.*  

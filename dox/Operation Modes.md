@@ -1,9 +1,9 @@
 ﻿@page Operation_Modes Operation Modes
-# LD2410 Operation Modes
+
 
 The LD2410 sensor supports several operation modes, each with different behavior and purpose.
 
-## Normal Detection Mode
+@section Operation_Modes_Normal_Mode Normal Detection Mode
 
 In normal detection mode the sensor automatically transmits new detection data, usually several times per second.  
 
@@ -28,7 +28,7 @@ Unless auto config has been explicitly triggered, only the values 0-3 occur.
 
 All detection data is represented in the @ref LD2410Types::DetectionData "DetectionData" struct, which also includes an `engineeringMode` flag that indicates whether engineering data fields in the struct are valid.
 
-## Engineering Mode
+@section Operation_Modes_Engineering_Mode Engineering Mode
 
 Engineering mode behaves similar to normal detection mode but provides additional data for detailed analysis:
 
@@ -48,7 +48,7 @@ To control engineering mode:
 To check whether engineering mode is currently active:  
 - @ref LD2410Async::isEngineeringModeEnabled "isEngineeringModeEnabled()"  
 
-## Configuration Mode
+@section Operation_Modes_Configuration_Mode Configuration Mode
 
 Configuration mode is required to send configuration commands to the sensor.  
 

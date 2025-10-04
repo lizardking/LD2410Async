@@ -2,6 +2,7 @@
 
 This page lists common issues you may encounter when using the **LD2410Async** library and provides steps to resolve them.
 
+@section Troubleshooting_Problems Problem Scenarios
 
 ## No Data Received
 - Verify wiring: ensure the LD2410 radar is connected to the correct UART pins.  
@@ -51,7 +52,8 @@ See also @ref Async_Commands_And_Processing "Async Commands & Processing".
 
 ---
 
-## Debugging
+@section Troubleshooting_Debugging Debugging
+
 Enable debug output for troubleshooting communication issues. The following defines can be set in the LD2410Async.h file.
 
 @code{.cpp}

@@ -1,6 +1,6 @@
 @page Async_Commands_And_Processing Async Commands & Processing
 
-## Why asynchronous processing matters for the LD2410
+@section Async_Commands_And_Processing_Why Why asynchronous processing matters for the LD2410
 
 The LD2410 radar sensor continuously streams detection frames and requires explicit configuration commands to adjust its behavior. 
 If the library were implemented with blocking (synchronous) calls, every command would have to wait for the sensor’s response before the application could continue. 
@@ -12,7 +12,7 @@ An asynchronous approach avoids this problem. Commands are sent non-blocking, an
 - Scalability - multiple sensors or other asynchronous components (Wi-Fi, MQTT, UI updates) can run in parallel without interfering with each other.
 - Robustness - timeouts and retries can be handled cleanly without stalling the system.
 
-## Detection Data Callback
+@section Async_Commands_And_Processing_Detection_Data_Callback Detection Data Callback
 
 Whenever the LD2410 sensor transmits a valid data frame, the library automatically parses it and invokes the detection data callback. This allows your application to react immediately to sensor input without the need for polling.
 
@@ -27,7 +27,7 @@ The callback is triggered for every received frame, not only when presenceDetect
 
 For applications that need more than just the quick presence flag, the library provides full access to the updated @ref LD2410Types::DetectionData "DetectionData" struct. This struct contains distances, signal strengths and other info.
 
-## Detection Data Callback Example
+@section Async_Commands_And_Processing_Dtection_Data_Callback_Example_ Detection Data Callback Example
 
 @code{.cpp}
 #include "LD2410Async.h"
@@ -56,7 +56,7 @@ void loop() {
 }
 @endcode
 
-## Configuration Callbacks
+@section Async_Commands_And_Processing_Configuration_Callbacks Configuration Callbacks
 
 Whenever the LD2410 sensor executes or reports configuration changes, the library provides two separate callback mechanisms to keep your application informed.
 
@@ -67,7 +67,7 @@ Use @ref LD2410Async::onConfigDataReceived "onConfigDataReceived()" to register 
 @note 
 Configuration data is **not sent automatically** by the sensor and is **not updated automatically** when internal changes occur. To refresh the local configuration structure, you must explicitly request the latest values from the sensor. The recommended way is to call @ref LD2410Async::requestAllConfigSettingsAsync "requestAllConfigSettingsAsync()", which retrieves the complete configuration in one operation.
 
-## Configuration Callbacks Example
+@section Async_Commands_And_Processing_Configuration_Callbacks_Exampample Configuration Callbacks Example
 
 @code{.cpp}
 // Define the callback function
@@ -92,7 +92,7 @@ radar.onConfigChanged(onConfigChanged);
 @endcode
 
 
-## Async Commands Basics
+@section Async_Commands_And_Processing_Async_Commands_Basics Async Commands Basics
 
 The LD2410 sensor can be configured and queried using a large set of commands.
 
@@ -104,7 +104,7 @@ All commands that need to communicate with the sensor are implemented as asynchr
 - When the sensor sends back an acknowledgement (ACK) or a response, the library automatically calls the user-provided callback with a result of type @ref LD2410Async::AsyncCommandResult "AsyncCommandResult". 
 - Callbacks allow your application to handle SUCCESS, FAILED, TIMEOUT, or CANCELED in a clean and non-blocking way.
 
-## List of Asynchronous Commands
+@section Async_Commands_And_Processing_Async_Commands_List List of Asynchronous Commands
 
 - Config mode control
     - @ref LD2410Async::enableConfigModeAsync "enableConfigModeAsync()" - enable configuration mode.
@@ -144,7 +144,7 @@ All commands that need to communicate with the sensor are implemented as asynchr
     - @ref LD2410Async::asyncCancel "asyncCancel()" - Cancels any currently pending async command. This will just abort the waiting for the Ack of the command. The actual command (or parts of it) have probably already been executed anyway.
 
 
-## Async Command Example
+@section Async_Commands_And_Processing_AsyncCommands__Example Async Command Example
 
 @code{.cpp}
 #include "LD2410Async.h"
@@ -188,7 +188,7 @@ void loop() {
 @endcode
 
 
-## Best Practices for Async Commands
+@section Async_Commands_And_Processing_Async_Commands_Best_Practices Best Practices for Async Commands
 
 - **Check the return value** - all async methods return true if the command is getting executed or false when execution of the commands is not possible for some reason (e.g. another async command pending or a para is inavlid/out of range)
 - **Check the result of the callback** - handle @ref LD2410Async::AsyncCommandResult "AsyncCommandResult" values such as `SUCCESS`, `FAILED`, `TIMEOUT`, or `CANCELED` as necessary.

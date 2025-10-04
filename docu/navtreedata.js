@@ -25,18 +25,18 @@
 var NAVTREE =
 [
   [ "LD2410Async", "index.html", [
-    [ "Introduction", "index.html#autotoc_md72", [
-      [ "Features", "index.html#autotoc_md73", null ],
-      [ "Further Documentation", "index.html#autotoc_md74", null ],
-      [ "Main Class Reference", "index.html#autotoc_md75", null ],
-      [ "Typical Usage", "index.html#autotoc_md76", null ],
-      [ "Examples", "index.html#autotoc_md77", [
-        [ "Example: Using callback for presence detection updates", "index.html#autotoc_md78", null ],
-        [ "Example: Clone config data, modify, and write back", "index.html#autotoc_md79", null ]
+    [ "Introduction", "index.html#autotoc_md73", [
+      [ "Features", "index.html#autotoc_md74", null ],
+      [ "Further Documentation", "index.html#autotoc_md75", null ],
+      [ "Main Class Reference", "index.html#autotoc_md76", null ],
+      [ "Typical Usage", "index.html#autotoc_md77", null ],
+      [ "Examples", "index.html#autotoc_md78", [
+        [ "Example: Using callback for presence detection updates", "index.html#autotoc_md79", null ],
+        [ "Example: Clone config data, modify, and write back", "index.html#autotoc_md80", null ]
       ] ]
     ] ],
     [ "Installation", "Installation.html", [
-      [ "Installation", "Installation.html#autotoc_md69", null ]
+      [ "Installation", "Installation.html#autotoc_md70", null ]
     ] ],
     [ "Async Commands & Processing", "Async_Commands_And_Processing.html", [
       [ "Async Commands & Processing", "Async_Commands_And_Processing.html#autotoc_md35", [
@@ -74,15 +74,11 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Operation Modes", "Operation_Modes.html", [
-      [ "LD2410 Operation Modes", "Operation_Modes.html#autotoc_md81", [
-        [ "Normal Detection Mode", "Operation_Modes.html#autotoc_md82", null ],
-        [ "Engineering Mode", "Operation_Modes.html#autotoc_md83", null ],
-        [ "Configuration Mode", "Operation_Modes.html#autotoc_md84", null ]
+      [ "LD2410 Operation Modes", "Operation_Modes.html#autotoc_md82", [
+        [ "Normal Detection Mode", "Operation_Modes.html#autotoc_md83", null ],
+        [ "Engineering Mode", "Operation_Modes.html#autotoc_md84", null ],
+        [ "Configuration Mode", "Operation_Modes.html#autotoc_md85", null ]
       ] ]
-    ] ],
-    [ "Inactivity Handling", "Inactivity_Handling.html", [
-      [ "Enabling / Disabling Inactivity Handling", "Inactivity_Handling.html#autotoc_md67", null ],
-      [ "Timeout Configuration", "Inactivity_Handling.html#autotoc_md68", null ]
     ] ],
     [ "Examples", "Examples.html", [
       [ "Example Sketches in the lib", "Examples.html#autotoc_md63", [
@@ -90,9 +86,25 @@ var NAVTREE =
         [ "Test Sketches", "Examples.html#autotoc_md65", null ]
       ] ]
     ] ],
-    [ "Important Notes and Best Practices", "BestPractices.html", null ],
-    [ "Troubleshooting Guide", "Troubleshooting.html", "Troubleshooting" ],
-    [ "Inactivity Handling", "md__2github_2workspace_2dox_2Inactivity_01Handling.html", null ],
+    [ "Important Notes and Best Practices", "BestPractices.html", [
+      [ "Important Notes & Best Practices", "BestPractices.html#autotoc_md81", null ]
+    ] ],
+    [ "Troubleshooting Guide", "Troubleshooting.html", [
+      [ "Troubleshooting Guide", "Troubleshooting.html#autotoc_md86", [
+        [ "No Data Received", "Troubleshooting.html#autotoc_md87", null ],
+        [ "Callbacks Not Firing", "Troubleshooting.html#autotoc_md88", null ],
+        [ "Async Commands Not Working", "Troubleshooting.html#autotoc_md89", null ],
+        [ "Unexpected Sensor Reboots", "Troubleshooting.html#autotoc_md90", null ],
+        [ "Data Loss", "Troubleshooting.html#autotoc_md92", null ],
+        [ "Strange or Invalid Data", "Troubleshooting.html#autotoc_md94", null ],
+        [ "Debugging", "Troubleshooting.html#autotoc_md96", null ]
+      ] ]
+    ] ],
+    [ "Inactivity Handling", "md__2github_2workspace_2dox_2Inactivity_01Handling.html", [
+      [ "Basics", "md__2github_2workspace_2dox_2Inactivity_01Handling.html#autotoc_md67", null ],
+      [ "Enabling / Disabling Inactivity Handling", "md__2github_2workspace_2dox_2Inactivity_01Handling.html#autotoc_md68", null ],
+      [ "Timeout Configuration", "md__2github_2workspace_2dox_2Inactivity_01Handling.html#autotoc_md69", null ]
+    ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -131,8 +143,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "Async_Commands_And_Processing.html",
-"classLD2410Async.html#a54388c929cea610f92891def29db66a5",
-"simplePresenceDetectionWebservice_8ino_source.html"
+"classLD2410Async.html#aac3eef4a0da57ccc1c32d28dd029ccc7",
+"structLD2410Types_1_1ConfigData.html#a78c2665adcc382224455dfde7f05b885"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

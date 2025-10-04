@@ -7,7 +7,7 @@ var searchData=
   ['ld2410_4',['Why asynchronous processing matters for the LD2410',['../Async_Commands_And_Processing.html#autotoc_md36',1,'']]],
   ['ld2410_5',['ld2410',['../enableConfigModeTest_8ino.html#a993edb137934ce2423ef054e8ab5f10e',1,'ld2410:&#160;enableConfigModeTest.ino'],['../tortureTest_8ino.html#a993edb137934ce2423ef054e8ab5f10e',1,'ld2410:&#160;tortureTest.ino'],['../unitTest_8ino.html#a993edb137934ce2423ef054e8ab5f10e',1,'ld2410:&#160;unitTest.ino']]],
   ['ld2410_20data_20structures_6',['LD2410 Data Structures',['../Data_Structures.html#autotoc_md45',1,'']]],
-  ['ld2410_20operation_20modes_7',['LD2410 Operation Modes',['../Operation_Modes.html#autotoc_md81',1,'']]],
+  ['ld2410_20operation_20modes_7',['LD2410 Operation Modes',['../Operation_Modes.html#autotoc_md82',1,'']]],
   ['ld2410_5fbuffer_5fsize_8',['LD2410_Buffer_Size',['../namespaceLD2410Defs.html#ab5971df32a3e09229234634c403d711f',1,'LD2410Defs']]],
   ['ld2410async_9',['LD2410Async',['../classLD2410Async.html',1,'LD2410Async'],['../classLD2410Async.html#ac500fb301e250ede1a608c67fc1a8900',1,'LD2410Async::LD2410Async()'],['../index.html',1,'LD2410Async']]],
   ['ld2410async_2ecpp_10',['LD2410Async.cpp',['../LD2410Async_8cpp.html',1,'']]],
@@ -23,7 +23,7 @@ var searchData=
   ['ld2410types_2eh_20',['LD2410Types.h',['../LD2410Types_8h.html',1,'']]],
   ['led_5fpin_21',['LED_PIN',['../enableConfigModeTest_8ino.html#ab4553be4db9860d940f81d7447173b2f',1,'LED_PIN:&#160;enableConfigModeTest.ino'],['../tortureTest_8ino.html#ab4553be4db9860d940f81d7447173b2f',1,'LED_PIN:&#160;tortureTest.ino']]],
   ['lib_22',['Example Sketches in the lib',['../Examples.html#autotoc_md63',1,'']]],
-  ['library_20manager_20recommended_23',['1. Using Arduino Library Manager (recommended)',['../Installation.html#autotoc_md70',1,'']]],
+  ['library_20manager_20recommended_23',['1. Using Arduino Library Manager (recommended)',['../Installation.html#autotoc_md71',1,'']]],
   ['light_5fabove_5fthreshold_24',['LIGHT_ABOVE_THRESHOLD',['../namespaceLD2410Types.html#afbd22de9579db591b3f122c51c730844aa04a7bc4c5ceb6927e051bfb3e1cfd2e',1,'LD2410Types']]],
   ['light_5fbelow_5fthreshold_25',['LIGHT_BELOW_THRESHOLD',['../namespaceLD2410Types.html#afbd22de9579db591b3f122c51c730844a6a9d30a8d1d6df98b89d66c50e47cd6c',1,'LD2410Types']]],
   ['lightcontrol_26',['LightControl',['../namespaceLD2410Types.html#afbd22de9579db591b3f122c51c730844',1,'LD2410Types']]],
@@ -36,5 +36,5 @@ var searchData=
   ['list_20of_20asynchronous_20commands_33',['List of Asynchronous Commands',['../Async_Commands_And_Processing.html#autotoc_md42',1,'']]],
   ['local_5fip_34',['LOCAL_IP',['../simplePresenceDetectionWebservice_8ino.html#a5a9a77b7e2709907f3b84da947708d54',1,'simplePresenceDetectionWebservice.ino']]],
   ['loop_35',['loop',['../basicPresenceDetection_8ino.html#afe461d27b9c48d5921c00d521181f12f',1,'loop():&#160;basicPresenceDetection.ino'],['../changeConfig_8ino.html#afe461d27b9c48d5921c00d521181f12f',1,'loop():&#160;changeConfig.ino'],['../changeDistanceResolution_8ino.html#afe461d27b9c48d5921c00d521181f12f',1,'loop():&#160;changeDistanceResolution.ino'],['../enableConfigModeTest_8ino.html#afe461d27b9c48d5921c00d521181f12f',1,'loop():&#160;enableConfigModeTest.ino'],['../receiveData_8ino.html#afe461d27b9c48d5921c00d521181f12f',1,'loop():&#160;receiveData.ino'],['../simplePresenceDetectionWebservice_8ino.html#afe461d27b9c48d5921c00d521181f12f',1,'loop():&#160;simplePresenceDetectionWebservice.ino'],['../tortureTest_8ino.html#afe461d27b9c48d5921c00d521181f12f',1,'loop():&#160;tortureTest.ino'],['../unitTest_8ino.html#afe461d27b9c48d5921c00d521181f12f',1,'loop():&#160;unitTest.ino']]],
-  ['loss_36',['Data Loss',['../Troubleshooting.html#autotoc_md95',1,'']]]
+  ['loss_36',['Data Loss',['../Troubleshooting.html#autotoc_md92',1,'']]]
 ];

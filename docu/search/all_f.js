@@ -1,9 +1,9 @@
 var searchData=
 [
   ['per_20gate_20sensitivity_0',['Per-Gate Sensitivity',['../Data_Structures.html#autotoc_md57',1,'']]],
-  ['practices_1',['Practices',['../BestPractices.html#autotoc_md80',1,'Important Notes &amp; Best Practices'],['../BestPractices.html',1,'Important Notes and Best Practices']]],
+  ['practices_1',['Practices',['../BestPractices.html#autotoc_md81',1,'Important Notes &amp; Best Practices'],['../BestPractices.html',1,'Important Notes and Best Practices']]],
   ['practices_20for_20async_20commands_2',['Best Practices for Async Commands',['../Async_Commands_And_Processing.html#autotoc_md44',1,'']]],
-  ['presence_20detection_20updates_3',['Example: Using callback for presence detection updates',['../index.html#autotoc_md78',1,'']]],
+  ['presence_20detection_20updates_3',['Example: Using callback for presence detection updates',['../index.html#autotoc_md79',1,'']]],
   ['presencedetected_4',['presenceDetected',['../structLD2410Types_1_1DetectionData.html#aa617db540a884f75ee26c0a850c55023',1,'LD2410Types::DetectionData']]],
   ['print_5',['print',['../structLD2410Types_1_1DetectionData.html#a05545713d5314398cf8c87ac50bbf4ca',1,'LD2410Types::DetectionData::print()'],['../structLD2410Types_1_1ConfigData.html#a14f6b9d23c5eac3fbf70b397398ae624',1,'LD2410Types::ConfigData::print()']]],
   ['printbigmessage_6',['printBigMessage',['../unitTest_8ino.html#acf900774bfb7aac22f4ad01226ee9570',1,'unitTest.ino']]],

@@ -101,6 +101,8 @@ $(function(){initNavTree('md__2github_2workspace_2dox_2Inactivity_01Handling.htm
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md66"></a></p>
+<h1><a class="anchor" id="autotoc_md67"></a>
+Basics</h1>
 <p>The library includes built-in logic to detect long inactivity of the sensor, i.e. long periods without any data being received. <br  />
  The most common cause for a "silent" sensor is that <b>configuration mode</b> was enabled but never disabled.</p>
 <p>If long silent periods are detected, the library attempts to bring both its internal state and the sensor back to <b>normal operation mode</b>. <br  />
@@ -125,7 +127,47 @@ $(function(){initNavTree('md__2github_2workspace_2dox_2Inactivity_01Handling.htm
 </ul>
 </li>
 </ol>
-<p>If none of these recovery steps succeed, the library will retry after the inactivity timeout period has elapsed again. </p>
+<p>If none of these recovery steps succeed, the library will retry after the inactivity timeout period has elapsed again.</p>
+<h1><a class="anchor" id="autotoc_md68"></a>
+Enabling / Disabling Inactivity Handling</h1>
+<p>Inactivity handling can be enabled or disabled using: <br  />
+</p>
+<ul>
+<li><a class="el" href="classLD2410Async.html#a3e538b0e12f6aa3f28fc025e54aa2dc3">enableInactivityHandling()</a> <br  />
+</li>
+<li><a class="el" href="classLD2410Async.html#a66ca514c34bec7957b46395dabb602f2">disableInactivityHandling()</a> <br  />
+</li>
+<li><a class="el" href="classLD2410Async.html#a4b30773f7a69dad507caaa636f08fa76">setInactivityHandling(bool enable)</a> <br  />
+</li>
+</ul>
+<p>By default, inactivity handling is <b>enabled</b>.</p>
+<h1><a class="anchor" id="autotoc_md69"></a>
+Timeout Configuration</h1>
+<p>The inactivity timeout can be configured with: <br  />
+</p>
+<ul>
+<li><a class="el" href="classLD2410Async.html#a47241fb41dfbdbdc4d6ae39d4d3e4801">setInactivityTimeoutMs(timeoutInMilliseconds)</a> <br  />
+</li>
+<li><a class="el" href="classLD2410Async.html#a74138af198ac827349a25e122277803f">getInactivityTimeoutMs()</a> <br  />
+</li>
+</ul>
+<p>The default timeout is <b>60000 ms (1 minute)</b>. <br  />
+ Setting the time out to 00 will disable inactivity handling.</p>
+<p><b>Important:</b> <br  />
+ Always set a value larger than the timeout for async commands, which is controlled by: <br  />
+</p><ul>
+<li><a class="el" href="classLD2410Async.html#a5e5d9d9537d918a27abb1c1f8e56d325">setAsyncCommandTimeoutMs()</a> <br  />
+</li>
+<li><a class="el" href="classLD2410Async.html#a93962bd109f67775ea3420596207b23a">getAsyncCommandTimeoutMs()</a> <br  />
+</li>
+</ul>
+<p>If the inactivity timeout is shorter than the async command timeout, inactivity handling could trigger while a command is still pending (usually waiting for an ACK). This would cause premature cancellation of the command. <br  />
+</p>
+<p>To avoid this, the library automatically adjusts the inactivity timeout: <br  />
+</p><ul>
+<li>If the configured inactivity timeout is shorter than the async command timeout, it will instead use <b>(async command timeout + 1000 ms)</b>. <br  />
+ </li>
+</ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

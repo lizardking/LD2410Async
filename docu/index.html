@@ -100,10 +100,10 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
   <div class="headertitle"><div class="title"><a class="el" href="classLD2410Async.html" title="Asynchronous driver class for the LD2410 human presence radar sensor.">LD2410Async</a> </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md72"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md73"></a>
 Introduction</h1>
 <p>The LD2410 is a mmWave radar sensor capable of detecting both moving and stationary targets, reporting presence, distance, and per-gate signal strength. This class implements a non-blocking, asynchronous interface for communicating with the sensor over a UART stream.</p>
-<h2><a class="anchor" id="autotoc_md73"></a>
+<h2><a class="anchor" id="autotoc_md74"></a>
 Features</h2>
 <ul>
 <li>Fully asynchronous operation with no blocking calls and callback.</li>
@@ -114,41 +114,41 @@ Features</h2>
 <li>Continuous background task that parses incoming frames and updates data.</li>
 <li>Automatic inactivity handling if sensor is stuck or unreposive (tries to disable config mode or reboot).</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md74"></a>
+<h2><a class="anchor" id="autotoc_md75"></a>
 Further Documentation</h2>
 <p>The following pages provide detailed explanations of the library’s components and usage patterns:</p>
 <ul>
 <li><a class="el" href="Installation.html">Installation</a> <br  />
- <em>How to install the <a class="el" href="classLD2410Async.html" title="Asynchronous driver class for the LD2410 human presence radar sensor.">LD2410Async</a> library via Arduino Library Manager or manually.</em> <br  />
+ How to install the <a class="el" href="classLD2410Async.html" title="Asynchronous driver class for the LD2410 human presence radar sensor.">LD2410Async</a> library via Arduino Library Manager or manually. <br  />
 </li>
 <li><a class="el" href="Async_Commands_And_Processing.html">Async Commands &amp; Processing</a> <br  />
- <em>Covers the non-blocking design, callbacks for detection and configuration, and the full list of asynchronous commands supported by the LD2410.</em> <br  />
+ Covers the non-blocking design, callbacks for detection and configuration, and the full list of asynchronous commands supported by the LD2410. <br  />
 </li>
 <li><a class="el" href="Data_Structures.html">Data Structures</a> <br  />
- *Documents the core data structures: <a class="el" href="structLD2410Types_1_1DetectionData.html">DetectionData</a> and <a class="el" href="structLD2410Types_1_1ConfigData.html">ConfigData</a>. Includes detailed descriptions of all members and their meanings.* <br  />
+ Documents the core data structures: <a class="el" href="structLD2410Types_1_1DetectionData.html">DetectionData</a> and <a class="el" href="structLD2410Types_1_1ConfigData.html">ConfigData</a>. Includes detailed descriptions of all members and their meanings. <br  />
 </li>
 <li><a class="el" href="Operation_Modes.html">Operation Modes</a> <br  />
- <em>Explains the sensor’s Normal, Engineering, and Configuration modes, including how to switch between them and what data each provides.</em> <br  />
+ Explains the sensor’s Normal, Engineering, and Configuration modes, including how to switch between them and what data each provides. <br  />
 </li>
-<li><a class="el" href="Inactivity_Handling.html">Inactivity Handling</a> <br  />
- <em>Describes the library’s automatic recovery logic when the sensor becomes unresponsive, including how to configure and disable inactivity handling.</em> <br  />
+<li>Inactivity_Handling <br  />
+ Describes the library’s automatic recovery logic when the sensor becomes unresponsive, including how to configure and disable inactivity handling. <br  />
 </li>
-<li><a class="el" href="Examples.html">Examples</a> *Lists all the examples in the lib.** <br  />
+<li><a class="el" href="Examples.html">Examples</a> Lists all the examples in the lib. <br  />
 </li>
 <li><a class="el" href="BestPractices.html">Important Notes and Best Practices</a> <br  />
- <em>Important notes and best practices for using the library effectively (callback design, config handling, engineering mode, task management, and memory wear considerations).</em> <br  />
+ Important notes and best practices for using the library effectively (callback design, config handling, engineering mode, task management, and memory wear considerations). <br  />
 </li>
 <li><a class="el" href="Troubleshooting.html">Troubleshooting Guide</a> <br  />
- <em>A guide to solving common issues such as no data received, callbacks not firing, async commands failing, or unexpected sensor reboots.</em></li>
+ A guide to solving common issues such as no data received, callbacks not firing, async commands failing, or unexpected sensor reboots.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md75"></a>
+<h2><a class="anchor" id="autotoc_md76"></a>
 Main Class Reference</h2>
 <p>All interaction with the sensor is performed through the main class: <br  />
 </p><ul>
 <li><a class="el" href="classLD2410Async.html">LD2410Async</a> <br  />
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md76"></a>
+<h2><a class="anchor" id="autotoc_md77"></a>
 Typical Usage</h2>
 <p>Typical workflow:</p><ol type="1">
 <li>Construct with a reference to a Stream object connected to the sensor.</li>
@@ -189,9 +189,9 @@ Typical Usage</h2>
 </li>
 <li><a class="el" href="classLD2410Async.html#ade2ef7c106c38e11fd450e75a6494090">LD2410Async::getDetectionDataRef()</a></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md77"></a>
+<h2><a class="anchor" id="autotoc_md78"></a>
 Examples</h2>
-<h3><a class="anchor" id="autotoc_md78"></a>
+<h3><a class="anchor" id="autotoc_md79"></a>
 Example: Using callback for presence detection updates</h3>
 <div class="fragment"><div class="line"><a class="code hl_variable" href="basicPresenceDetection_8ino.html#a668d1ce20a8d66eeb5ab88238e59c2d4">radar</a>.<a class="code hl_function" href="classLD2410Async.html#ad45ae5bd8cbdfe48634f7ff158867dff">onDetectionDataReceived</a>([](<a class="code hl_class" href="classLD2410Async.html">LD2410Async</a>* sender, <span class="keywordtype">bool</span> presenceDetetced, <span class="keywordtype">byte</span> userData) {</div>
 <div class="line">  sender-&gt;<a class="code hl_function" href="classLD2410Async.html#ade2ef7c106c38e11fd450e75a6494090">getDetectionDataRef</a>().<a class="code hl_function" href="structLD2410Types_1_1DetectionData.html#a05545713d5314398cf8c87ac50bbf4ca">print</a>();  <span class="comment">// direct access, no copy</span></div>
@@ -202,7 +202,7 @@ Example: Using callback for presence detection updates</h3>
 </li>
 <li><a class="el" href="classLD2410Async.html#ade2ef7c106c38e11fd450e75a6494090">LD2410Async::getDetectionDataRef()</a></li>
 </ul>
-<h3><a class="anchor" id="autotoc_md79"></a>
+<h3><a class="anchor" id="autotoc_md80"></a>
 Example: Clone config data, modify, and write back</h3>
 <div class="fragment"><div class="line">ConfigData cfg = <a class="code hl_variable" href="basicPresenceDetection_8ino.html#a668d1ce20a8d66eeb5ab88238e59c2d4">radar</a>.<a class="code hl_function" href="classLD2410Async.html#a54388c929cea610f92891def29db66a5">getConfigData</a>();  <span class="comment">// clone</span></div>
 <div class="line">cfg.<a class="code hl_variable" href="structLD2410Types_1_1ConfigData.html#aed0b489a9e500b199397a9db7103e3bf">noOneTimeout</a> = 60;</div>

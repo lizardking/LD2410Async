@@ -8,5 +8,6 @@ var searchData=
   ['testsequencerunning_5',['testSequenceRunning',['../unitTest_8ino.html#ac6bef1b454e54514ad387107517e6ec8',1,'unitTest.ino']]],
   ['teststartms_6',['testStartMs',['../unitTest_8ino.html#a6d640f75658e47f62f000346be67a8d1',1,'unitTest.ino']]],
   ['testsuccesscount_7',['testSuccessCount',['../unitTest_8ino.html#a82c002d6579dbb365c1fd65f8f1de583',1,'unitTest.ino']]],
-  ['timestamp_8',['timestamp',['../structLD2410Types_1_1DetectionData.html#adc003171384bf1b2bbc0dd69777e579d',1,'LD2410Types::DetectionData']]]
+  ['timestamp_8',['timestamp',['../structLD2410Types_1_1DetectionData.html#adc003171384bf1b2bbc0dd69777e579d',1,'LD2410Types::DetectionData']]],
+  ['totalenabledurationms_9',['totalEnableDurationMs',['../enableConfigModeTest_8ino.html#abde548b9248e1e9976f96a2f8d553e64',1,'enableConfigModeTest.ino']]]
 ];

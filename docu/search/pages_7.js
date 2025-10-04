@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['processing_20commands_0',['Async Processing &amp; Commands',['../md__2github_2workspace_2dox_2Async_01Processing_01and_01Use.html',1,'']]]
+  ['important_20notes_20and_20best_20practices_0',['Important Notes and Best Practices',['../BestPractices.html',1,'index']]],
+  ['inactivity_20handling_1',['Inactivity Handling',['../md__2github_2workspace_2dox_2Inactivity_01Handling.html',1,'Inactivity Handling'],['../Inactivity_Handling.html',1,'Inactivity Handling']]],
+  ['installation_2',['Installation',['../Installation.html',1,'index']]]
 ];

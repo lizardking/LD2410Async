@@ -1,6 +1,5 @@
 var unitTest_8ino =
 [
-    [ "TestEntry", "structTestEntry.html", "structTestEntry" ],
     [ "RADAR_BAUDRATE", "unitTest_8ino.html#a78243257c4f1bb044c720dce7198d7cb", null ],
     [ "RADAR_RX_PIN", "unitTest_8ino.html#a7e649b7675aa97ae8a3c2b2a329e55d7", null ],
     [ "RADAR_TX_PIN", "unitTest_8ino.html#acce505b164e2cee65fd975d0bc859ca8", null ],

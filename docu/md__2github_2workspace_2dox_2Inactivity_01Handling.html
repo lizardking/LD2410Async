@@ -100,25 +100,32 @@ $(function(){initNavTree('md__2github_2workspace_2dox_2Inactivity_01Handling.htm
   <div class="headertitle"><div class="title">Inactivity Handling</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md35"></a></p>
-<p>The library has built in logic that will detect long inactivity of the sensor resp. long periods without any data coming in. The most common reason for a silent sensor is the conmfiguration mode, which has not been disabled.</p>
-<p>If long silent periods are detected the lib will try to return its own state and the sensor back to normal operation mode. It will attempt the following steps (each separated by the timeout period for a async commands):</p><ol type="1">
-<li>Cancel pending async commands, just in case the users code is still waiting for a callback.</li>
-<li>If the cancel did not help, it will try to disable config mode, even if the lib thinks config mode is diabled.</li>
-<li>As a last step, it will try to reboot the sensor.</li>
+<div class="textblock"><p><a class="anchor" id="autotoc_md66"></a></p>
+<p>The library includes built-in logic to detect long inactivity of the sensor, i.e. long periods without any data being received. <br  />
+ The most common cause for a "silent" sensor is that <b>configuration mode</b> was enabled but never disabled.</p>
+<p>If long silent periods are detected, the library attempts to bring both its internal state and the sensor back to <b>normal operation mode</b>. <br  />
+ Recovery is performed in the following steps (each step is separated by the current async command timeout period): <br  />
+</p>
+<ol type="1">
+<li>Cancel any pending async commands, in case the user’s code is still waiting for a callback. <br  />
+<ul>
+<li><a class="el" href="classLD2410Async.html#a072ae754e7f12512e8051f4c6246e1e1">asyncCancel()</a> <br  />
+</li>
+</ul>
+</li>
+<li>If canceling did not help, try to disable config mode — even if the library believes config mode is already disabled. <br  />
+<ul>
+<li><a class="el" href="classLD2410Async.html#a20a2e6cc699e4f8b433013b0991e016b">disableConfigModeAsync()</a> <br  />
+</li>
+</ul>
+</li>
+<li>As a last step, attempt to reboot the sensor. <br  />
+<ul>
+<li><a class="el" href="classLD2410Async.html#a0fefa06a0cbcc70e1aa5e655315851ee">rebootAsync()</a></li>
+</ul>
+</li>
 </ol>
-<p>If all those recovery steps dont work, the lib will try again to recover the sensor after the inactivity timeout period has elapsed again.</p>
-<p>Inactivity handling can be enabled/disabled with the following commands:</p><ul>
-<li>enableInactivityHandling()</li>
-<li>disableInactivityHandling()</li>
-<li>setInactivityHandling(true/false)</li>
-</ul>
-<p>By default the inactivity handling is enabled</p>
-<p>The timeout period for the inactivity handling can be set and read with:</p><ul>
-<li>setInactivityTimeoutMs(timeoutInMilliseconds)</li>
-<li>getInactivityTimeoutMs()</li>
-</ul>
-<p>The default timeout is 60000ms resp. 1 minute. Make sure to set a value that is larger than the timeout for async commands (see getAsyncCommandTimeoutMs() and setAsyncCommandTimeoutMs()). Otherwise inactivity handling could kick in while commands are still pending (usually waiting for ack), which will result in the cancelation of the pending async command. To make sure this this will not happen, the inactivity handling will not use the set timeout, if it is shorter than the command time out and use the command timeout + 1000ms instead. </p>
+<p>If none of these recovery steps succeed, the library will retry after the inactivity timeout period has elapsed again. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

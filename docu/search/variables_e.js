@@ -15,5 +15,7 @@ var searchData=
   ['stationarytargetgatesignalcount_12',['stationaryTargetGateSignalCount',['../structLD2410Types_1_1DetectionData.html#a79fb6d1050658ab88b967e9d52052fa1',1,'LD2410Types::DetectionData']]],
   ['stationarytargetgatesignals_13',['stationaryTargetGateSignals',['../structLD2410Types_1_1DetectionData.html#a0a76b94acfc9d9aa655721c7945c990b',1,'LD2410Types::DetectionData']]],
   ['stationarytargetsignal_14',['stationaryTargetSignal',['../structLD2410Types_1_1DetectionData.html#a29b0cbb338b2b29c11727427dabf0a73',1,'LD2410Types::DetectionData']]],
-  ['stationarythresholdtoapply_15',['stationaryThresholdToApply',['../unitTest_8ino.html#a839d02a301029ffaf2009cc99b4c8516',1,'unitTest.ino']]]
+  ['stationarythresholdtoapply_15',['stationaryThresholdToApply',['../unitTest_8ino.html#a839d02a301029ffaf2009cc99b4c8516',1,'unitTest.ino']]],
+  ['stats_16',['stats',['../tortureTest_8ino.html#a9c8d64991e25d8900eab3fe2c643e79e',1,'tortureTest.ino']]],
+  ['stats_5fprint_5fperiod_5fms_17',['STATS_PRINT_PERIOD_MS',['../tortureTest_8ino.html#adc2303eab19c893c48b7375a80e6ad09',1,'tortureTest.ino']]]
 ];

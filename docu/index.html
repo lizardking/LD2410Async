@@ -100,10 +100,10 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
   <div class="headertitle"><div class="title"><a class="el" href="classLD2410Async.html" title="Asynchronous driver class for the LD2410 human presence radar sensor.">LD2410Async</a> </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md36"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md72"></a>
 Introduction</h1>
 <p>The LD2410 is a mmWave radar sensor capable of detecting both moving and stationary targets, reporting presence, distance, and per-gate signal strength. This class implements a non-blocking, asynchronous interface for communicating with the sensor over a UART stream.</p>
-<h2><a class="anchor" id="autotoc_md37"></a>
+<h2><a class="anchor" id="autotoc_md73"></a>
 Features</h2>
 <ul>
 <li>Fully asynchronous operation with no blocking calls and callback.</li>
@@ -114,8 +114,42 @@ Features</h2>
 <li>Continuous background task that parses incoming frames and updates data.</li>
 <li>Automatic inactivity handling if sensor is stuck or unreposive (tries to disable config mode or reboot).</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md38"></a>
-Usage</h2>
+<h2><a class="anchor" id="autotoc_md74"></a>
+Further Documentation</h2>
+<p>The following pages provide detailed explanations of the library’s components and usage patterns:</p>
+<ul>
+<li><a class="el" href="Installation.html">Installation</a> <br  />
+ <em>How to install the <a class="el" href="classLD2410Async.html" title="Asynchronous driver class for the LD2410 human presence radar sensor.">LD2410Async</a> library via Arduino Library Manager or manually.</em> <br  />
+</li>
+<li><a class="el" href="Async_Commands_And_Processing.html">Async Commands &amp; Processing</a> <br  />
+ <em>Covers the non-blocking design, callbacks for detection and configuration, and the full list of asynchronous commands supported by the LD2410.</em> <br  />
+</li>
+<li><a class="el" href="Data_Structures.html">Data Structures</a> <br  />
+ *Documents the core data structures: <a class="el" href="structLD2410Types_1_1DetectionData.html">DetectionData</a> and <a class="el" href="structLD2410Types_1_1ConfigData.html">ConfigData</a>. Includes detailed descriptions of all members and their meanings.* <br  />
+</li>
+<li><a class="el" href="Operation_Modes.html">Operation Modes</a> <br  />
+ <em>Explains the sensor’s Normal, Engineering, and Configuration modes, including how to switch between them and what data each provides.</em> <br  />
+</li>
+<li><a class="el" href="Inactivity_Handling.html">Inactivity Handling</a> <br  />
+ <em>Describes the library’s automatic recovery logic when the sensor becomes unresponsive, including how to configure and disable inactivity handling.</em> <br  />
+</li>
+<li><a class="el" href="Examples.html">Examples</a> *Lists all the examples in the lib.** <br  />
+</li>
+<li><a class="el" href="BestPractices.html">Important Notes and Best Practices</a> <br  />
+ <em>Important notes and best practices for using the library effectively (callback design, config handling, engineering mode, task management, and memory wear considerations).</em> <br  />
+</li>
+<li><a class="el" href="Troubleshooting.html">Troubleshooting Guide</a> <br  />
+ <em>A guide to solving common issues such as no data received, callbacks not firing, async commands failing, or unexpected sensor reboots.</em></li>
+</ul>
+<h2><a class="anchor" id="autotoc_md75"></a>
+Main Class Reference</h2>
+<p>All interaction with the sensor is performed through the main class: <br  />
+</p><ul>
+<li><a class="el" href="classLD2410Async.html">LD2410Async</a> <br  />
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md76"></a>
+Typical Usage</h2>
 <p>Typical workflow:</p><ol type="1">
 <li>Construct with a reference to a Stream object connected to the sensor.</li>
 <li>Call begin() to start the background task.</li>
@@ -128,11 +162,11 @@ Usage</h2>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="basicPresenceDetection_8ino.html#a4fc01d736fe50cf5b977f755b675f11d">setup</a>() {</div>
 <div class="line">  Serial.begin(115200);</div>
-<div class="line">  @ref <a class="code hl_function" href="classLD2410Async.html#a1358f6f0b8d55a676b5b8147906c9024">LD2410Async::begin</a> <span class="stringliteral">&quot;radar.begin()&quot;</span> ;</div>
+<div class="line">  <a class="code hl_variable" href="basicPresenceDetection_8ino.html#a668d1ce20a8d66eeb5ab88238e59c2d4">radar</a>.<a class="code hl_function" href="classLD2410Async.html#a1358f6f0b8d55a676b5b8147906c9024">begin</a>();</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Register callback for detection updates</span></div>
-<div class="line">  @ref <a class="code hl_function" href="classLD2410Async.html#aa6cd71f36a502143cbbc563c4a763346">LD2410Async::registerDetectionDataReceivedCallback</a> <span class="stringliteral">&quot;radar.registerDetectionDataReceivedCallback&quot;</span>([](<a class="code hl_class" href="classLD2410Async.html">LD2410Async</a>* sender, <span class="keywordtype">bool</span> presenceDetetced, <span class="keywordtype">byte</span> userData) {</div>
-<div class="line">    @ref <a class="code hl_function" href="classLD2410Async.html#ade2ef7c106c38e11fd450e75a6494090">LD2410Async::getDetectionDataRef</a> <span class="stringliteral">&quot;sender-&gt;getDetectionDataRef()&quot;</span>.<a class="code hl_function" href="structLD2410Types_1_1DetectionData.html#a05545713d5314398cf8c87ac50bbf4ca">print</a>();  <span class="comment">// direct access, no copy</span></div>
+<div class="line">  <a class="code hl_variable" href="basicPresenceDetection_8ino.html#a668d1ce20a8d66eeb5ab88238e59c2d4">radar</a>.<a class="code hl_function" href="classLD2410Async.html#ad45ae5bd8cbdfe48634f7ff158867dff">onDetectionDataReceived</a>([](<a class="code hl_class" href="classLD2410Async.html">LD2410Async</a>* sender, <span class="keywordtype">bool</span> presenceDetetced, <span class="keywordtype">byte</span> userData) {</div>
+<div class="line">    sender-&gt;<a class="code hl_function" href="classLD2410Async.html#ade2ef7c106c38e11fd450e75a6494090">getDetectionDataRef</a>().<a class="code hl_function" href="structLD2410Types_1_1DetectionData.html#a05545713d5314398cf8c87ac50bbf4ca">print</a>();  <span class="comment">// direct access, no copy</span></div>
 <div class="line">  });</div>
 <div class="line">}</div>
 <div class="line"> </div>
@@ -144,28 +178,35 @@ Usage</h2>
 <div class="ttc" id="abasicPresenceDetection_8ino_html_afe461d27b9c48d5921c00d521181f12f"><div class="ttname"><a href="basicPresenceDetection_8ino.html#afe461d27b9c48d5921c00d521181f12f">loop</a></div><div class="ttdeci">void loop()</div><div class="ttdoc">Arduino loop function which does nothing.</div><div class="ttdef"><b>Definition</b> <a href="basicPresenceDetection_8ino_source.html#l00103">basicPresenceDetection.ino:103</a></div></div>
 <div class="ttc" id="aclassLD2410Async_html"><div class="ttname"><a href="classLD2410Async.html">LD2410Async</a></div><div class="ttdoc">Asynchronous driver class for the LD2410 human presence radar sensor.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8h_source.html#l00039">LD2410Async.h:39</a></div></div>
 <div class="ttc" id="aclassLD2410Async_html_a1358f6f0b8d55a676b5b8147906c9024"><div class="ttname"><a href="classLD2410Async.html#a1358f6f0b8d55a676b5b8147906c9024">LD2410Async::begin</a></div><div class="ttdeci">bool begin()</div><div class="ttdoc">Starts the background task that continuously reads data from the sensor.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l01728">LD2410Async.cpp:1728</a></div></div>
-<div class="ttc" id="aclassLD2410Async_html_aa6cd71f36a502143cbbc563c4a763346"><div class="ttname"><a href="classLD2410Async.html#aa6cd71f36a502143cbbc563c4a763346">LD2410Async::registerDetectionDataReceivedCallback</a></div><div class="ttdeci">void registerDetectionDataReceivedCallback(DetectionDataCallback callback)</div><div class="ttdoc">Registers a callback for new detection data.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l00197">LD2410Async.cpp:197</a></div></div>
-<div class="ttc" id="aclassLD2410Async_html_ade2ef7c106c38e11fd450e75a6494090"><div class="ttname"><a href="classLD2410Async.html#ade2ef7c106c38e11fd450e75a6494090">LD2410Async::getDetectionDataRef</a></div><div class="ttdeci">const LD2410Types::DetectionData &amp; getDetectionDataRef() const</div><div class="ttdoc">Access the current detection data without making a copy.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8h_source.html#l00417">LD2410Async.h:417</a></div></div>
+<div class="ttc" id="aclassLD2410Async_html_ad45ae5bd8cbdfe48634f7ff158867dff"><div class="ttname"><a href="classLD2410Async.html#ad45ae5bd8cbdfe48634f7ff158867dff">LD2410Async::onDetectionDataReceived</a></div><div class="ttdeci">void onDetectionDataReceived(DetectionDataCallback callback)</div><div class="ttdoc">Registers a callback for new detection data.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l00197">LD2410Async.cpp:197</a></div></div>
+<div class="ttc" id="aclassLD2410Async_html_ade2ef7c106c38e11fd450e75a6494090"><div class="ttname"><a href="classLD2410Async.html#ade2ef7c106c38e11fd450e75a6494090">LD2410Async::getDetectionDataRef</a></div><div class="ttdeci">const LD2410Types::DetectionData &amp; getDetectionDataRef() const</div><div class="ttdoc">Access the current detection data without making a copy.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8h_source.html#l00507">LD2410Async.h:507</a></div></div>
 <div class="ttc" id="astructLD2410Types_1_1DetectionData_html_a05545713d5314398cf8c87ac50bbf4ca"><div class="ttname"><a href="structLD2410Types_1_1DetectionData.html#a05545713d5314398cf8c87ac50bbf4ca">LD2410Types::DetectionData::print</a></div><div class="ttdeci">void print() const</div><div class="ttdoc">Debug helper: print detection data contents to Serial.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00280">LD2410Types.h:280</a></div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md39"></a>
+</div><!-- fragment --><p><b>Commands used in this example:</b> <br  />
+</p><ul>
+<li><a class="el" href="classLD2410Async.html#a1358f6f0b8d55a676b5b8147906c9024">LD2410Async::begin()</a> <br  />
+</li>
+<li><a class="el" href="classLD2410Async.html#ad45ae5bd8cbdfe48634f7ff158867dff">LD2410Async::onDetectionDataReceived()</a> <br  />
+</li>
+<li><a class="el" href="classLD2410Async.html#ade2ef7c106c38e11fd450e75a6494090">LD2410Async::getDetectionDataRef()</a></li>
+</ul>
+<h2><a class="anchor" id="autotoc_md77"></a>
 Examples</h2>
-<h3><a class="anchor" id="autotoc_md40"></a>
+<h3><a class="anchor" id="autotoc_md78"></a>
 Example: Using callback for presence detection updates</h3>
-<div class="fragment"><div class="line">@ref <a class="code hl_function" href="classLD2410Async.html#aa6cd71f36a502143cbbc563c4a763346">LD2410Async::registerDetectionDataReceivedCallback</a> <span class="stringliteral">&quot;radar.registerDetectionDataReceivedCallback&quot;</span>([](<a class="code hl_class" href="classLD2410Async.html">LD2410Async</a>* sender, <span class="keywordtype">bool</span> presenceDetetced, <span class="keywordtype">byte</span> userData) {</div>
-<div class="line">  @ref <a class="code hl_function" href="classLD2410Async.html#ade2ef7c106c38e11fd450e75a6494090">LD2410Async::getDetectionDataRef</a> <span class="stringliteral">&quot;sender-&gt;getDetectionDataRef()&quot;</span>.<a class="code hl_function" href="structLD2410Types_1_1DetectionData.html#a05545713d5314398cf8c87ac50bbf4ca">print</a>();  <span class="comment">// direct access, no copy</span></div>
+<div class="fragment"><div class="line"><a class="code hl_variable" href="basicPresenceDetection_8ino.html#a668d1ce20a8d66eeb5ab88238e59c2d4">radar</a>.<a class="code hl_function" href="classLD2410Async.html#ad45ae5bd8cbdfe48634f7ff158867dff">onDetectionDataReceived</a>([](<a class="code hl_class" href="classLD2410Async.html">LD2410Async</a>* sender, <span class="keywordtype">bool</span> presenceDetetced, <span class="keywordtype">byte</span> userData) {</div>
+<div class="line">  sender-&gt;<a class="code hl_function" href="classLD2410Async.html#ade2ef7c106c38e11fd450e75a6494090">getDetectionDataRef</a>().<a class="code hl_function" href="structLD2410Types_1_1DetectionData.html#a05545713d5314398cf8c87ac50bbf4ca">print</a>();  <span class="comment">// direct access, no copy</span></div>
 <div class="line">});</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md41"></a>
-Example: Access detection data without cloning</h3>
-<div class="fragment"><div class="line"><span class="keyword">const</span> DetectionData&amp; data = @ref <a class="code hl_function" href="classLD2410Async.html#ade2ef7c106c38e11fd450e75a6494090">LD2410Async::getDetectionDataRef</a> <span class="stringliteral">&quot;radar.getDetectionDataRef()&quot;</span>;  <span class="comment">// no copy</span></div>
-<div class="line">Serial.<a class="code hl_function" href="structLD2410Types_1_1DetectionData.html#a05545713d5314398cf8c87ac50bbf4ca">print</a>(<span class="stringliteral">&quot;Target state: &quot;</span>);</div>
-<div class="line">Serial.println(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(data.targetState));</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md42"></a>
+</div><!-- fragment --><p><b>Commands used in this example:</b> <br  />
+</p><ul>
+<li><a class="el" href="classLD2410Async.html#ad45ae5bd8cbdfe48634f7ff158867dff">LD2410Async::onDetectionDataReceived()</a> <br  />
+</li>
+<li><a class="el" href="classLD2410Async.html#ade2ef7c106c38e11fd450e75a6494090">LD2410Async::getDetectionDataRef()</a></li>
+</ul>
+<h3><a class="anchor" id="autotoc_md79"></a>
 Example: Clone config data, modify, and write back</h3>
-<div class="fragment"><div class="line">ConfigData cfg = @ref <a class="code hl_function" href="classLD2410Async.html#a54388c929cea610f92891def29db66a5">LD2410Async::getConfigData</a> <span class="stringliteral">&quot;radar.getConfigData()&quot;</span>;  <span class="comment">// clone</span></div>
+<div class="fragment"><div class="line">ConfigData cfg = <a class="code hl_variable" href="basicPresenceDetection_8ino.html#a668d1ce20a8d66eeb5ab88238e59c2d4">radar</a>.<a class="code hl_function" href="classLD2410Async.html#a54388c929cea610f92891def29db66a5">getConfigData</a>();  <span class="comment">// clone</span></div>
 <div class="line">cfg.<a class="code hl_variable" href="structLD2410Types_1_1ConfigData.html#aed0b489a9e500b199397a9db7103e3bf">noOneTimeout</a> = 60;</div>
-<div class="line">@ref <a class="code hl_function" href="classLD2410Async.html#a2b715cdadb6672d869fd4b5bcbe3a06d">LD2410Async::configureAllConfigSettingsAsync</a> <span class="stringliteral">&quot;radar.configureAllConfigSettingsAsync&quot;</span>(cfg, <span class="keyword">false</span>, [](<a class="code hl_class" href="classLD2410Async.html">LD2410Async</a>* sender,</div>
-<div class="line">                                 AsyncCommandResult result,</div>
-<div class="line">                                 byte) {</div>
+<div class="line"><a class="code hl_variable" href="basicPresenceDetection_8ino.html#a668d1ce20a8d66eeb5ab88238e59c2d4">radar</a>.<a class="code hl_function" href="classLD2410Async.html#a2b715cdadb6672d869fd4b5bcbe3a06d">configureAllConfigSettingsAsync</a>(cfg, <span class="keyword">false</span>, [](<a class="code hl_class" href="classLD2410Async.html">LD2410Async</a>* sender, AsyncCommandResult result, <span class="keywordtype">byte</span>) {</div>
 <div class="line">  <span class="keywordflow">if</span> (result == AsyncCommandResult::SUCCESS) {</div>
 <div class="line">    Serial.println(<span class="stringliteral">&quot;Config updated successfully!&quot;</span>);</div>
 <div class="line">  }</div>
@@ -173,7 +214,13 @@ Example: Clone config data, modify, and write back</h3>
 <div class="ttc" id="aclassLD2410Async_html_a2b715cdadb6672d869fd4b5bcbe3a06d"><div class="ttname"><a href="classLD2410Async.html#a2b715cdadb6672d869fd4b5bcbe3a06d">LD2410Async::configureAllConfigSettingsAsync</a></div><div class="ttdeci">bool configureAllConfigSettingsAsync(const LD2410Types::ConfigData &amp;configToWrite, bool writeAllConfigData, AsyncCommandCallback callback)</div><div class="ttdoc">Applies a full ConfigData struct to the LD2410.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l01417">LD2410Async.cpp:1417</a></div></div>
 <div class="ttc" id="aclassLD2410Async_html_a54388c929cea610f92891def29db66a5"><div class="ttname"><a href="classLD2410Async.html#a54388c929cea610f92891def29db66a5">LD2410Async::getConfigData</a></div><div class="ttdeci">LD2410Types::ConfigData getConfigData() const</div><div class="ttdoc">Returns a clone of the current configuration data of the radar.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Async_8cpp_source.html#l01565">LD2410Async.cpp:1565</a></div></div>
 <div class="ttc" id="astructLD2410Types_1_1ConfigData_html_aed0b489a9e500b199397a9db7103e3bf"><div class="ttname"><a href="structLD2410Types_1_1ConfigData.html#aed0b489a9e500b199397a9db7103e3bf">LD2410Types::ConfigData::noOneTimeout</a></div><div class="ttdeci">unsigned short noOneTimeout</div><div class="ttdoc">Timeout (seconds) until &quot;no presence&quot; is declared.</div><div class="ttdef"><b>Definition</b> <a href="LD2410Types_8h_source.html#l00368">LD2410Types.h:368</a></div></div>
-</div><!-- fragment --> </div></div><!-- PageDoc -->
+</div><!-- fragment --><p><b>Commands used in this example:</b> <br  />
+</p><ul>
+<li><a class="el" href="classLD2410Async.html#a54388c929cea610f92891def29db66a5">LD2410Async::getConfigData()</a> <br  />
+</li>
+<li><a class="el" href="classLD2410Async.html#a2b715cdadb6672d869fd4b5bcbe3a06d">LD2410Async::configureAllConfigSettingsAsync()</a> </li>
+</ul>
+</div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
 </div><!-- contents -->
 </div><!-- doc-content -->

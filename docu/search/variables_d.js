@@ -16,5 +16,6 @@ var searchData=
   ['requestparamscommand_13',['requestParamsCommand',['../namespaceLD2410Defs.html#a8c586edf6788f08c149e463550270b5b',1,'LD2410Defs']]],
   ['requestparamscommanddata_14',['requestParamsCommandData',['../namespaceLD2410Defs.html#afe9215eabc5e65cf56fcf9c89bc61c01',1,'LD2410Defs']]],
   ['restorefactorsettingscommanddata_15',['restoreFactorSettingsCommandData',['../namespaceLD2410Defs.html#a34d4a3f25195725e3d3ffbb1ed23ae8b',1,'LD2410Defs']]],
-  ['restorefactorysettingsasynccommand_16',['restoreFactorySettingsAsyncCommand',['../namespaceLD2410Defs.html#a84d36b455dbae471e689a52fc92aeb75',1,'LD2410Defs']]]
+  ['restorefactorysettingsasynccommand_16',['restoreFactorySettingsAsyncCommand',['../namespaceLD2410Defs.html#a84d36b455dbae471e689a52fc92aeb75',1,'LD2410Defs']]],
+  ['retryticker_17',['retryTicker',['../tortureTest_8ino.html#a3acc790a41fe0f1407b2f76b2e1d9594',1,'tortureTest.ino']]]
 ];

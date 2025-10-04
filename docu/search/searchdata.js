@@ -10,7 +10,7 @@ var indexSectionsWithContent =
   7: "abdlort",
   8: "abcdfilmnrst",
   9: "dlruw",
-  10: "abcdeghilmnopst"
+  10: "abcdeghimnopst"
 };
 
 var indexSectionNames =

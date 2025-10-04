@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ld2410async_0',['LD2410Async',['../index.html',1,'']]]
+  ['modes_0',['Operation Modes',['../Operation_Modes.html',1,'index']]]
 ];

@@ -44,7 +44,7 @@ var searchData=
   ['example_3a_20retrieve_20firmware_20and_20mac_41',['Example: Retrieve firmware and MAC',['../classLD2410Async.html#autotoc_md29',1,'']]],
   ['example_3a_20run_20auto_20config_42',['Example: Run auto-config',['../classLD2410Async.html#autotoc_md20',1,'']]],
   ['example_3a_20using_20callback_20for_20presence_20detection_20updates_43',['Example: Using callback for presence detection updates',['../index.html#main_examples_presenceDetect',1,'']]],
-  ['examples_44',['Examples',['../Examples.html',1,'Examples'],['../classLD2410Async.html#autotoc_md0',1,'Examples'],['../classLD2410Async.html#autotoc_md4',1,'Examples'],['../index.html#main_examples',1,'Examples'],['../Examples.html#Examples_Usage',1,'Usage Examples **']]],
+  ['examples_44',['Examples',['../Examples.html',1,'Examples'],['../classLD2410Async.html#autotoc_md0',1,'Examples'],['../classLD2410Async.html#autotoc_md4',1,'Examples'],['../index.html#main_examples',1,'Examples'],['../Examples.html#Examples_Usage',1,'Usage Examples']]],
   ['examples_2emd_45',['Examples.md',['../Examples_8md.html',1,'']]],
   ['extracommandcallback_46',['extraCommandCallback',['../enableConfigModeTest_8ino.html#ad33f3324f062b53080018f81a9aa263a',1,'enableConfigModeTest.ino']]]
 ];

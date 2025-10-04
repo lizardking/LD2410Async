@@ -1,10 +1,10 @@
-﻿#pragma once
+#pragma once
 
 
 #include <Arduino.h>
 
 /**
- * @ brief All enums, structs, and type helpers for LD2410Async
+ * @brief All enums, structs, and type helpers for LD2410Async.
  */
 namespace LD2410Types {
 	/**
@@ -91,10 +91,10 @@ namespace LD2410Types {
 	 *
 	 */
 	enum class LightControl {
-		NOT_SET = -1,          ///< Placeholder resp. inital value. Do not use as a config value (will result in abortion of the config command).
+                NOT_SET = -1,          ///< Placeholder for the initial value. Do not use as a config value (it will cause the configuration command to abort).
 		NO_LIGHT_CONTROL = 0,  ///< Output is not influenced by light levels.
 		LIGHT_BELOW_THRESHOLD = 1, ///< Condition: light < threshold.
-		LIGHT_ABOVE_THRESHOLD = 2  ///< Condition: light ≥ threshold.
+                LIGHT_ABOVE_THRESHOLD = 2  ///< Condition: light >= threshold.
 	};
 	/**
 	 * @brief Safely converts a numeric value to a LightControl enum.
@@ -126,7 +126,7 @@ namespace LD2410Types {
 	 *
 	 */
 	enum class OutputControl {
-		NOT_SET = -1,                ///< Placeholder resp. inital value. Do not use as a config value (will result in abortion of the config command).
+                NOT_SET = -1,                ///< Placeholder for the initial value. Do not use as a config value (it will cause the configuration command to abort).
 		DEFAULT_LOW_DETECTED_HIGH = 0, ///< Default low, goes HIGH when detection occurs.
 		DEFAULT_HIGH_DETECTED_LOW = 1  ///< Default high, goes LOW when detection occurs.
 	};
@@ -185,11 +185,11 @@ namespace LD2410Types {
 
 
 	/**
-	 * @brief Supported baud rates for the sensor’s UART interface.
+         * @brief Supported baud rates for the sensor's UART interface.
 	 *
 	 * These values correspond to the configuration commands accepted
 	 * by the LD2410. After changing the baud rate, a sensor reboot
-	 * is required, and the ESP32’s UART must be reconfigured to match.
+         * is required, and the ESP32's UART must be reconfigured to match.
 	 *
 	 */
 	enum class Baudrate {
@@ -207,16 +207,16 @@ namespace LD2410Types {
 	 * @brief Distance resolution per gate for detection.
 	 *
 	 * The resolution defines how fine-grained the distance measurement is:
-	 *   - RESOLUTION_75CM: Coarser, maximum range up to ~6 m, each gate ≈ 0.75 m wide.
-	 *   - RESOLUTION_20CM: Finer, maximum range up to ~1.8 m, each gate ≈ 0.20 m wide.
+         *   - RESOLUTION_75CM: Coarser, maximum range up to about 6 m, each gate approximately 0.75 m wide.
+         *   - RESOLUTION_20CM: Finer, maximum range up to about 1.8 m, each gate approximately 0.20 m wide.
 	 *
 	 * Use NOT_SET only as a placeholder; it is not a valid configuration value.
 	 *
 	 */
 	enum class DistanceResolution {
-		NOT_SET = -1,          ///< Placeholder resp. inital value. Do not use as a config value (will result in abortion of the config command).
-		RESOLUTION_75CM = 0,   ///< Each gate ~0.75 m, max range ~6 m.
-		RESOLUTION_20CM = 1    ///< Each gate ~0.20 m, max range ~1.8 m.
+                NOT_SET = -1,          ///< Placeholder for the initial value. Do not use as a config value (it will cause the configuration command to abort).
+                RESOLUTION_75CM = 0,   ///< Each gate is about 0.75 m, max range about 6 m.
+                RESOLUTION_20CM = 1    ///< Each gate is about 0.20 m, max range about 1.8 m.
 	};
 	/**
 	 * @brief Safely converts a numeric value to a DistanceResolution enum.
@@ -341,7 +341,7 @@ namespace LD2410Types {
 	};
 
 	/**
-	 * @brief Stores the sensor’s configuration parameters.
+         * @brief Stores the sensor's configuration parameters.
 	 *
 	 * This structure represents both static capabilities
 	 * (e.g. number of gates) and configurable settings
@@ -354,7 +354,7 @@ namespace LD2410Types {
 	 */
 	struct ConfigData {
 		// === Radar capabilities ===
-		byte numberOfGates = 0; ///< Number of distance gates (2-8). This member is readonly resp. changing its value will not influence the radar setting when configureAllConfigSettingsAsync() is called. It is not 100% clear what this value stands for, but it seems to indicate the number of gates on the sensor.
+                byte numberOfGates = 0; ///< Number of distance gates (2-8). This member is read-only; changing its value will not influence the radar setting when configureAllConfigSettingsAsync() is called. It is not entirely clear what this value represents, but it seems to indicate the number of gates on the sensor.
 
 		// === Max distance gate settings ===
 		byte maxMotionDistanceGate = 0; ///< Furthest gate used for motion detection.
@@ -368,7 +368,7 @@ namespace LD2410Types {
 		unsigned short noOneTimeout = 0; ///< Timeout (seconds) until "no presence" is declared.
 
 		// === Distance resolution ===
-		DistanceResolution distanceResolution = DistanceResolution::NOT_SET; ///< Current distance resolution. A reboot is required to activate changed setting after calling configureAllConfigSettingsAsync() is called.
+                DistanceResolution distanceResolution = DistanceResolution::NOT_SET; ///< Current distance resolution. A reboot is required to activate changes after configureAllConfigSettingsAsync() is called.
 
 		// === Auxiliary controls ===
 		byte lightThreshold = 0; ///< Threshold for auxiliary light control (0-255).
@@ -506,7 +506,7 @@ namespace LD2410Types {
 		char firmwareText[16] = { 0 };
 
 		/**
-		* @brief MAC address of the radar’s Bluetooth module (if available).
+                * @brief MAC address of the radar's Bluetooth module (if available).
 		*
 		* Populated by requestBluetoothMacAddressAsync().
 		*

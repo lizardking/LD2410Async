@@ -12,7 +12,7 @@
 ******************************************************************************************/
 
 /**
-* @brief Checks whther the last 4 bytes of a buffer match the value supplied in pattern
+* @brief Checks whether the last 4 bytes of a buffer match the value supplied in pattern
 */
 bool bufferEndsWith(const byte* buffer, int iMax, const byte* pattern)
 {
@@ -45,40 +45,33 @@ bool LD2410Async::readFramePayloadSize(byte b, ReadFrameState nextReadFrameState
 	receiveBuffer[receiveBufferIndex++] = b;
 	if (receiveBufferIndex >= 2) {
 		payloadSize = receiveBuffer[0] | (receiveBuffer[1] << 8);
-		if (payloadSize <= 0 || payloadSize > sizeof(receiveBuffer) - 4) {
-			//Invalid payload size, wait for header.
+                if (payloadSize <= 0 || payloadSize > sizeof(receiveBuffer) - 4) {
+                        // Invalid payload size, wait for header.
+                        DEBUG_PRINT("Invalid payload size read: ");
+                        DEBUG_PRINTLN(payloadSize);
 
-			DEBUG_PRINT("Invalid payload size read: ");
-			DEBUG_PRINTLN(payloadSize);
-
-			readFrameState = ReadFrameState::WAITING_FOR_HEADER;
-		}
-		else {
-
-
-
-
-			receiveBufferIndex = 0;
-			readFrameState = nextReadFrameState;
-		}
+                        readFrameState = ReadFrameState::WAITING_FOR_HEADER;
+                }
+                else {
+                        receiveBufferIndex = 0;
+                        readFrameState = nextReadFrameState;
+                }
 		return true;
 	}
 	return false;
 }
 
-LD2410Async::FrameReadResponse LD2410Async::readFramePayload(byte b, const byte* tailPattern, LD2410Async::FrameReadResponse succesResponseType) {
+LD2410Async::FrameReadResponse LD2410Async::readFramePayload(byte b, const byte* tailPattern, LD2410Async::FrameReadResponse successResponseType) {
 	receiveBuffer[receiveBufferIndex++] = b;
 
-	//Add 4 for the tail bytes
+        // Add 4 for the tail bytes
 	if (receiveBufferIndex >= payloadSize + 4) {
 
 		readFrameState = ReadFrameState::WAITING_FOR_HEADER;
 
-		if (bufferEndsWith(receiveBuffer, receiveBufferIndex, tailPattern)) {
-
-
-			return succesResponseType;
-		}
+                if (bufferEndsWith(receiveBuffer, receiveBufferIndex, tailPattern)) {
+                        return successResponseType;
+                }
 		else {
 			DEBUG_PRINTLN(" Invalid frame end: ");
 			DEBUG_PRINTBUF(receiveBuffer, receiveBufferIndex);
@@ -292,7 +285,7 @@ bool LD2410Async::processAck()
 		DEBUG_PRINTLN("ACK for bluetoothSettingsCommand received");
 		break;
 	case LD2410Defs::getBluetoothPermissionsCommand:
-		//This command is only relevant for bluetooth connection, but the sensor might send an ack for it at some point.
+		// This command is only relevant for a Bluetooth connection, but the sensor might send an ACK for it at some point.
 		DEBUG_PRINT_MILLIS;
 		DEBUG_PRINTLN("ACK for getBluetoothPermissionsCommand received");
 		break;
@@ -363,7 +356,8 @@ bool LD2410Async::processAck()
 		configData.numberOfGates = receiveBuffer[5];
 		configData.maxMotionDistanceGate = receiveBuffer[6];
 		configData.maxStationaryDistanceGate = receiveBuffer[7];
-		for (byte i = 0; i <= configData.numberOfGates; i++)			//Need to check if we should really do this or whther it just using a fixed number would be better
+		// Need to check if we should really do this or whether using a fixed number would be better.
+		for (byte i = 0; i <= configData.numberOfGates; i++)
 			configData.distanceGateMotionSensitivity[i] = receiveBuffer[8 + i];
 		for (byte i = 0; i <= configData.numberOfGates; i++)
 			configData.distanceGateStationarySensitivity[i] = receiveBuffer[17 + i];
@@ -404,7 +398,7 @@ bool LD2410Async::processData()
 		configModeEnabled = false;
 
 		detectionData.timestamp = millis();
-		//Basic data
+		// Basic data
 		detectionData.targetState = LD2410Types::toTargetState(receiveBuffer[2] & 7);
 		switch (detectionData.targetState) {
 		case LD2410Types::TargetState::MOVING_TARGET:
@@ -511,7 +505,7 @@ void LD2410Async::sendCommandAsyncExecuteCallback(byte commandCode, LD2410Async:
 		DEBUG_PRINT("Async command duration ms: ");
 		DEBUG_PRINTLN(millis() - sendCommandAsyncStartMs);
 
-		//Just to be sure that no other task changes the callback data or registers a callback before the callback has been executed
+		// Just to be sure that no other task changes the callback data or registers a callback before the callback has been executed
 		vTaskSuspendAll();
 		AsyncCommandCallback cb = sendCommandAsyncCallback;
 		sendCommandAsyncCallback = nullptr;
@@ -530,11 +524,11 @@ void LD2410Async::sendCommandAsyncExecuteCallback(byte commandCode, LD2410Async:
 
 
 void LD2410Async::asyncCancel() {
-	//Will also trigger the callback on command sequences
+	// Will also trigger the callback on command sequences
 	sendCommandAsyncExecuteCallback(sendCommandAsyncCommandCode, LD2410Async::AsyncCommandResult::CANCELED);
 
-	//Just in case reboot is still waiting 
-	//since there might not be an active command or command sequence while we wait for normal operation.
+	// Just in case reboot is still waiting
+	// since there might not be an active command or command sequence while we wait for normal operation.
 	rebootAsyncFinialize(LD2410Async::AsyncCommandResult::CANCELED);
 }
 
@@ -572,7 +566,7 @@ void LD2410Async::sendCommandAsyncStoreDataForCallback(const byte* command, byte
 	sendCommandAsyncCallback = callback;
 	sendCommandAsyncCommandCode = command[2];
 	sendCommandAsyncRetriesLeft = retries;
-	if (retries > 0) {	//No need to copy the data if we are not going to retry anyway
+	if (retries > 0) {	// No need to copy the data if we are not going to retry anyway
 		memcpy(sendCommandAsyncCommandBuffer, command, command[0] + 2);
 	}
 }
@@ -581,11 +575,11 @@ bool LD2410Async::sendCommandAsync(const byte* command, byte retries, AsyncComma
 {
 	vTaskSuspendAll();
 
-	//Dont check with asyncIsBusy() since this would also check if a sequence or setConfigDataASync is active
+	// Don't check with asyncIsBusy() since this would also check if a sequence or setConfigDataAsync is active
 	if (!sendCommandAsyncCommandPending) {
 
 
-		//Register data for callback
+		// Register data for callback
 		sendCommandAsyncStoreDataForCallback(command, retries, callback);
 		xTaskResumeAll();
 
@@ -623,7 +617,7 @@ bool LD2410Async::asyncIsBusy() {
 
 
 bool LD2410Async::sendConfigCommandAsync(const byte* command, AsyncCommandCallback callback) {
-	//Dont check with asyncIsBusy() since this would also check if a sequence or setConfigDataASync is active
+	// Don't check with asyncIsBusy() since this would also check if a sequence or setConfigDataAsync is active
 	if (sendCommandAsyncCommandPending || executeCommandSequencePending) return false;
 
 	// Reset sequence buffer
@@ -728,7 +722,7 @@ bool LD2410Async::executeCommandSequenceAsync(AsyncCommandCallback callback) {
 	executeCommandSequenceStartMs = millis();
 
 	if (commandSequenceBufferCount == 0) {
-		//Wait 1 ms to ensure that the callback is not executed before the caller of this method has finished its work
+		// Wait 1 ms to ensure that the callback is not executed before the caller of this method has finished its work
 		executeCommandSequenceOnceTicker.once_ms(1, [this]() {
 			this->executeCommandSequenceAsyncExecuteCallback(LD2410Async::AsyncCommandResult::SUCCESS);
 			});
@@ -740,11 +734,11 @@ bool LD2410Async::executeCommandSequenceAsync(AsyncCommandCallback callback) {
 		// Need to enable config mode first
 		// So set the sequence index to -1 to ensure the first command in the sequence (at index 0) is executed when the callback fires.
 		executeCommandSequenceIndex = -1;
-		return sendCommandAsync(LD2410Defs::configEnableCommandData, 1, executeCommandSequenceAsyncCommandCallback); //Retry once since this command will sometimes not work resp. not send an ack.
+		return sendCommandAsync(LD2410Defs::configEnableCommandData, 1, executeCommandSequenceAsyncCommandCallback); // Retry once because this command sometimes fails or may not send an ACK.
 	}
 	else {
-		// Already in config mode, start directly. 
-		// We start the first command in the sequence directly and set the sequence index 0, so the second command (if any) is executed when the callback fires. 
+		// Already in config mode, start directly.
+		// We start the first command in the sequence directly and set the sequence index 0, so the second command (if any) is executed when the callback fires.
 		executeCommandSequenceIndex = 0;
 		return sendCommandAsync(commandSequenceBuffer[executeCommandSequenceIndex], executeCommandSequenceAsyncCommandCallback);
 	}
@@ -794,7 +788,7 @@ bool LD2410Async::resetCommandSequence() {
 /**********************************************************************************
 * Config mode commands
 ***********************************************************************************/
-//Config mode command have a internal version which does not check for busy and can therefore be used within other command implementations
+// Config mode commands have an internal version which does not check for busy and can therefore be used within other command implementations.
 
 
 
@@ -805,7 +799,7 @@ bool LD2410Async::enableConfigModeInternalAsync(bool force, AsyncCommandCallback
 
 	if (!configModeEnabled || force) {
 		// Need to send the enable command
-		return sendCommandAsync(LD2410Defs::configEnableCommandData, 1, callback); //We do 1 retry if necessary, since this command does sometimes not work/resp not send a ack
+		return sendCommandAsync(LD2410Defs::configEnableCommandData, 1, callback); // We retry once if necessary because this command sometimes fails or might not send an ACK.
 	}
 	else {
 		// Already in config mode -> just trigger the callback after a tiny delay
@@ -830,7 +824,8 @@ bool LD2410Async::disableConfigModeInternalAsync(bool force, AsyncCommandCallbac
 		return sendCommandAsync(LD2410Defs::configDisableCommandData, callback);
 	}
 	else {
-		//If config mode doesnt have to be disabled, the callback gets triggered after a minimal delay (to ensure the disableConfigMode method can complete before the callback fires.
+		// If config mode doesn't have to be disabled, the callback gets triggered after a minimal delay
+		// to ensure the disableConfigMode method can complete before the callback fires.
 		sendCommandAsyncStoreDataForCallback(LD2410Defs::configDisableCommandData, 0, callback);
 		configModeOnceTicker.once_ms(1, [this]() {
 			sendCommandAsyncExecuteCallback(LD2410Defs::configDisableCommand, LD2410Async::AsyncCommandResult::SUCCESS);
@@ -848,8 +843,8 @@ bool LD2410Async::disableConfigModeAsync(bool force, AsyncCommandCallback callba
 * Native LD2410 commands to control, configure and query the sensor
 ***********************************************************************************/
 // All these commands need to be executed in config mode.
-// The code takes care of that. Enables/disable config mode if necessary, 
-// but also keeps config mode active if it was already active before the command
+// The code takes care of that: enabling or disabling config mode if necessary,
+// while keeping config mode active if it was already active before the command.
 bool LD2410Async::configureMaxGateAndNoOneTimeoutAsync(byte maxMovingGate, byte maxStationaryGate,
 	unsigned short noOneTimeout,
 	AsyncCommandCallback callback)
@@ -1146,7 +1141,7 @@ bool LD2410Async::requestAllConfigSettingsAsync(AsyncCommandCallback callback) {
 // - Set config data async methods
 // ----------------------------------------------------------------------------------
 // The command to set all config values on the sensor is the most complex command internally.
-// It uses a first command sequences to get the current sensor config, then checks what 
+// It uses a first command sequences to get the current sensor config, then checks what
 // actually needs to be changed and then creates a second command sequence to do the needed changes.
 
 void LD2410Async::configureAllConfigSettingsAsyncExecuteCallback(LD2410Async::AsyncCommandResult result) {
@@ -1207,13 +1202,13 @@ void LD2410Async::configureAllConfigSettingsAsyncWriteConfigCallback(LD2410Async
 		DEBUG_PRINT_MILLIS;
 		DEBUG_PRINTLN("Error: Writing config data to sensor failed.");
 	};
-	//Pass result to finalize method, which will also disable config mode if needed
+	// Pass result to finalize method, which will also disable config mode if needed
 	sender->configureAllConfigSettingsAsyncFinalize(result);
 }
 
 
 bool LD2410Async::configureAllConfigSettingsAsyncBuildSaveChangesCommandSequence() {
-	//Get a clone of the current config, so it does not get changed while we are working
+	// Get a clone of the current config, so it does not get changed while we are working
 	LD2410Types::ConfigData currentConfig = LD2410Async::getConfigData();
 
 	if (!resetCommandSequence()) {
@@ -1319,7 +1314,7 @@ bool LD2410Async::configureAllConfigSettingsAsyncBuildSaveChangesCommandSequence
 bool LD2410Async::configureAllConfigSettingsAsyncWriteConfig() {
 
 	if (!configureAllConfigSettingsAsyncBuildSaveChangesCommandSequence()) {
-		//Could not build command sequence
+		// Could not build command sequence
 		DEBUG_PRINT_MILLIS;
 		DEBUG_PRINTLN("Could not build the command sequence to save the config data");
 		return false;
@@ -1327,7 +1322,7 @@ bool LD2410Async::configureAllConfigSettingsAsyncWriteConfig() {
 
 	if (commandSequenceBufferCount == 0) {
 		DEBUG_PRINT_MILLIS
-			DEBUG_PRINTLN("No config changes detected, not need to write anything");
+			DEBUG_PRINTLN("No config changes detected, no need to write anything");
 	}
 
 	if (!executeCommandSequenceAsync(configureAllConfigSettingsAsyncWriteConfigCallback)) {
@@ -1348,13 +1343,13 @@ void LD2410Async::configureAllConfigSettingsAsyncRequestAllConfigDataCallback(LD
 		sender->configureAllConfigSettingsAsyncFinalize(result);
 		return;
 	}
-	//Got current config data, now write the changed values
+	// Received current config data, now write the changed values
 	DEBUG_PRINT_MILLIS;
 	DEBUG_PRINTLN("Current config data received.");
 
 	if (!sender->configureAllConfigSettingsAsyncWriteConfig()) {
 		DEBUG_PRINT_MILLIS;
-		DEBUG_PRINTLN("Error: Starting saving config data changes failed.");
+		DEBUG_PRINTLN("Error: Starting to save config data changes failed.");
 		sender->configureAllConfigSettingsAsyncFinalize(AsyncCommandResult::FAILED);
 	}
 }
@@ -1388,13 +1383,13 @@ void LD2410Async::configureAllConfigSettingsAsyncConfigModeEnabledCallback(LD241
 		return;
 	};
 
-	//Got ack of enable config mode command
+	// Received ACK for enable config mode command
 	DEBUG_PRINT_MILLIS;
 	DEBUG_PRINTLN("Config mode enabled.");
 
 	bool ret = false;
 	if (sender->configureAllConfigSettingsAsyncWriteFullConfig) {
-		//If we save all changes anyway, no need to request current config data first
+		// If we save all changes anyway, no need to request current config data first
 		DEBUG_PRINT_MILLIS;
 		DEBUG_PRINTLN("Saving all data is forced, save directly");
 		ret = sender->configureAllConfigSettingsAsyncWriteConfig();
@@ -1402,7 +1397,7 @@ void LD2410Async::configureAllConfigSettingsAsyncConfigModeEnabledCallback(LD241
 	}
 	else {
 		DEBUG_PRINT_MILLIS;
-		DEBUG_PRINTLN("Request current config data");
+		DEBUG_PRINTLN("Requesting current config data");
 		ret = sender->configureAllConfigSettingsAsyncRequestAllConfigData();
 	}
 	if (!ret) {
@@ -1442,9 +1437,9 @@ bool LD2410Async::configureAllConfigSettingsAsync(const LD2410Types::ConfigData&
 	}
 	else {
 		if (configureAllConfigSettingsAsyncWriteFullConfig) {
-			//If we save all changes anyway, no need to request current config data first
+			// If we save all changes anyway, no need to request current config data first
 			DEBUG_PRINT_MILLIS;
-			DEBUG_PRINTLN("Saving all data is force and configmode is enable -> save directly");
+			DEBUG_PRINTLN("Saving all data is forced and config mode is enabled -> save directly");
 			return configureAllConfigSettingsAsyncWriteConfig();
 		}
 		else {
@@ -1460,9 +1455,9 @@ bool LD2410Async::configureAllConfigSettingsAsync(const LD2410Types::ConfigData&
 /*--------------------------------------------------------------------
 - Reboot command
 ---------------------------------------------------------------------*/
-//The reboot command is special, since it needs to be sent in config mode,
-//but doesnt have to disable config mode, since the sensor goes into normal
-//detection mode after the reboot anyway.
+// The reboot command is special, since it needs to be sent in config mode,
+// but doesn't have to disable config mode, since the sensor goes into normal
+// detection mode after the reboot anyway.
 
 void LD2410Async::rebootAsyncFinialize(LD2410Async::AsyncCommandResult result) {
 	if (rebootAsyncPending) {
@@ -1477,16 +1472,16 @@ void LD2410Async::rebootAsyncFinialize(LD2410Async::AsyncCommandResult result) {
 void LD2410Async::rebootAsyncRebootCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result) {
 	if (result == LD2410Async::AsyncCommandResult::SUCCESS) {
 
-		//Not necesassary, since the first data frame we receive after the reboot will set these variables back, just at the right point in time and if this does not happen, 
-		// we are in trouble resp. likely stuck in config mode anyway
-		//sender->configModeEnabled = false;
-		//sender->engineeringModeEnabled = false;
+		// Not necessary, since the first data frame we receive after the reboot will set these variables back at the right point in time.
+		// If this does not happen, we are in trouble or likely stuck in config mode anyway.
+		// sender->configModeEnabled = false;
+		// sender->engineeringModeEnabled = false;
 
 		DEBUG_PRINT_MILLIS;
 		DEBUG_PRINTLN("Reboot initiated");
 		if (sender->rebootAsyncDontWaitForNormalOperationAfterReboot || sender->rebootAsyncWaitTimeoutMs == 0) {
 			DEBUG_PRINT_MILLIS;
-			DEBUG_PRINTLN("Triggering the reboot callback directly since the paras of the method want us not to wait till normal opertion resumes.");
+			DEBUG_PRINTLN("Triggering the reboot callback directly since the parameters of the method want us not to wait until normal operation resumes.");
 			sender->rebootAsyncFinialize(result);
 		}
 		else {
@@ -1497,13 +1492,13 @@ void LD2410Async::rebootAsyncRebootCallback(LD2410Async* sender, LD2410Async::As
 				DEBUG_PRINTLN(" ms for normal operation to resume.");
 				sender->executeCommandSequenceOnceTicker.once_ms(sender->rebootAsyncWaitTimeoutMs, [sender]() {
 					DEBUG_PRINT_MILLIS;
-					DEBUG_PRINTLN("Timeout period while waiting for normaler operation to resume has elapsed.");
+					DEBUG_PRINTLN("Timeout period while waiting for normal operation to resume has elapsed.");
 					sender->rebootAsyncFinialize(LD2410Async::AsyncCommandResult::TIMEOUT);
 					});
 			}
 			else {
 				DEBUG_PRINT_MILLIS;
-				DEBUG_PRINTLN("It seems that reboot has been finalized already (maybe the callback for from processData has already ben triggered)");
+				DEBUG_PRINTLN("It seems that reboot has already been finalized (maybe the callback from processData has already been triggered)");
 			}
 		}
 	}
@@ -1518,14 +1513,14 @@ void LD2410Async::rebootAsyncRebootCallback(LD2410Async* sender, LD2410Async::As
 
 void LD2410Async::rebootAsyncEnableConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result) {
 	if (result == LD2410Async::AsyncCommandResult::SUCCESS) {
-		//Got ack of enable config mode command
+		// Received ACK for enable config mode command
 		DEBUG_PRINT_MILLIS;
 		DEBUG_PRINTLN("Config mode enabled before reboot");
 		sender->sendCommandAsync(LD2410Defs::rebootCommandData, rebootAsyncRebootCallback);
 	}
 	else {
-		//Config mode command timeout or canceled
-		//Just execute the callback
+		// Config mode command timeout or canceled
+		// Just execute the callback
 		DEBUG_PRINT_MILLIS;
 		DEBUG_PRINTLN("Error! Could not enabled config mode before reboot");
 		sender->rebootAsyncFinialize(result);
@@ -1548,7 +1543,7 @@ bool LD2410Async::rebootAsync(bool dontWaitForNormalOperationAfterReboot, AsyncC
 	executeCommandSequenceStartMs = millis();
 	rebootAsyncDontWaitForNormalOperationAfterReboot = dontWaitForNormalOperationAfterReboot;
 
-	//Force config mode (just to be sure)
+	// Force config mode (just to be sure)
 	rebootAsyncPending = enableConfigModeInternalAsync(true, rebootAsyncEnableConfigModeCallback);
 
 	return rebootAsyncPending;
@@ -1569,7 +1564,7 @@ LD2410Types::ConfigData LD2410Async::getConfigData() const {
 /**********************************************************************************
 * Rest config data
 ***********************************************************************************/
-//Resets the values of configdata to their inital value
+// Resets the values of configdata to their initial value
 void LD2410Async::resetConfigData() {
 	configData = LD2410Types::ConfigData();
 }
@@ -1638,21 +1633,21 @@ void LD2410Async::handleInactivity() {
 					break;
 				case 1:
 					DEBUG_PRINT_MILLIS;
-					DEBUG_PRINTLN("Inactivity handling tries to force diable config mode");
-					//We dont care about the result resp. a callback, if the command has the desired effect, fine, otherwise will try to reboot the sensor anyway
+					DEBUG_PRINTLN("Inactivity handling tries to force disable config mode");
+					// We don't care about the result or a callback, if the command has the desired effect, fine; otherwise we will try to reboot the sensor anyway
 					disableConfigModeInternalAsync(true, nullptr);
 					break;
 				case 3:
 					DEBUG_PRINT_MILLIS;
 					DEBUG_PRINTLN("Inactivity handling reboots the sensor");
-					//We dont care about the result, if the command has the desired effect, fine, otherwise will try to reboot the sensor anyway
+					// We don't care about the result, if the command has the desired effect, fine; otherwise we will try to reboot the sensor anyway
 					rebootAsync(true, nullptr);
 
 					break;
 				default:
 					DEBUG_PRINT_MILLIS;
 					DEBUG_PRINTLN("Inactivity handling could not revert sensor to normal operation. Reset the inactivity timeout and try again after the configured inactivity period.");
-					//Inactivity handling has tried everything it can do, so reset the inactivity handling steps and call heartbeat. This will ensure inactivity handling will get called again after the inactivity handling period
+					// Inactivity handling has tried everything it can do, so reset the inactivity handling steps and call heartbeat. This will ensure inactivity handling will get called again after the inactivity handling period
 					inactivityHandlingStep = 0;
 					heartbeat();
 					break;

@@ -59,7 +59,6 @@ Enable debug output for troubleshooting communication issues. The following defi
 @code{.cpp}
 #define LD2410ASYNC_DEBUG_LEVEL 1
 #define LD2410ASYNC_DEBUG_DATA_LEVEL 2
-#include <LD2410Async.h>
 @endcode
 
 Debug Levels:

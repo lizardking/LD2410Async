@@ -49,7 +49,10 @@ jobs:
         with:
           platforms: ${{ matrix.platforms }}
           fqbn: ${{ matrix.board.fqbn }}
-          libraries: ${{ env.LIBRARIES }}
+          libraries: |
+            - name: Async_TCP
+            - name: ESP_Async_WebServer
+            - source-path: .
           enable-deltas-report: false
           sketch-paths: |
             - examples

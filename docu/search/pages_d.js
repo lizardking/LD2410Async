@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['structures_0',['Data Structures',['../Data_Structures.html',1,'main']]]
+  ['structures_0',['Data Structures',['../Data_Structures.html',1,'index']]]
 ];

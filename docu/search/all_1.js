@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['back_0',['back',['../main.html#main_examples_modifyConfig',1,'Example: Clone config data, modify, and write back'],['../classLD2410Async.html#autotoc_md14',1,'Example: Clone, modify, and write back']]],
+  ['back_0',['back',['../index.html#autotoc_md45',1,'Example: Clone config data, modify, and write back'],['../classLD2410Async.html#autotoc_md14',1,'Example: Clone, modify, and write back']]],
   ['basic_20detection_20results_1',['Basic Detection Results',['../Data_Structures.html#Data_Structures_DetectionData_Basic',1,'']]],
   ['basicpresencedetection_2eino_2',['basicPresenceDetection.ino',['../basicPresenceDetection_8ino.html',1,'']]],
   ['basics_3',['Basics',['../Async_Commands_And_Processing.html#Async_Commands_And_Processing_Async_Commands_Basics',1,'Async Commands Basics'],['../Inactivity_Handling.html#Inactivity_Handling_Basics',1,'Basics']]],
@@ -18,7 +18,7 @@ var searchData=
   ['beginautoconfigcommand_15',['beginAutoConfigCommand',['../namespaceLD2410Defs.html#abbc9d3d8f8519f6e67d54d3d7f11b398',1,'LD2410Defs']]],
   ['beginautoconfigcommanddata_16',['beginAutoConfigCommandData',['../namespaceLD2410Defs.html#aaeb20d14777a0c2cce3d28e11a9cb200',1,'LD2410Defs']]],
   ['begintest_17',['beginTest',['../unitTest_8ino.html#a4b41aff3613fb8cbeb51359fb60af310',1,'unitTest.ino']]],
-  ['best_20practices_18',['Important Notes and Best Practices',['../BestPractices.html',1,'main']]],
+  ['best_20practices_18',['Important Notes and Best Practices',['../BestPractices.html',1,'index']]],
   ['best_20practices_20for_20async_20commands_19',['Best Practices for Async Commands',['../Async_Commands_And_Processing.html#Async_Commands_And_Processing_Async_Commands_Best_Practices',1,'']]],
   ['bluetoothmac_20',['bluetoothMac',['../structLD2410Types_1_1StaticData.html#ab4496c0bdcc6c3b1685195c5dcf49f73',1,'LD2410Types::StaticData']]],
   ['bluetoothmactext_21',['bluetoothMacText',['../structLD2410Types_1_1StaticData.html#a3ed3e5fb2b813aa176859d6889a75608',1,'LD2410Types::StaticData']]],

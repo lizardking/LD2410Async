@@ -1,4 +1,5 @@
-﻿# Inactivity Handling
+﻿@page Inactivity_Handling Inactivity Handling
+# Inactivity Handling
 
 ## Basics
 The library includes built-in logic to detect long inactivity of the sensor, i.e. long periods without any data being received.  

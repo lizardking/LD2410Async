@@ -4,7 +4,7 @@
 
 // LD2410Defs.h
 // Internal protocol constants and command templates.
-// Not part of the public API – subject to change.
+// Not part of the public API - subject to change.
 
 namespace LD2410Defs
 {

@@ -24,7 +24,7 @@ namespace LD2410CommandBuilder {
 
     inline bool buildGateSensitivityCommand(byte* out, byte gate, byte movingThreshold, byte stationaryThreshold) {
 
-        if (gate > 8 && gate != 0xFF) return false; // 0–8 allowed, or 0xFF (all gates)
+        if (gate > 8 && gate != 0xFF) return false; // 0-8 allowed, or 0xFF (all gates)
 
         memcpy(out, LD2410Defs::distanceGateSensitivityConfigCommandData,
             sizeof(LD2410Defs::distanceGateSensitivityConfigCommandData));

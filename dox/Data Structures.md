@@ -13,8 +13,8 @@ The @ref LD2410Types::DetectionData "DetectionData" struct holds the most recent
 reported by the radar. It is continuously updated as new frames arrive.  
 
 You can access it through:  
-- @ref LD2410Async::getDetectionData "getDetectionData()" – returns a copy  
-- @ref LD2410Async::getDetectionDataRef "getDetectionDataRef()" – returns a const reference (efficient, no copy)
+- @ref LD2410Async::getDetectionData "getDetectionData()" - returns a copy  
+- @ref LD2410Async::getDetectionDataRef "getDetectionDataRef()" - returns a const reference (efficient, no copy)
 
 ### Members
 
@@ -42,13 +42,13 @@ You can access it through:
   Distance in cm to the nearest moving target.  
 
 - **movingTargetSignal** (`byte`)  
-  Signal strength (0–100) of the moving target.  
+  Signal strength (0-100) of the moving target.  
 
 - **stationaryTargetDistance** (`unsigned int`)  
   Distance in cm to the nearest stationary target.  
 
 - **stationaryTargetSignal** (`byte`)  
-  Signal strength (0–100) of the stationary target.  
+  Signal strength (0-100) of the stationary target.  
 
 - **detectedDistance** (`unsigned int`)  
   General detection distance in cm.  
@@ -69,7 +69,7 @@ You can access it through:
   Per-gate signal strengths for stationary targets.  
 
 - **lightLevel** (`byte`)  
-  Reported ambient light level (0–255).  
+  Reported ambient light level (0-255).  
 
 - **outPinStatus** (`bool`)  
   Current status of the OUT pin (true = high, false = low).  
@@ -91,7 +91,7 @@ Values are filled by commands such as:
 
 #### Radar Capabilities
 - **numberOfGates** (`byte`)  
-  Number of distance gates (2–8). Read-only; changing has no effect.  
+  Number of distance gates (2-8). Read-only; changing has no effect.  
 
 #### Max Distance Gate Settings
 - **maxMotionDistanceGate** (`byte`)  
@@ -102,10 +102,10 @@ Values are filled by commands such as:
 
 #### Per-Gate Sensitivity
 - **distanceGateMotionSensitivity[9]** (`byte[9]`)  
-  Motion sensitivity values per gate (0–100).  
+  Motion sensitivity values per gate (0-100).  
 
 - **distanceGateStationarySensitivity[9]** (`byte[9]`)  
-  Stationary sensitivity values per gate (0–100).  
+  Stationary sensitivity values per gate (0-100).  
 
 #### Timeout
 - **noOneTimeout** (`unsigned short`)  
@@ -118,7 +118,7 @@ Values are filled by commands such as:
 
 #### Auxiliary Controls
 - **lightThreshold** (`byte`)  
-  Threshold for auxiliary light control (0–255).  
+  Threshold for auxiliary light control (0-255).  
 
 - **lightControl** (@ref LD2410Types::LightControl "LightControl")  
   Light-dependent auxiliary control mode.  
@@ -130,7 +130,7 @@ Values are filled by commands such as:
 
 ## Summary
 
-- **DetectionData** – continuously updated runtime measurements, including both simple presence and optional per-gate details when engineering mode is enabled.  
-- **ConfigData** – sensor configuration and capabilities, only updated when explicitly requested.  
+- **DetectionData** - continuously updated runtime measurements, including both simple presence and optional per-gate details when engineering mode is enabled.  
+- **ConfigData** - sensor configuration and capabilities, only updated when explicitly requested.  
 
 For efficiency, use the reference accessors (`getDetectionDataRef()`, `getConfigDataRef()`) whenever possible, and refresh `ConfigData` after writes to stay synchronized with the sensor.

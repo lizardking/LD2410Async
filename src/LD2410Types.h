@@ -30,7 +30,7 @@ namespace LD2410Types {
 	/**
 	 * @brief Safely converts a numeric value to a TargetState enum.
 	 *
-	 * @param value Raw numeric value (0–6 expected).
+	 * @param value Raw numeric value (0-6 expected).
 	 *              - 0 - NO_TARGET
 	 *              - 1 - MOVING_TARGET
 	 *              - 2 - STATIONARY_TARGET
@@ -99,7 +99,7 @@ namespace LD2410Types {
 	/**
 	 * @brief Safely converts a numeric value to a LightControl enum.
 	 *
-	 * @param value Raw numeric value (0–2 expected).
+	 * @param value Raw numeric value (0-2 expected).
 	 *              - 0 - NO_LIGHT_CONTROL
 	 *              - 1 - LIGHT_BELOW_THRESHOLD
 	 *              - 2 - LIGHT_ABOVE_THRESHOLD
@@ -134,7 +134,7 @@ namespace LD2410Types {
 	/**
 	 * @brief Safely converts a numeric value to an OutputControl enum.
 	 *
-	 * @param value Raw numeric value (0–1 expected).
+	 * @param value Raw numeric value (0-1 expected).
 	 *              - 0 - DEFAULT_LOW_DETECTED_HIGH
 	 *              - 1 - DEFAULT_HIGH_DETECTED_LOW
 	 * @returns The matching OutputControl value, or NOT_SET if invalid.
@@ -167,7 +167,7 @@ namespace LD2410Types {
 	/**
 	 * @brief Safely converts a numeric value to an AutoConfigStatus enum.
 	 *
-	 * @param value Raw numeric value (0–2 expected).
+	 * @param value Raw numeric value (0-2 expected).
 	 *              - 0 - NOT_IN_PROGRESS
 	 *              - 1 - IN_PROGRESS
 	 *              - 2 - COMPLETED
@@ -258,9 +258,9 @@ namespace LD2410Types {
 
 		TargetState targetState = TargetState::NO_TARGET; ///< Current detection state.
 		unsigned int movingTargetDistance = 0; ///< Distance (cm) to the nearest moving target.
-		byte movingTargetSignal = 0; ///< Signal strength (0–100) of the moving target.
+		byte movingTargetSignal = 0; ///< Signal strength (0-100) of the moving target.
 		unsigned int stationaryTargetDistance = 0; ///< Distance (cm) to the nearest stationary target.
-		byte stationaryTargetSignal = 0; ///< Signal strength (0–100) of the stationary target.
+		byte stationaryTargetSignal = 0; ///< Signal strength (0-100) of the stationary target.
 		unsigned int detectedDistance = 0; ///< General detection distance (cm).
 
 		// === Engineering mode data ===
@@ -270,7 +270,7 @@ namespace LD2410Types {
 		byte stationaryTargetGateSignalCount = 0; ///< Number of gates with stationary target signals.
 		byte stationaryTargetGateSignals[9] = { 0 }; ///< Per-gate signal strengths for stationary targets.
 
-		byte lightLevel = 0; ///< Reported ambient light level (0–255).
+		byte lightLevel = 0; ///< Reported ambient light level (0-255).
 		bool outPinStatus = 0; ///< Current status of the OUT pin (true = high, false = low).
 
 
@@ -354,15 +354,15 @@ namespace LD2410Types {
 	 */
 	struct ConfigData {
 		// === Radar capabilities ===
-		byte numberOfGates = 0; ///< Number of distance gates (2–8). This member is readonly resp. changing its value will not influence the radar setting when configureAllConfigSettingsAsync() is called. It is not 100% clear what this value stands for, but it seems to indicate the number of gates on the sensor.
+		byte numberOfGates = 0; ///< Number of distance gates (2-8). This member is readonly resp. changing its value will not influence the radar setting when configureAllConfigSettingsAsync() is called. It is not 100% clear what this value stands for, but it seems to indicate the number of gates on the sensor.
 
 		// === Max distance gate settings ===
 		byte maxMotionDistanceGate = 0; ///< Furthest gate used for motion detection.
 		byte maxStationaryDistanceGate = 0; ///< Furthest gate used for stationary detection.
 
 		// === Per-gate sensitivity settings ===
-		byte distanceGateMotionSensitivity[9] = { 0 }; ///< Motion sensitivity values per gate (0–100). 
-		byte distanceGateStationarySensitivity[9] = { 0 }; ///< Stationary sensitivity values per gate (0–100).
+		byte distanceGateMotionSensitivity[9] = { 0 }; ///< Motion sensitivity values per gate (0-100). 
+		byte distanceGateStationarySensitivity[9] = { 0 }; ///< Stationary sensitivity values per gate (0-100).
 
 		// === Timeout parameters ===
 		unsigned short noOneTimeout = 0; ///< Timeout (seconds) until "no presence" is declared.
@@ -371,7 +371,7 @@ namespace LD2410Types {
 		DistanceResolution distanceResolution = DistanceResolution::NOT_SET; ///< Current distance resolution. A reboot is required to activate changed setting after calling configureAllConfigSettingsAsync() is called.
 
 		// === Auxiliary controls ===
-		byte lightThreshold = 0; ///< Threshold for auxiliary light control (0–255).
+		byte lightThreshold = 0; ///< Threshold for auxiliary light control (0-255).
 		LightControl lightControl = LightControl::NOT_SET; ///< Light-dependent auxiliary control mode.
 		OutputControl outputControl = OutputControl::NOT_SET; ///< Logic configuration of the OUT pin.
 

@@ -13,7 +13,7 @@
  *    requestAllConfigSettingsAsync, requestAllStaticDataAsync,
  *    requestFirmwareAsync, or no command at all).
  *  - Calls disableConfigModeAsync().
- *  - Waits a random timespan between 1–5000 ms using the Ticker library.
+ *  - Waits a random timespan between 1-5000 ms using the Ticker library.
  *  - Repeats the sequence indefinitely.
  *
  * The sketch prints the minimum, maximum, average, and count of all
@@ -97,7 +97,7 @@ const char* resultToString(LD2410Async::AsyncCommandResult result) {
 /**
  * @brief Schedule the next test sequence.
  *
- * Waits a random time between 1–5000 ms before calling enableConfigModeAsync().
+ * Waits a random time between 1-5000 ms before calling enableConfigModeAsync().
  */
 void scheduleNextSequence() {
 	dataCount = 0;

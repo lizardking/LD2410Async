@@ -1,4 +1,4 @@
-# LD2410Async – Asynchronous ESP32 Arduino Library for the LD2410 mmWave Radar Sensor
+# LD2410Async - Asynchronous ESP32 Arduino Library for the LD2410 mmWave Radar Sensor
 
 [![Arduino Library](https://www.ardu-badge.com/badge/LD2410Async.svg)](https://www.ardu-badge.com/LD2410Async) [![LD2410Async Build](https://github.com/lizardking/LD2410Async/actions/workflows/build.yml/badge.svg)](https://github.com/lizardking/LD2410Async/actions/workflows/build.yml)! [License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
@@ -13,10 +13,10 @@ LD2410Async runs in the background using FreeRTOS tasks. This allows your main l
 
 The library has the following functionality:  
 
-- **Non-blocking operation** – sensor data is parsed in the background, no polling loops required.  
-- **Async command API** – send commands (e.g., request firmware, change settings) without blocking the main loop().
-- **Callbacks** – are executed when detection data has arrived or when commands complete. If you only care about presence detection and dont need additional data, you only have to check the `presenceDetected` flag that is sent with the DetectionDataReceivedCallback. 
-- **Full access to sensor data** – if you need more than just the basic `presenceDetected` information. All data that is sent by the sensor is available.  
+- **Non-blocking operation** - sensor data is parsed in the background, no polling loops required.  
+- **Async command API** - send commands (e.g., request firmware, change settings) without blocking the main loop().
+- **Callbacks** - are executed when detection data has arrived or when commands complete. If you only care about presence detection and dont need additional data, you only have to check the `presenceDetected` flag that is sent with the DetectionDataReceivedCallback. 
+- **Full access to sensor data** - if you need more than just the basic `presenceDetected` information. All data that is sent by the sensor is available.  
 - **All LD2410 commands** are available in the library.
  
 ---

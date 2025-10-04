@@ -807,17 +807,17 @@ public:
 	* @brief Configures the maximum detection gates and "no-one" timeout on the sensor.
 	*
 	* This command updates:
-	*   - Maximum motion detection distance gate (2–8).
-	*   - Maximum stationary detection distance gate (2–8).
-	*   - Timeout duration (0–65535 seconds) until "no presence" is declared.
+	*   - Maximum motion detection distance gate (2-8).
+	*   - Maximum stationary detection distance gate (2-8).
+	*   - Timeout duration (0-65535 seconds) until "no presence" is declared.
 	*
 	* @note Requires config mode to be enabled. The method will internally
 	*       enable/disable config mode if necessary.
 	* @note If another async command is pending, this call fails.
 	*
-	* @param maxMovingGate Furthest gate used for motion detection (2–8).
-	* @param maxStationaryGate Furthest gate used for stationary detection (2–8).
-	* @param noOneTimeout Timeout in seconds until "no one" is reported (0–65535).
+	* @param maxMovingGate Furthest gate used for motion detection (2-8).
+	* @param maxStationaryGate Furthest gate used for stationary detection (2-8).
+	* @param noOneTimeout Timeout in seconds until "no one" is reported (0-65535).
 	* @param callback Callback fired when ACK is received or on failure/timeout.
 	*
 	*
@@ -831,13 +831,13 @@ public:
 	* @brief Configures sensitivity thresholds for all gates at once.
 	*
 	* A sequence of commands will be sent, one for each gate.
-	* Threshold values are automatically clamped to 0–100.
+	* Threshold values are automatically clamped to 0-100.
 	*
 	* @note Requires config mode. Will be managed automatically.
 	* @note If another async command is pending, this call fails.
 	*
-	* @param movingThresholds Array of 9 sensitivity values for moving targets (0–100).
-	* @param stationaryThresholds Array of 9 sensitivity values for stationary targets (0–100).
+	* @param movingThresholds Array of 9 sensitivity values for moving targets (0-100).
+	* @param stationaryThresholds Array of 9 sensitivity values for stationary targets (0-100).
 	* @param callback Callback fired when all updates are acknowledged or on failure.
 	*
 	*
@@ -857,9 +857,9 @@ public:
 	* @note Requires config mode. Will be managed automatically.
 	* @note If another async command is pending, this call fails.
 	*
-	* @param gate Index of the gate (0–8). Values >8 apply to all gates.
-	* @param movingThreshold Sensitivity for moving targets (0–100).
-	* @param stationaryThreshold Sensitivity for stationary targets (0–100).
+	* @param gate Index of the gate (0-8). Values >8 apply to all gates.
+	* @param movingThreshold Sensitivity for moving targets (0-100).
+	* @param stationaryThreshold Sensitivity for stationary targets (0-100).
 	* @param callback Callback fired when ACK is received or on failure.
 	*
 	*
@@ -891,7 +891,7 @@ public:
 	* The ESP32’s Serial interface must also be reconfigured
 	* to the new baud rate after reboot.
 	*
-	* @note Valid values are 1–8. Values outside range are rejected resp. method will fail.
+	* @note Valid values are 1-8. Values outside range are rejected resp. method will fail.
 	* @note Requires config mode. Will be managed automatically.
 	* @note If another async command is pending, this call fails.
 	* @note After execution, call rebootAsync() to activate changes.
@@ -1136,7 +1136,7 @@ public:
 	* @note Fails if another async command is pending.
 	*
 	* @param lightControl Light control behavior (see LightControl enum).
-	* @param lightThreshold Threshold (0–255) used for light-based switching.
+	* @param lightThreshold Threshold (0-255) used for light-based switching.
 	* @param outputControl Output pin logic configuration (see OutputControl enum).
 	* @param callback Function pointer with signature:
 	*        void(LD2410Async* sender, AsyncCommandResult result).

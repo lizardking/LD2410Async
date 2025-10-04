@@ -14,33 +14,33 @@
  - Continuous background task that parses incoming frames and updates data.
  - Automatic inactivity handling if sensor is stuck or unreposive (tries to disable config mode or reboot).
 
-## Further Documentation
+## Documentation
 
-The following pages provide detailed explanations of the library’s components and usage patterns:
+The following pages provide detailed explanations of the libs components and usage patterns:
 
 - @subpage Installation  
-  How to install the LD2410Async library via Arduino Library Manager or manually.  
+  * How to install the LD2410Async library via Arduino Library Manager or manually.  
 
 - @subpage Async_Commands_And_Processing  
-  Covers the non-blocking design, callbacks for detection and configuration, and the full list of asynchronous commands supported by the LD2410.  
+  * Covers the non-blocking design, callbacks for detection and configuration, and the full list of asynchronous commands supported by the LD2410.  
 
 - @subpage Data_Structures  
-  Documents the core data structures: @ref LD2410Types::DetectionData "DetectionData" and @ref LD2410Types::ConfigData "ConfigData". Includes detailed descriptions of all members and their meanings.  
+  * Documents the core data structures: @ref LD2410Types::DetectionData "DetectionData" and @ref LD2410Types::ConfigData "ConfigData". Includes detailed descriptions of all members and their meanings.  
 
 - @subpage Operation_Modes  
-  Explains the sensor’s Normal, Engineering, and Configuration modes, including how to switch between them and what data each provides.  
+  * Explains the sensor’s Normal, Engineering, and Configuration modes, including how to switch between them and what data each provides.  
 
 - @subpage Inactivity_Handling  
-  Describes the library’s automatic recovery logic when the sensor becomes unresponsive, including how to configure and disable inactivity handling.  
+  * Describes the libs automatic recovery logic when the sensor becomes unresponsive, including how to configure and disable inactivity handling.  
 
-- @subpage Examples 
-  Lists all the examples in the lib.  
+- @subpage Examples
+  * Lists all the examples in the lib.  
 
 - @subpage BestPractices  
-  Important notes and best practices for using the library effectively (callback design, config handling, engineering mode, task management, and memory wear considerations).  
+  * Important notes and best practices for using the library effectively (callback design, config handling, engineering mode, task management, and memory wear considerations).  
 
 - @subpage Troubleshooting  
-  A guide to solving common issues such as no data received, callbacks not firing, async commands failing, or unexpected sensor reboots.
+  * A guide to solving common issues such as no data received, callbacks not firing, async commands failing, or unexpected sensor reboots.
 
 
 ## Main Class Reference
@@ -83,6 +83,9 @@ All interaction with the sensor is performed through the main class:
 - @ref LD2410Async::getDetectionDataRef "LD2410Async::getDetectionDataRef()"
 
  ## Examples
+
+ Details on the example sketches in the examples folder can be found at the @ref Examples "Examples page".
+
  ### Example: Using callback for presence detection updates
  @code{.cpp}
      radar.onDetectionDataReceived([](LD2410Async* sender, bool presenceDetetced, byte userData) {

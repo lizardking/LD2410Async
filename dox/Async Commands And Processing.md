@@ -1,5 +1,4 @@
 @page Async_Commands_And_Processing Async Commands & Processing
-# Async Commands & Processing
 
 ## Why asynchronous processing matters for the LD2410
 

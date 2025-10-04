@@ -1,7 +1,5 @@
 ﻿@page Troubleshooting Troubleshooting Guide
 
-# Troubleshooting Guide
-
 This page lists common issues you may encounter when using the **LD2410Async** library and provides steps to resolve them.
 
 
@@ -9,7 +7,7 @@ This page lists common issues you may encounter when using the **LD2410Async** l
 - Verify wiring: ensure the LD2410 radar is connected to the correct UART pins.  
 - Check the baud rate: the LD2410 defaults to **256000**.  
 - Make sure you called @ref LD2410Async::begin "begin()" **after** initializing the serial port.  
-- Ensure the sensor is not stuck in @ref Operation_Modes "Config Mode" – in config mode no detection data is sent.
+- Ensure the sensor is not stuck in @ref Operation_Modes "Config Mode" - in config mode no detection data is sent.
 
 
 ## Callbacks Not Firing

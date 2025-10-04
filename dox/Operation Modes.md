@@ -10,9 +10,9 @@ In normal detection mode the sensor automatically transmits new detection data, 
 The transmitted data includes:
 - Detection state  
 - Distance (cm) to the nearest moving target  
-- Signal strength (0–100) of the moving target  
+- Signal strength (0-100) of the moving target  
 - Distance (cm) to the nearest stationary target  
-- Signal strength (0–100) of the stationary target  
+- Signal strength (0-100) of the stationary target  
 - General detection distance (cm)  
 
 Detection state is the most relevant. It can have the following values:
@@ -24,7 +24,7 @@ Detection state is the most relevant. It can have the following values:
 - 5 - Auto config success  
 - 6 - Auto config failed  
 
-Unless auto config has been explicitly triggered, only the values 0–3 occur.  
+Unless auto config has been explicitly triggered, only the values 0-3 occur.  
 
 All detection data is represented in the @ref LD2410Types::DetectionData "DetectionData" struct, which also includes an `engineeringMode` flag that indicates whether engineering data fields in the struct are valid.
 
@@ -36,7 +36,7 @@ Engineering mode behaves similar to normal detection mode but provides additiona
 - Per-gate signal strengths for moving targets  
 - Number of gates with stationary target signals  
 - Per-gate signal strengths for stationary targets  
-- Reported ambient light level (0–255)  
+- Reported ambient light level (0-255)  
 - Current status of the OUT pin (true = high, false = low)  
 
 This mode allows deeper inspection of what the sensor is detecting. The extended data is also part of the @ref LD2410Types::DetectionData "DetectionData" struct and can be distinguished using its `engineeringMode` flag.  
@@ -58,7 +58,7 @@ Configuration mode is required to send configuration commands to the sensor.
 
 All commands in the @ref LD2410Async "LD2410Async" library automatically handle enabling and disabling config mode as needed.  
 
-Because entering config mode can take significant time (120–3300 ms) and may occasionally fail and then requiring retries (handled internally), it can be more efficient to explicitly control config mode when sending multiple commands in sequence. In this case:  
+Because entering config mode can take significant time (120-3300 ms) and may occasionally fail and then requiring retries (handled internally), it can be more efficient to explicitly control config mode when sending multiple commands in sequence. In this case:  
 - Enable config mode once with @ref LD2410Async::enableConfigModeAsync "enableConfigModeAsync()"  
 - Send multiple commands (make sure to wait for the callbacks between the commands).  
 - Disable config mode afterward with @ref LD2410Async::disableConfigModeAsync "disableConfigModeAsync()"  

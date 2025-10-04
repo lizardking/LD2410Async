@@ -30,12 +30,7 @@ var NAVTREE =
       [ "Features", "index.html#autotoc_md38", null ],
       [ "Documentation", "index.html#autotoc_md39", null ],
       [ "Main Class Reference", "index.html#autotoc_md40", null ],
-      [ "Typical Usage", "index.html#autotoc_md41", null ],
-      [ "Examples", "index.html#autotoc_md42", [
-        [ "Example Sketches", "index.html#autotoc_md43", null ],
-        [ "Example: Using callback for presence detection updates", "index.html#autotoc_md44", null ],
-        [ "Example: Clone config data, modify, and write back", "index.html#autotoc_md45", null ]
-      ] ],
+      [ "Examples", "index.html#autotoc_md41", null ],
       [ "Using Arduino Library Manager (recommended)", "Installation.html#Installation_LibManager", null ],
       [ "Manual installation", "Installation.html#Installation_Manual", null ]
     ] ],
@@ -78,18 +73,20 @@ var NAVTREE =
       [ "Timeout Configuration", "Inactivity_Handling.html#Inactivity_Handling_Timeout", null ]
     ] ],
     [ "Examples", "Examples.html", [
-      [ "Usage Examples", "Examples.html#Examples_Usage", null ],
+      [ "Example: Using callback for presence detection updates", "Examples.html#Examples_Callback", null ],
+      [ "Example: Clone config data, modify, and write back", "Examples.html#Examples_Modify_Config", null ],
+      [ "Usage Example Sketches", "Examples.html#Examples_Usage", null ],
       [ "Test Sketches", "Examples.html#Examples_Test", null ]
     ] ],
     [ "Important Notes and Best Practices", "BestPractices.html", null ],
     [ "Troubleshooting Guide", "Troubleshooting.html", [
       [ "Problem Scenarios", "Troubleshooting.html#Troubleshooting_Problems", [
-        [ "No Data Received", "Troubleshooting.html#autotoc_md46", null ],
-        [ "Callbacks Not Firing", "Troubleshooting.html#autotoc_md47", null ],
-        [ "Async Commands Not Working", "Troubleshooting.html#autotoc_md48", null ],
-        [ "Unexpected Sensor Reboots", "Troubleshooting.html#autotoc_md49", null ],
-        [ "Data Loss", "Troubleshooting.html#autotoc_md51", null ],
-        [ "Strange or Invalid Data", "Troubleshooting.html#autotoc_md53", null ]
+        [ "No Data Received", "Troubleshooting.html#autotoc_md42", null ],
+        [ "Callbacks Not Firing", "Troubleshooting.html#autotoc_md43", null ],
+        [ "Async Commands Not Working", "Troubleshooting.html#autotoc_md44", null ],
+        [ "Unexpected Sensor Reboots", "Troubleshooting.html#autotoc_md45", null ],
+        [ "Data Loss", "Troubleshooting.html#autotoc_md47", null ],
+        [ "Strange or Invalid Data", "Troubleshooting.html#autotoc_md49", null ]
       ] ],
       [ "Debugging", "Troubleshooting.html#Troubleshooting_Debugging", null ]
     ] ],
@@ -131,8 +128,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "Async_Commands_And_Processing.html",
-"classLD2410Async.html#ac02d1eeaa71a96eb28173c97ca320d21",
-"structLD2410Types_1_1ConfigData.html#acabeb381bc21ae97893101726ab1d589"
+"classLD2410Async.html#ab0d3227098f6b8ecb3ed35ce3d114e04",
+"structLD2410Types_1_1ConfigData.html#ad4b3263e4da6bcc2ef64d1e727eb6f06"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

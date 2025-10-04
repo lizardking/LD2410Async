@@ -20,7 +20,7 @@ var searchData=
   ['mode_20data_17',['Engineering Mode Data',['../Data_Structures.html#Data_Structures_DetectionData_Engineering',1,'']]],
   ['modes_18',['Operation Modes',['../Operation_Modes.html',1,'index']]],
   ['modify_20and_20apply_20config_19',['Example: Clone, modify, and apply config',['../classLD2410Async.html#autotoc_md32',1,'']]],
-  ['modify_20and_20write_20back_20',['modify and write back',['../index.html#autotoc_md45',1,'Example: Clone config data, modify, and write back'],['../classLD2410Async.html#autotoc_md14',1,'Example: Clone, modify, and write back']]],
+  ['modify_20and_20write_20back_20',['modify and write back',['../Examples.html#Examples_Modify_Config',1,'Example: Clone config data, modify, and write back'],['../classLD2410Async.html#autotoc_md14',1,'Example: Clone, modify, and write back']]],
   ['moving_5fand_5fstationary_5ftarget_21',['MOVING_AND_STATIONARY_TARGET',['../namespaceLD2410Types.html#af838f34651382f6262c0d19397ac0be9a02ddfbfc6b13ec42ae66161cff02aac5',1,'LD2410Types']]],
   ['moving_5ftarget_22',['MOVING_TARGET',['../namespaceLD2410Types.html#af838f34651382f6262c0d19397ac0be9ab7ef6f911883522e35247e1c13482929',1,'LD2410Types']]],
   ['movingpresencedetected_23',['movingPresenceDetected',['../structLD2410Types_1_1DetectionData.html#ae7ad914bcdb01c5d8bb6c07b78b19d81',1,'LD2410Types::DetectionData']]],

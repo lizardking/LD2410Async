@@ -23,6 +23,5 @@ var searchData=
   ['torturetest_2eino_20',['tortureTest.ino',['../tortureTest_8ino.html',1,'']]],
   ['totalenabledurationms_21',['totalEnableDurationMs',['../enableConfigModeTest_8ino.html#abde548b9248e1e9976f96a2f8d553e64',1,'enableConfigModeTest.ino']]],
   ['troubleshooting_20guide_22',['Troubleshooting Guide',['../Troubleshooting.html',1,'index']]],
-  ['troubleshooting_2emd_23',['Troubleshooting.md',['../Troubleshooting_8md.html',1,'']]],
-  ['typical_20usage_24',['Typical Usage',['../index.html#autotoc_md41',1,'']]]
+  ['troubleshooting_2emd_23',['Troubleshooting.md',['../Troubleshooting_8md.html',1,'']]]
 ];

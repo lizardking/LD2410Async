@@ -103,7 +103,7 @@ $(function(){initNavTree('Troubleshooting.html',''); initResizable(true); });
 <div class="textblock"><p>This page lists common issues you may encounter when using the <b><a class="el" href="classLD2410Async.html" title="Asynchronous driver class for the LD2410 human presence radar sensor.">LD2410Async</a></b> library and provides steps to resolve them.</p>
 <h1><a class="anchor" id="Troubleshooting_Problems"></a>
 Problem Scenarios</h1>
-<h2><a class="anchor" id="autotoc_md46"></a>
+<h2><a class="anchor" id="autotoc_md42"></a>
 No Data Received</h2>
 <ul>
 <li>Verify wiring: ensure the LD2410 radar is connected to the correct UART pins. <br  />
@@ -114,7 +114,7 @@ No Data Received</h2>
 </li>
 <li>Ensure the sensor is not stuck in <a class="el" href="Operation_Modes.html">Config Mode</a> - in config mode no detection data is sent.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md47"></a>
+<h2><a class="anchor" id="autotoc_md43"></a>
 Callbacks Not Firing</h2>
 <ul>
 <li>Confirm that you registered the callback before expecting data (e.g. with <a class="el" href="classLD2410Async.html#ad45ae5bd8cbdfe48634f7ff158867dff">onDetectionDataReceived()</a>). <br  />
@@ -123,7 +123,7 @@ Callbacks Not Firing</h2>
 </li>
 <li>If <a class="el" href="Operation_Modes.html">Engineering Mode</a> is enabled, expect more frequent callbacks with additional data.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md48"></a>
+<h2><a class="anchor" id="autotoc_md44"></a>
 Async Commands Not Working</h2>
 <ul>
 <li>Only one async command can run at a time. <br  />
@@ -149,7 +149,7 @@ Async Commands Not Working</h2>
 </li>
 </ul>
 <p>For more details see <a class="el" href="Async_Commands_And_Processing.html">Async Commands &amp; Processing</a>.</p>
-<h2><a class="anchor" id="autotoc_md49"></a>
+<h2><a class="anchor" id="autotoc_md45"></a>
 Unexpected Sensor Reboots</h2>
 <ul>
 <li>Check if <a class="el" href="Inactivity_Handling.html">inactivity handling</a> is enabled with <a class="el" href="classLD2410Async.html#a4b30773f7a69dad507caaa636f08fa76">setInactivityHandling(true)</a>. <br  />
@@ -157,7 +157,7 @@ Unexpected Sensor Reboots</h2>
 <li>If enabled, the library may automatically call <a class="el" href="classLD2410Async.html#a0fefa06a0cbcc70e1aa5e655315851ee">rebootAsync()</a> after long inactivity.</li>
 </ul>
 <hr  />
-<h2><a class="anchor" id="autotoc_md51"></a>
+<h2><a class="anchor" id="autotoc_md47"></a>
 Data Loss</h2>
 <ul>
 <li>Keep callbacks <b>short and non-blocking</b>. <br  />
@@ -174,7 +174,7 @@ Data Loss</h2>
 </ul>
 <p>See also <a class="el" href="Async_Commands_And_Processing.html">Async Commands &amp; Processing</a>.</p>
 <hr  />
-<h2><a class="anchor" id="autotoc_md53"></a>
+<h2><a class="anchor" id="autotoc_md49"></a>
 Strange or Invalid Data</h2>
 <ul>
 <li>Ensure the sensor is in <b>Normal Detection Mode</b> (see <a class="el" href="Operation_Modes.html">Operation Modes</a>). <br  />

@@ -99,7 +99,7 @@ public:
 	* @brief Latest detection results from the radar.
 	*
 	* @details Updated automatically whenever new data frames are received.
-	* Use registerDetectionDataReceivedCallback() to be notified
+	* Use onDetectionDataReceived() to be notified
 	* whenever this struct changes.
 	* Use getDetectionData() or getDetectionDataRef() to access the current values, rather than accessing the struct directly.
 	*
@@ -112,7 +112,7 @@ public:
 	*
 	* @details Filled when configuration query commands are issued
 	* (e.g. requestAllConfigSettingsAsync() or requestGateParametersAsync() ect).
-	* Use registerConfigUpdateReceivedCallback() to be notified when data in this struct changes.
+	* Use onConfigDataReceived() to be notified when data in this struct changes.
 	* Use getConfigData() or getConfigDataRef() to access the current values, rather than accessing the struct directly.
 	*
 	* Structure will contain only uninitilaized data if config data is not queried explicitly.
@@ -178,7 +178,7 @@ public:
 	* implementation) that is connected to the LD2410 sensor.
 	*
 	* Example:
-	* @code
+	* @code{.cpp}
 	*   HardwareSerial radarSerial(2);
 	*   LD2410Async radar(radarSerial);
 	* @endcode
@@ -301,47 +301,137 @@ public:
 	* Callback registration methods
 	***********************************************************************************/
 
-
 	/**
 	* @brief Registers a callback for new detection data.
 	*
-	* The callback is invoked whenever a valid data frame is received
-	* from the radar, after detectionData has been updated.
+	* The callback is invoked whenever a valid detection data frame is received
+	* from the radar. This happens for **every frame**, not only when the
+	* `presenceDetected` flag changes.
+	*
+	* The library updates its internal
+	* @ref LD2410Types::DetectionData "DetectionData" structure with each frame
+	* before the callback is executed. This provides both a quick boolean
+	* `presenceDetected` for simple use cases and full access to detailed
+	* per-gate information if needed.
 	*
 	* @param callback Function pointer with signature
 	*        void methodName(LD2410Async* sender, bool presenceDetected).
-*
 	*
+	* @note
+	* Within the callback you can use
+	* @ref LD2410Async::getDetectionData "getDetectionData()" or
+	* @ref LD2410Async::getDetectionDataRef "getDetectionDataRef()" to access
+	* the full @ref LD2410Types::DetectionData "DetectionData" struct, including
+	* distances, energies, and gate values.
+	*
+	* ## Examples
+	*
+	* ### Example: Registering the detection data callback
+	* @code{.cpp}
+	* void myDetectionCallback(LD2410Async* sender, bool presence) {
+	*   if (presence) {
+	*     Serial.println("Presence detected!");
+	*   } else {
+	*     Serial.println("No presence.");
+	*   }
+	* }
+	*
+	* // Somewhere in setup():
+	* radar.onDetectionDataReceived(myDetectionCallback);
+	* @endcode
+	*
+	* ### Example: Access detection data (cloned copy)
+	* @code{.cpp}
+	* LD2410Types::DetectionData data = radar.getDetectionData();  // clone
+	* Serial.print("Moving distance: ");
+	* Serial.println(data.movingTargetDistance);
+	* @endcode
+	*
+	* ### Example: Access detection data (by reference, no copy)
+	* @code{.cpp}
+	* const LD2410Types::DetectionData& data = radar.getDetectionDataRef();  // no copy
+	* Serial.print("Stationary energy: ");
+	* Serial.println(data.stationaryTargetEnergy);
+	* @endcode
 	*/
-	void registerDetectionDataReceivedCallback(DetectionDataCallback callback);
-
-	/**
-	* @brief Registers a callback for configuration changes.
-	*
-	* The callback is invoked whenever the sensor’s configuration
-	* has been successfully updated (e.g. after setting sensitivity).
-	*
-	* @param callback Function pointer with signature
-	*        void methodName(LD2410Async* sender).
-*
-	*
-	*/
-	void registerConfigChangedCallback(GenericCallback callback);
+	void onDetectionDataReceived(DetectionDataCallback callback);
 
 	/**
 	* @brief Registers a callback for configuration data updates.
 	*
 	* The callback is invoked whenever new configuration information
-	* has been received from the sensor (e.g. after requestGateParametersAsync()).
+	* has been received from the sensor (e.g. after calling
+	* @ref LD2410Async::requestAllConfigSettingsAsync "requestAllConfigSettingsAsync()").
+	*
+	* @note
+	* Configuration data is **not sent automatically** by the sensor and
+	* is **not updated automatically** when it changes internally. It must
+	* be explicitly requested by the application. Use
+	* @ref LD2410Async::requestAllConfigSettingsAsync() whenever you need
+	* to refresh the local configuration data structure.
+	*
+	* ## Examples
+	*
+	* ### Example: Registering a config data received callback
+	* @code{.cpp}
+	* void onConfigDataReceived(LD2410Async* sender) {
+	*   Serial.println("Config data received from sensor.");
+	* }
+	*
+	* // Somewhere in setup():
+	* radar.onConfigDataReceived(onConfigDataReceived);
+	* @endcode
+	*
+	* ### Example: Access configuration data (cloned copy)
+	* @code{.cpp}
+	* LD2410Types::ConfigData cfg = radar.getConfigData();  // clone
+	* Serial.print("No one timeout: ");
+	* Serial.println(cfg.noOneTimeout);
+	* @endcode
+	*
+	* ### Example: Access configuration data (by reference, no copy)
+	* @code{.cpp}
+	* const LD2410Types::ConfigData& cfg = radar.getConfigDataRef();  // no copy
+	* Serial.print("Resolution: ");
+	* Serial.println(static_cast<int>(cfg.distanceResolution));
+	* @endcode
 	*
 	* @param callback Function pointer with signature
 	*        void methodName(LD2410Async* sender).
-*
-	*
 	*/
-	void registerConfigUpdateReceivedCallback(GenericCallback callback);
+	void onConfigDataReceived(GenericCallback callback);
 
-
+	/**
+	 * @brief Registers a callback that is invoked whenever the sensor’s configuration
+	 *        has been changed successfully.
+	 *
+	 * This event is triggered after a configuration command (e.g.
+	 * @ref configureAllConfigSettingsAsync "configureAllConfigSettingsAsync()" or
+	 * @ref configureDistanceResolutionAsync "configureDistanceResolutionAsync()")
+	 * has been executed by the sensor.
+	 *
+	 * @note
+	 * - This callback only signals that the sensor acknowledged and applied a change.
+	 * - The local @ref LD2410Types::ConfigData "ConfigData" structure is **not**
+	 *   automatically updated when this event occurs. To refresh the struct, explicitly
+	 *   request it using @ref requestAllConfigSettingsAsync "requestAllConfigSettingsAsync()".
+	 *
+	 * @param callback Function pointer with the signature:
+	 *        `void myCallback(LD2410Async* sender)`
+	 *
+	 * Example:
+	 * @code
+	 * void myConfigChangedCallback(LD2410Async* sender) {
+	 *     Serial.println("Sensor configuration updated.");
+	 *     // Optionally request fresh config data:
+	 *     sender->requestAllConfigSettingsAsync(onConfigReceived);
+	 * }
+	 *
+	 * // In setup():
+	 * radar.onConfigChanged(myConfigChangedCallback);
+	 * @endcode
+	 */
+	void onConfigChanged(GenericCallback callback);
 
 	/**********************************************************************************
 	* Detection and config data access commands
@@ -362,7 +452,7 @@ public:
 	*       the data that has already been received from the sensor.
 	*
 	* ## Example: Access values from a clone
-	* @code
+	* @code{.cpp}
 	*   DetectionData data = radar.getDetectionData();  // makes a copy
 	*   if (data.targetState == TargetState::MOVING_TARGET) {
 	*     Serial.print("Moving target at distance: ");
@@ -397,7 +487,7 @@ public:
 	*       the data that has already been received from the sensor.
 	*
 	* ## Example: Efficient read access without cloning
-	* @code
+	* @code{.cpp}
 	*   const DetectionData& data = radar.getDetectionDataRef();  // no copy
 	*   Serial.print("Stationary signal: ");
 	*   Serial.println(data.stationaryTargetSignal);
@@ -431,7 +521,7 @@ public:
 	*       the data that has already been received from the sensor.
 	*
 	* ## Example: Clone, modify, and write back
-	* @code
+	* @code{.cpp}
 	*   // Clone current config
 	*   ConfigData cfg = radar.getConfigData();
 	*
@@ -476,7 +566,7 @@ public:
 	*       the data that has already been received from the sensor.
 	*
 	* ## Example: Efficient read access without cloning
-	* @code
+	* @code{.cpp}
 	*   const ConfigData& cfg = radar.getConfigDataRef();  // no copy
 	*   Serial.print("Resolution: ");
 	*   Serial.println(static_cast<int>(cfg.distanceResolution));
@@ -962,8 +1052,8 @@ public:
 	*
 	* The distance resolution defines the size of each distance gate
 	* and the maximum detection range:
-	*   - RESOLUTION_75CM → longer range, coarser detail.
-	*   - RESOLUTION_20CM → shorter range, finer detail.
+	*   - RESOLUTION_75CM - longer range, coarser detail.
+	*   - RESOLUTION_20CM - shorter range, finer detail.
 	*
 	* @note Requires config mode. Will be managed automatically.
 	* @note Requires a reboot to activate value changes. Call rebootAsync() after setting.
@@ -1091,7 +1181,7 @@ public:
 	* @note Auto-config temporarily suspends normal detection reporting.
 	*
 	* ## Example: Run auto-config
-	* @code
+	* @code{.cpp}
 	*   radar.beginAutoConfigAsync([](LD2410Async* sender,
 	*                                 AsyncCommandResult result,
 	*                                 byte) {
@@ -1125,15 +1215,15 @@ public:
 	* @brief Requests the current status of the auto-config routine.
 	*
 	* The status is written into the member variable autoConfigStatus:
-	*   - NOT_IN_PROGRESS → no auto-config running.
-	*   - IN_PROGRESS → auto-config is currently running.
-	*   - COMPLETED → auto-config finished (success or failure).
+	*   - NOT_IN_PROGRESS - no auto-config running.
+	*   - IN_PROGRESS - auto-config is currently running.
+	*   - COMPLETED - auto-config finished (success or failure).
 	*
 	* @note Requires config mode. This method will manage mode switching automatically.
 	* @note If another async command is already pending, this call fails.
 	*
 	* ## Example: Check auto-config status
-	* @code
+	* @code{.cpp}
 	*   radar.requestAutoConfigStatusAsync([](LD2410Async* sender,
 	*                                         AsyncCommandResult result,
 	*                                         byte) {
@@ -1194,14 +1284,14 @@ public:
 	*   - Auxiliary light/output control settings.
 	*
 	* The results are stored in configData, and the
-	* registerConfigUpdateReceivedCallback() is invoked after completion.
+	* onConfigDataReceived() is invoked after completion.
 	*
 	* @note This is a high-level method that involves multiple commands.
 	* @note Requires config mode. This method will manage mode switching automatically.
 	* @note If another async command is already pending, the request fails.
 	*
 	* ## Example: Refresh config data
-	* @code
+	* @code{.cpp}
 	*   radar.requestAllConfigSettingsAsync([](LD2410Async* sender,
 	*                                 AsyncCommandResult result,
 	*                                 byte) {
@@ -1245,7 +1335,7 @@ public:
 	* @note If another async command is already pending, the request fails.
 	*
 	* ## Example: Retrieve firmware and MAC
-	* @code
+	* @code{.cpp}
 	*   radar.requestAllStaticDataAsync([](LD2410Async* sender,
 	*                                 AsyncCommandResult result,
 	*                                 byte) {
@@ -1295,7 +1385,7 @@ public:
 	*       (e.g. enums set to NOT_SET) will cause the sequence to fail.
 	*
 	* ## Example: Clone, modify, and apply config
-	* @code
+	* @code{.cpp}
 	*   ConfigData cfg = radar.getConfigData();  // clone current config
 	*   cfg.noOneTimeout = 120;                  // change timeout
 	*   cfg.distanceGateMotionSensitivity[2] = 75;

@@ -1,4 +1,5 @@
-# Async Processing & Commands
+@page Async_Commands_And_Processing Async Commands & Processing
+# Async Commands & Processing
 
 ## Why asynchronous processing matters for the LD2410
 
@@ -14,15 +15,18 @@ An asynchronous approach avoids this problem. Commands are sent non-blocking, an
 
 ## Detection Data Callback
 
-Whenever the LD2410 sensor transmits a valid data frame, the library automatically parses it and invokes the detection data callback. This allows your application to react immediately to presence changes without polling the sensor.
+Whenever the LD2410 sensor transmits a valid data frame, the library automatically parses it and invokes the detection data callback. This allows your application to react immediately to sensor input without the need for polling.
 
-Use @ref LD2410Async::registerDetectionDataReceivedCallback "registerDetectionDataReceivedCallback()" to register a callback function to receive the detection callback.
+Use @ref LD2410Async::onDetectionDataReceived "onDetectionDataReceived()" to register a callback function for detection events.
 
-The callback delivers two things:
-- A pointer to the LD2410Async instance that triggered the event. Allows for easy access to the members of that instance.
-- A simple presenceDetected flag (true if presence has been detected, false otherwise).
+The callback delivers two parameters:
+- A pointer to the LD2410Async instance that triggered the event. This allows convenient access to members of that instance.
+- A simple presenceDetected flag (true if presence is detected, false otherwise).
 
-This mechanism makes it easy to update your logic in real time - for example to turn lights on/off or send MQTT updates.
+@note 
+The callback is triggered for every received frame, not only when presenceDetected changes. This means you can always rely on it to reflect the most recent sensor state.
+
+For applications that need more than just the quick presence flag, the library provides full access to the updated @ref LD2410Types::DetectionData "DetectionData" struct. This struct contains distances, signal strengths and other info.
 
 ## Detection Data Callback Example
 
@@ -45,7 +49,7 @@ void setup() {
     RadarSerial.begin(256000, SERIAL_8N1, 32, 33); // RX=Pin 32, TX= Pin 33
 
     radar.begin();
-    radar.registerDetectionDataReceivedCallback(onDetection);
+    radar.onDetectionDataReceived(onDetection);
 }
 
 void loop() {
@@ -53,16 +57,53 @@ void loop() {
 }
 @endcode
 
+## Configuration Callbacks
+
+Whenever the LD2410 sensor executes or reports configuration changes, the library provides two separate callback mechanisms to keep your application informed.
+
+Use @ref LD2410Async::onConfigChanged "onConfigChanged()" to register a callback that is invoked whenever the sensor acknowledges and applies a configuration-changing command (for example, after setting sensitivities or timeouts). This event serves as a notification that the sensor has accepted a change, but it does not mean that the local configuration data has been refreshed. If you need updated values, you must explicitly request them from the sensor (e.g. with @ref LD2410Async::requestAllConfigSettingsAsync "requestAllConfigSettingsAsync()").
+
+Use @ref LD2410Async::onConfigDataReceived "onConfigDataReceived()" to register a callback that is invoked whenever new configuration data has actually been received from the sensor. This happens after request commands such as @ref LD2410Async::requestAllConfigSettingsAsync "requestAllConfigSettingsAsync()" or @ref LD2410Async::requestGateParametersAsync "requestGateParametersAsync()". Within this callback, the library guarantees that the internal @ref LD2410Types::ConfigData "ConfigData" structure has been updated, so you can safely access it via @ref LD2410Async::getConfigData "getConfigData()" or @ref LD2410Async::getConfigDataRef "getConfigDataRef()".
+
+@note 
+Configuration data is **not sent automatically** by the sensor and is **not updated automatically** when internal changes occur. To refresh the local configuration structure, you must explicitly request the latest values from the sensor. The recommended way is to call @ref LD2410Async::requestAllConfigSettingsAsync "requestAllConfigSettingsAsync()", which retrieves the complete configuration in one operation.
+
+## Configuration Callbacks Example
+
+@code{.cpp}
+// Define the callback function
+void onConfigChanged(LD2410Async* sender) {
+  Serial.println("Sensor acknowledged a configuration change.");
+
+  // If you want the latest config values, explicitly request them
+  sender->requestAllConfigSettingsAsync(onConfigReceived);
+}
+
+// Define a helper callback for when config data arrives
+void onConfigReceived(LD2410Async* sender, LD2410Async::AsyncCommandResult result) {
+  if (result == LD2410Async::AsyncCommandResult::SUCCESS) {
+    LD2410Types::ConfigData cfg = sender->getConfigData();
+    Serial.print("No one timeout: ");
+    Serial.println(cfg.noOneTimeout);
+  }
+}
+
+// Somewhere in setup():
+radar.onConfigChanged(onConfigChanged);
+@endcode
+
+
 ## Async Commands Basics
 
 The LD2410 sensor can be configured and queried using a large set of commands.
 
 All commands that need to communicate with the sensor are implemented as asynchronous operations:
 - They return immediately without blocking the main loop.
-- When the sensor sends back an acknowledgement (ACK) or a response, the library automatically calls the user-provided callback with the result.
-- Callbacks allow your application to handle success, timeout, or failure in a clean and non-blocking way.
-
-This design makes the library suitable for complex applications where other tasks (e.g. networking, user input) must continue running while waiting for the radar to respond.
+- Each command call itself returns a simple true or false:
+    - true means the command was accepted for processing.
+    - false means it could not be started (for example, because another command is already pending).
+- When the sensor sends back an acknowledgement (ACK) or a response, the library automatically calls the user-provided callback with a result of type @ref LD2410Async::AsyncCommandResult "AsyncCommandResult". 
+- Callbacks allow your application to handle SUCCESS, FAILED, TIMEOUT, or CANCELED in a clean and non-blocking way.
 
 ## List of Asynchronous Commands
 
@@ -112,11 +153,11 @@ This design makes the library suitable for complex applications where other task
 HardwareSerial RadarSerial(1);
 LD2410Async radar(RadarSerial);
 
-//Callback method gets triggered when all config data has been received
+// Callback method gets triggered when all config data has been received
 void onConfigReceived(LD2410Async* sender, LD2410Async::AsyncCommandResult result) {
     if (result == LD2410Async::AsyncCommandResult::SUCCESS) {
         // Access latest config via getConfigData()
-        auto cfg = sender->getConfigData();
+        LD2410Types::ConfigData cfg = sender->getConfigData();
         Serial.print("Max moving gate: ");
         Serial.println(cfg.maxMotionDistanceGate);
         Serial.print("No one timeout: ");
@@ -130,25 +171,33 @@ void setup() {
     Serial.begin(115200);
     RadarSerial.begin(256000, SERIAL_8N1, 32, 33); // RX=Pin 32, TX=Pin 33
 
-    if(radar.begin()) {
-        Serial.println("Could not initialize the LD2410Async lib");
+    if (!radar.begin()) {
+        Serial.println("Failed to initialize the LD2410Async library");
         return;
-    }:
+    }
 
     // Query all configuration parameters and register callback
-    radar.requestAllConfigSettingsAsync(onConfigReceived);
+    if (!radar.requestAllConfigSettingsAsync(onConfigReceived)) {
+        Serial.println("Could not send config request (busy or failed).");
+    }
 }
 
 void loop() {
-    // Async - nothing needed here
+    // Nothing required here – everything runs asynchronously
 }
+
 @endcode
 
 
 ## Best Practices for Async Commands
 
-- **Be aware of busy state** - before sending a command, ensure the library is not already executing another one. Use asyncIsBusy() if needed. All commands are checking for busy state internally and will return false, if another command is pending.
-- **Use callbacks** - never assume a command succeeded immediately. Handle SUCCESS, FAILED, TIMEOUT, or CANCELED in the callback.
+- **Check the return value** - all async methods return true if the command is getting executed or false when execution of the commands is not possible for some reason (e.g. another async command pending or a para is inavlid/out of range)
+- **Check the result of the callback** - handle @ref LD2410Async::AsyncCommandResult "AsyncCommandResult" values such as `SUCCESS`, `FAILED`, `TIMEOUT`, or `CANCELED` as necessary.
+- **Be aware of busy state** – before sending a command, ensure the library is not already executing another one.  
+  Use @ref LD2410Async::asyncIsBusy "asyncIsBusy()" if needed. All async commands check the busy state internally and will return `false` if another command is already pending.  
 - **Don’t block in callbacks** - keep callbacks short and non-blocking; offload heavy work to the main loop or a task.
-- **Config mode handling** - you don’t need to manually enable/disable config mode; the library handles this automatically for commands that require it. Only use enableConfigModeAsync()/disableConfigModeAsync() directly if you need to stay in config mode across multiple operations.
-- **Avoid overlapping commands** - sending a new command while one is pending will cause failures. Either wait for the callback or call asyncCancel() if you must interrupt.
+- **Config mode handling** – you usually don’t need to manually enable or disable config mode; the library automatically handles this for commands that require it.  
+  Only call @ref LD2410Async::enableConfigModeAsync "enableConfigModeAsync()" or @ref LD2410Async::disableConfigModeAsync "disableConfigModeAsync()" directly if you explicitly want to keep the sensor in config mode across multiple operations.  
+- **Avoid overlapping commands** – sending a new command while another one is still pending can cause failures.  
+  Always wait for the callback to complete before sending the next command, or call @ref LD2410Async::asyncCancel "asyncCancel()" if you need to abort the current operation.  
+

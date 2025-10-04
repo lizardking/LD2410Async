@@ -194,15 +194,15 @@ LD2410Async::FrameReadResponse LD2410Async::readFrame()
 /******************************************************************************************
 * Generic Callbacks
 ******************************************************************************************/
-void LD2410Async::registerDetectionDataReceivedCallback(DetectionDataCallback callback) {
+void LD2410Async::onDetectionDataReceived(DetectionDataCallback callback) {
 	detectionDataCallback = callback;
 }
 
-void LD2410Async::registerConfigUpdateReceivedCallback(GenericCallback callback) {
+void LD2410Async::onConfigDataReceived(GenericCallback callback) {
 	configUpdateReceivedReceivedCallback = callback;
 }
 
-void LD2410Async::registerConfigChangedCallback(GenericCallback callback) {
+void LD2410Async::onConfigChanged(GenericCallback callback) {
 	configChangedCallback = callback;
 }
 

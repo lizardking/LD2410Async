@@ -74,11 +74,13 @@ const int LINE_LEN = 80;
 ********************************************************************************************************************************/
 typedef void (*TestAction)();
 
+/// @cond Hide_this_from_the_docu
 struct TestEntry {
 	TestAction action;
 	bool configModeAtTestEnd;
 };
-
+// @endcond
+// 
 // Forward declarations so functions above can use them
 extern TestEntry actions[];
 extern const int NUM_ACTIONS;
@@ -299,12 +301,12 @@ void dataUpdateCounterCallback(LD2410Async* sender, bool presenceDetected) {
 //Start the data update counting
 void startDataUpdateCounter() {
 	dataUpdateCounterReset();
-	ld2410.registerDetectionDataReceivedCallback(dataUpdateCounterCallback);
+	ld2410.onDetectionDataReceived(dataUpdateCounterCallback);
 }
 
 //Stop the data update counting
 void stopDataUpdateCounter() {
-	ld2410.registerDetectionDataReceivedCallback(nullptr);
+	ld2410.onDetectionDataReceived(nullptr);
 	Serial.println();
 }
 
@@ -389,7 +391,7 @@ void normalModeDataReceiveTest() {
 
 	startDataUpdateCounter();
 
-	testPrint("Callback to get data updates registered with registerDetectionDataReceivedCallback().");
+	testPrint("Callback to get data updates registered with onDetectionDataReceived().");
 	testPrint("Counting and checking received data for 10 secs");
 
 	onceTicker.once_ms(10000, normalModeDataReceiveTestEnd);
@@ -461,7 +463,7 @@ void engineeringModeDataReceiveTest() {
 
 	startDataUpdateCounter();
 
-	testPrint("Callback to get data updates registered with registerDetectionDataReceivedCallback().");
+	testPrint("Callback to get data updates registered with onDetectionDataReceived().");
 	testPrint("Counting and checking received data for 10 secs");
 
 	onceTicker.once_ms(10000, engineeringModeDataReceiveTestEnd);

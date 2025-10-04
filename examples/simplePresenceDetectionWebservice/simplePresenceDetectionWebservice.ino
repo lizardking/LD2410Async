@@ -240,7 +240,7 @@ void setup() {
     // Start radar background task
     if (radar.begin()) {
         Serial.println("Radar task started successfully.");
-        radar.registerDetectionDataReceivedCallback(onDetectionDataReceived);
+        radar.onDetectionDataReceived(onDetectionDataReceived);
     }
     else {
         Serial.println("ERROR! Could not start radar task.");

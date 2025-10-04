@@ -31,13 +31,13 @@ namespace LD2410Types {
 	 * @brief Safely converts a numeric value to a TargetState enum.
 	 *
 	 * @param value Raw numeric value (0–6 expected).
-	 *              - 0 → NO_TARGET
-	 *              - 1 → MOVING_TARGET
-	 *              - 2 → STATIONARY_TARGET
-	 *              - 3 → MOVING_AND_STATIONARY_TARGET
-	 *              - 4 → AUTOCONFIG_IN_PROGRESS
-	 *              - 5 → AUTOCONFIG_SUCCESS
-	 *              - 6 → AUTOCONFIG_FAILED
+	 *              - 0 - NO_TARGET
+	 *              - 1 - MOVING_TARGET
+	 *              - 2 - STATIONARY_TARGET
+	 *              - 3 - MOVING_AND_STATIONARY_TARGET
+	 *              - 4 - AUTOCONFIG_IN_PROGRESS
+	 *              - 5 - AUTOCONFIG_SUCCESS
+	 *              - 6 - AUTOCONFIG_FAILED
 	 * @returns The matching TargetState value, or NO_TARGET if invalid.
 	 * 
 	 */
@@ -100,9 +100,9 @@ namespace LD2410Types {
 	 * @brief Safely converts a numeric value to a LightControl enum.
 	 *
 	 * @param value Raw numeric value (0–2 expected).
-	 *              - 0 → NO_LIGHT_CONTROL
-	 *              - 1 → LIGHT_BELOW_THRESHOLD
-	 *              - 2 → LIGHT_ABOVE_THRESHOLD
+	 *              - 0 - NO_LIGHT_CONTROL
+	 *              - 1 - LIGHT_BELOW_THRESHOLD
+	 *              - 2 - LIGHT_ABOVE_THRESHOLD
 	 * @returns The matching LightControl value, or NOT_SET if invalid.
 	 *
 	 */
@@ -135,8 +135,8 @@ namespace LD2410Types {
 	 * @brief Safely converts a numeric value to an OutputControl enum.
 	 *
 	 * @param value Raw numeric value (0–1 expected).
-	 *              - 0 → DEFAULT_LOW_DETECTED_HIGH
-	 *              - 1 → DEFAULT_HIGH_DETECTED_LOW
+	 *              - 0 - DEFAULT_LOW_DETECTED_HIGH
+	 *              - 1 - DEFAULT_HIGH_DETECTED_LOW
 	 * @returns The matching OutputControl value, or NOT_SET if invalid.
 	 *
 	 */
@@ -168,9 +168,9 @@ namespace LD2410Types {
 	 * @brief Safely converts a numeric value to an AutoConfigStatus enum.
 	 *
 	 * @param value Raw numeric value (0–2 expected).
-	 *              - 0 → NOT_IN_PROGRESS
-	 *              - 1 → IN_PROGRESS
-	 *              - 2 → COMPLETED
+	 *              - 0 - NOT_IN_PROGRESS
+	 *              - 1 - IN_PROGRESS
+	 *              - 2 - COMPLETED
 	 * @returns The matching AutoConfigStatus value, or NOT_SET if invalid.
 	 *
 	 */
@@ -223,8 +223,8 @@ namespace LD2410Types {
 	 *
 	 * @param value Raw numeric value (typically from a sensor response).
 	 *              Expected values:
-	 *                - 0 → RESOLUTION_75CM
-	 *                - 1 → RESOLUTION_20CM
+	 *                - 0 - RESOLUTION_75CM
+	 *                - 1 - RESOLUTION_20CM
 	 * @returns The matching DistanceResolution value, or NOT_SET if invalid.
 	 *
 	 */

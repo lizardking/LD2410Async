@@ -9,6 +9,7 @@ LD2410Async    KEYWORD1
 LD2410Types    KEYWORD1
 DetectionData  KEYWORD1
 ConfigData     KEYWORD1
+StaticData     KEYWORD1
 TargetState    KEYWORD1
 DistanceResolution KEYWORD1
 LightControl   KEYWORD1
@@ -67,8 +68,15 @@ disableBluetoothAsync                 KEYWORD2
 enableConfigModeAsync                 KEYWORD2
 disableConfigModeAsync                KEYWORD2
 beginAutoConfigAsync                  KEYWORD2
-requestAutoConfigStatusAsync          KEYWORD2
 configureAllConfigSettingsAsync       KEYWORD2
+
+# Typen aus LD2410Types.h
+toTargetState                         KEYWORD2
+toDistanceResolution                  KEYWORD2
+toLightControl                        KEYWORD2
+toOutputControl                       KEYWORD2
+toAutoConfigStatus                    KEYWORD2
+targetStateToString                   KEYWORD2
 
 #######################################
 # Constants and Literals (LITERAL1)
@@ -83,3 +91,5 @@ DEBUG_PRINTBUF      LITERAL1
 DEBUG_PRINT_DATA    LITERAL1
 DEBUG_PRINTLN_DATA  LITERAL1
 DEBUG_PRINTBUF_DATA LITERAL1
+LD2410_Buffer_Size  LITERAL1
+LD2410ASYNC_DEBUG_LEVEL LITERAL1

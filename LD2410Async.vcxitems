@@ -26,19 +26,27 @@
     <None Include="$(MSBuildThisFileDirectory).github\workflows\generateDoxygenDocu.yml" />
     <None Include="$(MSBuildThisFileDirectory).gitignore" />
     <None Include="$(MSBuildThisFileDirectory)Doxyfile" />
+    <None Include="$(MSBuildThisFileDirectory)dox\Async Commands And Processing.md" />
+    <None Include="$(MSBuildThisFileDirectory)dox\Data Structures.md" />
+    <None Include="$(MSBuildThisFileDirectory)dox\Examples.md" />
     <None Include="$(MSBuildThisFileDirectory)dox\Inactivity Handling.md" />
+    <None Include="$(MSBuildThisFileDirectory)dox\Installation.md" />
     <None Include="$(MSBuildThisFileDirectory)dox\mainPage.md" />
+    <None Include="$(MSBuildThisFileDirectory)dox\Notes And Best Practices.md" />
+    <None Include="$(MSBuildThisFileDirectory)dox\Operation Modes.md" />
+    <None Include="$(MSBuildThisFileDirectory)dox\Troubleshooting.md" />
     <None Include="$(MSBuildThisFileDirectory)examples\basicPresenceDetection\basicPresenceDetection.ino" />
     <None Include="$(MSBuildThisFileDirectory)examples\changeConfig\changeConfig.ino" />
     <None Include="$(MSBuildThisFileDirectory)examples\changeDistanceResolution\changeDistanceResolution.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\enableConfigModeTest\enableConfigModeTest.ino" />
     <None Include="$(MSBuildThisFileDirectory)examples\receiveData\receiveData.ino" />
     <None Include="$(MSBuildThisFileDirectory)examples\simplePresenceDetectionWebservice\simplePresenceDetectionWebservice.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\tortureTest\tortureTest.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\unitTest\unitTest.ino" />
     <None Include="$(MSBuildThisFileDirectory)LICENSE" />
     <None Include="$(MSBuildThisFileDirectory)README.md" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)dox\Async Processing and Use.md" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)dox\Operation Modes.md" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\LD2410Async.cpp" />
   </ItemGroup>
   <ItemGroup>

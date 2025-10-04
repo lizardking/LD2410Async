@@ -1,25 +1,49 @@
-# Inactivity Handling
+﻿# Inactivity Handling
 
-The library has built in logic that will detect long inactivity of the sensor resp. long periods without any data coming in. The most common reason for a silent sensor is the conmfiguration mode, which has not been disabled.
+The library includes built-in logic to detect long inactivity of the sensor, i.e. long periods without any data being received.  
+The most common cause for a "silent" sensor is that **configuration mode** was enabled but never disabled.
 
-If long silent periods are detected the lib will try to return its own state and the sensor back to normal operation mode. It will attempt the following steps (each separated by the timeout period for a async commands):
-1. Cancel pending async commands, just in case the users code is still waiting for a callback.
-2. If the cancel did not help, it will try to disable config mode, even if the lib thinks config mode is diabled.
-3. As a last step, it will try to reboot the sensor.
+If long silent periods are detected, the library attempts to bring both its internal state and the sensor back to **normal operation mode**.  
+Recovery is performed in the following steps (each step is separated by the current async command timeout period):  
 
-If all those recovery steps dont work, the lib will try again to recover the sensor after the inactivity timeout period has elapsed again.
+1. Cancel any pending async commands, in case the user’s code is still waiting for a callback.  
+   - @ref LD2410Async::asyncCancel "asyncCancel()"  
+2. If canceling did not help, try to disable config mode — even if the library believes config mode is already disabled.  
+   - @ref LD2410Async::disableConfigModeAsync "disableConfigModeAsync()"  
+3. As a last step, attempt to reboot the sensor.  
+   - @ref LD2410Async::rebootAsync "rebootAsync()"
 
-Inactivity handling can be enabled/disabled with the following commands:
-- enableInactivityHandling()
-- disableInactivityHandling()
-- setInactivityHandling(true/false)
+If none of these recovery steps succeed, the library will retry after the inactivity timeout period has elapsed again.
 
-By default the inactivity handling is enabled
 
-The timeout period for the inactivity handling can be set and read with:
-- setInactivityTimeoutMs(timeoutInMilliseconds)
-- getInactivityTimeoutMs()
+@page Inactivity_Handling Inactivity Handling
+## Enabling / Disabling Inactivity Handling
 
-The default timeout is 60000ms resp. 1 minute.
-Make sure to set a value that is larger than the timeout for async commands (see getAsyncCommandTimeoutMs() and setAsyncCommandTimeoutMs()). Otherwise inactivity handling could kick in while commands are still pending (usually waiting for ack), 
-which will result in the cancelation of the pending async command. To make sure this this will not happen, the inactivity handling will not use the set timeout, if it is shorter than the command time out and use the command timeout + 1000ms instead.
+Inactivity handling can be enabled or disabled using:  
+
+- @ref LD2410Async::enableInactivityHandling "enableInactivityHandling()"  
+- @ref LD2410Async::disableInactivityHandling "disableInactivityHandling()"  
+- @ref LD2410Async::setInactivityHandling "setInactivityHandling(bool enable)"  
+
+By default, inactivity handling is **enabled**.
+
+
+## Timeout Configuration
+
+The inactivity timeout can be configured with:  
+
+- @ref LD2410Async::setInactivityTimeoutMs "setInactivityTimeoutMs(timeoutInMilliseconds)"  
+- @ref LD2410Async::getInactivityTimeoutMs "getInactivityTimeoutMs()"  
+
+The default timeout is **60000 ms (1 minute)**.  
+Setting the time out to 00 will disable inactivity handling.
+
+**Important:**  
+Always set a value larger than the timeout for async commands, which is controlled by:  
+- @ref LD2410Async::setAsyncCommandTimeoutMs "setAsyncCommandTimeoutMs()"  
+- @ref LD2410Async::getAsyncCommandTimeoutMs "getAsyncCommandTimeoutMs()"  
+
+If the inactivity timeout is shorter than the async command timeout, inactivity handling could trigger while a command is still pending (usually waiting for an ACK). This would cause premature cancellation of the command.  
+
+To avoid this, the library automatically adjusts the inactivity timeout:  
+- If the configured inactivity timeout is shorter than the async command timeout, it will instead use **(async command timeout + 1000 ms)**.  

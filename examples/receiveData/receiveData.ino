@@ -106,7 +106,7 @@ void setup() {
     if (radar.begin()) {
         Serial.println("Radar task started successfully.");
         // Register callback for detection updates
-        radar.registerDetectionDataReceivedCallback(onDetectionDataReceived);
+        radar.onDetectionDataReceived(onDetectionDataReceived);
     }
     else {
         Serial.println("ERROR! Could not start radar task.");

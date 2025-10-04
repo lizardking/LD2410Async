@@ -4,7 +4,7 @@
 
 # This lib is still in development. Therefore breaking changes are likely. Use at at your own risk.
 
- ![LD2410](/dox/gfx/LD2410.jpg)
+ ![LD2410](/gfx/LD2410.jpg)
 
 ## Introduction
 

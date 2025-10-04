@@ -56,6 +56,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)src\LD2410Types.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="$(MSBuildThisFileDirectory)dox\gfx\LD2410.jpg" />
+    <Image Include="$(MSBuildThisFileDirectory)gfx\LD2410.jpg" />
   </ItemGroup>
 </Project>

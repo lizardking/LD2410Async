@@ -64,6 +64,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="$(MSBuildThisFileDirectory)dox\gfx\LD2410.jpg" />
+    <Image Include="$(MSBuildThisFileDirectory)gfx\LD2410.jpg" />
   </ItemGroup>
 </Project>

@@ -14,6 +14,8 @@ EXTRACT_LOCAL_CLASSES  = YES
 EXTRACT_ANON_NSPACES   = YES
 SORT_MEMBER_DOCS = YES
 SORT_GROUP_NAMES = YES
+USE_MDFILE_AS_MAINPAGE = mainPage.md
+
 
 # Input
 INPUT                  = src examples dox

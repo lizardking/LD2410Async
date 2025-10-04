@@ -1,5 +1,4 @@
-@mainpage intro
-@page Introduction Introduction
+@mpage main LD2410Async Introduction
 
 @section main_intro Introduction
 

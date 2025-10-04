@@ -18,7 +18,7 @@ var searchData=
   ['receivedata_2eino_15',['receiveData.ino',['../receiveData_8ino.html',1,'']]],
   ['recommended_16',['Using Arduino Library Manager (recommended)',['../Installation.html#Installation_LibManager',1,'']]],
   ['recordresult_17',['recordResult',['../tortureTest_8ino.html#af498359d8dc1af00c6355b7673292846',1,'tortureTest.ino']]],
-  ['reference_18',['Main Class Reference',['../index.html#main_classRef',1,'']]],
+  ['reference_18',['Main Class Reference',['../main.html#main_classRef',1,'']]],
   ['reference_20no_20copy_19',['reference no copy',['../classLD2410Async.html#autotoc_md7',1,'Example: Access configuration data (by reference, no copy)'],['../classLD2410Async.html#autotoc_md3',1,'Example: Access detection data (by reference, no copy)']]],
   ['refresh_20config_20data_20',['Example: Refresh config data',['../classLD2410Async.html#autotoc_md26',1,'']]],
   ['registering_20a_20config_20data_20received_20callback_21',['Example: Registering a config data received callback',['../classLD2410Async.html#autotoc_md5',1,'']]],

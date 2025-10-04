@@ -1,7 +1,7 @@
 var searchData=
 [
   ['mac_0',['Example: Retrieve firmware and MAC',['../classLD2410Async.html#autotoc_md29',1,'']]],
-  ['main_20class_20reference_1',['Main Class Reference',['../index.html#main_classRef',1,'']]],
+  ['main_20class_20reference_1',['Main Class Reference',['../main.html#main_classRef',1,'']]],
   ['mainpage_2emd_2',['mainPage.md',['../mainPage_8md.html',1,'']]],
   ['manager_20recommended_3',['Using Arduino Library Manager (recommended)',['../Installation.html#Installation_LibManager',1,'']]],
   ['manual_20installation_4',['Manual installation',['../Installation.html#Installation_Manual',1,'']]],
@@ -18,9 +18,9 @@ var searchData=
   ['minenabledurationms_15',['minEnableDurationMs',['../enableConfigModeTest_8ino.html#acb296bac380780cb0376e85463db409d',1,'enableConfigModeTest.ino']]],
   ['mode_16',['Mode',['../Operation_Modes.html#Operation_Modes_Configuration_Mode',1,'Configuration Mode'],['../Operation_Modes.html#Operation_Modes_Engineering_Mode',1,'Engineering Mode'],['../Operation_Modes.html#Operation_Modes_Normal_Mode',1,'Normal Detection Mode']]],
   ['mode_20data_17',['Engineering Mode Data',['../Data_Structures.html#Data_Structures_DetectionData_Engineering',1,'']]],
-  ['modes_18',['Operation Modes',['../Operation_Modes.html',1,'index']]],
+  ['modes_18',['Operation Modes',['../Operation_Modes.html',1,'main']]],
   ['modify_20and_20apply_20config_19',['Example: Clone, modify, and apply config',['../classLD2410Async.html#autotoc_md32',1,'']]],
-  ['modify_20and_20write_20back_20',['modify and write back',['../index.html#main_examples_modifyConfig',1,'Example: Clone config data, modify, and write back'],['../classLD2410Async.html#autotoc_md14',1,'Example: Clone, modify, and write back']]],
+  ['modify_20and_20write_20back_20',['modify and write back',['../main.html#main_examples_modifyConfig',1,'Example: Clone config data, modify, and write back'],['../classLD2410Async.html#autotoc_md14',1,'Example: Clone, modify, and write back']]],
   ['moving_5fand_5fstationary_5ftarget_21',['MOVING_AND_STATIONARY_TARGET',['../namespaceLD2410Types.html#af838f34651382f6262c0d19397ac0be9a02ddfbfc6b13ec42ae66161cff02aac5',1,'LD2410Types']]],
   ['moving_5ftarget_22',['MOVING_TARGET',['../namespaceLD2410Types.html#af838f34651382f6262c0d19397ac0be9ab7ef6f911883522e35247e1c13482929',1,'LD2410Types']]],
   ['movingpresencedetected_23',['movingPresenceDetected',['../structLD2410Types_1_1DetectionData.html#ae7ad914bcdb01c5d8bb6c07b78b19d81',1,'LD2410Types::DetectionData']]],

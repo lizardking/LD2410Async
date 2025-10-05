@@ -50,7 +50,7 @@ jobs:
           platforms: ${{ matrix.platforms }}
           fqbn: ${{ matrix.board.fqbn }}
           libraries: |
-            - name: "ESP Async TCP"
+            - name: "Async TCP"
             - name: "ESP Async WebServer"
             - source-path: .
           enable-deltas-report: false

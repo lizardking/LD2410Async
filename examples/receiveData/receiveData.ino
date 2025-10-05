@@ -1,17 +1,25 @@
 /**
- * Example sketch for LD2410Async library
- *
- * This sketch initializes the LD2410 radar sensor on Serial1 and
- * prints detection data to the Serial Monitor as soon as it arrives.
- *
- * Important:
- * Make sure to adjust RADAR_RX_PIN and ADAR_TX_PIN to match you actual wiring.
- */
+* @brief: Example: Receive detection data from the LD2410
+*
+* @details
+* This sketch initializes the LD2410 radar sensor on Serial1 and
+* prints detection data to the Serial Monitor as soon as it arrives.
+* This sketch demonstrates how to:
+*   1. Initialize the radar on Serial1.
+*   2. register a callback to receive detection data.
+*   3. Get a pointer to the detection data struct. 
+*
+* @warning
+* Important:
+* Make sure to adjust RADAR_RX_PIN and RADAR_TX_PIN to match you actual wiring.
+*/
 
 #include <Arduino.h>
 #include "LD2410Async.h"
 
- // ========================= USER CONFIGURATION =========================
+
+
+// ========================= USER CONFIGURATION =========================
 
  // UART pins for the LD2410 sensor
 #define RADAR_RX_PIN 16   // ESP32 pin that receives data from the radar (radar TX)
@@ -22,21 +30,37 @@
 
 // ======================================================================
 
-// Create a HardwareSerial instance (ESP32 has multiple UARTs)
+/**
+* Create a HardwareSerial instance (ESP32 has multiple UARTs) bound to UART1
+*/
 HardwareSerial RadarSerial(1);
 
-// Create LD2410Async object bound to Serial1
+/**
+* @brief Creates LD2410Async object bound to the serial port defined in RadarSerial
+*/
 LD2410Async radar(RadarSerial);
 
-// Callback function called whenever new detection data arrives
-void onDetectionDataReceived(LD2410Async* sender, bool presenceDetected, byte userData) {
+/*
+ * @brief Callback function called whenever new detection data arrives
+ * 
+ * @details
+ * The detection data is accessed via a reference to avoid making a copy. This is more efficient and saves memory.
+ * The callback provides the presenceDetected variable for convenience, but all other detection data is available 
+ * in the DetectionData struct that can be accessed using .getDetectionDataRef()
+ * 
+ * @note
+ * In callback methods is is generally advised to access members of the LD2410Async instance via the sender pointer. 
+ * This ensures that you are allways working with the correct instance, which is important if you have multiple LD2410Async instances.
+ * Also keep in mind that callbacks should be as short and efficient as possible to avoid blocking the background task of the library.
+ */
+void onDetectionDataReceived(LD2410Async* sender, bool presenceDetected) {
     // Access detection data efficiently without making a copy
-    const LD2410Async::DetectionData& data = sender->getDetectionDataRef();
+    const LD2410Types::DetectionData& data = sender->getDetectionDataRef();
 
     Serial.println("=== Detection Data ===");
 
     Serial.print("Target State: ");
-    Serial.println(LD2410Async::targetStateToString(data.targetState));
+    Serial.println(LD2410Types::targetStateToString(data.targetState));
 
     Serial.print("Presence detected: ");
     Serial.println(data.presenceDetected ? "Yes" : "No");
@@ -59,13 +83,21 @@ void onDetectionDataReceived(LD2410Async* sender, bool presenceDetected, byte us
     Serial.println("======================");
 }
 
+/**
+* @brief Arduino setup function which initializes the radar and registers the callback
+* 
+* @details
+* radar.begin() starts the background task of the LD2410Async library which automatically handles
+* incoming data and triggers callbacks. The onDetectionDataReceived callback is registered to receive detection data.
+* 
+*/
 void setup() {
     // Initialize USB serial for debug output
     Serial.begin(115200);
     while (!Serial) {
         ; // wait for Serial Monitor
     }
-    Serial.println("LD2410Async example: print detection data");
+    Serial.println("LD2410Async Example: Receive Data");
 
     // Initialize Serial1 with user-defined pins and baudrate
     RadarSerial.begin(RADAR_BAUDRATE, SERIAL_8N1, RADAR_RX_PIN, RADAR_TX_PIN);
@@ -73,15 +105,22 @@ void setup() {
     // Start the radar background task (parses incoming data frames)
     if (radar.begin()) {
         Serial.println("Radar task started successfully.");
+        // Register callback for detection updates
+        radar.onDetectionDataReceived(onDetectionDataReceived);
     }
     else {
-        Serial.println("Radar task already running.");
+        Serial.println("ERROR! Could not start radar task.");
     }
 
-    // Register callback for detection updates
-    radar.registerDetectionDataReceivedCallback(onDetectionDataReceived);
-}
 
+}
+/**
+* @brief Arduino loop function which does nothing
+* 
+* @details
+* The LD2410Async library runs a FreeRTOS background task that automatically handles all jobs that are related to the radar sensor.
+* Therefore the main loop doesnt have to da any LD2410 related work and is free for anything else you might want to do.
+*/
 void loop() {
     // Nothing to do here!
     // The LD2410Async library runs a FreeRTOS background task

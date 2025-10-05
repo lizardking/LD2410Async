@@ -1,0 +1,56 @@
+﻿name: Create Release
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Extract version from release tag
+        id: version
+        run: |
+          TAG_NAME="${{ github.event.release.tag_name }}"
+          echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
+          echo "Version detected: $TAG_NAME"
+
+      - name: Validate library version
+        run: |
+          echo "Checking library.properties..."
+          grep -E '^version=' library.properties || { echo "Error: version missing"; exit 1; }
+
+          PROP_VERSION=$(grep -E '^version=' library.properties | cut -d'=' -f2)
+          TAG_NAME="${{ github.event.release.tag_name }}"
+          TAG_VERSION="${TAG_NAME#v}"  # Remove leading 'v' in Bash
+
+          if [ "$PROP_VERSION" != "$TAG_VERSION" ]; then
+            echo "Version mismatch: library.properties ($PROP_VERSION) vs tag ($TAG_NAME)"
+            exit 1
+          fi
+
+          echo "Version match confirmed"
+
+      - name: Package library
+        run: |
+          mkdir -p dist
+          ZIP_FILE="LD2410Async-${{ steps.version.outputs.tag_name }}.zip"
+          echo "Packaging library as $ZIP_FILE ..."
+          zip -r "dist/$ZIP_FILE" . -x "*.git*" "dist/*" ".github/*" "docs/*" "__MACOSX"
+
+      - name: Upload ZIP to existing GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.tag_name }}
+          name: "LD2410Async ${{ steps.version.outputs.tag_name }}"
+          files: dist/*.zip
+          append_body: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

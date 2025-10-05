@@ -2,25 +2,30 @@
 #include "Arduino.h"
 #include "LD2410Async.h"  
 #include "LD2410Defs.h"
+#include "LD2410Types.h"
 
 namespace LD2410CommandBuilder {
 
-    inline void buildMaxGateCommand(byte* out, byte maxMotionGate, byte maxStationaryGate, unsigned short noOneTimeout) {
+    inline bool buildMaxGateCommand(byte* out, byte maxMotionGate, byte maxStationaryGate, unsigned short noOneTimeout) {
+
+        if (maxMotionGate < 2 || maxMotionGate > 8) return false;
+        if (maxStationaryGate < 2 || maxStationaryGate > 8) return false;
+
         memcpy(out, LD2410Defs::maxGateCommandData, sizeof(LD2410Defs::maxGateCommandData));
-
-        if (maxMotionGate > 8) maxMotionGate = 8;
-        if (maxMotionGate < 2) maxMotionGate = 2;
-
-        if (maxStationaryGate > 8) maxStationaryGate = 8;
-        if (maxStationaryGate < 2) maxStationaryGate = 2;
 
         out[6] = maxMotionGate;
         out[12] = maxStationaryGate;
 
         memcpy(&out[18], &noOneTimeout, 2);
+
+        return true;
+
     }
 
-    inline void buildGateSensitivityCommand(byte* out, byte gate, byte movingThreshold, byte stationaryThreshold) {
+    inline bool buildGateSensitivityCommand(byte* out, byte gate, byte movingThreshold, byte stationaryThreshold) {
+
+        if (gate > 8 && gate != 0xFF) return false; // 0-8 allowed, or 0xFF (all gates)
+
         memcpy(out, LD2410Defs::distanceGateSensitivityConfigCommandData,
             sizeof(LD2410Defs::distanceGateSensitivityConfigCommandData));
 
@@ -38,34 +43,49 @@ namespace LD2410CommandBuilder {
 
         out[12] = movingThreshold;
         out[18] = stationaryThreshold;
+        return true;
     }
 
-    inline void buildDistanceResolutionCommand(byte* out, LD2410Async::DistanceResolution resolution) {
-        if (resolution == LD2410Async::DistanceResolution::RESOLUTION_75CM) {
+    inline bool buildDistanceResolutionCommand(byte* out, LD2410Types::DistanceResolution resolution) {
+        if (resolution == LD2410Types::DistanceResolution::RESOLUTION_75CM) {
             memcpy(out, LD2410Defs::setDistanceResolution75cmCommandData,
                 sizeof(LD2410Defs::setDistanceResolution75cmCommandData));
         }
-        else if (resolution == LD2410Async::DistanceResolution::RESOLUTION_20CM) {
+        else if (resolution == LD2410Types::DistanceResolution::RESOLUTION_20CM) {
             memcpy(out, LD2410Defs::setDistanceResolution20cmCommandData,
                 sizeof(LD2410Defs::setDistanceResolution20cmCommandData));
         }
+        else {
+            return false;
+        }
+        return true;
     }
 
-    inline void buildAuxControlCommand(byte* out, LD2410Async::LightControl lightControl, byte lightThreshold, LD2410Async::OutputControl outputControl) {
+    inline bool buildAuxControlCommand(byte* out, LD2410Types::LightControl lightControl, byte lightThreshold, LD2410Types::OutputControl outputControl) {
         memcpy(out, LD2410Defs::setAuxControlSettingCommandData,
             sizeof(LD2410Defs::setAuxControlSettingCommandData));
+
+        if (lightControl == LD2410Types::LightControl::NOT_SET) return false;
+        if (outputControl == LD2410Types::OutputControl::NOT_SET) return false;
 
         out[4] = byte(lightControl);
         out[5] = lightThreshold;
         out[6] = byte(outputControl);
+        return true;
     }
 
-    inline void buildBaudRateCommand(byte* out, byte baudRateSetting) {
+    inline bool buildBaudRateCommand(byte* out, byte baudRateSetting) {
         memcpy(out, LD2410Defs::setBaudRateCommandData, sizeof(LD2410Defs::setBaudRateCommandData));
+        if (baudRateSetting < 1 || baudRateSetting > 8) return false;
         out[4] = baudRateSetting;
+        return true;
     }
 
-    inline void buildBluetoothPasswordCommand(byte* out, const char* password) {
+    inline bool buildBluetoothPasswordCommand(byte* out, const char* password) {
+        if (!password) return false;
+        size_t len = strlen(password);
+        if (len > 6) return false;
+
         memcpy(out, LD2410Defs::setBluetoothPasswordCommandData,
             sizeof(LD2410Defs::setBluetoothPasswordCommandData));
 
@@ -75,6 +95,7 @@ namespace LD2410CommandBuilder {
             else
                 out[4 + i] = byte(' '); // pad with spaces
         }
+        return true;
     }
 
 }

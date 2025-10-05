@@ -1,218 +1,48 @@
-﻿#pragma once
+#pragma once
 
 
-#define ENABLE_DEBUG
+/**
+ * @brief Use the following defines to set the debug level for the library.
+ *
+ * @details
+ * LD2410ASYNC_DEBUG_LEVEL controls debug messages for commands and command responses/ACKs from the sensor.
+ * LD2410ASYNC_DEBUG_DATA_LEVEL controls debug messages for received detection data.
+ *
+ * For both defines, 0 turns off all debug messages, 1 enables the messages, and 2 enables additional output of the received data.
+ *
+ * @note
+ * Don't enable debug messages in production. They will clutter the compiled build with numerous print commands, increasing the build size
+ * and negatively impacting performance.
+ */
+#define LD2410ASYNC_DEBUG_LEVEL 0
+#define LD2410ASYNC_DEBUG_DATA_LEVEL 0
 
-//#define ENABLE_DEBUG_DATA
-
-#ifndef ARDUINO_ARCH_ESP32
-#error "The LD2410Async library is only supported on ESP32 platforms."
-#endif
-
-
-#ifdef ENABLE_DEBUG
-
-#define DEBUG_PRINT_MILLIS              \
-    {                                   \
-        Serial.print(millis());         \
-		Serial.print(" ");    \
-	}
-
-
-#define DEBUG_PRINT(...)               \
-    {                                       \
-        Serial.print(__VA_ARGS__);         \
-    }
-
-
-#define DEBUG_PRINTLN(...)             \
-    {                                       \
-        Serial.println(__VA_ARGS__);         \
-    }
-
-#define DEBUG_PRINTBUF(...)             \
-    {                                       \
-        printBuf(__VA_ARGS__);         \
-    }
-
-#else
-
-#define DEBUG_PRINT(...)
-#define DEBUG_PRINTLN(...)
-#define DEBUG_PRINTBUF(...)
-#endif
-
-#ifdef ENABLE_DEBUG_DATA
-
-#define DEBUG_PRINT_DATA(...)               \
-    {                                       \
-        Serial.print(__VA_ARGS__);         \
-    }
-
-
-#define DEBUG_PRINTLN_DATA(...)             \
-    {                                       \
-        Serial.println(__VA_ARGS__);         \
-    }
-
-#define DEBUG_PRINTBUF_DATA(...)             \
-    {                                       \
-        printBuf(__VA_ARGS__);         \
-    }
-#else
-#define DEBUG_PRINT_DATA(...)
-#define DEBUG_PRINTLN_DATA(...)
-#define DEBUG_PRINTBUF_DATA(...)
-#endif
 
 #include "Arduino.h"
-#define LD2410_BUFFER_SIZE 0x40
+#include "Ticker.h"
+#include "LD2410Debug.h"
+#include "LD2410Types.h"
+#include "LD2410Defs.h"
 
 
 
 /**
- * @brief Asynchronous driver for the LD2410 human presence radar sensor.
+ * @brief Asynchronous driver class for the LD2410 human presence radar sensor.
  *
- * The LD2410 is a mmWave radar sensor capable of detecting both moving and
- * stationary targets, reporting presence, distance, and per-gate signal strength.
- * This class implements a non-blocking, asynchronous interface for communicating
- * with the sensor over a UART stream (HardwareSerial, SoftwareSerial, etc.).
+ * @details This class provides a non-blocking interface for communicating with the LD2410 sensor,
+ * allowing for efficient data retrieval and configuration without halting the main program flow.
+ * It supports multiple instances and features automatic handling of communication timeouts and errors.
+ * It supports all native commands of the LD2410 and has several additional high level commands for more consistent access to the sensor.
  *
- * ## Features
- * - Continuous background task that parses incoming frames and updates data.
- * - Access to latest detection results via getDetectionData() or getDetectionDataRef().
- * - Access to current configuration via getConfigData() or getConfigDataRef().
- * - Asynchronous commands for configuration (with callbacks).
- * - Support for engineering mode (per-gate signal values).
- * - Automatic inactivity handling (optional recovery and reboot).
- * - Utility methods for safe enum conversion and debugging output.
- *
- * ## Accessing data
- * You can either clone the structs (safe to modify) or access them by reference (efficient read-only):
- *
- * ### Example: Access detection data without cloning
- * @code
- *   const DetectionData& data = radar.getDetectionDataRef();  // no copy
- *   Serial.print("Target state: ");
- *   Serial.println(static_cast<int>(data.targetState));
- * @endcode
- *
- * ### Example: Clone config data, modify, and write back
- * @code
- *   ConfigData cfg = radar.getConfigData();  // clone
- *   cfg.noOneTimeout = 60;
- *   radar.setConfigDataAsync(cfg, [](LD2410Async* sender,
- *                                    AsyncCommandResult result,
- *                                    byte) {
- *     if (result == AsyncCommandResult::SUCCESS) {
- *       Serial.println("Config updated successfully!");
- *     }
- *   });
- * @endcode
- *
- * ## Usage
- * Typical workflow:
- * 1. Construct with a reference to a Stream object connected to the sensor.
- * 2. Call begin() to start the background task.
- * 3. Register callbacks for detection data and/or config updates.
- * 4. Use async commands to adjust sensor configuration as needed.
- * 5. Call end() to stop background processing if no longer required.
- *
- * Example:
- * @code
- *   HardwareSerial radarSerial(2);
- *   LD2410Async radar(radarSerial);
- *
- *   void setup() {
- *     Serial.begin(115200);
- *     radar.begin();
- *
- *     // Register callback for detection updates
- *     radar.registerDetectionDataReceivedCallback([](LD2410Async* sender, bool presenceDetetced, byte userData) {
- *       sender->getDetectionDataRef().print();  // direct access, no copy
- *     });
- *   }
- *
- *   void loop() {
- *     // Other application logic
- *   }
- * @endcode
  */
-
 class LD2410Async {
 public:
-	/**
-	 * @brief Represents the current target detection state reported by the radar.
-	 *
-	 * Values can be combined internally by the sensor depending on its
-	 * signal evaluation logic. The AUTO-CONFIG states are special values
-	 * that are only reported while the sensor is running its
-	 * self-calibration routine.
-	 */
-
-	enum class TargetState {
-		NO_TARGET = 0,                  ///< No moving or stationary target detected.
-		MOVING_TARGET = 1,              ///< A moving target has been detected.
-		STATIONARY_TARGET = 2,          ///< A stationary target has been detected.
-		MOVING_AND_STATIONARY_TARGET = 3, ///< Both moving and stationary targets detected.
-		AUTOCONFIG_IN_PROGRESS = 4,     ///< Auto-configuration routine is running.
-		AUTOCONFIG_SUCCESS = 5,         ///< Auto-configuration completed successfully.
-		AUTOCONFIG_FAILED = 6           ///< Auto-configuration failed.
-	};
-
-	/**
-	 * @brief Safely converts a numeric value to a TargetState enum.
-	 *
-	 * @param value Raw numeric value (0–6 expected).
-	 *              - 0 → NO_TARGET
-	 *              - 1 → MOVING_TARGET
-	 *              - 2 → STATIONARY_TARGET
-	 *              - 3 → MOVING_AND_STATIONARY_TARGET
-	 *              - 4 → AUTOCONFIG_IN_PROGRESS
-	 *              - 5 → AUTOCONFIG_SUCCESS
-	 *              - 6 → AUTOCONFIG_FAILED
-	 * @returns The matching TargetState value, or NO_TARGET if invalid.
-	 */
-	static TargetState toTargetState(int value) {
-		switch (value) {
-		case 0: return TargetState::NO_TARGET;
-		case 1: return TargetState::MOVING_TARGET;
-		case 2: return TargetState::STATIONARY_TARGET;
-		case 3: return TargetState::MOVING_AND_STATIONARY_TARGET;
-		case 4: return TargetState::AUTOCONFIG_IN_PROGRESS;
-		case 5: return TargetState::AUTOCONFIG_SUCCESS;
-		case 6: return TargetState::AUTOCONFIG_FAILED;
-		default: return TargetState::NO_TARGET; // safe fallback
-		}
-	}
-
-	/**
-	 * @brief Converts a TargetState enum value to a human-readable String.
-	 *
-	 * Useful for printing detection results in logs or Serial Monitor.
-	 *
-	 * @param state TargetState enum value.
-	 * @returns Human-readable string such as "No target", "Moving target", etc.
-	 */
-	static String targetStateToString(TargetState state) {
-		switch (state) {
-		case TargetState::NO_TARGET: return "No target";
-		case TargetState::MOVING_TARGET: return "Moving target";
-		case TargetState::STATIONARY_TARGET: return "Stationary target";
-		case TargetState::MOVING_AND_STATIONARY_TARGET: return "Moving and stationary target";
-		case TargetState::AUTOCONFIG_IN_PROGRESS: return "Auto-config in progress";
-		case TargetState::AUTOCONFIG_SUCCESS: return "Auto-config success";
-		case TargetState::AUTOCONFIG_FAILED: return "Auto-config failed";
-		default: return "Unknown";
-		}
-	}
-
-
 
 	/**
 	 * @brief Result of an asynchronous command execution.
 	 *
 	 * Every async command reports back its outcome via the callback.
+	 *
 	 */
 	enum class AsyncCommandResult : byte {
 		SUCCESS,    ///< Command completed successfully and ACK was received.
@@ -223,352 +53,24 @@ public:
 
 
 
-	/**
-	 * @brief Light-dependent control status of the auxiliary output.
-	 *
-	 * The radar sensor can control an external output based on ambient
-	 * light level in combination with presence detection.
-	 *
-	 * Use NOT_SET only as a placeholder; it is not a valid configuration value.
-	 */
-	enum class LightControl {
-		NOT_SET = -1,          ///< Placeholder resp. inital value. Do not use as a config value (will result in abortion of the config command).
-		NO_LIGHT_CONTROL = 0,  ///< Output is not influenced by light levels.
-		LIGHT_BELOW_THRESHOLD = 1, ///< Condition: light < threshold.
-		LIGHT_ABOVE_THRESHOLD = 2  ///< Condition: light ≥ threshold.
-	};
-	/**
-	 * @brief Safely converts a numeric value to a LightControl enum.
-	 *
-	 * @param value Raw numeric value (0–2 expected).
-	 *              - 0 → NO_LIGHT_CONTROL
-	 *              - 1 → LIGHT_BELOW_THRESHOLD
-	 *              - 2 → LIGHT_ABOVE_THRESHOLD
-	 * @returns The matching LightControl value, or NOT_SET if invalid.
-	 */
-	static LightControl toLightControl(int value) {
-		switch (value) {
-		case 0: return LightControl::NO_LIGHT_CONTROL;
-		case 1: return LightControl::LIGHT_BELOW_THRESHOLD;
-		case 2: return LightControl::LIGHT_ABOVE_THRESHOLD;
-		default: return LightControl::NOT_SET;
-		}
-	}
-
-
-	/**
-	 * @brief Logic level behavior of the auxiliary output pin.
-	 *
-	 * Determines whether the output pin is active-high or active-low
-	 * in relation to presence detection.
-	 *
-	 * Use NOT_SET only as a placeholder; it is not a valid configuration value.
-	 */
-	enum class OutputControl {
-		NOT_SET = -1,                ///< Placeholder resp. inital value. Do not use as a config value (will result in abortion of the config command).
-		DEFAULT_LOW_DETECTED_HIGH = 0, ///< Default low, goes HIGH when detection occurs.
-		DEFAULT_HIGH_DETECTED_LOW = 1  ///< Default high, goes LOW when detection occurs.
-	};
-
-	/**
-	 * @brief Safely converts a numeric value to an OutputControl enum.
-	 *
-	 * @param value Raw numeric value (0–1 expected).
-	 *              - 0 → DEFAULT_LOW_DETECTED_HIGH
-	 *              - 1 → DEFAULT_HIGH_DETECTED_LOW
-	 * @returns The matching OutputControl value, or NOT_SET if invalid.
-	 */
-	static OutputControl toOutputControl(int value) {
-		switch (value) {
-		case 0: return OutputControl::DEFAULT_LOW_DETECTED_HIGH;
-		case 1: return OutputControl::DEFAULT_HIGH_DETECTED_LOW;
-		default: return OutputControl::NOT_SET;
-		}
-	}
-
-	/**
-	 * @brief State of the automatic threshold configuration routine.
-	 *
-	 * Auto-config adjusts the sensitivity thresholds for optimal detection
-	 * in the current environment. This process may take several seconds.
-	 *
-	 * Use NOT_SET only as a placeholder; it is not a valid configuration value.
-	 */
-	enum class AutoConfigStatus {
-		NOT_SET = -1,    ///< Status not yet retrieved.
-		NOT_IN_PROGRESS, ///< Auto-configuration not running.
-		IN_PROGRESS,     ///< Auto-configuration is currently running.
-		COMPLETED        ///< Auto-configuration finished (success or failure).
-	};
-
-	/**
-	 * @brief Safely converts a numeric value to an AutoConfigStatus enum.
-	 *
-	 * @param value Raw numeric value (0–2 expected).
-	 *              - 0 → NOT_IN_PROGRESS
-	 *              - 1 → IN_PROGRESS
-	 *              - 2 → COMPLETED
-	 * @returns The matching AutoConfigStatus value, or NOT_SET if invalid.
-	 */
-	static AutoConfigStatus toAutoConfigStatus(int value) {
-		switch (value) {
-		case 0: return AutoConfigStatus::NOT_IN_PROGRESS;
-		case 1: return AutoConfigStatus::IN_PROGRESS;
-		case 2: return AutoConfigStatus::COMPLETED;
-		default: return AutoConfigStatus::NOT_SET;
-		}
-	}
-
-
-	/**
-	 * @brief Supported baud rates for the sensor’s UART interface.
-	 *
-	 * These values correspond to the configuration commands accepted
-	 * by the LD2410. After changing the baud rate, a sensor reboot
-	 * is required, and the ESP32’s UART must be reconfigured to match.
-	 */
-	enum class Baudrate {
-		BAUDRATE_9600 = 1,  ///< 9600 baud.
-		BAUDRATE_19200 = 2,  ///< 19200 baud.
-		BAUDRATE_38400 = 3,  ///< 38400 baud.
-		BAUDRATE_57600 = 4,  ///< 57600 baud.
-		BAUDRATE_115200 = 5,  ///< 115200 baud.
-		BAUDRATE_230500 = 6,  ///< 230400 baud.
-		BAUDRATE_256000 = 7,  ///< 256000 baud (factory default).
-		BAUDRATE_460800 = 8   ///< 460800 baud (high-speed).
-	};
-
-	/**
-	 * @brief Distance resolution per gate for detection.
-	 *
-	 * The resolution defines how fine-grained the distance measurement is:
-	 *   - RESOLUTION_75CM: Coarser, maximum range up to ~6 m, each gate ≈ 0.75 m wide.
-	 *   - RESOLUTION_20CM: Finer, maximum range up to ~1.8 m, each gate ≈ 0.20 m wide.
-	 *
-	 * Use NOT_SET only as a placeholder; it is not a valid configuration value.
-	 */
-	enum class DistanceResolution {
-		NOT_SET = -1,          ///< Placeholder resp. inital value. Do not use as a config value (will result in abortion of the config command).
-		RESOLUTION_75CM = 0,   ///< Each gate ~0.75 m, max range ~6 m.
-		RESOLUTION_20CM = 1    ///< Each gate ~0.20 m, max range ~1.8 m.
-	};
-	/**
-	 * @brief Safely converts a numeric value to a DistanceResolution enum.
-	 *
-	 * @param value Raw numeric value (typically from a sensor response).
-	 *              Expected values:
-	 *                - 0 → RESOLUTION_75CM
-	 *                - 1 → RESOLUTION_20CM
-	 * @returns The matching DistanceResolution value, or NOT_SET if invalid.
-	 */
-	static DistanceResolution toDistanceResolution(int value) {
-		switch (value) {
-		case 0: return DistanceResolution::RESOLUTION_75CM;
-		case 1: return DistanceResolution::RESOLUTION_20CM;
-		default: return DistanceResolution::NOT_SET;
-		}
-	}
-
-	/**
-	  * @brief Holds the most recent detection data reported by the radar.
-	  *
-	  * This structure is continuously updated as new frames arrive.
-	  * Values reflect either the basic presence information or, if
-	  * engineering mode is enabled, per-gate signal details.
-	  */
-	struct DetectionData
-	{
-		unsigned long timestamp = 0; ///< Timestamp (ms since boot) when this data was received.
-
-		// === Basic detection results ===
-
-		bool engineeringMode = false; ///< True if engineering mode data was received.
-
-		bool presenceDetected = false;           ///< True if any target is detected.
-		bool movingPresenceDetected = false;     ///< True if a moving target is detected.
-		bool stationaryPresenceDetected = false; ///< True if a stationary target is detected.
-
-		TargetState targetState = TargetState::NO_TARGET; ///< Current detection state.
-		unsigned int movingTargetDistance = 0; ///< Distance (cm) to the nearest moving target.
-		byte movingTargetSignal = 0; ///< Signal strength (0–100) of the moving target.
-		unsigned int stationaryTargetDistance = 0; ///< Distance (cm) to the nearest stationary target.
-		byte stationaryTargetSignal = 0; ///< Signal strength (0–100) of the stationary target.
-		unsigned int detectedDistance = 0; ///< General detection distance (cm).
-
-		// === Engineering mode data ===
-		byte movingTargetGateSignalCount = 0; ///< Number of gates with moving target signals.
-		byte movingTargetGateSignals[9] = { 0 }; ///< Per-gate signal strengths for moving targets.
-
-		byte stationaryTargetGateSignalCount = 0; ///< Number of gates with stationary target signals.
-		byte stationaryTargetGateSignals[9] = { 0 }; ///< Per-gate signal strengths for stationary targets.
-
-		byte lightLevel = 0; ///< Reported ambient light level (0–255).
-		bool outPinStatus = 0; ///< Current status of the OUT pin (true = high, false = low).
-
-
-		/**
-		 * @brief Debug helper: print detection data contents to Serial.
-		 */
-		void print() const {
-			Serial.println("=== DetectionData ===");
-
-			Serial.print("  Timestamp: ");
-			Serial.println(timestamp);
-
-			Serial.print("  Engineering Mode: ");
-			Serial.println(engineeringMode ? "Yes" : "No");
-
-			Serial.print("  Target State: ");
-			Serial.println(static_cast<int>(targetState));
-
-			Serial.print("  Moving Target Distance (cm): ");
-			Serial.println(movingTargetDistance);
-
-			Serial.print("  Moving Target Signal: ");
-			Serial.println(movingTargetSignal);
-
-			Serial.print("  Stationary Target Distance (cm): ");
-			Serial.println(stationaryTargetDistance);
-
-			Serial.print("  Stationary Target Signal: ");
-			Serial.println(stationaryTargetSignal);
-
-			Serial.print("  Detected Distance (cm): ");
-			Serial.println(detectedDistance);
-
-			Serial.print("  Light Level: ");
-			Serial.println(lightLevel);
-
-			Serial.print("  OUT Pin Status: ");
-			Serial.println(outPinStatus ? "High" : "Low");
-
-			// --- Engineering mode fields ---
-			if (engineeringMode) {
-				Serial.println("  --- Engineering Mode Data ---");
-
-				Serial.print("  Moving Target Gate Signal Count: ");
-				Serial.println(movingTargetGateSignalCount);
-
-				Serial.print("  Moving Target Gate Signals: ");
-				for (int i = 0; i < movingTargetGateSignalCount; i++) {
-					Serial.print(movingTargetGateSignals[i]);
-					if (i < movingTargetGateSignalCount - 1) Serial.print(",");
-				}
-				Serial.println();
-
-				Serial.print("  Stationary Target Gate Signal Count: ");
-				Serial.println(stationaryTargetGateSignalCount);
-
-				Serial.print("  Stationary Target Gate Signals: ");
-				for (int i = 0; i < stationaryTargetGateSignalCount; i++) {
-					Serial.print(stationaryTargetGateSignals[i]);
-					if (i < stationaryTargetGateSignalCount - 1) Serial.print(",");
-				}
-				Serial.println();
-			}
-
-			Serial.println("======================");
-		}
-
-	};
-
-	/**
-	 * @brief Stores the sensor’s configuration parameters.
-	 *
-	 * This structure represents both static capabilities
-	 * (e.g. number of gates) and configurable settings
-	 * (e.g. sensitivities, timeouts, resolution).
-	 *
-	 * The values are typically filled by request commands
-	 * such as requestAllConfigData() or requestGateParametersAsync() or
-	 * requestAuxControlSettingsAsync() or requestDistanceResolutioncmAsync().
-	 */
-	struct ConfigData {
-		// === Radar capabilities ===
-		byte numberOfGates = 0; ///< Number of distance gates (2–8). This member is readonly resp. changing its value will not influence the radar sentting when setConfigDataAsync() is called.
-
-		byte maxMotionDistanceGate = 0; ///< Furthest gate used for motion detection.
-		byte maxStationaryDistanceGate = 0; ///< Furthest gate used for stationary detection.
-
-		// === Per-gate sensitivity settings ===
-		byte distanceGateMotionSensitivity[9] = { 0 }; ///< Motion sensitivity values per gate (0–100). 
-		byte distanceGateStationarySensitivity[9] = { 0 }; ///< Stationary sensitivity values per gate (0–100).
-
-		// === General detection parameters ===
-		unsigned short noOneTimeout = 0; ///< Timeout (seconds) until "no presence" is declared.
-
-		// === Resolution and auxiliary controls ===
-		DistanceResolution distanceResolution = DistanceResolution::NOT_SET; ///< Current distance resolution. A reboot is required to activate changed setting after calling setConfigDataAsync() is called.
-		byte lightThreshold = 0; ///< Threshold for auxiliary light control (0–255).
-		LightControl lightControl = LightControl::NOT_SET; ///< Light-dependent auxiliary control mode.
-		OutputControl outputControl = OutputControl::NOT_SET; ///< Logic configuration of the OUT pin.
-
-		/**
-		 * @brief Debug helper: print configuration contents to Serial.
-		 */
-		void print() const {
-			Serial.println("=== ConfigData ===");
-
-			Serial.print("  Number of Gates: ");
-			Serial.println(numberOfGates);
-
-			Serial.print("  Max Motion Distance Gate: ");
-			Serial.println(maxMotionDistanceGate);
-
-			Serial.print("  Max Stationary Distance Gate: ");
-			Serial.println(maxStationaryDistanceGate);
-
-			Serial.print("  Motion Sensitivity: ");
-			for (int i = 0; i < 9; i++) {
-				Serial.print(distanceGateMotionSensitivity[i]);
-				if (i < 8) Serial.print(",");
-			}
-			Serial.println();
-
-			Serial.print("  Stationary Sensitivity: ");
-			for (int i = 0; i < 9; i++) {
-				Serial.print(distanceGateStationarySensitivity[i]);
-				if (i < 8) Serial.print(",");
-			}
-			Serial.println();
-
-			Serial.print("  No One Timeout: ");
-			Serial.println(noOneTimeout);
-
-			Serial.print("  Distance Resolution: ");
-			Serial.println(static_cast<int>(distanceResolution));
-
-			Serial.print("  Light Threshold: ");
-			Serial.println(lightThreshold);
-
-			Serial.print("  Light Control: ");
-			Serial.println(static_cast<int>(lightControl));
-
-			Serial.print("  Output Control: ");
-			Serial.println(static_cast<int>(outputControl));
-
-			Serial.println("===================");
-		}
-	};
-
-
 
 	/**
 	 * @brief Callback signature for asynchronous command completion.
 	 *
 	 * @param sender   Pointer to the LD2410Async instance that triggered the callback.
 	 * @param result   Outcome of the async operation (SUCCESS, FAILED, TIMEOUT, CANCELED).
-	 * @param userData User-specified value passed when registering the callback.
+	 *
 	 */
-	typedef void (*AsyncCommandCallback)(LD2410Async* sender, AsyncCommandResult result, byte userData);
+	typedef void (*AsyncCommandCallback)(LD2410Async* sender, AsyncCommandResult result);
 
 	/**
 	 * @brief Generic callback signature used for simple notifications.
 	 *
 	 * @param sender   Pointer to the LD2410Async instance that triggered the callback.
-	 * @param userData User-specified value passed when registering the callback.
+	 *
+	 *
 	 */
-	typedef void (*GenericCallback)(LD2410Async* sender, byte userData);
+	typedef void (*GenericCallback)(LD2410Async* sender);
 
 	/**
 	 * @brief Callback type for receiving detection data events.
@@ -580,174 +82,60 @@ public:
 	 *
 	 * @param sender            Pointer to the LD2410Async instance that triggered the callback.
 	 * @param presenceDetected  True if the radar currently detects presence (moving or stationary), false otherwise.
-	 * @param userData          User-defined value passed when registering the callback.
+	 *
 	 */
-	typedef void(*DetectionDataCallback)(LD2410Async* sender, bool presenceDetected, byte userData);
+	typedef void(*DetectionDataCallback)(LD2410Async* sender, bool presenceDetected);
 
 
-private:
-	//Pointer to the Serial of the LD2410
-	Stream* sensor;
-
-	//Read frame enums, members and methods
-	enum ReadFrameState {
-		WAITING_FOR_HEADER,
-		ACK_HEADER,
-		DATA_HEADER,
-		READ_ACK_SIZE,
-		READ_DATA_SIZE,
-		READ_ACK_PAYLOAD,
-		READ_DATA_PAYLOAD
-	};
-	enum FrameReadResponse
-	{
-		FAIL = 0,
-		ACK,
-		DATA
-	};
-	int readFrameHeaderIndex = 0;
-	int payloadSize = 0;
-	ReadFrameState readFrameState = ReadFrameState::WAITING_FOR_HEADER;
-
-	bool readFramePayloadSize(byte b, ReadFrameState nextReadFrameState);
-	FrameReadResponse readFramePayload(byte b, const byte* tailPattern, LD2410Async::FrameReadResponse succesResponseType);
-	FrameReadResponse readFrame();
-
-
-	//Buffer for received data
-	byte receiveBuffer[LD2410_BUFFER_SIZE];
-	byte receiveBufferIndex = 0;
-
-	//Vars for async command sequences
-	static constexpr size_t MAX_COMMAND_SEQUENCE = 15;
-	byte commandSequenceBuffer[MAX_COMMAND_SEQUENCE][LD2410_BUFFER_SIZE];
-	byte commandSequenceBufferCount = 0;
-
-	unsigned long sendAsyncSequenceStartMs = 0;
-	AsyncCommandCallback sendAsyncSequenceCallback = nullptr;
-	byte sendAsyncSequenceUserData = 0;
-	int sendAsyncSequenceIndex = 0;
-	bool sendAsyncSequenceInitialConfigModeState = false;
-
-	void executeAsyncSequenceCallback(AsyncCommandResult result);
-	static void sendCommandSequenceAsyncDisableConfigModeCallback(LD2410Async* sender, AsyncCommandResult result, byte userData = 0);
-	static void sendCommandSequenceAsyncCommandCallback(LD2410Async* sender, AsyncCommandResult result, byte userData = 0);
-	static void sendCommandSequenceAsyncEnableConfigModeCallback(LD2410Async* sender, AsyncCommandResult result, byte userData = 0);
-	bool sendCommandSequenceAsync(AsyncCommandCallback callback, byte userData = 0);
-	bool addCommandToSequence(const byte* command);
-	bool resetCommandSequence();
-
-
-	//Inactivity handling
-
-	void heartbeat();
-
-	bool inactivityHandlingEnabled = true;
-	unsigned long lastActivityMs = 0;
-	bool handleInactivityExitConfigModeDone = false;
-	void handleInactivity();
-	static void handleInactivityRebootCallback(LD2410Async* sender, AsyncCommandResult result, byte userData);
-	static void handleInactivityDisableConfigmodeCallback(LD2410Async* sender, AsyncCommandResult result, byte userData);
-	const unsigned long activityTimeoutMs = 60000;
-
-
-	//Reboot
-	static void rebootEnableConfigModeCallback(LD2410Async* sender, AsyncCommandResult result, byte userData = 0);
-	static void rebootRebootCallback(LD2410Async* sender, AsyncCommandResult result, byte userData = 0);
-
-
-
-
-
-
-	bool processAck();
-	bool processData();
-
-
-	GenericCallback configUpdateReceivedReceivedCallback = nullptr;
-	byte configUpdateReceivedReceivedCallbackUserData = 0;
-	void executeConfigUpdateReceivedCallback();
-
-	GenericCallback configChangedCallback = nullptr;
-	byte configChangedCallbackUserData = 0;
-	void executeConfigChangedCallback();
-
-
-
-	DetectionDataCallback detectionDataCallback = nullptr;
-	byte detectionDataCallbackUserData = 0;
-
-	void sendCommand(const byte* command);
-
-	TaskHandle_t taskHandle = NULL;
-	bool taskStop = false;
-	void taskLoop();
-
-
-	//Private async variables and methods
-	const unsigned long asyncCommandTimeoutMs = 5000;
-
-	bool sendCommandAsync(const byte* command, AsyncCommandCallback callback, byte userData = 0);
-	void executeAsyncCommandCallback(byte commandCode, AsyncCommandResult result);
-	void handleAsyncCommandCallbackTimeout();
-
-	bool sendConfigCommandAsync(const byte* command, AsyncCommandCallback callback, byte userData = 0);
-
-
-
-	AsyncCommandCallback asyncCommandCallback = nullptr;
-	byte asyncCommandCallbackUserData = 0;
-	unsigned long asyncCommandStartMs = 0;
-	byte asyncCommandCommandCode = 0;
-
-
-	void processReceivedData();
 
 
 
 public:
+
+
+
 	/**
-	   * @brief Latest detection results from the radar.
-	   *
-	   * Updated automatically whenever new data frames are received.
-	   * Use registerDetectionDataReceivedCallback() to be notified
-	   * whenever this struct changes.
-	   */
-	DetectionData detectionData;
+	 * @brief Latest detection results from the radar.
+	 *
+	 * @details Updated automatically whenever new data frames are received.
+	 * Use onDetectionDataReceived() to be notified
+	 * whenever this struct changes.
+	 * Use getDetectionData() or getDetectionDataRef() to access the current values, rather than accessing the struct directly.
+	 *
+	 *
+	 */
+	LD2410Types::DetectionData detectionData;
 
 	/**
 	 * @brief Current configuration parameters of the radar.
 	 *
-	 * Filled when configuration query commands are issued
-	 * (e.g. requestAllConfigData() or requestGateParametersAsync() ect). Can be modified and
-	 * sent back using setConfigDataAsync().
+	 * @details Filled when configuration query commands are issued
+         * (e.g. requestAllConfigSettingsAsync() or requestGateParametersAsync(), etc.).
+	 * Use onConfigDataReceived() to be notified when data in this struct changes.
+	 * Use getConfigData() or getConfigDataRef() to access the current values, rather than accessing the struct directly.
 	 *
-	 * Structure will contain only uninitilaized data if config data is not queried explicitly.
+         * The structure contains only uninitialized data if config data is not queried explicitly.
+	 *
 	 */
-	ConfigData configData;
+	LD2410Types::ConfigData configData;
 
 	/**
-	* @brief Protocol version reported by the radar.
-	*
-	* This value is set when entering config mode. It can be useful
-	* for compatibility checks between firmware and library.
-	*/
-	unsigned long protocolVersion = 0;
+	 * @brief Static data of the radar
+	 *
+         * @details Filled when config mode is enabled (protocol version and buffer size)
+         * and when issuing query commands for the static data (requestAllStaticDataAsync(), requestFirmwareAsync(), requestBluetoothMacAddressAsync()).
+	 */
+	LD2410Types::StaticData staticData;
 
-	/**
-	* @brief Buffer size reported by the radar protocol.
-	*
-	* Set when entering config mode. Typically not required by users
-	* unless debugging low-level protocol behavior.
-	*/
-	unsigned long bufferSize = 0;
+
 
 	/**
 	 * @brief True if the sensor is currently in config mode.
 	 *
 	 * Config mode must be enabled using enableConfigModeAsync() before sending configuration commands.
 	 * After sending config commands, always disable the config mode using disableConfigModeAsync(),
-	 * otherwiese the radar will not send any detection data.
+         * otherwise the radar will not send any detection data.
+	 *
 	 */
 	bool configModeEnabled = false;
 
@@ -759,64 +147,49 @@ public:
 	 * signal data in addition to basic detection data.
 	 *
 	 * Use enableEngineeringModeAsync() and disableEngineeringModeAsync() to control the engineering mode.
+	 *
 	 */
 	bool engineeringModeEnabled = false;
 
+
+
+
 	/**
-	 * @brief Firmware version string of the radar.
+	 * @brief Current status of the auto-configuration routine.
 	 *
-	 * Populated by requestFirmwareAsync(). Format is usually
-	 * "major.minor.build".
-	 */
-	String firmware = "";
-
-	/**
-	 * @brief MAC address of the radar’s Bluetooth module (if available).
+	 * Updated by requestAutoConfigStatusAsync().
 	 *
-	 * Populated by requestBluetoothMacAddressAsync().
 	 */
-	byte mac[6];
+	LD2410Types::AutoConfigStatus	autoConfigStatus = LD2410Types::AutoConfigStatus::NOT_SET;
+
+
+
+
+        /**********************************************************************************
+         * Constructor
+	 ***********************************************************************************/
+
 	/**
-	 * @brief MAC address as a human-readable string (e.g. "AA:BB:CC:DD:EE:FF").
+	 * @brief Constructs a new LD2410Async instance bound to a given serial stream.
 	 *
-	 * Populated by requestBluetoothMacAddressAsync().
+	 * The sensor communicates over a UART interface. Pass the corresponding
+	 * Stream object (e.g. HardwareSerial, SoftwareSerial, or another compatible
+	 * implementation) that is connected to the LD2410 sensor.
+	 *
+	 * Example:
+	 * @code{.cpp}
+	 *   HardwareSerial radarSerial(2);
+	 *   LD2410Async radar(radarSerial);
+	 * @endcode
+	 *
+	 * @param serial Reference to a Stream object used to exchange data with the sensor.
+	 *
 	 */
-	String macString = "";
-
-
-	/**
-	* @brief Current status of the auto-configuration routine.
-	*
-	* Updated by requestAutoConfigStatusAsync().
-	*/
-	AutoConfigStatus	autoConfigStatus = AutoConfigStatus::NOT_SET;
-
-
-
-	/**********************************************************************************
-	* Constrcutor
-	***********************************************************************************/
-
-	/**
-	* @brief Constructs a new LD2410Async instance bound to a given serial stream.
-	*
-	* The sensor communicates over a UART interface. Pass the corresponding
-	* Stream object (e.g. HardwareSerial, SoftwareSerial, or another compatible
-	* implementation) that is connected to the LD2410 sensor.
-	*
-	* Example:
-	* @code
-	*   HardwareSerial radarSerial(2);
-	*   LD2410Async radar(radarSerial);
-	* @endcode
-	*
-	* @param serial Reference to a Stream object used to exchange data with the sensor.
-	*/
 	LD2410Async(Stream& serial);
 
 	/**********************************************************************************
-	* begin, end
-	***********************************************************************************/
+	 * begin, end
+	 ***********************************************************************************/
 	/**
 	 * @brief Starts the background task that continuously reads data from the sensor.
 	 *
@@ -825,37 +198,45 @@ public:
 	 * sensor cannot deliver detection results asynchronously.
 	 *
 	 * @returns true if the task was successfully started, false if already running.
+	 *
 	 */
 	bool begin();
 
 	/**
-	* @brief Stops the background task started by begin().
-	*
-	* After calling end(), no more data will be processed until begin() is called again.
-	* This is useful to temporarily suspend radar processing without rebooting.
-	*
-	* @returns true if the task was stopped, false if it was not active.
-	*/
+	 * @brief Stops the background task started by begin().
+	 *
+	 * After calling end(), no more data will be processed until begin() is called again.
+	 * This is useful to temporarily suspend radar processing without rebooting.
+	 *
+	 * @returns true if the task was stopped, false if it was not active.
+	 *
+	 */
 	bool end();
 
+
+
 	/**********************************************************************************
-	* Inactivity handling
-	***********************************************************************************/
+	 * Inactivity handling
+	 ***********************************************************************************/
+
+
+
 	/**
 	 * @brief Enables or disables automatic inactivity handling of the sensor.
 	 *
-	 * When inactivity handling is enabled, the library continuously monitors the time
-	 * since the last activity (received data or command ACK). If no activity is detected
-	 * for a longer period (defined by activityTimeoutMs), the library will attempt to
-	 * recover the sensor automatically:
-	 *   1. It first tries to exit config mode (even if configModeEnabled is false).
-	 *   2. If no activity is restored within 5 seconds after leaving config mode,
-	 *      the library reboots the sensor.
+         * When inactivity handling is enabled, the library continuously monitors the time
+         * since the last activity of the sensor (received data or ACK). If no activity is detected
+	 * for a longer period, the library will attempt to return the sensor to normal detection operation.
 	 *
-	 * This helps recover the sensor from rare cases where it gets "stuck"
-	 * in config mode or stops sending data.
+         * It will attempt the following steps (each separated by the timeout period for async commands):
+         *   1. Cancel pending async commands, in case the user's code is still waiting for a callback.
+         *   2. If the cancel did not help, it will try to disable config mode, even if the library thinks config mode is disabled.
+	 *   3. As a last step, it will try to reboot the sensor.
+	 *
+         * If all those recovery steps don't work, the library will try again to recover the sensor after the inactivity timeout period has elapsed.
 	 *
 	 * @param enable Pass true to enable inactivity handling, false to disable it.
+	 *
 	 */
 	void setInactivityHandling(bool enable);
 
@@ -863,6 +244,9 @@ public:
 	 * @brief Convenience method: enables inactivity handling.
 	 *
 	 * Equivalent to calling setInactivityHandling(true).
+	 *
+	 * Check setInactivityHandling() for details.
+	 *
 	 */
 	void enableInactivityHandling() { setInactivityHandling(true); };
 
@@ -870,53 +254,189 @@ public:
 	 * @brief Convenience method: disables inactivity handling.
 	 *
 	 * Equivalent to calling setInactivityHandling(false).
+	 *
+	 * Check setInactivityHandling() for details.
 	 */
 	void disableInactivityHandling() { setInactivityHandling(false); };
 
+	/**
+	 * @brief Returns whether inactivity handling is currently enabled.
+	 *
+	 * @returns true if inactivity handling is enabled, false otherwise.
+	 *
+	 */
+	bool isInactivityHandlingEnabled() const { return inactivityHandlingEnabled; };
+
+	/**
+	 * @brief Sets the timeout period for inactivity handling.
+	 *
+	 * If no data or command ACK is received within this period,
+	 * the library will attempt to recover the sensor as described
+	 * in setInactivityHandling().
+	 *
+	 * Default is 60000 ms (1 minute).
+	 *
+	 * @note
+         * Make sure to set a value that is larger than the timeout for async commands (see getAsyncCommandTimeoutMs() and setAsyncCommandTimeoutMs()).
+         * Otherwise inactivity handling could kick in while commands are still pending (usually waiting for an ACK), which will result in the cancellation of the pending async command.
+         * To ensure this does not happen, inactivity handling will not use the configured timeout if it is shorter than the command timeout and will instead use the command timeout plus 1000 ms.
+	 *
+	 * @param timeoutMs Timeout in milliseconds (minimum 10000 ms recommended). 0 will disable inactivity checking and handling.
+	 *
+	 */
+	void setInactivityTimeoutMs(unsigned long timeoutMs = 60000) { inactivityHandlingTimeoutMs = timeoutMs; };
+
+	/**
+	 * @brief Returns the current inactivity handling timeout period.
+	 *
+	 * @returns Timeout in milliseconds.
+	 *
+	 */
+	unsigned long getInactivityTimeoutMs() const { return inactivityHandlingTimeoutMs; };
+
+
 
 	/**********************************************************************************
-	* Data received methods
-	***********************************************************************************/
+	 * Callback registration methods
+	 ***********************************************************************************/
 
 	/**
-	  * @brief Registers a callback for new detection data.
-	  *
-	  * The callback is invoked whenever a valid data frame is received
-	  * from the radar, after detectionData has been updated.
-	  *
-	  * @param callback Function pointer with signature
-	  *        void methodName(LD2410Async* sender, bool presenceDetected, byte userData).
-	  * @param userData Optional value that will be passed to the callback.
-	  */
-	void registerDetectionDataReceivedCallback(DetectionDataCallback callback, byte userData=0);
-
-	/**
-	 * @brief Registers a callback for configuration changes.
+	 * @brief Registers a callback for new detection data.
 	 *
-	 * The callback is invoked whenever the sensor’s configuration
-	 * has been successfully updated (e.g. after setting sensitivity).
+	 * The callback is invoked whenever a valid detection data frame is received
+	 * from the radar. This happens for **every frame**, not only when the
+	 * `presenceDetected` flag changes.
+	 *
+	 * The library updates its internal
+	 * @ref LD2410Types::DetectionData "DetectionData" structure with each frame
+	 * before the callback is executed. This provides both a quick boolean
+	 * `presenceDetected` for simple use cases and full access to detailed
+	 * per-gate information if needed.
 	 *
 	 * @param callback Function pointer with signature
-	 *        void methodName(LD2410Async* sender, byte userData).
-	 * @param userData Optional value that will be passed to the callback.
+	 *        void methodName(LD2410Async* sender, bool presenceDetected).
+	 *
+	 * @note
+	 * Within the callback you can use
+	 * @ref LD2410Async::getDetectionData "getDetectionData()" or
+	 * @ref LD2410Async::getDetectionDataRef "getDetectionDataRef()" to access
+	 * the full @ref LD2410Types::DetectionData "DetectionData" struct, including
+	 * distances, energies, and gate values.
+	 *
+	 * ## Examples
+	 *
+	 * ### Example: Registering the detection data callback
+	 * @code{.cpp}
+	 * void myDetectionCallback(LD2410Async* sender, bool presence) {
+	 *   if (presence) {
+	 *     Serial.println("Presence detected!");
+	 *   } else {
+	 *     Serial.println("No presence.");
+	 *   }
+	 * }
+	 *
+	 * // Somewhere in setup():
+	 * radar.onDetectionDataReceived(myDetectionCallback);
+	 * @endcode
+	 *
+	 * ### Example: Access detection data (cloned copy)
+	 * @code{.cpp}
+	 * LD2410Types::DetectionData data = radar.getDetectionData();  // clone
+	 * Serial.print("Moving distance: ");
+	 * Serial.println(data.movingTargetDistance);
+	 * @endcode
+	 *
+	 * ### Example: Access detection data (by reference, no copy)
+	 * @code{.cpp}
+	 * const LD2410Types::DetectionData& data = radar.getDetectionDataRef();  // no copy
+	 * Serial.print("Stationary energy: ");
+	 * Serial.println(data.stationaryTargetEnergy);
+	 * @endcode
 	 */
-	void registerConfigChangedCallback(GenericCallback callback, byte userData = 0);
+	void onDetectionDataReceived(DetectionDataCallback callback);
 
 	/**
 	 * @brief Registers a callback for configuration data updates.
 	 *
 	 * The callback is invoked whenever new configuration information
-	 * has been received from the sensor (e.g. after requestGateParametersAsync()).
+	 * has been received from the sensor (e.g. after calling
+	 * @ref LD2410Async::requestAllConfigSettingsAsync "requestAllConfigSettingsAsync()").
+	 *
+	 * @note
+	 * Configuration data is **not sent automatically** by the sensor and
+	 * is **not updated automatically** when it changes internally. It must
+	 * be explicitly requested by the application. Use
+	 * @ref LD2410Async::requestAllConfigSettingsAsync() whenever you need
+	 * to refresh the local configuration data structure.
+	 *
+	 * ## Examples
+	 *
+	 * ### Example: Registering a config data received callback
+	 * @code{.cpp}
+	 * void onConfigDataReceived(LD2410Async* sender) {
+	 *   Serial.println("Config data received from sensor.");
+	 * }
+	 *
+	 * // Somewhere in setup():
+	 * radar.onConfigDataReceived(onConfigDataReceived);
+	 * @endcode
+	 *
+	 * ### Example: Access configuration data (cloned copy)
+	 * @code{.cpp}
+	 * LD2410Types::ConfigData cfg = radar.getConfigData();  // clone
+	 * Serial.print("No one timeout: ");
+	 * Serial.println(cfg.noOneTimeout);
+	 * @endcode
+	 *
+	 * ### Example: Access configuration data (by reference, no copy)
+	 * @code{.cpp}
+	 * const LD2410Types::ConfigData& cfg = radar.getConfigDataRef();  // no copy
+	 * Serial.print("Resolution: ");
+	 * Serial.println(static_cast<int>(cfg.distanceResolution));
+	 * @endcode
 	 *
 	 * @param callback Function pointer with signature
-	 *        void methodName(LD2410Async* sender, byte userData).
-	 * @param userData Optional value that will be passed to the callback.
+	 *        void methodName(LD2410Async* sender).
 	 */
-	void registerConfigUpdateReceivedCallback(GenericCallback callback, byte userData = 0);
+	void onConfigDataReceived(GenericCallback callback);
+
+	/**
+	 * @brief Registers a callback that is invoked whenever the sensor's configuration
+	 *        has been changed successfully.
+	 *
+	 * This event is triggered after a configuration command (e.g.
+	 * @ref configureAllConfigSettingsAsync "configureAllConfigSettingsAsync()" or
+	 * @ref configureDistanceResolutionAsync "configureDistanceResolutionAsync()")
+	 * has been executed by the sensor.
+	 *
+	 * @note
+	 * - This callback only signals that the sensor acknowledged and applied a change.
+	 * - The local @ref LD2410Types::ConfigData "ConfigData" structure is **not**
+	 *   automatically updated when this event occurs. To refresh the struct, explicitly
+	 *   request it using @ref requestAllConfigSettingsAsync "requestAllConfigSettingsAsync()".
+	 *
+	 * @param callback Function pointer with the signature:
+	 *        `void myCallback(LD2410Async* sender)`
+	 *
+	 * Example:
+	 * @code
+	 * void myConfigChangedCallback(LD2410Async* sender) {
+	 *     Serial.println("Sensor configuration updated.");
+	 *     // Optionally request fresh config data:
+	 *     sender->requestAllConfigSettingsAsync(onConfigReceived);
+	 * }
+	 *
+	 * // In setup():
+	 * radar.onConfigChanged(myConfigChangedCallback);
+	 * @endcode
+	 */
+	void onConfigChanged(GenericCallback callback);
 
 	/**********************************************************************************
-	* Special async commands
-	***********************************************************************************/
+	 * Detection and config data access commands
+	 ***********************************************************************************/
+	// It is recommended to use the data access commands instead of accessing the detectionData and the configData structs in the class directly.
+
 	/**
 	 * @brief Returns a clone of the latest detection data from the radar.
 	 *
@@ -931,7 +451,7 @@ public:
 	 *       the data that has already been received from the sensor.
 	 *
 	 * ## Example: Access values from a clone
-	 * @code
+	 * @code{.cpp}
 	 *   DetectionData data = radar.getDetectionData();  // makes a copy
 	 *   if (data.targetState == TargetState::MOVING_TARGET) {
 	 *     Serial.print("Moving target at distance: ");
@@ -943,58 +463,13 @@ public:
 	 * - Use when you want a snapshot of the latest detection data.
 	 * - Modify the returned struct freely without affecting the internal state.
 	 *
-	 * ## Don’t:
+	 * ## Don't:
 	 * - Expect this to fetch new data from the sensor (it only returns what was already received).
 	 *
 	 * @returns A copy of the current DetectionData.
+	 *
 	 */
-	DetectionData getDetectionData() const;
-
-
-
-	/**
-	 * @brief Returns a clone of the current configuration data of the radar.
-	 *
-	 * The returned struct contains the most recently requested
-	 * or received configuration values, such as sensitivities,
-	 * resolution, timeouts, and auxiliary settings.
-	 *
-	 * Equivalent to directly accessing the public member configData,
-	 * but provided for encapsulation and future-proofing.
-	 *
-	 * @note This function will not query the sensor for data. It just returns
-	 *       the data that has already been received from the sensor.
-	 *
-	 * ## Example: Clone, modify, and write back
-	 * @code
-	 *   // Clone current config
-	 *   ConfigData cfg = radar.getConfigData();
-	 *
-	 *   // Modify locally
-	 *   cfg.noOneTimeout = 60;  // change timeout
-	 *   cfg.distanceGateMotionSensitivity[3] = 80;  // adjust sensitivity
-	 *
-	 *   // Send modified config back to sensor
-	 *   radar.setConfigDataAsync(cfg, [](LD2410Async* sender,
-	 *                                    AsyncCommandResult result,
-	 *                                    byte) {
-	 *     if (result == AsyncCommandResult::SUCCESS) {
-	 *       Serial.println("Config updated successfully!");
-	 *     }
-	 *   });
-	 * @endcode
-	 *
-	 * ## Do:
-	 * - Use when you want a clone of the current config to adjust and send back.
-	 * - Safely modify the struct without risking internal state corruption.
-	 *
-	 * ## Don’t:
-	 * - Assume this always reflects the live sensor config (it’s only as fresh as the last received config data).
-	 *
-	 * @returns A copy of the current ConfigData.
-	 */
-	ConfigData getConfigData() const;
-
+	LD2410Types::DetectionData getDetectionData() const;
 
 
 	/**
@@ -1011,7 +486,7 @@ public:
 	 *       the data that has already been received from the sensor.
 	 *
 	 * ## Example: Efficient read access without cloning
-	 * @code
+	 * @code{.cpp}
 	 *   const DetectionData& data = radar.getDetectionDataRef();  // no copy
 	 *   Serial.print("Stationary signal: ");
 	 *   Serial.println(data.stationaryTargetSignal);
@@ -1021,14 +496,59 @@ public:
 	 * - Use when you only need to read values quickly and efficiently.
 	 * - Use when printing or inspecting live data without keeping it.
 	 *
-	 * ## Don’t:
-	 * - Try to modify the returned struct (it’s const).
+	 * ## Don't:
+	 * - Try to modify the returned struct (it's const).
 	 * - Store the reference long-term (it may be updated at any time).
 	 *
 	 * @returns Const reference to the current DetectionData.
+	 *
 	 */
-	const DetectionData& getDetectionDataRef() const { return detectionData; }
+	const LD2410Types::DetectionData& getDetectionDataRef() const { return detectionData; }
 
+
+	/**
+	 * @brief Returns a clone of the current configuration data of the radar.
+	 *
+	 * The returned struct contains the most recently requested
+	 * or received configuration values, such as sensitivities,
+	 * resolution, timeouts, and auxiliary settings.
+	 *
+	 * Equivalent to directly accessing the public member configData,
+	 * but provided for encapsulation and future-proofing.
+	 *
+	 * @note This function will not query the sensor for data. It just returns
+	 *       the data that has already been received from the sensor.
+	 *
+	 * ## Example: Clone, modify, and write back
+	 * @code{.cpp}
+	 *   // Clone current config
+	 *   ConfigData cfg = radar.getConfigData();
+	 *
+	 *   // Modify locally
+	 *   cfg.noOneTimeout = 60;  // change timeout
+	 *   cfg.distanceGateMotionSensitivity[3] = 80;  // adjust sensitivity
+	 *
+	 *   // Send modified config back to sensor
+	 *   radar.configureAllConfigSettingsAsync(cfg, [](LD2410Async* sender,
+	 *                                    AsyncCommandResult result,
+	 *                                    byte) {
+	 *     if (result == AsyncCommandResult::SUCCESS) {
+	 *       Serial.println("Config updated successfully!");
+	 *     }
+	 *   });
+	 * @endcode
+	 *
+	 * ## Do:
+	 * - Use when you want a clone of the current config to adjust and send back.
+	 * - Safely modify the struct without risking internal state corruption.
+	 *
+	 * ## Don't:
+	 * - Assume this always reflects the live sensor config (it's only as fresh as the last received config data).
+	 *
+	 * @returns A copy of the current ConfigData.
+	 *
+	 */
+	LD2410Types::ConfigData getConfigData() const;
 
 
 	/**
@@ -1045,7 +565,7 @@ public:
 	 *       the data that has already been received from the sensor.
 	 *
 	 * ## Example: Efficient read access without cloning
-	 * @code
+	 * @code{.cpp}
 	 *   const ConfigData& cfg = radar.getConfigDataRef();  // no copy
 	 *   Serial.print("Resolution: ");
 	 *   Serial.println(static_cast<int>(cfg.distanceResolution));
@@ -1055,114 +575,168 @@ public:
 	 * - Use when you only want to inspect configuration quickly.
 	 * - Use for efficient read-only access.
 	 *
-	 * ## Don’t:
-	 * - Try to modify the returned struct (it’s const).
+	 * ## Don't:
+	 * - Try to modify the returned struct (it's const).
 	 * - Keep the reference and assume it will remain valid forever.
 	 *
 	 * @returns Const reference to the current ConfigData.
+	 *
 	 */
-	const ConfigData& getConfigDataRef() const { return configData; }
+	const LD2410Types::ConfigData& getConfigDataRef() const { return configData; }
 
+
+	/**
+	 * Resets the config data to the initial values
+	 */
+	void resetConfigData();
 
 	/**********************************************************************************
-	* Special async commands
-	***********************************************************************************/
+	 * Special async commands
+	 ***********************************************************************************/
 	/**
 	 * @brief Checks if an asynchronous command is currently pending.
 	 *
 	 * @returns true if there is an active command awaiting an ACK,
 	 *          false if the library is idle.
+	 *
 	 */
 	bool asyncIsBusy();
 
 	/**
 	 * @brief Cancels any pending asynchronous command or sequence.
 	 *
-	 * If canceled, the callback of the running command is invoked
-	 * with result type CANCELED. After canceling, the sensor may
-	 * remain in config mode — consider disabling config mode or
-	 * rebooting to return to detection operation.
+	 * @note
+         * Since this command can lead to incomplete operations (in particular with high level commands),
+	 * it is not advised to use this command unless really, really necessary. Better wait for the callback
+	 * of the current operation.
+	 * If canceled, the callback of the running command or command sequence is invoked
+	 * with result type CANCELED. After canceling, the sensor may remain in config mode,
+	 * consider disabling config mode or rebooting to resume normal detection operation.	*
 	 */
 	void asyncCancel();
 
-	/**********************************************************************************
-	* Config commands
-	***********************************************************************************/
+	/**
+	 * @brief Sets the timeout for async command callbacks.
+	 *
+	 * @note
+	 * Make sure the timeout is long enough to allow for the execution of long running commands.
+         * In particular, enabling config mode can take up to 4 seconds; therefore, using a value below 4000 is not recommended.
+	 *
+	 * @param timeoutMs Timeout in milliseconds (default 4000 ms).
+	 *
+	 */
+	void setAsyncCommandTimeoutMs(unsigned long timeoutMs) { asyncCommandTimeoutMs = timeoutMs; }
 
+	/**
+	 * @brief Returns the current async command timeout.
+	 *
+	 * @return Timeout in milliseconds.
+	 *
+	 */
+	unsigned long getAsyncCommandTimeoutMs() const { return asyncCommandTimeoutMs; }
+
+
+	/**********************************************************************************
+	 * Commands
+	 ***********************************************************************************/
+
+	/*---------------------------------------------------------------------------------
+	- Config mode commands
+	---------------------------------------------------------------------------------*/
 	/**
 	 * @brief Enables config mode on the radar.
 	 *
-	 * Config mode must be enabled before issuing most configuration commands.
-	 * This command itself is asynchronous — the callback fires once the
+         * Config mode must be enabled before sending any commands (apart from this command) to the sensor.
+	 * This command itself is asynchronous - the callback fires once the
 	 * sensor acknowledges the mode switch.
 	 *
 	 * @note If asyncIsBusy() is true, this command will not be sent.
 	 * @note Normal detection data is suspended while config mode is active.
 	 *
 	 * @param callback Callback with signature
-	 *        void(LD2410Async* sender, AsyncCommandResult result, byte userData).
-	 * @param userData Optional value that will be passed to the callback.
+	 *        void(LD2410Async* sender, AsyncCommandResult result).
+ *
 	 *
-	 * @returns true if the command was sent, false if blocked.
+	 * @returns true if the command was accepted, false if blocked (typically because another async command is pending).
+	 *
 	 */
-	bool enableConfigModeAsync(AsyncCommandCallback callback, byte userData = 0);
+	bool enableConfigModeAsync(AsyncCommandCallback callback) {
+		return enableConfigModeAsync(false, callback);
+	}
 
 	/**
-	  * @brief Disables config mode on the radar.
-	  *
-	  * This should be called after finishing configuration, to return
-	  * the sensor to normal detection operation.
-	  *
-	  * @note If an async command is already pending (asyncIsBusy() == true),
-	  *       this command will not be sent.
-	  *
-	  * @param callback Callback with signature
-	  *        void(LD2410Async* sender, AsyncCommandResult result, byte userData).
-	  * @param userData Optional value passed to the callback.
-	  *
-	  * @returns true if the command was sent, false otherwise.
-	  */
-	bool disableConfigModeAsync(AsyncCommandCallback callback, byte userData = 0);
+	 * @brief Enables config mode on the radar.
+	 *
+         * Config mode must be enabled before sending any commands (apart from this command) to the sensor.
+	 * This command itself is asynchronous - the callback fires once the
+	 * sensor acknowledges the mode switch.
+	 *
+	 * @note If asyncIsBusy() is true, this command will not be sent.
+	 * @note Normal detection data is suspended while config mode is active.
+	 *
+	 * @param callback Callback with signature
+	 *        void(LD2410Async* sender, AsyncCommandResult result).
+         * @param force Forces the command to send the config mode enable command, even if the current status of the library indicates that config mode is already active. The callback of the method will be called anyway, either after the sent command has sent an ACK or after a minimal delay (if the command is not sent).
+         *
+         * @returns true if the command was accepted, false if blocked (typically because another async command is pending).
+	 *
+	 */
+	bool enableConfigModeAsync(bool force, AsyncCommandCallback callback);
+
+	/**
+	 * @brief Disables config mode on the radar.
+	 *
+	 * This must be called after finishing sending commands to the sensor, to return
+	 * the sensor to normal detection operation.
+	 *
+	 * @note If an async command is already pending (asyncIsBusy() == true),
+	 *       this command will not be sent.
+	 *
+	 * @param callback Callback with signature
+	 *        void(LD2410Async* sender, AsyncCommandResult result).
+	 *
+	 *
+	 * @returns true if the command was accepted, false otherwise (typically because another async command is pending).
+	 *
+	 */
+	bool disableConfigModeAsync(AsyncCommandCallback callback) {
+		return disableConfigModeAsync(false, callback);
+	}
+
+	/**
+	 * @brief Disables config mode on the radar.
+	 *
+         * This should be called after finishing sending commands to the sensor, to return
+	 * the sensor to normal detection operation.
+	 *
+	 * @note If an async command is already pending (asyncIsBusy() == true), this command will not be sent, but will still trigger the callback.
+         * @note If config mode is already disabled and sending the command is forced using the force parameter, the command will timeout, since the sensor will not send an ACK for the command.
+	 *
+	 * @param callback Callback with signature
+	 *        void(LD2410Async* sender, AsyncCommandResult result).
+	 *
+         * @param force Forces sending the command to disable config mode, even if local data indicates that config mode is not enabled. If config mode is not enabled, this command will time out when force is true. The callback of the method will be called anyway, either after the sent command has sent an ACK or after a minimal delay (if the command is not sent).
+	 *
+	 * @returns true if the command was accepted, false otherwise (typically because another async command is pending).
+	 *
+	 */
+	bool disableConfigModeAsync(bool force, AsyncCommandCallback callback);
 
 
 	/**
-	 * @brief Sets the maximum detection gates and "no-one" timeout.
+	 * @brief Detects if config mode is enabled
 	 *
-	 * This command updates:
-	 *   - Maximum motion detection distance gate (2–8).
-	 *   - Maximum stationary detection distance gate (2–8).
-	 *   - Timeout duration (0–65535 seconds) until "no presence" is declared.
+         * @returns true if config mode is enabled, false if config mode is disabled.
 	 *
-	 * @note Requires config mode to be enabled. The method will internally
-	 *       enable/disable config mode if necessary.
-	 * @note Values outside the allowed ranges are clamped to valid limits.
-	 *
-	 * @param maxMovingGate Furthest gate used for motion detection (2–8).
-	 * @param maxStationaryGate Furthest gate used for stationary detection (2–8).
-	 * @param noOneTimeout Timeout in seconds until "no one" is reported (0–65535).
-	 * @param callback Callback fired when ACK is received or on failure/timeout.
-	 * @param userData Optional value passed to the callback.
-	 *
-	 * @returns true if the command was sent, false otherwise (busy state).
 	 */
-	bool setMaxGateAndNoOneTimeoutAsync(byte maxMovingGate, byte maxStationaryGate, unsigned short noOneTimeout, AsyncCommandCallback callback, byte userData = 0);
+	bool isConfigModeEnabled() const {
+		return configModeEnabled;
+	};
 
-	/**
-	 * @brief Requests the current gate parameters from the sensor.
-	 *
-	 * Retrieves sensitivities, max gates, and timeout settings,
-	 * which will be written into configData.
-	 *
-	 * @note Requires config mode. The method will manage mode switching if needed.
-	 * @note If an async command is already pending, the request is rejected.
-	 *
-	 * @param callback Callback fired when data is received or on failure.
-	 * @param userData Optional value passed to the callback.
-	 *
-	 * @returns true if the command was sent, false otherwise.
-	 */
-	bool requestGateParametersAsync(AsyncCommandCallback callback, byte userData = 0);
 
+	/*---------------------------------------------------------------------------------
+	- Engineering mode commands
+	---------------------------------------------------------------------------------*/
 	/**
 	 * @brief Enables engineering mode.
 	 *
@@ -1173,11 +747,12 @@ public:
 	 * @note Requires config mode. Will be enabled automatically if not active.
 	 *
 	 * @param callback Callback fired when ACK is received or on failure.
-	 * @param userData Optional value passed to the callback.
+	 *
 	 *
 	 * @returns true if the command was sent, false otherwise.
+	 *
 	 */
-	bool enableEngineeringModeAsync(AsyncCommandCallback callback, byte userData = 0);
+	bool enableEngineeringModeAsync(AsyncCommandCallback callback);
 
 	/**
 	 * @brief Disables engineering mode.
@@ -1187,51 +762,110 @@ public:
 	 * @note Requires config mode. Will be enabled automatically if not active.
 	 *
 	 * @param callback Callback fired when ACK is received or on failure.
-	 * @param userData Optional value passed to the callback.
+	 *
 	 *
 	 * @returns true if the command was sent, false otherwise.
+	 *
 	 */
-	bool disableEngineeringModeAsync(AsyncCommandCallback callback, byte userData = 0);
+	bool disableEngineeringModeAsync(AsyncCommandCallback callback);
+
+	/**
+	 * @brief Detects if engineering mode is enabled
+	 *
+	 * @returns true if engineering mode is enabled, false if engineering mode is disabled
+	 *
+	 */
+	bool isEngineeringModeEnabled() const {
+		return engineeringModeEnabled;
+	};
+
+	/*---------------------------------------------------------------------------------
+	- Native sensor commands
+	---------------------------------------------------------------------------------*/
+	/**
+	 * @brief Requests the current gate parameters from the sensor.
+	 *
+	 * Retrieves sensitivities, max gates, and timeout settings,
+	 * which will be written into configData.
+	 *
+	 * @note Requires config mode. The method will manage mode switching if needed.
+	 * @note If an async command is already pending, the request is rejected.
+	 *
+	 * @param callback Callback fired when data is received or on failure.
+	 *
+	 *
+	 * @returns true if the command was sent, false otherwise.
+	 *
+	 */
+	bool requestGateParametersAsync(AsyncCommandCallback callback);
+
 
 
 	/**
-	 * @brief Sets sensitivity thresholds for all gates at once.
+	 * @brief Configures the maximum detection gates and "no-one" timeout on the sensor.
+	 *
+	 * This command updates:
+	 *   - Maximum motion detection distance gate (2-8).
+	 *   - Maximum stationary detection distance gate (2-8).
+	 *   - Timeout duration (0-65535 seconds) until "no presence" is declared.
+	 *
+	 * @note Requires config mode to be enabled. The method will internally
+	 *       enable/disable config mode if necessary.
+	 * @note If another async command is pending, this call fails.
+	 *
+	 * @param maxMovingGate Furthest gate used for motion detection (2-8).
+	 * @param maxStationaryGate Furthest gate used for stationary detection (2-8).
+	 * @param noOneTimeout Timeout in seconds until "no one" is reported (0-65535).
+	 * @param callback Callback fired when ACK is received or on failure/timeout.
+	 *
+	 *
+	 * @returns true if the command was sent, false otherwise (busy state or invalid values).
+	 *
+	 */
+	bool configureMaxGateAndNoOneTimeoutAsync(byte maxMovingGate, byte maxStationaryGate, unsigned short noOneTimeout, AsyncCommandCallback callback);
+
+
+	/**
+	 * @brief Configures sensitivity thresholds for all gates at once.
 	 *
 	 * A sequence of commands will be sent, one for each gate.
-	 * Threshold values are automatically clamped to 0–100.
+	 * Threshold values are automatically clamped to 0-100.
 	 *
 	 * @note Requires config mode. Will be managed automatically.
 	 * @note If another async command is pending, this call fails.
 	 *
-	 * @param movingThresholds Array of 9 sensitivity values for moving targets (0–100).
-	 * @param stationaryThresholds Array of 9 sensitivity values for stationary targets (0–100).
+	 * @param movingThresholds Array of 9 sensitivity values for moving targets (0-100).
+	 * @param stationaryThresholds Array of 9 sensitivity values for stationary targets (0-100).
 	 * @param callback Callback fired when all updates are acknowledged or on failure.
-	 * @param userData Optional value passed to the callback.
+	 *
 	 *
 	 * @returns true if the sequence was started, false otherwise.
+	 *
 	 */
 
-	bool setDistanceGateSensitivityAsync(const byte movingThresholds[9], const byte stationaryThresholds[9], AsyncCommandCallback callback, byte userData = 0);
+	bool configureDistanceGateSensitivityAsync(const byte movingThresholds[9], const byte stationaryThresholds[9], AsyncCommandCallback callback);
 
 
 	/**
-	 * @brief Sets sensitivity thresholds for a single gate.
+	 * @brief Configures sensitivity thresholds for a single gate.
 	 *
 	 * Updates both moving and stationary thresholds for the given gate index.
 	 * If the gate index is greater than 8, all gates are updated instead.
 	 *
-	 * @note Threshold values are automatically clamped to 0–100.
 	 * @note Requires config mode. Will be managed automatically.
+	 * @note If another async command is pending, this call fails.
 	 *
-	 * @param gate Index of the gate (0–8). Values >8 apply to all gates.
-	 * @param movingThreshold Sensitivity for moving targets (0–100).
-	 * @param stationaryThreshold Sensitivity for stationary targets (0–100).
+	 * @param gate Index of the gate (0-8). Values >8 apply to all gates.
+	 * @param movingThreshold Sensitivity for moving targets (0-100).
+	 * @param stationaryThreshold Sensitivity for stationary targets (0-100).
 	 * @param callback Callback fired when ACK is received or on failure.
-	 * @param userData Optional value passed to the callback.
+	 *
 	 *
 	 * @returns true if the command was sent, false otherwise.
+	 *
+	 *
 	 */
-	bool setDistanceGateSensitivityAsync(byte gate, byte movingThreshold, byte stationaryThreshold, AsyncCommandCallback callback, byte userData = 0);
+	bool configureDistanceGateSensitivityAsync(byte gate, byte movingThreshold, byte stationaryThreshold, AsyncCommandCallback callback);
 
 	/**
 	 * @brief Requests the firmware version of the sensor.
@@ -1241,44 +875,50 @@ public:
 	 * @note Requires config mode. Will be managed automatically.
 	 *
 	 * @param callback Callback fired when firmware info is received.
-	 * @param userData Optional value passed to the callback.
+	 *
 	 *
 	 * @returns true if the command was sent, false otherwise.
+	 *
 	 */
-	bool requestFirmwareAsync(AsyncCommandCallback callback, byte userData = 0);
+	bool requestFirmwareAsync(AsyncCommandCallback callback);
 
 	/**
-	 * @brief Sets the UART baud rate of the sensor.
+	 * @brief Configures the UART baud rate of the sensor.
 	 *
 	 * The new baud rate becomes active only after reboot.
-	 * The ESP32’s Serial interface must also be reconfigured
+	 * The ESP32's Serial interface must also be reconfigured
 	 * to the new baud rate after reboot.
 	 *
-	 * @note Valid values are 1–8. Values outside range are rejected resp. method will fail.
+	 * @note Valid values are 1-8. Values outside the range are rejected, and the method will fail.
 	 * @note Requires config mode. Will be managed automatically.
+	 * @note If another async command is pending, this call fails.
+	 * @note After execution, call rebootAsync() to activate changes.
 	 *
 	 * @param baudRateSetting Numeric setting:  1=9600, 2=19200, 3=38400, 4=57600, 5=115200, 6=230400, 7=25600 (factory default), 8=460800.
 	 * @param callback Callback fired when ACK is received or on failure.
-	 * @param userData Optional value passed to the callback.
+	 *
 	 *
 	 * @returns true if the command was sent, false otherwise.
+	 *
 	 */
-	bool setBaudRateAsync(byte baudRateSetting, AsyncCommandCallback callback, byte userData = 0);
+	bool configureBaudRateAsync(byte baudRateSetting, AsyncCommandCallback callback);
 
-	/**
-	* @brief Sets the baudrate of the serial port of the sensor.
-	*
-	* The new baudrate will only become active after a reboot of the sensor.
-	* If changing the baud rate, remember that you also need to addjust the baud rate of the ESP32 serial that is associated with then sensor.
-	*
-	* @param baudrate A valid baud rate from the Baudrate enum.
-	*
-	* @param callback Callback method with void methodName(LD2410Async* sender, AsyncCommandResult result, byte userData) signature. Will be called after the Ack for the command has been received (success=true) or after the command timeout (success=false) or after the command has been canceld (sucess=false).
-	* @param userData Optional value that will be passed to the callback function.
-	*
-	* @returns true if the command has been sent, false if the command cant be sent (typically because another async command is pending).
-	*/
-	bool setBaudRateAsync(Baudrate baudRate, AsyncCommandCallback callback, byte userData = 0);
+        /**
+         * @brief Configures the baud rate of the sensor's serial port.
+         *
+         * The new baud rate becomes active only after the sensor reboots.
+         * If you change the baud rate, also adjust the baud rate of the ESP32 serial interface connected to the sensor.
+         *
+         * @note If another async command is pending, this call fails.
+         * @note After execution, call rebootAsync() to activate changes.
+         *
+         * @param baudrate A valid baud rate from the Baudrate enum.
+         * @param callback Callback method with the signature void methodName(LD2410Async* sender, AsyncCommandResult result). The callback is invoked after the ACK for the command has been received (success=true), after the command times out (success=false), or after the command has been canceled (success=false).
+         *
+         * @returns true if the command has been sent, false if the command can't be sent (typically because another async command is pending).
+         *
+         */
+	bool configureBaudRateAsync(LD2410Types::Baudrate baudRate, AsyncCommandCallback callback);
 
 
 	/**
@@ -1290,139 +930,179 @@ public:
 	 * @note After execution, call rebootAsync() to activate changes.
 	 *
 	 * @param callback Callback fired when ACK is received or on failure.
-	 * @param userData Optional value passed to the callback.
+	 *
 	 *
 	 * @returns true if the command was sent, false otherwise.
+	 *
 	 */
-	bool restoreFactorySettingsAsync(AsyncCommandCallback callback, byte userData = 0);
+	bool restoreFactorySettingsAsync(AsyncCommandCallback callback);
 
 	/**
 	 * @brief Reboots the sensor.
 	 *
 	 * After reboot, the sensor stops responding for a few seconds.
-	 * Config and engineering mode are reset.
+	 * The callback if this method will be triggered as soon as normal operation of the sensor has been detected.
+	 * Config and engineering mode are reset once the sensor is back to normal operation.
 	 *
-	 * @note The reboot of the sensor takes place after the ACK has been sent.
 	 *
 	 * @param callback Callback fired when ACK is received or on failure.
-	 * @param userData Optional value passed to the callback.
+	 *
 	 *
 	 * @returns true if the command was sent, false otherwise.
+	 *
 	 */
-	bool rebootAsync(AsyncCommandCallback callback, byte userData = 0);
+	bool rebootAsync(AsyncCommandCallback callback) {
+		return rebootAsync(false, callback);
+	}
 
 	/**
-	* @brief Enables bluetooth
-	*
-	* @param callback Callback method with void methodName(LD2410Async* sender, AsyncCommandResult result, byte userData) signature. Will be called after the Ack for the command has been received (success=true) or after the command timeout (success=false) or after the command has been canceld (sucess=false).
-	* @param userData Optional value that will be passed to the callback function.
-	*
-	* @returns true if the command has been sent, false if the command cant be sent (typically because another async command is pending).
-	*/
-	bool enableBluetoothAsync(AsyncCommandCallback callback, byte userData = 0);
+	 * @brief Reboots the sensor.
+	 *
+	 * After reboot, the sensor stops responding for a few seconds.
+	 * Depending on the value of the dontWaitForNormalOperationAfterReboot parameter, the callback will be triggered once the sensor has sent an ACK for the reboot command (when false) or when normal operation of the sensor resumes.
+	 * Config and engineering mode are reset once normal operation of the sensor resumes.
+	 *
+	 * @note If dontWaitForNormalOperationAfterReboot is true, the sensor reboots only after the ACK has been sent. Wait a short period before sending commands to ensure the reboot is complete and the sensor is responsive.
+	 *
+	 * @param dontWaitForNormalOperationAfterReboot Controls whether the callback will be triggered once the sensor has sent an ACK for the reboot command (when false) or when normal operation of the sensor resumes (when true).
+	 * @param callback Callback fired when ACK is received or on failure.
+	 *
+	 *
+	 * @returns true if the command was sent, false otherwise.
+	 *
+	 */
+	bool rebootAsync(bool dontWaitForNormalOperationAfterReboot, AsyncCommandCallback callback);
+
 
 	/**
-	* @brief Disables bluetooth
-	*
-	* @param callback Callback method with void methodName(LD2410Async* sender, AsyncCommandResult result, byte userData) signature. Will be called after the Ack for the command has been received (success=true) or after the command timeout (success=false) or after the command has been canceld (sucess=false).
-	* @param userData Optional value that will be passed to the callback function.
-	*
-	* @returns true if the command has been sent, false if the command cant be sent (typically because another async command is pending).
-	*/
-	bool disableBluetoothAsync(AsyncCommandCallback callback, byte userData = 0);
+	 * @brief Enables Bluetooth
+	 *
+	 * @param callback Callback method with void methodName(LD2410Async* sender, AsyncCommandResult result) signature. Will be called after the ACK for the command has been received (success=true) or after the command timeout (success=false) or after the command has been canceled (success=false).
+ *
+	 *
+	 * @returns true if the command has been sent, false if the command can't be sent (typically because another async command is pending).
+	 *
+		 */
+	bool enableBluetoothAsync(AsyncCommandCallback callback);
 
 	/**
-	* @brief Requests the bluetooth mac address
-	*
-	* @note The callback fires when the mac address has been received from the sensor (is sent with the ACK).
-	*
-	* @param callback Callback method with void methodName(LD2410Async* sender, AsyncCommandResult result, byte userData) signature. Will be called after the Ack for the command has been received (success=true) or after the command timeout (success=false) or after the command has been canceld (sucess=false).
-	* @param userData Optional value that will be passed to the callback function.
-	*
-	* @returns true if the command has been sent, false if the command cant be sent (typically because another async command is pending).
-	*/
-	bool requestBluetoothMacAddressAsync(AsyncCommandCallback callback, byte userData = 0);
+	 * @brief Disables Bluetooth
+	 *
+	 * @param callback Callback method with void methodName(LD2410Async* sender, AsyncCommandResult result) signature. Will be called after the ACK for the command has been received (success=true) or after the command timeout (success=false) or after the command has been canceled (success=false).
+ *
+	 *
+	 * @returns true if the command has been sent, false if the command can't be sent (typically because another async command is pending).
+	 *
+	 */
+	bool disableBluetoothAsync(AsyncCommandCallback callback);
 
 	/**
-	* @brief Sets the password for bluetooth access to the sensor.
-	*
-	* @param password New bluetooth password. Max 6. chars.
-	* @param callback Callback method with void methodName(LD2410Async* sender, AsyncCommandResult result, byte userData) signature. Will be called after the Ack for the command has been received (success=true) or after the command timeout (success=false) or after the command has been canceld (sucess=false).
-	* @param userData Optional value that will be passed to the callback function.
-	*
-	* @returns true if the command has been sent, false if the command cant be sent (typically because another async command is pending).
-	*/
-	bool setBluetoothpasswordAsync(const char* password, AsyncCommandCallback callback, byte userData = 0);
+	 * @brief Requests the Bluetooth MAC address
+	 *
+	 * @note The callback fires when the MAC address has been received from the sensor (is sent with the ACK).
+	 *
+	 * @param callback Callback method with void methodName(LD2410Async* sender, AsyncCommandResult result) signature. Will be called after the ACK for the command has been received (success=true) or after the command timeout (success=false) or after the command has been canceled (success=false).
+ *
+	 *
+	 * @returns true if the command has been sent, false if the command can't be sent (typically because another async command is pending).
+	 *
+	 */
+	bool requestBluetoothMacAddressAsync(AsyncCommandCallback callback);
 
 	/**
-	* @brief Sets the password for bluetooth access to the sensor.
-	*
-	* @param password New bluetooth password. Max 6. chars.
-	* @param callback Callback method with void methodName(LD2410Async* sender, AsyncCommandResult result, byte userData) signature. Will be called after the Ack for the command has been received (success=true) or after the command timeout (success=false) or after the command has been canceld (sucess=false).
-	* @param userData Optional value that will be passed to the callback function.
-	*
-	* @returns true if the command has been sent, false if the command cant be sent (typically because another async command is pending).
-	*/
-	bool setBluetoothpasswordAsync(const String& password, AsyncCommandCallback callback, byte userData = 0);
+	 * @brief Sets the password for Bluetooth access to the sensor.
+	 *
+	 * @param password New Bluetooth password. Max 6. chars.
+	 * @param callback Callback method with void methodName(LD2410Async* sender, AsyncCommandResult result) signature. Will be called after the ACK for the command has been received (success=true) or after the command timeout (success=false) or after the command has been canceled (success=false).
+ *
+	 *
+	 * @returns true if the command has been sent, false if the command can't be sent (typically because another async command is pending).
+	 *
+	 */
+	bool configureBluetoothPasswordAsync(const char* password, AsyncCommandCallback callback);
 
 	/**
-	* @brief Resets the password for bluetooth access to the default value (HiLink)
-	* @param callback Callback method with void methodName(LD2410Async* sender, AsyncCommandResult result, byte userData) signature. Will be called after the Ack for the command has been received (success=true) or after the command timeout (success=false) or after the command has been canceld (sucess=false).
-	* @param userData Optional value that will be passed to the callback function.
-	*
-	* @returns true if the command has been sent, false if the command cant be sent (typically because another async command is pending).
-	*/
-	bool resetBluetoothpasswordAsync(AsyncCommandCallback callback, byte userData = 0);
+	 * @brief Sets the password for Bluetooth access to the sensor.
+	 *
+	 * @param password New Bluetooth password. Max 6. chars.
+	 * @param callback Callback method with void methodName(LD2410Async* sender, AsyncCommandResult result) signature. Will be called after the ACK for the command has been received (success=true) or after the command timeout (success=false) or after the command has been canceled (success=false).
+ *
+	 *
+	 * @returns true if the command has been sent, false if the command can't be sent (typically because another async command is pending).
+	 *
+	 */
+	bool configureBluetoothPasswordAsync(const String& password, AsyncCommandCallback callback);
 
 	/**
-	 * @brief Sets the distance resolution of the radar.
+	 * @brief Resets the password for Bluetooth access to the default value (HiLink)
+	 * @param callback Callback method with void methodName(LD2410Async* sender, AsyncCommandResult result) signature. Will be called after the ACK for the command has been received (success=true) or after the command timeout (success=false) or after the command has been canceled (success=false).
+ *
+	 *
+	 * @returns true if the command has been sent, false if the command can't be sent (typically because another async command is pending).
+	 *
+	 */
+	bool configureDefaultBluetoothPasswordAsync(AsyncCommandCallback callback);
+
+	/**
+	 * @brief Configures the distance resolution of the radar.
 	 *
 	 * The distance resolution defines the size of each distance gate
 	 * and the maximum detection range:
-	 *   - RESOLUTION_75CM → longer range, coarser detail.
-	 *   - RESOLUTION_20CM → shorter range, finer detail.
+	 *   - RESOLUTION_75CM - longer range, coarser detail.
+	 *   - RESOLUTION_20CM - shorter range, finer detail.
 	 *
-	 * @note The new resolution takes effect immediately, but some
-	 *       configuration-dependent values may require re-query.
 	 * @note Requires config mode. Will be managed automatically.
+	 * @note Requires a reboot to activate value changes. Call rebootAsync() after setting.
+	 * @note Fails if another async command is pending.
 	 *
 	 * @param distanceResolution Value from the DistanceResolution enum.
 	 *        Must not be NOT_SET.
 	 * @param callback Function pointer with signature:
-	 *        void(LD2410Async* sender, AsyncCommandResult result, byte userData).
+	 *        void(LD2410Async* sender, AsyncCommandResult result).
 	 *        Fired when the ACK is received or on failure/timeout.
-	 * @param userData Optional value passed to the callback.
+	 *
 	 *
 	 * @returns true if the command was sent, false if invalid parameters
 	 *          or the library is busy.
+	 *
 	 */
-	bool setDistanceResolutionAsync(DistanceResolution distanceResolution, AsyncCommandCallback callback, byte userData = 0);
+	bool configureDistanceResolutionAsync(LD2410Types::DistanceResolution distanceResolution, AsyncCommandCallback callback);
 
 	/**
-	* @brief Sets the distance resolution explicitly to 75 cm per gate.
-	*
-	* Equivalent to setDistanceResolutionAsync(DistanceResolution::RESOLUTION_75CM).
-	*
-	* @param callback Function pointer with signature:
-	*        void(LD2410Async* sender, AsyncCommandResult result, byte userData).
-	* @param userData Optional value passed to the callback.
-	*
-	* @returns true if the command was sent, false otherwise.
-	*/
-	bool setDistanceResolution75cmAsync(AsyncCommandCallback callback, byte userData = 0);
+	 * @brief Configures the distance resolution explicitly to 75 cm per gate.
+	 *
+	 * Equivalent to configureDistanceResolutionAsync(DistanceResolution::RESOLUTION_75CM).
+	 *
+	 * @note Requires config mode. Will be managed automatically.
+	 * @note Requires a reboot to activate value changes. Call rebootAsync() after setting.
+	 * @note Fails if another async command is pending.
+	 *
+	 * @param callback Function pointer with signature:
+	 *        void(LD2410Async* sender, AsyncCommandResult result).
+	 *
+	 *
+	 * @returns true if the command was sent, false otherwise.
+	 *
+	 */
+	bool configureDistanceResolution75cmAsync(AsyncCommandCallback callback);
 
 	/**
-	* @brief Sets the distance resolution explicitly to 20 cm per gate.
-	*
-	* Equivalent to setDistanceResolutionAsync(DistanceResolution::RESOLUTION_20CM).
-	*
-	* @param callback Function pointer with signature:
-	*        void(LD2410Async* sender, AsyncCommandResult result, byte userData).
-	* @param userData Optional value passed to the callback.
-	*
-	* @returns true if the command was sent, false otherwise.
-	*/
-	bool setDistanceResolution20cmAsync(AsyncCommandCallback callback, byte userData = 0);
+	 * @brief Configures the distance resolution explicitly to 20 cm per gate.
+	 *
+	 * Equivalent to configureDistanceResolutionAsync(DistanceResolution::RESOLUTION_20CM).
+	 *
+	 * @note Requires config mode. Will be managed automatically.
+	 * @note Requires a reboot to activate value changes. Call rebootAsync() after setting.
+	 * @note Fails if another async command is pending.
+	 *
+	 * @param callback Function pointer with signature:
+	 *        void(LD2410Async* sender, AsyncCommandResult result).
+	 *
+	 *
+	 * @returns true if the command was sent, false otherwise.
+	 *
+	 */
+	bool configuresDistanceResolution20cmAsync(AsyncCommandCallback callback);
 
 	/**
 	 * @brief Requests the current distance resolution setting from the sensor.
@@ -1432,15 +1112,16 @@ public:
 	 * @note Requires config mode. Will be managed automatically.
 	 *
 	 * @param callback Function pointer with signature:
-	 *        void(LD2410Async* sender, AsyncCommandResult result, byte userData).
-	 * @param userData Optional value passed to the callback.
+	 *        void(LD2410Async* sender, AsyncCommandResult result).
+	 *
 	 *
 	 * @returns true if the command was sent, false otherwise.
+	 *
 	 */
-	bool requestDistanceResolutioncmAsync(AsyncCommandCallback callback, byte userData = 0);
+	bool requestDistanceResolutionAsync(AsyncCommandCallback callback);
 
 	/**
-	 * @brief Sets the auxiliary control parameters (light and output pin).
+	 * @brief Configures the auxiliary control parameters (light and output pin).
 	 *
 	 * This configures how the OUT pin behaves depending on light levels
 	 * and presence detection. Typical use cases include controlling
@@ -1448,18 +1129,20 @@ public:
 	 *
 	 * @note Requires config mode. Will be managed automatically.
 	 * @note Both enums must be set to valid values (not NOT_SET).
+	 * @note Fails if another async command is pending.
 	 *
 	 * @param lightControl Light control behavior (see LightControl enum).
-	 * @param lightThreshold Threshold (0–255) used for light-based switching.
+	 * @param lightThreshold Threshold (0-255) used for light-based switching.
 	 * @param outputControl Output pin logic configuration (see OutputControl enum).
 	 * @param callback Function pointer with signature:
-	 *        void(LD2410Async* sender, AsyncCommandResult result, byte userData).
+	 *        void(LD2410Async* sender, AsyncCommandResult result).
 	 *        Fired when ACK is received or on failure/timeout.
-	 * @param userData Optional value passed to the callback.
+	 *
 	 *
 	 * @returns true if the command was sent, false otherwise.
+	 *
 	 */
-	bool setAuxControlSettingsAsync(LightControl light_control, byte light_threshold, OutputControl output_control, AsyncCommandCallback callback, byte userData = 0);
+	bool configureAuxControlSettingsAsync(LD2410Types::LightControl light_control, byte light_threshold, LD2410Types::OutputControl output_control, AsyncCommandCallback callback);
 
 	/**
 	 * @brief Requests the current auxiliary control settings.
@@ -1470,148 +1153,14 @@ public:
 	 * @note Requires config mode. Will be managed automatically.
 	 *
 	 * @param callback Function pointer with signature:
-	 *        void(LD2410Async* sender, AsyncCommandResult result, byte userData).
+	 *        void(LD2410Async* sender, AsyncCommandResult result).
 	 *        Fired when ACK is received or on failure/timeout.
-	 * @param userData Optional value passed to the callback.
+	 *
 	 *
 	 * @returns true if the command was sent, false otherwise.
+	 *
 	 */
-	bool requestAuxControlSettingsAsync(AsyncCommandCallback callback, byte userData = 0);
-
-	/**
-	 * @brief Requests all configuration parameters from the sensor.
-	 *
-	 * This triggers a sequence of queries that retrieves and updates:
-	 *   - Gate parameters (sensitivities, max gates, timeout).
-	 *   - Distance resolution setting.
-	 *   - Auxiliary light/output control settings.
-	 *
-	 * The results are stored in configData, and the
-	 * registerConfigUpdateReceivedCallback() is invoked after completion.
-	 *
-	 * @note Requires config mode. This method will manage mode switching automatically.
-	 * @note If another async command is already pending, the request fails.
-	 *
-	 * ## Example: Refresh config data
-	 * @code
-	 *   radar.requestAllConfigData([](LD2410Async* sender,
-	 *                                 AsyncCommandResult result,
-	 *                                 byte) {
-	 *     if (result == AsyncCommandResult::SUCCESS) {
-	 *       Serial.println("All config data refreshed:");
-	 *       sender->getConfigDataRef().print();
-	 *     }
-	 *   });
-	 * @endcode
-	 *
-	 * ## Do:
-	 * - Use this after connecting to ensure configData is fully populated.
-	 * - Call before modifying config if you’re unsure of current values.
-	 *
-	 * ## Don’t:
-	 * - Expect it to succeed if another async command is still running.
-	 *
-	 * @param callback Callback with signature:
-	 *        void(LD2410Async* sender, AsyncCommandResult result, byte userData).
-	 *        Fired when all config data has been received or on failure.
-	 * @param userData Optional value passed to the callback.
-	 *
-	 * @returns true if the command was sent, false otherwise.
-	 */
-	bool requestAllConfigData(AsyncCommandCallback callback, byte userData = 0);
-
-
-	/**
-	 * @brief Requests all static information from the sensor.
-	 *
-	 * This includes:
-	 *   - Firmware version string.
-	 *   - Bluetooth MAC address (numeric and string form).
-	 *
-	 * The values are written into the public members `firmware`, `mac`,
-	 * and `macString`.
-	 *
-	 * @note Requires config mode. Managed automatically by this method.
-	 * @note If another async command is already pending, the request fails.
-	 *
-	 * ## Example: Retrieve firmware and MAC
-	 * @code
-	 *   radar.requestAllStaticData([](LD2410Async* sender,
-	 *                                 AsyncCommandResult result,
-	 *                                 byte) {
-	 *     if (result == AsyncCommandResult::SUCCESS) {
-	 *       Serial.print("Firmware: ");
-	 *       Serial.println(sender->firmware);
-	 *
-	 *       Serial.print("MAC: ");
-	 *       Serial.println(sender->macString);
-	 *     }
-	 *   });
-	 * @endcode
-	 *
-	 * ## Do:
-	 * - Use after initialization to log firmware version and MAC.
-	 * - Useful for debugging or inventory identification.
-	 *
-	 * ## Don’t:
-	 * - Expect frequently changing data — this is static information.
-	 *
-	 * @param callback Callback with signature:
-	 *        void(LD2410Async* sender, AsyncCommandResult result, byte userData).
-	 *        Fired when static data is received or on failure.
-	 * @param userData Optional value passed to the callback.
-	 *
-	 * @returns true if the command was sent, false otherwise.
-	 */
-	bool requestAllStaticData(AsyncCommandCallback callback, byte userData = 0);
-
-
-
-	/**
-	 * @brief Applies a full ConfigData struct to the sensor.
-	 *
-	 * The provided ConfigData is converted into the appropriate sequence
-	 * of configuration commands and sent asynchronously. This allows
-	 * bulk updating of multiple settings (gate sensitivities, timeouts,
-	 * resolution, auxiliary controls) in one call.
-	 *
-	 * @note Requires config mode. This method will manage entering and
-	 *       exiting config mode automatically.
-	 * @note Any members of ConfigData that are left at invalid values
-	 *       (e.g. enums set to NOT_SET) will cause the sequence to fail.
-	 *
-	 * ## Example: Clone, modify, and apply config
-	 * @code
-	 *   ConfigData cfg = radar.getConfigData();  // clone current config
-	 *   cfg.noOneTimeout = 120;                  // change timeout
-	 *   cfg.distanceGateMotionSensitivity[2] = 75;
-	 *
-	 *   radar.setConfigDataAsync(cfg, [](LD2410Async* sender,
-	 *                                    AsyncCommandResult result,
-	 *                                    byte) {
-	 *     if (result == AsyncCommandResult::SUCCESS) {
-	 *       Serial.println("All config applied successfully!");
-	 *     }
-	 *   });
-	 * @endcode
-	 *
-	 * ## Do:
-	 * - Use this for bulk updates of sensor configuration.
-	 * - Always start from a clone of getConfigData() to avoid missing fields.
-	 *
-	 * ## Don’t:
-	 * - Pass uninitialized or partially filled ConfigData (may fail).
-	 * - Expect changes to persist after power cycle without reapplying.
-	 *
-	 * @param config   The configuration data to be applied.
-	 * @param callback Function with signature:
-	 *        void(LD2410Async* sender, AsyncCommandResult result, byte userData),
-	 *        executed when the sequence finishes (success/fail/timeout/cancel).
-	 * @param userData Optional value passed to the callback.
-	 *
-	 * @returns true if the command sequence has been started, false otherwise.
-	 */
-	bool setConfigDataAsync(const ConfigData& config, AsyncCommandCallback callback, byte userData = 0);
+	bool requestAuxControlSettingsAsync(AsyncCommandCallback callback);
 
 
 	/**
@@ -1628,7 +1177,7 @@ public:
 	 * @note Auto-config temporarily suspends normal detection reporting.
 	 *
 	 * ## Example: Run auto-config
-	 * @code
+	 * @code{.cpp}
 	 *   radar.beginAutoConfigAsync([](LD2410Async* sender,
 	 *                                 AsyncCommandResult result,
 	 *                                 byte) {
@@ -1644,32 +1193,33 @@ public:
 	 * - Use in new environments to optimize detection performance.
 	 * - Query status afterwards with requestAutoConfigStatusAsync().
 	 *
-	 * ## Don’t:
-	 * - Expect instant results — the sensor needs time to complete the process.
+	 * ## Don't:
+	 * - Expect instant results - the sensor needs time to complete the process.
 	 *
 	 * @param callback Callback with signature:
-	 *        void(LD2410Async* sender, AsyncCommandResult result, byte userData).
+	 *        void(LD2410Async* sender, AsyncCommandResult result).
 	 *        Fired when the command is acknowledged or on failure/timeout.
-	 * @param userData Optional value passed to the callback.
+	 *
 	 *
 	 * @returns true if the command was sent, false otherwise.
+	 *
 	 */
-	bool beginAutoConfigAsync(AsyncCommandCallback callback, byte userData = 0);
+	bool beginAutoConfigAsync(AsyncCommandCallback callback);
 
 
 	/**
 	 * @brief Requests the current status of the auto-config routine.
 	 *
 	 * The status is written into the member variable autoConfigStatus:
-	 *   - NOT_IN_PROGRESS → no auto-config running.
-	 *   - IN_PROGRESS → auto-config is currently running.
-	 *   - COMPLETED → auto-config finished (success or failure).
+	 *   - NOT_IN_PROGRESS - no auto-config running.
+	 *   - IN_PROGRESS - auto-config is currently running.
+	 *   - COMPLETED - auto-config finished (success or failure).
 	 *
 	 * @note Requires config mode. This method will manage mode switching automatically.
 	 * @note If another async command is already pending, this call fails.
 	 *
 	 * ## Example: Check auto-config status
-	 * @code
+	 * @code{.cpp}
 	 *   radar.requestAutoConfigStatusAsync([](LD2410Async* sender,
 	 *                                         AsyncCommandResult result,
 	 *                                         byte) {
@@ -1697,17 +1247,448 @@ public:
 	 * - Use this after beginAutoConfigAsync() to track progress.
 	 * - Use autoConfigStatus for decision-making in your logic.
 	 *
-	 * ## Don’t:
-	 * - Assume COMPLETED means success — thresholds should still be verified.
+	 * ## Don't:
+	 * - Assume COMPLETED means success - thresholds should still be verified.
 	 *
 	 * @param callback Callback with signature:
-	 *        void(LD2410Async* sender, AsyncCommandResult result, byte userData).
+	 *        void(LD2410Async* sender, AsyncCommandResult result).
 	 *        Fired when the sensor replies or on failure/timeout.
-	 * @param userData Optional value passed to the callback.
+	 *
 	 *
 	 * @returns true if the command was sent, false otherwise.
+	 *
 	 */
-	bool requestAutoConfigStatusAsync(AsyncCommandCallback callback, byte userData = 0);
+	bool requestAutoConfigStatusAsync(AsyncCommandCallback callback);
 
+
+
+	/*---------------------------------------------------------------------------------
+	- High level commands
+	---------------------------------------------------------------------------------*/
+	// High level commands typically encapsulate several native commands.
+	// They provide a more consistent access to the sensors configuration,
+	// e.g. for reading all config data 3 native commands are necessary,
+	// to update the same data up to 12 native commands may be required.
+        // The high-level commands encapsulate both situations into a single command
+
+	/**
+	 * @brief Requests all configuration settings from the sensor.
+	 *
+	 * This triggers a sequence of queries that retrieves and updates:
+	 *   - Gate parameters (sensitivities, max gates, timeout).
+	 *   - Distance resolution setting.
+	 *   - Auxiliary light/output control settings.
+	 *
+	 * The results are stored in configData, and the
+	 * onConfigDataReceived() is invoked after completion.
+	 *
+	 * @note This is a high-level method that involves multiple commands.
+	 * @note Requires config mode. This method will manage mode switching automatically.
+	 * @note If another async command is already pending, the request fails.
+	 *
+	 * ## Example: Refresh config data
+	 * @code{.cpp}
+	 *   radar.requestAllConfigSettingsAsync([](LD2410Async* sender,
+	 *                                 AsyncCommandResult result,
+	 *                                 byte) {
+	 *     if (result == AsyncCommandResult::SUCCESS) {
+	 *       Serial.println("All config data refreshed:");
+	 *       sender->getConfigDataRef().print();
+	 *     }
+	 *   });
+	 * @endcode
+	 *
+	 * ## Do:
+	 * - Use this after connecting to ensure configData is fully populated.
+	 * - Call before modifying config if you're unsure of current values.
+	 *
+	 * ## Don't:
+	 * - Expect it to succeed if another async command is still running.
+	 *
+	 * @param callback Callback with signature:
+	 *        void(LD2410Async* sender, AsyncCommandResult result).
+	 *        Fired when all config data has been received or on failure.
+	 *
+	 *
+	 * @returns true if the command was sent, false otherwise.
+	 *
+	 */
+	bool requestAllConfigSettingsAsync(AsyncCommandCallback callback);
+
+
+	/**
+	 * @brief Requests all static information from the sensor.
+	 *
+	 * This includes:
+	 *   - Firmware version string.
+	 *   - Bluetooth MAC address (numeric and string form).
+	 *
+	 * The values are written into the public members `firmware`, `mac`,
+	 * and `macString`.
+	 *
+	 * @note This is a high-level method that involves multiple commands.
+	 * @note Requires config mode. Managed automatically by this method.
+	 * @note If another async command is already pending, the request fails.
+	 *
+	 * ## Example: Retrieve firmware and MAC
+	 * @code{.cpp}
+	 *   radar.requestAllStaticDataAsync([](LD2410Async* sender,
+	 *                                 AsyncCommandResult result,
+	 *                                 byte) {
+	 *     if (result == AsyncCommandResult::SUCCESS) {
+	 *       Serial.print("Firmware: ");
+	 *       Serial.println(sender->firmware);
+	 *
+	 *       Serial.print("MAC: ");
+	 *       Serial.println(sender->macString);
+	 *     }
+	 *   });
+	 * @endcode
+	 *
+	 * ## Do:
+	 * - Use after initialization to log firmware version and MAC.
+	 * - Useful for debugging or inventory identification.
+	 *
+	 * ## Don't:
+	 * - Expect frequently changing data - this is static information.
+	 *
+	 * @param callback Callback with signature:
+	 *        void(LD2410Async* sender, AsyncCommandResult result).
+	 *        Fired when static data is received or on failure.
+	 *
+	 *
+	 * @returns true if the command was sent, false otherwise.
+	 *
+	 */
+	bool requestAllStaticDataAsync(AsyncCommandCallback callback);
+
+
+
+	/**
+	 * @brief Applies a full ConfigData struct to the LD2410.
+	 *
+	 * If writeAllConfigData is true, the method will first fetch the current config,
+	 * compare it with the provide Config data and then create a command sequence that
+	 * will only update the changes config values.
+	 * If writeAllConfigData is false, the method will write all values in the provided
+	 * ConfigData to the sensor, regardless of whether they differ from the current config.
+	 *
+	 * @note This is a high-level method that involves multiple commands (up to 18).
+	 * @note Requires config mode. This method will manage entering and
+	 *       exiting config mode automatically (if config mode is not already active).
+	 * @note If another async command is already pending, the command fails.
+	 * @note Any members of ConfigData that are left at invalid values
+	 *       (e.g. enums set to NOT_SET) will cause the sequence to fail.
+	 *
+	 * ## Example: Clone, modify, and apply config
+	 * @code{.cpp}
+	 *   ConfigData cfg = radar.getConfigData();  // clone current config
+	 *   cfg.noOneTimeout = 120;                  // change timeout
+	 *   cfg.distanceGateMotionSensitivity[2] = 75;
+	 *
+	 *   radar.configureAllConfigSettingsAsync(cfg, [](LD2410Async* sender,
+	 *                                    AsyncCommandResult result,
+	 *                                    byte) {
+	 *     if (result == AsyncCommandResult::SUCCESS) {
+	 *       Serial.println("All config applied successfully!");
+	 *     }
+	 *   });
+	 * @endcode
+	 *
+	 * ## Do:
+	 * - Always start from a clone of getConfigData() to avoid setting unwanted values for settings that do not need to change.
+	 * - If the method's callback does not report SUCCESS, any portion of the config might have been written to the sensor or the sensor might have remained in config mode.
+	 *   Make sure to take appropriate measures to return the sensor to normal operation mode if required (reboot usually does the trick) and check the config values, if they are what you need.
+	 *
+	 * ## Don't:
+	 * - Don't write all config data (writeAllConfigData=true) if not really necessary.
+	 *   This generates unnecessary wear on the sensor's memory.
+	 * - Pass uninitialized or partially filled ConfigData (may fail or result in unwanted settings)
+
+	 *
+	 * @param configToWrite The configuration data to be applied.
+	 * @param writeAllConfigData If true, all fields in configToWrite are applied. If false, changed values are written.
+	 * @param callback Function with signature:
+	 *        void(LD2410Async* sender, AsyncCommandResult result),
+	 *        executed when the sequence finishes (success/fail/timeout/cancel).
+	 *
+	 *
+	 * @returns true if the command sequence has been started, false otherwise.
+	 *
+	 */
+	bool configureAllConfigSettingsAsync(const LD2410Types::ConfigData& configToWrite, bool writeAllConfigData, AsyncCommandCallback callback);
+
+
+
+private:
+	// ============================================================================
+	// Low-level serial interface
+	// ============================================================================
+
+	/// Pointer to the Serial/Stream object connected to the LD2410 sensor
+	Stream* sensor;
+
+
+	// ============================================================================
+	// Frame parsing state machine
+	// ============================================================================
+
+	/// States used when parsing incoming frames from the sensor
+	enum ReadFrameState {
+		WAITING_FOR_HEADER,   ///< Waiting for frame header sequence
+		ACK_HEADER,           ///< Parsing header of an ACK frame
+		DATA_HEADER,          ///< Parsing header of a DATA frame
+		READ_ACK_SIZE,        ///< Reading payload size field of an ACK frame
+		READ_DATA_SIZE,       ///< Reading payload size field of a DATA frame
+		READ_ACK_PAYLOAD,     ///< Reading payload content of an ACK frame
+		READ_DATA_PAYLOAD     ///< Reading payload content of a DATA frame
+	};
+
+	/// Result type when trying to read a frame
+	enum FrameReadResponse {
+		FAIL = 0, ///< Frame was invalid or incomplete
+		ACK,      ///< A valid ACK frame was received
+		DATA      ///< A valid DATA frame was received
+	};
+
+	int readFrameHeaderIndex = 0; ///< Current index while matching the frame header
+	int payloadSize = 0;          ///< Expected payload size of current frame
+	ReadFrameState readFrameState = ReadFrameState::WAITING_FOR_HEADER; ///< Current frame parsing state
+
+	/// Extract payload size from the current byte and update state machine
+	bool readFramePayloadSize(byte b, ReadFrameState nextReadFrameState);
+
+	/// Read payload bytes until full ACK/DATA frame is assembled
+	FrameReadResponse readFramePayload(byte b, const byte* tailPattern, LD2410Async::FrameReadResponse successResponseType);
+
+	/// State machine entry: read incoming frame and return read response
+	FrameReadResponse readFrame();
+
+
+	// ============================================================================
+	// Receive buffer
+	// ============================================================================
+
+	/// Raw buffer for storing incoming bytes
+	byte receiveBuffer[LD2410Defs::LD2410_Buffer_Size];
+
+	/// Current index into receiveBuffer
+	byte receiveBufferIndex = 0;
+
+
+	// ============================================================================
+	// Asynchronous command sequence handling
+	// ============================================================================
+
+	/// Maximum number of commands in one async sequence
+	static constexpr size_t MAX_COMMAND_SEQUENCE_LENGTH = 15;
+
+	/// Buffer holding queued commands for sequence execution
+	byte commandSequenceBuffer[MAX_COMMAND_SEQUENCE_LENGTH][LD2410Defs::LD2410_Buffer_Size];
+
+	/// Number of commands currently queued in the sequence buffer
+	byte commandSequenceBufferCount = 0;
+
+	/// Timestamp when the current async sequence started
+	unsigned long executeCommandSequenceStartMs = 0;
+
+	/// Callback for current async sequence
+	AsyncCommandCallback executeCommandSequenceCallback = nullptr;
+
+	AsyncCommandResult executeCommandSequenceResultToReport = AsyncCommandResult::SUCCESS;
+
+	/// True if an async sequence is currently pending.
+	bool executeCommandSequencePending = false;
+
+	/// Ticker used for small delay before firing the commandsequence callback when the command sequence is empty.
+	/// This ensures that the callback is always called asynchronously and never directly from the calling context.
+	Ticker executeCommandSequenceOnceTicker;
+
+	/// Index of currently active command in the sequence buffer
+	int executeCommandSequenceIndex = 0;
+
+	/// Stores config mode state before sequence started (to restore later)
+	bool executeCommandSequenceInitialConfigModeState = false;
+
+	/// Finalize an async sequence and invoke its callback
+	void executeCommandSequenceAsyncExecuteCallback(LD2410Async::AsyncCommandResult result);
+
+	/// Final step of an async sequence: restore config mode if needed and call callback
+	void executeCommandSequenceAsyncFinalize(LD2410Async::AsyncCommandResult resultToReport);
+
+	/// Internal callbacks for sequence steps
+	static void executeCommandSequenceAsyncDisableConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result);
+	static void executeCommandSequenceAsyncCommandCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result);
+
+	/// Start executing an async sequence
+	bool executeCommandSequenceAsync(AsyncCommandCallback callback);
+
+	/// Add one command to the sequence buffer
+	bool addCommandToSequence(const byte* command);
+
+	/// Reset sequence buffer to empty
+	bool resetCommandSequence();
+
+
+	// ============================================================================
+	// Inactivity handling
+	// ============================================================================
+
+	/// Update last-activity timestamp ("I am alive" signal)
+	void heartbeat();
+
+	bool inactivityHandlingEnabled = true;     ///< Whether automatic inactivity handling is active
+	unsigned long inactivityHandlingTimeoutMs = 60000; ///< Timeout until recovery action is triggered (ms)
+	unsigned long lastSensorActivityTimestamp = 0;          ///< Timestamp of the last sensor activity, i.e., when data from the sensor was last received
+
+	byte inactivityHandlingStep = 0;
+	unsigned long lastInactivityHandlingTimestamp = 0;
+
+	bool handleInactivityExitConfigModeDone = false; ///< Flag to avoid repeating config-mode exit
+
+	/// Main inactivity handler: exit config mode or reboot if stuck
+	void handleInactivity();
+
+	/// Callback for reboot triggered by inactivity handler
+	static void handleInactivityRebootCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result);
+
+	/// Callback for disabling config mode during inactivity recovery
+	static void handleInactivityDisableConfigmodeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result);
+
+
+	// ============================================================================
+	// Reboot handling
+	// ============================================================================
+
+	/// Step 1: Enter config mode before reboot
+	static void rebootAsyncEnableConfigModeCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result);
+
+	/// Step 2: Issue reboot command
+	static void rebootAsyncRebootCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result);
+
+	void rebootAsyncFinialize(LD2410Async::AsyncCommandResult result);
+
+	unsigned long rebootAsyncWaitTimeoutMs = 5000;
+	bool rebootAsyncDontWaitForNormalOperationAfterReboot = false;
+	bool rebootAsyncPending = false;
+
+
+	// ============================================================================
+	// ACK/DATA processing
+	// ============================================================================
+
+	/// Process a received ACK frame
+        bool processAck();
+
+	/// Process a received DATA frame
+	bool processData();
+
+
+	// ============================================================================
+	// Callbacks
+	// ============================================================================
+
+	GenericCallback configUpdateReceivedReceivedCallback = nullptr; ///< Callback for new config data received
+	void executeConfigUpdateReceivedCallback();                     ///< Execute config-update callback
+
+	GenericCallback configChangedCallback = nullptr; ///< Callback for successful config change
+	void executeConfigChangedCallback();             ///< Execute config-changed callback
+
+	DetectionDataCallback detectionDataCallback = nullptr; ///< Callback for new detection data
+
+	// ============================================================================
+	// Command sending
+	// ============================================================================
+
+	/// Send raw command bytes to the sensor
+	void sendCommand(const byte* command);
+
+
+	// ============================================================================
+	// FreeRTOS task management
+	// ============================================================================
+
+	TaskHandle_t taskHandle = NULL; ///< Handle to FreeRTOS background task
+	bool taskStop = false;          ///< Stop flag for task loop
+	void taskLoop();                ///< Background task loop for reading data
+
+
+	// ============================================================================
+	// Async command handling
+	// ============================================================================
+
+	///< Timeout for async commands in ms (default 4000).
+	unsigned long asyncCommandTimeoutMs = 4000;
+
+	/// Send a generic async command
+	bool sendCommandAsync(const byte* command, byte retries, AsyncCommandCallback callback);
+
+        // If the number of retries is not defined, there will be no retries
+	bool sendCommandAsync(const byte* command, AsyncCommandCallback callback) {
+		return sendCommandAsync(command, 0, callback);
+	};
+
+
+	/// Invoke async command callback with result
+	void sendCommandAsyncExecuteCallback(byte commandCode, LD2410Async::AsyncCommandResult result);
+
+        /// Stores the data that is needed for the execution of the callback later on
+	void sendCommandAsyncStoreDataForCallback(const byte* command, byte retries, AsyncCommandCallback callback);
+
+	/// Handle async command timeout
+	void sendCommandAsyncHandleTimeout();
+
+	/// Send async command that modifies configuration
+	bool sendConfigCommandAsync(const byte* command, AsyncCommandCallback callback);
+
+	AsyncCommandCallback sendCommandAsyncCallback = nullptr; ///< Current async command callback
+	unsigned long sendCommandAsyncStartMs = 0;               ///< Timestamp when async command started
+	byte sendCommandAsyncCommandCode = 0;                    ///< Last command code issued
+	bool sendCommandAsyncCommandPending = false;					 ///< True if an async command is currently pending.
+	byte sendCommandAsyncCommandBuffer[LD2410Defs::LD2410_Buffer_Size];
+	byte sendCommandAsyncRetriesLeft = 0;
+	// ============================================================================
+	// Data processing
+	// ============================================================================
+
+	/// Main dispatcher: process incoming bytes into frames, update state, trigger callbacks
+	void processReceivedData();
+
+	// ============================================================================
+	// Config mode 
+	// ============================================================================
+	bool enableConfigModeInternalAsync(bool force, AsyncCommandCallback callback);
+	bool enableConfigModeInternalAsync(AsyncCommandCallback callback) {
+		return enableConfigModeInternalAsync(false, callback);
+	}
+
+	bool disableConfigModeInternalAsync(bool force, AsyncCommandCallback callback);
+
+	bool disableConfigModeInternalAsync(AsyncCommandCallback callback) {
+		return disableConfigModeInternalAsync(false, callback);
+	};
+
+        Ticker configModeOnceTicker; // Used for a short delay when config mode just has to execute the callback
+
+	// ============================================================================
+	// Config writing 
+	// ============================================================================
+	LD2410Types::ConfigData configureAllConfigSettingsAsyncConfigDataToWrite;
+	bool configureAllConfigSettingsAsyncWriteFullConfig = false;
+	AsyncCommandCallback configureAllConfigSettingsAsyncConfigCallback = nullptr;
+	bool configureAllConfigSettingsAsyncConfigActive = false;
+	bool configureAllConfigSettingsAsyncConfigInitialConfigMode = false;
+	AsyncCommandResult configureAllConfigSettingsAsyncResultToReport = LD2410Async::AsyncCommandResult::SUCCESS;
+
+	void configureAllConfigSettingsAsyncExecuteCallback(LD2410Async::AsyncCommandResult result);
+	static	void configureAllConfigSettingsAsyncConfigModeDisabledCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result);
+	void configureAllConfigSettingsAsyncFinalize(LD2410Async::AsyncCommandResult resultToReport);
+	static void configureAllConfigSettingsAsyncWriteConfigCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result);
+	bool configureAllConfigSettingsAsyncWriteConfig();
+	static void configureAllConfigSettingsAsyncRequestAllConfigDataCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result);
+	bool configureAllConfigSettingsAsyncRequestAllConfigData();
+	static void configureAllConfigSettingsAsyncConfigModeEnabledCallback(LD2410Async* sender, LD2410Async::AsyncCommandResult result);
+
+	bool configureAllConfigSettingsAsyncBuildSaveChangesCommandSequence();
 
 };

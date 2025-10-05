@@ -1,0 +1,74 @@
+# Doxyfile for LD2410Async C++ Library
+# Suitable for GitHub Actions workflow in .github/workflows/generateDoxygenDocu.yml
+
+# Project related configuration
+PROJECT_NAME           = "LD2410Async"
+PROJECT_BRIEF          = "Asynchronous Arduino ESP32 library for the LD2410 mmWave radar sensor"
+OUTPUT_DIRECTORY       = docs
+CREATE_SUBDIRS         = NO
+OUTPUT_LANGUAGE        = English
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = NO
+EXTRACT_STATIC         = NO
+EXTRACT_LOCAL_CLASSES  = YES
+EXTRACT_ANON_NSPACES   = YES
+SORT_MEMBER_DOCS = YES
+SORT_GROUP_NAMES = YES
+
+
+
+# Input
+INPUT                  = src examples dox
+FILE_PATTERNS          = *.h *.cpp *.ino *.dox *.md
+EXTENSION_MAPPING	   = ino=C++
+RECURSIVE              = YES
+IMAGE_PATH			   = gfx
+
+# Source code browsing
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = FALSE
+STRIP_CODE_COMMENTS    = NO
+
+# HTML output
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+HTML_FILE_EXTENSION    = .html
+HTML_COLORSTYLE_HUE    = 220
+HTML_COLORSTYLE_SAT    = 100
+HTML_COLORSTYLE_GAMMA  = 80
+
+# LaTeX output (disabled)
+GENERATE_LATEX         = NO
+
+# Dot/Graphviz support
+HAVE_DOT           = NO
+CALL_GRAPH         = NO
+CALLER_GRAPH       = NO
+CLASS_DIAGRAMS     = NO
+COLLABORATION_GRAPH= NO
+INCLUDE_GRAPH      = NO
+INCLUDED_BY_GRAPH  = NO
+GRAPHICAL_HIERARCHY= NO
+DOT_MULTI_TARGETS  = NO
+
+# Warnings
+WARN_IF_UNDOCUMENTED   = YES
+WARN_IF_DOC_ERROR      = YES
+
+# Misc
+QUIET                  = NO
+GENERATE_TREEVIEW      = YES
+FULL_PATH_NAMES        = NO
+STRIP_FROM_PATH        = src examples
+
+# Repository link (optional, for GitHub integration)
+# Set to your repo if you want source browsing links
+# HTML_DYNAMIC_SECTIONS = YES
+# PROJECT_LOGO          =
+
+# If you want Markdown support
+MARKDOWN_SUPPORT       = YES
+
+# If you want to document private members, set EXTRACT_PRIVATE = YES
+
+# End of Doxyfile

@@ -48,6 +48,7 @@
     <None Include="$(MSBuildThisFileDirectory)dox\Troubleshooting.md" />
     <None Include="$(MSBuildThisFileDirectory)README.md" />
     <None Include="$(MSBuildThisFileDirectory)dox\Examples.md" />
+    <None Include="$(MSBuildThisFileDirectory).github\workflows\createRelease.yml" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)src\LD2410CommandBuilder.h">

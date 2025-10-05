@@ -1,9 +1,11 @@
 name: Generate Documentation
 
 on:
-  push:
-    branches-ignore:
-      - master
+  # Run when a release is created or published
+  release:
+    types: [published]
+
+  # Allow manual trigger from the Actions tab
   workflow_dispatch:
 
 jobs:
@@ -13,6 +15,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Ensures tags are available (useful for versioned docs)
 
       - name: Generate Doxygen documentation
         uses: mattnotmitt/doxygen-action@v1

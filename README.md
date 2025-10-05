@@ -4,9 +4,7 @@
   [![LD2410Async Build](https://github.com/lizardking/LD2410Async/actions/workflows/build.yml/badge.svg)](https://github.com/lizardking/LD2410Async/actions/workflows/build.yml)  [![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue?logo=github)](https://lizardking.github.io/LD2410Async/)
   ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-# This library is still in development. Therefore breaking changes are likely. Use at your own risk.
-
- ![LD2410](/gfx/LD2410.jpg)
+![LD2410](/gfx/LD2410.jpg)
 
 ## Introduction
 
@@ -22,26 +20,6 @@ The library has the following functionality:
 - **Callbacks** - are executed when detection data has arrived or when commands complete.
 - **Non-blocking operation** - sensor data is parsed in the background, no polling loops required.  
  
----
-
-## Installation
-
-You can install this library in two ways:
-
-### 1. Using Arduino Library Manager (recommended)
-1. Open the Arduino IDE.  
-2. Go to **Tools - Manage Libraries...**.
-3. Search for **LD2410Async**.  
-4. Click **Install**.  
-
-### 2. Manual installation
-1. Download this repository as a ZIP file.  
-2. In the Arduino IDE, go to **Sketch - Include Library - Add .ZIP Library...**, or
-   unzip the file manually into your Arduino `libraries` folder:  
-   - Windows: `Documents/Arduino/libraries/`  
-   - Linux/macOS: `~/Arduino/libraries/`  
-3. Restart the Arduino IDE.  
-
 ---
 
 ## Documentation
@@ -66,6 +44,26 @@ The docs include:
 - [Troubleshooting Guide](https://lizardking.github.io/LD2410Async/Troubleshooting.html)
 ---
  
+## Installation
+
+You can install this library in two ways:
+
+### 1. Using Arduino Library Manager (recommended)
+1. Open the Arduino IDE.  
+2. Go to **Tools - Manage Libraries...**.
+3. Search for **LD2410Async**.  
+4. Click **Install**.  
+
+### 2. Manual installation
+1. Download this repository as a ZIP file.  
+2. In the Arduino IDE, go to **Sketch - Include Library - Add .ZIP Library...**, or
+   unzip the file manually into your Arduino `libraries` folder:  
+   - Windows: `Documents/Arduino/libraries/`  
+   - Linux/macOS: `~/Arduino/libraries/`  
+3. Restart the Arduino IDE.  
+
+---
+
 ## Basic Usage
 
 Include the library, create an instance for your radar, and start it with `begin()`.  

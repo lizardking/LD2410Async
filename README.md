@@ -44,22 +44,24 @@ You can install this library in two ways:
 
 ## Documentation
 
-Full API and usage documentation has been generated with Doxygen and available in the [`docu/`](docu/index.html) folder.  
-Open [`index.html`](docu/index.html) in your browser to get started.
+Full API and usage documentation is generated automatically with Doxygen and published on GitHub Pages:  
 
-The docs also include a class reference for the [LD2410Async class](docu/classLD2410Async.html) and full details for all functions, callbacks, and data structures.
+**[View the LD2410Async Documentation](https://lizardking.github.io/LD2410Async/)**
+
+The docs include:
+- A complete [LD2410Async class reference](https://lizardking.github.io/LD2410Async/classLD2410Async.html)
+- Full details for all functions, callbacks, and data structures.
 
 ### Direct links to main sections
 
-- [Installation](docu/Installation.html)  
-- [Async Commands & Processing](docu/Async_Commands_And_Processing.html)  
-- [Data Structures](docu/Data_Structures.html)  
-- [Operation Modes](docu/Operation_Modes.html)  
-- [Inactivity Handling](docu/Inactivity_Handling.html)  
-- [Examples](docu/Examples.html)
-- [Best Practices](docu/BestPractices.html)  
-- [Troubleshooting Guide](docu/Troubleshooting.html) 
-
+- [Installation](https://lizardking.github.io/LD2410Async/Installation.html)  
+- [Async Commands & Processing](https://lizardking.github.io/LD2410Async/Async_Commands_And_Processing.html)  
+- [Data Structures](https://lizardking.github.io/LD2410Async/Data_Structures.html)  
+- [Operation Modes](https://lizardking.github.io/LD2410Async/Operation_Modes.html)  
+- [Inactivity Handling](https://lizardking.github.io/LD2410Async/Inactivity_Handling.html)  
+- [Examples](https://lizardking.github.io/LD2410Async/Examples.html)  
+- [Best Practices](https://lizardking.github.io/LD2410Async/BestPractices.html)  
+- [Troubleshooting Guide](https://lizardking.github.io/LD2410Async/Troubleshooting.html)
 ---
  
 ## Basic Usage

@@ -1,11 +1,8 @@
 ﻿name: Create Release
 
 on:
-  # Runs only when a release is *published* (not when drafted or edited)
   release:
     types: [published]
-
-  # Allows manual trigger from the Actions tab (for testing)
   workflow_dispatch:
 
 jobs:
@@ -16,25 +13,26 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Needed for accurate tag/version info
+          fetch-depth: 0
 
       - name: Extract version from release tag
         id: version
         run: |
-          TAG_NAME=${{ github.event.release.tag_name }}
+          TAG_NAME="${{ github.event.release.tag_name }}"
           echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
           echo "Version detected: $TAG_NAME"
 
       - name: Validate library version
         run: |
           echo "Checking library.properties..."
-          grep -E '^version=' library.properties || { echo "❌ Error: version missing"; exit 1; }
+          grep -E '^version=' library.properties || { echo "Error: version missing"; exit 1; }
 
           PROP_VERSION=$(grep -E '^version=' library.properties | cut -d'=' -f2)
-          TAG_VERSION=${{ github.event.release.tag_name#v }}
+          TAG_NAME="${{ github.event.release.tag_name }}"
+          TAG_VERSION="${TAG_NAME#v}"  # Remove leading 'v' in Bash
 
           if [ "$PROP_VERSION" != "$TAG_VERSION" ]; then
-            echo "❌ Version mismatch: library.properties ($PROP_VERSION) vs tag (v$TAG_VERSION)"
+            echo "Version mismatch: library.properties ($PROP_VERSION) vs tag ($TAG_NAME)"
             exit 1
           fi
 
@@ -53,6 +51,6 @@ jobs:
           tag_name: ${{ steps.version.outputs.tag_name }}
           name: "LD2410Async ${{ steps.version.outputs.tag_name }}"
           files: dist/*.zip
-          append_body: false    # keeps your manually written notes unchanged
+          append_body: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,26 @@
+var simplePresenceDetectionWebservice_8ino =
+[
+    [ "RADAR_BAUDRATE", "simplePresenceDetectionWebservice_8ino.html#a78243257c4f1bb044c720dce7198d7cb", null ],
+    [ "RADAR_RX_PIN", "simplePresenceDetectionWebservice_8ino.html#a7e649b7675aa97ae8a3c2b2a329e55d7", null ],
+    [ "RADAR_TX_PIN", "simplePresenceDetectionWebservice_8ino.html#acce505b164e2cee65fd975d0bc859ca8", null ],
+    [ "USE_STATIC_IP", "simplePresenceDetectionWebservice_8ino.html#a437d5adf3828750386f66bc45b3e7e9c", null ],
+    [ "WEBSERVER_PORT", "simplePresenceDetectionWebservice_8ino.html#aa430974dd59e17390636a1e876166997", null ],
+    [ "GATEWAY", "simplePresenceDetectionWebservice_8ino.html#a232b5605d59abb7391a6857484193f70", null ],
+    [ "LOCAL_IP", "simplePresenceDetectionWebservice_8ino.html#a5a9a77b7e2709907f3b84da947708d54", null ],
+    [ "loop", "simplePresenceDetectionWebservice_8ino.html#afe461d27b9c48d5921c00d521181f12f", null ],
+    [ "notifyClients", "simplePresenceDetectionWebservice_8ino.html#aff1e26a91174e9c38aa1fb834f03d71c", null ],
+    [ "onDetectionDataReceived", "simplePresenceDetectionWebservice_8ino.html#a5bf9a458e204b109072f4278a63e1e51", null ],
+    [ "onWsEvent", "simplePresenceDetectionWebservice_8ino.html#a7064e9828984f378d3e04f9b7a47bcae", null ],
+    [ "RadarSerial", "simplePresenceDetectionWebservice_8ino.html#a49d7843d70c3fb5607ee7c62c655fa41", null ],
+    [ "server", "simplePresenceDetectionWebservice_8ino.html#a01a73e9084f1c989ffd6f78879d85760", null ],
+    [ "setup", "simplePresenceDetectionWebservice_8ino.html#a4fc01d736fe50cf5b977f755b675f11d", null ],
+    [ "setupWiFi", "simplePresenceDetectionWebservice_8ino.html#ad2a97dbe5f144cd247e3b15c6af7c767", null ],
+    [ "SUBNET", "simplePresenceDetectionWebservice_8ino.html#a01919959c5e72529122db54c63452dae", null ],
+    [ "ws", "simplePresenceDetectionWebservice_8ino.html#a12b97dd15b0118cb30b85286f7c4b3c9", null ],
+    [ "latestDetectedDistance", "simplePresenceDetectionWebservice_8ino.html#ae64a732d208313ca045e833567fb7fdf", null ],
+    [ "latestPresenceDetected", "simplePresenceDetectionWebservice_8ino.html#ab3783c936ad22cc24385b3b1351bd2d8", null ],
+    [ "PROGMEM", "simplePresenceDetectionWebservice_8ino.html#a74ae6f03d132b99a2e41ee2366bd6777", null ],
+    [ "radar", "simplePresenceDetectionWebservice_8ino.html#a668d1ce20a8d66eeb5ab88238e59c2d4", null ],
+    [ "WIFI_PASSWORD", "simplePresenceDetectionWebservice_8ino.html#a148a1777c915283bcb3f4bf32233e16b", null ],
+    [ "WIFI_SSID", "simplePresenceDetectionWebservice_8ino.html#a586c86c64e7d30517aeee0fe47a25ae4", null ]
+];

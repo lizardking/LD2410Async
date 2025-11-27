@@ -87,7 +87,18 @@ public:
 	typedef void(*DetectionDataCallback)(LD2410Async* sender, bool presenceDetected);
 
 
-
+	/**
+	** @brief Callback type for command acknowledgment events.
+	 *
+	 * This callback is invoked whenever a command ACK is received from the sensor.
+	 * It provides direct access to the LD2410Async instance, along with
+	 * the command code that was acknowledged.
+	 *
+	 * @param sender        Pointer to the LD2410Async instance that triggered the callback.
+	 * @param commandCode   The command code (byte) that was acknowledged by the sensor.
+	 *
+	 */
+	typedef void (*CommandAckCallback)(LD2410Async* sender, byte commandCode);
 
 
 public:
@@ -431,6 +442,35 @@ public:
 	 * @endcode
 	 */
 	void onConfigChanged(GenericCallback callback);
+
+
+	
+	/**
+	 * @brief Registers a callback for reboot acknowledgment.
+	 *
+	 * The callback is invoked whenever a reboot acknowledgment has
+	 * been received from the sensor after a reboot command.
+	 * Reboots can be triggered using @ref rebootAsync "rebootAsync()",
+	 * but also through the app to configured LD2410 sensors.
+	 * Thiis callback can be used to detect such reboots calls.
+	 *
+	 * @param callback Function pointer with signature
+	 *        void methodName(LD2410Async* sender).
+	 */
+	void onRebootAckReceived(GenericCallback callback);
+
+
+	
+	/**
+	 * @brief Registers a command acknowledgment callback.
+	 *
+	 * The callback is invoked whenever a command acknowledgment has
+	 * been received from the sensor.
+	 *
+	 * @param callback Function pointer with signature
+	 *        void methodName(LD2410Async* sender, byte commandCode).
+	 */
+	void onCommandAckReceived(CommandAckCallback callback);
 
 	/**********************************************************************************
 	 * Detection and config data access commands
@@ -1593,6 +1633,15 @@ private:
 
 	GenericCallback configChangedCallback = nullptr; ///< Callback for successful config change
 	void executeConfigChangedCallback();             ///< Execute config-changed callback
+
+
+	GenericCallback rebootAckReceivedCallback = nullptr; ///< Callback for reboot ACK received
+	void executeRebootAckReceivedCallback();             ///< Execute reboot ACK callback
+
+
+	CommandAckCallback commandAckCallback = nullptr; ///< Callback for command ACK received
+	void executeCommandAckReceivedCallback(byte commandCode);          ///< Execute command ACK callback
+
 
 	DetectionDataCallback detectionDataCallback = nullptr; ///< Callback for new detection data
 

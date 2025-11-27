@@ -200,6 +200,27 @@ void LD2410Async::onConfigChanged(GenericCallback callback) {
 }
 
 
+void LD2410Async::onRebootAckReceived(GenericCallback callback) {
+	rebootAckReceivedCallback = callback;
+}
+
+void LD2410Async::onCommandAckReceived(CommandAckCallback callback) {
+	commandAckCallback = callback;
+}
+
+void LD2410Async::executeCommandAckReceivedCallback(byte commandCode) {
+	if (commandAckCallback) {
+	
+		commandAckCallback(this, commandCode);
+	}
+}
+
+void LD2410Async::executeRebootAckReceivedCallback() {
+	if (rebootAckReceivedCallback) {
+		rebootAckReceivedCallback(this);
+	}
+}
+
 
 void LD2410Async::executeConfigUpdateReceivedCallback() {
 
@@ -279,6 +300,7 @@ bool LD2410Async::processAck()
 		configModeEnabled = false;
 		DEBUG_PRINT_MILLIS;
 		DEBUG_PRINTLN("ACK for rebootCommand received");
+		executeRebootAckReceivedCallback();
 		break;
 	case LD2410Defs::bluetoothSettingsCommand:
 		DEBUG_PRINT_MILLIS;
@@ -379,6 +401,7 @@ bool LD2410Async::processAck()
 	};
 
 	if (command != 0) {
+		executeCommandAckReceivedCallback(command);
 		sendCommandAsyncExecuteCallback(command, LD2410Async::AsyncCommandResult::SUCCESS);
 	}
 

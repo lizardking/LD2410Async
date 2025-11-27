@@ -45,17 +45,17 @@ bool LD2410Async::readFramePayloadSize(byte b, ReadFrameState nextReadFrameState
 	receiveBuffer[receiveBufferIndex++] = b;
 	if (receiveBufferIndex >= 2) {
 		payloadSize = receiveBuffer[0] | (receiveBuffer[1] << 8);
-                if (payloadSize <= 0 || payloadSize > sizeof(receiveBuffer) - 4) {
-                        // Invalid payload size, wait for header.
-                        DEBUG_PRINT("Invalid payload size read: ");
-                        DEBUG_PRINTLN(payloadSize);
+		if (payloadSize <= 0 || payloadSize > sizeof(receiveBuffer) - 4) {
+			// Invalid payload size, wait for header.
+			DEBUG_PRINT("Invalid payload size read: ");
+			DEBUG_PRINTLN(payloadSize);
 
-                        readFrameState = ReadFrameState::WAITING_FOR_HEADER;
-                }
-                else {
-                        receiveBufferIndex = 0;
-                        readFrameState = nextReadFrameState;
-                }
+			readFrameState = ReadFrameState::WAITING_FOR_HEADER;
+		}
+		else {
+			receiveBufferIndex = 0;
+			readFrameState = nextReadFrameState;
+		}
 		return true;
 	}
 	return false;
@@ -64,14 +64,14 @@ bool LD2410Async::readFramePayloadSize(byte b, ReadFrameState nextReadFrameState
 LD2410Async::FrameReadResponse LD2410Async::readFramePayload(byte b, const byte* tailPattern, LD2410Async::FrameReadResponse successResponseType) {
 	receiveBuffer[receiveBufferIndex++] = b;
 
-        // Add 4 for the tail bytes
+	// Add 4 for the tail bytes
 	if (receiveBufferIndex >= payloadSize + 4) {
 
 		readFrameState = ReadFrameState::WAITING_FOR_HEADER;
 
-                if (bufferEndsWith(receiveBuffer, receiveBufferIndex, tailPattern)) {
-                        return successResponseType;
-                }
+		if (bufferEndsWith(receiveBuffer, receiveBufferIndex, tailPattern)) {
+			return successResponseType;
+		}
 		else {
 			DEBUG_PRINTLN(" Invalid frame end: ");
 			DEBUG_PRINTBUF(receiveBuffer, receiveBufferIndex);
@@ -210,7 +210,7 @@ void LD2410Async::onCommandAckReceived(CommandAckCallback callback) {
 
 void LD2410Async::executeCommandAckReceivedCallback(byte commandCode) {
 	if (commandAckCallback) {
-	
+
 		commandAckCallback(this, commandCode);
 	}
 }

@@ -200,8 +200,75 @@ namespace LD2410Types {
 		BAUDRATE_115200 = 5,  ///< 115200 baud.
 		BAUDRATE_230500 = 6,  ///< 230400 baud.
 		BAUDRATE_256000 = 7,  ///< 256000 baud (factory default).
-		BAUDRATE_460800 = 8   ///< 460800 baud (high-speed).
+		BAUDRATE_460800 = 8,   ///< 460800 baud (high-speed).
+		NOT_SET = 255	/// Placeholder for the initial value. Do not use as a config value (it will cause the configuration command to abort).
 	};
+
+	/**
+	* @brief Converts a Baudrate enum to its numeric baud rate value.
+	*
+	* @param baudrate The Baudrate enum value to convert.
+	* @returns The corresponding numeric baud rate.
+	*/
+
+	static int baudrateToNumeric(Baudrate baudrate) {
+		switch (baudrate) {
+		case Baudrate::BAUDRATE_9600: return 9600;
+		case Baudrate::BAUDRATE_19200: return 19200;
+		case Baudrate::BAUDRATE_38400: return 38400;
+		case Baudrate::BAUDRATE_57600: return 57600;
+		case Baudrate::BAUDRATE_115200: return 115200;
+		case Baudrate::BAUDRATE_230500: return 230400;
+		case Baudrate::BAUDRATE_256000: return 256000;
+		case Baudrate::BAUDRATE_460800: return 460800;
+		default: return -1; 
+		}
+	}
+
+	static int baudrates[] = {9600,19200,38400,57600,115200,230400,256000,460800};
+
+/**
+* @brief Converts a numeric baud rate to its Baudrate enum.
+*
+* @param numericBaudrate The numeric baud rate to convert. Valid values are 9600,19200,38400,57600,115200,230400,256000,460800.
+* @returns The corresponding Baudrate enum value, or NOT_SET if invalid.
+*/
+
+	static Baudrate baudrateFromNumeric(int numericBaudrate) {
+		switch (numericBaudrate) {
+		case 9600: return Baudrate::BAUDRATE_9600;
+		case 19200: return Baudrate::BAUDRATE_19200;
+		case 38400: return Baudrate::BAUDRATE_38400;
+		case 57600: return Baudrate::BAUDRATE_57600;
+		case 115200: return Baudrate::BAUDRATE_115200;
+		case 230400: return Baudrate::BAUDRATE_230500;
+		case 256000: return Baudrate::BAUDRATE_256000;
+		case 460800: return Baudrate::BAUDRATE_460800;
+		default: return Baudrate::NOT_SET; 
+		}
+	}
+
+
+	/**
+	* @brief Safely converts a numeric value (1-8) to a Baudrate enum.
+	* 
+	* @param value The numeric value (1-8 expected).
+	* @returns The corresponding Baudrate enum value, or NOT_SET if invalid.
+	*/
+	static Baudrate toBaudrate(int value) {
+		switch (value) {
+		case 1: return Baudrate::BAUDRATE_9600;
+		case 2: return Baudrate::BAUDRATE_19200;
+		case 3: return Baudrate::BAUDRATE_38400;
+		case 4: return Baudrate::BAUDRATE_57600;
+		case 5: return Baudrate::BAUDRATE_115200;
+		case 6: return Baudrate::BAUDRATE_230500;
+		case 7: return Baudrate::BAUDRATE_256000;
+		case 8: return Baudrate::BAUDRATE_460800;
+		default: return Baudrate::NOT_SET; 
+		}
+	}
+
 
 	/**
 	 * @brief Distance resolution per gate for detection.

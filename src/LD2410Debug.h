@@ -20,7 +20,7 @@
 // =======================================================================================
 // Helper: Hex buffer print (only compiled if needed)
 // =======================================================================================
-#if (LD2410ASYNC_DEBUG_LEVEL > 1) || (LD2410ASYNC_DEBUG_DATA_LEVEL > 1)
+#if (LD2410ASYNC_DEBUG_LEVEL > 0) || (LD2410ASYNC_DEBUG_DATA_LEVEL > 0)
 static inline void printBuf(const byte* buf, byte size)
 {
     for (byte i = 0; i < size; i++) {

@@ -73,14 +73,16 @@ LD2410Async::FrameReadResponse LD2410Async::readFramePayload(byte b, const byte*
 			return successResponseType;
 		}
 		else {
-			DEBUG_PRINTLN(" Invalid frame end: ");
-			DEBUG_PRINTBUF(receiveBuffer, receiveBufferIndex);
+			DEBUG_PRINTLN("Invalid frame end: ");
+#if (LD2410ASYNC_DEBUG_LEVEL > 0)
+			printBuf(receiveBuffer, receiveBufferIndex);
+#endif
 
 		}
 
 	}
 	return FAIL;
-};
+}
 
 LD2410Async::FrameReadResponse LD2410Async::readFrame()
 {
